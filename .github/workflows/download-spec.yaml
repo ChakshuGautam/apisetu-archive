@@ -27,9 +27,9 @@ jobs:
           run: npm install
 
         - name: Run the script
-          run: node index.js
+          run: node downloadSpec.v2.js
 
         - name: Commit and Push
           uses: stefanzweifel/git-auto-commit-action@v5
           with:
-            commit_message: Update results.json
+            commit_message: Update YAML files
