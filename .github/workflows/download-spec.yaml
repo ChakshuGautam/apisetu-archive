@@ -1,4 +1,4 @@
-name: YAML Downloader Workflow
+name: Download Specs
 
 on:
   schedule:
