@@ -1,6 +1,8 @@
 const fetch = require('node-fetch');
 const fs = require('fs');
 
+const HttpsProxyAgent = require('https-proxy-agent').HttpsProxyAgent;
+
 const resultsFilePath = 'results.json';
 
 // Initialize the results file with an empty array if it doesn't exist
@@ -8,10 +10,49 @@ if (!fs.existsSync(resultsFilePath)) {
     fs.writeFileSync(resultsFilePath, JSON.stringify([]));
 }
 
+
+async function getProxy() {
+    const proxyUrl = 'https://gimmeproxy.com/api/getProxy?country=IN';
+    try {
+        const response = await fetch(proxyUrl);
+        if (!response.ok) {
+            throw new Error(`Error fetching proxy: ${response.status}`);
+        }
+        const data = await response.json();
+        return new HttpsProxyAgent(data.curl);
+    } catch (error) {
+        console.error(`Failed to get proxy: ${error}`);
+        return null;
+    }
+}
+
+
+async function fetchWithRetry(url, options, maxRetries = 5, attempt = 1) {
+    try {
+        const response = await fetch(url, options);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response;
+    } catch (error) {
+        if (attempt <= maxRetries) {
+            const delay = Math.pow(2, attempt) * 1000; // Exponential backoff
+            console.log(`Request failed with error: ${error.message}. Retrying in ${delay}ms...`);
+            await new Promise(resolve => setTimeout(resolve, delay));
+            return fetchWithRetry(url, options, maxRetries, attempt + 1);
+        } else {
+            throw error;
+        }
+    }
+}
+
 async function fetchAllPages() {
     const baseUrl = "https://api.apisetu.gov.in/directory/search/v1/apislist";
     let currentPage = 0;
     let totalPages = 1; // Default to 1 to start the loop
+
+    const agent = await getProxy();
+    console.log(`Using proxy: ${agent ? agent.proxy.href : 'none'}`);
 
     const headers = {
         'authority': 'api.apisetu.gov.in',
@@ -42,31 +83,51 @@ async function fetchAllPages() {
             "query": ""
         }));
 
-        console.log(queryParams)
+        try {
+            const response = await fetchWithRetry(`${baseUrl}?q=${queryParams}&sort=`, {
+                method: 'GET',
+                headers: headers,
+                agent: agent
+            });
 
-        const response = await fetch(`${baseUrl}?q=${queryParams}&sort=`, {
-            method: 'GET',
-            headers: headers
-        });
+            if (!response.ok) {
+                throw new Error(`Error: ${response.status}`);
+            }
 
-        if (!response.ok) {
-            throw new Error(`Error: ${response.status}`);
+            const data = await response.json();
+
+            // Read existing data from the file
+            let existingData = JSON.parse(fs.readFileSync(resultsFilePath));
+            let newData = data.result.hits;
+            let updated = false;
+
+            for (let newItem of newData) {
+                let index = existingData.findIndex(item => item.objectID === newItem.objectID);
+                if (index !== -1) {
+                    // Check if the existing item needs to be updated
+                    if (new Date(newItem.modified_on) > new Date(existingData[index].modified_on)) {
+                        existingData[index] = newItem; // Update in place
+                        updated = true;
+                    }
+                } else {
+                    // Add new item if it doesn't exist
+                    existingData.push(newItem);
+                    updated = true;
+                }
+            }
+
+            if (updated) {
+                // Write updated data back to the file only if there were updates
+                fs.writeFileSync(resultsFilePath, JSON.stringify(existingData, null, 2));
+            }
+
+            totalPages = data.result.nbPages;
+            currentPage++;
+            console.log(`Processed page ${currentPage} of ${totalPages}`);
+        } catch (error) {
+            console.error(`Failed to fetch page ${currentPage}: ${error.message}`);
+            break; // Exit the loop on persistent failure
         }
-
-        const data = await response.json();
-
-        // Read existing data from the file
-        const existingData = JSON.parse(fs.readFileSync(resultsFilePath));
-
-        // Append new data
-        existingData.push(...data.result.hits);
-
-        // Write updated data back to the file
-        fs.writeFileSync(resultsFilePath, JSON.stringify(existingData, null, 2));
-
-        // Update the total pages and increment current page
-        totalPages = data.result.nbPages;
-        currentPage++;
     }
 }
 

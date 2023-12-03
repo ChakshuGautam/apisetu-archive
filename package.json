@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "https-proxy-agent": "^7.0.2",
     "node-fetch": "^2.6.1"
   }
 }
