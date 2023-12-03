@@ -51,8 +51,7 @@ async function fetchAllPages() {
     let currentPage = 0;
     let totalPages = 1; // Default to 1 to start the loop
 
-    const agent = await getProxy();
-    console.log(`Using proxy: ${agent ? agent.proxy.href : 'none'}`);
+
 
     const headers = {
         'authority': 'api.apisetu.gov.in',
@@ -74,6 +73,8 @@ async function fetchAllPages() {
     }
 
     while (currentPage < totalPages) {
+        const agent = await getProxy();
+        console.log(`Using proxy: ${agent ? agent.proxy.href : 'none'}`);
         const queryParams = encodeURIComponent(JSON.stringify({
             "facetFilters": [[], [], [], [], []],
             "facets": ["total_api", "authority", "orgState", "categories", "centralMinistry", "apiType"],
