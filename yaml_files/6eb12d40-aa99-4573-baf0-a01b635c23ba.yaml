@@ -1,0 +1,78 @@
+host: delhigw.napix.gov.in
+info:
+  title: CGHS
+  version: 1.0.0
+  x-ibm-name: beneficiarymedicinehistory
+  description: This API gives CGHS beneficiaries medicine history with medicine
+    name, prescribed by which doctor, date and time etc.
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/nic/cghs
+paths:
+  /benMedHistory:
+    post:
+      tags:
+        - Beneficiarymedicinehistory
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      parameters:
+        - in: body
+          name: benMedHistory
+          schema:
+            type: object
+            title: benMedHistory
+            properties:
+              benId:
+                type: string
+              limit:
+                type: string
+              latestToken:
+                type: string
+              initialToken:
+                type: string
+          required: true
+schemes:
+  - https
+swagger: "2.0"
+basePath: /nic/cghs/beneficiarymedicinehistory
+security:
+  - oauth:
+      - napix
+  - {}
+securityDefinitions:
+  oauth:
+    flow: application
+    type: oauth2
+    scopes:
+      napix: ""
+    tokenUrl: //oauth2/token
+    x-ibm-oauth-provider: nic-oauth-provider-application-grant-type
+  clientIdHeader:
+    in: header
+    name: X-IBM-Client-Id
+    type: apiKey
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  servers:
+    - url: https://delhigw.napix.gov.in/nic/cghs/beneficiarymedicinehistory
+      type:
+        - production
+        - development
+  enforced: true
+  testable: true
+  oauth-servers:
+    oauth:
+      tokenUrls:
+        - https://degateway.napix.gov.in:443/nic/cghs//oauth2/token
+      refreshUrls: []
+      authorizationUrls: []
+  application-authentication:
+    certificate: false

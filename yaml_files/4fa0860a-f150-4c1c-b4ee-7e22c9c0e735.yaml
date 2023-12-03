@@ -1,0 +1,40 @@
+host: delhigw.napix.gov.in
+info:
+  title: Parivahan
+  version: 1.0.0
+  x-ibm-name: vahan-dash-board-service-home
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/nic/parivahan
+paths:
+  /service/home:
+    get:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Vahan dash board service home
+schemes:
+  - https
+swagger: "2.0"
+basePath: /nic/parivahan/VahanDashBoardService
+security: []
+securityDefinitions: {}
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  servers:
+    - url: https://delhigw.napix.gov.in/nic/parivahan/VahanDashBoardService
+      type:
+        - production
+        - development
+  enforced: true
+  testable: true
+  application-authentication:
+    certificate: false

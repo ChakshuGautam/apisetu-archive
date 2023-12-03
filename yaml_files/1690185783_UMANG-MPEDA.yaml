@@ -1,0 +1,385 @@
+---
+openapi: 3.0.0
+info:
+  title: The Marine Products Export Development Authority (MPEDA)
+  description: The Marine Products Export Development Authority (MPEDA) was set up by an act of Parliament during 1972. The erstwhile Marine Products Export Promotion Council established by the Government of India in September 1961 was converged in to MPEDA on 24th August 1972. MPEDA is given the mandate to promote the marine products industry with special reference to exports from the country. It is envisaged that this organization would take all actions to develop and augment the resources required for promoting the exports of “all varieties of fishery products known commercially as shrimp, prawn, lobster, crab, fish, shell-fish, other aquatic animals or plants or part thereof and any other products which the authority may, by notification in the Gazette of India, declare to be marine products for the purposes of (the) Act”. The Act empowers MPEDA to regulate exports of marine products and take all measures required for ensuring sustained, quality seafood exports from the country. MPEDA is given the authority to prescribe for itself any matters which the future might require for protecting and augmenting the seafood exports from the country. It is also empowered to carry out inspection of marine products, its raw material, fixing standards, specifications, and training as well as take all necessary steps for marketing the seafood overseas. <i>[Updated on 24th  July 2023]</i>
+  
+  termsOfService: https://web.umang.gov.in/uaw/ts/v1/en/index.htm
+  contact:
+    name: Provided by - UMANG
+    url: https://web.umang.gov.in
+  version: 1.0.0
+servers:
+  - url: https://apigw.umangapp.in
+    description: Production server
+
+security: 
+  - x-api-key: []
+
+paths:
+  /MPEDAApi/ws1/userregistration:
+    post:
+      tags:
+        - MPEDA User Registration
+      summary: Register the mpeda user
+      description: This api is used to register the mpeda user
+      operationId: MPEDAApi/ws1/userregistration
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en  
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0       
+                usag:
+                  type: string
+                  description: usage
+                  example: 0                   
+                usrid:
+                  type: string
+                  description: user id
+                  example: 0
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1523
+                deptid:
+                  type: string
+                  description: department id
+                  example: 342                
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: andorid
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                subsid:
+                  type: string
+                  description: subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0   
+                UID:
+                  type: string
+                  description: UID
+                  example: anupam777@gmail.com
+                PWD:
+                  type: string
+                  description: PWD
+                  example: 9d442b0133dd2fcd0a79bf7b95d73e2187d22c62c66f2aa7d02a33348a650daa
+                Name:
+                  type: string
+                  description: Name
+                  example: Name 
+                Gender:
+                  type: string
+                  description: gender
+                  example: M 
+                Addr_L1:
+                  type: string
+                  description: Addr_L1
+                  example: Addr1
+                Addr_L2:
+                  type: string
+                  description: Addr_L2
+                  example: Addr2
+                Addr_L3:
+                  type: string
+                  description: Addr_L3
+                  example: Addr3
+                Pin:
+                  type: string
+                  description: pin
+                  example: 682036
+                Addr_ST:
+                  type: string
+                  description: Addr_ST
+                  example: 35
+                Addr_DT:
+                  type: string
+                  description: Addr_DT
+                  example: 603
+                Mob_No:
+                  type: string
+                  description: mobile number
+                  example: 8817878004
+                Adh_No:
+                  type: string
+                  description: Adh_No
+                  example: 0 
+                APIUID:
+                  type: string
+                  description: APIUID
+                  example: A08
+                APIPWD:
+                  type: string
+                  description: APIPWD
+                  example: 4dc8e7f6ee263b12d5dc651cc5859142fd1866fb2aeda55140c81e74deac8973               
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "342"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1523"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:          
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    properties:
+                      Status:
+                        type: string
+                        description: status code
+                        example: 2   
+                      Remarks:
+                        type: string
+                        description: remark
+                        example: User Registration Failed. UID Exists...                     
+        "400":
+          description: Bad Request/Validation Error
+  /MPEDAApi/ws1/finassistapplstatus:
+    post:
+      tags:
+        - Financial Assistance Application Status
+      summary: Get the financial assistance status
+      description: This api is used to get the financial assistance status
+      operationId: MPEDAApi/ws1/finassistapplstatus
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en  
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0       
+                usag:
+                  type: string
+                  description: usage
+                  example: 0                      
+                usrid:
+                  type: string
+                  description: user id
+                  example: 0
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1523
+                deptid:
+                  type: string
+                  description: department id
+                  example: 342                  
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: andorid
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                subsid:
+                  type: string
+                  description: subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0     
+                ApplNo:
+                  type: string
+                  description: ApplNo
+                  example: 33/58/0001/2016
+                ApplCat:
+                  type: string
+                  description: ApplCat
+                  example: A 
+                APIUID:
+                  type: string
+                  description: APIUID
+                  example: A08
+                APIPWD:
+                  type: string
+                  description: APIPWD
+                  example: 4dc8e7f6ee263b12d5dc651cc5859142fd1866fb2aeda55140c81e74deac8973                 
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "342"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1523"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    properties:
+                      Status:
+                        type: string
+                        description: status
+                        example: Advance Approval Issued   
+                      Application Category:
+                        type: string
+                        description: application category
+                        example: Advance Approval        
+                      Application No.:
+                        type: string
+                        description: application number
+                        example: 33/58/0001/2016                     
+        "400":
+          description: Bad Request/Validation Error           
+components:
+  securitySchemes:
+    x-api-key:
+      type: apiKey
+      name: x-api-key
+      in: header

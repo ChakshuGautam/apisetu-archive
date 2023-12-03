@@ -1,0 +1,45 @@
+---
+openapi: 3.0.0
+info:
+  title: State Bank of India (SBI)
+  description: >-2
+    # SBI API Hub
+    
+    SBI API HUB is SBI's API developer
+    portal sandbox environment. It enables developers of prospective Start-ups/ Fintechs to seamlessly register and access Bank's APIs. With this, Start-ups / Fintechs can easily partner with the Bank and co-create innovative products/solutions in a frictionless manner. 
+    
+    
+    **You can access the API Hub through this link: (https://apihub.sbi/portal/)**
+    
+  
+    
+    
+      <i>[Updated on 26th  July 2023]</i>
+  
+  
+  contact:
+    name: Provided by SBI - Click here to access SBI API Hub
+    url: https://apihub.sbi/portal/
+    
+  version: 1.0.0
+servers:
+  - url: https://{client_domain}
+    variables:
+      client_domain:
+        "default": "https://apihub.sbi/portal/product"
+    description: SBI API Hub
+
+
+
+paths:
+  /:
+    get:
+      tags:
+      - SBI API Hub
+      summary: SBI API Hub
+      description: State Bank of India offers a collection of APIs that allows you to integrate with our services and develop various applications.
+      responses:
+        200:
+          description: OK
+  
+      

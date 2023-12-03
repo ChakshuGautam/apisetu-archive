@@ -1,0 +1,453 @@
+openapi: 3.0.3
+info:  
+  title: Liberty General Insurance, Maharashtra
+  description:  >- 
+                Your insurance Policy/ Policies issued by Liberty General Insurance Limited (https://www.libertyinsurance.in/) is/are now available to be stored in electronic format on this mobile app.
+  termsOfService: https://apisetu.gov.in/api-policy
+  version: 3.0.0
+servers:
+  - url: 'https://apisetu.gov.in/certificate/v3/libertyinsurance'
+paths:
+  
+  /hlipc:
+    post:
+      tags:
+        - APIs
+      summary: Insurance - Health
+      description: API to verify Insurance - Health.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: hlipc
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - PolicyNumber
+                    - DateOfBirth
+                      
+                  properties:
+                    PolicyNumber:
+                      type: string
+                      description: Policy Number
+                      example: "202610000022100002901000"
+                       
+                    
+                    DateOfBirth:
+                      type: string
+                      description: Date of Birth
+                      example: "23/01/2023"
+                       
+                    
+                      
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /cripc:
+    post:
+      tags:
+        - APIs
+      summary: Insurance Policy - Car
+      description: API to verify Insurance Policy - Car.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: cripc
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - PolicyNumber
+                    - RegistrationNumber
+                    - ChaissNumber
+                      
+                  properties:
+                    PolicyNumber:
+                      type: string
+                      description: Policy Number
+                      example: "202610000022100002901000"
+                       
+                    
+                    RegistrationNumber:
+                      type: string
+                      description: Registration Number
+                      example: "MH-01-AB-1234 . For new vehicle ,please mention NEW."
+                       
+                    
+                    ChaissNumber:
+                      type: string
+                      description: Chassis Number
+                      example: "Last 5 digits of chaiss number. eg- 42620"
+                       
+                    
+                      
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /cvipc:
+    post:
+      tags:
+        - APIs
+      summary: Insurance Policy - Commercial Vehicle
+      description: API to verify Insurance Policy - Commercial Vehicle.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: cvipc
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - PolicyNumber
+                    - RegistrationNumber
+                    - ChaissNumber
+                      
+                  properties:
+                    PolicyNumber:
+                      type: string
+                      description: Policy Number
+                      example: "202610000022100002901000"
+                       
+                    
+                    RegistrationNumber:
+                      type: string
+                      description: Registration Number
+                      example: "MH-01-AB-1234 . For new vehicle ,please mention NEW."
+                       
+                    
+                    ChaissNumber:
+                      type: string
+                      description: Chassis Number
+                      example: "last 5 digits of chaiss number. eg- 42620"
+                       
+                    
+                      
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /twipc:
+    post:
+      tags:
+        - APIs
+      summary: Insurance Policy - Two Wheeler
+      description: API to verify Insurance Policy - Two Wheeler.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: twipc
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - PolicyNumber
+                    - RegistrationNumber
+                    - ChaissNumber
+                      
+                  properties:
+                    PolicyNumber:
+                      type: string
+                      description: Policy Number
+                      example: "202610000022100002901000"
+                       
+                    
+                    RegistrationNumber:
+                      type: string
+                      description: Registration Number
+                      example: "MH-01-AB-1234 . For new vehicle ,please mention NEW."
+                       
+                    
+                    ChaissNumber:
+                      type: string
+                      description: Chassis Number
+                      example: "Last 5 digits of chaiss number. eg- 42620"
+                       
+                    
+                      
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /paipc:
+    post:
+      tags:
+        - APIs
+      summary: Insurance Policy- Personal Accident
+      description: API to verify Insurance Policy- Personal Accident.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: paipc
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - PolicyNumber
+                    - PinCode
+                      
+                  properties:
+                    PolicyNumber:
+                      type: string
+                      description: Policy Number
+                      example: "202610000022100002901000"
+                       
+                    
+                    PinCode:
+                      type: string
+                      description: Pin Code
+                      example: "400001"
+                       
+                    
+                      
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+components:
+  schemas:
+    ConsentArtifactSchema:
+      $ref: './common/ConsentArtifactSchema.yaml#/ConsentArtifactSchema'
+    AcademicCertificateSchema:
+      $ref: './common/AcademicCertificateSchema.yaml#/AcademicCertificateSchema'
+          
+  responses:
+    400Error:
+      $ref: './common/ErrorResponse.yaml#/400Error'
+    401Error:
+      $ref: './common/ErrorResponse.yaml#/401Error'
+    404Error:
+      $ref: './common/ErrorResponse.yaml#/404Error'
+    500Error:
+      $ref: './common/ErrorResponse.yaml#/500Error'
+    502Error:
+      $ref: './common/ErrorResponse.yaml#/502Error'
+    503Error:
+      $ref: './common/ErrorResponse.yaml#/503Error'
+    504Error:
+      $ref: './common/ErrorResponse.yaml#/504Error'
+  securitySchemes:
+    clientId:
+      type: apiKey
+      in: header
+      name: X-APISETU-CLIENTID
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-APISETU-APIKEY

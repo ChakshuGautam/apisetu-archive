@@ -1,0 +1,53 @@
+info:
+  title: LGD
+  version: 1.0.0
+  x-ibm-name: districts
+  description: To fetch the Local Government Directory (LGD) Codes and additional
+    information of all versions of all the **districts** of India available till
+    date.
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/nic/lgd
+paths:
+  /districts/v1:
+    post:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: success
+      tags:
+        - Districts
+openapi: 3.0.0
+servers:
+  - url: https://delhigw.napix.gov.in/nic/lgd
+    description: LGD Vanity Endpoint
+security:
+  - clientID: []
+    clientSecret: []
+components:
+  securitySchemes:
+    clientID:
+      in: header
+      name: X-IBM-Client-Id
+      type: apiKey
+    clientSecret:
+      in: header
+      name: X-IBM-Client-Secret
+      type: apiKey
+      x-key-type: client_secret
+x-ibm-endpoints:
+  - url: https://delhigw.napix.gov.in/nic/lgd
+    type:
+      - production
+      - development
+    description: LGD Vanity Endpoint
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  enforced: true
+  testable: true

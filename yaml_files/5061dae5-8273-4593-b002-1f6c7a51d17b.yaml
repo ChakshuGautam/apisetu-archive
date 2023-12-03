@@ -1,0 +1,137 @@
+host: delhigw.napix.gov.in
+info:
+  title: eCourts
+  version: 1.0.0
+  x-ibm-name: hc-case-type-master-api
+  description: API provides list of the Case Types (referred as type_name) and
+    relevant Case Type Codes (referred as case_type) used in the establishment
+    for further accessing relevant APIs. Input for this API is Establishment
+    Code and other details. Type Name and Case Type retrieved using this API can
+    be used to access the case data using various Case Search APIs like Search
+    by Case Registration Number, Filing Number etc.
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/nic/ecourts
+paths:
+  /:
+    get:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Hc case type master api
+    put:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Hc case type master api
+    head:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Hc case type master api
+    post:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Hc case type master api
+    patch:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Hc case type master api
+    delete:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Hc case type master api
+  /casetypemaster:
+    get:
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      parameters:
+        - in: query
+          name: dept_id
+          type: string
+          required: true
+        - in: query
+          name: request_str
+          type: string
+          required: true
+        - in: query
+          name: request_token
+          type: string
+          required: true
+        - in: query
+          name: version
+          type: string
+          required: true
+      tags:
+        - Hc case type master api
+schemes:
+  - https
+swagger: "2.0"
+basePath: /nic/ecourts/hc-case-type-master-api
+security:
+  - oauth_token:
+      - napix
+securityDefinitions:
+  oauth_token:
+    flow: application
+    type: oauth2
+    scopes:
+      napix: napix
+    tokenUrl: //oauth2/token
+    x-ibm-oauth-provider: nic-oauth-provider-application-grant-type
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  servers:
+    - url: https://delhigw.napix.gov.in/nic/ecourts/hc-case-type-master-api
+      type:
+        - production
+        - development
+  enforced: true
+  testable: true
+  oauth-servers:
+    oauth_token:
+      tokenUrls:
+        - https://degateway.napix.gov.in:443/nic/ecourts//oauth2/token
+      refreshUrls: []
+      authorizationUrls: []
+  application-authentication:
+    certificate: false

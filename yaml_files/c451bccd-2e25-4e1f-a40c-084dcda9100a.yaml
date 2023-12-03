@@ -1,0 +1,68 @@
+host: delhigw.napix.gov.in
+info:
+  title: Aarogya Sathi Mobile App (RJ)
+  version: 1.0.0
+  x-ibm-name: ambulancedriverregister
+  description: ambulance driver register API is used for register the Ambulance
+    driver person who have ambulance for provide medical services .so this is
+    choice oriented that driver wants to register then they can .otherwise it's
+    not mandatory .
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/nic/aarogyasathi
+paths:
+  /ambulancedriverregister:
+    get:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Ambulancedriverregister
+    head:
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Ambulancedriverregister
+    post:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Ambulancedriverregister
+schemes:
+  - https
+swagger: "2.0"
+basePath: /nic/aarogyasathi/ambulancedriverregister
+security:
+  - Client_ID: []
+securityDefinitions:
+  Client_ID:
+    in: header
+    name: Client_ID
+    type: apiKey
+    x-key-type: client_id
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  servers:
+    - url: https://delhigw.napix.gov.in/nic/aarogyasathi/ambulancedriverregister
+      type:
+        - production
+        - development
+  enforced: true
+  testable: true
+  application-authentication:
+    certificate: false

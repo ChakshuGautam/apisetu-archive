@@ -1,0 +1,2772 @@
+---
+  openapi: 3.0.0
+  info: 
+    title: Samadhan Online API
+    description: A trade union or management can raise an industrial dispute which is connected with the employment or non-employment or the terms of employment or with the conditions of labour; Industrial dispute is raised before Conciliation Officer(C.O.) of the area. Conciliation Officer for the purpose of bringing about a settlement of dispute, without delay, investigate the dispute and all matter affecting the merits and right settlement thereof and may do all such things as he thinks fit for the purpose of inducting the parties to come to a fair and amicable settlement of dispute. If settlement of the dispute arrives in the course of conciliation proceedings then the Conciliation Officer (C.O.) sends a report thereof to the appropriate Government. If no such settlement is arrived at, the Conciliation Officer (C.O.) shall send to the appropriate Government , as soon as practicable after the close of the investigation , a report which is called Failure of Conciliation Report (FOC report). If, on a consideration of the report referred above, the appropriate Government is satisfied that there is a case for reference to Central Government Industrial Tribunal (CGIT), it may make such reference. <i>[Updated on 23rd August 2023]</i>
+    termsOfService: https://web.umang.gov.in/uaw/ts/v1/en/index.htm
+    contact: 
+      name: Provided by - UMANG
+      url: https://web.umang.gov.in
+    version: 1.0.0
+  servers: 
+    - 
+      url: https://apigw.umangapp.in
+      description: Production Server
+      
+  security: 
+    - x-api-key: []
+      
+    
+  paths: 
+    /samadhanApi/ws1/signup: 
+      post: 
+        tags: 
+          - Signup for Registration
+        summary: Signup API for registration
+        description: User can signup in Samadhan portal with this API
+        operationId: samadhanApi/ws1/signup
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 1522
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 17
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: l3_1001
+                  subsid2:
+                    type: string
+                    description: sub service id 2
+                    example: 0
+                  reqBody:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        example: shahnawaz
+                      emailid:
+                        type: string
+                        example: aa@aa.com
+                      mobile_no:
+                        type: string
+                        example: 7772226661
+                      reg_user_type:
+                        type: string
+                        example: Individual
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "417"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "2161"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json: 
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200 OK
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        responseData:
+                          type: object
+                          properties:
+                              rs:
+                                type: string
+                                example: S
+                              rc:
+                                type: string
+                                example: 1
+                              rd:
+                                type: string
+                                example: Success
+                              pd:
+                                type: string
+                                example: OTP has been sent to your registered mobile number / Email. Please varify.
+                              token:
+                                type: string
+                                example: NzIxNDM4
+          400:
+            description: Bad Request/Validation Error
+    /samadhanApi/ws1/form: 
+      post: 
+        tags: 
+          - Submit Form API
+        summary: Submit form
+        description: User can submit form at samadhan
+        operationId: samadhanApi/ws1/form
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 1522
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 17
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: l3_1001
+                  subsid2:
+                    type: string
+                    description: sub service id 2
+                    example: 0
+                  reqBody:
+                    type: object
+                    properties:
+                      exist_mobile:
+                        type: string
+                        example: 8960487507
+                      name:
+                        type: string
+                        example: Navaneet
+                      designation:
+                        type: string
+                        example: Software Engineer
+                      city:
+                        type: string
+                        example: Laxmin Nagar
+                      state_id:
+                        type: string
+                        example: 7
+                      district_id:
+                        type: string
+                        example: 94
+                      pincode:
+                        type: string
+                        example: 110092
+                      mobile_no:
+                        type: string
+                        example: 8960487507
+                      email_id:
+                        type: string
+                        example: navaneetjaiswal786@gmail.com
+                      est_name:
+                        type: string
+                        example: AKAL
+                      est_city:
+                        type: string
+                        example: New Delhi
+                      est_stateid:
+                        type: string
+                        example: 7
+                      est_districtid:
+                        type: string
+                        example: 95
+                      est_pincode:
+                        type: string
+                        example: 110001
+                      est_hr_mobile:
+                        type: string
+                        example: 8965478596
+                      est_email:
+                        type: string
+                        example: akal@gmail.com
+                      est_head_city:
+                        type: string
+                        example: Delhi
+                      est_head_stateid:
+                        type: string
+                        example: 7
+                      est_head_districtid:
+                        type: string
+                        example: 97
+                      est_head_pincode:
+                        type: string
+                        example: 110001
+                      est_head_mobile:
+                        type: string
+                        example: 9658789456
+                      est_head_email:
+                        type: string
+                        example: head_akal@gmail.com
+                      termination_other:
+                        type: string
+                        example: Termination
+                      relief_sought_refcode:
+                        type: string
+                        example: 293
+                      relief_sought:
+                        type: string
+                        example: terminate with new offer
+                      date_of_appointment:
+                        type: string
+                        example: 2021-01-15
+                      date_of_termination:
+                        type: string
+                        example: 2022-02-07
+                      co_officer:
+                        type: string
+                        example: 210
+                      submitType:
+                        type: string
+                        example: submit
+                      applicants:
+                        type: object
+                        properties:
+                          submitType:
+                            type: string
+                            example: Applicant2
+                          designation:
+                            type: string
+                            example: Software Engineer2
+                          city:
+                            type: string
+                            example: Laxmin Nagar2
+                          state_id:
+                            type: string
+                            example: 9
+                          district_id:
+                            type: string
+                            example: 84
+                          pincode:
+                            type: string
+                            example: 110022
+                          mobile_no:
+                            type: string
+                            example: 8960487509
+                          email_id:
+                            type: string
+                            example: applicant2@gmail.com
+                      termination_demand:
+                        type: string
+                        example: JVBERi0xLjMNCiXi48/TDQoNCjEgMCBvYmoNCjw8DQovVHlwZSAvQ2F0YWxvZw0KL091dGxpbmVzIDIgMCBSDQovUGFnZXMgMyAwIFINCj4+DQplbmRvYmoNCg0KMiAwIG9iag0KPDwNCi9UeXBlIC9PdXRsaW5lcw0KL0NvdW50IDANCj4
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "417"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "2161"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json: 
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200 OK
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        responseData:
+                          type: object
+                          properties:
+                              rs:
+                                type: string
+                                example: S
+                              rc:
+                                type: string
+                                example: 1
+                              rd:
+                                type: string
+                                example: Success
+                              pd:
+                                type: string
+                                example: Your dispute id 300009696 has been submitted successfully. A message has been sent to your registered Email / Mobile. Save this id no. for future reference.
+          400:
+            description: Bad Request/Validation Error
+    /samadhanApi/ws1/otp_verify: 
+      post: 
+        tags: 
+          - Verify Otp For Mobile
+        summary: Verify otp in mobile api for login in Samadhan portal
+        description: User can verify otp in mobile api for login in Samadhan portal
+        operationId: samadhanApi/ws1/otp_verify
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 2161
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 417
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: 0
+                  subsid2:
+                    type: string
+                    description: sub service id 2
+                    example: 0
+                  reqBody:
+                    type: object
+                    properties:
+                      otp:
+                        type: string
+                        example: 572485
+                      token:
+                        type: string
+                        example: Mzc2OTk4
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "417"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "2161"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json: 
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200 OK
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        responseData:
+                          type: object
+                          properties:
+                              rs:
+                                type: string
+                                example: S
+                              rc:
+                                type: string
+                                example: 1
+                              rd:
+                                type: string
+                                example: Success
+                              pd:
+                                type: string
+                                example: Your dispute id 300009696 has been submitted successfully. A message has been sent to your registered Email / Mobile. Save this id no. for future reference.
+          400:
+            description: Bad Request/Validation Error
+    /samadhanApi/ws1/user_login: 
+      post: 
+        tags: 
+          - User Login
+        summary: User login API for samadhan portal
+        description: User can login at samadhan using this API
+        operationId: samadhanApi/ws1/user_login
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 2162
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 417
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: 0
+                  subsid2:
+                    type: string
+                    description: sub service id 2
+                    example: 0
+                  reqBody:
+                    type: object
+                    properties:
+                      mobile_no:
+                        type: string
+                        example: 8960487507
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "417"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "2162"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json: 
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200 OK
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        responseData:
+                          type: object
+                          properties:
+                              rs:
+                                type: string
+                                example: S
+                              rc:
+                                type: string
+                                example: 1
+                              rd:
+                                type: string
+                                example: Success
+                              pd:
+                                type: string
+                                example: OTP has been sent to your registered mobile number / Email. Please varify.
+                              token:
+                                type: string
+                                example: NDExMzQz
+          400:
+            description: Bad Request/Validation Error
+    /samadhanApi/ws1/otp_login: 
+      post: 
+        tags: 
+          - Login OTP API
+        summary: Get login otp for samadhan
+        description: User can login through otp
+        operationId: samadhanApi/ws1/otp_login
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 2162
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 417
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: 0
+                  subsid2:
+                    type: string
+                    description: sub service id 2
+                    example: 0
+                  reqBody:
+                    type: object
+                    properties:
+                      token:
+                        type: string
+                        example: NDExMzQz
+                      otp:
+                        type: string
+                        example: 995846
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "417"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "2162"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json: 
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200 OK
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        responseData:
+                          type: object
+                          properties:
+                              rs:
+                                type: string
+                                example: S
+                              rc:
+                                type: string
+                                example: 1
+                              rd:
+                                type: string
+                                example: Success
+                              pd:
+                                type: string
+                                example: Wrong OTP.
+          400:
+            description: Bad Request/Validation Error
+    /samadhanApi/ws1/dashboardIndex: 
+      post: 
+        tags: 
+          - Get Dashboard Index
+        summary: Dashboard index API for samadhan
+        description: User can get list of dashboard
+        operationId: samadhanApi/ws1/dashboardIndex
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 2162
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 417
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: 0
+                  subsid2:
+                    type: string
+                    description: sub service id 2
+                    example: 0
+                  reqBody:
+                    type: object
+                    properties:
+                      mobile:
+                        type: string
+                        example: 8960487507
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "417"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "2162"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json: 
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200 OK
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        responseData:
+                          type: object
+                          properties:
+                              rs:
+                                type: string
+                                example: S
+                              rc:
+                                type: string
+                                example: 1
+                              rd:
+                                type: string
+                                example: Success
+                              pd:
+                                type: object
+                                description: List
+                                properties:
+                                  responseData:
+                                    type: object
+                                    properties:
+                                        est_pincode:
+                                                   type: string
+                                                   example: 110001
+                                        est_stateid:
+                                                   type: string
+                                                   example: Delhi
+                                        est_districtid:
+                                                   type: string
+                                                   example: Central
+                                        est_name:
+                                                   type: string
+                                                   example: AKAL
+                                        name:
+                                                   type: string
+                                                   example: Navaneet Kumar Jaiswal
+                                        modified:
+                                                   type: string
+                                                   example: 2022-11-02
+                                        relief_sought:
+                                                   type: string
+                                                   example: terminate with new offer
+                                        est_city:
+                                                   type: string
+                                                   example: New Delhi
+                                        dispute_id:
+                                                   type: string
+                                                   example: 300009696
+                                        date_of_dispute:
+                                                   type: string
+                                                   example: 2022-11-02
+                                        status:
+                                                   type: string
+                                                   example: Application
+          400:
+            description: Bad Request/Validation Error
+    /samadhanApi/ws1/state: 
+      post: 
+        tags: 
+          - Get List Of States
+        summary: State list
+        description: User can get list of states
+        operationId: samadhanApi/ws1/state
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 2161
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 417
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: 0
+                  subsid2:
+                    type: string
+                    description: sub service id 2
+                    example: 0
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "417"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "2161"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json: 
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200 OK
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        responseData:
+                          type: object
+                          properties:
+                              rs:
+                                type: string
+                                example: S
+                              rc:
+                                type: string
+                                example: 1
+                              rd:
+                                type: string
+                                example: Success
+                              pd:
+                                type: object
+                                description: List
+                                properties:
+                                  responseData:
+                                    type: object
+                                    properties:
+                                        22:
+                                                   type: string
+                                                   example: Chhattisgarh
+                                        23:
+                                                   type: string
+                                                   example: Madhya Pradesh
+                                        24:
+                                                   type: string
+                                                   example: Gujarat
+                                        25:
+                                                   type: string
+                                                   example: Daman and Diu
+                                        26:
+                                                   type: string
+                                                   example: Dadra and Nagar Haveli
+                                        27:
+                                                   type: string
+                                                   example: Maharashtra
+                                        28:
+                                                   type: string
+                                                   example: Andhra Pradesh
+                                        29:
+                                                   type: string
+                                                   example: Karnataka
+                                        30:
+                                                   type: string
+                                                   example: Goa
+                                        31:
+                                                   type: string
+                                                   example: Lakshadweep
+                                        10:
+                                                   type: string
+                                                   example: Bihar
+          400:
+            description: Bad Request/Validation Error
+    /samadhanApi/ws1/district: 
+      post: 
+        tags: 
+          - Get List Of District
+        summary: District list API for Samadhan portal
+        description: User can get List of district
+        operationId: samadhanApi/ws1/district
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 2161
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 417
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: 0
+                  subsid2:
+                    type: string
+                    description: sub service id 2
+                    example: 0
+                  reqBody:
+                    type: object
+                    properties:
+                      stateId:
+                        type: string
+                        example: 30
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "417"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "2161"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json: 
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        responseData:
+                          type: object
+                          properties:
+                              rs:
+                                type: string
+                                example: S
+                              rc:
+                                type: string
+                                example: 1
+                              rd:
+                                type: string
+                                example: Success
+                              pd:
+                                type: object
+                                description: List
+                                properties:
+                                  responseData:
+                                    type: object
+                                    properties:
+                                        585:
+                                                   type: string
+                                                   example: North Goa
+                                        586:
+                                                   type: string
+                                                   example: South Goa
+          400:
+            description: Bad Request/Validation Error
+    /samadhanApi/ws1/coList: 
+      post: 
+        tags: 
+          - Get Company List
+        summary: Company list API
+        description: User can get company list
+        operationId: samadhanApi/ws1/coList
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 2161
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 417
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: 0
+                  subsid2:
+                    type: string
+                    description: sub service id 2
+                    example: 0
+                  usag:
+                    type: string
+                    description: usag
+                    example: 0
+                  reqBody:
+                    type: object
+                    properties:
+                      disId:
+                        type: string
+                        example: 22
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "417"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "2161"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json: 
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        responseData:
+                          type: object
+                          properties:
+                              rs:
+                                type: string
+                                example: S
+                              rc:
+                                type: string
+                                example: 1
+                              rd:
+                                type: string
+                                example: Success
+                              pd:
+                                type: object
+                                description: List
+                                properties:
+                                  responseData:
+                                    type: object
+                                    properties:
+                                        address:
+                                                   type: string
+                                                   example: O/o Dy. CLC(C), kendriya sadan, Sector-9,Chandigarh-160009
+                                        name:
+                                                   type: string
+                                                   example: Dy.CLC(C), Chandigarh
+                                        mobile:
+                                                   type: string
+                                                   example: 9779888658
+                                        id:
+                                                   type: string
+                                                   example: 14
+                                        email:
+                                                   type: string
+                                                   example: dyclcchandigarh@nic.in
+          400:
+            description: Bad Request/Validation Error
+    /samadhanApi/ws1/delete: 
+      post: 
+        tags: 
+          - Delete Applicant
+        summary: Delete applicant from samadhan portal
+        description: Applicant can be deleted form samadhan portal with this API
+        operationId: samadhanApi/ws1/delete
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 2161
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 417
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: 0
+                  subsid2:
+                    type: string
+                    description: sub service id 2
+                    example: 0
+                  reqBody:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: 23
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "417"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "2161"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json: 
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        responseData:
+                          type: object
+                          properties:
+                              rs:
+                                type: string
+                                example: S
+                              rc:
+                                type: string
+                                example: 1
+                              rd:
+                                type: string
+                                example: Success
+                              pd:
+                                type: string
+                                example: Applicant could not be Removed Successfully.
+          400:
+            description: Bad Request/Validation Error
+    /samadhanApi/ws1/preview: 
+      post: 
+        tags: 
+          - Samadhan Portal Preview
+        summary: Get preview for samadhan portal
+        description: Get preview for samadhan portal
+        operationId: samadhanApi/ws1/preview
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 2161
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 417
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: 0
+                  subsid2:
+                    type: string
+                    description: sub service id 2
+                    example: 0
+                  reqBody:
+                    type: object
+                    properties:
+                      dispute_id:
+                        type: string
+                        example: 300009332
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "417"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "2161"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json: 
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        responseData:
+                          type: object
+                          properties:
+                              rs:
+                                type: string
+                                example: S
+                              rc:
+                                type: string
+                                example: 1
+                              rd:
+                                type: string
+                                example: Success
+                              pd:
+                                type: string
+                                example: ""
+          400:
+            description: Bad Request/Validation Error
+    /samadhanApi/ws1/relief: 
+      post: 
+        tags: 
+          - Get Relief List
+        summary: Relief list API
+        description: User can get list of relief
+        operationId: samadhanApi/ws1/relief
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 2161
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 417
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: 0
+                  subsid2:
+                    type: string
+                    description: sub service id 2
+                    example: 0
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "417"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "2161"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json: 
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200 OK
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        responseData:
+                          type: object
+                          properties:
+                              rs:
+                                type: string
+                                example: S
+                              rc:
+                                type: string
+                                example: 1
+                              rd:
+                                type: string
+                                example: Success
+                              pd:
+                                type: object
+                                description: List
+                                properties:
+                                  responseData:
+                                    type: object
+                                    properties:
+                                        286:
+                                                   type: string
+                                                   example: Retrenchment Compensation
+                                        287:
+                                                   type: string
+                                                   example: Notice Pay
+                                        288:
+                                                   type: string
+                                                   example: Lump sum relief amount
+                                        289:
+                                                   type: string
+                                                   example: Wage Revision
+                                        290:
+                                                   type: string
+                                                   example: Service conditions
+                                        291:
+                                                   type: string
+                                                   example: Higher Bonus
+                                        292:
+                                                   type: string
+                                                   example: Kits and Liveries
+                                        293:
+                                                   type: string
+                                                   example: Other
+                                        285:
+                                                   type: string
+                                                   example: Reinstatement
+          400:
+            description: Bad Request/Validation Error
+    /samadhanApi/ws1/retrieve: 
+      post: 
+        tags: 
+          - Retrieve Users List
+        summary: Retrieve user list at samadhan
+        description: Rretrieve user list from Samadhan
+        operationId: samadhanApi/ws1/retrieve
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 1522
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 17
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: l3_1001
+                  subsid2:
+                    type: string
+                    description: sub service id 2
+                    example: 0
+                  reqBody:
+                    type: object
+                    properties:
+                      dispute_id:
+                        type: string
+                        example: 300009343
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "417"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "2161"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json: 
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200 OK
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        responseData:
+                          type: object
+                          properties:
+                              rs:
+                                type: string
+                                example: S
+                              rc:
+                                type: string
+                                example: 1
+                              rd:
+                                type: string
+                                example: Success
+                              pd:
+                                type: object
+                                description: List
+                                properties:
+                                  responseData:
+                                    type: object
+                                    properties:
+                                        email_id:
+                                                   type: string
+                                                   example: navaneetjaiswal786@gmail.com
+                                        city:
+                                                   type: string
+                                                   example: Laxmin Nagar
+                                        est_stateid:
+                                                   type: string
+                                                   example: 7
+                                        est_name:
+                                                   type: string
+                                                   example: AKAL
+                                        mobile_no:
+                                                   type: string
+                                                   example: 8960487507
+                                        est_head_stateid:
+                                                   type: string
+                                                   example: 7
+                                        est_head_districtid:
+                                                   type: string
+                                                   example: 97
+                                        date_of_appointment:
+                                                   type: string
+                                                   example: 2021-01-15
+                                        est_hr_mobile:
+                                                   type: string
+                                                   example: 8965478596
+                                        est_head_mobile:
+                                                   type: string
+                                                   example: 9658789456
+                                        est_head_pincode:
+                                                   type: string
+                                                   example: 110001
+                                        est_city:
+                                                   type: string
+                                                   example: New Delhi
+                                        state_id:
+                                                   type: string
+                                                   example: 7
+                                        relief_sought_refcode:
+                                                   type: string
+                                                   example: 293
+                                        pincode:
+                                                   type: string
+                                                   example: 110092
+                                        est_pincode:
+                                                   type: string
+                                                   example: 110001
+                                        relief_sought:
+                                                   type: string
+                                                   example: terminate with new offer
+                                        termination_other:
+                                                   type: string
+                                                   example: Termination
+                                        co_officer:
+                                                   type: string
+                                                   example: 210
+                                        InitialDisputePartyDetail:
+                                                   type: object
+                                                   properties:
+                                                         email_id:
+                                                                    type: string
+                                                                    example: applicant2@gmail.com
+                                                         pincode:
+                                                                    type: string
+                                                                    example: 110022
+                                                         city:
+                                                                    type: string
+                                                                    example: Laxmin Nagar2
+                                                         name:
+                                                                    type: string
+                                                                    example: Applicant2
+                                                         mobile_no:
+                                                                    type: string
+                                                                    example: 8960487509
+                                                         designation:
+                                                                    type: string
+                                                                    example: Software Engineer2
+                                                         state_id:
+                                                                    type: string
+                                                                    example: 9
+                                                         district_id:
+                                                                    type: string
+                                                                    example: 84
+                                        est_districtid:
+                                                   type: string
+                                                   example: 95
+                                        name:
+                                                   type: string
+                                                   example: Navaneet Kumar Jaiswal
+                                        est_head_email:
+                                                   type: string
+                                                   example: head_akal@gmail.com
+                                        designation:
+                                                   type: string
+                                                   example: Software Engineer
+                                        district_id:
+                                                   type: string
+                                                   example: 94
+                                        est_email:
+                                                   type: string
+                                                   example: akal@gmail.com
+                                        date_of_termination:
+                                                   type: string
+                                                   example: 2022-02-07
+                                        est_head_city:
+                                                   type: string
+                                                   example: Delhi
+                                        termination_demand:
+                                                   type: string
+                                                   example: null                                          
+          400:
+            description: Bad Request/Validation Error
+    /samadhanApi/ws1/draft: 
+      post: 
+        tags: 
+          - Draft Application
+        summary: Draft application Api
+        description: User can save application as draft at samadhan
+        operationId: samadhanApi/ws1/draft
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 2161
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 417
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: 0
+                  subsid2:
+                    type: string
+                    description: sub service id 2
+                    example: 0
+                  reqBody:
+                    type: object
+                    properties:
+                      exist_mobile:
+                        type: string
+                        example: 8960487507
+                      name:
+                        type: string
+                        example: Navaneet
+                      designation:
+                        type: string
+                        example: Software Engineer
+                      city:
+                        type: string
+                        example: Laxmin Nagar
+                      state_id:
+                        type: string
+                        example: 7
+                      district_id:
+                        type: string
+                        example: 94
+                      pincode:
+                        type: string
+                        example: 110092
+                      mobile_no:
+                        type: string
+                        example: 8960487507
+                      email_id:
+                        type: string
+                        example: navaneetjaiswal786@gmail.com
+                      est_name:
+                        type: string
+                        example: AKAL
+                      est_city:
+                        type: string
+                        example: New Delhi
+                      est_stateid:
+                        type: string
+                        example: 7
+                      est_districtid:
+                        type: string
+                        example: 95
+                      est_pincode:
+                        type: string
+                        example: 110001
+                      est_hr_mobile:
+                        type: string
+                        example: 8965478596
+                      est_email:
+                        type: string
+                        example: akal@gmail.com
+                      est_head_city:
+                        type: string
+                        example: Delhi
+                      est_head_stateid:
+                        type: string
+                        example: 7
+                      est_head_districtid:
+                        type: string
+                        example: 97
+                      est_head_pincode:
+                        type: string
+                        example: 110001
+                      est_head_mobile:
+                        type: string
+                        example: 9658789456
+                      est_head_email:
+                        type: string
+                        example: head_akal@gmail.com
+                      termination_other:
+                        type: string
+                        example: Termination
+                      relief_sought_refcode:
+                        type: string
+                        example: 293
+                      relief_sought:
+                        type: string
+                        example: terminate with new offer
+                      date_of_appointment:
+                        type: string
+                        example: 2021-01-15
+                      date_of_termination:
+                        type: string
+                        example: 2022-02-07
+                      co_officer:
+                        type: string
+                        example: 210
+                      submitType:
+                        type: string
+                        example: submit
+                      applicants:
+                        type: object
+                        properties:
+                          submitType:
+                            type: string
+                            example: Applicant2
+                          designation:
+                            type: string
+                            example: Software Engineer2
+                          city:
+                            type: string
+                            example: Laxmin Nagar2
+                          state_id:
+                            type: string
+                            example: 9
+                          district_id:
+                            type: string
+                            example: 84
+                          pincode:
+                            type: string
+                            example: 110022
+                          mobile_no:
+                            type: string
+                            example: 8960487509
+                          email_id:
+                            type: string
+                            example: applicant2@gmail.com
+                      termination_demand:
+                        type: string
+                        example: JVBERi0xLjMNCiXi48/TDQoNCjEgMCBvYmoNCjw8DQovVHlwZSAvQ2F0YWxvZw0KL091dGxpbmVzIDIgMCBSDQovUGFnZXMgMyAwIFINCj4+DQplbmRvYmoNCg0KMiAwIG9iag0KPDwNCi9UeXBlIC9PdXRsaW5lcw0KL0NvdW50IDANCj4
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "417"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "2161"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json: 
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200 OK
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        rc:
+                          type: string
+                          example: 1
+                        rd:
+                          type: string
+                          example: Success
+                        pd:
+                          type: string
+                          example: Your dispute id 300009345 has been submitted successfully. A message has been sent to your registered Email / Mobile. Save this id no. for future reference.
+          400:
+            description: Bad Request/Validation Error
+    /samadhanApi/ws1/download: 
+      post: 
+        tags: 
+          - Download Certificate
+        summary: Download certificate API
+        description: User can download certificate
+        operationId: samadhanApi/ws1/download
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 2161
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 417
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: 0
+                  subsid2:
+                    type: string
+                    description: sub service id 2
+                    example: 0
+                  reqBody:
+                    type: object
+                    properties:
+                      dispute_id:
+                        type: string
+                        example: 300009345
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "417"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "2161"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json: 
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200 OK
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        rs:
+                          type: string
+                          example: S
+                        rc:
+                          type: string
+                          example: 1
+                        rd:
+                          type: string
+                          example: 1
+                        pd:
+                          type: string
+                          example: JVBERi0xLjcKJeLjz9MKNyAwIG9iago8PCAvVHlwZSAvUGFnZSAvUGFyZW50IDEgMCBSIC9MYXN0TW9kaWZpZWQgKEQ6MjAyMjExMDIxNDM5NTErMDUnMzAnKSAvUmVzb3VyY2VzIDIgMCBSIC9NZWRpYUJveCBbMC4wMDAwMDAgMC4wMDAwMDAgNTk1LjI3NjAwMCA4NDEuODkwMDAwXSAvQ3JvcEJveCBbMC4wMDAwMDAgMC4wMDAwMDAgNTk1LjI3NjAwMCA4NDEuODkwMDAwXSAvQmxl
+          400:
+            description: Bad Request/Validation Error
+  components:
+    securitySchemes:
+      x-api-key:
+        type: apiKey
+        name: x-api-key
+        in: header

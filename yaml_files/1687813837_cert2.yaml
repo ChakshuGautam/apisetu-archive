@@ -1,0 +1,26 @@
+openapi: 3.0.0
+info:
+  title: Indian Servers Offerletters
+  description: Indian Servers Digital Certificates ,Offerletters Internship,
+    Employee Experience, Certification Courses
+  version: 1.0.0
+servers:
+  - url: https://indianservers.com
+paths:
+  /offerletters/CertificatesDigiLockerpullURIOfferletters.php:
+    post:
+      tags:
+        - General
+      summary: Offer Letters Request
+      requestBody:
+        content:
+          "*/*":
+            schema:
+              type: string
+              example: '"
+                <FullName></FullName>\n    <DOB></DOB>\n    <MobileNumber></MobileNumber>"'
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}

@@ -1,0 +1,1599 @@
+---
+openapi: 3.0.0
+info:
+  title: Coffee Board
+  description: Get yourself registered as a Coffee Grower with Coffee Board which serves as guide to the Coffee sector covering the entire value chain <i>[Updated on 20th July 2023]</i>.
+  termsOfService: https://web.umang.gov.in/uaw/ts/v1/en/index.htm
+  contact:
+    name: Provided by - UMANG
+    url: https://web.umang.gov.in
+  version: 1.0.0
+servers:
+  - url: https://apigw.umangapp.in
+    description: Production Server
+    
+security: 
+ - x-api-key: []
+    
+paths:
+  /cbApi/ws1/add:
+    post:
+      tags:
+        - Add Details  Web Service
+      summary: Add new user using this service
+      description: This API is used to add new user details
+      operationId: cbApi/ws1/add
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en  
+                lat:
+                  type: string
+                  description: latitude
+                  example: 21
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90      
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                usag:
+                  type: string
+                  description: usage
+                  example: 90                   
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 123234                   
+                usrid:
+                  type: string
+                  description: user id
+                  example: 09
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1544               
+                deptid:
+                  type: string
+                  description: service id
+                  example: 344               
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: andorid
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                Authorization:
+                  type: string
+                  description: Authorization
+                  example: 1UMANG6AF-78U7-4IR9-5500-36NICUAMAG8E7C1
+                First_Name:
+                  type: string
+                  description: First_Name
+                  example: Ramesh
+                Last_Name:
+                  type: string
+                  description: Last_Name
+                  example: Puttaraju
+                Date_Of_Birth:
+                  type: string
+                  description: Date_Of_Birth
+                  example: 01/01/1991
+                Catagory:
+                  type: string
+                  description: Catagory
+                  example: 1
+                Sex:
+                  type: string
+                  description: Sex
+                  example: 1
+                Type:
+                  type: string
+                  description: Type
+                  example: I
+                State:
+                  type: string
+                  description: State
+                  example: 29
+                District:
+                  type: string
+                  description: District
+                  example: 576
+                Taluka:
+                  type: string
+                  description: Taluka
+                  example: 5566
+                Vilage:
+                  type: string
+                  description: Vilage
+                  example: 791471
+                Pincode:
+                  type: string
+                  description: Pincode
+                  example: 560087
+                Address:
+                  type: string
+                  description: Address
+                  example: Varthur
+                PhoneNo:
+                  type: string
+                  description: PhoneNo
+                  example: 080124353
+                MobileNo:
+                  type: string
+                  description: MobileNo
+                  example: 9749194054
+                Email:
+                  type: string
+                  description: Email
+                  example: ram@gmail.com
+                Age:
+                  type: string
+                  description: Age
+                  example: 28
+                EstState:
+                  type: string
+                  description: EstState
+                  example: 29
+                EstDistrict:
+                  type: string
+                  description: EstDistrict
+                  example: 572
+                EstTaluka:
+                  type: string
+                  description: EstTaluka
+                  example: 5515
+                EstVillage:
+                  type: string
+                  description: EstVillage
+                  example: 607295
+                EstPincode:
+                  type: string
+                  description: EstPincode
+                  example: 560087
+                EstAddress:
+                  type: string
+                  description: EstAddress
+                  example: chikkamagaluru Easte address
+                EstSurvey:
+                  type: string
+                  description: EstSurvey
+                  example: 123
+                totArabica_acres:
+                  type: string
+                  description: totArabica_acres
+                  example: 87.0
+                totArabica_gunta:
+                  type: string
+                  description: totArabica_gunta
+                  example: 88.0
+                totRobusta_acres:
+                  type: string
+                  description: totRobusta_acres
+                  example: 80.1
+                totRobusta_gunta:
+                  type: string
+                  description: totRobusta_gunta
+                  example: 88.1
+                totalarea_acres:
+                  type: string
+                  description: totalarea_acres
+                  example: 90.236
+                totalarea_gunta:
+                  type: string
+                  description: totalarea_gunta
+                  example: 0.252
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "371"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1739"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"          
+      responses:          
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: OK
+                  pd:
+                    type: object
+                    properties:
+                      apiVersion:
+                        type: string
+                        description: apiVersion
+                        example: 1.0
+                      success:
+                        type: string
+                        description: success
+                        example: true
+                      Grower_Status:
+                        type: object
+                        properties:
+                          code:
+                            type: string
+                            description: code
+                            example: 2003
+                          Message:
+                            type: string
+                            description: Message
+                            example: Grower Registration Completed Successflly ! Please contact 'SLO,MADIKERI' Office To Complete Registration Process
+                          TemporyGrowerID:
+                            type: string
+                            description: TemporyGrowerID
+                            example: U40132021                              
+        "400":
+          description: Bad Request/Validation Error  
+  /cbApi/ws1/inwardstatus:
+    post:
+      tags:
+        - Inward Status Details Web Service
+      summary: Get Inward Status using this service
+      description: This API is used to get Inward Status details
+      operationId: cbApi/ws1/inwardstatus
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en  
+                lat:
+                  type: string
+                  description: latitude
+                  example: 21
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90      
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                usag:
+                  type: string
+                  description: usage
+                  example: 90                   
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 123234                   
+                usrid:
+                  type: string
+                  description: user id
+                  example: 09
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1544               
+                deptid:
+                  type: string
+                  description: service id
+                  example: 344               
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: andorid
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                Authorization:
+                  type: string
+                  description: Authorization
+                  example: 1UMANG6AF-78U7-4IR9-5500-36NICUAMAG8E7C1
+                Grower_ID:
+                  type: string
+                  description: Grower_ID
+                  example: KA00007516
+                Inward_No:
+                  type: string
+                  description: Inward_No
+                  example: EKA00036716    
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "371"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1739"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"          
+      responses:          
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: OK
+                  pd:
+                    type: object
+                    properties:
+                      apiVersion:
+                        type: string
+                        description: apiVersion
+                        example: 1.0
+                      success:
+                        type: string
+                        description: success
+                        example: true
+                      Status:
+                        type: object
+                        properties:
+                          Status:
+                            type: string
+                            description: code
+                            example: Issued Order
+                          code:
+                            type: string
+                            description: code
+                            example: 2003                              
+        "400":
+          description: Bad Request/Validation Error  
+  /cbApi/ws1/staticgender:
+    post:
+      tags:
+        - Get Gender Details Web Service
+      summary: Get gender using this service
+      description: This API is used to get gender
+      operationId: cbApi/ws1/staticgender
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en  
+                lat:
+                  type: string
+                  description: latitude
+                  example: 21
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90      
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                usag:
+                  type: string
+                  description: usage
+                  example: 90                   
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 123234                   
+                usrid:
+                  type: string
+                  description: user id
+                  example: 09
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1544               
+                deptid:
+                  type: string
+                  description: service id
+                  example: 344               
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: andorid
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "371"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1739"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"          
+      responses:          
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: OK
+                  pd:
+                    type: object
+                    properties:
+                      0:
+                        type: string
+                        description: zero
+                        example: Male
+                      1:
+                        type: string
+                        description: one
+                        example: Female                              
+        "400":
+          description: Bad Request/Validation Error  
+  /cbApi/ws1/staticdistrictmaster:
+    post:
+      tags:
+        - Get District List Details Web Service
+      summary: Get District List using this service
+      description: This API is used to Get District List details
+      operationId: cbApi/ws1/staticdistrictmaster
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en  
+                lat:
+                  type: string
+                  description: latitude
+                  example: 21
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90      
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                usag:
+                  type: string
+                  description: usage
+                  example: 90                   
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 123234                   
+                usrid:
+                  type: string
+                  description: user id
+                  example: 09
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1544               
+                deptid:
+                  type: string
+                  description: service id
+                  example: 344               
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: andorid
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "371"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1739"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"          
+      responses:          
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: OK
+                  pd:
+                    type: array
+                    description: district object items
+                    items:
+                      type: object
+                      properties:                        
+                        District_Name:
+                          type: string
+                          description: District_Name
+                          example: TAWANG
+                        District_Code:
+                          type: integer
+                          description: District_Code
+                          example: 245   
+                        StateID:
+                          type: integer
+                          description: StateID
+                          example: 12                              
+        "400":
+          description: Bad Request/Validation Error  
+  /cbApi/ws1/staticstatemaster:
+    post:
+      tags:
+        - Get State Details Web Service
+      summary: Get State List using this service
+      description: This API is used to get state list details
+      operationId: cbApi/ws1/staticstatemaster
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en  
+                lat:
+                  type: string
+                  description: latitude
+                  example: 21
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90      
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                usag:
+                  type: string
+                  description: usage
+                  example: 90                   
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 123234                   
+                usrid:
+                  type: string
+                  description: user id
+                  example: 09
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1544               
+                deptid:
+                  type: string
+                  description: service id
+                  example: 344               
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: andorid
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "371"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1739"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"          
+      responses:          
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: OK
+                  pd:
+                    type: object
+                    properties:
+                      33:
+                        type: string
+                        description: Thirty Three
+                        example: TAMILNADU
+                      12:
+                        type: string
+                        description: Twelve
+                        example: Arunachala Pradesh                              
+        "400":
+          description: Bad Request/Validation Error  
+  /cbApi/ws1/statictalukmaster:
+    post:
+      tags:
+        - Get Taluka List Details Web Service
+      summary: Get Taluka List using this service
+      description: This API is used to get taluka list details
+      operationId: cbApi/ws1/statictalukmaster
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en  
+                lat:
+                  type: string
+                  description: latitude
+                  example: 21
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90      
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                usag:
+                  type: string
+                  description: usage
+                  example: 90                   
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 123234                   
+                usrid:
+                  type: string
+                  description: user id
+                  example: 09
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1544               
+                deptid:
+                  type: string
+                  description: service id
+                  example: 344               
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: andorid
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "371"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1739"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"          
+      responses:          
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: OK
+                  pd:
+                    type: array
+                    description: district object items
+                    items:
+                      type: object
+                      properties:                        
+                        Taluk_Name:
+                          type: string
+                          description: Taluk_Name
+                          example: Zemithang
+                        District_Code:
+                          type: integer
+                          description: District_Code
+                          example: 245   
+                        Taluk_Code:
+                          type: integer
+                          description: Taluk_Code
+                          example: 01556
+                        StateID:
+                          type: integer
+                          description: StateID
+                          example: 12  
+        "400":
+          description: Bad Request/Validation Error  
+  /cbApi/ws1/staticapplicanttype:
+    post:
+      tags:
+        - Application Type Details Web Service
+      summary: Get Application Type using this service
+      description: This API is used to get application details
+      operationId: cbApi/ws1/staticapplicanttype
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en  
+                lat:
+                  type: string
+                  description: latitude
+                  example: 21
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90      
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                usag:
+                  type: string
+                  description: usage
+                  example: 90                   
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 123234                   
+                usrid:
+                  type: string
+                  description: user id
+                  example: 09
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1544               
+                deptid:
+                  type: string
+                  description: service id
+                  example: 344               
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: andorid
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "371"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1739"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"          
+      responses:          
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: OK
+                  pd:
+                    type: object
+                    properties:
+                      0:
+                        type: string
+                        description: Zero
+                        example: Individual
+                      1:
+                        type: string
+                        description: One
+                        example: Joint
+                      2:
+                        type: string
+                        description: Two
+                        example: GPA
+                      3:
+                        type: string
+                        description: Three
+                        example: Corporate                              
+        "400":
+          description: Bad Request/Validation Error  
+  /cbApi/ws1/staticcategory:
+    post:
+      tags:
+        - Get Category Details Web Service
+      summary: Get Category using this service
+      description: This API is used to get category details
+      operationId: cbApi/ws1/staticcategory
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en  
+                lat:
+                  type: string
+                  description: latitude
+                  example: 21
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90      
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                usag:
+                  type: string
+                  description: usage
+                  example: 90                   
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 123234                   
+                usrid:
+                  type: string
+                  description: user id
+                  example: 09
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1544               
+                deptid:
+                  type: string
+                  description: service id
+                  example: 344               
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: andorid
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "371"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1739"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"          
+      responses:          
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: OK
+                  pd:
+                    type: object
+                    properties:
+                      1:
+                        type: string
+                        description: One
+                        example: General
+                      2:
+                        type: string
+                        description: Two
+                        example: OBC
+                      3:
+                        type: string
+                        description: Three
+                        example: Religiuos Minorities
+                      4:
+                        type: string
+                        description: Four
+                        example: SC
+                      5:
+                        type: string
+                        description: Five
+                        example: ST                              
+        "400":
+          description: Bad Request/Validation Error  
+  /cbApi/ws1/villagemaster:
+    post:
+      tags:
+        - Village List Details Web Service
+      summary: Get Village List using this service
+      description: This API is used to get village details
+      operationId: cbApi/ws1/villagemaster
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en  
+                lat:
+                  type: string
+                  description: latitude
+                  example: 21
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90      
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                usag:
+                  type: string
+                  description: usage
+                  example: 90                   
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 123234                   
+                usrid:
+                  type: string
+                  description: user id
+                  example: 09
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1544               
+                deptid:
+                  type: string
+                  description: service id
+                  example: 344               
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: andorid
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                Authorization:
+                  type: string
+                  description: Authorization
+                  example: 1UMANG6AF-78U7-4IR9-5500-36NICUAMAG8E7C1
+                Taluk_Code:
+                  type: string
+                  description: Taluk_Code
+                  example: 5545
+                District_Code:
+                  type: string
+                  description: District_Code
+                  example: 572    
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "371"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1739"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"          
+      responses:          
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: OK
+                  pd:
+                    type: object
+                    properties:
+                      apiVersion:
+                        type: string
+                        description: apiVersion
+                        example: 1.0
+                      success:
+                        type: string
+                        description: success
+                        example: true
+                      data:
+                        type: object
+                        properties:
+                          VillageList:
+                            type: array
+                            description: district object items
+                            items:
+                              type: object
+                              properties:                        
+                                Village_Name:
+                                  type: string
+                                  description: Village_Name
+                                  example: Mahanthalingapura
+                                Vilage_ID:
+                                  type: integer
+                                  description: Vilage_ID
+                                  example: 613151                              
+        "400":
+          description: Bad Request/Validation Error  
+components:
+  securitySchemes:
+    x-api-key:
+      type: apiKey
+      name: x-api-key
+      in: header

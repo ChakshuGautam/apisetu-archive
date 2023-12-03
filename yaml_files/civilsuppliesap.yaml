@@ -1,0 +1,132 @@
+openapi: 3.0.3
+info:  
+  title: Food & Civil Supplies Department, Andhra Pradesh, Andhra  Pradesh
+  description:  >- 
+                The Civil Supplies Department was originally only a regulatory  Department. Subsequently, its activities have been diversified to include  procurement of food grains under Minimum Support Price (MSP),  distribution of scheduled commodities (viz. Rice, Wheat Atta, Sugar and  Red gram dal) through Fair Price Shops under the Public Distribution  System at subsidized rates through issue of computerized cards,  consumer affairs, monitoring of prices of essential commodities,  distribution of LPG connections to BPL women (Deepam Scheme),  Enrollment under UID (Aadhaar) etc.,
+  termsOfService: https://apisetu.gov.in/api-policy
+  version: 3.0.0
+servers:
+  - url: 'https://apisetu.gov.in/certificate/v3/civilsuppliesap'
+paths:
+  
+  /ratcr:
+    post:
+      tags:
+        - APIs
+      summary: Ration Card
+      description: API to verify Ration Card.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: ratcr
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - UDF1
+                    
+                    - FullName
+                    
+                    - GENDER
+                      
+                  properties:
+                    UDF1:
+                      type: string
+                      description: Ration Card No.
+                      example: "0000000000"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    GENDER:
+                      type: string
+                      description: Gender - Male for male, Female for female and O for other
+                      example: "Male"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+components:
+  schemas:
+    ConsentArtifactSchema:
+      $ref: './common/ConsentArtifactSchema.yaml#/ConsentArtifactSchema'
+    AcademicCertificateSchema:
+      $ref: './common/AcademicCertificateSchema.yaml#/AcademicCertificateSchema'
+          
+  responses:
+    400Error:
+      $ref: './common/ErrorResponse.yaml#/400Error'
+    401Error:
+      $ref: './common/ErrorResponse.yaml#/401Error'
+    404Error:
+      $ref: './common/ErrorResponse.yaml#/404Error'
+    500Error:
+      $ref: './common/ErrorResponse.yaml#/500Error'
+    502Error:
+      $ref: './common/ErrorResponse.yaml#/502Error'
+    503Error:
+      $ref: './common/ErrorResponse.yaml#/503Error'
+    504Error:
+      $ref: './common/ErrorResponse.yaml#/504Error'
+  securitySchemes:
+    clientId:
+      type: apiKey
+      in: header
+      name: X-APISETU-CLIENTID
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-APISETU-APIKEY

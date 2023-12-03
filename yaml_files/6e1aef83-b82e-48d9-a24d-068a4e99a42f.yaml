@@ -1,0 +1,85 @@
+host: delhigw.napix.gov.in
+info:
+  title: Reproductive & Child Health
+  version: 1.0.0
+  x-ibm-name: getmatchscorerch
+  description: Common beneficiary Registration to get reference id to all entire
+    health system for exchanging and integration the data
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/nic/rch
+paths:
+  /:
+    post:
+      schemes:
+        - https
+      consumes:
+        - application/json
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      parameters:
+        - in: body
+          name: body
+          schema:
+            type: object
+            title: body
+            properties:
+              cbr_dob:
+                type: string
+              rch_dob:
+                type: string
+              cbr_name:
+                type: string
+              rch_name:
+                type: string
+              cbr_state_code:
+                type: integer
+              rch_state_code:
+                type: integer
+              cbr_mobile_number:
+                type: string
+              rch_mobile_number:
+                type: string
+          required: true
+      tags:
+        - Getmatchscorerch
+schemes:
+  - https
+swagger: "2.0"
+basePath: /nic/rch/getmatchscorerch
+consumes:
+  - application/json
+security:
+  - oauth:
+      - napix
+securityDefinitions:
+  oauth:
+    flow: application
+    type: oauth2
+    scopes:
+      napix: NAPIX Scope
+    tokenUrl: //oauth2/token
+    x-ibm-oauth-provider: rch-oauth-provider-application-grant-type
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  servers:
+    - url: https://delhigw.napix.gov.in/nic/rch/getmatchscorerch
+      type:
+        - production
+        - development
+  enforced: true
+  testable: true
+  oauth-servers:
+    oauth:
+      tokenUrls:
+        - https://degateway.napix.gov.in:443/nic/rch//oauth2/token
+      refreshUrls: []
+      authorizationUrls: []
+  application-authentication: {}

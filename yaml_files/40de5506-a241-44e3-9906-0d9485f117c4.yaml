@@ -1,0 +1,76 @@
+host: delhigw.napix.gov.in
+info:
+  title: CGHS
+  version: 1.0.0
+  x-ibm-name: findnearestwc
+  description: This API is used for searching nearest **wellness centre** of CGHS
+    beneficiary and find exact location or address.
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/nic/cghs
+paths:
+  /findNearestWC:
+    post:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      parameters:
+        - in: body
+          name: findNearestWCPara
+          schema:
+            type: object
+            title: findNearestWCSchema
+            properties:
+              limit:
+                type: integer
+              latitude:
+                type: string
+              longitude:
+                type: string
+          required: true
+      tags:
+        - Findnearestwc
+schemes:
+  - https
+swagger: "2.0"
+basePath: /nic/cghs/findnearestwc
+security:
+  - oauth:
+      - napix
+  - {}
+securityDefinitions:
+  oauth:
+    flow: application
+    type: oauth2
+    scopes:
+      napix: ""
+    tokenUrl: //oauth2/token
+    x-ibm-oauth-provider: nic-oauth-provider-application-grant-type
+  clientIdHeader:
+    in: header
+    name: X-IBM-Client-Id
+    type: apiKey
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  servers:
+    - url: https://delhigw.napix.gov.in/nic/cghs/findnearestwc
+      type:
+        - production
+        - development
+  enforced: true
+  testable: true
+  oauth-servers:
+    oauth:
+      tokenUrls:
+        - https://degateway.napix.gov.in:443/nic/cghs//oauth2/token
+      refreshUrls: []
+      authorizationUrls: []
+  application-authentication:
+    certificate: false

@@ -1,0 +1,143 @@
+host: delhigw.napix.gov.in
+info:
+  title: eCourts
+  version: 1.0.0
+  x-ibm-name: dc-convicted-api
+  description: This API provide conviction details of accused in a case such as
+    accused name, punishment in years/months/days, amount of fine imposed , act
+    and section under which punishment given etc.
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/nic/ecourts
+paths:
+  /:
+    get:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Dc convicted api
+    put:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Dc convicted api
+    head:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Dc convicted api
+    post:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Dc convicted api
+    patch:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Dc convicted api
+    delete:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Dc convicted api
+    options:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+  /convictedDetails:
+    get:
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      parameters:
+        - in: query
+          name: dept_id
+          type: string
+          required: true
+        - in: query
+          name: request_str
+          type: string
+          required: true
+        - in: query
+          name: request_token
+          type: string
+          required: true
+        - in: query
+          name: version
+          type: string
+          required: true
+      tags:
+        - Dc convicted api
+schemes:
+  - https
+swagger: "2.0"
+basePath: /nic/ecourts/dc-convicted-api
+security:
+  - oauth_token:
+      - napix
+  - {}
+securityDefinitions:
+  oauth_token:
+    flow: application
+    type: oauth2
+    scopes:
+      napix: napix
+    tokenUrl: //oauth2/token
+    x-ibm-oauth-provider: nic-oauth-provider-application-grant-type
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  servers:
+    - url: https://delhigw.napix.gov.in/nic/ecourts/dc-convicted-api
+      type:
+        - production
+        - development
+  enforced: true
+  testable: true
+  oauth-servers:
+    oauth_token:
+      tokenUrls:
+        - https://degateway.napix.gov.in:443/nic/ecourts//oauth2/token
+      refreshUrls: []
+      authorizationUrls: []
+  application-authentication:
+    certificate: false

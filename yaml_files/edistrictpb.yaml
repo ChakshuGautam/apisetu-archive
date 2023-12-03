@@ -1,0 +1,867 @@
+openapi: 3.0.3
+info:  
+  title: Punjab State eGovernance Society, Punjab
+  description:  >- 
+                eSewa Punjab (https://esewa.punjab.gov.in/) is the online service delivery portal for Govt. of Punjab. Certain documents issued by it (e.g. Residence, SC/ST, OBC Certificates, etc.) can be pulled into citizens' DigiLocker account.
+  termsOfService: https://apisetu.gov.in/api-policy
+  version: 3.0.0
+servers:
+  - url: 'https://apisetu.gov.in/certificate/v3/edistrictpb'
+paths:
+  
+  /btcer:
+    post:
+      tags:
+        - APIs
+      summary: Birth Certificate
+      description: API to verify Birth Certificate.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: btcer
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - RegistrationID
+                      
+                  properties:
+                    RegistrationID:
+                      type: string
+                      description: Registration No
+                      example: "xxx/xxx/xxx/xxxx"
+                       
+                    
+                      
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /ctcer:
+    post:
+      tags:
+        - APIs
+      summary: Caste Certificate
+      description: API to verify Caste Certificate.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: ctcer
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - DSN
+                    
+                    - FullName
+                      
+                  properties:
+                    DSN:
+                      type: string
+                      description: Document Sr. No
+                      example: "ESXXXXXXX"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /dtcer:
+    post:
+      tags:
+        - APIs
+      summary: Death Certificate
+      description: API to verify Death Certificate.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: dtcer
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - RegistrationID
+                      
+                  properties:
+                    RegistrationID:
+                      type: string
+                      description: Registration No
+                      example: "xxx/xxx/xxx/xxxx"
+                       
+                    
+                      
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /dmcer:
+    post:
+      tags:
+        - APIs
+      summary: Domicile Certificate
+      description: API to verify Domicile Certificate.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: dmcer
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - DSN
+                      
+                  properties:
+                    DSN:
+                      type: string
+                      description: DSN number
+                      example: "ES1234567"
+                       
+                    
+                      
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /ewcer:
+    post:
+      tags:
+        - APIs
+      summary: Economically Weaker Section Certificate
+      description: API to verify Economically Weaker Section Certificate.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: ewcer
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - DSN
+                    
+                    - FullName
+                    
+                    - DOB
+                      
+                  properties:
+                    DSN:
+                      type: string
+                      description: Document Sr. No	
+                      example: "ES12XXXXX1"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /iacer:
+    post:
+      tags:
+        - APIs
+      summary: Income and Asset Certificate
+      description: API to verify Income and Asset Certificate.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: iacer
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - RegistrationID
+                      
+                  properties:
+                    RegistrationID:
+                      type: string
+                      description: Registration No
+                      example: "xxx/xxx/xxx/xxxx"
+                       
+                    
+                      
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /rmcer:
+    post:
+      tags:
+        - APIs
+      summary: Marriage Certificate
+      description: API to verify Marriage Certificate.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: rmcer
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - RegistrationID
+                      
+                  properties:
+                    RegistrationID:
+                      type: string
+                      description: Registration No
+                      example: "RAR/ANDPR/2021/XXXXXXXX"
+                       
+                    
+                      
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /pecer:
+    post:
+      tags:
+        - APIs
+      summary: Pension Certificate
+      description: API to verify Pension Certificate.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: pecer
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - RegistrationID
+                      
+                  properties:
+                    RegistrationID:
+                      type: string
+                      description: PLA No
+                      example: "GSP/OAPR/2021/N/XXXXXXXX"
+                       
+                    
+                      
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /rscer:
+    post:
+      tags:
+        - APIs
+      summary: Residence Certificate
+      description: API to verify Residence Certificate.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: rscer
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - DSN
+                    
+                    - FullName
+                    
+                    - DOB
+                      
+                  properties:
+                    DSN:
+                      type: string
+                      description: Document Sr. No	
+                      example: "ES12XXXXX1"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /racer:
+    post:
+      tags:
+        - APIs
+      summary: Rural Area Certificate
+      description: API to verify Rural Area Certificate.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: racer
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - DSN
+                    
+                    - FullName
+                    
+                    - DOB
+                      
+                  properties:
+                    DSN:
+                      type: string
+                      description: Document Sr. No	
+                      example: "ES12XXXXX1"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /sicrd:
+    post:
+      tags:
+        - APIs
+      summary: Senior Citizen Identity Card/ Certificate
+      description: API to verify Senior Citizen Identity Card/ Certificate.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: sicrd
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - RegistrationID
+                      
+                  properties:
+                    RegistrationID:
+                      type: string
+                      description: Registration No
+                      example: "xxx/xxx/xxx/xxxx"
+                       
+                    
+                      
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+components:
+  schemas:
+    ConsentArtifactSchema:
+      $ref: './common/ConsentArtifactSchema.yaml#/ConsentArtifactSchema'
+    AcademicCertificateSchema:
+      $ref: './common/AcademicCertificateSchema.yaml#/AcademicCertificateSchema'
+    
+    CasteCertificateSchema:
+      $ref: './common/CasteCertificateSchema.yaml#/CasteCertificateSchema'      
+  responses:
+    400Error:
+      $ref: './common/ErrorResponse.yaml#/400Error'
+    401Error:
+      $ref: './common/ErrorResponse.yaml#/401Error'
+    404Error:
+      $ref: './common/ErrorResponse.yaml#/404Error'
+    500Error:
+      $ref: './common/ErrorResponse.yaml#/500Error'
+    502Error:
+      $ref: './common/ErrorResponse.yaml#/502Error'
+    503Error:
+      $ref: './common/ErrorResponse.yaml#/503Error'
+    504Error:
+      $ref: './common/ErrorResponse.yaml#/504Error'
+  securitySchemes:
+    clientId:
+      type: apiKey
+      in: header
+      name: X-APISETU-CLIENTID
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-APISETU-APIKEY

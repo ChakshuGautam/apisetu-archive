@@ -1,0 +1,552 @@
+---
+openapi: 3.0.0
+info:
+  title: Deendayal Antyodaya Yojana-National Urban Livelihoods Mission (DAY-NULM)
+  description: To reduce poverty and vulnerability of the urban poor households by enabling them to access gainful self employment and skilled wage employment opportunities,resulting in an appreciable improvement in their livelihoods on a sustainable basis,through building strong grassroots level institutions of the poor.The mission would aim at providing shelters equipped with essential services to the urban homeless in a phased manner.In addition,the mission would also address livelihood concerns of the urban street vendors by facilitating access to suitable spaces,institutional credit,social security and skills to the urban street vendors for accessing emerging market opportunities.
+  termsOfService: https://web.umang.gov.in/uaw/ts/v1/en/index.htm
+  contact:
+    name: Provided by - UMANG
+    url: https://web.umang.gov.in
+  version: 1.0.0
+servers:
+  - url: https://apigw.umangapp.in
+    description: Production server
+paths:
+  /ddayNulmApi/ws1/statelist:
+    post:
+      tags:
+        - State List Web Service
+      summary: Get the state list using this service
+      description: This api is used to get the state list
+      operationId: ddayNulmApi/ws1/statelist
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                UserId:
+                  type: string
+                  description: UserId
+                  example: NULM@User_Name
+                password:
+                  type: string
+                  description: password
+                  example: NULM@User_Password         
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                description: state list object items                          
+                items:  
+                  type: object
+                  properties:                      
+                    State_Code:
+                      type: integer
+                      description: state code
+                      example: 35
+                    State_Name:
+                      type: string
+                      description: state name
+                      example: Andaman & Nicobar Islands 
+  /ddayNulmApi/ws1/districtlist:
+    post:
+      tags:
+        - District List Web Service
+      summary: Get the district list using this service
+      description: This api is used to get the district list
+      operationId: ddayNulmApi/ws1/districtlist
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                UserId:
+                  type: string
+                  description: UserId
+                  example: NULM@User_Name
+                password:
+                  type: string
+                  description: password
+                  example: NULM@User_Password        
+                State_Code:
+                  type: string
+                  description: statecode
+                  example: 18                 
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                description: district list object items                          
+                items:  
+                  type: object
+                  properties:                      
+                    District_Code:
+                      type: integer
+                      description: district code
+                      example: 324
+                    District_Name:
+                      type: string
+                      description: district name
+                      example: Baksa
+  /ddayNulmApi/ws1/ulbmaster:
+    post:
+      tags:
+        - ULBMaster Web Service
+      summary: Get the ulbmaster details using this service
+      description: This api is used to get the ulbmaster details
+      operationId: ddayNulmApi/ws1/ulbmaster
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                UserId:
+                  type: string
+                  description: UserId
+                  example: NULM@User_Name
+                password:
+                  type: string
+                  description: password
+                  example: NULM@User_Password        
+                State_Code:
+                  type: string
+                  description: statecode
+                  example: 18
+                District_Code:
+                  type: string
+                  description: districtcode
+                  example: 303                
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                description: ulbmaster object items                          
+                items:  
+                  type: object
+                  properties:                      
+                    ULB_Code:
+                      type: integer
+                      description: ulb code
+                      example: 2022
+                    ULB_Name:
+                      type: string
+                      description: ULB name
+                      example: Barpeta
+  /ddayNulmApi/ws1/sepidata:
+    post:
+      tags:
+        - Sepidata Web Service
+      summary: Get the sepidata using this service
+      description: This api is used to get the sepidata
+      operationId: ddayNulmApi/ws1/sepidata
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                UserId:
+                  type: string
+                  description: UserId
+                  example: NULM@User_Name
+                password:
+                  type: string
+                  description: password
+                  example: NULM@User_Password       
+                State_Code:
+                  type: string
+                  description: statecode
+                  example: 18  
+                District_code:
+                  type: string
+                  description: districtcode
+                  example: 303  
+                ULB_Code:
+                  type: string
+                  description: ulbcode
+                  example: 6508  
+                Application_Code:
+                  type: string
+                  description: applicationcode
+                  example: null  
+                Name:
+                  type: string
+                  description: name
+                  example: sdfs2 
+                FatherName:
+                  type: string
+                  description: fathername
+                  example: sds2 
+                DOB:
+                  type: string
+                  description: dob
+                  example: 08/01/2002 
+                MobileNo:
+                  type: string
+                  description: mobileno
+                  example: 9999999904   
+                Address:
+                  type: string
+                  description: address
+                  example: q213 
+                BussinessType:
+                  type: string
+                  description: businesstype
+                  example: asdas 
+                ProjectCost:
+                  type: string
+                  description: projectcost
+                  example: 213           
+                Sex:
+                  type: string
+                  description: sex
+                  example: Male                   
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                description: sepidata object items                         
+                items:  
+                  type: object
+                  properties:
+                    StatusNew:
+                      type: string
+                      description: statusnew
+                      example: 1
+                    Msg:
+                      type: string
+                      description: msg
+                      example: Your request has been submitted successfully and Application No. is APPI18650800046
+                    Key:
+                      type: string
+                      description: key
+                      example: APPI18650800046                                          
+  /ddayNulmApi/ws1/tracksepiappbyappnumber:
+    post:
+      tags:
+        - Track Sepiapp By AppNumber Web Service
+      summary: Track the sepiapp by appnumber using this service
+      description: This api is used to track the sepiapp by appnumber
+      operationId: ddayNulmApi/ws1/tracksepiappbyappnumber
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                UserId:
+                  type: string
+                  description: UserId
+                  example: NULM@User_Name
+                password:
+                  type: string
+                  description: password
+                  example: NULM@User_Password       
+                Application_Code:
+                  type: string
+                  description: applicationcode
+                  example: APPI18650800041                   
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                description: tracksepiappbyappnumber object items                         
+                items:  
+                  type: object
+                  properties:                      
+                    Status:
+                      type: string
+                      description: Status
+                      example: Application Found Successfully !
+                    Key:
+                      type: string
+                      description: Key
+                      example: APPI18650800041       
+                    State_Name:
+                      type: string
+                      description: statename
+                      example: Assam  
+                    ULB_Name:
+                      type: string
+                      description: ulbname
+                      example: Howly  
+                    Application_Code:
+                      type: string
+                      description: applicationcode
+                      example: APPI18650800041   
+                    Name:
+                      type: string
+                      description: name
+                      example: sdfs
+                    FatherName:
+                      type: string
+                      description: fathername
+                      example: sds
+                    Sex:
+                      type: string
+                      description: sex
+                      example: Male                       
+                    DOB:
+                      type: string
+                      description: dob
+                      example: 05/01/2000
+                    MobileNo:
+                      type: string
+                      description: mobileno
+                      example: 9999999999   
+                    ApplicationSubmittedDate:
+                      type: string
+                      description: applicationSubmittedDate
+                      example: 24/08/2023 
+                    ProjectCost:
+                      type: integer
+                      description: projectcost
+                      example: 213   
+                    LoanRequired:
+                      type: integer
+                      description: loanrequired
+                      example: 0                                            
+                    BussinessType:
+                      type: string
+                      description: businesstype
+                      example: asdas 
+                    DateOfSubmission:
+                      type: string
+                      description: dateOfSubmission
+                      example: null
+                    CounsellingStatus:
+                      type: string
+                      description: counsellingStatus
+                      example: Pending at ULB
+                    Counselling_Date:
+                      type: string
+                      description: counselling_Date
+                      example: null  
+                    TF_Date:
+                      type: string
+                      description: TF_Date
+                      example: null 
+                    TF_Approved_Amount:
+                      type: integer
+                      description: TF_Approved_Amount
+                      example: 0 
+                    Bank_Name:
+                      type: string
+                      description: bankname
+                      example: null 
+                    Branch_Name:
+                      type: string
+                      description: branchname
+                      example: null 
+                    Bank_ApprovalDate:
+                      type: string
+                      description: Bank_ApprovalDate
+                      example: null 
+                    BankRejectionDate:
+                      type: string
+                      description: BankRejectionDate
+                      example: null           
+  /ddayNulmApi/ws1/tracksepiappbyname:
+    post:
+      tags:
+        - Track Sepiapp By Name Web Service
+      summary: Track the sepiapp by name using this service
+      description: This api is used to track the sepiapp by name
+      operationId: ddayNulmApi/ws1/tracksepiappbyname
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                UserId:
+                  type: string
+                  description: UserId
+                  example: NULM@User_Name
+                password:
+                  type: string
+                  description: password
+                  example: NULM@User_Password    
+                State_Code:
+                  type: string
+                  description: statecode
+                  example: 18
+                District_code:
+                  type: string
+                  description: districtcode
+                  example: 303
+                ULB_Code:
+                  type: string
+                  description: ulbcode
+                  example: 6508
+                Name:
+                  type: string
+                  description: name
+                  example: sdfs       
+                DOB:
+                  type: string
+                  description: dob
+                  example: 05/01/2000            
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                description: tracksepiappbyname object items                          
+                items:  
+                  type: object
+                  properties:                      
+                    Status:
+                      type: string
+                      description: Status
+                      example: Application Found Successfully !
+                    Key:
+                      type: string
+                      description: Key
+                      example: APPI18650800041       
+                    State_Name:
+                      type: string
+                      description: statename
+                      example: Assam  
+                    ULB_Name:
+                      type: string
+                      description: ulbname
+                      example: Howly  
+                    Application_Code:
+                      type: string
+                      description: applicationcode
+                      example: APPI18650800041 
+                    Name:
+                      type: string
+                      description: name
+                      example: sdfs
+                    FatherName:
+                      type: string
+                      description: fathername
+                      example: sds
+                    Sex:
+                      type: string
+                      description: sex
+                      example: Male                       
+                    DOB:
+                      type: string
+                      description: dob
+                      example: 05/01/2000
+                    MobileNo:
+                      type: string
+                      description: mobileno
+                      example: 9999999999   
+                    ApplicationSubmittedDate:
+                      type: string
+                      description: applicationSubmittedDate
+                      example: 24/08/2023 
+                    ProjectCost:
+                      type: integer
+                      description: projectcost
+                      example: 213   
+                    LoanRequired:
+                      type: integer
+                      description: loanrequired
+                      example: 0                                            
+                    BussinessType:
+                      type: string
+                      description: businesstype
+                      example: asdas 
+                    DateOfSubmission:
+                      type: string
+                      description: dateOfSubmission
+                      example: null
+                    CounsellingStatus:
+                      type: string
+                      description: counsellingStatus
+                      example: Pending at ULB
+                    Counselling_Date:
+                      type: string
+                      description: counselling_Date
+                      example: null  
+                    TF_Date:
+                      type: string
+                      description: TF_Date
+                      example: null 
+                    TF_Approved_Amount:
+                      type: integer
+                      description: TF_Approved_Amount
+                      example: 0 
+                    Bank_Name:
+                      type: string
+                      description: bankname
+                      example: null 
+                    Branch_Name:
+                      type: string
+                      description: branchname
+                      example: null 
+                    Bank_ApprovalDate:
+                      type: string
+                      description: Bank_ApprovalDate
+                      example: null 
+                    BankRejectionDate:
+                      type: string
+                      description: BankRejectionDate
+                      example: null 
+components:
+  securitySchemes:
+    x-api-key:
+      type: apiKey
+      name: x-api-key
+      in: header

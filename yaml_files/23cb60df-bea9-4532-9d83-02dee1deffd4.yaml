@@ -1,0 +1,79 @@
+host: delhigw.napix.gov.in
+info:
+  title: Reproductive & Child Health
+  version: 1.0.0
+  x-ibm-name: generateotp_test
+  description: "Generate OTP api used for  multifactor authentication for sending
+    OTP over registered mobile number by RCH and  Anmol application "
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/nic/rch
+paths:
+  /:
+    post:
+      schemes:
+        - https
+      consumes:
+        - application/json
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      parameters:
+        - in: header
+          name: StateCode
+          type: string
+          required: true
+        - in: body
+          name: body
+          schema:
+            type: object
+            title: body
+            properties:
+              deel:
+                type: string
+              keel:
+                type: string
+          required: true
+      tags:
+        - Generateotp test
+schemes:
+  - https
+swagger: "2.0"
+basePath: /nic/rch/generateotp_test
+consumes:
+  - application/json
+produces:
+  - application/json
+security:
+  - oauth:
+      - napix
+securityDefinitions:
+  oauth:
+    flow: application
+    type: oauth2
+    scopes:
+      napix: NAPIX Scope
+    tokenUrl: //oauth2/token
+    x-ibm-oauth-provider: rch-oauth-provider-application-grant-type
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  servers:
+    - url: https://delhigw.napix.gov.in/nic/rch/generateotp_test
+      type:
+        - production
+        - development
+  enforced: true
+  testable: true
+  oauth-servers:
+    oauth:
+      tokenUrls:
+        - https://degateway.napix.gov.in:443/nic/rch//oauth2/token
+      refreshUrls: []
+      authorizationUrls: []
+  application-authentication: {}

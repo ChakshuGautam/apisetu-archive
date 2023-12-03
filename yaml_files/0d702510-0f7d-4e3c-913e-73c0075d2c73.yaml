@@ -1,0 +1,66 @@
+host: delhigw.napix.gov.in
+info:
+  title: Parivahan
+  version: 1.0.0
+  x-ibm-name: vahanws-vehicle-details-get-chassis-details
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/nic/parivahan
+paths:
+  /service/getChasisDetails:
+    post:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Vahanws vehicle details get chassis details
+schemes:
+  - https
+swagger: "2.0"
+basePath: /nic/parivahan/vahanws
+security:
+  - OauthToken:
+      - napix
+securityDefinitions:
+  OauthToken:
+    flow: application
+    type: oauth2
+    scopes:
+      napix: Oauth scope napix
+    tokenUrl: //oauth2/token
+    description: Oauth2 Generate Token
+    x-ibm-oauth-provider: nic-oauth-provider-application-grant-type
+  Client ID Header:
+    in: header
+    name: X-Client-Id
+    type: apiKey
+    x-key-type: client_id
+  Client Secret Header:
+    in: header
+    name: X-Client-Secret
+    type: apiKey
+    x-key-type: client_secret
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  servers:
+    - url: https://delhigw.napix.gov.in/nic/parivahan/vahanws
+      type:
+        - production
+        - development
+  enforced: true
+  testable: true
+  oauth-servers:
+    OauthToken:
+      tokenUrls:
+        - https://degateway.napix.gov.in:443/nic/parivahan//oauth2/token
+      refreshUrls: []
+      authorizationUrls: []
+  application-authentication:
+    certificate: false

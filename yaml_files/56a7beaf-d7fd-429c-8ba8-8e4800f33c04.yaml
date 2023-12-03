@@ -1,0 +1,80 @@
+host: delhigw.napix.gov.in
+info:
+  title: CGHS
+  version: 1.0.0
+  x-ibm-name: viewappointments
+  description: This API is for CGHS beneficairies to see there booked appointment
+    details like Doctor, slot time, dispensary etc.
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/nic/cghs
+paths:
+  /viewappointments:
+    post:
+      tags:
+        - Viewappointments
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      parameters:
+        - in: body
+          name: viewappointmentsPara
+          schema:
+            type: object
+            title: viewappointmentsSchema
+            properties:
+              flag:
+                type: integer
+              benId:
+                type: string
+              sortParam:
+                type: integer
+              latestToken:
+                type: string
+              initialToken:
+                type: string
+          required: true
+schemes:
+  - https
+swagger: "2.0"
+basePath: /nic/cghs/viewappointments
+security:
+  - oauth:
+      - napix
+  - {}
+securityDefinitions:
+  oauth:
+    flow: application
+    type: oauth2
+    scopes:
+      napix: ""
+    tokenUrl: //oauth2/token
+    x-ibm-oauth-provider: nic-oauth-provider-application-grant-type
+  clientIdHeader:
+    in: header
+    name: X-IBM-Client-Id
+    type: apiKey
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  servers:
+    - url: https://delhigw.napix.gov.in/nic/cghs/viewappointments
+      type:
+        - production
+        - development
+  enforced: true
+  testable: true
+  oauth-servers:
+    oauth:
+      tokenUrls:
+        - https://degateway.napix.gov.in:443/nic/cghs//oauth2/token
+      refreshUrls: []
+      authorizationUrls: []
+  application-authentication:
+    certificate: false

@@ -1,0 +1,120 @@
+openapi: 3.0.3
+info:  
+  title: Directorate of Pension and Provident Fund Gandhinagar, Gujarat
+  description:  >- 
+                Directorate of Pension and Provident Fund - DPPF under Finance Department, Government of Gujarat is the main Authority for all the pension related functions of Government of Gujarat. DPPF issues PPOs-Pension Payment Order (Form-5) to all the state government employees.Further all pension ralated processes are handled by DPPF.
+  termsOfService: https://apisetu.gov.in/api-policy
+  version: 3.0.0
+servers:
+  - url: 'https://apisetu.gov.in/certificate/v3/ifms'
+paths:
+  
+  /pecer:
+    post:
+      tags:
+        - APIs
+      summary: Pension Certificate
+      description: API to verify Pension Certificate.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: pecer
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - ppoNumber
+                    - retDate
+                      
+                  properties:
+                    ppoNumber:
+                      type: string
+                      description: Ppo Number
+                      example: "SC/012240/07/2022"
+                       
+                    
+                    retDate:
+                      type: string
+                      description: Retirement Date
+                      example: "2022-07-31"
+                       
+                    
+                      
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+components:
+  schemas:
+    ConsentArtifactSchema:
+      $ref: './common/ConsentArtifactSchema.yaml#/ConsentArtifactSchema'
+    AcademicCertificateSchema:
+      $ref: './common/AcademicCertificateSchema.yaml#/AcademicCertificateSchema'
+          
+  responses:
+    400Error:
+      $ref: './common/ErrorResponse.yaml#/400Error'
+    401Error:
+      $ref: './common/ErrorResponse.yaml#/401Error'
+    404Error:
+      $ref: './common/ErrorResponse.yaml#/404Error'
+    500Error:
+      $ref: './common/ErrorResponse.yaml#/500Error'
+    502Error:
+      $ref: './common/ErrorResponse.yaml#/502Error'
+    503Error:
+      $ref: './common/ErrorResponse.yaml#/503Error'
+    504Error:
+      $ref: './common/ErrorResponse.yaml#/504Error'
+  securitySchemes:
+    clientId:
+      type: apiKey
+      in: header
+      name: X-APISETU-CLIENTID
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-APISETU-APIKEY

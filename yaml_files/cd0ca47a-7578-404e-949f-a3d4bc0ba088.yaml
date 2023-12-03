@@ -1,0 +1,82 @@
+host: delhigw.napix.gov.in
+info:
+  title: CGHS
+  version: 1.0.0
+  x-ibm-name: getdispensary
+  description: This API is for giving dispensary details like City, SpecialtyId
+    and showADOfficesFlag, with or without initial token.
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/nic/cghs
+paths:
+  /getDispensary:
+    post:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      parameters:
+        - in: body
+          name: dispensaryData
+          schema:
+            type: object
+            title: dispensaryData
+            properties:
+              benId:
+                type: string
+              cityId:
+                type: string
+              latestToken:
+                type: string
+              specialtyId:
+                type: string
+              initialToken:
+                type: string
+              showADOfficesFlag:
+                type: integer
+          required: true
+      tags:
+        - Getdispensary
+schemes:
+  - https
+swagger: "2.0"
+basePath: /nic/cghs/getdispensary
+security:
+  - oauth:
+      - napix
+  - {}
+securityDefinitions:
+  oauth:
+    flow: application
+    type: oauth2
+    scopes:
+      napix: ""
+    tokenUrl: //oauth2/token
+    x-ibm-oauth-provider: nic-oauth-provider-application-grant-type
+  clientIdHeader:
+    in: header
+    name: X-IBM-Client-Id
+    type: apiKey
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  servers:
+    - url: https://delhigw.napix.gov.in/nic/cghs/getdispensary
+      type:
+        - production
+        - development
+  enforced: true
+  testable: true
+  oauth-servers:
+    oauth:
+      tokenUrls:
+        - https://degateway.napix.gov.in:443/nic/cghs//oauth2/token
+      refreshUrls: []
+      authorizationUrls: []
+  application-authentication:
+    certificate: false

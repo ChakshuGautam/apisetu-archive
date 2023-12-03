@@ -1,0 +1,158 @@
+info:
+  title: AI
+  version: 1.0.0
+  x-ibm-name: mask-pdf
+  description: This is an AI enabled API which takes PDF as an input and returns
+    masked PDF with masked fingerprint, masked aadhaar
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/nic/ai
+paths:
+  /mask_pdf:
+    post:
+      summary: Create Upload File
+      responses:
+        "200":
+          content:
+            application/json:
+              schema: {}
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                type: object
+                title: HTTPValidationError
+                properties:
+                  detail:
+                    type: array
+                    items:
+                      type: object
+                      title: ValidationError
+                      required:
+                        - loc
+                        - msg
+                        - type
+                      properties:
+                        loc:
+                          type: array
+                          items:
+                            anyOf:
+                              - type: string
+                              - type: integer
+                          title: Location
+                        msg:
+                          type: string
+                          title: Message
+                        type:
+                          type: string
+                          title: Error Type
+                    title: Detail
+          description: Validation Error
+      operationId: create_upload_file_crowd_count_post
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              title: Body_create_upload_file_crowd_count_post
+              required:
+                - files
+              properties:
+                files:
+                  type: string
+                  title: Files
+                  format: binary
+        required: true
+      tags:
+        - Mask pdf
+openapi: 3.0.0
+servers:
+  - url: https://degateway.napix.gov.in:443/nic/ai
+    description: ""
+security:
+  - Client-ID: []
+    Client-Secret: []
+components:
+  schemas:
+    ValidationError:
+      type: object
+      title: ValidationError
+      required:
+        - loc
+        - msg
+        - type
+      properties:
+        loc:
+          type: array
+          items:
+            anyOf:
+              - type: string
+              - type: integer
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+    HTTPValidationError:
+      type: object
+      title: HTTPValidationError
+      properties:
+        detail:
+          type: array
+          items:
+            type: object
+            title: ValidationError
+            required:
+              - loc
+              - msg
+              - type
+            properties:
+              loc:
+                type: array
+                items:
+                  anyOf:
+                    - type: string
+                    - type: integer
+                title: Location
+              msg:
+                type: string
+                title: Message
+              type:
+                type: string
+                title: Error Type
+          title: Detail
+    Body_create_upload_file_crowd_count_post:
+      type: object
+      title: Body_create_upload_file_crowd_count_post
+      required:
+        - files
+      properties:
+        files:
+          type: string
+          title: Files
+          format: binary
+  securitySchemes:
+    Client-ID:
+      in: header
+      name: client-id
+      type: apiKey
+      x-key-type: client_id
+      description: description of client id
+    Client-Secret:
+      in: header
+      name: client-secret
+      type: apiKey
+      x-key-type: client_secret
+x-ibm-endpoints:
+  - url: https://degateway.napix.gov.in:443/nic/ai
+    description: ""
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  enforced: true
+  testable: true

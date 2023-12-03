@@ -1,0 +1,105 @@
+host: delhigw.napix.gov.in
+info:
+  title: Dedupe
+  version: "1.0"
+  x-ibm-name: twofactorauthrequest
+  description: Two Factor AuthRequest
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/nic/dedupe
+tags:
+  - name: transaction
+    description: transaction
+paths:
+  /api/transaction/TwoFactorAuthRequest:
+    post:
+      tags:
+        - Twofactorauthrequest
+      summary: TwoFactorAuthRequest
+      consumes:
+        - application/json
+      produces:
+        - "*/*"
+      responses:
+        "200":
+          schema:
+            type: object
+            additionalProperties:
+              type: string
+          description: OK
+        "201":
+          description: Created
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+      parameters:
+        - in: body
+          name: twoFactorAuth
+          schema:
+            type: object
+            title: TwoFactorAuth
+            properties:
+              login_id:
+                type: integer
+                format: int32
+              action_type_id:
+                type: integer
+                format: int32
+              resend_auth_code:
+                type: integer
+                format: int32
+          required: true
+          description: twoFactorAuth
+      operationId: TwoFactorAuthRequestUsingPOST
+schemes:
+  - https
+swagger: "2.0"
+basePath: /nic/dedupe
+security:
+  - Oauth:
+      - napix
+definitions:
+  TwoFactorAuth:
+    type: object
+    title: TwoFactorAuth
+    properties:
+      login_id:
+        type: integer
+        format: int32
+      action_type_id:
+        type: integer
+        format: int32
+      resend_auth_code:
+        type: integer
+        format: int32
+securityDefinitions:
+  Oauth:
+    flow: application
+    type: oauth2
+    scopes:
+      napix: ""
+    tokenUrl: //oauth2/token
+    x-ibm-oauth-provider: nic-oauth-provider-application-grant-type
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  servers:
+    - url: https://delhigw.napix.gov.in/nic/dedupe
+      type:
+        - production
+        - development
+  enforced: true
+  testable: true
+  oauth-servers:
+    Oauth:
+      tokenUrls:
+        - https://degateway.napix.gov.in:443/nic/dedupe//oauth2/token
+      refreshUrls: []
+      authorizationUrls: []
+  application-authentication:
+    certificate: false

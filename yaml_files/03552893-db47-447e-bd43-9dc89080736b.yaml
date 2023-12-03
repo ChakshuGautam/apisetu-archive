@@ -1,0 +1,1087 @@
+host: wb-gateway.napix.gov.in
+info:
+  title: Labour Commissionerate
+  version: 1.0.0
+  x-ibm-name: silpasathi_clra_api
+  description: SilpasathiAPI   for Labour Commissionerate of Govt of West Bengal
+    for integration with Ease of Doing Business for CLRA
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/wb/wblc
+paths:
+  /conlicensereg:
+    post:
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      parameters:
+        - in: body
+          name: userInfo
+          schema:
+            type: object
+            properties:
+              email:
+                type: string
+              fname:
+                type: string
+              lname:
+                type: string
+              mname:
+                type: string
+              act_id:
+                type: string
+              e_name:
+                type: string
+              emp_ps:
+                type: string
+              mobile:
+                type: number
+              status:
+                type: string
+              taskid:
+                type: string
+              docfile:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    filename:
+                      type: string
+                    filecontent:
+                      type: string
+                    document_type:
+                      type: string
+                    document_type_code:
+                      type: string
+                uniqueItems: false
+              emp_pin:
+                type: string
+              emp_dist:
+                type: string
+              emp_name:
+                type: string
+              est_type:
+                type: string
+              loc_e_ps:
+                type: string
+              username:
+                type: string
+              caf_id_no:
+                type: string
+              card_type:
+                type: string
+              emp_state:
+                type: string
+              full_name:
+                type: string
+              postal_ps:
+                type: string
+              contractor:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    status:
+                      type: string
+                    con_pin:
+                      type: string
+                    con_e_ps:
+                      type: string
+                    con_e_dist:
+                      type: string
+                    eodb_con_id:
+                      type: string
+                    nature_work:
+                      type: string
+                    con_e_gp_ward:
+                      type: string
+                    state_country:
+                      type: string
+                    con_e_areatype:
+                      type: string
+                    contractor_type:
+                      type: string
+                    con_areatype_code:
+                      type: string
+                    con_e_subdivision:
+                      type: string
+                    name_of_contractor:
+                      type: string
+                    email_of_contractor:
+                      type: string
+                    address_of_contractor:
+                      type: string
+                    contractor_max_no_of_labours_on_any_day:
+                      type: string
+                    est_date_of_work_of_each_labour_to_date:
+                      type: string
+                    est_date_of_work_of_each_labour_from_date:
+                      type: string
+                uniqueItems: false
+              emp_gender:
+                type: string
+              loc_e_dist:
+                type: string
+              loc_e_name:
+                type: string
+              manager_ps:
+                type: string
+              postal_pin:
+                type: string
+              tradeunion:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    eodb_tu_id:
+                      type: string
+                    e_trade_union_name:
+                      type: string
+                    e_trade_union_address:
+                      type: string
+                    e_trade_union_regn_no:
+                      type: string
+                uniqueItems: false
+              card_number:
+                type: string
+              emp_address:
+                type: string
+              emp_gp_ward:
+                type: string
+              eodb_app_id:
+                type: string
+              emp_areatype:
+                type: string
+              manager_dist:
+                type: string
+              manager_name:
+                type: string
+              emp_mobile_no:
+                type: string
+              loc_e_gp_ward:
+                type: string
+              manager_state:
+                type: string
+              loc_e_areatype:
+                type: string
+              postal_address:
+                type: string
+              postal_gp_ward:
+                type: string
+              emp_subdivision:
+                type: string
+              manager_address:
+                type: string
+              manager_gp_ward:
+                type: string
+              postal_areatype:
+                type: string
+              postal_district:
+                type: string
+              con_lab_job_desc:
+                type: string
+              loc_e_pin_number:
+                type: string
+              manager_areatype:
+                type: string
+              permanent_add_ps:
+                type: string
+              emp_areatype_code:
+                type: string
+              loc_e_subdivision:
+                type: string
+              pe_nature_of_work:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    work_id:
+                      type: string
+                    nature_of_work:
+                      type: string
+                uniqueItems: false
+              permanent_add_pin:
+                type: string
+              permanent_address:
+                type: string
+              manager_pin_number:
+                type: string
+              postal_subdivision:
+                type: string
+              loc_e_areatype_code:
+                type: string
+              manager_subdivision:
+                type: string
+              postal_areatype_code:
+                type: string
+              con_lab_cat_desig_nom:
+                type: string
+              manager_areatype_code:
+                type: string
+              permanent_add_areatype:
+                type: string
+              permanent_add_district:
+                type: string
+              permanent_add_villward:
+                type: string
+              max_num_contract_labour:
+                type: string
+              permanent_add_subdivision:
+                type: string
+              e_num_of_workmen_per_or_reg:
+                type: string
+              permanent_add_areatype_code:
+                type: string
+              e_any_day_max_num_of_workmen:
+                type: string
+              e_num_of_workmen_temp_or_reg:
+                type: string
+              con_lab_wage_rate_other_benefits:
+                type: string
+              workmen_if_same_similar_kind_of_work:
+                type: string
+              e_settlement_award_judgement_min_wage:
+                type: string
+          required: true
+          description: user to add to the system
+      description: post registration data
+      tags:
+        - Silpasathi clra api
+  /conlicenserenewal:
+    post:
+      summary: CLRA License Renewal
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      parameters:
+        - in: body
+          name: inputJSONObject
+          schema:
+            type: object
+            title: clraSchema
+            properties:
+              id:
+                type: string
+              email:
+                type: string
+              fname:
+                type: string
+              lname:
+                type: string
+              mname:
+                type: string
+              pe_ps:
+                type: string
+              act_id:
+                type: string
+              mobile:
+                type: string
+              pe_pin:
+                type: string
+              status:
+                type: string
+              taskid:
+                type: string
+              docfile:
+                type: array
+                items:
+                  type: object
+                  title: docFileSchema
+                  properties:
+                    filename:
+                      type: string
+                    filecontent:
+                      type: string
+                    document_type:
+                      type: string
+                    document_type_code:
+                      type: string
+              pe_dist:
+                type: string
+              pe_name:
+                type: string
+              user_id:
+                type: string
+              est_name:
+                type: string
+              est_type:
+                type: string
+              loc_e_ps:
+                type: string
+              overtime:
+                type: string
+              pe_state:
+                type: string
+              username:
+                type: string
+              caf_id_no:
+                type: string
+              finalfees:
+                type: string
+              created_on:
+                type: string
+              hours_work:
+                type: string
+              loc_e_dist:
+                type: string
+              loc_e_name:
+                type: string
+              no_holiday:
+                type: string
+              pe_address:
+                type: string
+              pe_country:
+                type: string
+              pe_gp_ward:
+                type: string
+              sick_leave:
+                type: string
+              eodb_app_id:
+                type: string
+              lincense_id:
+                type: string
+              manager_pin:
+                type: string
+              other_leave:
+                type: string
+              pe_areatype:
+                type: string
+              worksite_ps:
+                type: string
+              annual_leave:
+                type: string
+              casual_leave:
+                type: string
+              final_status:
+                type: string
+              license_date:
+                type: string
+              worksite_pin:
+                type: string
+              contractor_ps:
+                type: string
+              formvserialno:
+                type: string
+              is_coparative:
+                type: string
+              loc_e_gp_ward:
+                type: string
+              manager_state:
+                type: string
+              sick_leave_no:
+                type: string
+              skilled_wages:
+                type: string
+              validity_date:
+                type: string
+              worksite_dist:
+                type: string
+              age_contractor:
+                type: string
+              contractor_pin:
+                type: string
+              dob_contractor:
+                type: string
+              loc_e_areatype:
+                type: string
+              other_leave_no:
+                type: string
+              overtime_wages:
+                type: string
+              pe_subdivision:
+                type: string
+              weekly_holiday:
+                type: string
+              annual_leave_no:
+                type: string
+              application_for:
+                type: string
+              casual_leave_no:
+                type: string
+              contractor_dist:
+                type: string
+              manager_country:
+                type: string
+              maternity_leave:
+                type: string
+              name_of_manager:
+                type: string
+              unskilled_wages:
+                type: string
+              application_date:
+                type: string
+              contractor_state:
+                type: string
+              loc_e_pin_number:
+                type: string
+              pe_areatype_code:
+                type: string
+              legacy_license_id:
+                type: string
+              loc_e_subdivision:
+                type: string
+              modification_date:
+                type: string
+              semiskilled_wages:
+                type: string
+              work_site_gp_ward:
+                type: string
+              address_of_manager:
+                type: string
+              contractor_gp_ward:
+                type: string
+              contrcator_country:
+                type: string
+              maternity_leave_no:
+                type: string
+              name_of_contractor:
+                type: string
+              pe_registration_no:
+                type: string
+              skilled_rate_wages:
+                type: string
+              work_site_areatype:
+                type: string
+              contractor_areatype:
+                type: string
+              contractor_revoking:
+                type: string
+              email_of_contractor:
+                type: string
+              highlyskilled_wages:
+                type: string
+              loc_e_areatype_code:
+                type: string
+              category_designation:
+                type: string
+              contractor_convicted:
+                type: string
+              pe_registration_date:
+                type: string
+              unskilled_rate_wages:
+                type: string
+              worksite_subdivision:
+                type: string
+              address_of_contractor:
+                type: string
+              contractor_license_no:
+                type: string
+              contractor_manager_ps:
+                type: string
+              final_submission_date:
+                type: string
+              worksite_address_line:
+                type: string
+              amount_of_licence_fees:
+                type: string
+              category_of_contractor:
+                type: string
+              contractor_subdivision:
+                type: string
+              father_contarctor_name:
+                type: string
+              semiskilled_rate_wages:
+                type: string
+              contractor_manager_dist:
+                type: string
+              license_renewal_amnd_id:
+                type: string
+              name_work_site_areatype:
+                type: string
+              security_deposit_amount:
+                type: string
+              contractor_areatype_code:
+                type: string
+              highlyskilled_rate_wages:
+                type: string
+              legacy_contractor_user_id:
+                type: string
+              total_paid_security_amount:
+                type: string
+              contractor_manager_areatype:
+                type: string
+              contractor_managerr_gp_ward:
+                type: string
+              details_contractor_revoking:
+                type: string
+              contractor_previous_employer:
+                type: string
+              details_contractor_convicted:
+                type: string
+              details_previous_license_nos:
+                type: string
+              clra_pe_legacy_application_id:
+                type: string
+              date_of_business_commencement:
+                type: string
+              contractor_manager_subdivision:
+                type: string
+              contractor_manager_areatype_code:
+                type: string
+              details_previous_employer_reg_nos:
+                type: string
+              duration_of_the_proposed_contract_work:
+                type: string
+              contractor_max_no_of_labours_on_any_day:
+                type: string
+              est_date_of_work_of_each_labour_to_date:
+                type: string
+              est_date_of_work_of_each_labour_from_date:
+                type: string
+          required: true
+          description: CLRA Renewal data
+      description: License for Contractors under The Contracts Labour (Regulation and
+        Abolition) Act, 1970
+      tags:
+        - Silpasathi clra api
+schemes:
+  - https
+swagger: "2.0"
+basePath: /wb/wblc/silpasathi_clra_api
+security:
+  - clientId: []
+    clientSecret: []
+parameters: {}
+definitions:
+  UserInfo:
+    type: object
+    required:
+      - taskid
+      - caf_id_no
+      - eodb_app_id
+      - username
+      - fname
+      - lname
+      - mail
+      - mobile
+      - card_type
+      - card_number
+      - est_type
+      - emp_gender
+      - e_name
+      - loc_e_name
+      - loc_e_dist
+      - loc_e_subdivision
+      - loc_e_areatype
+      - loc_e_areatype_code
+      - loc_e_vill_ward
+      - loc_e_ps
+      - loc_e_pin_number
+      - postal_address
+      - postal_district
+      - postal_subdivision
+      - postal_areatype
+      - postal_ps
+      - permanent_address
+      - permanent_add_areatype
+    properties:
+      mail:
+        type: string
+      fname:
+        type: string
+      lname:
+        type: string
+      mname:
+        type: string
+      act_id:
+        type: string
+      doc_tl:
+        type: string
+      e_name:
+        type: string
+      emp_ps:
+        type: string
+      mobile:
+        type: number
+      status:
+        type: string
+      taskid:
+        type: string
+      emp_pin:
+        type: string
+      emp_dist:
+        type: string
+      emp_name:
+        type: string
+      est_type:
+        type: string
+      loc_e_ps:
+        type: string
+      username:
+        type: string
+      caf_id_no:
+        type: string
+      card_type:
+        type: string
+      full_name:
+        type: string
+      postal_ps:
+        type: string
+      emp_gender:
+        type: string
+      loc_e_dist:
+        type: string
+      loc_e_name:
+        type: string
+      manager_ps:
+        type: string
+      postal_pin:
+        type: string
+      card_number:
+        type: string
+      doc_aam_apd:
+        type: string
+      emp_address:
+        type: string
+      eodb_app_id:
+        type: string
+      manager_pin:
+        type: string
+      max_workmen:
+        type: string
+      emp_areatype:
+        type: string
+      manager_dist:
+        type: string
+      manager_name:
+        type: string
+      emp_vill_ward:
+        type: string
+      application_id:
+        type: string
+      doc_any_others:
+        type: string
+      doc_work_order:
+        type: string
+      loc_e_areatype:
+        type: string
+      postal_address:
+        type: string
+      completion_date:
+        type: string
+      doc_cess_form_i:
+        type: string
+      emp_subdivision:
+        type: string
+      loc_e_vill_ward:
+        type: string
+      manager_address:
+        type: string
+      postal_areatype:
+        type: string
+      postal_district:
+        type: string
+      postal_villward:
+        type: string
+      doc_cess_payment:
+        type: string
+      loc_e_pin_number:
+        type: string
+      manager_areatype:
+        type: string
+      manager_villward:
+        type: string
+      permanent_add_ps:
+        type: string
+      commencement_date:
+        type: string
+      doc_address_proof:
+        type: string
+      emp_areatype_code:
+        type: string
+      loc_e_subdivision:
+        type: string
+      permanent_add_pin:
+        type: string
+      permanent_address:
+        type: string
+      postal_subdivision:
+        type: string
+      loc_e_areatype_code:
+        type: string
+      manager_subdivision:
+        type: string
+      postal_areatype_code:
+        type: string
+      manager_areatype_code:
+        type: string
+      nature_of_construction:
+        type: string
+      permanent_add_areatype:
+        type: string
+      permanent_add_district:
+        type: string
+      permanent_add_villward:
+        type: string
+      doc_any_other_license_reg:
+        type: string
+      permanent_add_subdivision:
+        type: string
+      permanent_add_areatype_code:
+        type: string
+    minProperties: 28
+  PullQuery:
+    type: object
+    required:
+      - taskid
+      - service_id
+      - eodb_app_id
+      - caf_id_no
+    properties:
+      taskid:
+        type: string
+      caf_id_no:
+        type: string
+      service_id:
+        type: string
+      eodb_app_id:
+        type: string
+  Contractor:
+    type: object
+    properties:
+      status:
+        type: string
+      con_pin:
+        type: string
+      con_e_ps:
+        type: string
+      con_e_dist:
+        type: string
+      eodb_con_id:
+        type: string
+      nature_work:
+        type: string
+      con_e_gp_ward:
+        type: string
+      state_country:
+        type: string
+      con_e_areatype:
+        type: string
+      contractor_type:
+        type: string
+      con_areatype_code:
+        type: string
+      con_e_subdivision:
+        type: string
+      name_of_contractor:
+        type: string
+      email_of_contractor:
+        type: string
+      address_of_contractor:
+        type: string
+      contractor_max_no_of_labours_on_any_day:
+        type: string
+      est_date_of_work_of_each_labour_to_date:
+        type: string
+      est_date_of_work_of_each_labour_from_date:
+        type: string
+  PaymentInfo:
+    type: object
+    required:
+      - taskid
+      - eodb_app_id
+      - caf_id_no
+      - epaymentsdata
+      - doc_bocwa_formI
+    properties:
+      taskid:
+        type: string
+      caf_id_no:
+        type: string
+      eodb_app_id:
+        type: string
+      epaymentsdata:
+        type: string
+      doc_bocwa_formI:
+        type: string
+  DocFileSchema:
+    type: object
+    properties:
+      filename:
+        type: string
+      filecontent:
+        type: string
+      document_type:
+        type: string
+      document_type_code:
+        type: string
+  TradeUnionSchema:
+    type: object
+    properties:
+      eodb_tu_id:
+        type: string
+      e_trade_union_name:
+        type: string
+      e_trade_union_address:
+        type: string
+      e_trade_union_regn_no:
+        type: string
+  NatureOfWorkSchema:
+    type: object
+    properties:
+      work_id:
+        type: string
+      nature_of_work:
+        type: string
+  RegistrationSchema:
+    type: object
+    properties:
+      email:
+        type: string
+      fname:
+        type: string
+      lname:
+        type: string
+      mname:
+        type: string
+      act_id:
+        type: string
+      e_name:
+        type: string
+      emp_ps:
+        type: string
+      mobile:
+        type: number
+      status:
+        type: string
+      taskid:
+        type: string
+      docfile:
+        type: array
+        items:
+          type: object
+          properties:
+            filename:
+              type: string
+            filecontent:
+              type: string
+            document_type:
+              type: string
+            document_type_code:
+              type: string
+        uniqueItems: false
+      emp_pin:
+        type: string
+      emp_dist:
+        type: string
+      emp_name:
+        type: string
+      est_type:
+        type: string
+      loc_e_ps:
+        type: string
+      username:
+        type: string
+      caf_id_no:
+        type: string
+      card_type:
+        type: string
+      emp_state:
+        type: string
+      full_name:
+        type: string
+      postal_ps:
+        type: string
+      contractor:
+        type: array
+        items:
+          type: object
+          properties:
+            status:
+              type: string
+            con_pin:
+              type: string
+            con_e_ps:
+              type: string
+            con_e_dist:
+              type: string
+            eodb_con_id:
+              type: string
+            nature_work:
+              type: string
+            con_e_gp_ward:
+              type: string
+            state_country:
+              type: string
+            con_e_areatype:
+              type: string
+            contractor_type:
+              type: string
+            con_areatype_code:
+              type: string
+            con_e_subdivision:
+              type: string
+            name_of_contractor:
+              type: string
+            email_of_contractor:
+              type: string
+            address_of_contractor:
+              type: string
+            contractor_max_no_of_labours_on_any_day:
+              type: string
+            est_date_of_work_of_each_labour_to_date:
+              type: string
+            est_date_of_work_of_each_labour_from_date:
+              type: string
+        uniqueItems: false
+      emp_gender:
+        type: string
+      loc_e_dist:
+        type: string
+      loc_e_name:
+        type: string
+      manager_ps:
+        type: string
+      postal_pin:
+        type: string
+      tradeunion:
+        type: array
+        items:
+          type: object
+          properties:
+            eodb_tu_id:
+              type: string
+            e_trade_union_name:
+              type: string
+            e_trade_union_address:
+              type: string
+            e_trade_union_regn_no:
+              type: string
+        uniqueItems: false
+      card_number:
+        type: string
+      emp_address:
+        type: string
+      emp_gp_ward:
+        type: string
+      eodb_app_id:
+        type: string
+      emp_areatype:
+        type: string
+      manager_dist:
+        type: string
+      manager_name:
+        type: string
+      emp_mobile_no:
+        type: string
+      loc_e_gp_ward:
+        type: string
+      manager_state:
+        type: string
+      loc_e_areatype:
+        type: string
+      postal_address:
+        type: string
+      postal_gp_ward:
+        type: string
+      emp_subdivision:
+        type: string
+      manager_address:
+        type: string
+      manager_gp_ward:
+        type: string
+      postal_areatype:
+        type: string
+      postal_district:
+        type: string
+      con_lab_job_desc:
+        type: string
+      loc_e_pin_number:
+        type: string
+      manager_areatype:
+        type: string
+      permanent_add_ps:
+        type: string
+      emp_areatype_code:
+        type: string
+      loc_e_subdivision:
+        type: string
+      pe_nature_of_work:
+        type: array
+        items:
+          type: object
+          properties:
+            work_id:
+              type: string
+            nature_of_work:
+              type: string
+        uniqueItems: false
+      permanent_add_pin:
+        type: string
+      permanent_address:
+        type: string
+      manager_pin_number:
+        type: string
+      postal_subdivision:
+        type: string
+      loc_e_areatype_code:
+        type: string
+      manager_subdivision:
+        type: string
+      postal_areatype_code:
+        type: string
+      con_lab_cat_desig_nom:
+        type: string
+      manager_areatype_code:
+        type: string
+      permanent_add_areatype:
+        type: string
+      permanent_add_district:
+        type: string
+      permanent_add_villward:
+        type: string
+      max_num_contract_labour:
+        type: string
+      permanent_add_subdivision:
+        type: string
+      e_num_of_workmen_per_or_reg:
+        type: string
+      permanent_add_areatype_code:
+        type: string
+      e_any_day_max_num_of_workmen:
+        type: string
+      e_num_of_workmen_temp_or_reg:
+        type: string
+      con_lab_wage_rate_other_benefits:
+        type: string
+      workmen_if_same_similar_kind_of_work:
+        type: string
+      e_settlement_award_judgement_min_wage:
+        type: string
+securityDefinitions:
+  clientId:
+    in: header
+    name: clientId
+    type: apiKey
+    x-key-type: client_id
+  clientSecret:
+    in: header
+    name: clientSecret
+    type: apiKey
+    x-key-type: client_secret
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  servers:
+    - url: https://wb-gateway.napix.gov.in/wb/wblc/silpasathi_clra_api
+      type:
+        - production
+        - development
+      description: ""
+  enforced: true
+  testable: true
+  application-authentication: {}

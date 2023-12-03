@@ -1,0 +1,59 @@
+host: delhigw.napix.gov.in
+info:
+  title: Reproductive & Child Health
+  version: 1.0.0
+  x-ibm-name: decrypttext
+  description: " Generate encryption used for testing 12 mode apis used for
+    Reproductive health information of pregnant women service through APIs"
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/nic/rch
+paths:
+  /:
+    post:
+      schemes:
+        - https
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      parameters:
+        - in: body
+          name: body
+          schema:
+            type: object
+            title: body
+            properties:
+              response:
+                type: string
+          required: true
+      tags:
+        - Decrypttext
+schemes:
+  - https
+swagger: "2.0"
+basePath: /nic/rch/decrypttext
+consumes:
+  - application/json
+produces:
+  - application/json
+security: []
+securityDefinitions: {}
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  servers:
+    - url: https://delhigw.napix.gov.in/nic/rch/decrypttext
+      type:
+        - production
+        - development
+  enforced: true
+  testable: true
+  application-authentication: {}

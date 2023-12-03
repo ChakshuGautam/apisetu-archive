@@ -1,0 +1,54 @@
+openapi: 3.0.0
+info:
+  title: Center For Entrepreneurship Development Of Karnataka Department (CEDOK)
+  version: 1.0.0
+  description: |
+    This API is the part of Mahiti Kanaja department.  The call is required to provide request data over GET method of http request. The details of the request sample are provided under the API documentations. This api belongs to Center For Entrepreneurship Development Of Karnataka Department (CEDOK). Where the user should get the details based on the phone number provided. 
+servers:
+  - url: https://success.cedokconnect.com
+paths:
+  /api/customer/{mobileNumber}:
+    get:
+      tags:
+        - APIs
+      summary: Specific customer based on mobile number
+      description: Get details of a specific customer based on mobile number
+      operationId: GET_mahiti-kanaja-cedok-customer-mobileNumber
+      responses:
+        '200':
+          description: 'Succesfull operation'
+          content:
+            application/json:
+              schema:
+                example:
+                  customer_id: '1'
+                  district_name: Belagavi
+                  first_name: 'Mr.Shivanand '
+                  last_name: Nyamagoudar
+                  email: svnyamagoudar@gmail.com
+                  aadharcard: '332642886389'
+                  rationcard: ''
+                  dob: '1997-06-16'
+                  gender: null
+                  age: '43'
+                  address: 'Ward No: 4, Main Road, At Post: Malali, TQ: Mudhol, Dist: Bagalkot'
+                  town: ': Malali, TQ: Mudhol,'
+                  education: B.A
+                  mobile_no: '7848088888'
+                  caste: OBC
+                  experience: null
+                  occupation: ''
+                  monthlyincome: ''
+                  physicalchallenge: 'No'
+                  mlaconstituency: Mudhol
+                  mpconstituency: Bagalkot
+                  investmentcapacity: ''
+                  project_identified: Organic Jaggory Mfg
+      
+    parameters:
+      - name: mobileNumber
+        in: path
+        required: true
+        schema:
+          type: integer
+

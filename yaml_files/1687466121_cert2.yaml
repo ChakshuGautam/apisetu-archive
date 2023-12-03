@@ -1,0 +1,26 @@
+openapi: 3.0.0
+info:
+  title: Indian Servers Digital Certificates
+  description: Indian Servers Digital Certificates , Internship, Employee
+    Experience, Certification Courses
+  version: 1.0.0
+servers:
+  - url: https://indianservers.com
+paths:
+  /offerletters/CertificatesDigiLockerpullURI.php:
+    post:
+      tags:
+        - General
+      summary: Pull URI Request
+      requestBody:
+        content:
+          "*/*":
+            schema:
+              type: string
+              example: '"
+                <FullName></FullName>\n    <DOB></DOB>\n    <CertificateID></CertificateID>"'
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}

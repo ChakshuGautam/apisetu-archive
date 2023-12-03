@@ -1,0 +1,103 @@
+openapi: 3.0.2
+info:
+  title: Startup India Recognition Certificate API
+  description: API to fetch Startup's Recognition Certificate Details on the basis on provided Startup's Incorporation Number
+  contact:
+    name: Startup India
+    url: https://www.startupindia.gov.in
+  version: 3.0.0
+servers:
+  - url: https://api.startupindia.gov.in/sih/api/noauth/dpiit/services
+paths:
+  /recognition/certificateDetails:
+    get:
+      tags:
+        - APIs
+      summary: Recogntion Certificate Detail API.
+      description: Description of Recogntion Certificate Detail API.
+
+      operationId: fetchRecognitionCertificateDetails
+      parameters:
+        - name: incorporationNumber
+          in: query
+          description: >-
+            Startup's Incorporation Number
+          required: true
+          schema:
+            type: string
+
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                description: ""
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                  message:
+                    type: string
+                    minLength: 1
+                  data:
+                    type: object
+                    properties:
+                      incorporationNumber:
+                        type: string
+                        minLength: 1
+                      incorporationDate:
+                        type: string
+                        minLength: 1
+                      recognitionNumber:
+                        type: string
+                        minLength: 1
+                      entityName:
+                        type: string
+                        minLength: 1
+                      natureOfEntity:
+                        type: string
+                        minLength: 1
+                      sectionName:
+                        type: string
+                        minLength: 1
+                      industryName:
+                        type: string
+                        minLength: 1
+                      certificateDate:
+                        type: string
+                        minLength: 1
+                      expiryDate:
+                        type: string
+                        minLength: 1
+                    required:
+                      - incorporationNumber
+                      - incorporationDate
+                      - recognitionNumber
+                      - entityName
+                      - natureOfEntity
+                      - sectionName
+                      - industryName
+                      - certificateDate
+                      - expiryDate
+                required:
+                  - status
+                  - message
+                  - data
+
+        "500":
+          description: Invalid CIN (contains illegal characters)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    enum:
+                      - Internal Server Error
+                  errorDescription:
+                    type: string
+                    enum:
+                      - Invalid CIN (contains illegal characters)
+

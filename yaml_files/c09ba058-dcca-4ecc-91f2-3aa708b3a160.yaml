@@ -1,0 +1,135 @@
+host: delhigw.napix.gov.in
+info:
+  title: eCourts
+  version: 1.0.0
+  x-ibm-name: hc-show-business-api
+  description: API provides details of business transacted on a particular date
+    based on CNR number and date for which business is needed. Business date is
+    the date of court proceedings which may be available from the Case History.
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/nic/ecourts
+tags: []
+paths:
+  /:
+    get:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Hc show business api
+    put:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Hc show business api
+    head:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Hc show business api
+    post:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Hc show business api
+    patch:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Hc show business api
+    delete:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Hc show business api
+  /showBusiness:
+    get:
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      parameters:
+        - in: query
+          name: dept_id
+          type: string
+          required: true
+        - in: query
+          name: request_str
+          type: string
+          required: true
+        - in: query
+          name: request_token
+          type: string
+          required: true
+        - in: query
+          name: version
+          type: string
+          required: true
+      tags:
+        - Hc show business api
+schemes:
+  - https
+swagger: "2.0"
+basePath: /nic/ecourts/hc-show-business-api
+security:
+  - ouath_token:
+      - napix
+securityDefinitions:
+  ouath_token:
+    flow: application
+    type: oauth2
+    scopes:
+      napix: napix
+    tokenUrl: //oauth2/token
+    x-ibm-oauth-provider: nic-oauth-provider-application-grant-type
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  servers:
+    - url: https://delhigw.napix.gov.in/nic/ecourts/hc-show-business-api
+      type:
+        - production
+        - development
+  enforced: true
+  testable: true
+  oauth-servers:
+    ouath_token:
+      tokenUrls:
+        - https://degateway.napix.gov.in:443/nic/ecourts//oauth2/token
+      refreshUrls: []
+      authorizationUrls: []
+  application-authentication:
+    certificate: false

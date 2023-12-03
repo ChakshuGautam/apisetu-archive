@@ -1,0 +1,83 @@
+info:
+  title: LGD
+  version: 1.0.0
+  x-ibm-name: localbodiesbystatebydurationbycategoryu
+  description: To fetch the Local Government Directory (LGD) Codes and additional
+    information of all versions of all **Localbodies** of Category U (Urban) of
+    a state updated between given dates using LGD state code, updatedTo and
+    updatedFrom dates as input parameters.
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/nic/lgd
+paths:
+  /state/{stateCode}/localbodies/v1/updatedFrom/{updatedFrom}/updatedTo/{updatedTo}/category/U/page/{page}:
+    post:
+      tags:
+        - Localbodiesbystatebydurationbycategoryu
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: success
+      parameters:
+        - in: path
+          name: stateCode
+          schema:
+            type: integer
+          required: true
+        - in: path
+          name: updatedFrom
+          schema:
+            type: string
+          required: true
+        - in: path
+          name: updatedTo
+          schema:
+            type: string
+          required: true
+        - in: path
+          name: page
+          schema:
+            type: integer
+          required: true
+openapi: 3.0.0
+servers:
+  - url: https://delhigw.napix.gov.in/nic/lgd
+    description: LGD Vanity Endpoint
+security:
+  - clientID: []
+    clientSecret: []
+components:
+  schemas:
+    code:
+      type: integer
+    date:
+      type: string
+    page:
+      type: integer
+  securitySchemes:
+    clientID:
+      in: header
+      name: X-IBM-Client-Id
+      type: apiKey
+      x-key-type: client_id
+    clientSecret:
+      in: header
+      name: X-IBM-Client-Secret
+      type: apiKey
+      x-key-type: client_secret
+x-ibm-endpoints:
+  - url: https://delhigw.napix.gov.in/nic/lgd
+    type:
+      - production
+      - development
+    description: LGD Vanity Endpoint
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  enforced: true
+  testable: true

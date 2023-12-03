@@ -1,0 +1,85 @@
+host: wb-gateway.napix.gov.in
+info:
+  title: Food & Supplies Department
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/wb/food-supplies
+  version: 1.0.0
+  x-ibm-name: ksapi-signin
+  description: KSAPI Signin API for fetching KS information through various
+    methods by various departments under Govt of West Bengal. For signin
+    credential please contact Food and Supplies Department.
+paths:
+  /:
+    post:
+      consumes:
+        - application/json
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      parameters:
+        - in: body
+          name: body
+          schema:
+            type: object
+            title: body
+            properties:
+              clientName:
+                type: string
+              clientType:
+                type: string
+              clientEmail:
+                type: string
+              clientMobile:
+                type: string
+          required: true
+      tags:
+        - Ksapi signin
+    parameters: []
+schemes:
+  - https
+swagger: "2.0"
+basePath: /wb/food-supplies/ksapi-signin
+security:
+  - clientID: []
+    clientSecret: []
+parameters:
+  clientId:
+    in: body
+    name: clientId
+    schema:
+      type: string
+    required: true
+  clientSecret:
+    in: body
+    name: clientSecret
+    schema:
+      type: string
+    required: true
+securityDefinitions:
+  clientID:
+    in: header
+    name: client_id
+    type: apiKey
+    x-key-type: client_id
+  clientSecret:
+    in: header
+    name: client_secret
+    type: apiKey
+    x-key-type: client_secret
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  servers:
+    - url: https://wb-gateway.napix.gov.in/wb/food-supplies/ksapi-signin
+      type:
+        - production
+        - development
+      description: ""
+  enforced: true
+  testable: true
+  application-authentication: {}

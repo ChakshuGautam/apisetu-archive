@@ -1,0 +1,3071 @@
+openapi: 3.0.3
+info:  
+  title: National Testing Agency (NTA), Delhi
+  description:  >- 
+                National Testing Agency (NTA) conducts entrance examinations for admissions/fellowship in higher educational institutions. Related academic awards of 2022, 2023 are currently available in DigiLocker.
+  termsOfService: https://apisetu.gov.in/api-policy
+  version: 3.0.0
+servers:
+  - url: 'https://apisetu.gov.in/certificate/v3/nta'
+paths:
+  
+  /asadc:
+    post:
+      tags:
+        - APIs
+      summary: AISSEE Admit Card
+      description: API to verify AISSEE Admit Card.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: asadc
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - ApplicationNo
+                    
+                    - FullName
+                    
+                    - DOB
+                      
+                  properties:
+                    ApplicationNo:
+                      type: string
+                      description: Application No
+                      example: "22XXXXXXXXXX"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /aicnr:
+    post:
+      tags:
+        - APIs
+      summary: AISSEE Confirmation Page
+      description: API to verify AISSEE Confirmation Page.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: aicnr
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - ApplicationNo
+                    
+                    - FullName
+                    
+                    - DOB
+                      
+                  properties:
+                    ApplicationNo:
+                      type: string
+                      description: Application No
+                      example: "22XXXXXXXXXX"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /aimst:
+    post:
+      tags:
+        - APIs
+      summary: AISSEE Score Card
+      description: API to verify AISSEE Score Card.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: aimst
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - ApplicationNo
+                    
+                    - FullName
+                    
+                    - DOB
+                      
+                  properties:
+                    ApplicationNo:
+                      type: string
+                      description: Application No
+                      example: "22XXXXXXXXXX"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /cmadc:
+    post:
+      tags:
+        - APIs
+      summary: CMAT Admit Card
+      description: API to verify CMAT Admit Card.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: cmadc
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - ApplicationNo
+                    
+                    - FullName
+                    
+                    - DOB
+                      
+                  properties:
+                    ApplicationNo:
+                      type: string
+                      description: Application No
+                      example: "23XXXXXXXXXX"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /cmcnr:
+    post:
+      tags:
+        - APIs
+      summary: CMAT Confirmation Page
+      description: API to verify CMAT Confirmation Page.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: cmcnr
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - ApplicationNo
+                    
+                    - FullName
+                    
+                    - DOB
+                      
+                  properties:
+                    ApplicationNo:
+                      type: string
+                      description: Application No
+                      example: "22XXXXXXXXXX"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /pgadc:
+    post:
+      tags:
+        - APIs
+      summary: CUET PG Admit Card
+      description: API to verify CUET PG Admit Card.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: pgadc
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - ApplicationNo
+                    
+                    - FullName
+                    
+                    - DOB
+                      
+                  properties:
+                    ApplicationNo:
+                      type: string
+                      description: Application No
+                      example: "22XXXXXXXXXX"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /pgcnr:
+    post:
+      tags:
+        - APIs
+      summary: CUET PG Confirmation Page
+      description: API to verify CUET PG Confirmation Page.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: pgcnr
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - ApplicationNo
+                    - Year
+                    
+                    - FullName
+                    
+                    - DOB
+                      
+                  properties:
+                    ApplicationNo:
+                      type: string
+                      description: Application No
+                      example: "22XXXXXXXXXX"
+                       
+                    
+                    Year:
+                      type: string
+                      description: Year
+                      example: ""
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /pgmst:
+    post:
+      tags:
+        - APIs
+      summary: CUET PG Score Card
+      description: API to verify CUET PG Score Card.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: pgmst
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - ApplicationNo
+                    - Year
+                    
+                    - FullName
+                    
+                    - DOB
+                      
+                  properties:
+                    ApplicationNo:
+                      type: string
+                      description: Application No
+                      example: "22XXXXXXXXXX"
+                       
+                    
+                    Year:
+                      type: string
+                      description: Year
+                      example: ""
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /ugadc:
+    post:
+      tags:
+        - APIs
+      summary: CUET UG Admit Card
+      description: API to verify CUET UG Admit Card.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: ugadc
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - ApplicationNo
+                    - Year
+                    
+                    - FullName
+                    
+                    - DOB
+                      
+                  properties:
+                    ApplicationNo:
+                      type: string
+                      description: Application No
+                      example: "22XXXXXXXXXX"
+                       
+                    
+                    Year:
+                      type: string
+                      description: Year
+                      example: ""
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /ugcnr:
+    post:
+      tags:
+        - APIs
+      summary: CUET UG Confirmation Page
+      description: API to verify CUET UG Confirmation Page.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: ugcnr
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - ApplicationNo
+                    - Year
+                    
+                    - FullName
+                    
+                    - DOB
+                      
+                  properties:
+                    ApplicationNo:
+                      type: string
+                      description: Application No
+                      example: "22XXXXXXXXXX"
+                       
+                    
+                    Year:
+                      type: string
+                      description: Year
+                      example: "2022,2023"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /ugmst:
+    post:
+      tags:
+        - APIs
+      summary: CUET UG Score Card
+      description: API to verify CUET UG Score Card.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: ugmst
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - ApplicationNo
+                    - Year
+                    
+                    - FullName
+                    
+                    - DOB
+                      
+                  properties:
+                    ApplicationNo:
+                      type: string
+                      description: Application No
+                      example: "22XXXXXXXXXX"
+                       
+                    
+                    Year:
+                      type: string
+                      description: Year
+                      example: ""
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /gpcnr:
+    post:
+      tags:
+        - APIs
+      summary: GPAT Confirmation Page
+      description: API to verify GPAT Confirmation Page.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: gpcnr
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - ApplicationNo
+                    
+                    - FullName
+                    
+                    - DOB
+                      
+                  properties:
+                    ApplicationNo:
+                      type: string
+                      description: Application No
+                      example: "22XXXXXXXXXX"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /ipcnr:
+    post:
+      tags:
+        - APIs
+      summary: ICAR AIEEA (PG) Confirmation Page
+      description: API to verify ICAR AIEEA (PG) Confirmation Page.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: ipcnr
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - ApplicationNo
+                    
+                    - FullName
+                    
+                    - DOB
+                      
+                  properties:
+                    ApplicationNo:
+                      type: string
+                      description: Application No
+                      example: "22XXXXXXXXXX"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /idcnr:
+    post:
+      tags:
+        - APIs
+      summary: ICAR AIEEA (Ph.D) Confirmation Page
+      description: API to verify ICAR AIEEA (Ph.D) Confirmation Page.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: idcnr
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - ApplicationNo
+                    
+                    - FullName
+                    
+                    - DOB
+                      
+                  properties:
+                    ApplicationNo:
+                      type: string
+                      description: Application No
+                      example: "22XXXXXXXXXX"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /iucnr:
+    post:
+      tags:
+        - APIs
+      summary: ICAR AIEEA (UG) Confirmation Page
+      description: API to verify ICAR AIEEA (UG) Confirmation Page.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: iucnr
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - ApplicationNo
+                    
+                    - FullName
+                    
+                    - DOB
+                      
+                  properties:
+                    ApplicationNo:
+                      type: string
+                      description: Application No
+                      example: "22XXXXXXXXXX"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /iumst:
+    post:
+      tags:
+        - APIs
+      summary: ICAR AIEEA (UG) Score Card
+      description: API to verify ICAR AIEEA (UG) Score Card.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: iumst
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - ApplicationNo
+                    
+                    - FullName
+                    
+                    - DOB
+                      
+                  properties:
+                    ApplicationNo:
+                      type: string
+                      description: Application No
+                      example: "22XXXXXXXXXX"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /ipmst:
+    post:
+      tags:
+        - APIs
+      summary: ICAR AIEEA (PG) Score Card
+      description: API to verify ICAR AIEEA (PG) Score Card.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: ipmst
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - ApplicationNo
+                    
+                    - FullName
+                    
+                    - DOB
+                      
+                  properties:
+                    ApplicationNo:
+                      type: string
+                      description: Application No
+                      example: "22XXXXXXXXXX"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /idmst:
+    post:
+      tags:
+        - APIs
+      summary: ICAR AIEEA (PHD) Score Card
+      description: API to verify ICAR AIEEA (PHD) Score Card.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: idmst
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - ApplicationNo
+                    
+                    - FullName
+                    
+                    - DOB
+                      
+                  properties:
+                    ApplicationNo:
+                      type: string
+                      description: Application No
+                      example: "22XXXXXXXXXX"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /iiadc:
+    post:
+      tags:
+        - APIs
+      summary: IIFT Admit Card
+      description: API to verify IIFT Admit Card.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: iiadc
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - ApplicationNo
+                    
+                    - FullName
+                    
+                    - DOB
+                      
+                  properties:
+                    ApplicationNo:
+                      type: string
+                      description: Application No
+                      example: "22XXXXXXXXXX"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /iicnr:
+    post:
+      tags:
+        - APIs
+      summary: IIFT Confirmation Page
+      description: API to verify IIFT Confirmation Page.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: iicnr
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - ApplicationNo
+                    
+                    - FullName
+                    
+                    - DOB
+                      
+                  properties:
+                    ApplicationNo:
+                      type: string
+                      description: Application No.
+                      example: "221510000287"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /ntadc:
+    post:
+      tags:
+        - APIs
+      summary: JEE Main Admit Card
+      description: API to verify JEE Main Admit Card.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: ntadc
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - ApplicationNo
+                    - Session
+                    - Year
+                    
+                    - FullName
+                    
+                    - DOB
+                      
+                  properties:
+                    ApplicationNo:
+                      type: string
+                      description: Application No
+                      example: "22XXXXXXXXXX"
+                       
+                    
+                    Session:
+                      type: string
+                      description: Session
+                      example: "1,2"
+                       
+                    
+                    Year:
+                      type: string
+                      description: Year
+                      example: ""
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /ntcnr:
+    post:
+      tags:
+        - APIs
+      summary: JEE Main Confirmation Page
+      description: API to verify JEE Main Confirmation Page.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: ntcnr
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - ApplicationNo
+                    - Session
+                    - YEAR
+                    
+                    - FullName
+                    
+                    - DOB
+                      
+                  properties:
+                    ApplicationNo:
+                      type: string
+                      description: Application No.
+                      example: "22XXXXXXXXXX"
+                       
+                    
+                    Session:
+                      type: string
+                      description: Session
+                      example: "1,2"
+                       
+                    
+                    YEAR:
+                      type: string
+                      description: Year
+                      example: ""
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /ntmst:
+    post:
+      tags:
+        - APIs
+      summary: JEE Main Score Card
+      description: API to verify JEE Main Score Card.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: ntmst
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - ApplicationNo
+                    - SESSION
+                    - Year
+                    
+                    - FullName
+                    
+                    - DOB
+                      
+                  properties:
+                    ApplicationNo:
+                      type: string
+                      description: Application No
+                      example: "22XXXXXXXXXX"
+                       
+                    
+                    SESSION:
+                      type: string
+                      description: Session
+                      example: "1,2"
+                       
+                    
+                    Year:
+                      type: string
+                      description: Year
+                      example: ""
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /cucnr:
+    post:
+      tags:
+        - APIs
+      summary: Joint CSIR - UGC NET Confirmation Page
+      description: API to verify Joint CSIR - UGC NET Confirmation Page.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: cucnr
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - ApplicationNo
+                    - Year
+                    
+                    - FullName
+                    
+                    - DOB
+                      
+                  properties:
+                    ApplicationNo:
+                      type: string
+                      description: Application No
+                      example: "22XXXXXXXXXX"
+                       
+                    
+                    Year:
+                      type: string
+                      description: Year
+                      example: "2022,2023"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /cumst:
+    post:
+      tags:
+        - APIs
+      summary: Joint CSIR - UGC NET Score Card
+      description: API to verify Joint CSIR - UGC NET Score Card.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: cumst
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - ApplicationNo
+                    - Year
+                    
+                    - FullName
+                    
+                    - DOB
+                      
+                  properties:
+                    ApplicationNo:
+                      type: string
+                      description: Application No
+                      example: "22XXXXXXXXXX"
+                       
+                    
+                    Year:
+                      type: string
+                      description: Year
+                      example: ""
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /nccnr:
+    post:
+      tags:
+        - APIs
+      summary: NCET Confirmation Page
+      description: API to verify NCET Confirmation Page.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: nccnr
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - ApplicationNo
+                    
+                    - FullName
+                    
+                    - DOB
+                      
+                  properties:
+                    ApplicationNo:
+                      type: string
+                      description: Application No
+                      example: "23XXXXXXXXXX"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /hmadc:
+    post:
+      tags:
+        - APIs
+      summary: NCHM-JEE Admit Card
+      description: API to verify NCHM-JEE Admit Card.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: hmadc
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - ApplicationNo
+                    
+                    - FullName
+                    
+                    - DOB
+                      
+                  properties:
+                    ApplicationNo:
+                      type: string
+                      description: Application No
+                      example: "23XXXXXXXXXX"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /hmcnr:
+    post:
+      tags:
+        - APIs
+      summary: NCHM-JEE Confirmation Page
+      description: API to verify NCHM-JEE Confirmation Page.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: hmcnr
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf  
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - ApplicationNo
+                    
+                    - FullName
+                    
+                    - DOB
+                      
+                  properties:
+                    ApplicationNo:
+                      type: string
+                      description: Application No
+                      example: "22XXXXXXXXXX"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+              application/pdf:
+                example: Response body contains contents of the certificate in PDF format.
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /nemst:
+    post:
+      tags:
+        - APIs
+      summary: NEET (UG) Score Card
+      description: API to verify NEET (UG) Score Card.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: nemst
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - ApplicationNo
+                    - YEAR
+                    
+                    - FullName
+                    
+                    - DOB
+                      
+                  properties:
+                    ApplicationNo:
+                      type: string
+                      description: Application No
+                      example: "22XXXXXXXXXX"
+                       
+                    
+                    YEAR:
+                      type: string
+                      description: Year
+                      example: ""
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /neadc:
+    post:
+      tags:
+        - APIs
+      summary: NEET Admit Card
+      description: API to verify NEET Admit Card.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: neadc
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - ApplicationNo
+                    - Year
+                    
+                    - FullName
+                    
+                    - DOB
+                      
+                  properties:
+                    ApplicationNo:
+                      type: string
+                      description: Application No
+                      example: "22XXXXXXXXXX"
+                       
+                    
+                    Year:
+                      type: string
+                      description: Year
+                      example: ""
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /necnr:
+    post:
+      tags:
+        - APIs
+      summary: NEET Confirmation Page
+      description: API to verify NEET Confirmation Page.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: necnr
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - ApplicationNo
+                    - Year
+                    
+                    - FullName
+                    
+                    - DOB
+                      
+                  properties:
+                    ApplicationNo:
+                      type: string
+                      description: Application No
+                      example: "22XXXXXXXXXX"
+                       
+                    
+                    Year:
+                      type: string
+                      description: Year
+                      example: "2022,2023"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /uncnr:
+    post:
+      tags:
+        - APIs
+      summary: UGC NET Confirmation Page
+      description: API to verify UGC NET Confirmation Page.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: uncnr
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - ApplicationNo
+                    - Month
+                    
+                    - FullName
+                    
+                    - DOB
+                      
+                  properties:
+                    ApplicationNo:
+                      type: string
+                      description: Application No
+                      example: "22XXXXXXXXXX"
+                       
+                    
+                    Month:
+                      type: string
+                      description: Month
+                      example: "DEC-2021 &amp; JUN-2022,DEC-2022"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /unmst:
+    post:
+      tags:
+        - APIs
+      summary: UGC NET Score Card
+      description: API to verify UGC NET Score Card.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: unmst
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - ApplicationNo
+                    - Year
+                    
+                    - FullName
+                    
+                    - DOB
+                      
+                  properties:
+                    ApplicationNo:
+                      type: string
+                      description: Application No
+                      example: "22XXXXXXXXXX"
+                       
+                    
+                    Year:
+                      type: string
+                      description: Month - Year
+                      example: ""
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+components:
+  schemas:
+    ConsentArtifactSchema:
+      $ref: './common/ConsentArtifactSchema.yaml#/ConsentArtifactSchema'
+    AcademicCertificateSchema:
+      $ref: './common/AcademicCertificateSchema.yaml#/AcademicCertificateSchema'
+          
+  responses:
+    400Error:
+      $ref: './common/ErrorResponse.yaml#/400Error'
+    401Error:
+      $ref: './common/ErrorResponse.yaml#/401Error'
+    404Error:
+      $ref: './common/ErrorResponse.yaml#/404Error'
+    500Error:
+      $ref: './common/ErrorResponse.yaml#/500Error'
+    502Error:
+      $ref: './common/ErrorResponse.yaml#/502Error'
+    503Error:
+      $ref: './common/ErrorResponse.yaml#/503Error'
+    504Error:
+      $ref: './common/ErrorResponse.yaml#/504Error'
+  securitySchemes:
+    clientId:
+      type: apiKey
+      in: header
+      name: X-APISETU-CLIENTID
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-APISETU-APIKEY

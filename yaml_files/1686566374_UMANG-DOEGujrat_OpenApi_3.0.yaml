@@ -1,0 +1,1772 @@
+---
+openapi: 3.0.0
+info:
+  title: Department of Education Gujrat (DoE Gujrat)
+  description: “Department of Education Gujrat (DoE Gujrat) strives to provide incentives/Stipends to the students interested in higher studies,quality research. Gujrat Education Department offers scholarships to the economically weaker section students of Gujarat. All the PG centres, colleges and polytechnics assist the eligible students to avail the scholarship under the direction of Directorate of Students’ Welfare. On UMANG student/applicants can check the application status and download the submitted application for the schemes - “Mukhyamantri Yuva Swavalamban Yojana”, ”Chief Minister Scholarship Scheme” and “Scheme of Developing High Quality Research" <i>[Updated on 12th June 2023]</i>.
+  termsOfService: https://web.umang.gov.in/uaw/ts/v1/en/index.htm
+  contact:
+    name: Provided by - UMANG
+    url: https://web.umang.gov.in
+  version: 1.0.0
+servers:
+  - url: https://apigw.umangapp.in
+    description: Production Server
+security: 
+  - x-api-key: []
+paths:
+  /DOEGujratApi/ws1/shodh/getstudentdata:
+    post:
+      tags:
+        - Shodh Student Data
+      summary: Get the student data in shodh scheme
+      description: This API is used to get the student data in shodh scheme
+      operationId: DOEGujratApi/ws1/shodh/getstudentdata
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: en
+                lon:
+                  type: string
+                  description: longitude
+                  example: en
+                lac:
+                  type: string
+                  description: lac
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 1
+                usrid:
+                  type: string
+                  description: user id
+                  example: 191
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1310
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                did:
+                  type: string
+                  description: Device Id
+                  example: 122
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 420
+                subsid:
+                  type: string
+                  description: subsid
+                  example: subscriber Id
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: subscriber Id2
+                schYear:
+                  type: string
+                  description: sch year
+                  example: CB_Public_user
+                password:
+                  type: string
+                  description: password
+                  example: $P@s*0!d(b^2o!9
+                emailId:
+                  type: string
+                  description: emailId
+                  example: gaurangpatel.2072@gmail.com
+                timeStamp:
+                  type: string
+                  description: timestamp
+                  example: Dec  6 2021  3:41PM
+                apiId:
+                  type: string
+                  description: apiid
+                  example: OOie2w9ouf+9I7Csissd2Q==
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    properties:
+                      GetstudentdataResult:
+                        type: object
+                        properties:
+                          MobileNo:
+                            type: string
+                            description: mobile no
+                            example: 8485923010
+                          UniversityCode:
+                            type: string
+                            description: university code
+                            example: 183
+                          EmailID:
+                            type: string
+                            description: emailId
+                            example: gaurangpatel.2072@gmail.com 
+                          birthdate:
+                            type: string
+                            description: birth date
+                            example: 01/08/1996
+                          Reg_year:
+                            type: string
+                            description: registered year
+                            example: 2019 
+                          committee_Rejected_reason:
+                            type: string
+                            description: committee rejected reason
+                            example: abc
+                          University_Name:
+                            type: string
+                            description: university name
+                            example: BHAKTA KAVI NARSINH MEHTA UNIVERSITY
+                          Application_Verified_by_University_NodalOfficer:
+                            type: string
+                            description: application verified by university nodal officer
+                            example: Verified 
+                          Univeristy_Rejected_Reason:
+                            type: string
+                            description: university rejected reason
+                            example: abc
+                          Gender:
+                            type: string
+                            description: gender
+                            example: Male 
+                          Student:
+                            type: string
+                            description: student
+                            example: PATEL GAURANG BAVCHANDBHAI
+                          StudentId:
+                            type: string
+                            description: studentId
+                            example: Y19U40
+                          Application_Submitted:
+                            type: string
+                            description: application  submitted
+                            example: Yes
+                          Application_Approved_by_Scrutiny_Committee:
+                            type: string
+                            description: application approved by scrutiny committee
+                            example: Verified                             
+        "400":
+          description: Bad Request/Validation Error
+  /DOEGujratApi/ws1/shodh/getstudentprint:
+    post:
+      tags:
+        - Shodh Student Print Data
+      summary: Get shodh student data print API
+      description: This API is used to get the student print for SHODH
+      operationId: DOEGujratApi/ws1/shodh/getstudentprint
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: en
+                lon:
+                  type: string
+                  description: longitude
+                  example: en
+                lac:
+                  type: string
+                  description: lac
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 1
+                usrid:
+                  type: string
+                  description: user id
+                  example: 191
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1310
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                did:
+                  type: string
+                  description: Device Id
+                  example: 122
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 420
+                subsid:
+                  type: string
+                  description: subsid
+                  example: subscriber Id
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: subscriber Id2
+                schYear:
+                  type: string
+                  description: sch year
+                  example: 2019
+                password:
+                  type: string
+                  description: password
+                  example: $P@s*0!d(b^2o!9
+                emailId:
+                  type: string
+                  description: emailId
+                  example: gaurangpatel.2072@gmail.com
+                timeStamp:
+                  type: string
+                  description: timeStamp
+                  example: Dec  6 2021  3:41PM
+                apiId:
+                  type: string
+                  description: apiId
+                  example: OOie2w9ouf+9I7Csissd2Q==
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                     type: object
+                     properties:
+                      GetstudenprintResult:
+                        type: object
+                        properties:
+                          code:
+                            type: string
+                            description: code
+                            example: 2004
+                          binarystring:
+                            type: string
+                            description: binary string
+                            example: null
+                          text:
+                            type: string
+                            description: text
+                            example: Umang Service Intitiated Timestamp already exists.Pl check and call the Service Again.
+        "400":
+          description: Bad Request/Validation Error
+  /DOEGujratApi/ws1/mysy/getstudentdata:
+    post:
+      tags:
+        - MYSY Student Data
+      summary: Get the student data in MYSY scheme
+      description: This api is used to get the student data in MYSY scheme
+      operationId: DOEGujratApi/ws1/mysy/getstudentdata
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: en
+                lon:
+                  type: string
+                  description: longitude
+                  example: en
+                lac:
+                  type: string
+                  description: lac
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 1
+                usrid:
+                  type: string
+                  description: user id
+                  example: 191
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1310
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                did:
+                  type: string
+                  description: Device Id
+                  example: 122
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 420
+                subsid:
+                  type: string
+                  description: subsid
+                  example: subscriber Id
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: subscriber Id2
+                app:
+                  type: string
+                  description: app
+                  example: 0
+                renewalNo:
+                  type: string
+                  description: renewalNo
+                  example: 0
+                standard:
+                  type: string
+                  description: standard
+                  example: H
+                board:
+                  type: string
+                  description: board
+                  example: 1
+                stream:
+                  type: string
+                  description: stream
+                  example: 1
+                passingYear:
+                  type: string
+                  description: passingYear
+                  example: 2020
+                seatNo:
+                  type: string
+                  description: seatNo
+                  example: KCG123
+                password:
+                  type: string
+                  description: password
+                  example: V6OEY
+                timeStamp:
+                  type: string
+                  description: timeStamp
+                  example: 10/10/2012
+                apiId:
+                  type: string
+                  description: apiId
+                  example: +lbPBOlVmDICYvLKkQy2hA==                
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    properties:
+                      GetstudataResult:
+                        type: object
+                        properties:
+                          Help_Center:
+                            type: string
+                            description: help center
+                            example: --
+                          Tuition_Sahay_info:
+                            type: string
+                            description: tuition sahay info
+                            example: --
+                          Pending_document_upload_status:
+                            type: string
+                            description: pending document upload status
+                            example: --
+                          Sahay_disbursed_to_student:
+                            type: string
+                            description: sahay disbursed to student
+                            example: Done
+                          Application_sanctioned_by_commissionerate:
+                            type: string
+                            description: application sanctioned by commissionerate
+                            example: --
+                          Reason:
+                            type: string
+                            description: reason
+                            example: abc
+                          Scholarship_year:
+                            type: string
+                            description: scholarship year
+                            example: 2020
+                          Department:
+                            type: string
+                            description: department
+                            example: Higher
+                          Book_Sahay_info:
+                            type: string
+                            description: book sahay info
+                            example: --
+                          Student_Name:
+                            type: string
+                            description: student name
+                            example: KCG TEST
+                          Remarks:
+                            type: string
+                            description: remarks
+                            example: --
+                          Phase_info:
+                            type: string
+                            description: Phase info
+                            example: --
+                          Applicaion_type:
+                            type: string
+                            description: application  type
+                            example: Fresh
+                          authentic:
+                            type: string
+                            description: authentic
+                            example: Y
+                          verified_submitted_at_help_center:
+                            type: string
+                            description: verified submitted at help center
+                            example: --
+                          Application_locked_by_student:
+                            type: string
+                            description: Application_locked_by_student
+                            example: Done
+                          Hostel_Sahay_info:
+                            type: string
+                            description: Hostel_Sahay_info
+                            example: --
+                          Co_ordinator:
+                            type: string
+                            description: Co_ordinator
+                            example: --
+                          Seat_Enrollment:
+                            type: string
+                            description: seat enrollment
+                            example: KCG123                           
+        "400":
+          description: Bad Request/Validation Error
+  /DOEGujratApi/ws1/mysy/getstudentprint:
+    post:
+      tags:
+        - MYSY Student Print Data
+      summary: Get the student print data in mysy scheme
+      description: This api is used to get the student print data in mysy scheme
+      operationId: DOEGujratApi/ws1/mysy/getstudentprint
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: en
+                lon:
+                  type: string
+                  description: longitude
+                  example: en
+                lac:
+                  type: string
+                  description: lac
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 1
+                usrid:
+                  type: string
+                  description: user id
+                  example: 191
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1310
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                did:
+                  type: string
+                  description: Device Id
+                  example: 122
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 420
+                subsid:
+                  type: string
+                  description: subsid
+                  example: subscriber Id
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: subscriber Id2
+                app:
+                  type: string
+                  description: app
+                  example: 0
+                renewalNo:
+                  type: string
+                  description: renewalNo
+                  example: 0
+                standard:
+                  type: string
+                  description: standard
+                  example: H
+                board:
+                  type: string
+                  description: board
+                  example: 1
+                stream:
+                  type: string
+                  description: stream
+                  example: 1
+                passingYear:
+                  type: string
+                  description: passingYear
+                  example: 2020
+                seatNo:
+                  type: string
+                  description: seatNo
+                  example: KCG123
+                password:
+                  type: string
+                  description: password
+                  example: V6OEY
+                timeStamp:
+                  type: string
+                  description: timeStamp
+                  example: 10/10/2012
+                apiId:
+                  type: string
+                  description: stream
+                  example: +lbPBOlVmDICYvLKkQy2hA== 
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    properties:
+                      GetprntResult:
+                        type: string
+                        description: get print result
+                        example: JVBERi0xLjMNCjEgMCBvYmoNClsvUERGIC9UZXh0IC9JbWFnZUIgL0ltYWdlQyAvSW1hZ2VJXQ0KZW5kb2JqDQoxMCAwIG9iag0KPDwgL0xlbmd0aCAzOTA5IC9GaWx0ZXIgL0ZsYXRlRGVjb2RlID4+IHN0cmVhbSANClgJxVxbc9s2Fn7fmf4HPLVJJ2FwB5mXXVm2Y09rx7WUdDLrfaAl2GIjiSpFpev99XsOeBF0dSDtrNOM5dDmh3PDwXeAg/+DQpzdGFydHhyZWYNCjI4OD                          
+        "400":
+          description: Bad Request/Validation Error
+  /DOEGujratApi/ws1/mysy/getstudentmaster:
+    post:
+      tags:
+        - MYSY Student Master Data
+      summary: Get the student master data in mysy scheme
+      description: This api is used to get the student master data in mysy scheme
+      operationId: DOEGujratApi/ws1/mysy/getstudentmaster
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: en
+                lon:
+                  type: string
+                  description: longitude
+                  example: en
+                lac:
+                  type: string
+                  description: lac
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 1
+                usrid:
+                  type: string
+                  description: user id
+                  example: 191
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1310
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                did:
+                  type: string
+                  description: Device Id
+                  example: 122
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 420
+                subsid:
+                  type: string
+                  description: subsid
+                  example: subscriber Id
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: subscriber Id2
+                timeStamp:
+                  type: string
+                  description: timestamp
+                  example: Dec  6 2021  3:41PM
+                apiId:
+                  type: string
+                  description: apiid
+                  example: OOie2w9ouf+9I7Csissd2Q==
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    properties:
+                      GetmastResult:
+                        type: object
+                        properties:
+                          application_typ:
+                            type: array
+                            description: application type items
+                            items:
+                              type: object
+                              properties:
+                                text:
+                                  type: string
+                                  description: text
+                                  example: New  
+                                value:
+                                  type: string
+                                  description: value
+                                  example: 1
+                          Standard:
+                            type: array
+                            description: standard items
+                            items:
+                              type: object
+                              properties:
+                                text:
+                                  type: string
+                                  description: text
+                                  example: 10th(SSC)  
+                                value:
+                                  type: string
+                                  description: value
+                                  example: S
+                          Stream:
+                            type: array
+                            description: stream items
+                            items:
+                              type: object
+                              properties:
+                                text:
+                                  type: string
+                                  description: text
+                                  example: Science  
+                                value:
+                                  type: string
+                                  description: value
+                                  example: 1
+                                value1:
+                                  type: string
+                                  description: value1
+                                  example: show                                 
+                          Passing_Year:
+                            type: array
+                            description: passing year items
+                            items:
+                              type: object
+                              properties:
+                                text:
+                                  type: string
+                                  description: text
+                                  example: 2019
+                                value:
+                                  type: string
+                                  description: value
+                                  example: 2019
+                          Renewal:
+                            type: array
+                            description: renewal items
+                            items:
+                              type: object
+                              properties:
+                                text:
+                                  type: string
+                                  description: text
+                                  example: 0 
+                                value:
+                                  type: string
+                                  description: value
+                                  example: 0
+                          board:
+                            type: array
+                            description: application type values
+                            items:
+                              type: object
+                              properties:
+                                text:
+                                  type: string
+                                  description: text
+                                  example: Gujarat Board  
+                                value:
+                                  type: string
+                                  description: value
+                                  example: 1   
+                                value1:
+                                  type: string
+                                  description: value1
+                                  example: NoDtod                                  
+        "400":
+          description: Bad Request/Validation Error
+  /DOEGujratApi/ws1/cmss/getstudentdata:
+    post:
+      tags:
+        - CMSS Student Data
+      summary: Get the student data in cmss scheme
+      description: This api is used to get the student data in cmss scheme
+      operationId: DOEGujratApi/ws1/cmss/getstudentdata
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: en
+                lon:
+                  type: string
+                  description: longitude
+                  example: en
+                lac:
+                  type: string
+                  description: lac
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 1
+                usrid:
+                  type: string
+                  description: user id
+                  example: 191
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1310
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                did:
+                  type: string
+                  description: Device Id
+                  example: 122
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 420
+                subsid:
+                  type: string
+                  description: subsid
+                  example: subscriber Id
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: subscriber Id2
+                app:
+                  type: string
+                  description: app
+                  example: 0
+                renewalNo:
+                  type: string
+                  description: renewalNo
+                  example: 0
+                standard:
+                  type: string
+                  description: standard
+                  example: H
+                board:
+                  type: string
+                  description: board
+                  example: 1
+                stream:
+                  type: string
+                  description: stream
+                  example: 1
+                passingYear:
+                  type: string
+                  description: passingYear
+                  example: 2020
+                seatNo:
+                  type: string
+                  description: seatNo
+                  example: KCG123
+                password:
+                  type: string
+                  description: password
+                  example: V6OEY
+                timeStamp:
+                  type: string
+                  description: timeStamp
+                  example: 10/10/2012
+                apiId:
+                  type: string
+                  description: stream
+                  example: +lbPBOlVmDICYvLKkQy2hA==
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    properties:
+                      GetstudataResult:
+                        type: object
+                        properties:
+                          Help_Center:
+                            type: string
+                            description: help center
+                            example: --
+                          Tuition_Sahay_info:
+                            type: string
+                            description: tuition sahay info
+                            example: --
+                          Pending_document_upload_status:
+                            type: string
+                            description: pending document upload status
+                            example: --
+                          Sahay_disbursed_to_student:
+                            type: string
+                            description: sahay disbursed to student
+                            example: Done
+                          Application_sanctioned_by_commissionerate:
+                            type: string
+                            description: application sanctioned by commissionerate
+                            example: --
+                          Reason:
+                            type: string
+                            description: reason
+                            example: abc
+                          Scholarship_year:
+                            type: string
+                            description: scholarship year
+                            example: 2020
+                          Department:
+                            type: string
+                            description: department
+                            example: Higher
+                          Book_Sahay_info:
+                            type: string
+                            description: book sahay info
+                            example: --
+                          Student_Name:
+                            type: string
+                            description: student name
+                            example: KCG TEST
+                          Remarks:
+                            type: string
+                            description: remarks
+                            example: --
+                          Phase_info:
+                            type: string
+                            description: Phase info
+                            example: --
+                          Applicaion_type:
+                            type: string
+                            description: application  type
+                            example: Fresh
+                          authentic:
+                            type: string
+                            description: authentic
+                            example: Y
+                          verified_submitted_at_help_center:
+                            type: string
+                            description: verified submitted at help center
+                            example: --
+                          Application_locked_by_student:
+                            type: string
+                            description: Application_locked_by_student
+                            example: Done
+                          Hostel_Sahay_info:
+                            type: string
+                            description: Hostel_Sahay_info
+                            example: --
+                          Co_ordinator:
+                            type: string
+                            description: Co_ordinator
+                            example: --
+                          Seat_Enrollment:
+                            type: string
+                            description: seat enrollment
+                            example: KCG123
+        "400":
+          description: Bad Request/Validation Error  
+  /DOEGujratApi/ws1/cmss/getstudentprint:
+    post:
+      tags:
+        - CMSS Student Print Data
+      summary: Get the student print data in cmss scheme
+      description: This api is used to get the student print data in cmss scheme
+      operationId: DOEGujratApi/ws1/cmss/getstudentprint
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: en
+                lon:
+                  type: string
+                  description: longitude
+                  example: en
+                lac:
+                  type: string
+                  description: lac
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 1
+                usrid:
+                  type: string
+                  description: user id
+                  example: 191
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1310
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                did:
+                  type: string
+                  description: Device Id
+                  example: 122
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 420
+                subsid:
+                  type: string
+                  description: subsid
+                  example: subscriber Id
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: subscriber Id2
+                app:
+                  type: string
+                  description: app
+                  example: 0
+                renewalNo:
+                  type: string
+                  description: renewalNo
+                  example: 0
+                standard:
+                  type: string
+                  description: standard
+                  example: H
+                board:
+                  type: string
+                  description: board
+                  example: 1
+                stream:
+                  type: string
+                  description: stream
+                  example: 1
+                passingYear:
+                  type: string
+                  description: passingYear
+                  example: 2020
+                seatNo:
+                  type: string
+                  description: seatNo
+                  example: KCG123
+                password:
+                  type: string
+                  description: password
+                  example: V6OEY
+                timeStamp:
+                  type: string
+                  description: timeStamp
+                  example: 10/10/2012
+                apiId:
+                  type: string
+                  description: stream
+                  example: +lbPBOlVmDICYvLKkQy2hA== 
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    properties:
+                      GetprntResult:
+                        type: string
+                        description: print result
+                        example: JVBERi0xLjMNCjEgMCBvYmoNClsvUERGIC9UZXh0IC9JbWFnZUIgL0ltYWdlQyAvSW1hZ2VJXQ0KZW5kb2JqDQoxMCAwIG9iag0KPDwgL0xlbmd0aCAzOTA5IC9GaWx0ZXIgL0ZsYXRlRGVjb2RlID4+IHN0cmVhbSANClgJxVxbc9s2Fn7fmf4HPLVJJ2FwB5mXXVm2Y09rx7WUdDLrfaAl2GIjiSpFpev99XsOeBF0dSDtrNOM5dDmh3PDwXeAg/+DQpzdGFydHhyZWYNCjI4OD                          
+        "400":
+          description: Bad Request/Validation Error
+  /DOEGujratApi/ws1/cmss/getstudentmaster:
+    post:
+      tags:
+        - CMSS Student Master Data
+      summary: Get the student master data in cmss scheme
+      description: This api is used to get the student master data in cmss scheme
+      operationId: DOEGujratApi/ws1/cmss/getstudentmaster
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: en
+                lon:
+                  type: string
+                  description: longitude
+                  example: en
+                lac:
+                  type: string
+                  description: lac
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 1
+                usrid:
+                  type: string
+                  description: user id
+                  example: 191
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1310
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                did:
+                  type: string
+                  description: Device Id
+                  example: 122
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 420
+                subsid:
+                  type: string
+                  description: subsid
+                  example: subscriber Id
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: subscriber Id2
+                timeStamp:
+                  type: string
+                  description: timestamp
+                  example: Dec  6 2021  3:41PM
+                apiId:
+                  type: string
+                  description: apiid
+                  example: OOie2w9ouf+9I7Csissd2Q==
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    properties:
+                      GetmastResult:
+                        type: object
+                        properties:
+                          application_typ:
+                            type: array
+                            description: application type items
+                            items:
+                              type: object
+                              properties:
+                                text:
+                                  type: string
+                                  description: text
+                                  example: New  
+                                value:
+                                  type: string
+                                  description: value
+                                  example: 1
+                          Standard:
+                            type: array
+                            description: standard items
+                            items:
+                              type: object
+                              properties:
+                                text:
+                                  type: string
+                                  description: text
+                                  example: 10th(SSC)  
+                                value:
+                                  type: string
+                                  description: value
+                                  example: S
+                          Stream:
+                            type: array
+                            description: stream items
+                            items:
+                              type: object
+                              properties:
+                                text:
+                                  type: string
+                                  description: text
+                                  example: Science  
+                                value:
+                                  type: string
+                                  description: value
+                                  example: 1
+                                value1:
+                                  type: string
+                                  description: value1
+                                  example: show                                 
+                          Passing_Year:
+                            type: array
+                            description: passing year items
+                            items:
+                              type: object
+                              properties:
+                                text:
+                                  type: string
+                                  description: text
+                                  example: 2019
+                                value:
+                                  type: string
+                                  description: value
+                                  example: 2019
+                          Renewal:
+                            type: array
+                            description: renewal items
+                            items:
+                              type: object
+                              properties:
+                                text:
+                                  type: string
+                                  description: text
+                                  example: 0 
+                                value:
+                                  type: string
+                                  description: value
+                                  example: 0
+                          board:
+                            type: array
+                            description: application type values
+                            items:
+                              type: object
+                              properties:
+                                text:
+                                  type: string
+                                  description: text
+                                  example: Gujarat Board  
+                                value:
+                                  type: string
+                                  description: value
+                                  example: 1   
+                                value1:
+                                  type: string
+                                  description: value1
+                                  example: NoDtod                                  
+        "400":
+          description: Bad Request/Validation Error          
+components:
+  securitySchemes:
+    x-api-key:
+      type: apiKey
+      name: x-api-key
+      in: header

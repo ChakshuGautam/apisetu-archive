@@ -1,0 +1,62 @@
+openapi: 3.0.3
+info:
+  title: Village/Locality Based Pin Mapping 
+  description: Locality based Pincode contains all the pin-code list across India with information like State, District, sub district, village, locality and Office Name. Postal Index Number (PIN) or PIN Code is a 6 digit code of Post Office numbering used by India Post. The PIN was introduced on August 15, 1972. There are 9 PIN regions in the country. The first 8 are geographical regions and the digit 9 is reserved for the Army Postal Service. The first digit indicates one of the regions. The first 2 digits together indicate the sub region or one of the postal circles. The first 3 digits together indicate a sorting / revenue district. The last 3 digits refer to the delivery Post Office. Many localities are covered by a delivery Post office.<p><b>To avail complete data and its API, please visit the link below</b>.<p>[Open Government Data Platform - Resource Page](https://data.gov.in/resource/villagelocality-based-pin-mapping-16th-march-2017#api)
+  version: 2.2.0
+servers:
+  - url: https://api.data.gov.in
+paths:
+  /resource/9115b89c-7a80-4f54-9b06-21086e0f0bd7:
+    get:
+      tags:
+        - Resource
+      summary: Get data of Village/Locality based Pin mapping as on 16th March 2017
+      description: |
+        By passing in the appropriate options, you can get resource level data
+      parameters:
+        - name: api-key
+          in: query
+          description: >-
+            User API Key to test this API is
+            "579b464db66ec23bdd0000017db212e92c76426c51124c7fc0555235". This is a sample key, which will return maximum of 10 records at a time. To avail complete data via your personal key, [click here](https://data.gov.in/resource/villagelocality-based-pin-mapping-16th-march-2017#api)
+          required: true
+          schema:
+            type: string
+            default: 579b464db66ec23bdd0000017db212e92c76426c51124c7fc0555235
+        - name: format
+          in: query
+          description: output format(i.e. json/xml/csv) (default json)
+          required: true
+          schema:
+            type: string
+            enum:
+              - xml
+              - json
+              - csv
+            example: xml
+        - name: offset
+          in: query
+          description: number of records to skip for pagination
+          required: false
+          schema:
+            type: integer
+            minimum: 0
+            format: int32
+            example: '0'
+        - name: limit
+          in: query
+          description: maximum number of records to return
+          required: false
+          schema:
+            type: integer
+            maximum: 1000
+            minimum: 0
+            format: int32
+            example: 10
+      responses:
+        '200':
+          description: 'OK: The request was successful.'
+        '400':
+          description: 'Bad Request: The request is malformed, has bad input parameters or has client-side errors.'
+        '403':
+          description: 'Forbidden: Access to the requested resource is forbidden.'

@@ -1,0 +1,657 @@
+info:
+  title: AI
+  version: 1.0.0
+  x-ibm-name: predict-xray-clinicaldata
+  description: This API provide Lung Abnormality prediction using Chest Xray and
+    clinical data. It accept lung xray in dicom, png or jpeg format. Fileupload
+    limit is 30 MB. It accepts clinical inputs like Age, Gender, BPL, Weight,
+    Height, SystolicBP, DiastolicBP, Fever, Cough, WeightLoss, BloodSputum,
+    ChestPain, Expectoration, Fatigue, NightSweats, AppetiteLoss, Hemoglobin,
+    BloodSugar, Smoker, Alcoholic etc
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/nic/ai
+tags:
+  - name: classification
+paths:
+  /ntbps/v1/predict-xray-clinicaldata/:
+    post:
+      tags:
+        - Predict xray clinicaldata
+      summary: Prediction Via Xray And Clinicaldata
+      responses:
+        "200":
+          content:
+            application/json:
+              schema: {}
+              example:
+                message: successful
+                participant_id: 008-23-AS-BKS-0002-00001
+                xray_model_score: "0.911"
+                clinical_model_score: "0.1166"
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                type: object
+                title: HTTPValidationError
+                properties:
+                  detail:
+                    type: array
+                    items:
+                      type: object
+                      title: ValidationError
+                      required:
+                        - loc
+                        - msg
+                        - type
+                      properties:
+                        loc:
+                          type: array
+                          items:
+                            anyOf:
+                              - type: string
+                              - type: integer
+                          title: Location
+                        msg:
+                          type: string
+                          title: Message
+                        type:
+                          type: string
+                          title: Error Type
+                    title: Detail
+          description: Validation Error
+      description: "<p>\\nChest X-Ray and Clinical data model prediction. Field name
+        is set as per the dataset recieved for training. <br>Return json with
+        fields.\\n</p>\\n<ul>\\n<li>participant_id: ID of
+        participant</li>\\n<li>xray_model_score: score ranges from 0(normal) to
+        1(abnormal) by chest xray model. Higher the score higher the posiblity
+        of abnormality</li>\\n<li>clinical_model_score: score ranges from
+        0(normal) to 1(abnormal) by clinical model. Higher the score higher the
+        posiblity of abnormality </li>\\n<li>message: general
+        message</li>\\n\\n</ul>"
+      operationId: prediction_via_xray_and_clinicaldata_api_v1_predict_xray_clinicaldata_post
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              title: Body_prediction_via_xray_and_clinicaldata_api_v1_predict_xray_clinicaldata_post
+              required:
+                - participant_id
+                - Xray
+                - Age
+                - Gender
+                - BPL
+                - Weight
+                - Height
+                - SystolicBP
+                - DiastolicBP
+                - Fever
+                - Cough
+                - WeightLoss
+                - BloodSputum
+                - ChestPain
+                - Expectoration
+                - Fatigue
+                - NightSweats
+                - AppetiteLoss
+                - Hemoglobin
+                - BloodSugar
+                - Smoker
+                - Alcoholic
+                - HyperTension
+              properties:
+                Age:
+                  type: integer
+                  title: Age
+                  format: int32
+                  maximum: 150
+                  minimum: 0
+                BPL:
+                  enum:
+                    - yes
+                    - no
+                  type: string
+                  title: Bool
+                Xray:
+                  type: string
+                  title: Xray
+                  format: binary
+                  description: image file - jpeg/jpg/png or dicom
+                Cough:
+                  enum:
+                    - yes
+                    - no
+                  type: string
+                  title: Bool
+                Fever:
+                  enum:
+                    - yes
+                    - no
+                  type: string
+                  title: Bool
+                Gender:
+                  enum:
+                    - male
+                    - female
+                  type: string
+                  title: Gender
+                Height:
+                  type: number
+                  title: Height
+                  maximum: 1000
+                  minimum: 1
+                Smoker:
+                  enum:
+                    - past-smoker
+                    - current-smoker
+                    - non-smoker
+                  type: string
+                  title: Smoker
+                Weight:
+                  type: number
+                  title: Weight
+                  maximum: 1000
+                  minimum: 1
+                Fatigue:
+                  enum:
+                    - yes
+                    - no
+                  type: string
+                  title: Bool
+                Alcoholic:
+                  enum:
+                    - past-alcoholic
+                    - current-alcoholic
+                    - non-alcoholic
+                  type: string
+                  title: Alchoholic
+                ChestPain:
+                  enum:
+                    - yes
+                    - no
+                  type: string
+                  title: Bool
+                BloodSugar:
+                  type: number
+                  title: Bloodsugar
+                Hemoglobin:
+                  type: number
+                  title: Hemoglobin
+                SystolicBP:
+                  type: number
+                  title: Systolicbp
+                  maximum: 300
+                  minimum: 1
+                WeightLoss:
+                  enum:
+                    - yes
+                    - no
+                  type: string
+                  title: Bool
+                BloodSputum:
+                  enum:
+                    - yes
+                    - no
+                  type: string
+                  title: Bool
+                DiastolicBP:
+                  type: number
+                  title: Diastolicbp
+                  maximum: 300
+                  minimum: 1
+                NightSweats:
+                  enum:
+                    - yes
+                    - no
+                  type: string
+                  title: Bool
+                AppetiteLoss:
+                  enum:
+                    - yes
+                    - no
+                  type: string
+                  title: Bool
+                HyperTension:
+                  enum:
+                    - yes
+                    - no
+                  type: string
+                  title: Bool
+                Expectoration:
+                  enum:
+                    - yes
+                    - no
+                  type: string
+                  title: Bool
+                participant_id:
+                  type: string
+                  title: Participant Id
+                  maxLength: 50
+        required: true
+openapi: 3.0.2
+servers:
+  - url: https://degateway.napix.gov.in:443/nic/ai
+    description: ""
+security:
+  - client-id: []
+    client-secret: []
+components:
+  schemas:
+    Bool:
+      enum:
+        - yes
+        - no
+      type: string
+      title: Bool
+    Gender:
+      enum:
+        - male
+        - female
+      type: string
+      title: Gender
+    Smoker:
+      enum:
+        - past-smoker
+        - current-smoker
+        - non-smoker
+      type: string
+      title: Smoker
+    Alchoholic:
+      enum:
+        - past-alcoholic
+        - current-alcoholic
+        - non-alcoholic
+      type: string
+      title: Alchoholic
+    clinical_input:
+      type: object
+      title: clinical_input
+      required:
+        - participant_id
+        - Age
+        - GenderHyper
+        - BPL
+        - Weight
+        - Height
+        - SystolicBP
+        - DiastolicBP
+        - Fever
+        - Cough
+        - WeightLoss
+        - BloodSputum
+        - ChestPain
+        - Expectoration
+        - Fatigue
+        - NightSweats
+        - AppetiteLoss
+        - Hemoglobin
+        - BloodSugar
+        - Smoker
+        - Alcoholic
+      properties:
+        Age:
+          type: integer
+          title: Age
+          format: int32
+          maximum: 150
+          minimum: 0
+        BPL:
+          enum:
+            - yes
+            - no
+          type: string
+          title: Bool
+        Cough:
+          enum:
+            - yes
+            - no
+          type: string
+          title: Bool
+        Fever:
+          enum:
+            - yes
+            - no
+          type: string
+          title: Bool
+        Gender:
+          enum:
+            - male
+            - female
+          type: string
+          title: Gender
+        Height:
+          type: number
+          title: Height
+          maximum: 1000
+          minimum: 1
+        Smoker:
+          enum:
+            - past-smoker
+            - current-smoker
+            - non-smoker
+          type: string
+          title: Smoker
+        Weight:
+          type: number
+          title: Weight
+          maximum: 1000
+          minimum: 1
+        Fatigue:
+          enum:
+            - yes
+            - no
+          type: string
+          title: Bool
+        Alcoholic:
+          enum:
+            - past-alcoholic
+            - current-alcoholic
+            - non-alcoholic
+          type: string
+          title: Alchoholic
+        ChestPain:
+          enum:
+            - yes
+            - no
+          type: string
+          title: Bool
+        BloodSugar:
+          type: integer
+          title: Bloodsugar
+          format: int32
+          maximum: 1000
+          minimum: 1
+        Hemoglobin:
+          type: number
+          title: Hemoglobin
+          maximum: 1000
+          minimum: 1
+        SystolicBP:
+          type: integer
+          title: Systolicbp
+          format: int32
+          maximum: 300
+          minimum: 1
+        WeightLoss:
+          enum:
+            - yes
+            - no
+          type: string
+          title: Bool
+        BloodSputum:
+          enum:
+            - yes
+            - no
+          type: string
+          title: Bool
+        DiastolicBP:
+          type: integer
+          title: Diastolicbp
+          format: int32
+          maximum: 300
+          minimum: 1
+        NightSweats:
+          enum:
+            - yes
+            - no
+          type: string
+          title: Bool
+        AppetiteLoss:
+          enum:
+            - yes
+            - no
+          type: string
+          title: Bool
+        Expectoration:
+          enum:
+            - yes
+            - no
+          type: string
+          title: Bool
+        participant_id:
+          type: string
+          title: Participant Id
+          maxLength: 50
+    ValidationError:
+      type: object
+      title: ValidationError
+      required:
+        - loc
+        - msg
+        - type
+      properties:
+        loc:
+          type: array
+          items:
+            anyOf:
+              - type: string
+              - type: integer
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+    HTTPValidationError:
+      type: object
+      title: HTTPValidationError
+      properties:
+        detail:
+          type: array
+          items:
+            type: object
+            title: ValidationError
+            required:
+              - loc
+              - msg
+              - type
+            properties:
+              loc:
+                type: array
+                items:
+                  anyOf:
+                    - type: string
+                    - type: integer
+                title: Location
+              msg:
+                type: string
+                title: Message
+              type:
+                type: string
+                title: Error Type
+          title: Detail
+    Body_prediction_via_xray_api_v1_predict_xray_post:
+      type: object
+      title: Body_prediction_via_xray_api_v1_predict_xray_post
+      required:
+        - participant_id
+        - files
+      properties:
+        files:
+          type: string
+          title: Files
+          format: binary
+          description: image file - jpeg/jpg/png or dicom
+        participant_id:
+          type: string
+          title: Participant Id
+    Body_prediction_via_xray_and_clinicaldata_api_v1_predict_xray_clinicaldata_post:
+      type: object
+      title: Body_prediction_via_xray_and_clinicaldata_api_v1_predict_xray_clinicaldata_post
+      required:
+        - participant_id
+        - Xray
+        - Age
+        - Gender
+        - BPL
+        - Weight
+        - Height
+        - SystolicBP
+        - DiastolicBP
+        - Fever
+        - Cough
+        - WeightLoss
+        - BloodSputum
+        - ChestPain
+        - Expectoration
+        - Fatigue
+        - NightSweats
+        - AppetiteLoss
+        - Hemoglobin
+        - BloodSugar
+        - Smoker
+        - Alcoholic
+        - HyperTension
+      properties:
+        Age:
+          type: integer
+          title: Age
+          format: int32
+          maximum: 150
+          minimum: 0
+        BPL:
+          enum:
+            - yes
+            - no
+          type: string
+          title: Bool
+        Xray:
+          type: string
+          title: Xray
+          format: binary
+          description: image file - jpeg/jpg/png or dicom
+        Cough:
+          enum:
+            - yes
+            - no
+          type: string
+          title: Bool
+        Fever:
+          enum:
+            - yes
+            - no
+          type: string
+          title: Bool
+        Gender:
+          enum:
+            - male
+            - female
+          type: string
+          title: Gender
+        Height:
+          type: number
+          title: Height
+          maximum: 1000
+          minimum: 1
+        Smoker:
+          enum:
+            - past-smoker
+            - current-smoker
+            - non-smoker
+          type: string
+          title: Smoker
+        Weight:
+          type: number
+          title: Weight
+          maximum: 1000
+          minimum: 1
+        Fatigue:
+          enum:
+            - yes
+            - no
+          type: string
+          title: Bool
+        Alcoholic:
+          enum:
+            - past-alcoholic
+            - current-alcoholic
+            - non-alcoholic
+          type: string
+          title: Alchoholic
+        ChestPain:
+          enum:
+            - yes
+            - no
+          type: string
+          title: Bool
+        BloodSugar:
+          type: number
+          title: Bloodsugar
+        Hemoglobin:
+          type: number
+          title: Hemoglobin
+        SystolicBP:
+          type: number
+          title: Systolicbp
+          maximum: 300
+          minimum: 1
+        WeightLoss:
+          enum:
+            - yes
+            - no
+          type: string
+          title: Bool
+        BloodSputum:
+          enum:
+            - yes
+            - no
+          type: string
+          title: Bool
+        DiastolicBP:
+          type: number
+          title: Diastolicbp
+          maximum: 300
+          minimum: 1
+        NightSweats:
+          enum:
+            - yes
+            - no
+          type: string
+          title: Bool
+        AppetiteLoss:
+          enum:
+            - yes
+            - no
+          type: string
+          title: Bool
+        HyperTension:
+          enum:
+            - yes
+            - no
+          type: string
+          title: Bool
+        Expectoration:
+          enum:
+            - yes
+            - no
+          type: string
+          title: Bool
+        participant_id:
+          type: string
+          title: Participant Id
+          maxLength: 50
+  securitySchemes:
+    client-id:
+      in: header
+      name: client-id
+      type: apiKey
+      x-key-type: client_id
+    client-secret:
+      in: header
+      name: client-secret
+      type: apiKey
+      x-key-type: client_secret
+x-ibm-endpoints:
+  - url: https://degateway.napix.gov.in:443/nic/ai
+    description: ""
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  enforced: true
+  testable: true

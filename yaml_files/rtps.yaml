@@ -1,0 +1,1436 @@
+openapi: 3.0.3
+info:  
+  title: RTPS Assam, Assam
+  description:  >- 
+                ARTPPG Department through Assam Citizen Centric Service Delivery Project(ACCSDP) intends to deliver various Government to Citizen services (which are notified under the ARTPS Act 2012 as ammended in 2019) online through Assam Right to Public Services(ARTPS) Portal. ARTPS Portal is developed by NIC and presently more than 30,00,000+ applications have been submitted. Presntly 10 service are available online in the Portal which citizen can apply by self/Public Faciliation Centres/Common Service Centres. The portal is available in https://rtps.assam.gov.in
+  termsOfService: https://apisetu.gov.in/api-policy
+  version: 3.0.0
+servers:
+  - url: 'https://apisetu.gov.in/certificate/v3/rtps'
+paths:
+  
+  /ctcer:
+    post:
+      tags:
+        - APIs
+      summary: Caste Certificate
+      description: API to verify Caste Certificate.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: ctcer
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - param1
+                    
+                    - FullName
+                      
+                  properties:
+                    param1:
+                      type: string
+                      description: RTPS Application Reference No.
+                      example: "RTPS-XYZ/4567/001"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /cecpy:
+    post:
+      tags:
+        - APIs
+      summary: Certified Copy
+      description: API to verify Certified Copy.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: cecpy
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - param1
+                    - param2
+                    
+                    - FullName
+                      
+                  properties:
+                    param1:
+                      type: string
+                      description: Select Service
+                      example: "Mutation Order, Registered Deed"
+                       
+                    
+                    param2:
+                      type: string
+                      description: RTPS Application Reference No.
+                      example: "RTPS-XYZ/4567/001"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /hsmgr:
+    post:
+      tags:
+        - APIs
+      summary: Class XII Migration Certificate
+      description: API to verify Class XII Migration Certificate.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: hsmgr
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf  
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - param1
+                    
+                    - FullName
+                      
+                  properties:
+                    param1:
+                      type: string
+                      description: RTPS Application Reference No.
+                      example: "RTPS-XYZ/4567/001"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+              application/pdf:
+                example: Response body contains contents of the certificate in PDF format.
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /eicrd:
+    post:
+      tags:
+        - APIs
+      summary: Employment Identification Card
+      description: API to verify Employment Identification Card.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: eicrd
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - param1
+                    
+                    - FullName
+                      
+                  properties:
+                    param1:
+                      type: string
+                      description: RTPS Application Reference No.
+                      example: "RTPS-RREA/2021/12345"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /incer:
+    post:
+      tags:
+        - APIs
+      summary: Income Certificate
+      description: API to verify Income Certificate.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: incer
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - param1
+                    
+                    - FullName
+                      
+                  properties:
+                    param1:
+                      type: string
+                      description: RTPS Application Reference No.
+                      example: "RTPS-XYZ/4567/001"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /lccer:
+    post:
+      tags:
+        - APIs
+      summary: Land Conversion/ Partition Certificate
+      description: API to verify Land Conversion/ Partition Certificate.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: lccer
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - param1
+                    
+                    - FullName
+                      
+                  properties:
+                    param1:
+                      type: string
+                      description: RTPS Application Reference No.
+                      example: "RTPS-XYZ/4567/001"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /lstmt:
+    post:
+      tags:
+        - APIs
+      summary: Loan Statement
+      description: API to verify Loan Statement.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: lstmt
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - param1
+                    
+                    - FullName
+                      
+                  properties:
+                    param1:
+                      type: string
+                      description: RTPS Application Reference No.
+                      example: "RTPS-XYZ/4567/001"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /rmcer:
+    post:
+      tags:
+        - APIs
+      summary: Marriage Certificate
+      description: API to verify Marriage Certificate.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: rmcer
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - param1
+                    
+                    - FullName
+                      
+                  properties:
+                    param1:
+                      type: string
+                      description: RTPS Application Reference No.
+                      example: "RTPS-XYZ/2021/12345"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /nkcer:
+    post:
+      tags:
+        - APIs
+      summary: Next of Kin Certificate
+      description: API to verify Next of Kin Certificate.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: nkcer
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - param1
+                    
+                    - FullName
+                      
+                  properties:
+                    param1:
+                      type: string
+                      description: RTPS Application Reference No.
+                      example: "RTPS-XYZ/4567/001"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /nlcer:
+    post:
+      tags:
+        - APIs
+      summary: Non Creamy Layer Certificate
+      description: API to verify Non Creamy Layer Certificate.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: nlcer
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - param1
+                    
+                    - FullName
+                      
+                  properties:
+                    param1:
+                      type: string
+                      description: RTPS Application Reference No.
+                      example: "RTPS-XYZ/4567/001"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /nncer:
+    post:
+      tags:
+        - APIs
+      summary: Non-Encumbrance Certificate
+      description: API to verify Non-Encumbrance Certificate.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: nncer
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - param1
+                    
+                    - FullName
+                      
+                  properties:
+                    param1:
+                      type: string
+                      description: RTPS Application Reference No.
+                      example: "RTPS-XYZ/4567/001"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /lvcer:
+    post:
+      tags:
+        - APIs
+      summary: Pahani Certificate
+      description: API to verify Pahani Certificate.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: lvcer
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf  
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - param1
+                    
+                    - FullName
+                      
+                  properties:
+                    param1:
+                      type: string
+                      description: RTPS Application Reference No.
+                      example: "RTPS-XYZ/4567/001"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+              application/pdf:
+                example: Response body contains contents of the certificate in PDF format.
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /ror1b:
+    post:
+      tags:
+        - APIs
+      summary: Records of Rights
+      description: API to verify Records of Rights.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: ror1b
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - param1
+                    
+                    - FullName
+                      
+                  properties:
+                    param1:
+                      type: string
+                      description: RTPS Application Reference No.
+                      example: "RTPS/ROR/2023/1234"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /rcbcw:
+    post:
+      tags:
+        - APIs
+      summary: Registration Certificate of Building and other Construction Workers
+      description: API to verify Registration Certificate of Building and other Construction Workers.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: rcbcw
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - param1
+                    
+                    - FullName
+                      
+                  properties:
+                    param1:
+                      type: string
+                      description: RTPS Application Reference No.
+                      example: "RTPS-XYZ/4567/001"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /rscer:
+    post:
+      tags:
+        - APIs
+      summary: Residence Certificate
+      description: API to verify Residence Certificate.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: rscer
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - param1
+                    
+                    - FullName
+                      
+                  properties:
+                    param1:
+                      type: string
+                      description: RTPS Application Reference No.
+                      example: "RTPS-XYZ/4567/001"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /sicrd:
+    post:
+      tags:
+        - APIs
+      summary: Senior Citizen Identity Card/ Certificate
+      description: API to verify Senior Citizen Identity Card/ Certificate.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: sicrd
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - param1
+                    
+                    - FullName
+                      
+                  properties:
+                    param1:
+                      type: string
+                      description: RTPS Application Reference No.
+                      example: "RTPS-XYZ/4567/001"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /stdoc:
+    post:
+      tags:
+        - APIs
+      summary: Settlement Document
+      description: API to verify Settlement Document.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: stdoc
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - param1
+                    - param2
+                    
+                    - FullName
+                      
+                  properties:
+                    param1:
+                      type: string
+                      description: RTPS Application Reference No.
+                      example: "RTPS/SHLTC/2021/12345"
+                       
+                    
+                    param2:
+                      type: string
+                      description: Document Type
+                      example: "ORDER,PATTA"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /tdlcs:
+    post:
+      tags:
+        - APIs
+      summary: Trade License/ Certificate
+      description: API to verify Trade License/ Certificate.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: tdlcs
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - param1
+                    
+                    - FullName
+                      
+                  properties:
+                    param1:
+                      type: string
+                      description: RTPS Application Reference No.
+                      example: "RTPS-XYZ/4567/001"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+components:
+  schemas:
+    ConsentArtifactSchema:
+      $ref: './common/ConsentArtifactSchema.yaml#/ConsentArtifactSchema'
+    AcademicCertificateSchema:
+      $ref: './common/AcademicCertificateSchema.yaml#/AcademicCertificateSchema'
+    
+    CasteCertificateSchema:
+      $ref: './common/CasteCertificateSchema.yaml#/CasteCertificateSchema'      
+  responses:
+    400Error:
+      $ref: './common/ErrorResponse.yaml#/400Error'
+    401Error:
+      $ref: './common/ErrorResponse.yaml#/401Error'
+    404Error:
+      $ref: './common/ErrorResponse.yaml#/404Error'
+    500Error:
+      $ref: './common/ErrorResponse.yaml#/500Error'
+    502Error:
+      $ref: './common/ErrorResponse.yaml#/502Error'
+    503Error:
+      $ref: './common/ErrorResponse.yaml#/503Error'
+    504Error:
+      $ref: './common/ErrorResponse.yaml#/504Error'
+  securitySchemes:
+    clientId:
+      type: apiKey
+      in: header
+      name: X-APISETU-CLIENTID
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-APISETU-APIKEY

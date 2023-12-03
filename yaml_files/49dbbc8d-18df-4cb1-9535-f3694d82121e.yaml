@@ -1,0 +1,138 @@
+host: delhigw.napix.gov.in
+info:
+  title: eCourts
+  version: 1.0.0
+  x-ibm-name: hc-causelist-details-api
+  description: API provides cases listed (CauseList) on a particular date. Input
+    for this API is Establishment Code ,Bench ID and Cause List Date and other
+    details. The format of Cause List may vary from State to State. Sequence of
+    cases is provided in the API, however it is advisable to cross check the
+    cause list vis-à-vis as available on the hcservices.ecourts.gov.in portal or
+    mobile app for better understanding and accuracy and refer the cause list
+    available on the portal.
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/nic/ecourts
+paths:
+  /:
+    get:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Hc causelist details api
+    put:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Hc causelist details api
+    head:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Hc causelist details api
+    post:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Hc causelist details api
+    patch:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Hc causelist details api
+    delete:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Hc causelist details api
+  /causelistdetails:
+    get:
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      parameters:
+        - in: query
+          name: dept_id
+          type: string
+          required: true
+        - in: query
+          name: request_str
+          type: string
+          required: true
+        - in: query
+          name: request_token
+          type: string
+          required: true
+        - in: query
+          name: version
+          type: string
+          required: true
+      tags:
+        - Hc causelist details api
+schemes:
+  - https
+swagger: "2.0"
+basePath: /nic/ecourts/hc-causelist-details-api
+security:
+  - Oauth_token:
+      - napix
+securityDefinitions:
+  Oauth_token:
+    flow: application
+    type: oauth2
+    scopes:
+      napix: napix
+    tokenUrl: //oauth2/token
+    x-ibm-oauth-provider: nic-oauth-provider-application-grant-type
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  servers:
+    - url: https://delhigw.napix.gov.in/nic/ecourts/hc-causelist-details-api
+      type:
+        - production
+        - development
+  enforced: true
+  testable: true
+  oauth-servers:
+    Oauth_token:
+      tokenUrls:
+        - https://degateway.napix.gov.in:443/nic/ecourts//oauth2/token
+      refreshUrls: []
+      authorizationUrls: []
+  application-authentication:
+    certificate: false

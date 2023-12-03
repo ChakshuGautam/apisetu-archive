@@ -1,0 +1,2226 @@
+openapi: 3.0.3
+info:  
+  title: Central Board of Secondary Education, Delhi
+  description:  >- 
+                CBSE (http://www.cbse.nic.in/) is issuing marksheets, passing certificates, migration certificates etc. through DigiLocker. These are either pushed, or can be pulled by students into their DigiLocker accounts. Currently available for the following years:-  Class XII- 2001- 2023  Class X- 2001 - 2023  NEET Rank Letter for 2016 and 2017  NEET Marksheet- 2017  CTET Eligibility Certificate & Marksheet- 2018-Dec; 2019-July; 2019-Dec; 2021-Jan; 2021-Dec, 2022-Dec  Registration Card of class IX & XI are available 2021
+  termsOfService: https://apisetu.gov.in/api-policy
+  version: 3.0.0
+servers:
+  - url: 'https://apisetu.gov.in/certificate/v3/cbse'
+paths:
+  
+  /ixreg:
+    post:
+      tags:
+        - APIs
+      summary: Class IX Registration
+      description: API to verify Class IX Registration.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: ixreg
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - REGNO
+                    - SCH
+                    - SLNO
+                    
+                    - FullName
+                      
+                  properties:
+                    REGNO:
+                      type: string
+                      description: REGISTRATION NO
+                      example: "B222150010020"
+                       
+                    
+                    SCH:
+                      type: string
+                      description: SCHOOL CODE
+                      example: "15001"
+                       
+                    
+                    SLNO:
+                      type: string
+                      description: SERIAL NO
+                      example: "00015"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /spcer:
+    post:
+      tags:
+        - APIs
+      summary: Class X / Matriculation Passing Certificate
+      description: API to verify Class X / Matriculation Passing Certificate.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: spcer
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - rollno
+                    - year
+                    
+                    - FullName
+                      
+                  properties:
+                    rollno:
+                      type: string
+                      description: Roll No
+                      example: "1100040"
+                       
+                    
+                    year:
+                      type: string
+                      description: Year
+                      example: "20XX"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /sscer:
+    post:
+      tags:
+        - APIs
+      summary: Class X Marksheet
+      description: API to verify Class X Marksheet.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: sscer
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - rollno
+                    - year
+                    
+                    - FullName
+                      
+                  properties:
+                    rollno:
+                      type: string
+                      description: Roll No
+                      example: "1100040"
+                       
+                    
+                    year:
+                      type: string
+                      description: Year
+                      example: "20XX"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /ssmcr:
+    post:
+      tags:
+        - APIs
+      summary: Class X Merit Certificate
+      description: API to verify Class X Merit Certificate.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: ssmcr
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - rollno
+                    - year
+                    
+                    - FullName
+                      
+                  properties:
+                    rollno:
+                      type: string
+                      description: Roll No
+                      example: "1100040"
+                       
+                    
+                    year:
+                      type: string
+                      description: Year
+                      example: "20XX"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /ssmgr:
+    post:
+      tags:
+        - APIs
+      summary: Class X Migration Certificate
+      description: API to verify Class X Migration Certificate.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: ssmgr
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - rollno
+                    - year
+                    
+                    - FullName
+                      
+                  properties:
+                    rollno:
+                      type: string
+                      description: Roll No
+                      example: "1100040"
+                       
+                    
+                    year:
+                      type: string
+                      description: Year
+                      example: "20XX"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /xireg:
+    post:
+      tags:
+        - APIs
+      summary: Class XI Registration
+      description: API to verify Class XI Registration.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: xireg
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - REGNO
+                    - SCH
+                    - SLNO
+                    
+                    - FullName
+                      
+                  properties:
+                    REGNO:
+                      type: string
+                      description: REGISTRATION NO
+                      example: "B222150010020"
+                       
+                    
+                    SCH:
+                      type: string
+                      description: SCHOOL CODE
+                      example: "15001"
+                       
+                    
+                    SLNO:
+                      type: string
+                      description: SERIAL NO
+                      example: "00015"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /hscer:
+    post:
+      tags:
+        - APIs
+      summary: Class XII Marksheet
+      description: API to verify Class XII Marksheet.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: hscer
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - rollno
+                    - year
+                    
+                    - FullName
+                      
+                  properties:
+                    rollno:
+                      type: string
+                      description: Roll No
+                      example: "1100040"
+                       
+                    
+                    year:
+                      type: string
+                      description: Year
+                      example: "20XX"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /hsmcr:
+    post:
+      tags:
+        - APIs
+      summary: Class XII Merit Certificate
+      description: API to verify Class XII Merit Certificate.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: hsmcr
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - rollno
+                    - year
+                    
+                    - FullName
+                      
+                  properties:
+                    rollno:
+                      type: string
+                      description: Roll No
+                      example: "1100040"
+                       
+                    
+                    year:
+                      type: string
+                      description: Year
+                      example: "20XX"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /hsmgr:
+    post:
+      tags:
+        - APIs
+      summary: Class XII Migration Certificate
+      description: API to verify Class XII Migration Certificate.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: hsmgr
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - rollno
+                    - year
+                    
+                    - FullName
+                      
+                  properties:
+                    rollno:
+                      type: string
+                      description: Roll No
+                      example: "1100040"
+                       
+                    
+                    year:
+                      type: string
+                      description: Year
+                      example: "20XX"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /hpcer:
+    post:
+      tags:
+        - APIs
+      summary: Class XII Passing Certificate
+      description: API to verify Class XII Passing Certificate.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: hpcer
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - rollno
+                    - year
+                    
+                    - FullName
+                      
+                  properties:
+                    rollno:
+                      type: string
+                      description: Roll No
+                      example: "1100040"
+                       
+                    
+                    year:
+                      type: string
+                      description: Year
+                      example: "20XX"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /hscmp:
+    post:
+      tags:
+        - APIs
+      summary: Class XIIth Compartment Marksheet
+      description: API to verify Class XIIth Compartment Marksheet.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: hscmp
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - rollno
+                    - year
+                    
+                    - FullName
+                      
+                  properties:
+                    rollno:
+                      type: string
+                      description: Roll No
+                      example: "1100040"
+                       
+                    
+                    year:
+                      type: string
+                      description: Year
+                      example: "20XX"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /sscmp:
+    post:
+      tags:
+        - APIs
+      summary: Class Xth Compartment Marksheet
+      description: API to verify Class Xth Compartment Marksheet.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: sscmp
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - rollno
+                    - year
+                    
+                    - FullName
+                      
+                  properties:
+                    rollno:
+                      type: string
+                      description: Roll No
+                      example: "1100040"
+                       
+                    
+                    year:
+                      type: string
+                      description: Year
+                      example: "20XX"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /mrcer:
+    post:
+      tags:
+        - APIs
+      summary: Merit Certificate
+      description: API to verify Merit Certificate.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: mrcer
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - RegNo
+                    - Year
+                    
+                    - FullName
+                      
+                  properties:
+                    RegNo:
+                      type: string
+                      description: Reg No
+                      example: "HIQXXXXXXXXX"
+                       
+                    
+                    Year:
+                      type: string
+                      description: Year
+                      example: "20XX"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /nchsc:
+    post:
+      tags:
+        - APIs
+      summary: NCHMCT Skill Certificate (X)
+      description: API to verify NCHMCT Skill Certificate (X).
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: nchsc
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - rollno
+                    - year
+                    
+                    - FullName
+                      
+                  properties:
+                    rollno:
+                      type: string
+                      description: Roll No
+                      example: "1100040"
+                       
+                    
+                    year:
+                      type: string
+                      description: Year
+                      example: "20XX"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /nctsc:
+    post:
+      tags:
+        - APIs
+      summary: NCHMCT Skill Certificate (XII)
+      description: API to verify NCHMCT Skill Certificate (XII).
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: nctsc
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - rollno
+                    - year
+                    
+                    - FullName
+                      
+                  properties:
+                    rollno:
+                      type: string
+                      description: Roll No
+                      example: "1100040"
+                       
+                    
+                    year:
+                      type: string
+                      description: Year
+                      example: "20XX"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /ntmks:
+    post:
+      tags:
+        - APIs
+      summary: NEET Marksheet
+      description: API to verify NEET Marksheet.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: ntmks
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - rollno
+                    - year
+                    
+                    - FullName
+                      
+                  properties:
+                    rollno:
+                      type: string
+                      description: Roll No
+                      example: "1100040"
+                       
+                    
+                    year:
+                      type: string
+                      description: Year
+                      example: "20XX"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /ntltr:
+    post:
+      tags:
+        - APIs
+      summary: NEET Rank Letter
+      description: API to verify NEET Rank Letter.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: ntltr
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - rollno
+                    - year
+                    
+                    - FullName
+                      
+                  properties:
+                    rollno:
+                      type: string
+                      description: Roll No
+                      example: "1100040"
+                       
+                    
+                    year:
+                      type: string
+                      description: Year
+                      example: "20XX"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /nsesc:
+    post:
+      tags:
+        - APIs
+      summary: NSE Skill Certificate (X)
+      description: API to verify NSE Skill Certificate (X).
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: nsesc
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - rollno
+                    - year
+                    
+                    - FullName
+                      
+                  properties:
+                    rollno:
+                      type: string
+                      description: Roll No
+                      example: "1100040"
+                       
+                    
+                    year:
+                      type: string
+                      description: Year
+                      example: "20XX"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /nstsc:
+    post:
+      tags:
+        - APIs
+      summary: NSE Skill Certificate (XII)
+      description: API to verify NSE Skill Certificate (XII).
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: nstsc
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - rollno
+                    - year
+                    
+                    - FullName
+                      
+                  properties:
+                    rollno:
+                      type: string
+                      description: Roll No
+                      example: "1100040"
+                       
+                    
+                    year:
+                      type: string
+                      description: Year
+                      example: "20XX"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /epcer:
+    post:
+      tags:
+        - APIs
+      summary: Participation/ Appreciation Certificate
+      description: API to verify Participation/ Appreciation Certificate.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: epcer
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - RegNo
+                    - Year
+                    
+                    - FullName
+                      
+                  properties:
+                    RegNo:
+                      type: string
+                      description: Reg No
+                      example: "HIQXXXXXXXXX"
+                       
+                    
+                    Year:
+                      type: string
+                      description: Year
+                      example: "20XX"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /skhsc:
+    post:
+      tags:
+        - APIs
+      summary: Skill Certificate (X)
+      description: API to verify Skill Certificate (X).
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: skhsc
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - rollno
+                    - year
+                    
+                    - FullName
+                      
+                  properties:
+                    rollno:
+                      type: string
+                      description: Roll No
+                      example: "1100040"
+                       
+                    
+                    year:
+                      type: string
+                      description: Year
+                      example: "20XX"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /sktsc:
+    post:
+      tags:
+        - APIs
+      summary: Skill Certificate (XII)
+      description: API to verify Skill Certificate (XII).
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: sktsc
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - rollno
+                    - year
+                    
+                    - FullName
+                      
+                  properties:
+                    rollno:
+                      type: string
+                      description: Roll No
+                      example: "1100040"
+                       
+                    
+                    year:
+                      type: string
+                      description: Year
+                      example: "20XX"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /tetcr:
+    post:
+      tags:
+        - APIs
+      summary: Teachers Eligibility Test Certificate
+      description: API to verify Teachers Eligibility Test Certificate.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: tetcr
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - rollno
+                    - year_month
+                    
+                    - FullName
+                      
+                  properties:
+                    rollno:
+                      type: string
+                      description: Roll No
+                      example: "X1000XXX"
+                       
+                    
+                    year_month:
+                      type: string
+                      description: Year-Month
+                      example: ""
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /tetms:
+    post:
+      tags:
+        - APIs
+      summary: Teachers Eligibility Test Mark Sheet
+      description: API to verify Teachers Eligibility Test Mark Sheet.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: tetms
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - rollno
+                    - year_month
+                    
+                    - FullName
+                      
+                  properties:
+                    rollno:
+                      type: string
+                      description: Roll No
+                      example: "X1000XXX"
+                       
+                    
+                    year_month:
+                      type: string
+                      description: Year-Month
+                      example: ""
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+components:
+  schemas:
+    ConsentArtifactSchema:
+      $ref: './common/ConsentArtifactSchema.yaml#/ConsentArtifactSchema'
+    AcademicCertificateSchema:
+      $ref: './common/AcademicCertificateSchema.yaml#/AcademicCertificateSchema'
+          
+  responses:
+    400Error:
+      $ref: './common/ErrorResponse.yaml#/400Error'
+    401Error:
+      $ref: './common/ErrorResponse.yaml#/401Error'
+    404Error:
+      $ref: './common/ErrorResponse.yaml#/404Error'
+    500Error:
+      $ref: './common/ErrorResponse.yaml#/500Error'
+    502Error:
+      $ref: './common/ErrorResponse.yaml#/502Error'
+    503Error:
+      $ref: './common/ErrorResponse.yaml#/503Error'
+    504Error:
+      $ref: './common/ErrorResponse.yaml#/504Error'
+  securitySchemes:
+    clientId:
+      type: apiKey
+      in: header
+      name: X-APISETU-CLIENTID
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-APISETU-APIKEY

@@ -1,0 +1,97 @@
+host: delhigw.napix.gov.in
+info:
+  title: Parivahan
+  version: 1.0.0
+  x-ibm-name: umang-payment-application-tax
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/nic/parivahan
+paths:
+  /umang/payAppTax:
+    get:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      parameters:
+        - in: query
+          name: pur_Cd
+          type: string
+          required: true
+        - in: query
+          name: regn_no
+          type: string
+          required: true
+        - in: query
+          name: saralApplNo
+          type: string
+          required: true
+        - in: query
+          name: state_cd
+          type: string
+          required: true
+        - in: query
+          name: paymentDate
+          type: string
+          required: true
+        - in: query
+          name: off_cd
+          type: string
+          required: true
+        - in: query
+          name: status
+          type: string
+          required: true
+        - in: query
+          name: amount
+          type: string
+          required: true
+        - in: query
+          name: token
+          type: string
+          required: true
+        - in: query
+          name: hypoCheck
+          type: string
+          required: true
+        - in: query
+          name: hptDate
+          type: string
+          required: true
+      tags:
+        - Umang payment application tax
+schemes:
+  - https
+swagger: "2.0"
+basePath: /nic/parivahan/umang-payment-application-tax
+security:
+  - Client ID Header: []
+    Client Secret Header: []
+securityDefinitions:
+  Client ID Header:
+    in: header
+    name: X-Client-Id
+    type: apiKey
+    x-key-type: client_id
+  Client Secret Header:
+    in: header
+    name: X-Client-Secret
+    type: apiKey
+    x-key-type: client_secret
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  servers:
+    - url: https://delhigw.napix.gov.in/nic/parivahan/umang-payment-application-tax
+      type:
+        - production
+        - development
+  enforced: true
+  testable: true
+  application-authentication:
+    certificate: false

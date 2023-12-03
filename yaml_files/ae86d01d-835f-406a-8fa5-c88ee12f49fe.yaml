@@ -1,0 +1,46 @@
+host: delhigw.napix.gov.in
+info:
+  title: Parivahan
+  version: 1.0.0
+  x-ibm-name: vahanws-staging-vehicle-details-get-details
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/nic/parivahan
+paths:
+  /service/getDetails:
+    post:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Vahanws staging vehicle details get details
+schemes:
+  - https
+swagger: "2.0"
+basePath: /nic/parivahan/stag/vahanws
+security:
+  - clientID: []
+securityDefinitions:
+  clientID:
+    in: header
+    name: X-Client-Id
+    type: apiKey
+    x-key-type: client_id
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  servers:
+    - url: https://delhigw.napix.gov.in/nic/parivahan/stag/vahanws
+      type:
+        - production
+        - development
+  enforced: true
+  testable: true
+  application-authentication:
+    certificate: false

@@ -1,0 +1,3255 @@
+---
+openapi: 3.0.0
+info:
+  title: Department of Civil Supplies and Consumer Affairs (Puducherry)
+  description: Department of Civil Supplies and Consumer Affairs, Puducherry division has been started functioning in this Department during the year 1996. The aim of this division is to educate the consumer about their rights, duties and responsibilities, Redressal and consumer education.In the Umang app,this department aims to transfer subsidies directly to the people through their bank accounts. <i>[Updated on 21st August 2023]</i>
+  termsOfService: https://web.umang.gov.in/uaw/ts/v1/en/index.htm
+  contact:
+    name: Provided by - UMANG
+    url: https://web.umang.gov.in
+  version: 1.0.0
+servers:
+  - url: https://apigw.umangapp.in
+    description: Production Server
+    
+security:
+ - x-api-key: [] 
+
+    
+    
+paths:
+  /PuducherryApi/ws1/district:
+    post:
+      tags:
+        - District Details Web Service
+      summary: Get the district list using this service
+      description: This api is used to get the district list
+      operationId: PuducherryApi/ws1/district
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 335
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 1511
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "335"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1511"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PC0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                        type: array
+                        description: district objects
+                        items:
+                          type: object
+                          properties:
+                            DistrictCode:
+                              type: string
+                              description: DistrictCode
+                              example: 635
+                            DistrictEn:
+                              type: string
+                              description: DistrictEn
+                              example: PONDICHERRY
+        "400":
+          description: Bad Request/Validation Error
+  /PuducherryApi/ws1/FetchmembermobDetails:
+    post:
+      tags:
+        - Member Mobile Details Web Service
+      summary: Get the member mobile details using this service
+      description: This api is used to get the member mobile details
+      operationId: PuducherryApi/ws1/FetchmembermobDetails
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 335
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 1511
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                district:
+                  type: string
+                  description: district
+                  example: 635
+                rcno:
+                  type: string
+                  description: rcno
+                  example: 390705
+                uid:
+                  type: string
+                  description: uid
+                  example: 7252                 
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "335"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1511"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PC0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                        type: object
+                        description: family member mobile details object
+                        properties:
+                          FamilymembermobDetails:
+                            type: array
+                            description: family member mobile detail object item
+                            items:
+                              type: object
+                              properties:
+                                member_name_en:
+                                  type: string
+                                  description: member_name_en
+                                  example: N Sugumar
+                                member_id:
+                                  type: string
+                                  description: member_id
+                                  example: 34000000287701
+                                oldmobile:
+                                  type: string
+                                  description: oldmobile
+                                  example: ""
+                                Last_Updated_date:
+                                  type: string
+                                  description: Last_Updated_date
+                                  example: null                                
+        "400":
+          description: Bad Request/Validation Error
+  /PuducherryApi/ws1/track:
+    post:
+      tags:
+        - Track Details Web Service
+      summary: Get the track details using this service
+      description: This api is used to get the track details
+      operationId: PuducherryApi/ws1/track
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 335
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 1511
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                ackNo:
+                  type: string
+                  description: ackNo
+                  example: PYCHA201100027
+                mobileno:
+                  type: string
+                  description: mobileno
+                  example: 8870064658                 
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "335"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1511"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PC0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                          type: object
+                          properties:
+                            AckNo:
+                              type: string
+                              description: AckNo
+                              example: PYCHA201100027
+                            ServiceName:
+                              type: string
+                              description: ServiceName
+                              example: Change of Address
+                            RationCardNo:
+                              type: string
+                              description: RationCardNo
+                              example: 102593
+                            Dateofentry:
+                              type: string
+                              description: Dateofentry
+                              example: 13/09/2020
+                            ApplicationStatus:
+                              type: string
+                              description: ApplicationStatus
+                              example: Received
+                            PaymentStatus:
+                              type: string
+                              description: PaymentStatus
+                              example: Paid                                  
+        "400":
+          description: Bad Request/Validation Error
+  /PuducherryApi/ws1/ViewcardDetails:
+    post:
+      tags:
+        - View Card Details Web Service
+      summary: Get the card details using this service
+      description: This api is used to get the card details
+      operationId: PuducherryApi/ws1/ViewcardDetails
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 335
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 1511
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                district:
+                  type: string
+                  description: district
+                  example: 635
+                rcno:
+                  type: string
+                  description: rcno
+                  example: 390705
+                uid:
+                  type: string
+                  description: uid
+                  example: 7252                  
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "335"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1511"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PC0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                    type: object
+                    properties:
+                      Cardno:
+                        type: string
+                        description: Cardno
+                        example: 390705
+                      HoF:
+                        type: string
+                        description: HoF
+                        example: N Sugumar
+                      Cardtype:
+                        type: string
+                        description: Cardtype
+                        example: PHH    
+                      AddressEn:
+                        type: string
+                        description: AddressEn
+                        example: "10, Manickka Vasagar Nagar, Manickka Vasagar Nagar, Karikalampakkam, PONDICHERRY"
+                      AddressLL:
+                        type: string
+                        description: AddressLL
+                        example: "10, மாணிக்க வாசகர் நகர், மாணிக்க வாசகர் நகர், கரிக்கலாம்பாக்கம், புதுச்சேரி"
+                      Units:
+                        type: string
+                        description: Units
+                        example: 5
+                      FamilyMemberDetails:
+                        type: array
+                        description: family member detail objects
+                        items:  
+                          type: object
+                          properties:                        
+                            FamilyMemberRunningNumber:
+                              type: string
+                              description: FamilyMemberRunningNumber
+                              example: 1
+                            MemberNameEn:
+                              type: string
+                              description: MemberNameEn
+                              example: N Sugumar            
+                            MemberNameLl:
+                              type: string
+                              description: MemberNameLl
+                              example: ந சுகுமார்
+                            Gender:
+                              type: string
+                              description: Gender
+                              example: Male     
+                            Relationship:
+                              type: string
+                              description: Relationship
+                              example: SELF
+                            Aadhaar:
+                              type: string
+                              description: Aadhaar
+                              example: "********7252"
+        "400":
+          description: Bad Request/Validation Error
+  /PuducherryApi/ws1/CheckOnorcStatus:
+    post:
+      tags:
+        - ONORC Status  Web Service
+      summary: Check the ONORC status using this service
+      description: This api is used to submit Check ONORC Status
+      operationId: PuducherryApi/ws1/CheckOnorcStatus
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1476
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 335
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                ranPass:
+                  type: string
+                  description: ranPass
+                  example: tyftyfytf345465
+                aadhaarno:
+                  type: string
+                  description: aadhaarno
+                  example: "1NT72uXbHk61ZMICjLAYsco5Zr7s7RGYnNlDg4t2BRMQtTeWoOfCNj+u+NYgMLiLJd+wjW0hNsM="              
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "335"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1476"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PC0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                    type: object
+                    properties:
+                      uid:
+                        type: string
+                        description: uid
+                        example: "yz0NuEFaOPQXJv4r/QDy8ks+vybLLu6EU3GouxwEpk4/1yrGrvfkufNUVnw8G0Z/UeRLlDCIikE="
+                      memberName:
+                        type: string
+                        description: memberName
+                        example: Muthukumaran Ulaganathan
+                      dob:
+                        type: string
+                        description: dob
+                        example: 13/07/1979    
+                      mobileNumber:
+                        type: string
+                        description: mobileNumber
+                        example: "9486837137"
+                      gender:
+                        type: string
+                        description: gender
+                        example: "M"
+                      homeDistrictName:
+                        type: string
+                        description: homeDistrictName
+                        example: Viluppuram
+                      homeStateName:
+                        type: string
+                        description: homeStateName
+                        example: TAMIL NADU
+                      homeAddress:
+                        type: string
+                        description: homeAddress
+                        example: "W/O Muthukumaran, 318, PARASPURAM, VANUR TALUK, 2ND STREET, Vanur, Vanur (Tk) Tk., Viluppuram Dt. - 605109"  
+                      cardType:
+                        type: string
+                        description: cardType
+                        example: PHH                        
+                      migrantdetails:
+                        type: array
+                        description: migrant detail objects
+                        items:  
+                          type: object
+                          properties:                          
+                            month:
+                              type: string
+                              description: month
+                              example: 3
+                            shifted_year:
+                              type: string
+                              description: shifted_year
+                              example: 2020          
+                            shifted_month:
+                              type: string
+                              description: shifted_month
+                              example: 10
+                            ackno:
+                              type: string
+                              description: ackno
+                              example: MG2010202017103000952     
+                            status:
+                              type: string
+                              description: status
+                              example: Alive
+                  ranPass: 
+                            type: string
+                            description: ackno
+                            example: MG2010202017103000952                            
+        "400":
+          description: Bad Request/Validation Error
+  /PuducherryApi/ws1/ViewPaymentStatus:
+    post:
+      tags:
+        - View Payment Status Web Service
+      summary: View the payment status using this service
+      description: This api is used to view the payment status
+      operationId: PuducherryApi/ws1/ViewPaymentStatus
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 306
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 1322
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                district:
+                  type: string
+                  description: district
+                  example: 635
+                rcno:
+                  type: string
+                  description: rcno
+                  example: 390705            
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "335"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1476"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PC0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                        type: array
+                        description: payment status objects
+                        items:
+                          type: object
+                          properties:
+                            Year:
+                              type: string
+                              description: Year
+                              example: 2023
+                            Month:
+                              type: string
+                              description: Month
+                              example: July
+                            SchemeName:
+                              type: string
+                              description: SchemeName
+                              example: NFSA DBT
+                            BeneficiaryName:
+                              type: string
+                              description: BeneficiaryName
+                              example: N Sugumar
+                            BankName:
+                              type: string
+                              description: BankName
+                              example: STATE BANK OF INDIA
+                            BankAccountNo:
+                              type: string
+                              description: BankAccountNo
+                              example: "*****7933"     
+                            PaymentMode:
+                              type: string
+                              description: PaymentMode
+                              example: ""  
+                            DateofFileCredit:
+                              type: string
+                              description: DateofFileCredit
+                              example: "30/06/2023"          
+                            Amount:
+                              type: string
+                              description: Amount
+                              example: "960.75"  
+                            Status:
+                              type: string
+                              description: Status
+                              example: Success                              
+        "400":
+          description: Bad Request/Validation Error
+  /PuducherryApi/ws1/UpdatemembermobDetails:
+    post:
+      tags:
+        - Update Member Mobile Details Web Service
+      summary: Update the Member Mobile Details using this service
+      description: This api is used to update the member mobile details
+      operationId: PuducherryApi/ws1/UpdatemembermobDetails
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 335
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 1511
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                district:
+                  type: string
+                  description: district
+                  example: 635
+                rcno:
+                  type: string
+                  description: rcno
+                  example: 390705
+                uid:
+                  type: string
+                  description: uid
+                  example: 7252
+                memid:
+                  type: string
+                  description: memid
+                  example: 34000000287702
+                newmobile:
+                  type: string
+                  description: newmobile
+                  example: 9486117248             
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "335"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1476"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PC0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        description: message
+                        example: "DBT/OMNU/2020/3757 is your Application ID,Your Mobile Number Updated Successfully in DBT - HelpDesk of Civil Supplies via UMANG. thank you using Helpdesk and it was our pleasure to serve you! "
+        "400":
+          description: Bad Request/Validation Error
+  /PuducherryApi/ws1/FetchHoFDetails:
+    post:
+      tags:
+        - Fetch HoF Details Web Service
+      summary: Fetch HoF Details using this service
+      description: This api is used to fetch the HoF Details
+      operationId: PuducherryApi/ws1/FetchHoFDetails
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 335
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 1322
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                district:
+                  type: string
+                  description: district
+                  example: 635
+                rcno:
+                  type: string
+                  description: rcno
+                  example: 390705
+                uid:
+                  type: string
+                  description: uid
+                  example: 7252          
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "335"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1476"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PC0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                        type: object
+                        properties:
+                          old_member_name_en:
+                            type: string
+                            description: old_member_name_en
+                            example: N Sugumar 
+                          FamilybeneficiaryDetails:                            
+                            type: array
+                            description: family beneficiary objects
+                            items:
+                              type: object
+                              properties:
+                                member_name_en:
+                                  type: string
+                                  description: member_name_en
+                                  example: S Matchagandhi
+                                member_id:
+                                  type: string
+                                  description: member_id
+                                  example: 34000000287702
+        "400":
+          description: Bad Request/Validation Error
+  /PuducherryApi/ws1/UpdateHoFDetails:
+    post:
+      tags:
+        - Update HOF Details Web Service
+      summary: Update HOF Details using this service
+      description: This api is used to update the HOF details
+      operationId: PuducherryApi/ws1/UpdateHoFDetails
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 306
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 1322
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                district:
+                  type: string
+                  description: district
+                  example: 635
+                rcno:
+                  type: string
+                  description: rcno
+                  example: 390705
+                uid:
+                  type: string
+                  description: uid
+                  example: 7252
+                memid:
+                  type: string
+                  description: memid
+                  example: 34000000287702            
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "335"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1476"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PC0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                          type: object
+                          properties:
+                            Message:
+                              type: string
+                              description: Message
+                              example: "Already this Change of Female HoF Application is submitted"
+        "400":
+          description: Bad Request/Validation Error
+  /PuducherryApi/ws1/FetchbeneficiaryDetails:
+    post:
+      tags:
+        - Fetch Beneficiary Details Web Service
+      summary: Fetch beneficiary details using this service
+      description: This api is used to get the beneficiary details
+      operationId: PuducherryApi/ws1/FetchbeneficiaryDetails
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 335
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 1511
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                district:
+                  type: string
+                  description: district
+                  example: 635
+                rcno:
+                  type: string
+                  description: rcno
+                  example: 390705
+                uid:
+                  type: string
+                  description: uid
+                  example: 7252                
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "335"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1511"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PC0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                          type: object
+                          properties:
+                            Message:
+                              type: string
+                              description: Message
+                              example: "Ration card number not exists or Beneficiary not exists. Please contact Department of Civil Supplies and Consumer Affairs"
+        "400":
+          description: Bad Request/Validation Error
+  /PuducherryApi/ws1/UpdateBeneficiaryDetails:
+    post:
+      tags:
+        - Update Beneficiary Details Web Service
+      summary: Update Beneficiary Details using this service
+      description: This api is used to update the beneficiary details
+      operationId: PuducherryApi/ws1/UpdateBeneficiaryDetails
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 335
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 1511
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                district:
+                  type: string
+                  description: district
+                  example: 635
+                rcno:
+                  type: string
+                  description: rcno
+                  example: 390705
+                uid:
+                  type: string
+                  description: uid
+                  example: 7252
+                memid:
+                  type: string
+                  description: memid
+                  example: 34000007526301               
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "335"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1511"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PC0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                          type: object
+                          properties:
+                            Message:
+                              type: string
+                              description: Message
+                              example: "Ration card number not exists or UID is invalid. Please contact Department of Civil Supplies and Consumer Affairs"
+        "400":
+          description: Bad Request/Validation Error
+  /PuducherryApi/ws1/GetOldAccountNo:
+    post:
+      tags:
+        - Get Old Account No Web Service
+      summary: Get the old account number using this service
+      description: This api is used to get the old account number
+      operationId: PuducherryApi/ws1/GetOldAccountNo
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 335
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 1322
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                district:
+                  type: string
+                  description: district
+                  example: 635
+                rcno:
+                  type: string
+                  description: rcno
+                  example: 390705
+                memberid:
+                  type: string
+                  description: memberid
+                  example: 34000000287702                
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "335"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1511"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PC0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                    type: string
+                    description: old account number
+                    example: 32231856052
+        "400":
+          description: Bad Request/Validation Error
+  /PuducherryApi/ws1/UpdateBankDetails:
+    post:
+      tags:
+        - Update Bank Details API Web Service
+      summary: Update bank details API using this service
+      description: This api is used to update the bank details
+      operationId: PuducherryApi/ws1/UpdateBankDetails
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 335
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 1511
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                district:
+                  type: string
+                  description: district
+                  example: 635
+                rcno:
+                  type: string
+                  description: rcno
+                  example: 390705
+                uid:
+                  type: string
+                  description: uid
+                  example: 7252
+                memid:
+                  type: string
+                  description: memid
+                  example: 34000000287702
+                bankid:
+                  type: string
+                  description: bankid
+                  example: 1
+                branchid:
+                  type: string
+                  description: branchid
+                  example: 2     
+                accountno:
+                  type: string
+                  description: accountno
+                  example: 2225
+                ifsccode:
+                  type: string
+                  description: ifsccode
+                  example: 9603               
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "335"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1511"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PC0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                          type: object
+                          properties:
+                            Message:
+                              type: string
+                              description: Message
+                              example: "Already this Bank Account update Application is submitted"
+        "400":
+          description: Bad Request/Validation Error
+  /PuducherryApi/ws1/DownloadERationCard:
+    post:
+      tags:
+        - Download E-Ration Card Web Service
+      summary: Download e-ration card using this service
+      description: This api is used to get download e-ration card
+      operationId: PuducherryApi/ws1/DownloadERationCard
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 335
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 1322
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                district:
+                  type: string
+                  description: district
+                  example: 635
+                ackNo:
+                  type: string
+                  description: ackNo
+                  example: ""
+                rcno:
+                  type: string
+                  description: rcno
+                  example: 132143   
+                uid:
+                  type: string
+                  description: uid
+                  example: 4089                   
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "335"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1511"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PC0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                    type: object 
+                    description: Response object
+                    properties:  
+                      filedetails:                    
+                        type: array
+                        description: file detail objects
+                        items:
+                          type: object
+                          properties:
+                            filename:
+                              type: string
+                              description: filename
+                              example: "Signed_PYCHA20A900435.pdf"
+                            filebytes:
+                              type: string
+                              description: filebytes
+                              example: "JVBERi0xLjcgCiXi48/TIAoxIDAgb2JqIAo8PCAKL1R5cGUgL0NhdGFsb2cgCi9QYWdlcyAyIDAgUiAKL1BhZ2VNb2RlIC9Vc2VOb25lIAovVmlld2VyUHJlZmVyZW5jZXMgPDwgCi9GaXRXaW5kb3cgdHJ1ZSAKL1BhZ2VMYXlvdXQgL1NpbmdsZVBhZ2UgCi9Ob25GdWxsU2NyZWVuUGFnZU1vZGUgL1VzZU5vbmUgCj4+IAo+ YmY3NjlmMTM2MDIyYjEyYTk+PDM0MmRiYTc0YzRhNWRkN2U0OTk4N2MzY2E1ZGJiMDAwPl0vUHJldiAxNjY3MTg+PgolaVRleHQtNS41LjAKc3RhcnR4cmVmCjE4NzI3MwolJUVPRgo="
+                            filetype:
+                              type: string
+                              description: filetype
+                              example: pdf                              
+        "400":
+          description: Bad Request/Validation Error
+  /PuducherryApi/ws1/DownloadSurrenderCertificate:
+    post:
+      tags:
+        - Download Surrender Certificate Web Service
+      summary: Download surrender certificate using this service
+      description: This api is used to get the download surrender certificate
+      operationId: PuducherryApi/ws1/DownloadSurrenderCertificate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 335
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 1322
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                ackNo:
+                  type: string
+                  description: ackNo
+                  example: PYSUR20C500001                  
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "335"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1511"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PC0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                    type: object 
+                    description: Response object
+                    properties:  
+                      filedetails:                    
+                        type: array
+                        description: file detail objects
+                        items:
+                          type: object
+                          properties:
+                            filename:
+                              type: string
+                              description: filename
+                              example: "Signed_PYSUR20C500001.pdf"
+                            filebytes:
+                              type: string
+                              description: filebytes
+                              example: "JVBERi0xLjcgCiXi48/TIAoxIDAgb2JqIAo8PCAKL1R5cGUgL0NhdGFsb2cgCi9QYWdlcyAyIDAgUiAKL1"
+                            filetype:
+                              type: string
+                              description: filetype
+                              example: pdf 
+        "400":
+          description: Bad Request/Validation Error
+  /PuducherryApi/ws1/SendOtp:
+    post:
+      tags:
+        - Send OTP Web Service
+      summary: Send otp using this service
+      description: This api is used to send the otp using this service
+      operationId: PuducherryApi/ws1/SendOtp
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 335
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 1511
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                mobileNo:
+                  type: string
+                  description: mobileNo
+                  example: 8587896689                  
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "335"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1511"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PC0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        description: message
+                        example: SUCCESS
+        "400":
+          description: Bad Request/Validation Error
+  /PuducherryApi/ws1/ValOtp:
+    post:
+      tags:
+        - Validate OTP Web Service
+      summary: Validate OTP using this service
+      description: This api is used to validate the otp
+      operationId: PuducherryApi/ws1/ValOtp
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 335
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 1511
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                mobileNo:
+                  type: string
+                  description: mobileNo
+                  example: 8587896689
+                subOtp:
+                  type: string
+                  description: subOtp
+                  example: 151310                 
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "335"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1511"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PC0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        description: message
+                        example: OTP Matched
+        "400":
+          description: Bad Request/Validation Error
+  /PuducherryApi/ws1/FillBank:
+    post:
+      tags:
+        - Fill Bank Web Service
+      summary: Get the bank list using this service
+      description: This api is used to get the bank list
+      operationId: PuducherryApi/ws1/FillBank
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1513
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 335
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "335"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1513"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PC0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                        type: array
+                        description: bank objects
+                        items:
+                          type: object
+                          properties:
+                            BankId:
+                              type: string
+                              description: BankId
+                              example: 1
+                            BankName:
+                              type: string
+                              description: BankName
+                              example: ALLAHABAD BANK
+        "400":
+          description: Bad Request/Validation Error
+  /PuducherryApi/ws1/FillBankBranch:
+    post:
+      tags:
+        - Bank Branch list Web Service
+      summary: Get the bank branch list using this service
+      description: This api is used to get the bank branch list
+      operationId: PuducherryApi/ws1/FillBankBranch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1513
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: windows              
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 335
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                bankid:
+                  type: string
+                  description: bankid
+                  example: 1
+                district:
+                  type: string
+                  description: district
+                  example: 635               
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "335"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1513"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PC0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                        type: array
+                        description: bank branch objects
+                        items:
+                          type: object
+                          properties:
+                            BankbranchId:
+                              type: string
+                              description: BankbranchId
+                              example: 1
+                            BankbranchName:
+                              type: string
+                              description: BankbranchName
+                              example: PUDUCHERRY
+        "400":
+          description: Bad Request/Validation Error
+  /PuducherryApi/ws1/GetIfscCode:
+    post:
+      tags:
+        - Get Bank Branch IFSC Web Service
+      summary: Get the bank branch IFSC code using this service
+      description: This api is used to get the bank branch IFSC code
+      operationId: PuducherryApi/ws1/GetIfscCode
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 335
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: windows               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 335
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                bankid:
+                  type: string
+                  description: bankid
+                  example: 1
+                branchid:
+                  type: string
+                  description: branchid
+                  example: 1
+                district:
+                  type: string
+                  description: district
+                  example: 635                  
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "335"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1513"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PC0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                    type: string
+                    description: IFSC code
+                    example: ALLA0211485
+        "400":
+          description: Bad Request/Validation Error          
+components:
+  securitySchemes:
+    x-api-key:
+      type: apiKey
+      name: x-api-key
+      in: header

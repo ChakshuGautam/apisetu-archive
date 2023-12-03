@@ -1,0 +1,252 @@
+host: delhigw.napix.gov.in
+info:
+  title: Dedupe
+  version: "1.0"
+  x-ibm-name: submitsignupform
+  description: Submit Signup Form
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/nic/dedupe
+tags:
+  - name: transaction
+    description: transaction
+paths:
+  /api/transaction/SubmitSignupForm:
+    post:
+      tags:
+        - Submitsignupform
+      summary: SubmitSignupForm
+      consumes:
+        - application/json
+      produces:
+        - "*/*"
+      responses:
+        "200":
+          schema:
+            type: object
+            additionalProperties:
+              type: string
+          description: OK
+        "201":
+          description: Created
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+      parameters:
+        - in: body
+          name: appSignupForm
+          schema:
+            type: object
+            title: AppSignupForm
+            properties:
+              appsignup:
+                type: object
+                title: AppSignup
+                properties:
+                  email:
+                    type: string
+                  full_name:
+                    type: string
+                  office_name:
+                    type: string
+                  project_desc:
+                    type: string
+                  project_name:
+                    type: string
+                  mobile_number:
+                    type: string
+                  user_emp_code:
+                    type: string
+                  user_landline:
+                    type: string
+                  office_address:
+                    type: string
+                  login_user_name:
+                    type: string
+                  office_state_id:
+                    type: string
+                  organization_id:
+                    type: integer
+                    format: int32
+                  ministry_dept_id:
+                    type: integer
+                    format: int32
+                  records_to_match:
+                    type: string
+                  user_designation:
+                    type: string
+                  office_category_id:
+                    type: integer
+                    format: int32
+              projectHeadDetails:
+                type: object
+                title: ProjectHeadDetails
+                properties:
+                  name:
+                    type: string
+                  email_id:
+                    type: string
+                  emp_code:
+                    type: string
+                  landline:
+                    type: string
+                  mobile_no:
+                    type: string
+                  designation:
+                    type: string
+          required: true
+          description: appSignupForm
+      operationId: SubmitSignupFormUsingPOST
+schemes:
+  - https
+swagger: "2.0"
+basePath: /nic/dedupe
+security:
+  - Oauth:
+      - napix
+definitions:
+  AppSignup:
+    type: object
+    title: AppSignup
+    properties:
+      email:
+        type: string
+      full_name:
+        type: string
+      office_name:
+        type: string
+      project_desc:
+        type: string
+      project_name:
+        type: string
+      mobile_number:
+        type: string
+      user_emp_code:
+        type: string
+      user_landline:
+        type: string
+      office_address:
+        type: string
+      login_user_name:
+        type: string
+      office_state_id:
+        type: string
+      organization_id:
+        type: integer
+        format: int32
+      ministry_dept_id:
+        type: integer
+        format: int32
+      records_to_match:
+        type: string
+      user_designation:
+        type: string
+      office_category_id:
+        type: integer
+        format: int32
+  AppSignupForm:
+    type: object
+    title: AppSignupForm
+    properties:
+      appsignup:
+        type: object
+        title: AppSignup
+        properties:
+          email:
+            type: string
+          full_name:
+            type: string
+          office_name:
+            type: string
+          project_desc:
+            type: string
+          project_name:
+            type: string
+          mobile_number:
+            type: string
+          user_emp_code:
+            type: string
+          user_landline:
+            type: string
+          office_address:
+            type: string
+          login_user_name:
+            type: string
+          office_state_id:
+            type: string
+          organization_id:
+            type: integer
+            format: int32
+          ministry_dept_id:
+            type: integer
+            format: int32
+          records_to_match:
+            type: string
+          user_designation:
+            type: string
+          office_category_id:
+            type: integer
+            format: int32
+      projectHeadDetails:
+        type: object
+        title: ProjectHeadDetails
+        properties:
+          name:
+            type: string
+          email_id:
+            type: string
+          emp_code:
+            type: string
+          landline:
+            type: string
+          mobile_no:
+            type: string
+          designation:
+            type: string
+  ProjectHeadDetails:
+    type: object
+    title: ProjectHeadDetails
+    properties:
+      name:
+        type: string
+      email_id:
+        type: string
+      emp_code:
+        type: string
+      landline:
+        type: string
+      mobile_no:
+        type: string
+      designation:
+        type: string
+securityDefinitions:
+  Oauth:
+    flow: application
+    type: oauth2
+    scopes:
+      napix: ""
+    tokenUrl: //oauth2/token
+    x-ibm-oauth-provider: nic-oauth-provider-application-grant-type
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  servers:
+    - url: https://delhigw.napix.gov.in/nic/dedupe
+      type:
+        - production
+        - development
+  enforced: true
+  testable: true
+  oauth-servers:
+    Oauth:
+      tokenUrls:
+        - https://degateway.napix.gov.in:443/nic/dedupe//oauth2/token
+      refreshUrls: []
+      authorizationUrls: []
+  application-authentication:
+    certificate: false

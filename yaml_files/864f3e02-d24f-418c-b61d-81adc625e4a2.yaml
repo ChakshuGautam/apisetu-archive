@@ -1,0 +1,79 @@
+host: delhigw.napix.gov.in
+info:
+  title: CGHS
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/nic/cghs
+  version: 1.0.0
+  x-ibm-name: benlabreport
+  description: This API is for CGHS beneficiaries to search and get their lab
+    reports as per the treatment gives response some extra fields
+paths:
+  /labReportBenId:
+    post:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Benlabreport
+    parameters:
+      - in: body
+        name: benLabReport
+        schema:
+          type: object
+          title: benLabReport
+          required:
+            - initialToken
+            - latestToken
+            - ben_id
+          properties:
+            ben_id:
+              type: string
+            latestToken:
+              type: integer
+            initialToken:
+              type: integer
+        required: true
+schemes:
+  - https
+swagger: "2.0"
+basePath: /nic/cghs/benLabReport
+security:
+  - oauth:
+      - napix
+securityDefinitions:
+  oauth:
+    flow: application
+    type: oauth2
+    scopes:
+      napix: ""
+    tokenUrl: //oauth2/token
+    x-ibm-oauth-provider: nic-oauth-provider-application-grant-type
+  clientIdHeader:
+    in: header
+    name: X-IBM-Client-Id
+    type: apiKey
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  servers:
+    - url: https://delhigw.napix.gov.in/nic/cghs/benLabReport
+      type:
+        - production
+        - development
+  enforced: true
+  testable: true
+  oauth-servers:
+    oauth:
+      tokenUrls:
+        - https://degateway.napix.gov.in:443/nic/cghs//oauth2/token
+      refreshUrls: []
+      authorizationUrls: []
+  application-authentication:
+    certificate: false

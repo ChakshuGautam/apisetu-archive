@@ -1,0 +1,295 @@
+openapi: 3.0.1
+info:
+  title: DialCode API
+  description: |-
+      PM eVidya DIKSHA - One Nation, One Digital Platform for School Education. An initiative of the National Council of Educational Research and Training (Ministry of Education, Govt of India) <i>[Updated on 23rd May 2023]</i>
+  termsOfService: https://diksha.gov.in/term-of-use.html
+  contact:
+    name: provided by -Diksha
+    url: https://diksha.gov.in/
+  version: 1.0.0
+servers:
+- url: https://diksha.gov.in/api/dialcode
+  description: Production Server 
+paths:
+  /v1/search:
+    post:
+      tags:
+      - Search DialCode API
+      summary: This Web Service will be used to search detail of dial code.
+      operationId: v1/search
+      security:
+      - bearerAuth: []
+      - ApiKeyAuth: []
+      
+      requestBody:
+        content:
+          application/json:
+            schema:
+
+              properties:
+                  request:
+                    type: object
+                    properties:
+                      search:
+                        type: object
+                        properties:
+                         identifier:
+                           type: string
+                           example: ['KHU2JA', 'XEFW96', 'AB2QY2', 'M7NKMX', 'Z4AFCT', 'BZWA2P', 'NWI4RK', 'UFAP37', '7BWIS3', 'J8IDGY', 'W5586U', '91R2VQ', 'KXCWKL', 'RG5GW8', '4CRBL4', 'G9D6AZ', 'T5YZZV', '62KUPR', 'HY7PEM', 'NGZ9Q9', 'DA7Y51', 'Q6TSTW', '33FMIS', 'EZ2H8N', 'RVNBXJ']
+      
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  id:
+                    type: string
+                    example: "api.dialcode.search"
+                  ver:
+                    type: string
+                    example: "1.0"
+                  ts:
+                    type: string
+                    example: "2023-05-16T09:38:49.110Z"
+                  params:
+                    type: object
+                    properties:
+                      resmsgid: 
+                        type: string                        
+                        example: "75f3a360-f3cd-11ed-a2fd-5f923ef83a4f"
+                      msgid: 
+                        type: string                        
+                        example: "75c0faa0-f3cd-11ed-a213-11650cb2b679"
+                      status: 
+                        type: string                        
+                        example: "successful"
+                      err: 
+                        type: string                        
+                        example: null
+                      errmsg: 
+                        type: string                        
+                        example: null
+                  responseCode:
+                    type: string
+                    example: "OK"
+                  result:
+                    type: object
+                    properties:
+                      dialcodes: 
+                        type: array                        
+                        items:
+                          type: object
+                        
+                        example:
+                      count: 
+                        type: integer                        
+                        example: 0
+
+   
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  id:
+                    type: string
+                    example: "api.dialcode.search"
+                  ver:
+                    type: string
+                    example: "1.0"
+                  ts:
+                    type: string
+                    example: "2023-05-18T12:37:40.248Z"
+                  params:
+                    type: object
+                    properties:
+                      resmsgid: 
+                        type: string                        
+                        example: "c708d980-f578-11ed-999c-e79edbde7d8c"
+                      msgid: 
+                        type: string                        
+                        example: null
+                      status: 
+                        type: string                        
+                        example: "failed"
+                      err: 
+                        type: string                        
+                        example: "ERR_DIALCODE_SEARCH_FIELDS_MISSING"
+                      errmsg: 
+                        type: string                        
+                        example: "Required fields for search dialcode are missing"
+                  responseCode:
+                    type: string
+                    example: "CLIENT_ERROR"
+                  result:
+                    type: object
+                    
+
+   
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  message:
+                    type: string
+                    example: "Unauthorized"
+
+   
+
+  /v1/read:
+    post:
+      tags:
+      - Read DialCode API
+      summary: This Web Service will be used to read all detail of dial code.
+      operationId: v1/read
+      security:
+      - bearerAuth: []
+
+      requestBody:
+        content:
+          application/json:
+            schema:
+
+              properties:
+                  request:
+                    type: object
+                    properties:
+                      dialcode:
+                        type: object
+                        properties:
+                         identifier:
+                           type: string
+                           example: KRK7PK
+      
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  id:
+                    type: string
+                    example: "api.dialcode.read"
+                  ver:
+                    type: string
+                    example: "1.0"
+                  ts:
+                    type: string
+                    example: "2023-05-16T09:41:06.978Z"
+                  params:
+                    type: object
+                    properties:
+                      resmsgid: 
+                        type: string                        
+                        example: "c820a020-f3cd-11ed-a2fd-5f923ef83a4f"
+                      msgid: 
+                        type: string                        
+                        example: "c81ecb60-f3cd-11ed-a213-11650cb2b679"
+                      status: 
+                        type: string                        
+                        example: "successful"
+                      err: 
+                        type: string                        
+                        example: null
+                      errmsg: 
+                        type: string                        
+                        example: null
+                  responseCode:
+                    type: string
+                    example: "OK"
+                  result:
+                    type: object
+                    properties:
+                      dialcode: 
+                        type: object                        
+                        properties:
+                          identifier: 
+                            type: string
+                            example: "KRK7PK"
+                          channel: 
+                            type: string
+                            example: "01246376237871104093"
+                          publisher: 
+                            type: string
+                            example: "UPPUBLISHER"
+                          batchCode: 
+                            type: string
+                            example: "URD_URDU_ZABAN_STD_2"
+                          status: 
+                            type: string
+                            example: "Draft"
+                          generatedOn: 
+                            type: string
+                            example: "2018-04-14T16:28:09.873"
+                          publishedOn: 
+                            type: string
+                            example: null
+                          metadata: 
+                            type: string
+                            example: null
+
+   
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: string
+                    example: "api.dialcode.read"
+                  ver:
+                    type: string
+                    example: "1.0"
+                  ts:
+                    type: string
+                    example: "2023-05-18T11:16:49.726Z"
+                  params:
+                    type: object
+                    properties:
+                      resmsgid: 
+                        type: string                        
+                        example: "7be5ede0-f56d-11ed-a2fd-5f923ef83a4f"
+                      msgid: 
+                        type: string                        
+                        example: null
+                      status: 
+                        type: string                        
+                        example: "failed"
+                      err: 
+                        type: string                        
+                        example: "ERR_REQUEST_FIELDS_CHANNEL_ID_MISSING"
+                      errmsg: 
+                        type: string                        
+                        example: "Required field channel id is missing"
+                  responseCode:
+                    type: string
+                    example: "CLIENT_ERROR"
+                  result:
+                    type: object
+                    
+
+   
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Text
+    
+   
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-authenticated-user-token

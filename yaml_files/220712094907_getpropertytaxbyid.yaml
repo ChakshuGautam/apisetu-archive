@@ -1,0 +1,79 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "MAHITI PROPERTY TAX API",
+    "version": "1.0.0",
+    "description": "This API is the part of Mahiti Kanaja department.  This API is used to get the propertytax data based on specific parameters.\n"
+  },
+  "servers": [
+    {
+      "url": "http://propertytax.bdabangalore.org",
+      "variables": {
+        "propertyId": {
+          "default": "propertyId"
+        }
+      }
+    },
+    {
+      "url": "https://propertytax.bdabangalore.org/api/taxinfo/{propertyId}",
+      "variables": {
+        "propertyId": {
+          "default": "propertyId"
+        }
+      }
+    }
+  ],
+  "paths": {
+    "/api/taxinfo/{propertyId}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Succesful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "message": {
+                      "Owner": "VEMULA SUDHAKAR",
+                      "Division": "EAST",
+                      "Circle": "CIRCLE 1",
+                      "Layout": "SY No.56/1(P),63/1(P),& OTHERS, CHIKKANAGAMANGALA VILLAGE,",
+                      "SubLayout": "SARJAPURA HOBLI",
+                      "Amount": 4952,
+                      "LastPaidAmount": 0,
+                      "LastPaidOn": "-",
+                      "Balance": 4952
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Get property tax data for specific params",
+        "operationId": "GET_mahiti-kanaja-property-tax-propertyId"
+      },
+      "parameters": [
+        {
+          "name": "propertyId",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ]
+    }
+  },
+  "components": {
+    "schemas": {},
+    "responses": {},
+    "parameters": {},
+    "examples": {},
+    "requestBodies": {},
+    "headers": {},
+    "securitySchemes": {},
+    "links": {},
+    "callbacks": {}
+  }
+}

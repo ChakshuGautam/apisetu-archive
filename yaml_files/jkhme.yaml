@@ -1,0 +1,211 @@
+openapi: 3.0.3
+info:  
+  title: Department of Health and Medical Education, Jammu & Kashmir
+  description:  >- 
+                The Health & Medical Education Department is striving to deliver state of Art and Affordable Healthcare to the citizens of J&K. With the support of the Ministry of Health and Family Welfare, Government of India, the Healthcare delivery of J&K has seen a tremendous rise in its quality due to the huge funding and bridging of the gaps of Human Resource and Health care Infrastructure which is aimed at raising the standards of Health care delivery in the UT of J&K.
+  termsOfService: https://apisetu.gov.in/api-policy
+  version: 3.0.0
+servers:
+  - url: 'https://apisetu.gov.in/certificate/v3/jkhme'
+paths:
+  
+  /aecer:
+    post:
+      tags:
+        - APIs
+      summary: Age Certificate
+      description: API to verify Age Certificate.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: aecer
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - appId
+                    
+                    - FullName
+                    
+                    - DOB
+                      
+                  properties:
+                    appId:
+                      type: string
+                      description: Application Number
+                      example: "AGC/0101/03Jan2017/144107124"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /ficer:
+    post:
+      tags:
+        - APIs
+      summary: Fitness Certificate
+      description: API to verify Fitness Certificate.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: ficer
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf  
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - appId
+                    
+                    - FullName
+                    
+                    - DOB
+                      
+                  properties:
+                    appId:
+                      type: string
+                      description: Application Number
+                      example: "FTC/0101/21Feb2022/130700166"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+              application/pdf:
+                example: Response body contains contents of the certificate in PDF format.
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+components:
+  schemas:
+    ConsentArtifactSchema:
+      $ref: './common/ConsentArtifactSchema.yaml#/ConsentArtifactSchema'
+    AcademicCertificateSchema:
+      $ref: './common/AcademicCertificateSchema.yaml#/AcademicCertificateSchema'
+          
+  responses:
+    400Error:
+      $ref: './common/ErrorResponse.yaml#/400Error'
+    401Error:
+      $ref: './common/ErrorResponse.yaml#/401Error'
+    404Error:
+      $ref: './common/ErrorResponse.yaml#/404Error'
+    500Error:
+      $ref: './common/ErrorResponse.yaml#/500Error'
+    502Error:
+      $ref: './common/ErrorResponse.yaml#/502Error'
+    503Error:
+      $ref: './common/ErrorResponse.yaml#/503Error'
+    504Error:
+      $ref: './common/ErrorResponse.yaml#/504Error'
+  securitySchemes:
+    clientId:
+      type: apiKey
+      in: header
+      name: X-APISETU-CLIENTID
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-APISETU-APIKEY

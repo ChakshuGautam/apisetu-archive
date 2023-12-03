@@ -1,0 +1,126 @@
+openapi: 3.0.0
+info:
+  title: SSP-SWD-HMIS-FetchHostel
+  version: 1.0.0
+  description: This API comes under the department of SSP.This Api gives
+    HMIS-FetchHostel details.
+servers:
+  - url: https://ssp.postmatric.karnataka.gov.in/Get_Students_Details/api/HMIS_Fetch_Hostel_Details
+  - url: https://ssp.postmatric.karnataka.gov.in/
+paths:
+  /Get_Students_Details/api/HMIS_Fetch_Hostel_Details:
+    post:
+      responses:
+        "200":
+          description: Operation successful
+          content:
+            application/json:
+              schema:
+                example:
+                  statusCode: 1
+                  status: Success
+                  message: You have successfully got Hostel Details.
+                  statusMessage:
+                    - Hostel_Code: 100001
+                      Hostel_Name: SC POSTMH GIRLS HOSTEL(MEDICAL AND ENGINEERING GIRLS HOSTEL
+                        MALLATHAHALLI ),BENGALURU URBAN,BENGALURU NORTH,BBMP
+                      District_Code: 525
+                      Taluk_Code: 5542
+                      Urban_Rural: 1
+                      Village_Code: null
+                      Ward_Code: 276600
+                      University_Code: null
+                      College_Code: null
+                      College_AISHE_Code: null
+                      Department_Code: 1
+                      Hostel_Category_Code: 1
+                      Hostel_Gender_Type_Code: 2
+                      Post_or_Prematric_Code: 1
+                      maintainace_paid_to: W
+                      No_Of_Hostel_Buildings: null
+                      Hostel_Address: SC POSTMH GIRLS HOSTEL(MEDICAL AND ENGINEERING GIRLS HOSTEL
+                        MALLATHAHALLI ),BENGALURU URBAN,BENGALURU NORTH,BBMP
+                      Building_Name: null
+                      hostelBuildings: []
+                    - Hostel_Code: 100002
+                      Hostel_Name: >-
+                        SC POST MATRIC GIRLS HOSTEL,GOVERNMA
+
+                        GOVERNMENT GIRLS COLLEGE HOSTEL JAYANAGAR  33RD CROSS BEHIND CITY COLLEGE JAYANAGAR 7TH BLOCK BANGALORE 560082,BENGALURU URBAN,BENGALURU SOUTH
+                      District_Code: 525
+                      Taluk_Code: 5543
+                      Urban_Rural: 1
+                      Village_Code: null
+                      Ward_Code: null
+                      University_Code: null
+                      College_Code: null
+                      College_AISHE_Code: null
+                      Department_Code: 1
+                      Hostel_Category_Code: 1
+                      Hostel_Gender_Type_Code: 2
+                      Post_or_Prematric_Code: 1
+                      maintainace_paid_to: W
+                      No_Of_Hostel_Buildings: null
+                      Hostel_Address: >-
+                        GOVERNMA
+
+                        GOVERNMENT GIRLS COLLEGE HOSTEL JAYANAGAR  33RD CROSS BEHIND CITY COLLEGE JAYANAGAR 7TH BLOCK BANGALORE 560082
+                      Building_Name: GOVT POST METRIC GIRLS HOSTEL
+                      hostelBuildings: []
+                    - Hostel_Code: 500001
+                      Hostel_Name: BANGALORE UNIVERSITY, BANGALORE(MAIN CAMPUS) POST MATRIC,BENGALURU
+                        URBAN,BENGALURU SOUTH
+                      District_Code: 525
+                      Taluk_Code: 5543
+                      Urban_Rural: 1
+                      Village_Code: null
+                      Ward_Code: null
+                      University_Code: 1011
+                      College_Code: 13822
+                      College_AISHE_Code: U-0215
+                      Department_Code: 1
+                      Hostel_Category_Code: 5
+                      Hostel_Gender_Type_Code: 0
+                      Post_or_Prematric_Code: 1
+                      maintainace_paid_to: P
+                      No_Of_Hostel_Buildings: 5
+                      Hostel_Address: BANGALORE UNIVERSITY JNAJABHARATHI CAMPUS BANGALORE 560056
+                      Building_Name: null
+                      hostelBuildings:
+                        - Hostel_Code: 500001
+                          Building_Code: 1
+                          Building_Name: Ph D HOSTEL NO ONE
+                        - Hostel_Code: 500001
+                          Building_Code: 2
+                          Building_Name: PG MENS HOSTEL NO TWO
+                        - Hostel_Code: 500001
+                          Building_Code: 3
+                          Building_Name: PG MENS HOSTEL NO FIVE
+                        - Hostel_Code: 500001
+                          Building_Code: 4
+                          Building_Name: UCPE MENS HOSTEL
+                        - Hostel_Code: 500001
+                          Building_Code: 5
+                          Building_Name: "LADIES HOSTEL NO TWO JB CAMPUS "
+      description: get hmis hostel details.
+      operationId: POST_Get_Students_Details-api-SSP_Fetch_Student_Details
+      requestBody:
+        content:
+          application/json:
+            example:
+              District_Code: "525"
+              Taluk_Code: "5542"
+              Department_Code: "1"
+            schema:
+              type: string
+        required: true
+components:
+  schemas: {}
+  responses: {}
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}

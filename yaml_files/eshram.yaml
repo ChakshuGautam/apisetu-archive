@@ -1,0 +1,127 @@
+openapi: 3.0.3
+info:  
+  title: Ministry of Labour & Employment (eShram), Delhi
+  description:  >- 
+                The Ministry of Labour & Employment which is one of the oldest and important Ministries of the Government of India, is continuously working on improving life and dignity of Labour force of country by protecting & safeguarding the interest of workers, promotion of welfare and providing social security to the Labour force both in Organized and Unorganized Sectors by enactment and implementation of various Labour Laws, which regulate the terms and conditions of service and employment of workers.    Accordingly, Ministry of Labour & Employment has developed eShram portal for creating a National Database of Unorganized Workers (NDUW), which will be seeded with Aadhaar. It will have details of name, occupation, address, occupation type, educational qualification, skill types etc. for optimum realization of their employability and extend the benefits of the social security schemes to them. It is the first-ever national database of unorganised workers including migrant workers, construction workers, gig and platform workers, etc.
+  termsOfService: https://apisetu.gov.in/api-policy
+  version: 3.0.0
+servers:
+  - url: 'https://apisetu.gov.in/certificate/v3/eshram'
+paths:
+  
+  /uncrd:
+    post:
+      tags:
+        - APIs
+      summary: UAN Card
+      description: API to verify UAN Card.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: uncrd
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - UAN
+                    - AADHAAR
+                    - DOB
+                      
+                  properties:
+                    UAN:
+                      type: string
+                      description: UAN
+                      example: "e.g.  710422231070"
+                       
+                    
+                    AADHAAR:
+                      type: string
+                      description: AADHAAR
+                      example: "e.g 594574309425"
+                       
+                    
+                    DOB:
+                      type: string
+                      description: DOB
+                      example: "e.g 06-12-1996"
+                       
+                    
+                      
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+components:
+  schemas:
+    ConsentArtifactSchema:
+      $ref: './common/ConsentArtifactSchema.yaml#/ConsentArtifactSchema'
+    AcademicCertificateSchema:
+      $ref: './common/AcademicCertificateSchema.yaml#/AcademicCertificateSchema'
+          
+  responses:
+    400Error:
+      $ref: './common/ErrorResponse.yaml#/400Error'
+    401Error:
+      $ref: './common/ErrorResponse.yaml#/401Error'
+    404Error:
+      $ref: './common/ErrorResponse.yaml#/404Error'
+    500Error:
+      $ref: './common/ErrorResponse.yaml#/500Error'
+    502Error:
+      $ref: './common/ErrorResponse.yaml#/502Error'
+    503Error:
+      $ref: './common/ErrorResponse.yaml#/503Error'
+    504Error:
+      $ref: './common/ErrorResponse.yaml#/504Error'
+  securitySchemes:
+    clientId:
+      type: apiKey
+      in: header
+      name: X-APISETU-CLIENTID
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-APISETU-APIKEY

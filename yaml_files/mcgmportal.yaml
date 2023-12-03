@@ -1,0 +1,514 @@
+openapi: 3.0.3
+info:  
+  title: Brihanmumbai Municipal Corporation (BMC), Maharashtra
+  description:  >- 
+                Brihanmumbai Municipal Corporation (BMC), is the governing civic body of Mumbai, the capital city of Maharashtra. BMC is issuing Marriage certificates from 2016 onwards. Citizens can fetch into their respective Digilocker accounts.
+  termsOfService: https://apisetu.gov.in/api-policy
+  version: 3.0.0
+servers:
+  - url: 'https://apisetu.gov.in/certificate/v3/mcgmportal'
+paths:
+  
+  /alsfc:
+    post:
+      tags:
+        - APIs
+      summary: Application/ License for Factory
+      description: API to verify Application/ License for Factory.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: alsfc
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - Factory_No
+                    - Mobile_No
+                    - Ward
+                      
+                  properties:
+                    Factory_No:
+                      type: string
+                      description: Factory No
+                      example: "28369823423"
+                       
+                    
+                    Mobile_No:
+                      type: string
+                      description: Mobile No
+                      example: "9876543210"
+                       
+                    
+                    Ward:
+                      type: string
+                      description: Ward
+                      example: "RC WARD"
+                       
+                    
+                      
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /rsbyc:
+    post:
+      tags:
+        - APIs
+      summary: Health Card/ Certificate
+      description: API to verify Health Card/ Certificate.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: rsbyc
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - HEALTH_LIC_NO
+                    - MOBILE_NO
+                    - Ward
+                      
+                  properties:
+                    HEALTH_LIC_NO:
+                      type: string
+                      description: Health LIC No.
+                      example: "8278321398312"
+                       
+                    
+                    MOBILE_NO:
+                      type: string
+                      description: Mobile No.
+                      example: "9876543210"
+                       
+                    
+                    Ward:
+                      type: string
+                      description: Ward
+                      example: "HW ward"
+                       
+                    
+                      
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /rmcer:
+    post:
+      tags:
+        - APIs
+      summary: Marriage Certificate
+      description: API to verify Marriage Certificate.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: rmcer
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - MOBILE_NO
+                    - MARRIAGE_REG_NO
+                    - MARRIAGE_DATE
+                    
+                    - FullName
+                    
+                    - DOB
+                      
+                  properties:
+                    MOBILE_NO:
+                      type: string
+                      description: Mobile Number
+                      example: "i.e. 9734567890"
+                       
+                    
+                    MARRIAGE_REG_NO:
+                      type: string
+                      description: Marriage Registration Number
+                      example: "i.e.  876213678123"
+                       
+                    
+                    MARRIAGE_DATE:
+                      type: string
+                      description: Marriage Date
+                      example: "i.e. DD-MM-YYYY"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /srcer:
+    post:
+      tags:
+        - APIs
+      summary: Registration Certificate of Shops And Commercial Establishment
+      description: API to verify Registration Certificate of Shops And Commercial Establishment.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: srcer
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - MOBILE_NO
+                    - SHOP_APP_NO
+                    - SHOP_CAT_ESTAB
+                    - SHOP_CAT_ESTAB_TYPE
+                      
+                  properties:
+                    MOBILE_NO:
+                      type: string
+                      description: Mobile No
+                      example: "9876543210"
+                       
+                    
+                    SHOP_APP_NO:
+                      type: string
+                      description: Shop App No
+                      example: "12123123"
+                       
+                    
+                    SHOP_CAT_ESTAB:
+                      type: string
+                      description: Shop Category Estab
+                      example: "78628112"
+                       
+                    
+                    SHOP_CAT_ESTAB_TYPE:
+                      type: string
+                      description: Request Type
+                      example: "ShopFormA,ShopFormF"
+                       
+                    
+                      
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /tdlcs:
+    post:
+      tags:
+        - APIs
+      summary: Trade License/ Certificate
+      description: API to verify Trade License/ Certificate.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: tdlcs
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - TRADE_LIC_NO
+                    - MOBILE_NO
+                    - Ward
+                      
+                  properties:
+                    TRADE_LIC_NO:
+                      type: string
+                      description: Trade Lic Number
+                      example: "238729323"
+                       
+                    
+                    MOBILE_NO:
+                      type: string
+                      description: Mobile Number
+                      example: "9876543210"
+                       
+                    
+                    Ward:
+                      type: string
+                      description: Ward
+                      example: "GS WARD"
+                       
+                    
+                      
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+components:
+  schemas:
+    ConsentArtifactSchema:
+      $ref: './common/ConsentArtifactSchema.yaml#/ConsentArtifactSchema'
+    AcademicCertificateSchema:
+      $ref: './common/AcademicCertificateSchema.yaml#/AcademicCertificateSchema'
+          
+  responses:
+    400Error:
+      $ref: './common/ErrorResponse.yaml#/400Error'
+    401Error:
+      $ref: './common/ErrorResponse.yaml#/401Error'
+    404Error:
+      $ref: './common/ErrorResponse.yaml#/404Error'
+    500Error:
+      $ref: './common/ErrorResponse.yaml#/500Error'
+    502Error:
+      $ref: './common/ErrorResponse.yaml#/502Error'
+    503Error:
+      $ref: './common/ErrorResponse.yaml#/503Error'
+    504Error:
+      $ref: './common/ErrorResponse.yaml#/504Error'
+  securitySchemes:
+    clientId:
+      type: apiKey
+      in: header
+      name: X-APISETU-CLIENTID
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-APISETU-APIKEY

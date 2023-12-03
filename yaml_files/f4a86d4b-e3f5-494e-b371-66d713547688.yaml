@@ -1,0 +1,70 @@
+host: delhigw.napix.gov.in
+info:
+  title: Aarogya Sathi Mobile App (RJ)
+  version: 1.0.0
+  x-ibm-name: servicetypes
+  description: This is Spinner API for provide  data Array for app .this is the
+    part of AarogyaSathi mobile app functionality .this API needs in multiple
+    modules for providing  some defult data  to user .
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/nic/aarogyasathi
+paths:
+  /servicetypes:
+    get:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Servicetypes
+    head:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Servicetypes
+    post:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Servicetypes
+schemes:
+  - https
+swagger: "2.0"
+basePath: /nic/aarogyasathi/servicetypes
+security:
+  - Client_ID: []
+  - {}
+securityDefinitions:
+  Client_ID:
+    in: header
+    name: Client_ID
+    type: apiKey
+    x-key-type: client_id
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  servers:
+    - url: https://delhigw.napix.gov.in/nic/aarogyasathi/servicetypes
+      type:
+        - production
+        - development
+  enforced: true
+  testable: true
+  application-authentication:
+    certificate: false

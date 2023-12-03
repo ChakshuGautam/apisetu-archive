@@ -1,0 +1,116 @@
+openapi: 3.0.0
+info:
+  title: SSP-Nsppms-PushBenefeciaries.
+  version: 1.0.0
+  description: This Api comes under the department of SSP. This API gives details
+    of NSPPMS-beneficiaries.
+servers:
+  - url: https://api.nsp.gov.in/pms/v1/pushbeneficiaries
+  - url: https://api.nsp.gov.in/
+paths:
+  /pms/v1/pushbeneficiaries:
+    post:
+      responses:
+        "200":
+          description: Operation Successful
+          content:
+            application/json:
+              schema:
+                example:
+                  headerStatus: Success
+                  errorCode: "null"
+                  errorDesc: "null"
+                  beneficiariesReqRecordStatus:
+                    - status: Success
+                      stateApplicationId: "20210472382"
+                      nspApplicationId: IN/5001/KA/20210472382
+                      beneficiariesReqRecordError: []
+      description: fetch beneficiary details.
+      operationId: POST_pms-v1-pushbeneficiaries
+      requestBody:
+        content:
+          application/json:
+            example:
+              headerDetail:
+                academicYear: "2122"
+                nspSchemeCode: "5001"
+                stateSchemeCode: "28"
+                stateLGD: "29"
+              beneficiaryInfo:
+                - applicationId: "20210472382"
+                  freshRenewal: F
+                  registrationDate: 2021-01-01
+                  studentName: Surendra Singh
+                  dateOfBirth: 1993-05-05
+                  gender: M
+                  caste: EBC
+                  religion: "1"
+                  mobileNumber: "9650317517"
+                  emailId: ""
+                  fatherName: Narapat Singh
+                  motherName: Madhu Kanwar
+                  aadhaarNo: "839659878617"
+                  isOrphan: "false"
+                  isPWD: "false"
+                  disabilityType: ""
+                  disabilityPrcnt: ""
+                  householdCategory: Poorest
+                  domicileAddress: Near RajBhawan
+                  domacileCityName: Ajmer
+                  domacileAddressPincode: "305021"
+                  districtLGD: "86"
+                  hostellerOrDayscholar: Hosteller
+                  bankName: STATE BANK OF INIDA
+                  bankIfscCode: SBI00000SBI
+                  bankAccountNumber: "012345678911"
+                  c_diseAisheCode: dise
+                  c_instituteType: "1"
+                  c_addressOfInstitute: Near YN Road
+                  c_statesLgdCodeOfInstitute: "8"
+                  c_districtLgdCodeOfInstitute: "86"
+                  c_blockLgdCodeOfInstitute: "1"
+                  c_pincodeOfInstitute: "305021"
+                  mobileNumberOfInstitute: "9874561230"
+                  emailIdOfInstitute: abc@gmail.com
+                  instituteNodalOfficerName: Ram Singh
+                  nodalOfficerDesignation: Designation
+                  c_courseMasterId: "1"
+                  courseName: CA
+                  typeOfCourse: "1"
+                  courseTotalDuration: "1"
+                  courseGroup: "1"
+                  courseLevel: "5"
+                  courseCommencementDate: 2021-01-01
+                  classYearInWhichStudying: "1"
+                  previousCourseCompleted: "4"
+                  previousCoursePassingPercentage: "60"
+                  previousCoursePassingYear: "2020"
+                  lastPassingPercentage: "90"
+                  lastYearResult: Pass
+                  attendanceMethod: Other
+                  totalNoOfAttendedDays: "0"
+                  attendancePercentage: "0"
+                  nonRefundableFeePayable: "0"
+                  academicAllowancePayable: "0"
+                  disabilityAllowancePayable: "0"
+                  isStateSharePaid: "true"
+                  stateSharePaidDate: 2021-02-02
+                  stateShareNonRefundableFeePaid: "0"
+                  stateShareAcademicAllowancePaid: "0"
+                  stateShareDisabilityAllowancePaid: "0"
+                  applicationCurrentStatus: "3"
+                  applicationCurrentStatusDate: 2021-10-29
+                  reasonOfRejectionOrObjection: try
+            schema:
+              type: string
+        required: true
+components:
+  schemas: {}
+  responses: {}
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}

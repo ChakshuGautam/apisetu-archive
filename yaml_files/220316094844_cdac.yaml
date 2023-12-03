@@ -1,0 +1,186 @@
+---
+openapi: 3.0.0
+info:
+  title: CDAC Medical Recommendation System
+  description: CDAC Recommendation APIs allow any third-party hospital to access recommendations for investigations, complaints, diagnosis and drugs for the particular patient in their records. The use of these APIs is conditional to registered hospitals with CDAC Noida. The recommendations will be available only after saving at least 1000 records in the servers first. Further, these APIs are subject to a reasonable rate limit. Please consider these points while using the APIs in the respective application(s). 
+    In case of any misuse impacting the performance of CDAC servers and/or attempt to
+    access any personal information will result in blocking any such application as per the
+    policies of CDAC Noida and taking any other appropriate action under the law.
+    For further questions, please mail us at aimlcdacnoida@gmail.com.
+  termsOfService: https://www.cdac.in
+  contact:
+    name: CDAC
+    url: https://www.cdac.in
+    email: aimlcdacnoida@gmail.com
+ 
+  version: 1.0.0
+servers:
+- url: https://aiml.uat.dcservices.in/ailabsapi
+  description: AIML
+tags:
+- name: ailabsapi
+  description: Main API
+paths:
+  /token:
+    post:
+      tags:
+      - ailabsapi
+      summary: return token for inserting data and getting recommendations
+      description: return token for inserting data and getting recommendations
+      operationId: getToken
+      requestBody:
+        description: get access token
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenItem'
+      responses:
+        "200":
+          description: access token
+        "401":
+          description: No active account found with the given credentials
+        "400":
+          description: This field is required.
+  /insertData:
+    post:
+      tags:
+      - ailabsapi
+      summary: inserts data
+      description: inserts data
+      operationId: insertData
+      requestBody:
+        description: data to add
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InsertDataItem'
+      responses:
+        "201":
+          description: Data saved successfully
+        "400":
+          description: Given token not valid for any token type
+  /getRecommendations:
+    post:
+      tags:
+      - ailabsapi
+      summary: get recommendations
+      description: get recommendations
+      operationId: getRecommendations
+      requestBody:
+        description: get recommendations
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetRecommendationsItem'
+      responses:
+        "201":
+          description: Data saved successfully
+        "400":
+          description: Given token not valid for any token type
+        "415":
+          description: '{ "detail": "Unsupported media type \"text/plain\" in request." }'
+components:
+  schemas:
+    TokenItem:
+      required:
+      - password
+      - username
+      type: object
+      properties:
+        username:
+          type: string
+          example: astharai
+        password:
+          type: string
+          example: password123!@#
+    InsertDataItem:
+      required:
+      - age
+      - apiKey
+      - complaints
+      - department
+      - diagnosis
+      - drugs
+      - gender
+      - hosCode
+      - investigations
+      - visitDate
+      type: object
+      properties:
+        apiKey:
+          type: string
+          example: svgiaanviojOD15
+        age:
+          type: integer
+          example: 26
+        gender:
+          type: string
+          example: M
+        visitDate:
+          type: string
+          example: 2022-02-23 12:24:48.83575+05:30
+        department:
+          type: integer
+          example: 101
+        hosCode:
+          type: integer
+          example: 1001
+        investigations:
+          type: object
+          example:
+          - code: "0"
+            name: LFT
+            codeType: none
+            testType: group
+        complaints:
+          type: object
+          example:
+          - code: "0"
+            name: fever
+            codeType: none
+        diagnosis:
+          type: object
+          example:
+          - code: "0"
+            name: fever
+            codeType: none
+        drugs:
+          type: object
+          example:
+          - code: "0"
+            name: paracetamol
+            codeType: none
+    GetRecommendationsItem:
+      required:
+      - age
+      - apiKey
+      - department
+      - gender
+      - hosCode
+      - inputQuery
+      - inputSeries
+      type: object
+      properties:
+        apiKey:
+          type: string
+          example: svgiaanviojOD15
+        age:
+          type: integer
+          example: 26
+        gender:
+          type: string
+          example: M
+        inputSeries:
+          type: string
+          example: rov
+        department:
+          type: integer
+          example: 101
+        hosCode:
+          type: integer
+          example: 1001
+        inputQuery:
+          type: object
+          example:
+          - code: "0"
+            name: fever

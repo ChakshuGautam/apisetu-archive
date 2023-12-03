@@ -1,0 +1,64 @@
+openapi: 3.0.0
+info:
+  title: SSP-eAttestationService
+  version: 1.0.0
+  description: This Api comes under the department of SSP. This API gives the
+    eAttestation retrival details.
+servers:
+  - url: http://esign.ssp.karnataka.gov.in/
+  - url: http://esign.ssp.karnataka.gov.in/esign_engine/documents/retrival
+paths:
+  /esign_engine/documents/retrival:
+    get:
+      responses:
+        "200":
+          description: Operation successful
+          content:
+            application/json:
+              schema:
+                example:
+                  app_code: PM
+                  document_id: "0011715508"
+                  verifier_aadhaar_id: "825068188239"
+                  verifier_name: Shivalingappa M Hunagund
+                  verifier_jurisdiction: College
+                  verifier_grade: ""
+                  verifier_consent: yes
+                  remarks: null
+                  verifier_desg: Assistant Professor
+                  verifier_dept: Education
+                  approved_at: 2021-02-23 08:12:24
+                  pdf_hash: e2dffb1949137400df1e0640f49ad59c20218aabcfac5cabf8b96e3a8b3ea40b
+                  submitter_aadhaar_id: "668384790836"
+                  submitter_name: ABHISHEK R GODER
+                  doc_type_id: "11"
+                  doc_type_name: Salary Certificate (only for Engineering and Diploma students
+                    and  not kin of defence personnel)
+                  submitter_metadata: '{"Parent_Name":"R S GODER","parent_designation":"CLUSTER
+                    RESOURCE
+                    PERSON","parent_ofz_add":"GHATPRABHA","net_salary":"48521","gross_salary":"62985","certificate_issued_date":"2021-10-01"}'
+                  status: CDAC-signed
+                  pdffile: ""
+      description: get retrival details based on the application_id and document_number.
+      operationId: GET_esign_engine-documents-retrival
+      parameters:
+        - name: document_no
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: application_id
+          in: query
+          required: true
+          schema:
+            type: string
+components:
+  schemas: {}
+  responses: {}
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}

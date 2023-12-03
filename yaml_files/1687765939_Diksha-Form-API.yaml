@@ -1,0 +1,164 @@
+openapi: 3.0.1
+info:
+  title: Form
+  description: |-
+      PM eVidya DIKSHA - One Nation, One Digital Platform for School Education. An initiative of the National Council of Educational Research and Training (Ministry of Education, Govt of India) <i>[Updated on 26th June 2023]</i>
+  termsOfService: https://diksha.gov.in/term-of-use.html
+  contact:
+    name: Provided by -Diksha
+    url: https://diksha.gov.in/
+  version: 1.0.0
+servers:
+- url: https://diksha.gov.in/api/data
+  description: Production Server  
+paths:
+  /v1/form/read:
+    post:
+      tags:
+      - Read Form API
+      summary: This web service will be used to read data of form
+      operationId: v1/form/read
+      security:
+      - bearerAuth: []
+
+      requestBody:
+        content:
+          application/json:
+            schema:
+
+              properties:
+                  request:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        example: content
+                      action:
+                        type: string
+                        example: create
+                      subType:
+                        type: string
+                        example: assessment
+                      rootOrgId:
+                        type: string
+                        example: "01272640641486848010205"
+                      framework:
+                        type: string
+                        example: tn_k-12_5
+      
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  id:
+                    type: string
+                    example: "api.form.read"
+                  params:
+                    type: object
+                    properties:
+                      resmsgid: 
+                        type: string                        
+                        example: "0c086b27-ca46-433f-aca8-25f915da721d"
+                      msgid: 
+                        type: string                        
+                        example: "b4ce4900-0592-407d-8d96-6f2177295a80"
+                      status: 
+                        type: string                        
+                        example: "successful"
+                  responseCode:
+                    type: string
+                    example: "OK"
+                  result:
+                    type: object
+                    properties:
+                      form: 
+                        type: object                        
+                        properties:
+                          type: 
+                            type: string
+                            example: "content"
+                          subtype: 
+                            type: string
+                            example: "assessment"
+                          action: 
+                            type: string
+                            example: "create"
+                          component: 
+                            type: string
+                            example: "*"
+                          framework: 
+                            type: string
+                            example: "*"
+                          data: 
+                            type: string
+                            example: {'templateName': 'defaultTemplate', 'action': 'create', 'fields': [{'code': 'name', 'visible': True, 'editable': True, 'displayProperty': 'Editable', 'dataType': 'text', 'renderingHints': {'semanticColumnWidth': 'twelve'}, 'description': 'Name', 'index': 1, 'label': 'Name', 'required': False, 'name': 'Name', 'inputType': 'text', 'placeholder': 'Name'}, {'code': 'maxAttempts', 'dataType': 'text', 'name': 'Max no of attempts', 'label': 'Max no of attempts', 'description': 'Max no of attempts', 'editable': True, 'placeholder': 'Max no of attempts', 'inputType': 'number', 'required': False, 'displayProperty': 'Editable', 'visible': True, 'renderingHints': {'semanticColumnWidth': 'six'}, 'index': 2}]}
+                          created_on: 
+                            type: string
+                            example: "2020-03-16T21:01:01.237Z"
+                          last_modified_on: 
+                            type: string
+                            example: "2021-05-17T18:09:46.907Z"
+                          rootOrgId: 
+                            type: string
+                            example: "*"
+                  ts:
+                    type: string
+                    example: "2023-06-20T11:26:57.135Z"
+                  ver:
+                    type: string
+                    example: "1.0"
+
+   
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  id:
+                    type: string
+                    example: "api.form.read"
+                  params:
+                    type: object
+                    properties:
+                      resmsgid: 
+                        type: string                        
+                        example: "71c41108-76d8-4407-9107-c261cb309596"
+                      msgid: 
+                        type: string                        
+                        example: "c56b2715-b225-4bee-a24b-cdadcbd92669"
+                      status: 
+                        type: string                        
+                        example: "failed"
+                      err: 
+                        type: string                        
+                        example: "ERR_READ_FORM_DATA"
+                      errmsg: 
+                        type: string                        
+                        example: "specifiy \"rootOrgId\" along with \"framework\""
+                  responseCode:
+                    type: string
+                    example: "CLIENT_ERROR"
+                  result:
+                    type: object
+                  ts:
+                    type: string
+                    example: "2023-06-20T06:10:17.763Z"
+                  ver:
+                    type: string
+                    example: "1.0"
+
+   
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Text
+
+

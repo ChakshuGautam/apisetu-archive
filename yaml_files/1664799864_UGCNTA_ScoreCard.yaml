@@ -1,0 +1,181 @@
+---
+  openapi: "3.0.0"
+  info: 
+    title: "National Testing Agency (UGC-NTA-Score Card)"
+    description: "National Testing Agency (NTA) has been established as a premier, specialist, autonomous and self-sustained testing organization to conduct entrance examinations for admission/fellowship in higher educational institutions."
+    termsOfService: "https://web.umang.gov.in/uaw/ts/v1/en/index.htm"
+    contact: 
+      name: "Provided by - UMANG"
+      url: "https://web.umang.gov.in"
+    version: "1.0.0"
+  servers: 
+    - 
+      url: "https://apigw.umangapp.in/ugcntaug"
+  paths: 
+    /scorecard:
+      post: 
+        tags: 
+          - "View/Download Admit Card APIs"
+        summary: "View/Download Admit Card for UGC NET Exam."
+        description: Student can view CUET UG Score Card Card details and download the Score Card PDF.
+        operationId: scorecard API
+        parameters: 
+          - in: header
+            name: Content-Type
+            schema:
+                type: string
+                example: application/json
+          - in: header
+            name: deptid
+            schema:
+                type: integer
+                example: 364
+          - in: header
+            name: srvid
+            schema:
+                type: integer
+                example: 60052
+          - in: header
+            name: subsid
+            schema:
+                type: integer
+                example: 0
+          - in: header
+            name: subsid2
+            schema:
+                type: integer
+                example: 0
+          - in: header
+            name: formtrkr
+            schema:
+                type: string
+                example: 0
+          - in: header
+            name: lang
+            schema:
+                type: string
+                example: en
+          - in: header
+            name: x-api-key
+            schema: 
+              type: string
+            example: xxxxxxxxxxxx
+          - in: header
+            name: Authorization
+            schema: 
+              type: string
+            example: Bearer PJUUB4X4O2ZZExxxxxxxxxx
+        security:
+          - bearerAuth: []
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: object
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: uy67e2249b-103a-4033-99cb-9de47e389bcd/1
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-aM20220922132922
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 1006061079
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 60052
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 364
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: 0
+                  subsid2:
+                    type: string
+                    description: sub service id 2
+                    example: 0
+                  form_no:
+                    type: string
+                    description: Form Number
+                    example: 223510000043
+                  day:
+                    type: string
+                    description: Day
+                    example: 2
+                  month:
+                    type: string
+                    description: Month
+                    example: 1
+                  year:
+                    type: string
+                    description: Year
+                    example: 2008                  
+        responses:
+          200:
+            description: Successful Response
+            content: 
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        fieldErrors:
+                          type: string
+                          example: null
+                        message:
+                          type: string
+                          example: [ {  "attribute": "ROLL", "label": "ROLL", "value": "MR16000111" }, { "attribute": "APPNO", "label": "APPNO", "value": "223510000043" }, ]
+                        loginTimestamp:
+                          type: string
+                          example: null
+          400:
+            description: Bad Request/Validation Error
+  components:
+    securitySchemes:
+      bearerAuth:
+        type: http
+        scheme: bearer
+        bearerFormat: text
+    

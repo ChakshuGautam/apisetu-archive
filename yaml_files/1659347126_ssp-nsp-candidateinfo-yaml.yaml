@@ -1,0 +1,48 @@
+openapi: 3.0.0
+info:
+  title: SSP-NSP-CandidateInfo-RAML
+  version: 1.0.0
+  description: This Api comes under the SSP department.This API gives the CBSC
+    scholarship details.
+servers:
+  - url: http://10.247.51.161:8080/nspka/rest/api/v1/getCandidateinfo
+  - url: http://10.247.51.161:8080/
+paths:
+  /nspka/rest/api/v1/getCandidateinfo:
+    get:
+      responses:
+        "200":
+          description: Operation Successful
+          content:
+            application/json:
+              schema:
+                example:
+                  studentname: harshavardhana
+      description: Get the candidate info based on appication id.
+      operationId: GET_nspka-rest-api-v1-getCandidateinfo
+      parameters:
+        - name: userid
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: password
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: application_id
+          in: query
+          required: true
+          schema:
+            type: string
+components:
+  schemas: {}
+  responses: {}
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}

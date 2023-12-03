@@ -1,0 +1,121 @@
+openapi: 3.0.0
+info:
+  title: SSP-UpdateBonafide-RAML
+  version: 1.0.0
+  description: This API comes under the department of SSP.This API gives the
+    details of  Update-bonafide .
+servers:
+  - url: https://unidata.karnataka.gov.in:8080/api_update_unidata/api/Update_University_Bonafide_Data
+  - url: https://unidata.karnataka.gov.in:8080/
+paths:
+  /api_update_unidata/api/Update_University_Bonafide_Data:
+    post:
+      responses:
+        "200":
+          description: Operation Successful
+          content:
+            application/json:
+              schema:
+                example:
+                  statusCode: 1
+                  status: Success
+                  message: Bonafide data saved Successfully. 2 Records Inserted
+                  statusMessage:
+                    - Message_Type: SUCCESS
+                      Message: Bonafide data saved Successfully.
+                      University_SSP_Code: 1057
+                      University_Registration_Number: Reg12345238358
+                      Financial_Year_Code: 2021
+                      College_SSP_Code: 0
+                      College_Type_SSP_Code: 0
+                      District_SSP_Code: 0
+                      Taluk_SSP_Code: 0
+                      Course_Code: 0
+                      Discipline_Code: 0
+                      Course_Year: 0
+                      Seat_Type_SSP_Code: 0
+                    - Message_Type: SUCCESS
+                      Message: Bonafide data saved Successfully.
+                      University_SSP_Code: 1057
+                      University_Registration_Number: Reg12345238354
+                      Financial_Year_Code: 2021
+                      College_SSP_Code: 0
+                      College_Type_SSP_Code: 0
+                      District_SSP_Code: 0
+                      Taluk_SSP_Code: 0
+                      Course_Code: 0
+                      Discipline_Code: 0
+                      Course_Year: 0
+                      Seat_Type_SSP_Code: 0
+      operationId: POST_api_update_unidata-api-Update_University_Bonafide_Data
+      requestBody:
+        content:
+          application/json:
+            example:
+              - Academic_Year_Code: "2021"
+                University_Name: "University  of Agricultural Sciences, Raichur(Id: U-0247)"
+                University_Registration_Number: Reg12345238358
+                Student_Name: Raghu
+                Student_Father_Name: rajesh
+                Student_Mother_Name: surekha
+                Student_Guardian_Name: naveen
+                Gender: "1"
+                University_SSP_Code: "1057"
+                College_Name: "College of Agriculture,Bheemarayangudi(Id: C-35095)"
+                College_SSP_Code: "13469"
+                College_Type: Government
+                College_Type_SSP_Code: "1"
+                College_District_Name: BENGALURU URBAN
+                District_SSP_Code: "525"
+                College_Taluk_Name: Bengaluru North
+                Taluk_SSP_Code: "5542"
+                Study_Mode: Regular
+                Course_Name: B.Ed.
+                Course_Code: "119"
+                Discipline_Name: B.Ed.
+                Discipline_Code: "861"
+                Course_Year: "1"
+                Seat_Type_Name: Government Seat in Govt. College
+                Seat_Type_SSP_Code: "1"
+                Admission_Year: "2021"
+                Is_Lateral_Entry: y
+              - Academic_Year_Code: "2021"
+                University_Name: "University  of Agricultural Sciences, Raichur(Id: U-0247)"
+                University_Registration_Number: Reg12345238354
+                Student_Name: Raghu
+                Student_Father_Name: rajesh
+                Student_Mother_Name: surekha
+                Student_Guardian_Name: naveen
+                Gender: "1"
+                University_SSP_Code: "1057"
+                College_Name: "College of Agriculture,Bheemarayangudi(Id: C-35095)"
+                College_SSP_Code: "13469"
+                College_Type: Government
+                College_Type_SSP_Code: "1"
+                College_District_Name: BENGALURU URBAN
+                District_SSP_Code: "525"
+                College_Taluk_Name: Bengaluru North
+                Taluk_SSP_Code: "5542"
+                Study_Mode: Regular
+                Course_Name: B.Ed.
+                Course_Code: "119"
+                Discipline_Name: B.Ed.
+                Discipline_Code: "861"
+                Course_Year: "1"
+                Seat_Type_Name: Government Seat in Govt. College
+                Seat_Type_SSP_Code: "1"
+                Admission_Year: "2021"
+                Is_Lateral_Entry: y
+            schema:
+              type: string
+        required: true
+components:
+  schemas: {}
+  responses: {}
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}

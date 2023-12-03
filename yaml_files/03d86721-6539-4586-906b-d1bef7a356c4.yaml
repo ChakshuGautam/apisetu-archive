@@ -1,0 +1,80 @@
+info:
+  title: Department Of Higher Education and School Education Department, Govt of
+    West Bengal
+  version: 1.0.0
+  x-ibm-name: wbscc-loan-sanctioned-applicant-list-foreign-service
+  description: WBSCC Loan Sanctioned Applicant List (Foreign) Service gives
+    details of all Foreign Applications Loan Sanction List under WBSCC.
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/wb/education
+paths:
+  /loan_sanctioned_applicant_list_foreign:
+    post:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: success
+        "401":
+          description: NOT AUTHORIZED
+        "404":
+          description: DATA NOT FOUND
+        "422":
+          description: Valid Date Range Missing
+      parameters:
+        - in: query
+          name: fromDate
+          schema:
+            type: string
+            title: fromDate
+            description: Form Date
+          example: fromDate=15-11-2022
+          required: true
+          description: Form Date
+        - in: query
+          name: toDate
+          schema:
+            type: string
+            title: toDate
+            description: To date
+          example: toDate=10-12-2022
+          required: true
+          description: To Date
+      requestBody:
+        content:
+          multipart/form-data: {}
+      tags:
+        - Wbscc loan sanctioned applicant list foreign service
+openapi: 3.0.0
+servers:
+  - url: https://wbgw.napix.gov.in/wb/education/wbscc
+security:
+  - clientID: []
+    clientSecret: []
+components:
+  securitySchemes:
+    clientID:
+      in: header
+      name: X-NIC-Client-Id
+      type: apiKey
+      x-key-type: client_id
+    clientSecret:
+      in: header
+      name: X-NIC-Client-Secret
+      type: apiKey
+      x-key-type: client_secret
+x-ibm-endpoints:
+  - url: https://wbgw.napix.gov.in/wb/education/wbscc
+    type:
+      - production
+      - development
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  enforced: true
+  testable: true

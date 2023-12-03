@@ -1,0 +1,48 @@
+openapi: 3.0.0
+info:
+  title: SSP-SevaSindhu-Prematric
+  version: 1.0.0
+  description: This API comes under the department of SSP. This APi gives the
+    details of sevaSindhu-PREMATRIC.
+servers:
+  - url: https://sevasindhu.karnataka.gov.in/SevaSindhu_Mahithi/GET_Pre_Matric_SSP
+  - url: https://sevasindhu.karnataka.gov.in/
+paths:
+  /SevaSindhu_Mahithi/GET_Pre_Matric_SSP:
+    get:
+      responses:
+        "200":
+          description: Operation Successful
+          content:
+            application/json:
+              schema:
+                example:
+                  Matric_SSP:
+                    - ApplicantName: SUSHEELA YANE SHARADHA
+                      District: DAKSHINA KANNADA
+                      SubmissionLocation: Labour Inspector Office(Labour Inspector Office- Belthangadi
+                        Circle )
+                      RegistrationNo: Lo-1-Belthangadi/DK/RGN.687905/2020-21
+                      Gender: Female/ಹೆಣ್ಣು
+                      Hash_AadharNo: 5A7B9610D5B070013BC28A16E7DC084F3D792567661556AAD2A75080975D072C
+                      AadhaarNumber: 01000817xKWixUrUUbZZsHiuD6itzeN/7Xv1xOla+QUfuUSyAjBaLYYLl7pT/OO14DigAd8r
+                      FromDate: 26/08/2020
+                      ToDate: 2023-08-26T00:00:00
+      description: get the Matric_SSP details of sevasindhu.
+      operationId: GET_SevaSindhu_Mahithi-GET_Pre_Matric_SSP
+      parameters:
+        - name: Aadhar
+          in: query
+          required: true
+          schema:
+            type: string
+components:
+  schemas: {}
+  responses: {}
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}

@@ -1,0 +1,104 @@
+host: delhigw.napix.gov.in
+info:
+  title: Dedupe
+  version: "1.0"
+  x-ibm-name: projectheaddetails
+  description: Project Head Details
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/nic/dedupe
+tags:
+  - name: transaction
+    description: transaction
+paths:
+  /api/transaction/getProjectHeadDetails:
+    post:
+      tags:
+        - Projectheaddetails
+      summary: ProjectHeadDetails
+      consumes:
+        - application/json
+      produces:
+        - "*/*"
+      responses:
+        "200":
+          schema:
+            type: array
+            items:
+              type: object
+              title: ProjectHeadDetails
+              properties:
+                name:
+                  type: string
+                email_id:
+                  type: string
+                emp_code:
+                  type: string
+                landline:
+                  type: string
+                mobile_no:
+                  type: string
+                designation:
+                  type: string
+          description: OK
+        "201":
+          description: Created
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+      operationId: ProjectHeadDetailsUsingPOST
+schemes:
+  - https
+swagger: "2.0"
+basePath: /nic/dedupe
+security:
+  - Oauth:
+      - napix
+definitions:
+  ProjectHeadDetails:
+    type: object
+    title: ProjectHeadDetails
+    properties:
+      name:
+        type: string
+      email_id:
+        type: string
+      emp_code:
+        type: string
+      landline:
+        type: string
+      mobile_no:
+        type: string
+      designation:
+        type: string
+securityDefinitions:
+  Oauth:
+    flow: application
+    type: oauth2
+    scopes:
+      napix: ""
+    tokenUrl: //oauth2/token
+    x-ibm-oauth-provider: nic-oauth-provider-application-grant-type
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  servers:
+    - url: https://delhigw.napix.gov.in/nic/dedupe
+      type:
+        - production
+        - development
+  enforced: true
+  testable: true
+  oauth-servers:
+    Oauth:
+      tokenUrls:
+        - https://degateway.napix.gov.in:443/nic/dedupe//oauth2/token
+      refreshUrls: []
+      authorizationUrls: []
+  application-authentication:
+    certificate: false

@@ -1,0 +1,352 @@
+openapi: 3.0.3
+info:  
+  title: Meark Enterprise Pvt. Ltd., Tamil Nadu
+  description:  >- 
+                Meark is an IT consulting, product and services organization established in Feb 2016. Our software product focus includes web and mobile applications for education, public and private sectors. Meark provides new-age cloud-based solutions based on established technology platforms.  Meark&rsquo;s vision is to provide significant value by architecting optimized processes and systems for efficient business functioning. One of our products SPARK is meant for Events Management by universities and its institutions to - Organize Sports, Cultural, Seminars, Conferences, Workshops.
+  termsOfService: https://apisetu.gov.in/api-policy
+  version: 3.0.0
+servers:
+  - url: 'https://apisetu.gov.in/certificate/v3/meark'
+paths:
+  
+  /adcrd:
+    post:
+      tags:
+        - APIs
+      summary: Admit Card
+      description: API to verify Admit Card.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: adcrd
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - RequestId
+                    - PrnNo
+                    - YEAR
+                    
+                    - DOB
+                      
+                  properties:
+                    RequestId:
+                      type: string
+                      description: Request ID
+                      example: "1234"
+                       
+                    
+                    PrnNo:
+                      type: string
+                      description: PRN No.
+                      example: "MA90120190002"
+                       
+                    
+                    YEAR:
+                      type: string
+                      description: YEAR
+                      example: "2017,2018"
+                       
+                    
+                    
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /ticer:
+    post:
+      tags:
+        - APIs
+      summary: Training and/ or Internship Certificate
+      description: API to verify Training and/ or Internship Certificate.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: ticer
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - REGNO
+                    - CERTNO
+                    - YEAR
+                      
+                  properties:
+                    REGNO:
+                      type: string
+                      description: Registration No
+                      example: "DITPR1234"
+                       
+                    
+                    CERTNO:
+                      type: string
+                      description: Certificate No
+                      example: "SCH123"
+                       
+                    
+                    YEAR:
+                      type: string
+                      description: YEAR
+                      example: "2017,2018"
+                       
+                    
+                      
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /rgcer:
+    post:
+      tags:
+        - APIs
+      summary: Training Completion Certificate
+      description: API to verify Training Completion Certificate.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: rgcer
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - REGNO
+                    - CERTNO
+                    - YEAR
+                    
+                    
+                    - UID
+                    
+                    - FullName
+                    
+                    - DOB
+                    
+                    - GENDER
+                      
+                  properties:
+                    REGNO:
+                      type: string
+                      description: Registration No
+                      example: "DITRP123"
+                       
+                    
+                    CERTNO:
+                      type: string
+                      description: Certificate No
+                      example: "SCH123"
+                       
+                    
+                    YEAR:
+                      type: string
+                      description: YEAR
+                      example: "2017,2018"
+                       
+                    
+                                        
+                    
+                    UID:
+                      type: string
+                      description: Aadhaar number
+                      example: "123412341234"
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"
+                    GENDER:
+                      type: string
+                      description: Gender - Male for male, Female for female and O for other
+                      example: "Male"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+components:
+  schemas:
+    ConsentArtifactSchema:
+      $ref: './common/ConsentArtifactSchema.yaml#/ConsentArtifactSchema'
+    AcademicCertificateSchema:
+      $ref: './common/AcademicCertificateSchema.yaml#/AcademicCertificateSchema'
+          
+  responses:
+    400Error:
+      $ref: './common/ErrorResponse.yaml#/400Error'
+    401Error:
+      $ref: './common/ErrorResponse.yaml#/401Error'
+    404Error:
+      $ref: './common/ErrorResponse.yaml#/404Error'
+    500Error:
+      $ref: './common/ErrorResponse.yaml#/500Error'
+    502Error:
+      $ref: './common/ErrorResponse.yaml#/502Error'
+    503Error:
+      $ref: './common/ErrorResponse.yaml#/503Error'
+    504Error:
+      $ref: './common/ErrorResponse.yaml#/504Error'
+  securitySchemes:
+    clientId:
+      type: apiKey
+      in: header
+      name: X-APISETU-CLIENTID
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-APISETU-APIKEY

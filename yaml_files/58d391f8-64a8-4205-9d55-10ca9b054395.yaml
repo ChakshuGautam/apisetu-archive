@@ -1,0 +1,66 @@
+host: bgw.napix.gov.in
+info:
+  title: API Management for Tripura
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/nic/trapi
+  version: 1.0.0
+  x-ibm-name: tribal-welfare-forestrights
+  description: "This API may be used to verify any ROFR beneficiary or Forest
+    Patta Holder of the State who was digitized using
+    https://forestrights.tripura.gov.in/forestrights application by utilizing a
+    unique family id specified in the Patta. The API provides details about the
+    patta's HOF, relatives, allotted land, etc. "
+paths:
+  /forestrights:
+    get:
+      tags:
+        - Tribal welfare forestrights
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      parameters:
+        - in: query
+          name: fid
+          type: number
+          required: true
+schemes:
+  - https
+swagger: "2.0"
+basePath: /nic/trapi/tribal-welfare-forestrights
+security:
+  - Oauth:
+      - napix
+securityDefinitions:
+  Oauth:
+    flow: application
+    type: oauth2
+    scopes:
+      napix: Scope NAPIX
+    tokenUrl: //oauth2/token
+    x-ibm-oauth-provider: nic-oauth-provider-application-grant-type
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  servers:
+    - url: https://bgw.napix.gov.in/nic/trapi/tribal-welfare-forestrights
+      type:
+        - production
+        - development
+      description: Bhubaneswar External Gateway
+  enforced: true
+  testable: true
+  oauth-servers:
+    Oauth:
+      tokenUrls:
+        - https://begateway.napix.gov.in:443/nic/trapi//oauth2/token
+      refreshUrls: []
+      authorizationUrls: []
+  application-authentication:
+    certificate: false

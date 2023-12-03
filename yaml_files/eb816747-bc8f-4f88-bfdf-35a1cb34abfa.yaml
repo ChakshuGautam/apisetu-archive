@@ -1,0 +1,65 @@
+host: bgw.napix.gov.in
+info:
+  title: API Management for Tripura
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/nic/trapi
+  version: 1.0.0
+  x-ibm-name: rgibirthbyregno
+  description: "This API of RGI provides access to birth records for citizens of
+    Tripura.  The API includes POST method for retrieving birth records with
+    input parameters as Registration Number. "
+paths:
+  /birthbyregno:
+    post:
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      parameters:
+        - in: body
+          name: regno
+          schema:
+            type: string
+            title: regno
+            readOnly: false
+          required: true
+      tags:
+        - Rgibirthbyregno
+schemes:
+  - https
+swagger: "2.0"
+basePath: /nic/trapi/birth
+security:
+  - Oauth:
+      - napix
+securityDefinitions:
+  Oauth:
+    flow: application
+    type: oauth2
+    scopes:
+      napix: NAPIX Scope
+    tokenUrl: //oauth2/token
+    x-ibm-oauth-provider: nic-oauth-provider-application-grant-type
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  servers:
+    - url: https://bgw.napix.gov.in/nic/trapi/birth
+      type:
+        - production
+        - development
+      description: Bhubaneswar External Gateway
+  enforced: true
+  testable: true
+  oauth-servers:
+    Oauth:
+      tokenUrls:
+        - https://begateway.napix.gov.in:443/nic/trapi//oauth2/token
+      refreshUrls: []
+      authorizationUrls: []
+  application-authentication:
+    certificate: false

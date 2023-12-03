@@ -1,0 +1,45 @@
+host: delhigw.napix.gov.in
+info:
+  title: Parivahan
+  version: 1.0.0
+  x-ibm-name: vahan-puc-state-dashboard-api
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/nic/parivahan
+paths:
+  /service/puc/daily:
+    post:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      parameters:
+        - in: header
+          name: Authorization
+          type: string
+          required: true
+      tags:
+        - Vahan puc state dashboard api
+schemes:
+  - https
+swagger: "2.0"
+basePath: /nic/parivahan/StateDashboardAPI
+security: []
+securityDefinitions: {}
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  servers:
+    - url: https://delhigw.napix.gov.in/nic/parivahan/StateDashboardAPI
+      type:
+        - production
+        - development
+  enforced: true
+  testable: true
+  application-authentication:
+    certificate: false

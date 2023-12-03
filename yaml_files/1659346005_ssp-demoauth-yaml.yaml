@@ -1,0 +1,54 @@
+openapi: 3.0.0
+info:
+  title: SSP-DemoAuth-RAML
+  version: 1.0.0
+  description: This Api comes under the department of SSP.this API gives SSP
+    student details.
+servers:
+  - url: https://unidata.karnataka.gov.in:8080/get_sspstudentdetails/api/SSP_Demo_Auth
+  - url: https://unidata.karnataka.gov.in:8080/
+paths:
+  /get_sspstudentdetails/api/SSP_Demo_Auth:
+    post:
+      responses:
+        "200":
+          description: Operation_Successful
+          content:
+            application/json:
+              schema:
+                example:
+                  SSP_Student_ID: "19200000006"
+                  Name_As_In_Aadhaar: Lokesh
+                  Gender: "1"
+      operationId: POST_get_sspstudentdetails-api-SSP_Demo_Auth
+      requestBody:
+        content:
+          application/json:
+            example:
+              Message_Type: SUCCESS
+              Message_Status: Y
+              Message: Student Exists
+            schema:
+              type: string
+        required: true
+      parameters:
+        - name: UserId
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: Password
+          in: header
+          required: true
+          schema:
+            type: string
+components:
+  schemas: {}
+  responses: {}
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}

@@ -1,0 +1,591 @@
+openapi: 3.0.1
+info:
+  title: User Management
+  description: |-
+      PM eVidya DIKSHA - One Nation, One Digital Platform for School Education. An initiative of the National Council of Educational Research and Training (Ministry of Education, Govt of India) <i>[Updated on 19th June 2023]</i>
+  termsOfService: https://diksha.gov.in/term-of-use.html
+  contact:
+    name: provided by -Diksha
+    url: https://diksha.gov.in/
+  version: 1.0.0
+servers:
+- url: https://diksha.gov.in/api/user
+  description: Production Server 
+paths:
+  /v1/search:
+    post:
+      tags:
+      - User Profile Read API
+      summary: This web wervice will be used to search user detail
+      operationId: v1/search
+      security:
+      - bearerAuth: []
+      - ApiKeyAuth: []
+
+      requestBody:
+        content:
+          application/json:
+            schema:
+
+              properties:
+                  request:
+                    type: object
+                    properties:
+                      filters:
+                        type: object
+                        properties:
+                         email:
+                           type: string
+                           example: arunachalam.dhanapal@trigyn.com
+      
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  id:
+                    type: string
+                    example: "api.user.search"
+                  ver:
+                    type: string
+                    example: "v1"
+                  ts:
+                    type: string
+                    example: "2023-06-07 11:33:27:209+0000"
+                  params:
+                    type: object
+                    properties:
+                      resmsgid: 
+                        type: string                        
+                        example: "25ae7a965d82ac84ef518cad490268fe"
+                      msgid: 
+                        type: string                        
+                        example: "25ae7a965d82ac84ef518cad490268fe"
+                      err: 
+                        type: string                        
+                        example: null
+                      status: 
+                        type: string                        
+                        example: "SUCCESS"
+                      errmsg: 
+                        type: string                        
+                        example: null
+                  responseCode:
+                    type: string
+                    example: "OK"
+                  result:
+                    type: object
+                    properties:
+                      response: 
+                        type: object                        
+                        properties:
+                          count: 
+                            type: string
+                            example: 1
+                          content: 
+                            type: string
+                            example: [{'webPages': None, 'maskedPhone': None, 'tcStatus': None, 'loginId': None, 'rootOrgName': 'EKSTEP', 'subject': None, 'channel': 'ekstep', 'profileUserTypes': [{'type': 'teacher'}], 'language': None, 'updatedDate': '2023-04-18 06:19:03:133+0000', 'password': None, 'managedBy': None, 'flagsValue': 4, 'id': '80adf09a-6afe-4958-9354-20034c798660', 'recoveryEmail': '', 'identifier': '80adf09a-6afe-4958-9354-20034c798660', 'thumbnail': None, 'profileVisibility': None, 'updatedBy': '80adf09a-6afe-4958-9354-20034c798660', 'accesscode': None, 'locationIds': ['620b68be-3f36-46a2-8526-bbfaacaf3e4e', 'a53f7e7e-5e04-4125-b7f6-a401ff38bd6f'], 'registryId': None, 'rootOrgId': '0123221758376673287017', 'prevUsedEmail': '', 'firstName': 'Arunachalam', 'profileLocation': [{'id': '620b68be-3f36-46a2-8526-bbfaacaf3e4e', 'type': 'district'}, {'id': 'a53f7e7e-5e04-4125-b7f6-a401ff38bd6f', 'type': 'state'}], 'tncAcceptedOn': '2023-02-10T05:49:46.461Z', 'allTncAccepted': {}, 'profileDetails': None, 'phone': '', 'dob': '1997-12-31', 'grade': None, 'currentLoginTime': None, 'userType': 'teacher', 'status': 1, 'lastName': None, 'gender': None, 'roles': [], 'prevUsedPhone': '', 'stateValidated': True, 'isDeleted': False, 'organisations': [{'organisationId': '0123221758376673287017', 'updatedBy': None, 'orgName': 'EKSTEP', 'addedByName': None, 'addedBy': None, 'associationType': 1, 'roles': ['BOOK_CREATOR', 'CONTENT_CREATOR', 'CONTENT_REVIEWER'], 'approvedBy': None, 'updatedDate': None, 'userId': '80adf09a-6afe-4958-9354-20034c798660', 'approvaldate': None, 'isDeleted': False, 'hashTagId': '0123221758376673287017', 'isRejected': None, 'id': '01372277813243904028467', 'position': None, 'isApproved': None, 'orgjoindate': '2023-01-31 05:36:58:571+0000', 'orgLeftDate': None}], 'provider': None, 'countryCode': None, 'maskedEmail': 'ar******************@trigyn.com', 'tempPassword': None, 'email': 'ar******************@trigyn.com', 'phoneVerified': True, 'profileSummary': None, 'tcUpdatedDate': None, 'recoveryPhone': '', 'avatar': None, 'userName': 'arunachalam_752', 'userId': '80adf09a-6afe-4958-9354-20034c798660', 'userSubType': None, 'emailVerified': True, 'lastLoginTime': None, 'createdDate': '2023-01-31 05:36:58:322+0000', 'framework': {'gradeLevel': ['Class 10'], 'id': ['ekstep_ncert_k-12'], 'medium': ['English'], 'board': ['CBSE']}, 'createdBy': '50e297da-0c73-4994-8381-0bfdcd8d1b44', 'profileUserType': {'subType': None, 'type': 'teacher'}, 'location': None, 'tncAcceptedVersion': 'v12'}]
+
+   
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  id:
+                    type: string
+                    example: "api.user.getuser"
+                  ver:
+                    type: string
+                    example: "v1"
+                  ts:
+                    type: string
+                    example: "2023-06-08 07:44:44:850+0000"
+                  params:
+                    type: object
+                    properties:
+                      resmsgid: 
+                        type: string                        
+                        example: "8d02955fd1f6bf67c71b7ea7c5015a32"
+                      msgid: 
+                        type: string                        
+                        example: "8d02955fd1f6bf67c71b7ea7c5015a32"
+                      err: 
+                        type: string                        
+                        example: "UOS_USRRED0013"
+                      status: 
+                        type: string                        
+                        example: "FAILED"
+                      errmsg: 
+                        type: string                        
+                        example: "Requested jyoti rani resource not found"
+                  responseCode:
+                    type: string
+                    example: "RESOURCE_NOT_FOUND"
+                  result:
+                    type: object
+                    
+
+   
+
+  /v1/signup:
+    post:
+      tags:
+      - User Signup API
+      summary: This web wervice will be used to signup new user.
+      operationId: v1/signup
+      security:
+      - bearerAuth: []
+      - ApiKeyAuth: []
+
+
+      requestBody:
+        content:
+          application/json:
+            schema:
+
+              properties:
+                  request:
+                    type: object
+                    properties:
+                      firstName:
+                        type: string
+                        example: jyoti
+                      password:
+                        type: string
+                        example: Jyoti@123456
+                      email:
+                        type: string
+                        example: jyoti.rani1@trigyn.com
+                      lastName:
+                        type: string
+                        example: rani
+                      userName:
+                        type: string
+                        example: Jyoti rani
+                      emailVerified:
+                        type: boolean
+                        example: True
+      
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  id:
+                    type: string
+                    example: "api.user.signup"
+                  ver:
+                    type: string
+                    example: "v1"
+                  ts:
+                    type: string
+                    example: "2023-06-08 09:26:14:610+0000"
+                  params:
+                    type: object
+                    properties:
+                      resmsgid: 
+                        type: string                        
+                        example: "6d5ee08afef72a904d4ec05420028739"
+                      msgid: 
+                        type: string                        
+                        example: "6d5ee08afef72a904d4ec05420028739"
+                      err: 
+                        type: string                        
+                        example: null
+                      status: 
+                        type: string                        
+                        example: "SUCCESS"
+                      errmsg: 
+                        type: string                        
+                        example: null
+                  responseCode:
+                    type: string
+                    example: "OK"
+                  result:
+                    type: object
+                    properties:
+                      response: 
+                        type: string                        
+                        example: "SUCCESS"
+                      userId: 
+                        type: string                        
+                        example: "791ba2d1-ee25-4348-9529-9afff88597da"
+
+   
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  id:
+                    type: string
+                    example: "api.user.signup"
+                  ver:
+                    type: string
+                    example: "v1"
+                  ts:
+                    type: string
+                    example: "2023-06-08 09:33:36:589+0000"
+                  params:
+                    type: object
+                    properties:
+                      resmsgid: 
+                        type: string                        
+                        example: "4f1e4a1ad0da5bd7a920b644b9ef66e4"
+                      msgid: 
+                        type: string                        
+                        example: "4f1e4a1ad0da5bd7a920b644b9ef66e4"
+                      err: 
+                        type: string                        
+                        example: "UOS_USRCRT0030"
+                      status: 
+                        type: string                        
+                        example: "FAILED"
+                      errmsg: 
+                        type: string                        
+                        example: "Mandatory parameter firstName is missing."
+                  responseCode:
+                    type: string
+                    example: "CLIENT_ERROR"
+                  result:
+                    type: object
+                    
+
+   
+
+  /v1/read/{userId}:
+    get:
+      tags:
+      - GetUserByUserId API
+      summary: This web service will be used to read user detail.
+      operationId: v1/read
+      security:
+      - bearerAuth: []
+      - ApiKeyAuth: []
+
+      parameters:
+      
+        - in: path
+          name: userId
+          required: true
+          example: c6f62dae-c58c-42d3-870f-027a9ecd1671
+          schema:
+            type: string
+        - in: query
+          name: fields=organisations,roles,locations,declarations
+          required: false
+          schema:
+            type: string
+          description: Get detail with the organisations,roles,locations and declarations of user.
+      
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  id:
+                    type: string
+                    example: "api.user.read.105decbb-448f-4f9e-a071-e662578d90ac"
+                  ver:
+                    type: string
+                    example: "v1"
+                  ts:
+                    type: string
+                    example: "2023-06-08 06:19:17:612+0000"
+                  params:
+                    type: object
+                    properties:
+                      resmsgid: 
+                        type: string                        
+                        example: "80d3f8e025710ea33ec581a42f9734da"
+                      msgid: 
+                        type: string                        
+                        example: "80d3f8e025710ea33ec581a42f9734da"
+                      err: 
+                        type: string                        
+                        example: null
+                      status: 
+                        type: string                        
+                        example: "SUCCESS"
+                      errmsg: 
+                        type: string                        
+                        example: null
+                  responseCode:
+                    type: string
+                    example: "OK"
+                  result:
+                    type: object
+                    properties:
+                      response: 
+                        type: object                        
+                        properties:
+                          webPages: 
+                            type: string
+                            example: null
+                          maskedPhone: 
+                            type: string
+                            example: null
+                          tcStatus: 
+                            type: string
+                            example: null
+                          loginId: 
+                            type: string
+                            example: null
+                          subject: 
+                            type: string
+                            example: null
+                          channel: 
+                            type: string
+                            example: "ekstep"
+                          profileUserTypes: 
+                            type: string
+                            example: [{'type': 'teacher'}]
+                          language: 
+                            type: string
+                            example: null
+                          updatedDate: 
+                            type: string
+                            example: "2023-06-01 11:26:01:631+0000"
+                          password: 
+                            type: string
+                            example: null
+                          managedBy: 
+                            type: string
+                            example: null
+                          flagsValue: 
+                            type: string
+                            example: 4
+                          id: 
+                            type: string
+                            example: "105decbb-448f-4f9e-a071-e662578d90ac"
+                          recoveryEmail: 
+                            type: string
+                            example: ""
+                          identifier: 
+                            type: string
+                            example: "105decbb-448f-4f9e-a071-e662578d90ac"
+                          thumbnail: 
+                            type: string
+                            example: null
+                          profileVisibility: 
+                            type: string
+                            example: null
+                          updatedBy: 
+                            type: string
+                            example: "105decbb-448f-4f9e-a071-e662578d90ac"
+                          accesscode: 
+                            type: string
+                            example: null
+                          locationIds: 
+                            type: string
+                            example: ['dce4b36c-1ad5-4f83-ba4a-e32d9578e090', '645c54a4-6b75-4b77-8978-31aa489b638c']
+                          registryId: 
+                            type: string
+                            example: null
+                          rootOrgId: 
+                            type: string
+                            example: "0123221758376673287017"
+                          prevUsedEmail: 
+                            type: string
+                            example: ""
+                          firstName: 
+                            type: string
+                            example: "Janki"
+                          isMinor: 
+                            type: string
+                            example: False
+                          profileLocation: 
+                            type: string
+                            example: [{'id': 'dce4b36c-1ad5-4f83-ba4a-e32d9578e090', 'type': 'district'}, {'id': '645c54a4-6b75-4b77-8978-31aa489b638c', 'type': 'state'}]
+                          tncAcceptedOn: 
+                            type: string
+                            example: 1676007473227
+                          allTncAccepted: 
+                            type: string
+                            example: {'orgAdminTnc': {'tncAcceptedOn': '2023-04-18 03:20:30:213+0000', 'version': '3.8.0'}}
+                          profileDetails: 
+                            type: string
+                            example: null
+                          phone: 
+                            type: string
+                            example: ""
+                          dob: 
+                            type: string
+                            example: "2000-12-31"
+                          grade: 
+                            type: string
+                            example: null
+                          currentLoginTime: 
+                            type: string
+                            example: null
+                          userType: 
+                            type: string
+                            example: "teacher"
+                          status: 
+                            type: string
+                            example: 1
+                          lastName: 
+                            type: string
+                            example: null
+                          tncLatestVersion: 
+                            type: string
+                            example: "v12"
+                          gender: 
+                            type: string
+                            example: null
+                          prevUsedPhone: 
+                            type: string
+                            example: ""
+                          stateValidated: 
+                            type: string
+                            example: True
+                          isDeleted: 
+                            type: string
+                            example: False
+                          organisations: 
+                            type: string
+                            example: [{'isSelfDeclaration': False, 'organisationId': '0123221758376673287017', 'updatedBy': None, 'addedByName': None, 'addedBy': None, 'associationType': 1, 'roles': ['ORG_ADMIN'], 'approvedBy': None, 'updatedDate': None, 'userId': '105decbb-448f-4f9e-a071-e662578d90ac', 'approvaldate': None, 'isSystemUpload': False, 'isDeleted': False, 'hashTagId': '0123221758376673287017', 'isSSO': True, 'isRejected': None, 'id': '01372277591387340828470', 'position': None, 'isApproved': None, 'orgjoindate': '2023-01-31 05:36:59:791+0000', 'orgLeftDate': None}]
+                          provider: 
+                            type: string
+                            example: null
+                          countryCode: 
+                            type: string
+                            example: null
+                          tncLatestVersionUrl: 
+                            type: string
+                            example: "https://ntpproductionall.blob.core.windows.net/termsandcond/terms-and-conditions-v12.html"
+                          maskedEmail: 
+                            type: string
+                            example: "ja*********@trigyn.com"
+                          tempPassword: 
+                            type: string
+                            example: null
+                          email: 
+                            type: string
+                            example: "ja*********@trigyn.com"
+                          rootOrg: 
+                            type: string
+                            example: {'dateTime': None, 'preferredLanguage': None, 'keys': {'encKeys': ['3'], 'signKeys': ['2']}, 'organisationSubType': None, 'channel': 'ekstep', 'approvedBy': None, 'description': 'Ekstep', 'updatedDate': '2020-06-29 05:02:18:574+0000', 'organisationType': 5, 'addressId': None, 'orgType': None, 'isTenant': True, 'provider': None, 'locationId': None, 'orgCode': None, 'theme': None, 'id': '0123221758376673287017', 'communityId': None, 'isApproved': None, 'isBoard': True, 'email': 'dummy@ekstep.org', 'slug': 'ekstep', 'isSSOEnabled': None, 'thumbnail': None, 'orgName': 'EKSTEP', 'updatedBy': None, 'locationIds': ['3095874c-5acf-4467-a5d0-9180ab9e318e'], 'externalId': 'ekstep', 'orgLocation': [{'type': 'state', 'id': '3095874c-5acf-4467-a5d0-9180ab9e318e'}], 'isRootOrg': True, 'rootOrgId': '0123221758376673287017', 'imgUrl': None, 'approvedDate': None, 'homeUrl': None, 'orgTypeId': None, 'isDefault': None, 'createdDate': '2017-08-31 09:24:31:199+0000', 'createdBy': 'e9280b815c0e41972bf754e9409b66d778b8e11bb91844892869a1e828d7d2f2a', 'parentOrgId': None, 'hashTagId': '0123221758376673287017', 'noOfMembers': None, 'status': 1}
+                          phoneVerified: 
+                            type: string
+                            example: True
+                          profileSummary: 
+                            type: string
+                            example: null
+                          tcUpdatedDate: 
+                            type: string
+                            example: null
+                          recoveryPhone: 
+                            type: string
+                            example: ""
+                          avatar: 
+                            type: string
+                            example: null
+                          userName: 
+                            type: string
+                            example: "janki_422"
+                          userId: 
+                            type: string
+                            example: "105decbb-448f-4f9e-a071-e662578d90ac"
+                          userSubType: 
+                            type: string
+                            example: null
+                          promptTnC: 
+                            type: string
+                            example: False
+                          emailVerified: 
+                            type: string
+                            example: True
+                          lastLoginTime: 
+                            type: string
+                            example: null
+                          createdDate: 
+                            type: string
+                            example: "2023-01-31 05:36:59:607+0000"
+                          framework: 
+                            type: string
+                            example: {}
+                          createdBy: 
+                            type: string
+                            example: "50e297da-0c73-4994-8381-0bfdcd8d1b44"
+                          profileUserType: 
+                            type: string
+                            example: {'subType': None, 'type': 'teacher'}
+                          location: 
+                            type: string
+                            example: null
+                          tncAcceptedVersion: 
+                            type: string
+                            example: "v12"
+
+   
+        401:
+          description: UNAUTHORIZED
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  id:
+                    type: string
+                    example: "api.user.read.c6f62dae-c58c-42d3-870f-027a9ecd1671"
+                  ver:
+                    type: string
+                    example: "v1"
+                  ts:
+                    type: string
+                    example: "2023-06-08 06:02:49:207+0000"
+                  params:
+                    type: object
+                    properties:
+                      resmsgid: 
+                        type: string                        
+                        example: "a468f33c01b0beeb36490cf5cd93df26"
+                      msgid: 
+                        type: string                        
+                        example: "a468f33c01b0beeb36490cf5cd93df26"
+                      err: 
+                        type: string                        
+                        example: "UOS_0070"
+                      status: 
+                        type: string                        
+                        example: "FAILED"
+                      errmsg: 
+                        type: string                        
+                        example: "You are not authorized."
+                  responseCode:
+                    type: string
+                    example: "UNAUTHORIZED"
+                  result:
+                    type: object
+                    
+
+   
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Text
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-authenticated-user-token
+
+
+
+

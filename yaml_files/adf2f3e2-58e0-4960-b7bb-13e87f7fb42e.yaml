@@ -1,0 +1,84 @@
+info:
+  title: Department Of Higher Education and School Education Department, Govt of
+    West Bengal
+  version: 1.0.0
+  x-ibm-name: wbscc-loan-sanctioned-applicant-list-national
+  description: WBSCC Loan Sanctioned Applicant List (National) Service gives
+    details of all WBSCC sanctioned Loan Applications details where applicants
+    are studying within India.
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/wb/education
+paths:
+  /wbscc_loan_sanctioned_applicant_list_national:
+    post:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: success
+        "401":
+          description: NOT AUTHORIZED
+        "404":
+          description: DATA NOT FOUND
+        "422":
+          description: Valid Date Range Missing
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              title: DATE
+              example: 15-11-2022
+              required:
+                - fromDate
+                - toDate
+              properties:
+                toDate:
+                  type: string
+                  example: 10-12-2022
+                  description: toDate
+                fromDate:
+                  type: string
+                  example: 15-11-2022
+                  description: fromDate
+              description: fromDate
+            examples: {}
+        required: true
+      tags:
+        - Wbscc loan sanctioned applicant list national
+openapi: 3.0.0
+servers:
+  - url: https://wbgw.napix.gov.in/wb/education/wbscc
+security:
+  - clientID: []
+    clientSecret: []
+  - {}
+components:
+  parameters: {}
+  securitySchemes:
+    clientID:
+      in: header
+      name: X-NIC-Client-Id
+      type: apiKey
+      x-key-type: client_id
+    clientSecret:
+      in: header
+      name: X-NIC-Client-Secret
+      type: apiKey
+      x-key-type: client_secret
+x-ibm-endpoints:
+  - url: https://wbgw.napix.gov.in/wb/education/wbscc
+    type:
+      - production
+      - development
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  enforced: true
+  testable: true

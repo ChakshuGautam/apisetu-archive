@@ -1,0 +1,170 @@
+openapi: 3.0.1
+info:
+  title: National Geoscience Data Repository (NGDR)
+  description: National Geoscience Data Repository (NGDR) is a flagship initiative conceptualised by Ministry of Mines as a part of National Mineral Exploration Policy (NMEP), 2016 for hosting all exploration related geoscientific data for dissemination to all the stakeholders so as to expedite, enhance and facilitate the exploration coverage of the count. This API is for NGDR Token Authentication API. <i>[Updated on 27th October 2023]</i>
+  termsOfService: https://geodataindia.gov.in/NGDR/login
+  contact:
+    name: Ministry of Mines
+    url: https://geodataindia.gov.in/NGDR/login
+    email: user-apis@bisag.com
+  version: 3.0.0
+servers:
+  - url: https://geodataindia.gov.in/ngdrapi
+paths:
+  /authenticate:
+    post:
+      tags:
+        - Authentication API
+      summary: Authentication API - jwt-authentication
+      operationId: createAuthenticationToken
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JwtRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Authenticationexp'
+        '403':
+          description: Access denied
+        '404':
+          description: Something went wrong
+        '500':
+          description: Expired or invalid JWT token
+  /api/getstatedistict/{state},{district}:
+    post:
+      tags:
+        - State & District Wise Commodity List
+      summary: Get list of commodity state district wise.
+      operationId: getstatedistict
+      parameters:
+        - name: state
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: district
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Commodity'
+        '403':
+          description: Access denied
+        '404':
+          description: Something went wrong
+        '500':
+          description: Expired or invalid JWT token
+      security:
+        - BearerAuth: []
+  /api/getcommodity/{commodity}:
+    post:
+      tags:
+        - Get Commodity List
+      summary: Get Commodity List
+      operationId: getcommodity
+      parameters:
+        - name: commodity
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Commodity'
+        '403':
+          description: Access denied
+        '404':
+          description: Something went wrong
+        '500':
+          description: Expired or invalid JWT token
+      security:
+        - BearerAuth: []
+  /api/geologylayer:
+    post:
+      tags:
+        - Geo Spatial Layers API
+      summary: Geo Spatial Layers API
+      operationId: geologylayer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Geo_Spatial'
+        '403':
+          description: Access denied
+        '404':
+          description: Something went wrong
+        '500':
+          description: Expired or invalid JWT token
+      security:
+        - BearerAuth: []
+components:
+  schemas:
+    JwtRequest:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+    Authenticationexp:
+      type: object
+      properties:
+        token:
+          type: string
+          description: token
+          readOnly: true
+          example: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx....
+      description: Authentication API
+    Commodity:
+      type: object
+      properties:
+        commodity:
+          type: string
+          description: Commodity Name
+          readOnly: true
+          example: Gold
+        district_name:
+          type: string
+          description: District Name
+          example: Anantapur
+        state_name:
+          type: string
+          description: State Name
+          example: ANDHRA PRADESH
+      description: Get Commodity List && Get list of commodity state district wise.
+    Geo_Spatial:
+      type: object
+      properties:
+        layername:
+          type: string
+          description: Layer Name
+          readOnly: true
+          example: geology_2m_gcs_ngdr_20_5
+        url:
+          type: string
+          description: Access URL
+          example: https://geodataindia.gov.in/NGDR/guestuser/wmsurl128/
+      description: Geo Spatial Layers API
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: Bearer

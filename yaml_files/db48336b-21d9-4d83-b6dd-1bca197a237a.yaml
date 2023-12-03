@@ -1,0 +1,135 @@
+host: delhigw.napix.gov.in
+info:
+  title: eCourts
+  version: 1.0.0
+  x-ibm-name: hc-order-api
+  description: API provides facility to view Order or Judgement delivered on a
+    particular date based on CNR number and order date. Order date is the date
+    of Order or Judgement delivered in the case which may be available from the
+    Case History.
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/nic/ecourts
+paths:
+  /:
+    get:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Hc order api
+    put:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Hc order api
+    head:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Hc order api
+    post:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Hc order api
+    patch:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Hc order api
+    delete:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Hc order api
+  /order:
+    get:
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      parameters:
+        - in: query
+          name: dept_id
+          type: string
+          required: true
+        - in: query
+          name: request_str
+          type: string
+          required: true
+        - in: query
+          name: request_token
+          type: string
+          required: true
+        - in: query
+          name: version
+          type: string
+          required: true
+      tags:
+        - Hc order api
+schemes:
+  - https
+swagger: "2.0"
+basePath: /nic/ecourts/hc-order-api
+security:
+  - Oauth_token:
+      - napix
+securityDefinitions:
+  Oauth_token:
+    flow: application
+    type: oauth2
+    scopes:
+      napix: napix
+    tokenUrl: //oauth2/token
+    x-ibm-oauth-provider: nic-oauth-provider-application-grant-type
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  servers:
+    - url: https://delhigw.napix.gov.in/nic/ecourts/hc-order-api
+      type:
+        - production
+        - development
+  enforced: true
+  testable: true
+  oauth-servers:
+    Oauth_token:
+      tokenUrls:
+        - https://degateway.napix.gov.in:443/nic/ecourts//oauth2/token
+      refreshUrls: []
+      authorizationUrls: []
+  application-authentication:
+    certificate: false

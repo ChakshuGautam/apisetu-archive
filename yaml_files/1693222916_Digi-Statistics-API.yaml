@@ -1,0 +1,125 @@
+openapi: 3.0.2
+info:
+  title: DigiLocker Statistics API 
+  description: >-
+    DigiLocker is a flagship initiative of Ministry of Electronics & IT (MeitY) under Digital India programme. DigiLocker aims at ‘Digital Empowerment’ of citizen by providing access to authentic digital documents to citizen’s digital document wallet.
+    
+    DigiLocker National Statistics API 
+    
+    <i>[Updated on 28th August 2023]</i>
+
+  termsOfService: 'https://docs.apisetu.gov.in/document-central/terms-of-use/'
+  contact: 
+     name: Provided by - DigiLocker 
+     url: https://digilocker.gov.in
+  version: 1.0.0
+servers:
+  - url: 'https://partners.apisetu.gov.in'
+    description: Production Server
+
+paths:
+  /api/statistics:
+    get:
+      tags:
+        - DigiLocker Statistics API 
+        
+      summary: DigiLocker Statistics API 
+      description: >-
+        This API used for DigiLocker Statistics API.
+      operationId: DigiLocker-Statistics-API
+      parameters:
+        - name: reportDate
+          in: query
+          schema:
+            type: string
+            example: "28-08-2023"
+        - name: ts
+          in: header
+          schema:
+            type: string
+            example: "1693214474"     
+            
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  availableDocument:
+                    type: string
+                    description: available doucument count  
+                    example: 1234564546
+                  partners:
+                    type: string
+                    description: Partners count 
+                    example: 563  
+                  requesters:
+                    type: string
+                    description: Requesters count 
+                    example: 343
+                  yearwiseAvailableDocuments:
+                    type: object
+                    properties:
+                        2016:
+                          type: string
+                          description: Number count in billion
+                          example: 0.0112
+                        2017:
+                          type: string
+                          description: Number count in billion
+                          example: 1.6623 
+                        2018:
+                          type: string
+                          description: Number count in billion
+                          example: 2.412
+                        2019:
+                          type: string
+                          description: Number count in billion
+                          example: 3.1
+                        2020:
+                          type: string
+                          description: Number count in billion
+                          example: 3.75  
+                        2021:
+                          type: string
+                          description: Number count in billion
+                          example: 4.75 
+                        2022:
+                          type: string
+                          description: Number count in billion
+                          example: 5.59   
+                        2023:
+                          type: string
+                          description: Number count in billion
+                          example: 0
+                  countAsOn:
+                    type: string
+                    description: Count as on till date 
+                    example: 28-08-2023  
+                    
+        '400':
+          description:  Bad Request 
+                    
+        '401':
+          description:  Unauthorized Access 
+      
+      security:
+        - clientId: []
+        - BearerAuth: [] 
+        
+        
+  
+components:
+ 
+  securitySchemes:
+    
+    clientId:
+      type: apiKey
+      in: header
+      name: X-DIGI-CLIENTID
+      
+    BearerAuth:
+      type: http
+      scheme: bearer

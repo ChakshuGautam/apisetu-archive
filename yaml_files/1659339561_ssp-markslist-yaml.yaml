@@ -1,0 +1,54 @@
+openapi: 3.0.0
+info:
+  title: SSP-MarksList-raml
+  version: 1.0.0
+  description: This API comes under the department of SSP.This API gives the
+    bonafide and marks data.
+servers:
+  - url: https://unidata.karnataka.gov.in:8080/UniAPI/Push_University_Bonafide_Marks_Data
+  - url: https://unidata.karnataka.gov.in:8080/
+paths:
+  /UniAPI/Push_University_Bonafide_Marks_Data:
+    post:
+      responses:
+        "200":
+          description: Operation Successful
+          content:
+            application/json:
+              schema:
+                example:
+                  status: "200"
+                  message: successfully retrived the markslist
+      description: fetch marks list
+      operationId: POST_UniAPI-Push_University_Bonafide_Marks_Data
+      parameters:
+        - name: UserId
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: Password
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: ODP
+          in: header
+          required: true
+          schema:
+            type: string
+components:
+  schemas: {}
+  responses: {}
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}

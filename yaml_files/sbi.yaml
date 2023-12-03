@@ -1,0 +1,145 @@
+openapi: 3.0.3
+info:  
+  title: State Bank of India, All States
+  description:  >- 
+                State Bank of India (SBI) is public sector banking and financial services statutory body which promote digital transaction and digitization of documents to make availability anytime anywhere legal authenticity. For faster delivery/access of digital documents.  State Bank of India is now issuing Form 16/16A through DigiLocker. All SBI account holders having DigiLocker account can now fetch their Form 16/16A from the Issuers' section.  It's also provide SBI API HUb.
+  termsOfService: https://apisetu.gov.in/api-policy
+  version: 3.0.0
+servers:
+  - url: 'https://apisetu.gov.in/certificate/v3/sbi'
+paths:
+  
+  /osfrm:
+    post:
+      tags:
+        - APIs
+      summary: Form 16
+      description: API to verify Form 16.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: osfrm
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - panno
+                    - FinancialQuarter
+                    - FinancialYear
+                    
+                    - FullName
+                    
+                    - DOB
+                    
+                    - GENDER
+                      
+                  properties:
+                    panno:
+                      type: string
+                      description: PAN Number
+                      example: "EX - AAAPS3888G"
+                       
+                    
+                    FinancialQuarter:
+                      type: string
+                      description: Financial Quarter
+                      example: "1,2,3,4"
+                       
+                    
+                    FinancialYear:
+                      type: string
+                      description: Financial Year
+                      example: ""
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"
+                    GENDER:
+                      type: string
+                      description: Gender - Male for male, Female for female and O for other
+                      example: "Male"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+components:
+  schemas:
+    ConsentArtifactSchema:
+      $ref: './common/ConsentArtifactSchema.yaml#/ConsentArtifactSchema'
+    AcademicCertificateSchema:
+      $ref: './common/AcademicCertificateSchema.yaml#/AcademicCertificateSchema'
+          
+  responses:
+    400Error:
+      $ref: './common/ErrorResponse.yaml#/400Error'
+    401Error:
+      $ref: './common/ErrorResponse.yaml#/401Error'
+    404Error:
+      $ref: './common/ErrorResponse.yaml#/404Error'
+    500Error:
+      $ref: './common/ErrorResponse.yaml#/500Error'
+    502Error:
+      $ref: './common/ErrorResponse.yaml#/502Error'
+    503Error:
+      $ref: './common/ErrorResponse.yaml#/503Error'
+    504Error:
+      $ref: './common/ErrorResponse.yaml#/504Error'
+  securitySchemes:
+    clientId:
+      type: apiKey
+      in: header
+      name: X-APISETU-CLIENTID
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-APISETU-APIKEY

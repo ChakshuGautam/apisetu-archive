@@ -1,0 +1,35 @@
+name: YAML Downloader Workflow
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Runs every day at midnight
+  workflow_dispatch:
+
+jobs:
+  download-yaml:
+    runs-on: ubuntu-latest
+
+    permissions:
+        # Give the default GITHUB_TOKEN write permission to commit and push the
+        # added or changed files to the repository.
+        contents: write
+    
+    steps:
+        - name: Checkout Repository
+          uses: actions/checkout@v2
+
+        - name: Set up Node.js
+          uses: actions/setup-node@v2
+          with:
+            node-version: '18'
+
+        - name: Install Dependencies
+          run: npm install
+
+        - name: Run the script
+          run: node downloadResults.js
+
+        - name: Commit and Push
+          uses: stefanzweifel/git-auto-commit-action@v5
+          with:
+            commit_message: Update results.json

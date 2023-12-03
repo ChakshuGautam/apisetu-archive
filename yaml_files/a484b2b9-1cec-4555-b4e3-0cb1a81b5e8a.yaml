@@ -1,0 +1,48 @@
+info:
+  title: NAPIX
+  version: 1.0.0
+  x-ibm-name: napix-apis-document
+  description: This API provides the API specification of the published API on
+    NAPIX provided API id in path
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/napix/napix
+paths:
+  /{api-id}:
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: success
+      parameters:
+        - in: path
+          name: api-id
+          schema:
+            type: string
+            title: API ID Schema
+          required: true
+          description: API ID of the api
+      tags:
+        - Napix apis document
+    parameters:
+      - in: path
+        name: api-id
+        schema:
+          type: string
+          title: API ID Schema
+        required: true
+openapi: 3.0.0
+servers:
+  - url: https://degateway.napix.gov.in:443/napix/napix/napix-apis-document
+x-ibm-endpoints:
+  - url: https://degateway.napix.gov.in:443/napix/napix/napix-apis-document
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  enforced: true
+  testable: true

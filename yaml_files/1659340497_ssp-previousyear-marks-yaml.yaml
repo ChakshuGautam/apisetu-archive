@@ -1,0 +1,114 @@
+openapi: 3.0.0
+info:
+  title: SSP-previousyearMarks-API
+  version: 1.0.0
+  description: This API comes under the department of SSP.This API gives the SSP
+    previousmarks details.
+servers:
+  - url: https://unidata.karnataka.gov.in:8080/UniAPI/api/PushUniversity_Marks_Data
+  - url: https://unidata.karnataka.gov.in:8080/
+paths:
+  /UniAPI/api/PushUniversity_Marks_Data:
+    post:
+      responses:
+        "200":
+          description: Operation Successful
+          content:
+            application/json:
+              schema:
+                example:
+                  statusCode: 1
+                  status: Success
+                  message: Marks data saved Successfully. 2 Records Inserted
+                  statusMessage:
+                    - Message_Type: SUCCESS
+                      Message: Marks data saved Successfully.
+                      University_SSP_Code: 1057
+                      College_SSP_Code: 0
+                      University_Registration_Number: Reg28956846681
+                      Financial_Year_Code: 2021
+                      SSP_Course_Code: 0
+                      Course_Year: 0
+                    - Message_Type: SUCCESS
+                      Message: Marks data saved Successfully.
+                      University_SSP_Code: 1057
+                      College_SSP_Code: 0
+                      University_Registration_Number: Reg2959682682
+                      Financial_Year_Code: 2021
+                      SSP_Course_Code: 0
+                      Course_Year: 0
+      description: Get University Student Previous year Marks Data.
+      operationId: POST_UniAPI-api-PushUniversity_Marks_Data
+      requestBody:
+        content:
+          application/json:
+            example:
+              - University_Registration_Number: Reg28956846681
+                Student_Name: Raju
+                University_SSP_Code: "1057"
+                Course_Name: B.Ed.
+                SSP_Course_Code: "119"
+                Course_Year: "1"
+                Course_Academic_Year: "1920"
+                Is_Semester_Annual: S
+                Is_CGPA_Marks: C
+                Annual_Maximum_Marks: ""
+                Annual_Total_Marks_Obtained: ""
+                Annual_Total_CGPA_Obtained: ""
+                Annual_CGPA_Percentage_Conversion_Factor: ""
+                Annual_Percentage: ""
+                Sem_1_Maximum_Marks: ""
+                Sem_1_Total_Marks_Obtained: ""
+                Sem_1_CGPA_Obtained: "10.00"
+                Sem_1_CGPA_Percentage_Conversion_Factor: "10.00"
+                Sem_1_Percentage: ""
+                Sem_2_Maximum_Marks: ""
+                Sem_2_Total_Marks_Obtained: ""
+                Sem_2_CGPA_Obtained: "10"
+                Sem_2_CGPA_Percentage_Conversion_Factor: "10"
+                Sem_2_Percentage: ""
+                Pass_Promoted: Y
+                Pass_in_all_Subjects: Y
+                COLLEGE_SSP_CODE: "13469"
+                COLLEGE_NAME: "College of Agriculture,Bheemarayangudi(Id: C-35095)"
+              - University_Registration_Number: Reg2959682682
+                Student_Name: Raju
+                University_SSP_Code: "1057"
+                Course_Name: B.Ed.
+                SSP_Course_Code: "119"
+                Course_Year: "1"
+                Course_Academic_Year: "1920"
+                Is_Semester_Annual: A
+                Is_CGPA_Marks: C
+                Annual_Maximum_Marks: ""
+                Annual_Total_Marks_Obtained: ""
+                Annual_Total_CGPA_Obtained: "10.0"
+                Annual_CGPA_Percentage_Conversion_Factor: "10.0"
+                Annual_Percentage: ""
+                Sem_1_Maximum_Marks: ""
+                Sem_1_Total_Marks_Obtained: ""
+                Sem_1_CGPA_Obtained: ""
+                Sem_1_CGPA_Percentage_Conversion_Factor: ""
+                Sem_1_Percentage: ""
+                Sem_2_Maximum_Marks: ""
+                Sem_2_Total_Marks_Obtained: ""
+                Sem_2_CGPA_Obtained: ""
+                Sem_2_CGPA_Percentage_Conversion_Factor: ""
+                Sem_2_Percentage: ""
+                Pass_Promoted: Y
+                Pass_in_all_Subjects: Y
+                COLLEGE_SSP_CODE: "13469"
+                COLLEGE_NAME: "College of Agriculture,Bheemarayangudi(Id: C-35095)"
+            schema:
+              type: string
+        required: true
+components:
+  schemas: {}
+  responses: {}
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}

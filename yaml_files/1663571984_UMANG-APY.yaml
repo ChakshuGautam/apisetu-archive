@@ -1,0 +1,1342 @@
+---
+  openapi: "3.0.0"
+  info: 
+    title: "Atal Pension Yojana (APY)"
+    description: "Atal Pension Yojana (APY), formerly known as Swavalamban Yojana is a government-backed pension scheme in India, primarily targeted at the unorganised sector. The Atal Pension Yojana is a Govt of India scheme that ensures the old age income security of the working poor and is focused on encouraging and enabling them to save for their retirement. <i>[Updated on 19th September 2022]</i>"
+    termsOfService: "https://web.umang.gov.in/uaw/ts/v1/en/index.htm"
+    contact: 
+      name: "Provided by - UMANG"
+      url: "https://web.umang.gov.in"
+    version: "1.0.0"
+  servers: 
+    - 
+      url: "https://apigw.umangapp.in/APYApi/ws1"
+  paths: 
+    /login:
+      post: 
+        tags: 
+          - "Login API for APY"
+        summary: "Login API for APY"
+        parameters: 
+          - in: header
+            name: Content-Type
+            schema:
+                type: string
+                example: application/x-www-form-urlencoded
+          - in: header
+            name: deptid
+            schema:
+                type: integer
+                example: 190
+          - in: header
+            name: srvid
+            schema:
+                type: integer
+                example: 1151
+          - in: header
+            name: subsid
+            schema:
+                type: integer
+                example: 0
+          - in: header
+            name: subsid2
+            schema:
+                type: integer
+                example: 0
+          - in: header
+            name: formtrkr
+            schema:
+                type: string
+                example: 0
+          - in: header
+            name: mosVer
+            schema:
+                type: integer
+                example: 9
+          - in: header
+            name: maVer
+            schema:
+                type: string
+                example: 3.0.1
+          - in: header
+            name: appName
+            schema:
+                type: string
+                example: NSDL    
+          - in: header
+            name: mdOS
+            schema:
+                type: string
+                example: ANDROID
+          - in: header
+            name: mIMEMI
+            schema:
+                type: integer
+                example: 111111111111111
+          - in: header
+            name: mdUUID
+            schema:
+                type: string
+                example: 0b39f4280fc61e18     
+          - in: header
+            name: source
+            schema:
+                type: string
+                example: LITE
+          - in: header
+            name: lang
+            schema:
+                type: string
+                example: en
+          - in: header
+            name: x-api-key
+            schema: 
+              type: string
+            example: xxxxxxxxxxxx
+        security:
+          - bearerAuth: []
+        requestBody: 
+          content: 
+            application/x-www-form-urlencoded: 
+              schema: 
+                type: object
+                properties:
+                  tkn: 
+                    example: xkd8aeb0d8-b0c1-49f3-9bd3-d49a3aaf6d63/1
+                  trkr:
+                    example: 213132
+                  lang:
+                   example: en
+                  usrid:
+                   example: 09
+                  srvid:
+                   example: 1151
+                  mode:
+                   example: web
+                  pltfrm:
+                   example: andorid
+                  did:
+                   example: 
+                  deptid:
+                    example: 190
+                  subsid:
+                    example: 0
+                  subsid2:
+                    example: 0
+                  formtrkr:
+                    example: 0
+                  pranNo:
+                    example: 500101791086
+        responses:
+          200:
+            description: Successful Response
+            content: 
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        fieldErrors:
+                          type: string
+                          example: null
+                        message:
+                          type: string
+                          example: OTP sent successfully to mobile number  909*******9
+                        loginTimestamp:
+                          type: string
+                          example: null
+          400:
+            description: Bad Request/Validation Error
+    /verifyOtp:
+      post: 
+        tags: 
+          - "Verify Otp API for APY"
+        summary: "Verify Otp API for APY"
+        parameters: 
+          - in: header
+            name: Content-Type
+            schema:
+                type: string
+                example: application/x-www-form-urlencoded
+          - in: header
+            name: deptid
+            schema:
+                type: integer
+                example: 190
+          - in: header
+            name: srvid
+            schema:
+                type: integer
+                example: 1151
+          - in: header
+            name: subsid
+            schema:
+                type: integer
+                example: 0
+          - in: header
+            name: subsid2
+            schema:
+                type: integer
+                example: 0
+          - in: header
+            name: formtrkr
+            schema:
+                type: string
+                example: 0
+          - in: header
+            name: mosVer
+            schema:
+                type: integer
+                example: 9
+          - in: header
+            name: maVer
+            schema:
+                type: string
+                example: 3.0.1
+          - in: header
+            name: appName
+            schema:
+                type: string
+                example: NSDL    
+          - in: header
+            name: mdOS
+            schema:
+                type: string
+                example: ANDROID
+          - in: header
+            name: mIMEMI
+            schema:
+                type: integer
+                example: 111111111111111
+          - in: header
+            name: mdUUID
+            schema:
+                type: string
+                example: 0b39f4280fc61e18     
+          - in: header
+            name: source
+            schema:
+                type: string
+                example: LITE
+          - in: header
+            name: lang
+            schema:
+                type: string
+                example: en
+          - in: header
+            name: otp
+            schema:
+                type: string
+                example: 872101
+          - in: header
+            name: x-api-key
+            schema: 
+              type: string
+            example: xxxxxxxxxxxx
+        security:
+          - bearerAuth: []
+        requestBody: 
+          content: 
+            application/x-www-form-urlencoded: 
+              schema: 
+                type: object
+                properties:
+                  tkn: 
+                    example: xkd8aeb0d8-b0c1-49f3-9bd3-d49a3aaf6d63/1
+                  trkr:
+                    example: 213132
+                  lang:
+                   example: en
+                  usrid:
+                   example: 09
+                  srvid:
+                   example: 1151
+                  mode:
+                   example: web
+                  pltfrm:
+                   example: andorid
+                  did:
+                   example: 
+                  deptid:
+                    example: 190
+                  subsid:
+                    example: 0
+                  subsid2:
+                    example: 0
+                  formtrkr:
+                    example: 0
+                  pranNo:
+                    example: 500101791086
+        responses:
+          200:
+            description: Successful Response
+            content: 
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        message:
+                          type: string
+                          example: null
+                        fieldErrors:
+                          type: string
+                          example: null
+                        loginTimestamp:
+                          type: string
+                          example: 1589449755890
+                        accessToken:
+                          type: string
+                          example: eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI1MDAxMDE3OTEwODYiLCJpYXQiOjE1ODk0NDk3NTUsInN1YiI6Ik5QUyIsImlzcyI6Ik5TREwifQ.PbcAxGl8j-KX5mhvWcvxHJMFaUdloqsi9FelCw48G5U
+          400:
+            description: Bad Request/Validation Error
+    /logout:
+      post: 
+        tags: 
+          - "Logout API for APY"
+        summary: "Logout API for APY"
+        parameters: 
+          - in: header
+            name: Content-Type
+            schema:
+                type: string
+                example: application/x-www-form-urlencoded
+          - in: header
+            name: deptid
+            schema:
+                type: integer
+                example: 190
+          - in: header
+            name: srvid
+            schema:
+                type: integer
+                example: 1151
+          - in: header
+            name: subsid
+            schema:
+                type: integer
+                example: 0
+          - in: header
+            name: subsid2
+            schema:
+                type: integer
+                example: 0
+          - in: header
+            name: formtrkr
+            schema:
+                type: string
+                example: 0
+          - in: header
+            name: mosVer
+            schema:
+                type: integer
+                example: 9
+          - in: header
+            name: maVer
+            schema:
+                type: string
+                example: 3.0.1
+          - in: header
+            name: appName
+            schema:
+                type: string
+                example: NSDL    
+          - in: header
+            name: mdOS
+            schema:
+                type: string
+                example: ANDROID
+          - in: header
+            name: mIMEMI
+            schema:
+                type: integer
+                example: 111111111111111
+          - in: header
+            name: mdUUID
+            schema:
+                type: string
+                example: 0b39f4280fc61e18     
+          - in: header
+            name: source
+            schema:
+                type: string
+                example: LITE
+          - in: header
+            name: lang
+            schema:
+                type: string
+                example: en
+          - in: header
+            name: accessToken
+            schema:
+                type: string
+                example: eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI1MDAxMDE3OTEwODYiLCJpYXQiOjE1OTAxNjY2NjMsInN1YiI6Ik5QUyIsImlzcyI6Ik5TREwifQ.A6_zcutma399qR1Dy-u2kuoOMgV0Ddn3B_rE0UWlHzE
+          - in: header
+            name: x-api-key
+            schema: 
+              type: string
+            example: xxxxxxxxxxxx
+        security:
+          - bearerAuth: []
+        requestBody: 
+          content: 
+            application/x-www-form-urlencoded: 
+              schema: 
+                type: object
+                properties:
+                  tkn: 
+                    example: xkd8aeb0d8-b0c1-49f3-9bd3-d49a3aaf6d63/1
+                  trkr:
+                    example: 213132
+                  lang:
+                   example: en
+                  usrid:
+                   example: 09
+                  srvid:
+                   example: 1151
+                  mode:
+                   example: web
+                  pltfrm:
+                   example: andorid
+                  did:
+                   example: 
+                  deptid:
+                    example: 190
+                  subsid:
+                    example: 0
+                  subsid2:
+                    example: 0
+                  formtrkr:
+                    example: 0
+                  pranNo:
+                    example: 500101791086
+        responses:
+          200:
+            description: Successful Response
+            content: 
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      example: null
+          400:
+            description: Bad Request/Validation Error
+    /sotReq:
+      post: 
+        tags: 
+          - "Sot Req API for APY"
+        summary: "Sot Req API for APY"
+        parameters: 
+          - in: header
+            name: Content-Type
+            schema:
+                type: string
+                example: application/x-www-form-urlencoded
+          - in: header
+            name: deptid
+            schema:
+                type: integer
+                example: 190
+          - in: header
+            name: srvid
+            schema:
+                type: integer
+                example: 1151
+          - in: header
+            name: subsid
+            schema:
+                type: integer
+                example: 0
+          - in: header
+            name: subsid2
+            schema:
+                type: integer
+                example: 0
+          - in: header
+            name: formtrkr
+            schema:
+                type: string
+                example: 0
+          - in: header
+            name: mosVer
+            schema:
+                type: integer
+                example: 9
+          - in: header
+            name: maVer
+            schema:
+                type: string
+                example: 3.0.1
+          - in: header
+            name: appName
+            schema:
+                type: string
+                example: NSDL    
+          - in: header
+            name: mdOS
+            schema:
+                type: string
+                example: ANDROID
+          - in: header
+            name: mIMEMI
+            schema:
+                type: integer
+                example: 111111111111111
+          - in: header
+            name: mdUUID
+            schema:
+                type: string
+                example: 0b39f4280fc61e18     
+          - in: header
+            name: source
+            schema:
+                type: string
+                example: LITE
+          - in: header
+            name: lang
+            schema:
+                type: string
+                example: en
+          - in: header
+            name: accessToken
+            schema:
+                type: string
+                example: eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI1MDAxMDE3OTEwODYiLCJpYXQiOjE1OTAxNjY2NjMsInN1YiI6Ik5QUyIsImlzcyI6Ik5TREwifQ.A6_zcutma399qR1Dy-u2kuoOMgV0Ddn3B_rE0UWlHzE
+          - in: header
+            name: x-api-key
+            schema: 
+              type: string
+            example: xxxxxxxxxxxx
+        security:
+          - bearerAuth: []
+        requestBody: 
+          content: 
+            application/x-www-form-urlencoded: 
+              schema: 
+                type: object
+                properties:
+                  tkn: 
+                    example: xkd8aeb0d8-b0c1-49f3-9bd3-d49a3aaf6d63/1
+                  trkr:
+                    example: 213132
+                  lang:
+                   example: en
+                  usrid:
+                   example: 09
+                  srvid:
+                   example: 1151
+                  mode:
+                   example: web
+                  pltfrm:
+                   example: andorid
+                  did:
+                   example: 
+                  deptid:
+                    example: 190
+                  subsid:
+                    example: 0
+                  subsid2:
+                    example: 0
+                  formtrkr:
+                    example: 0
+                  financialYear:
+                    example: 1516
+                  remarks:
+                    example: Testing Umang
+                  modeDept:
+                    example: e
+                  pranNo:
+                    example: 500101791086
+        responses:
+          200:
+            description: Successful Response
+            content: 
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        fieldErrors:
+                          type: string
+                          example: null
+                        sotData:
+                          type: string
+                          example: null
+                        message:
+                          type: string
+                          example: SOT request has been captured successfully.
+          400:
+            description: Bad Request/Validation Error
+    /lastTransact:
+      post: 
+        tags: 
+          - "Last Transact API for APY"
+        summary: "Last Transact API for APY"
+        parameters: 
+          - in: header
+            name: Content-Type
+            schema:
+                type: string
+                example: application/x-www-form-urlencoded
+          - in: header
+            name: deptid
+            schema:
+                type: integer
+                example: 190
+          - in: header
+            name: srvid
+            schema:
+                type: integer
+                example: 1151
+          - in: header
+            name: subsid
+            schema:
+                type: integer
+                example: 0
+          - in: header
+            name: subsid2
+            schema:
+                type: integer
+                example: 0
+          - in: header
+            name: formtrkr
+            schema:
+                type: string
+                example: 0
+          - in: header
+            name: mosVer
+            schema:
+                type: integer
+                example: 9
+          - in: header
+            name: maVer
+            schema:
+                type: string
+                example: 3.0.1
+          - in: header
+            name: appName
+            schema:
+                type: string
+                example: NSDL    
+          - in: header
+            name: mdOS
+            schema:
+                type: string
+                example: ANDROID
+          - in: header
+            name: mIMEMI
+            schema:
+                type: integer
+                example: 111111111111111
+          - in: header
+            name: mdUUID
+            schema:
+                type: string
+                example: 0b39f4280fc61e18     
+          - in: header
+            name: source
+            schema:
+                type: string
+                example: LITE
+          - in: header
+            name: lang
+            schema:
+                type: string
+                example: en
+          - in: header
+            name: accessToken
+            schema:
+                type: string
+                example: eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI1MDAxMDE3OTEwODYiLCJpYXQiOjE1OTAxNjY2NjMsInN1YiI6Ik5QUyIsImlzcyI6Ik5TREwifQ.A6_zcutma399qR1Dy-u2kuoOMgV0Ddn3B_rE0UWlHzE
+          - in: header
+            name: x-api-key
+            schema: 
+              type: string
+            example: xxxxxxxxxxxx
+        security:
+          - bearerAuth: []
+        requestBody: 
+          content: 
+            application/x-www-form-urlencoded: 
+              schema: 
+                type: object
+                properties:
+                  tkn: 
+                    example: xkd8aeb0d8-b0c1-49f3-9bd3-d49a3aaf6d63/1
+                  trkr:
+                    example: 213132
+                  lang:
+                   example: en
+                  usrid:
+                   example: 09
+                  srvid:
+                   example: 1151
+                  mode:
+                   example: web
+                  pltfrm:
+                   example: andorid
+                  did:
+                   example: 
+                  deptid:
+                    example: 190
+                  subsid:
+                    example: 0
+                  subsid2:
+                    example: 0
+                  formtrkr:
+                    example: 0
+                  pranNo:
+                    example: 500101791086
+        responses:
+          200:
+            description: Successful Response
+            content: 
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        tier2List:
+                          type: string
+                          example: null
+                        tier1List:
+                          type: object
+                          properties:
+                            date:
+                                type: string
+                                example: null
+                            tierType:
+                                type: string
+                                example: T1
+                            cr_db_Type:
+                                type: string
+                                example: C
+                            remarks:
+                                type: string
+                                example: By APY Contribution for OCTOBER 2019 . Units alloted as per NAV of 2019-10-09**
+                            contriAmt:
+                                type: string
+                                example: 376.00
+          400:
+            description: Bad Request/Validation Error
+    /accSummary:
+      post: 
+        tags: 
+          - "Account Summary API for APY"
+        summary: "Account Summary API for APY"
+        parameters: 
+          - in: header
+            name: Content-Type
+            schema:
+                type: string
+                example: application/x-www-form-urlencoded
+          - in: header
+            name: deptid
+            schema:
+                type: integer
+                example: 190
+          - in: header
+            name: srvid
+            schema:
+                type: integer
+                example: 1151
+          - in: header
+            name: subsid
+            schema:
+                type: integer
+                example: 0
+          - in: header
+            name: subsid2
+            schema:
+                type: integer
+                example: 0
+          - in: header
+            name: formtrkr
+            schema:
+                type: string
+                example: 0
+          - in: header
+            name: mosVer
+            schema:
+                type: integer
+                example: 9
+          - in: header
+            name: maVer
+            schema:
+                type: string
+                example: 3.0.1
+          - in: header
+            name: appName
+            schema:
+                type: string
+                example: NSDL    
+          - in: header
+            name: mdOS
+            schema:
+                type: string
+                example: ANDROID
+          - in: header
+            name: mIMEMI
+            schema:
+                type: integer
+                example: 111111111111111
+          - in: header
+            name: mdUUID
+            schema:
+                type: string
+                example: 0b39f4280fc61e18     
+          - in: header
+            name: source
+            schema:
+                type: string
+                example: LITE
+          - in: header
+            name: lang
+            schema:
+                type: string
+                example: en
+          - in: header
+            name: accessToken
+            schema:
+                type: string
+                example: eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI1MDAxMDE3OTEwODYiLCJpYXQiOjE1OTAxNjY2NjMsInN1YiI6Ik5QUyIsImlzcyI6Ik5TREwifQ.A6_zcutma399qR1Dy-u2kuoOMgV0Ddn3B_rE0UWlHzE
+          - in: header
+            name: x-api-key
+            schema: 
+              type: string
+            example: xxxxxxxxxxxx
+        security:
+          - bearerAuth: []
+        requestBody: 
+          content: 
+            application/x-www-form-urlencoded: 
+              schema: 
+                type: object
+                properties:
+                  tkn: 
+                    example: xkd8aeb0d8-b0c1-49f3-9bd3-d49a3aaf6d63/1
+                  trkr:
+                    example: 213132
+                  lang:
+                   example: en
+                  usrid:
+                   example: 09
+                  srvid:
+                   example: 1151
+                  mode:
+                   example: web
+                  pltfrm:
+                   example: andorid
+                  did:
+                   example: 
+                  deptid:
+                    example: 190
+                  subsid:
+                    example: 0
+                  subsid2:
+                    example: 0
+                  formtrkr:
+                    example: 0
+                  pranNo:
+                    example: 500101791086
+        responses:
+          200:
+            description: Successful Response
+            content: 
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        tier1Summary:
+                          type: object
+                          properties:
+                            popRegNoLabel:
+                                type: string
+                                example: NLOO Reg No
+                            popSPNameLabel:
+                                type: string
+                                example: NLAO Name
+                            emailId:
+                                type: string
+                                example: sunilZ@nsdl.co.in"
+                            popSPRegNo:
+                                type: string
+                                example: 8012336
+                            tier1Sts:
+                                type: string
+                                example: Active
+                            popRegNo:
+                                type: string
+                                example: 7001492
+                            mobNumber:
+                                type: string
+                                example: 9096348319
+                            popName:
+                                type: string
+                                example: THE FEDERAL BANK LTD
+                            pensionAmt:
+                                type: string
+                                example: 5000
+                            addLine1:
+                                type: string
+                                example: 6/38 A ELEMPLASSERRY PAZHANGADKUMBALANGHIS
+                            popSPRegNoLabel:
+                                type: string
+                                example: NLAO Reg No
+                            pran:
+                                type: string
+                                example: 500101791086
+                            popSPName:
+                                type: string
+                                example: THE FEDERAL BANK LTD
+                            userName:
+                                type: string
+                                example: SHRI Sunil1
+                            iraStatus:
+                                type: string
+                                example: IRA compliant
+                            schemeChoice:
+                                type: string
+                                example: DEFAULT SCHEME SET-UP
+                            contriAmt:
+                                type: string
+                                example: 376.00
+                            popNameLabel:
+                                type: string
+                                example: NLOO Name
+                            sectorType:
+                                type: string
+                                example: 3
+                            contriFrequency:
+                                type: string
+                                example: M
+                        tier2Summary:
+                          type: string
+                          example: null
+          400:
+            description: Bad Request/Validation Error
+    /soh:
+      post: 
+        tags: 
+          - "SOH API for APY"
+        summary: "SOH API for APY"
+        parameters: 
+          - in: header
+            name: Content-Type
+            schema:
+                type: string
+                example: application/x-www-form-urlencoded
+          - in: header
+            name: deptid
+            schema:
+                type: integer
+                example: 190
+          - in: header
+            name: srvid
+            schema:
+                type: integer
+                example: 1151
+          - in: header
+            name: subsid
+            schema:
+                type: integer
+                example: 0
+          - in: header
+            name: subsid2
+            schema:
+                type: integer
+                example: 0
+          - in: header
+            name: formtrkr
+            schema:
+                type: string
+                example: 0
+          - in: header
+            name: mosVer
+            schema:
+                type: integer
+                example: 9
+          - in: header
+            name: maVer
+            schema:
+                type: string
+                example: 3.0.1
+          - in: header
+            name: appName
+            schema:
+                type: string
+                example: NSDL    
+          - in: header
+            name: mdOS
+            schema:
+                type: string
+                example: ANDROID
+          - in: header
+            name: mIMEMI
+            schema:
+                type: integer
+                example: 111111111111111
+          - in: header
+            name: mdUUID
+            schema:
+                type: string
+                example: 0b39f4280fc61e18     
+          - in: header
+            name: source
+            schema:
+                type: string
+                example: LITE
+          - in: header
+            name: lang
+            schema:
+                type: string
+                example: en
+          - in: header
+            name: accessToken
+            schema:
+                type: string
+                example: eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI1MDAxMDE3OTEwODYiLCJpYXQiOjE1OTAxNjY2NjMsInN1YiI6Ik5QUyIsImlzcyI6Ik5TREwifQ.A6_zcutma399qR1Dy-u2kuoOMgV0Ddn3B_rE0UWlHzE
+          - in: header
+            name: x-api-key
+            schema: 
+              type: string
+            example: xxxxxxxxxxxx
+        security:
+          - bearerAuth: []
+        requestBody: 
+          content: 
+            application/x-www-form-urlencoded: 
+              schema: 
+                type: object
+                properties:
+                  tkn: 
+                    example: xkd8aeb0d8-b0c1-49f3-9bd3-d49a3aaf6d63/1
+                  trkr:
+                    example: 213132
+                  lang:
+                   example: en
+                  usrid:
+                   example: 09
+                  srvid:
+                   example: 1151
+                  mode:
+                   example: web
+                  pltfrm:
+                   example: andorid
+                  did:
+                   example: 
+                  deptid:
+                    example: 190
+                  subsid:
+                    example: 0
+                  subsid2:
+                    example: 0
+                  formtrkr:
+                    example: 0
+                  pranNo:
+                    example: 500101791086
+        responses:
+          200:
+            description: Successful Response
+            content: 
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        totalValue:
+                          type: string
+                          example: null
+                        tier2:
+                          type: object
+                          properties:
+                            total:
+                                type: string
+                                example: 0
+                            amtInTransit:
+                                type: string
+                                example: 0
+                            message:
+                                type: string
+                                example: No Schemes
+                            asOnDate:
+                                type: string
+                                example: 14/05/2020
+                            errorDescription:
+                                type: string
+                                example: success
+                            userName:
+                                type: string
+                                example: SHRI Sunil1
+                            statusCode:
+                                type: string
+                                example: 0
+          400:
+            description: Bad Request/Validation Error
+    /epran:
+      post: 
+        tags: 
+          - "epran API for APY"
+        summary: "epran API for APY"
+        parameters: 
+          - in: header
+            name: Content-Type
+            schema:
+                type: string
+                example: application/x-www-form-urlencoded
+          - in: header
+            name: deptid
+            schema:
+                type: integer
+                example: 190
+          - in: header
+            name: srvid
+            schema:
+                type: integer
+                example: 1151
+          - in: header
+            name: subsid
+            schema:
+                type: integer
+                example: 0
+          - in: header
+            name: subsid2
+            schema:
+                type: integer
+                example: 0
+          - in: header
+            name: formtrkr
+            schema:
+                type: string
+                example: 0
+          - in: header
+            name: mosVer
+            schema:
+                type: integer
+                example: 9
+          - in: header
+            name: maVer
+            schema:
+                type: string
+                example: 3.0.1
+          - in: header
+            name: appName
+            schema:
+                type: string
+                example: NSDL    
+          - in: header
+            name: mdOS
+            schema:
+                type: string
+                example: ANDROID
+          - in: header
+            name: mIMEMI
+            schema:
+                type: integer
+                example: 111111111111111
+          - in: header
+            name: mdUUID
+            schema:
+                type: string
+                example: 0b39f4280fc61e18     
+          - in: header
+            name: source
+            schema:
+                type: string
+                example: LITE
+          - in: header
+            name: lang
+            schema:
+                type: string
+                example: en
+          - in: header
+            name: accessToken
+            schema:
+                type: string
+                example: eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI1MDAxMDE3OTEwODYiLCJpYXQiOjE1OTAxNjY2NjMsInN1YiI6Ik5QUyIsImlzcyI6Ik5TREwifQ.A6_zcutma399qR1Dy-u2kuoOMgV0Ddn3B_rE0UWlHzE
+          - in: header
+            name: x-api-key
+            schema: 
+              type: string
+            example: xxxxxxxxxxxx
+        security:
+          - bearerAuth: []
+        requestBody: 
+          content: 
+            application/x-www-form-urlencoded: 
+              schema: 
+                type: object
+                properties:
+                  tkn: 
+                    example: xkd8aeb0d8-b0c1-49f3-9bd3-d49a3aaf6d63/1
+                  trkr:
+                    example: 213132
+                  lang:
+                   example: en
+                  usrid:
+                   example: 09
+                  srvid:
+                   example: 1151
+                  mode:
+                   example: web
+                  pltfrm:
+                   example: andorid
+                  did:
+                   example: 
+                  deptid:
+                    example: 190
+                  subsid:
+                    example: 0
+                  subsid2:
+                    example: 0
+                  formtrkr:
+                    example: 0
+                  pranNo:
+                    example: 500101791086
+        responses:
+          200:
+            description: Successful Response
+            content: 
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        fieldErrors:
+                          type: string
+                          example: null
+                        ePranData:
+                          type: string
+                          example: JVBERi0xLjQKJeLjz9MKMyAwIG9iago8PC9UeXBlL1hPYmplY3QvQ29sb3JTcGFjZS9EZXZpY2VSR0IvU3VidHlwZS9JbWFnZS9CaXRzUGVyQ29tcG9uZW50IDgvV2lkdGggODUwL0xlbmd0aCAzMTU0My9IZWlnaHQgMjcxL0ZpbHRlci9EQ1REZWNvZGU+PnN0cmVhbQr/2P/gABBKRklGAAEBAQBgAGAAAP/bAEMACAYGBwYFCAcHBwkJCAoMFA0MCwsMGRITDxQdGh8eHRocHCAkLicgIiwjHBwoNyksMDE0NDQfJzk9ODI8LjM0Mv/bAEMBCQkJDAsMGA0NGDIhHCEyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMvgv/xAC1EAACAQMDAgQDBQUEBAAAAX0BAgMABBEFEiExQQYTUWEHInEUMoGRoQgjQrHBFVLR8CQzYnKCCQoWFxgZGiUmJygpKjQ1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4eLj5OXm5
+                        apyEpranPdfDataForm:
+                          type: string
+                          example: null
+          400:
+            description: Bad Request/Validation Error
+  components:
+    securitySchemes:
+      bearerAuth:
+        type: http
+        scheme: bearer
+        bearerFormat: text

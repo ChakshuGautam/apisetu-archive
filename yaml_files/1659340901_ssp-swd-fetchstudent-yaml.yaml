@@ -1,0 +1,57 @@
+openapi: 3.0.0
+info:
+  title: SSP-SWD-FetchStudent-Data
+  version: 1.0.0
+  description: This API comes under the department of SSP.This API gives the
+    details of SSP-SWD-FetchStudentData .
+servers:
+  - url: https://ssp.postmatric.karnataka.gov.in/Get_Students_Details/api/SSP_Fetch_Student_Details
+  - url: https://ssp.postmatric.karnataka.gov.in/
+paths:
+  /Get_Students_Details/api/SSP_Fetch_Student_Details:
+    post:
+      responses:
+        "200":
+          description: Operation_successful
+          content:
+            application/json:
+              schema:
+                example:
+                  statusCode: 1
+                  status: Success
+                  message: You have successfully got Student Details.
+                  statusMessage:
+                    Student_Id: 19200000003
+                    Student_UID_Name: GOWTHAM S RAJ
+                    Student_Email_Id: gowthamsraj7@gmail.com
+                    Student_Gender: 1
+                    Gender_Name: Boy
+                    Caste_Category_Code: 1
+                    Caste_Facility_Code: 8
+                    Caste: ಪರಿಶಿಷ್ಟ ಜಾತಿಗಳು
+                    Sub_Caste: ಆದಿ ಕರ್ನಾಟಕ
+                    Student_Father_Name: S Siddaraju
+                    Name_In_Caste_Certificate: ಗೌತಮ್ ಎಸ್ ರಾಜ್
+                    Name_In_Income_Crretificate: ಗೌತಮ್ ಎಸ್ ರಾಜ್
+                    Income: 25000
+                    Tenth_Registration_Number: "20130792570"
+                    Tenth_Pass_year: 2013
+      operationId: POST_Get_Students_Details-api-SSP_Fetch_Student_Details
+      requestBody:
+        content:
+          application/json:
+            example:
+              Student_Id: "19200000003"
+            schema:
+              type: string
+        required: true
+components:
+  schemas: {}
+  responses: {}
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}

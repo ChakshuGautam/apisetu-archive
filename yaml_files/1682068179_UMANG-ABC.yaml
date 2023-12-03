@@ -1,0 +1,907 @@
+---
+openapi: 3.0.0
+info:
+  title: ABC (Academic Bank of Credits) Integration
+  description: Academic Bank of Credits has been established on the lines of the National Academic Depository (NAD), in the sense, NAD is the backbone of ABC, where the students' academic data are held and academic awards are stored (i.e. storehouse of academic awards). Despite the fact that ABC enables students to register or commence credit transfer, the final outcomes of credit redemption and issuance of certificates, as well as the compilation of award records, are administered by academic institutions via the NAD Platform. Hence being the owner of academic awards, Academic Institutions must mandatorily register themselves under ABC via NAD.<i>[Updated on 17th April 2023]</i>
+  termsOfService: https://web.umang.gov.in/uaw/ts/v1/en/index.htm
+  contact:
+    name: Provided by - UMANG
+    url: https://web.umang.gov.in
+  version: 1.0.0
+servers:
+  - url: https://apigw.umangapp.in
+    description: Production Gerver
+paths:
+  /ABCApi/ws1/getOrganizationDetails:
+    post:
+      tags:
+        - Get Organization Detail of Skills/University for ABC Workflow APIs
+      summary: Get Organization Detail API
+      description: This API is Gsed to Get Organization Detail of Skills/University for ABC Workflow
+      operationId: ABCApi/ws1/getOrganizationDetails
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: Location
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 191
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1310
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                subsid:
+                  type: string
+                  description: subscriber id
+                  example: null
+                subsid2:
+                  type: string
+                  description: subscriber id
+                  example: null
+                formtrkr:
+                  type: integer
+                  description: form tracker
+                  example: null
+                partnerSubType:
+                  type: string
+                  description: partnerSubType
+                  example: Skill
+                token:
+                  type: string
+                  description: token
+                  example: 8601f0bf4bfdce4ac7d621704fe5cb861e88b1d4bcf820fdffbefcbc6bd99722
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid
+          in: header
+          schema:
+            type: string
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:
+                      records:
+                        type: object
+                        description: record details
+                        properties:
+                          issuer_id:
+                            type: string
+                            description: issuer id
+                            example: com.tsscindia                            
+                          org_id:
+                            type: string
+                            description: organization Id
+                            example: 008347
+                          name:
+                            type: string
+                            description: name
+                            example: Telecom Sector Skill Council
+                          id:
+                            type: integer
+                            description: id
+                            example: 8347
+                      status:
+                        type: boolean
+                        description: status
+                        example: true
+        "400":
+          description: Bad Request/Validation Error
+  /ABCApi/ws1/getAuthToken:
+    post:
+      tags:
+        - Get Authorization Token for ABC APIs
+      summary:  Get Authorization Token API
+      description: This API is Used to Get Authorization Token for ABC APIs
+      operationId: ABCApi/ws1/getAuthToken
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: Location
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                subsid:
+                  type: string
+                  description: subscriber id
+                  example: null
+                subsid2:
+                  type: string
+                  description: subscriber id
+                  example: null
+                formtrkr:
+                  type: integer
+                  description: form tracker
+                  example: null
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid
+          in: header
+          schema:
+            type: string
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:
+                      access_token:
+                        type: string
+                        description: access token
+                        example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
+                      token_type:
+                        type: string
+                        description: token type
+                        example: bearer
+                      expires_in:
+                        type: string
+                        description: expires in
+                        example: 60 mins                       
+        "400":
+          description: Bad Request/Validation Error
+  /ABCApi/ws1/getAbcIdByDigilockerId:
+    post:
+      tags:
+        - Get ABC Id By Digilocker Id APIs
+      summary: Get ABC ID by Digilocker ID API
+      description: This API is Used to get ABC ID by Digilocker ID
+      operationId: ABCApi/ws1/getAbcIdByDigilockerId
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: Location
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                subsid:
+                  type: string
+                  description: subscriber id
+                  example: null
+                subsid2:
+                  type: string
+                  description: subscriber id
+                  example: null
+                formtrkr:
+                  type: integer
+                  description: form tracker
+                  example: null
+                datkn:
+                  type: string
+                  description: da token
+                  example: 7f2149fb41bca0c1bc2c5324edc42cfe0933fdde
+                institutionType:
+                  type: string
+                  description: institution Type
+                  example: Skill
+                institutionName:
+                  type: string
+                  description: institution Name
+                  example: Skill Council for Mining Sector
+                nadId:
+                  type: string
+                  description: nad Id
+                  example: 004044
+                token:
+                  type: string
+                  description: token
+                  example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9               
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid
+          in: header
+          schema:
+            type: string
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:
+                      statuscode:
+                        type: string
+                        description: status code
+                        example: 200
+                      insitute_Type:
+                        type: string
+                        description: insitute type
+                        example: Skill
+                      ABC_ACCOUNT_ID:
+                        type: string
+                        description: ABC account Id
+                        example: 592617980565
+                      message:
+                        type: string
+                        description: message
+                        example: ABC ID created successfully with Institutions type and Name
+                      institutions_Name:
+                        type: string
+                        description: institutions Name
+                        example: Skill Council for Mining Sector
+                      status:
+                        type: integer
+                        description: statuscode
+                        example: 1
+                      LOCKER_ID:
+                        type: string
+                        description: locker Id
+                        example: ae285951-b698-55b4-9883-45d0f282ca3f                     
+        "400":
+          description: Bad Request/Validation Error
+  /ABCApi/ws1/getQrCodeFromAbcId:
+    post:
+      tags:
+        - Get QR Code From ABC ID APIs
+      summary: Get QR Code From ABC Id
+      description: This API is Used to Get QR Code From ABC ID
+      operationId: ABCApi/ws1/getQrCodeFromAbcId
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: Location
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                subsid:
+                  type: string
+                  description: subscriber id
+                  example: null
+                subsid2:
+                  type: string
+                  description: subscriber id
+                  example: null
+                formtrkr:
+                  type: integer
+                  description: form tracker
+                  example: null
+                abcAccountId:
+                  type: string
+                  description: abcAccountId
+                  example: 794615873333
+                token:
+                  type: string
+                  description: token
+                  example: eyJhbGciOiJSUzUxMiJ9.eyJzdWIiOiI5MS02NzI4
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1519"
+        - name: subsid
+          in: header
+          schema:
+            type: string
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:              
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:                
+                      status:
+                        type: integer
+                        description: Status code
+                        example: 1
+                      statuscode:
+                        type: string
+                        description: Response Code
+                        example: 200
+                      message:
+                        type: string
+                        description: message
+                        example: Records Found Sucessfully
+                      CNAME:
+                        type: string
+                        description: CNAME
+                        example: Monika Tukaram Sante
+                      GENDER:
+                        type: string
+                        description: gender
+                        example: F
+                      DOB:
+                        type: string
+                        description: date of birth
+                        example: 16/12/1992
+                      ABC_ACCOUNT_ID:
+                        type: string
+                        description: ABC Account Id
+                        example: 794615873333   
+                      QR_CODE:
+                        type: object
+                        description: QR code
+                        properties:                
+                          QRImg:
+                            type: string
+                            description: QRImg
+                            example: iVBORw0KGgoAAAANSUhEUgAAALcAAAC3AQMAAABqoF3cAAAABlBMVEX               
+        "400":
+          description: Bad Request/Validation Error
+  /ABCApi/ws1/checkAbcIdExistByDigilockerid:
+    post:
+      tags:
+        - Check ABC ID Exist by Digilocker ID API's
+      summary: Check ABC ID Exist by Digilocker ID
+      description: This API is used to check Abc Id exist by Digilocker id
+      operationId: ABCApi/ws1/checkAbcIdExistByDigilockerid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: Location
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                subsid:
+                  type: string
+                  description: subscriber id
+                  example: null
+                subsid2:
+                  type: string
+                  description: subscriber id
+                  example: null
+                formtrkr:
+                  type: integer
+                  description: form tracker
+                  example: 0
+                datkn:
+                  type: string
+                  description: datoken
+                  example: 7f2149fb41bca0c1bc2c5324edc42cfe0933fdde
+                institutionType:
+                  type: string
+                  description: institution Type
+                  example: Skill
+                institutionName:
+                  type: string
+                  description: institution Name
+                  example: Skill Council for Mining Sector
+                nadId:
+                  type: string
+                  description: nad Id
+                  example: 004044
+                token:
+                  type: string
+                  description: token
+                  example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9uYWRhcGku              
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1519"
+        - name: subsid
+          in: header
+          schema:
+            type: string
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:
+                      statuscode:
+                        type: string
+                        description: status code
+                        example: 201
+                      message:
+                        type: string
+                        description: message
+                        example: ABC account not exist
+                      status:
+                        type: integer
+                        description: status
+                        example: 1 
+                      LOCKER_ID:
+                        type: string
+                        description: locker Id
+                        example: ae285951-b698-55b4-9883-45d0f282ca3f                        
+        "400":
+          description: Bad Request/Validation Error
+components:
+  securitySchemes:
+    x-api-key:
+      type: apiKey
+      name: x-api-key
+      in: header

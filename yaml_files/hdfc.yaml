@@ -1,0 +1,336 @@
+openapi: 3.0.3
+info:  
+  title: HDFC Bank Ltd, Maharashtra
+  description:  >- 
+                HDFC Bank Ltd provides a facility for its Home Loan customers to access and download their Interest Certificates and Account Statements into their DigiLocker account.
+  termsOfService: https://apisetu.gov.in/api-policy
+  version: 3.0.0
+servers:
+  - url: 'https://apisetu.gov.in/certificate/v3/hdfc'
+paths:
+  
+  /hlast:
+    post:
+      tags:
+        - APIs
+      summary: Account Statement - Home Loan
+      description: API to verify Account Statement - Home Loan.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: hlast
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - lacNo
+                    - contactNo
+                    - Year
+                    
+                    - FullName
+                    
+                    - Mobile
+                      
+                  properties:
+                    lacNo:
+                      type: string
+                      description: Loan Account Number
+                      example: "Enter 9 Digit Loan Account Number"
+                       
+                    
+                    contactNo:
+                      type: string
+                      description: Registered Mobile Number
+                      example: "Enter 10 Digits without prefix"
+                       
+                    
+                    Year:
+                      type: string
+                      description: Financial Year
+                      example: "2021-2022,2022-2023,2023-2024"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    Mobile:
+                      type: string
+                      description: Mobile No
+                      example: "9876543210"
+                      
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /hlinc:
+    post:
+      tags:
+        - APIs
+      summary: Interest Certificate - Home Loan
+      description: API to verify Interest Certificate - Home Loan.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: hlinc
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - lacNo
+                    - contactNo
+                    - Year
+                    
+                    - FullName
+                    
+                    - Mobile
+                      
+                  properties:
+                    lacNo:
+                      type: string
+                      description: Loan Account Number
+                      example: "Enter 9 Digit Loan Account Number"
+                       
+                    
+                    contactNo:
+                      type: string
+                      description: Registered Mobile Number
+                      example: "Enter 10 Digits without prefix"
+                       
+                    
+                    Year:
+                      type: string
+                      description: Financial Year
+                      example: "2021-2022,2022-2023"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    Mobile:
+                      type: string
+                      description: Mobile No
+                      example: "9876543210"
+                      
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /hpvcr:
+    post:
+      tags:
+        - APIs
+      summary: Provisional Certificate - Home Loan
+      description: API to verify Provisional Certificate - Home Loan.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: hpvcr
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - lacNo
+                    - contactNo
+                    - Year
+                    
+                    - FullName
+                    
+                    - Mobile
+                      
+                  properties:
+                    lacNo:
+                      type: string
+                      description: Loan Account Number
+                      example: "Enter 9 Digit Loan Account Number"
+                       
+                    
+                    contactNo:
+                      type: string
+                      description: Registered Mobile Number
+                      example: "Enter 10 Digits without any prefix"
+                       
+                    
+                    Year:
+                      type: string
+                      description: Financial Year
+                      example: "2023-2024"
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    Mobile:
+                      type: string
+                      description: Mobile No
+                      example: "9876543210"
+                      
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+components:
+  schemas:
+    ConsentArtifactSchema:
+      $ref: './common/ConsentArtifactSchema.yaml#/ConsentArtifactSchema'
+    AcademicCertificateSchema:
+      $ref: './common/AcademicCertificateSchema.yaml#/AcademicCertificateSchema'
+          
+  responses:
+    400Error:
+      $ref: './common/ErrorResponse.yaml#/400Error'
+    401Error:
+      $ref: './common/ErrorResponse.yaml#/401Error'
+    404Error:
+      $ref: './common/ErrorResponse.yaml#/404Error'
+    500Error:
+      $ref: './common/ErrorResponse.yaml#/500Error'
+    502Error:
+      $ref: './common/ErrorResponse.yaml#/502Error'
+    503Error:
+      $ref: './common/ErrorResponse.yaml#/503Error'
+    504Error:
+      $ref: './common/ErrorResponse.yaml#/504Error'
+  securitySchemes:
+    clientId:
+      type: apiKey
+      in: header
+      name: X-APISETU-CLIENTID
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-APISETU-APIKEY

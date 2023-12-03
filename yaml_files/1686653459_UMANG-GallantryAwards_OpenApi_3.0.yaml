@@ -1,0 +1,1465 @@
+---
+openapi: 3.0.0
+info:
+  title: Gallantry Awards (Government of India)
+  description: Gallantry Awards have been instituted by the Government of India to honour the acts of bravery and sacrifice of the officers/personnel of the Armed Forces, other lawfully constituted Forces and civilians. These gallantry awards are announced twice in a year - first on the occasion of the Republic Day and then on the occasion of the Independence Day.Gallantry Awards are classified into two Categories - Gallantry in the Face of Enemy and Gallantry Other than in the Face of Enemy.First Category of Gallantry Awards Comprises of the following Awards- Param Vir Chakra (PVC),Mahavir Chakra (MVC),Vir Chakra.Second Category of Gallantry Awards Comprises of the following Awards- Ashok Chakra,Kirti Chakra,Shaurya Chakra.Post-independence, first three gallantry awards namely the Param Vir Chakra, the Maha Vir Chakra and the Vir Chakra were instituted by the Government of India on 26th January, 1950 which were deemed to have effect from the 15th August, 1947.Thereafter, other three gallantry awards i.e. the Ashoka Chakra Class-I, the Ashoka Chakra Class-II and the Ashoka Chakra Class-III were instituted by the Government of India on 4th January, 1952, which were deemed to have effect from the 15th August, 1947. These awards were renamed as the Ashoka Chakra, the Kirti Chakra and the Shaurya Chakra respectively in January, 1967.Order of precedence of these awards is the Param Vir Chakra, the Ashoka Chakra, the Mahavir Chakra, the Kirti Chakra, the Vir Chakra and the Shaurya Chakra. <i>[Updated on 13th June 2023]</i>
+  termsOfService: https://web.umang.gov.in/uaw/ts/v1/en/index.htm
+  contact:
+    name: Provided by - UMANG
+    url: https://web.umang.gov.in
+  version: 1.0.0
+servers:
+  - url: https://apigw.umangapp.in
+    description: Production Server
+
+    
+security: 
+  -  x-api-key: []
+
+paths:
+  /GALLANTRYApi/ws1/login:
+    post:
+      tags:
+        - Login
+      summary: Log into the gallantry awards dept using this api
+      description: This api is used to login and get the valid token to access all other pages of the department
+      operationId: GALLANTRYApi/ws1/login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-sY20230502053053
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 90
+                usrid:
+                  type: string
+                  description: user id
+                  example: 2003966454
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1657
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: windows
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                deptid:
+                  type: string
+                  description: department id
+                  example: 360
+                subsid:
+                  type: string
+                  description: subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 123234               
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "360"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1657"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    properties:
+                      token:                     
+                        type: string
+                        description: token value
+                        example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjIiLCJ1c2VybmFtZSI6InVtYW5nIiwiaWF0IjoxNjE5NzU5NTE4LCJleHAiOjE2MTk3Nzc1MTh9.zOgDrGD-hw0pwsPOeMLHWJVkDRDHqRWknUmEn10k6mg                     
+        "400":
+          description: Bad Request/Validation Error
+  /GALLANTRYApi/ws1/awardsCategory:
+    post:
+      tags:
+        - Award Categories
+      summary: Get the details of all the award categories in gallantry awards
+      description: This api is used to get all the categories in gallantry awards dept
+      operationId: GALLANTRYApi/ws1/awardsCategory
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-sX20230502054340
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 90
+                usrid:
+                  type: string
+                  description: user id
+                  example: 2003966454
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1657
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: windows
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                deptid:
+                  type: string
+                  description: department id
+                  example: 360
+                subsid:
+                  type: string
+                  description: subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 123234
+                token:
+                  type: object
+                  description: token
+                  example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjIiLCJ1c2VybmFtZSI6InVtYW5nIiwiaWF0IjoxNjgzMDAzMzIxLCJleHAiOjE2ODMwMjEzMjF9.Sn8GgJoI0hoDlcSZB5NDnzl4slwsYX2AVmZrw8qh_Z8                     
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "360"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1657"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object  
+                    description: Awards categories response object
+                    properties:
+                      respMessage:                    
+                        type: string
+                        description: response message
+                        example: success.
+                      data: 
+                        type: array
+                        description: response json
+                        items:
+                          type: object
+                          properties:
+                            bar:
+                              type: string
+                              description: bar description
+                              example: If any recipient of the Chakra shall again..
+                            medal:
+                              type: string
+                              description: medal description
+                              example: Circular in shape, made of bronze..
+                            ribbon:
+                              type: string
+                              description: ribbon description
+                              example: Plain purple coloured ribbon
+                            count:
+                              type: string
+                              description: count
+                              example: 21
+                            logo:
+                              type: string
+                              description: logo
+                              example: param_vir_chakra-2020-09-29.png
+                            id:
+                              type: string
+                              description: id
+                              example: 8 
+                            title:
+                              type: string
+                              description: title
+                              example: Param Vir Chakra
+                      BASEURL:                    
+                        type: string
+                        description: base url
+                        example: https://cdn.gallantryawards.gov.in/gallantry/assets/uploads/
+                      respCode:                    
+                        type: integer
+                        description: response code
+                        example: 200                    
+        "400":
+          description: Bad Request/Validation Error
+  /GALLANTRYApi/ws1/about:
+    post:
+      tags:
+        - About Gallantry Awards
+      summary: Get the info about the gallantry awards dept
+      description: This api is used to get the info about the gallantry awards department
+      operationId: GALLANTRYApi/ws1/about
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-gP20230502055032
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 90
+                usrid:
+                  type: string
+                  description: user id
+                  example: 2003966454
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1657
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: windows
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                deptid:
+                  type: string
+                  description: department id
+                  example: 360
+                subsid:
+                  type: string
+                  description: subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 123234
+                token:
+                  type: string
+                  description: token
+                  example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjIiLCJ1c2VybmFtZSI6InVtYW5nIiwiaWF0IjoxNjgzMDAzNzI3LCJleHAiOjE2ODMwMjE3Mjd9.NHVDInH4sqx-JkLsEQ20idRAL1Gp-aHYBYV9D0evcUI               
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "360"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1657"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object  
+                    description: about info response object
+                    properties:
+                      respMessage:                    
+                        type: string
+                        description: response message
+                        example: success.
+                      data: 
+                        type: array
+                        description: response json
+                        items:
+                          type: object
+                          properties:
+                            title:
+                              type: string
+                              description: title name
+                              example: About US    
+                            content:
+                              type: string
+                              description: content
+                              example: <p><strong>Post-independence, first three gallantry awards.. 
+                      respCode:                    
+                        type: integer
+                        description: response code
+                        example: 200                            
+        "400":
+          description: Bad Request/Validation Error
+  /GALLANTRYApi/ws1/memoryMuseum:
+    post:
+      tags:
+        - Memory Museum
+      summary: Memory museum page info in gallantry awards department
+      description: This api is used to get memory museum page info in gallantry awards department
+      operationId: GALLANTRYApi/ws1/memoryMuseum
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-mU20230424075437
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 90
+                usrid:
+                  type: string
+                  description: user id
+                  example: 2003966454
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1657
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: windows
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                deptid:
+                  type: string
+                  description: department id
+                  example: 360
+                subsid:
+                  type: string
+                  description: subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 123234
+                token:
+                  type: string
+                  description: token
+                  example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjIiLCJ1c2VybmFtZSI6InVtYW5nIiwiaWF0IjoxNjgzMDAzNzI3LCJleHAiOjE2ODMwMjE3Mjd9.NHVDInH4sqx-JkLsEQ20idRAL1Gp-aHYBYV9D0evcUI                  
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "360"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1658"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:                   
+                    type: object  
+                    description: about info response object
+                    properties:
+                      respMessage:                    
+                        type: string
+                        description: response message
+                        example: success.
+                      data: 
+                        type: array
+                        description: response json
+                        items:
+                          type: object
+                          properties:
+                            gallary:
+                              type: array
+                              description: gallery images
+                              items:
+                                type: object
+                                properties:
+                                  gallary:                    
+                                    type: string
+                                    description: gallary image name
+                                    example: 2020-1111-1717-0202-1111-1111war_memo_kargil_1.jpg
+                            main_image:
+                              type: string
+                              description: main image  
+                              example: 5fb3a5bb1ae5c.png
+                            timing:
+                              type: string
+                              description: timing 
+                              example: null
+                            cat_id:
+                              type: string
+                              description: cat id
+                              example: 1
+                            description:
+                              type: string
+                              description: description
+                              example: <p>In the winter of 1998-1999, the Pakistani Army crossed...   
+                            location:
+                              type: string
+                              description: location
+                              example: https://goo.gl/maps/3HGCgsrkFQ3Q4znK7
+                            id:
+                              type: string
+                              description: id
+                              example: 26
+                            title:
+                              type: string
+                              description: title
+                              example: War memorial Kargil
+                            entry_fees:
+                              type: string
+                              description: entry_fees
+                              example: 1 
+                      BASEURL:                    
+                        type: string
+                        description: BASEURL
+                        example: https://cdn.gallantryawards.gov.in/gallantry/assets/uploads/wars/
+                      respCode:                    
+                        type: integer
+                        description: response code
+                        example: 200                   
+        "400":
+          description: Bad Request/Validation Error
+  /GALLANTRYApi/ws1/emagzine:
+    post:
+      tags:
+        - E-Magazine
+      summary: Get the pdf about emagazine in gallantry awards department
+      description: This api is used to get the pdf about emagazine in gallantry awards department
+      operationId: GALLANTRYApi/ws1/emagzine
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-mU20230424075437
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 90
+                usrid:
+                  type: string
+                  description: user id
+                  example: 2003966454
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1657
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: windows
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                deptid:
+                  type: string
+                  description: department id
+                  example: 360
+                subsid:
+                  type: string
+                  description: subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 123234
+                token:
+                  type: string
+                  description: token 
+                  example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjIiLCJ1c2VybmFtZSI6InVtYW5nIiwiaWF0IjoxNjgzMDAzNzI3LCJleHAiOjE2ODMwMjE3Mjd9.NHVDInH4sqx-JkLsEQ20idRAL1Gp-aHYBYV9D0evcUI              
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "360"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1657"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                          type: object
+                          properties:
+                            respMessage:
+                              type: string
+                              description: respMessage
+                              example: success
+                            emagzine:
+                              type: string
+                              description: emagzine
+                              example: https://www.gallantryawards.gov.in/assets/front/images/ebook/E-Magazine.pdf
+                            respCode:
+                              type: integer
+                              description: respCode
+                              example: 200                           
+        "400":
+          description: Bad Request/Validation Error
+  /GALLANTRYApi/ws1/motivationalVideo:
+    post:
+      tags:
+        - Motivational Video
+      summary: Get the motivational video page details in the gallantry awards dept
+      description: This api is used to get the motivational video page details in the gallantry awards department
+      operationId: GALLANTRYApi/ws1/motivationalVideo
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-gP20230502055032
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 90
+                usrid:
+                  type: string
+                  description: user id
+                  example: 2003966454
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1657
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: windows
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                deptid:
+                  type: string
+                  description: department id
+                  example: 360
+                subsid:
+                  type: string
+                  description: subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                token:
+                  type: string
+                  description: token
+                  example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjIiLCJ1c2VybmFtZSI6InVtYW5nIiwiaWF0IjoxNjgzMDAzNzI3LCJleHAiOjE2ODMwMjE3Mjd9.NHVDInH4sqx-JkLsEQ20idRAL1Gp-aHYBYV9D0evcUI
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 123234                  
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "360"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1657"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:                    
+                    type: object  
+                    description: about info response object
+                    properties:
+                      respMessage:                    
+                        type: string
+                        description: response message
+                        example: success.
+                      data: 
+                        type: array
+                        description: response json
+                        items:
+                          type: object
+                          properties:
+                            thumbnail:
+                              type: string
+                              description: thumbnail
+                              example: video1_thumbnail-2020-11-18.jpg
+                            id:
+                              type: string
+                              description: id 
+                              example: 3
+                            videolink:
+                              type: string
+                              description: videolink
+                              example: null
+                            video:
+                              type: string
+                              description: video
+                              example: 1605770259-12_1.mp4   
+                            title:
+                              type: string
+                              description: title
+                              example: null
+                            status:
+                              type: string
+                              description: status
+                              example: 1
+                      BASEURL:                    
+                        type: string
+                        description: BASEURL
+                        example: https://cdn.gallantryawards.gov.in/gallantry/assets/uploads/motivational/
+                      respCode:                    
+                        type: integer
+                        description: response code
+                        example: 200
+        "400":
+          description: Bad Request/Validation Error   
+  /GALLANTRYApi/ws1/warHistory:
+    post:
+      tags:
+        - War History
+      summary: Get the war history details in the gallantry awards department
+      description: This api is used to get the war history details in the gallantry awards department
+      operationId: GALLANTRYApi/ws1/warHistory
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-gP20230502055032
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 90
+                usrid:
+                  type: string
+                  description: user id
+                  example: 2003966454
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1657
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: windows
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                deptid:
+                  type: string
+                  description: department id
+                  example: 360
+                subsid:
+                  type: string
+                  description: subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                token:
+                  type: string
+                  description: token
+                  example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjIiLCJ1c2VybmFtZSI6InVtYW5nIiwiaWF0IjoxNjgzMDAzNzI3LCJleHAiOjE2ODMwMjE3Mjd9.NHVDInH4sqx-JkLsEQ20idRAL1Gp-aHYBYV9D0evcUI
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 123234                  
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "360"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1657"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:                    
+                    type: object  
+                    description: about info response object
+                    properties:
+                      respMessage:                    
+                        type: string
+                        description: response message
+                        example: success.
+                      data: 
+                        type: object  
+                        description: data object
+                        properties:
+                          img:                    
+                            type: string
+                            description: image
+                            example: https://cdn.gallantryawards.gov.in/gallantry/assets/uploads/wars/war.jpg   
+                          detail:                             
+                            type: array
+                            description: response json
+                            items:
+                              type: object
+                              properties:
+                                gallary:
+                                  type: array
+                                  description: gallery images
+                                  items:
+                                    type: object
+                                    properties:
+                                      gallary:                    
+                                        type: string
+                                        description: gallary image name
+                                        example: 2020-1111-1717-0202-1111-1111war_memo_kargil_1.jpg
+                                pdf:
+                                  type: array
+                                  description: pdf files
+                                  items:
+                                    type: object
+                                    properties:
+                                      pdffile:                    
+                                        type: string
+                                        description: pdf file name
+                                        example: 2323-0101-1717-0202-0101-4747history.pdf
+                                main_image:
+                                  type: string
+                                  description: main_image
+                                  example: null
+                                timing:
+                                  type: string
+                                  description: timing
+                                  example: null
+                                cat_id:
+                                  type: string
+                                  description: cat_id
+                                  example: 2
+                                description:
+                                  type: string
+                                  description: description
+                                  example: <p>      The Awami League led by Sheikh Mujibur R...
+                                location:
+                                  type: string
+                                  description: location
+                                  example: null
+                                id:
+                                  type: string
+                                  description: id
+                                  example: 32
+                                title:
+                                  type: string
+                                  description: title
+                                  example: India Pakistan War of 1971
+                                entry_fees:
+                                  type: string
+                                  description: entry_fees
+                                  example: null                                  
+                      respCode:                    
+                        type: integer
+                        description: response code
+                        example: 200
+        "400":
+          description: Bad Request/Validation Error 
+  /GALLANTRYApi/ws1/inspirationalAudio:
+    post:
+      tags:
+        - Inspirational Audio
+      summary: Get the inspirational audio page details in the gallantry awards dept
+      description: This api is used to get the inspirational audio page details in the gallantry awards department
+      operationId: GALLANTRYApi/ws1/inspirationalAudio
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-gP20230502055032
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 90
+                usrid:
+                  type: string
+                  description: user id
+                  example: 2003966454
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1657
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: windows
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                deptid:
+                  type: string
+                  description: department id
+                  example: 360
+                subsid:
+                  type: string
+                  description: subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                token:
+                  type: string
+                  description: token
+                  example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjIiLCJ1c2VybmFtZSI6InVtYW5nIiwiaWF0IjoxNjgzMDAzNzI3LCJleHAiOjE2ODMwMjE3Mjd9.NHVDInH4sqx-JkLsEQ20idRAL1Gp-aHYBYV9D0evcUI
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 123234                  
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "360"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1657"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:                     
+                        type: array
+                        description: response json
+                        items:
+                          type: object
+                          properties:
+                            audio:
+                              type: string
+                              description: audio file
+                              example: https://www.gallantryawards.gov.in/assets/front/audio/file1.mp3
+                            title:
+                              type: string
+                              description: title 
+                              example: Jai Hind Vande Matram Song
+        "400":
+          description: Bad Request/Validation Error          
+components:
+  securitySchemes:
+    x-api-key:
+      type: apiKey
+      name: x-api-key
+      in: header

@@ -1,0 +1,520 @@
+openapi: 3.0.1
+info:
+  title: Academic Bank of Credits (ABC) APIs
+  description: |-
+      As per National Education Policy 2020, the Academic Bank of Credits (ABC) has been envisaged to facilitate the academic mobility of students with the freedom to study across the Higher Education Institutions in the country with an appropriate credit transfer mechanism. ABC enables students to register or commence and API can be used to retrieve basic  details corresponding to ABC Account ID. <i>[Updated on 5th July 2023]</i>
+  termsOfService: https://nadapi.digilocker.gov.in
+  contact:
+    name: Academic Bank of Credit Depository 
+    url: https://abc.gov.in
+  version: 1.1.1
+servers:
+    - url: https://nadapi.digilocker.gov.in/v1
+      description: Production Server
+paths:
+  /oauth:
+    post:
+      tags:
+        - User Authentication APIs
+      summary: Authentication API
+      description: Authentication API to get/ generate Authorized Token. This token is
+        required to call all NAD APIs. The Client ID and Client Secret Key to be
+        passed as parameter in this API is generated from NAD Portal. On
+        successful authentication, an authorized token is generated which is
+        valid for 10 minutes. Only approved universities has access to NAD APIs.
+      operationId: Authentication API
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                customer_id:
+                  type: string
+                  minLength: 1
+                  example: UNIAADAEH12
+                customer_secret_key:
+                  type: string
+                  minLength: 1
+                  format: password
+                  example: KHJ458255KKKKKKK
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  access_token:
+                    type: string
+                    minLength: 1
+                    example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJucbgWAeyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJucbgWAeyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJucbgWA
+                  token_type:
+                    type: string
+                    example: bearer
+                  expires_in:
+                    type: string
+                    example: 216000
+        "400":
+          description: Bad Request
+          
+  /AbcAccountsBasicDetails:
+    post:
+      tags:
+      - Basic Details ABC Account ID API
+      summary: API for basic details corresponding to ABC account ID.
+      description: API for basic details corresponding to the ABC ID of a student.
+      operationId: AbcAccountsBasicDetails
+      security:
+      - bearerAuth: []
+      parameters:
+        - in: header
+          name: abc_account_id
+          schema:
+            type: string
+            example: "702731962259"
+
+      requestBody:
+        content:
+          application/json:
+            schema:
+
+              properties:
+                  abc_account_id:
+                    type: integer
+                    example: 109183648652
+              required:
+                - abc_account_id      
+      
+      responses:
+        200:
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                  statuscode:
+                    type: string
+                    example: 200
+                  message:
+                    type: string
+                    example: Records Found Sucessfully
+                  CNAME:
+                    type: string
+                    example: Prayansh Arora
+                  GENDER:
+                    type: string
+                    example: M
+                  DOB:
+                    type: string
+                    example: 13/06/1995
+                  CREDIT_POINTS:
+                    type: integer
+                    example: 0
+                  PHONE_NUMBER:
+                    type: string
+                    example: NA
+                  CREATED_DATE:
+                    type: string
+                    example: NA
+                  UNIVERSITY_NAME:
+                    type: string
+                    example: NA
+                  COURSE_NAME:
+                    type: string
+                    example: NA
+                  PROGRAM_NAME:
+                    type: string
+                    example: NA
+                  ENROLLMENT_NO:
+                    type: string
+                    example: NA
+                  IS_AADHAR_VERIFIED:
+                    type: string
+                    example: NA
+                  CREATED_SOURCE:
+                    type: string
+                    example: NA
+                  ABC_ACCOUNT_ID:
+                    type: string
+                    example: 910072543697
+
+   
+        400:
+          description: Bad Request/Validation Error
+          content:
+            application/json:
+              schema:
+                
+                anyOf:
+                - $ref: "#/components/schemas/AbcAccountsBasicDetails_resp1"
+                - $ref: "#/components/schemas/AbcAccountsBasicDetails_resp2"
+              examples:
+                AbcAccountsBasicDetails_resp1:
+                  $ref: "#/components/examples/AbcAccountsBasicDetails_resp1"
+                AbcAccountsBasicDetails_resp2:
+                  $ref: "#/components/examples/AbcAccountsBasicDetails_resp2"
+
+  /CreditDetails:
+    post:
+      tags:
+        - Credit Point APIs
+      summary: API for subject wise credit details corresponding to ABC account ID.
+      description: API for giving course, university, semester and subject wise credit
+        details corresponding to the ABC account ID of the student.
+      operationId: CreditDetails API
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          "application/json:":
+            schema:
+              type: object
+              properties:
+                abc_account_id:
+                  type: string
+                  minLength: 1
+                  example: "109183648652"
+              required:
+                - abc_account_id
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    minLength: 1
+                    example: 1
+                  status_code:
+                    type: string
+                    example: 200
+                  message:
+                    type: string
+                    example: success
+                  abc_account_id:
+                    type: string
+                    example: "109183648652"
+                  total_credits:
+                    type: integer
+                    example: 540
+                  result:
+                    type: object
+                    properties:
+                      "3149":
+                        type: object
+                        properties:
+                          university:
+                            type: object
+                            properties:
+                              name:
+                                type: string
+                                example: University Of Delhi
+                              org_id:
+                                type: string
+                                example: "003149"
+                          courses:
+                            type: object
+                            properties:
+                              (CBCS) B. VOC. (SOFTWARE DEVELOPMENT) IT/ITES:
+                                type: array
+                                items:
+                                  type: object
+                                example:
+                                  - subject_name: SOFT SKILLS
+                                    subject_credit_points: "32"
+                                    stream: ""
+                                    session: MAY-JUNE 2020
+                                    year: "2020"
+                                    month: ""
+                                    sem: I
+                                  - subject_name: COMPUTER FUNDAMENTAL
+                                    subject_credit_points: "32"
+                                    stream: ""
+                                    session: MAY-JUNE 2020
+                                    year: "2020"
+                                    month: ""
+                                    sem: I
+                                  - subject_name: ENGLISH-A
+                                    subject_credit_points: "32"
+                                    stream: ""
+                                    session: MAY-JUNE 2020
+                                    year: "2020"
+                                    month: ""
+                                    sem: I
+                                  - subject_name: INTERNET TECHNOLGY
+                                    subject_credit_points: "36"
+                                    stream: ""
+                                    session: MAY-JUNE 2020
+                                    year: "2020"
+                                    month: ""
+                                    sem: II
+                                  - subject_name: BUSINESS COMMUNICATION
+                                    subject_credit_points: "24"
+                                    stream: ""
+                                    session: MAY-JUNE 2020
+                                    year: "2020"
+                                    month: ""
+                                    sem: II
+                                  - subject_name: ENVIRONMENTAL SCIENCE
+                                    subject_credit_points: "28"
+                                    stream: ""
+                                    session: MAY-JUNE 2020
+                                    year: "2020"
+                                    month: ""
+                                    sem: II
+                                  - subject_name: STATISTICAL DATA ANALYSIS USING SOFTWARE PACKAGES
+                                    subject_credit_points: "28"
+                                    stream: ""
+                                    session: MAY-JUNE 2020
+                                    year: "2020"
+                                    month: ""
+                                    sem: III
+                                  - subject_name: STATISTICAL DATA ANALYSIS USING SOFTWARE PACKAGES
+                                    subject_credit_points: "28"
+                                    stream: ""
+                                    session: MAY-JUNE 2020
+                                    year: "2020"
+                                    month: ""
+                                    sem: III
+                                  - subject_name: LIFE SKILLS EDUCATION
+                                    subject_credit_points: "24"
+                                    stream: ""
+                                    session: MAY-JUNE 2020
+                                    year: "2020"
+                                    month: ""
+                                    sem: III
+                                  - subject_name: BHASA SAMPRESHAN
+                                    subject_credit_points: "32"
+                                    stream: ""
+                                    session: MAY-JUNE 2020
+                                    year: "2020"
+                                    month: ""
+                                    sem: III
+                                  - subject_name: MANAGEMENT INFORMATION SYSTEM
+                                    subject_credit_points: "28"
+                                    stream: ""
+                                    session: MAY-JUNE 2020
+                                    year: "2020"
+                                    month: ""
+                                    sem: IV
+                                  - subject_name: CYBER CRIMES & LAWS
+                                    subject_credit_points: "32"
+                                    stream: ""
+                                    session: MAY-JUNE 2020
+                                    year: "2020"
+                                    month: ""
+                                    sem: IV
+                                  - subject_name: QUANTITATIVE TECHNIQUES
+                                    subject_credit_points: "32"
+                                    stream: ""
+                                    session: MAY-JUNE 2020
+                                    year: "2020"
+                                    month: ""
+                                    sem: IV
+                                  - subject_name: ORGANIZATIONAL  BEHAVIOR
+                                    subject_credit_points: "28"
+                                    stream: ""
+                                    session: MAY-JUNE 2020
+                                    year: "2020"
+                                    month: ""
+                                    sem: V
+                                  - subject_name: GEOGRAPHICAL INFORMATION SYSTEM
+                                    subject_credit_points: "28"
+                                    stream: ""
+                                    session: MAY-JUNE 2020
+                                    year: "2020"
+                                    month: ""
+                                    sem: V
+                                  - subject_name: PROGRAMMING  IN ROBOTICS SYSTEM
+                                    subject_credit_points: "28"
+                                    stream: ""
+                                    session: MAY-JUNE 2020
+                                    year: "2020"
+                                    month: ""
+                                    sem: V
+                                  - subject_name: EFFECTIVE DECISION MAKING
+                                    subject_credit_points: "32"
+                                    stream: ""
+                                    session: MAY-JUNE 2020
+                                    year: "2020"
+                                    month: ""
+                                    sem: VI
+                                  - subject_name: E-COMMERCE & E-MARKETING
+                                    subject_credit_points: "36"
+                                    stream: ""
+                                    session: MAY-JUNE 2020
+                                    year: "2020"
+                                    month: ""
+                                    sem: VI
+                                  - subject_name: ENTREPRENEURSHIP
+                                    subject_credit_points: "28"
+                                    stream: ""
+                                    session: MAY-JUNE 2020
+                                    year: "2020"
+                                    month: ""
+                                    sem: VI
+        "400":
+          description: Records not found
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                If_wrong_abc_account_id_pass:
+                  &a1
+                  value:
+                    status: 0
+                    status_code: "400"
+                    message: Records not found
+                    abc_account_id: "1091836486522"
+  
+  /AbcIdByDigilockerid:
+    post:
+      tags:
+      - Create ABCID by DigilockerID API
+      summary: API to create ABC id by using Digilocket Id
+      operationId: AbcIdByDigilockerid
+      security:
+      - bearerAuth: []
+      parameters:
+        - in: header
+          name: digilocker_id
+          schema:
+            type: string
+            example: "c54***"
+          required: true
+          description: Digilocker Id
+
+      responses:
+        200:
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                  statuscode:
+                    type: string
+                    example: 200
+                  message:
+                    type: string
+                    example: ABC account created successfully 
+                  ABC_ACCOUNT_ID:
+                    type: string
+                    example: 123456789
+
+   
+        205:
+          description: Incorrect Digilocker ID
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  status:
+                    type: integer
+                    example: 0
+                  statuscode:
+                    type: string
+                    example: 205
+                  message:
+                    type: string
+                    example: Incorrect Digilocker ID
+
+   
+        202:
+          description: Digilocker ID is not Aadhaar verified
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  status:
+                    type: integer
+                    example: 0
+                  statuscode:
+                    type: string
+                    example: 202
+                  message:
+                    type: string
+                    example: Digilocker ID is not Aadhaar verified
+
+   
+        204:
+          description: ABC account already exits
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  status:
+                    type: integer
+                    example: 0
+                  statuscode:
+                    type: string
+                    example: 204
+                  message:
+                    type: string
+                    example: ABC account already exits
+                  ABC_ACCOUNT_ID:
+                    type: string
+                    example: 921597991214    
+   
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Text
+
+
+  schemas:
+#JSON Response Schemas#
+    AbcAccountsBasicDetails_resp1:
+      properties:
+        status:
+          type: integer
+        status_code:
+          type: string
+        message:
+          type: string
+        abc_account_id:
+          type: string
+    AbcAccountsBasicDetails_resp2:
+      properties:
+        status:
+          type: integer
+        status_code:
+          type: string
+        message:
+          type: string
+#End of JSON Response Schemas#
+
+  examples:
+#JSON Response Examples#
+    AbcAccountsBasicDetails_resp1:
+      value:
+        status: 0
+        status_code: 400
+        message: Records not found
+        abc_account_id: 91007253123
+    AbcAccountsBasicDetails_resp2:
+      value:
+        status: 0
+        status_code: 400
+        message: ABC Account Id Missing
+#End of JSON Response Examples
+
+    If_wrong_abc_account_id_pass: *a1

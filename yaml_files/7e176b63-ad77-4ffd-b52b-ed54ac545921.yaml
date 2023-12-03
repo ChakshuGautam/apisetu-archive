@@ -1,0 +1,108 @@
+host: bgw.napix.gov.in
+info:
+  title: Tamil Nilam (TN)
+  version: 1.0.0
+  x-ibm-name: getdistrictstnms
+  description: This is tamil nilam API which list out all revenue districts of
+    Tamil nadu  which     can be consumed by passing necessary API key. This is
+    tamil nilam API which list out all revenue districts of Tamil
+    nadu  which     can be consumed by passing necessary API key.
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/nic/tn-tamilnilam
+paths:
+  /getDistrictsTnms:
+    get:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Getdistrictstnms
+    put:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Getdistrictstnms
+    head:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Getdistrictstnms
+    post:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Getdistrictstnms
+    patch:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Getdistrictstnms
+    delete:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Getdistrictstnms
+    options:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+schemes:
+  - https
+swagger: "2.0"
+basePath: /nic/tn-tamilnilam/tnms
+consumes: []
+produces:
+  - application/json
+securityDefinitions:
+  clientIdHeader:
+    in: header
+    name: X-IBM-Client-Id
+    type: apiKey
+x-ibm-configuration:
+  cors:
+    enabled: false
+  type: rest
+  phase: realized
+  servers:
+    - url: https://bgw.napix.gov.in/nic/tn-tamilnilam/tnms
+      type:
+        - production
+        - development
+  enforced: true
+  testable: true
+  application-authentication:
+    certificate: false

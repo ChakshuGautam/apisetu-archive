@@ -1,0 +1,522 @@
+---
+  openapi: "3.0.0"
+  info: 
+    title: "Public Financial Management System (PFMS)"
+    description: "The Public Financial Management System (PFMS) is a web-based online software application developed and implemented by the Controller General of Accounts (CGA), Department of Expenditure, Ministry of Finance, Government of India. PFMS started during 2009 with the objective of tracking funds released under all Plan schemes of Government of India, and real time reporting of expenditure at all levels of Programme implementation. Subsequently, the scope was enlarged to cover direct payment to beneficiaries under all Schemes. Gradually, it has been envisaged that digitization of accounts shall be achieved through PFMS and beginning with Pay & Accounts Offices payments, the O/o CGA did further value addition by bringing in more financial activities of the Government of India in the ambit of PFMS. <i>[Updated on 29th September 2022]</i>"
+    termsOfService: "https://web.umang.gov.in/uaw/ts/v1/en/index.htm"
+    contact: 
+      name: "Provided by - UMANG"
+      url: "https://web.umang.gov.in"
+    version: "1.0.0"
+  servers: 
+    - 
+      url: "https://apigw.umangapp.in"
+      description: Production Server
+  paths: 
+    /PFMSApi/ws1/getPaymentDetailStatus: 
+      post: 
+        tags: 
+          - Get Payment Detail Status API
+        summary: Get payment Detail Status API
+        description: Get Payment Detail Status API
+        operationId: PFMSApi/ws1/getPaymentDetailStatus
+        requestBody: 
+          content: 
+            application/x-www-form-urlencoded: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 1161
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 194
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: 0
+                  subsid2:
+                    type: string
+                    description: sub service id 2
+                    example: 0
+                  AccountNumber:
+                    type: string
+                    description: Account Number
+                    example: 34709213810
+                  BankId:
+                    type: string
+                    description: Bank Id
+                    example: 63
+                  MobileNo:
+                    type: string
+                    description: Mobile Number
+                    example: 9999999999
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/x-www-form-urlencoded"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/x-www-form-urlencoded"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "194"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "1161"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        Message:
+                          type: string
+                          example: Mobile No. 9999999999 is not associated with beneficiary a/c no. 34709213810
+          400:
+            description: Bad Request/Validation Error
+    /PFMSApi/ws1/getBankDetail: 
+      post: 
+        tags: 
+          - Get Bank Details API
+        summary: Get Bank Details API
+        description: Get Bank Details API
+        operationId: PFMSApi/ws1/getBankDetail
+        requestBody: 
+          content: 
+            application/x-www-form-urlencoded: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 1161
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 194
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: 0
+                  subsid2:
+                    type: string
+                    description: sub service id 2
+                    example: 0
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/x-www-form-urlencoded"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/x-www-form-urlencoded"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "194"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "1161"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: array
+                      description: Response Payload
+                      items:
+                        type: object
+                        properties:
+                          BankName:
+                            type: string
+                            example: 24-PARGANAS DIST.COOP.LAND DEV.BANK LTD.
+                          BankIINNumber:
+                            type: string
+                            example: null
+                          BankStatus:
+                            type: string
+                            example: Active
+                          APIResponseStatus:
+                            type: string
+                            example: success
+                          BankId:
+                            type: string
+                            example: 2837
+          400:
+            description: Bad Request/Validation Error
+    /PFMSApi/ws1/getNSPPaymentStatus: 
+      post: 
+        tags: 
+          - Get NSP Payment Status API
+        summary: Get NSP Payment Status API
+        description: Get NSP Payment Status API
+        operationId: PFMSApi/ws1/getNSPPaymentStatus
+        requestBody: 
+          content: 
+            application/x-www-form-urlencoded: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 1161
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 194
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: 0
+                  subsid2:
+                    type: string
+                    description: sub service id 2
+                    example: 0
+                  NSPApplicationId:
+                    type: string
+                    description: NSP Application Id
+                    example: DN201617008382262
+                  MobileNo:
+                    type: string
+                    description: Mobile Number
+                    example: 9999999999
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/x-www-form-urlencoded"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/x-www-form-urlencoded"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "194"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "1161"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: array
+                      description: Response Payload
+                      items:
+                        type: object
+                        properties:
+                          BankName:
+                            type: string
+                            example: ORIENTAL BANK OF COMMERCE
+                          AgencyName:
+                            type: string
+                            example: Social Welfare Department Dadra & Nagar Haveli
+                          Status:
+                            type: string
+                            example: Under processing with agency
+                          CreditDate:
+                            type: string
+                            example: 0001-01-01T00:00:00
+                          UTRNo:
+                            type: string
+                            example: null
+                          CreditTransactionID:
+                            type: string
+                            example: null
+                          APIResponseStatus:
+                            type: string
+                            example: success
+                          FavoringAsPerBank:
+                            type: string
+                            example: null
+                          Amount:
+                            type: string
+                            example: 2300.0
+                          BeneficiaryName:
+                            type: string
+                            example: JAVED ANSARI
+                          Purpose:
+                            type: string
+                            example: Consolidated Scholarship
+                          AccountNumber:
+                            type: string
+                            example: xxxxxxxx6922
+                          BankIINAsPerBank:
+                            type: string
+                            example: null
+                          BankTxnDate:
+                            type: string
+                            example: 0001-01-01T00:00:00
+                          FailureReason:
+                            type: string
+                            example: null
+                          UIDAsPerBank:
+                            type: string
+                            example: null
+                          SchemeName:
+                            type: string
+                            example: POST MATRIC SCHOLARSHIP SCHEMES MINORITIES CS
+          400:
+            description: Bad Request/Validation Error
+  components:
+    securitySchemes:
+      bearerAuth:
+        type: http
+        scheme: bearer
+        bearerFormat: text

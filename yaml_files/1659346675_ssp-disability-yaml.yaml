@@ -1,0 +1,34 @@
+openapi: 3.0.0
+info:
+  title: SSP-Disability API.
+  version: 1.0.0
+  description: This API comes under the department of SSP.This API gives the
+    details of disability Data
+servers:
+  - url: https://www.swavlambancard.gov.in/admin/account/apiUDIDdetail
+  - url: https://www.swavlambancard.gov.in/
+paths:
+  /admin/account/apiUDIDdetail:
+    post:
+      responses:
+        "200":
+          description: Operation_successful
+      operationId: POST_admin-account-apiUDIDdetail
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            example:
+              Udidno: KA18140320020026979
+            schema:
+              type: string
+        required: true
+components:
+  schemas: {}
+  responses: {}
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}

@@ -1,0 +1,406 @@
+openapi: 3.0.3
+info:  
+  title: Directorate of Treasuries and Inspection, Finance department, Government of Odisha, Odisha
+  description:  >- 
+                Electronic Pension Payment Order (ePPO/eCPO/eGPO) is available on DigiLocker for all the Pensioners of the Government of Odisha.
+  termsOfService: https://apisetu.gov.in/api-policy
+  version: 3.0.0
+servers:
+  - url: 'https://apisetu.gov.in/certificate/v3/odishatreasury'
+paths:
+  
+  /grpyo:
+    post:
+      tags:
+        - APIs
+      summary: Gratuity Payment Order
+      description: API to verify Gratuity Payment Order.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: grpyo
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - PPOID
+                    - MobileNo
+                    - level1
+                    - level2
+                    
+                    
+                    - UID
+                    
+                    - FullName
+                    
+                    - DOB
+                    
+                    - GENDER
+                      
+                  properties:
+                    PPOID:
+                      type: string
+                      description: ePPO ID
+                      example: "891"
+                       
+                    
+                    MobileNo:
+                      type: string
+                      description: Mobile No
+                      example: "0000000000"
+                       
+                    
+                    level1:
+                      type: string
+                      description: Treasury
+                      example: ""
+                       
+                    
+                    level2:
+                      type: string
+                      description: Sub Treasury
+                      example: ""
+                       
+                    
+                                        
+                    
+                    UID:
+                      type: string
+                      description: Aadhaar number
+                      example: "123412341234"
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"
+                    GENDER:
+                      type: string
+                      description: Gender - Male for male, Female for female and O for other
+                      example: "Male"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /pecer:
+    post:
+      tags:
+        - APIs
+      summary: Pension Certificate
+      description: API to verify Pension Certificate.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: pecer
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - PPOID
+                    - level1
+                    - level2
+                    - CertificateType
+                    
+                    
+                    - UID
+                    
+                    - FullName
+                    
+                    - DOB
+                    
+                    - GENDER
+                      
+                  properties:
+                    PPOID:
+                      type: string
+                      description: PPOID
+                      example: "00000"
+                       
+                    
+                    level1:
+                      type: string
+                      description: Treasury
+                      example: ""
+                       
+                    
+                    level2:
+                      type: string
+                      description: Sub Treasury
+                      example: ""
+                       
+                    
+                    CertificateType:
+                      type: string
+                      description: Certificate Type
+                      example: "Pension Certificate (eppo),Pension Certificate (Physical)"
+                       
+                    
+                                        
+                    
+                    UID:
+                      type: string
+                      description: Aadhaar number
+                      example: "123412341234"
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"
+                    GENDER:
+                      type: string
+                      description: Gender - Male for male, Female for female and O for other
+                      example: "Male"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /pcpyo:
+    post:
+      tags:
+        - APIs
+      summary: Pension Commutation Payment Order
+      description: API to verify Pension Commutation Payment Order.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: pcpyo
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - PPOID
+                    - level1
+                    - level2
+                    
+                    - FullName
+                    
+                    - DOB
+                    
+                    - GENDER
+                      
+                  properties:
+                    PPOID:
+                      type: string
+                      description: PPOID
+                      example: "20529"
+                       
+                    
+                    level1:
+                      type: string
+                      description: Treasury Code
+                      example: ""
+                       
+                    
+                    level2:
+                      type: string
+                      description: Sub Treasury Code
+                      example: ""
+                       
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"
+                    GENDER:
+                      type: string
+                      description: Gender - Male for male, Female for female and O for other
+                      example: "Male"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+components:
+  schemas:
+    ConsentArtifactSchema:
+      $ref: './common/ConsentArtifactSchema.yaml#/ConsentArtifactSchema'
+    AcademicCertificateSchema:
+      $ref: './common/AcademicCertificateSchema.yaml#/AcademicCertificateSchema'
+          
+  responses:
+    400Error:
+      $ref: './common/ErrorResponse.yaml#/400Error'
+    401Error:
+      $ref: './common/ErrorResponse.yaml#/401Error'
+    404Error:
+      $ref: './common/ErrorResponse.yaml#/404Error'
+    500Error:
+      $ref: './common/ErrorResponse.yaml#/500Error'
+    502Error:
+      $ref: './common/ErrorResponse.yaml#/502Error'
+    503Error:
+      $ref: './common/ErrorResponse.yaml#/503Error'
+    504Error:
+      $ref: './common/ErrorResponse.yaml#/504Error'
+  securitySchemes:
+    clientId:
+      type: apiKey
+      in: header
+      name: X-APISETU-CLIENTID
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-APISETU-APIKEY

@@ -1,0 +1,42 @@
+openapi: 3.0.0
+info:
+  title:  API Setu API Authentication 
+  description: >-2
+     # Authentication
+     Any API that adheres to API Setu authentication needs to pass the following key in header:
+     
+        - X-APISETU-CLIENTID
+        - X-APISETU-APIKEY
+        
+     <i>Updated on 14<sup>th</sup>  August  2023 <i/>
+     
+  version: "1.0"
+  
+servers:
+  - url: "https://apisetu.gov.in"
+    description: Production Server
+ 
+paths:
+  /path/to/api:
+    get:
+      operationId: path-to-api
+      summary: Any valid API path on API Setu
+      responses:
+        "200":
+          description: It returns successful authentication.
+  
+
+security: 
+  - clientId: []
+  - apiKey: []
+components:
+  securitySchemes:
+    clientId:
+      type: apiKey
+      in: header
+      name: X-APISETU-CLIENTID
+    apiKey:
+      type: apiKey
+      name: X-APISETU-APIKEY
+      in: header 
+  

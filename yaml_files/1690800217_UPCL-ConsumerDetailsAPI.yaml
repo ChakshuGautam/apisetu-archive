@@ -1,0 +1,357 @@
+openapi: 3.0.0
+info:
+  title: Uttarakhand Power Corporation Limited (UPCL)
+  description: |-
+    **<h1>Consumer Details API</h1>**
+    
+       Uttarakhand Power Corporation Limited (UPCL), a Government of Uttarakhand Undertaking is a sole electricity distribution licensee of the state. Today, UPCL is supplying electricity to its 2.6 million consumers across the State . The turnover of the Company during Financial Year 2020-21 was Rs. 6941 Cr. UPCL is committed to supply quality and reliable power to its consumers at affordable cost.
+  
+       **Consumer information :**
+         User can get division, subDivision, categoryName,categoryCode, serviceNumber, consumerName, supplyReleaseDate,consumerType, load,loadUnit, supplyType, meterNo, supplyVoltage,voltageUnit, mf, billingStatus, phase, address, accountno,consumerBillGroup, previousReading, lastPaidAmount, lastPaymentDate, ledgerBalance will be retrived by passing Consumer Number or Account Number. <i>[Updated on 28th July 2023]</i>
+  contact:
+    name: Provided by UPCL
+    url: https://www.upcl.org
+  version: 1.0.0
+servers:
+  - url: https://appservices.upcl.org:8443/famapp/api/v01/famData
+    description: Production Server 
+    
+    
+
+
+security:
+  - APIKey: []
+
+paths:
+  /consumerDetails:
+    get:
+      tags:
+        - Consumer Details API 
+      summary: Consumer Details API
+      description: New Request for Consument Details API 
+
+      parameters:
+        - name: scno
+          in: query
+          schema:
+            type: integer
+          example: '40104642154'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Vary:
+              schema:
+                type: string
+                example: Access-Control-Request-Headers
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, no-store, max-age=0, must-revalidate
+            Pragma:
+              schema:
+                type: string
+                example: no-cache
+            Expires:
+              schema:
+                type: integer
+                example: '0'
+            X-Frame-Options:
+              schema:
+                type: string
+                example: DENY
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Date:
+              schema:
+                type: string
+                example: Thu, 27 Jul 2023 11:47:44 GMT
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=60
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                supplyVoltage: '0.40'
+                categoryName: OTHER DOMESTIC LOAD UPTO 4KW
+                categoryCode: RTS-1
+                serviceNumber: '7011311070900'
+                load: '2'
+                supplyType: '10.1'
+                phase: '1'
+                meterNo: '50010773'
+                previousReadingkvah: '28682'
+                consumerBillGroup: '1'
+                loadUnit: KW
+                consumerName: KEWAL KRISHAN
+                division: DEHRADUN_NORTH
+                subDivision: SAHASTRADHARA ROAD
+                mf: '1'
+                billingStatus: L
+                consumerType: REGULAR
+                supplyReleaseDate: 26-MAR-1990
+                address: S/O LADHO RAM,224-D L ROAD,D L ROAD,NORTH D.DUN
+                voltageUnit: KV
+                lastPaidAmount: '21577.0'
+                ledgerBalance: '2470.4392'
+                lastPaymentDate: 03-09-2022
+                accounno: '40104642154'
+        '400':
+          description: Bad Request
+          headers:
+            Vary:
+              schema:
+                type: string
+                example: Access-Control-Request-Headers
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, no-store, max-age=0, must-revalidate
+            Pragma:
+              schema:
+                type: string
+                example: no-cache
+            Expires:
+              schema:
+                type: integer
+                example: '0'
+            X-Frame-Options:
+              schema:
+                type: string
+                example: DENY
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Date:
+              schema:
+                type: string
+                example: Thu, 27 Jul 2023 11:52:08 GMT
+            Connection:
+              schema:
+                type: string
+                example: close
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                error_code: 400
+                details: Invalid Consumer detail.
+                message: 'Invalid parameter value: ''scno'''
+        '401':
+          description: Unauthorized
+          headers:
+            Vary:
+              schema:
+                type: string
+                example: Access-Control-Request-Headers
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, no-store, max-age=0, must-revalidate
+            Pragma:
+              schema:
+                type: string
+                example: no-cache
+            Expires:
+              schema:
+                type: integer
+                example: '0'
+            X-Frame-Options:
+              schema:
+                type: string
+                example: DENY
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Date:
+              schema:
+                type: string
+                example: Thu, 27 Jul 2023 11:53:08 GMT
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=60
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                error_code: 401
+                details: Please provide the valid authorize key.
+                message: The user is not authenticated to access the resource.
+        '404':
+          description: Not Found
+          headers:
+            Vary:
+              schema:
+                type: string
+                example: Access-Control-Request-Headers
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, no-store, max-age=0, must-revalidate
+            Pragma:
+              schema:
+                type: string
+                example: no-cache
+            Expires:
+              schema:
+                type: integer
+                example: '0'
+            X-Frame-Options:
+              schema:
+                type: string
+                example: DENY
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Date:
+              schema:
+                type: string
+                example: Thu, 27 Jul 2023 11:54:42 GMT
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=60
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                error_code: 404
+                details: Consumer not found.
+                message: Consumer with 401046421 does not Exist.
+        '500':
+          description: Internal Server Error
+          headers:
+            Vary:
+              schema:
+                type: string
+                example: Access-Control-Request-Headers
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, no-store, max-age=0, must-revalidate
+            Pragma:
+              schema:
+                type: string
+                example: no-cache
+            Expires:
+              schema:
+                type: integer
+                example: '0'
+            X-Frame-Options:
+              schema:
+                type: string
+                example: DENY
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Date:
+              schema:
+                type: string
+                example: Thu, 27 Jul 2023 11:56:27 GMT
+            Connection:
+              schema:
+                type: string
+                example: close
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                error_code: 500
+                details: Somthing went wrong.
+                message: An unexpected server-side error occurred
+                
+                
+components:
+  securitySchemes:
+    APIKey:
+      type: apiKey
+      in: header
+      name: APIKey
+      
+      

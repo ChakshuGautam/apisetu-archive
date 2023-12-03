@@ -1,0 +1,69 @@
+openapi: 3.0.0
+info:
+  title: SSP-Nsppms-UpdateBeneficiaries.
+  version: 1.0.0
+  description: This Api comes under the Department of SSP. This APi gives details
+    of updatebeneficiares .
+servers:
+  - url: https://api.nsp.gov.in/pms/v1/updatebeneficiaries
+  - url: https://api.nsp.gov.in/
+paths:
+  /pms/v1/updatebeneficiaries:
+    post:
+      responses:
+        "200":
+          description: Operation_successful
+          content:
+            application/json:
+              schema:
+                example:
+                  headerStatus: Success
+                  errorCode: "null"
+                  errorDesc: "null"
+                  beneficiariesReqRecordStatus:
+                    - status: Success
+                      stateApplicationId: "20210472382"
+                      nspApplicationId: IN/5001/KA/20210472382
+                      beneficiariesReqRecordError: []
+      description: fetch updated beneficiaries.
+      operationId: POST_pms-v1-updatebeneficiaries
+      requestBody:
+        content:
+          application/json:
+            example:
+              headerDetail:
+                academicYear: "2122"
+                nspSchemeCode: "5001"
+                stateSchemeCode: "28"
+                stateLGD: "29"
+              beneficiaryPatchInfo:
+                - nspApplicationId: IN/5001/KA/4E0RTS2519988
+                  applicationId: 4E0RTS2519988
+                  freshRenewal: F
+                  attendanceMethod: Other
+                  totalNoOfAttendedDays: "50"
+                  attendancePercentage: "70"
+                  nonRefundableFeePayable: "5000"
+                  academicAllowancePayable: "2000"
+                  disabilityAllowancePayable: "1000"
+                  isStateSharePaid: "true"
+                  stateSharePaidDate: 2021-02-02
+                  stateShareNonRefundableFeePaid: "6000"
+                  stateShareAcademicAllowancePaid: "4000"
+                  stateShareDisabilityAllowancePaid: "700"
+                  applicationCurrentStatus: 3
+                  applicationCurrentStatusDate: 2021-10-29
+                  reasonOfRejectionOrObjection: try
+            schema:
+              type: string
+        required: true
+components:
+  schemas: {}
+  responses: {}
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}

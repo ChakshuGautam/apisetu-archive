@@ -1,0 +1,84 @@
+host: delhigw.napix.gov.in
+info:
+  title: CGHS
+  version: 1.0.0
+  x-ibm-name: beneficiarydetails
+  description: This API gives CGHS beneficiary details like their own details as
+    well as family memeber details etc.
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/nic/cghs
+paths:
+  /bendetails:
+    post:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      parameters:
+        - in: body
+          name: bendata
+          schema:
+            type: object
+            title: benData
+            required:
+              - benId
+              - initialToken
+              - latestToken
+              - flagAllMembers
+            properties:
+              benId:
+                type: integer
+              latestToken:
+                type: string
+              initialToken:
+                type: string
+              flagAllMembers:
+                type: integer
+          required: true
+      tags:
+        - Beneficiarydetails
+    parameters: []
+schemes:
+  - https
+swagger: "2.0"
+basePath: /nic/cghs/beneficiarydetails
+security:
+  - oauth:
+      - napix
+  - {}
+securityDefinitions:
+  oauth:
+    flow: application
+    type: oauth2
+    scopes:
+      napix: ""
+    tokenUrl: //oauth2/token
+    x-ibm-oauth-provider: nic-oauth-provider-application-grant-type
+  clientIdHeader:
+    in: header
+    name: X-IBM-Client-Id
+    type: apiKey
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  servers:
+    - url: https://delhigw.napix.gov.in/nic/cghs/beneficiarydetails
+      type:
+        - production
+        - development
+  enforced: true
+  testable: true
+  oauth-servers:
+    oauth:
+      tokenUrls:
+        - https://degateway.napix.gov.in:443/nic/cghs//oauth2/token
+      refreshUrls: []
+      authorizationUrls: []
+  application-authentication:
+    certificate: false

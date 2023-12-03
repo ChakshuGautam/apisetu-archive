@@ -1,0 +1,50 @@
+info:
+  title: NAPIX
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/napix/napix
+  version: 1.0.0
+  x-ibm-name: apis
+  description: This API fetches the list of all the APIs published on NAPIX
+    platform and this is for NAPIX frontend.
+paths:
+  /:
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: success
+      tags:
+        - Apis
+openapi: 3.0.0
+servers:
+  - url: https://degateway.napix.gov.in:443/napix/napix/apis-list
+security:
+  - client-id: []
+    client-secret: []
+components:
+  securitySchemes:
+    client-id:
+      in: header
+      name: client-id
+      type: apiKey
+      x-key-type: client_id
+      description: Client ID of the Application
+    client-secret:
+      in: header
+      name: client-secret
+      type: apiKey
+      x-key-type: client_secret
+      description: Client Secret of the Application
+x-ibm-endpoints:
+  - url: https://degateway.napix.gov.in:443/napix/napix/apis-list
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  enforced: true
+  testable: true

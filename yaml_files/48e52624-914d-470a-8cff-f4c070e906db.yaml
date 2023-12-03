@@ -1,0 +1,89 @@
+host: delhigw.napix.gov.in
+info:
+  title: CGHS
+  version: 1.0.0
+  x-ibm-name: cancelappointment
+  description: This API is for cancelling the booked appointment of the CGHS
+    beneficiary for request to cancel the appointment.
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/nic/cghs
+tags:
+  - name: Cancel Booked Appointment
+paths:
+  /cancelappointment:
+    post:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      parameters:
+        - in: body
+          name: cancelappointmentPara
+          schema:
+            type: object
+            title: cancelappointmentSchema
+            properties:
+              benId:
+                type: string
+              aptDate:
+                type: string
+              apttime:
+                type: string
+              dispCode:
+                type: string
+              doctorId:
+                type: string
+              benMobileNo:
+                type: string
+              latestToken:
+                type: string
+              initialToken:
+                type: string
+              specialtyCode:
+                type: integer
+          required: true
+      tags:
+        - Cancelappointment
+schemes:
+  - https
+swagger: "2.0"
+basePath: /nic/cghs/cancelappointment
+security:
+  - oauth:
+      - napix
+securityDefinitions:
+  oauth:
+    flow: application
+    type: oauth2
+    scopes:
+      napix: ""
+    tokenUrl: //oauth2/token
+    x-ibm-oauth-provider: nic-oauth-provider-application-grant-type
+  clientIdHeader:
+    in: header
+    name: X-IBM-Client-Id
+    type: apiKey
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  servers:
+    - url: https://delhigw.napix.gov.in/nic/cghs/cancelappointment
+      type:
+        - production
+        - development
+  enforced: true
+  testable: true
+  oauth-servers:
+    oauth:
+      tokenUrls:
+        - https://degateway.napix.gov.in:443/nic/cghs//oauth2/token
+      refreshUrls: []
+      authorizationUrls: []
+  application-authentication:
+    certificate: false

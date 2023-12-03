@@ -1,0 +1,135 @@
+host: delhigw.napix.gov.in
+info:
+  title: Dedupe
+  version: "1.0"
+  x-ibm-name: insertloginlogs
+  description: Insert_Login_Logs
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/nic/dedupe
+tags:
+  - name: transaction
+    description: transaction
+paths:
+  /api/transaction/insert_login_logs:
+    post:
+      tags:
+        - Insertloginlogs
+      summary: Insert_Login_Logs
+      consumes:
+        - application/json
+      produces:
+        - "*/*"
+      responses:
+        "200":
+          schema:
+            type: array
+            items:
+              type: object
+              title: LoginLogsResponse
+              properties:
+                message:
+                  type: string
+                login_id:
+                  type: integer
+                  format: int32
+                auth_log_id:
+                  type: integer
+                  format: int32
+          description: OK
+        "201":
+          description: Created
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+      parameters:
+        - in: body
+          name: loginLogs
+          schema:
+            type: object
+            title: LoginLogs
+            properties:
+              remarks:
+                type: string
+              login_id:
+                type: integer
+                format: int32
+              login_ip:
+                type: string
+              login_mac:
+                type: string
+              user_name:
+                type: string
+              version_id:
+                type: string
+          required: true
+          description: loginLogs
+      operationId: Insert_Login_LogsUsingPOST
+schemes:
+  - https
+swagger: "2.0"
+basePath: /nic/dedupe
+security:
+  - Oauth:
+      - napix
+definitions:
+  LoginLogs:
+    type: object
+    title: LoginLogs
+    properties:
+      remarks:
+        type: string
+      login_id:
+        type: integer
+        format: int32
+      login_ip:
+        type: string
+      login_mac:
+        type: string
+      user_name:
+        type: string
+      version_id:
+        type: string
+  LoginLogsResponse:
+    type: object
+    title: LoginLogsResponse
+    properties:
+      message:
+        type: string
+      login_id:
+        type: integer
+        format: int32
+      auth_log_id:
+        type: integer
+        format: int32
+securityDefinitions:
+  Oauth:
+    flow: application
+    type: oauth2
+    scopes:
+      napix: ""
+    tokenUrl: //oauth2/token
+    x-ibm-oauth-provider: nic-oauth-provider-application-grant-type
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  servers:
+    - url: https://delhigw.napix.gov.in/nic/dedupe
+      type:
+        - production
+        - development
+  enforced: true
+  testable: true
+  oauth-servers:
+    Oauth:
+      tokenUrls:
+        - https://degateway.napix.gov.in:443/nic/dedupe//oauth2/token
+      refreshUrls: []
+      authorizationUrls: []
+  application-authentication:
+    certificate: false

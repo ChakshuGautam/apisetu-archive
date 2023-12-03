@@ -1,0 +1,67 @@
+openapi: 3.0.0
+info:
+  title: SSP-HMIS-HostelStudentDetails
+  version: 1.0.0
+  description: This API comes under the department of SSP. This Api gives the
+    details of HMIS-HostelDetails.
+servers:
+  - url: https://sw.kar.nic.in/ssp_HostelstudentsDetails/api/HMIS_Hostel_Students_Details
+  - url: https://sw.kar.nic.in/
+paths:
+  /ssp_HostelstudentsDetails/api/HMIS_Hostel_Students_Details:
+    post:
+      responses:
+        "200":
+          description: Operation_Successful
+          content:
+            application/json:
+              schema:
+                example:
+                  statusCode: 1
+                  status: Success
+                  message: Data sent Successfuly.
+                  StudentList:
+                    - SSP_StudentId: "19200473283"
+                      Financial_Year: 2122
+                      Student_Name: DEEPAK S K
+                      Father_Name: SHIVAKUMAR K H
+                      Mobile_Number: 7483094006
+                      Email_Id: DEEPAKSKDEEPU93@GMAIL.COM
+                      Gender: "1"
+                      Hostel_Code: 100131
+                      Caste: 1
+                      Caste_Description: ಪರಿಶಿಷ್ಟ ಜಾತಿಗಳು
+                      SubCaste_Description: ಭೋವಿ
+                    - SSP_StudentId: "20210937032"
+                      Financial_Year: 2122
+                      Student_Name: H P PRAMOD
+                      Father_Name: H PRAKASH
+                      Mobile_Number: 8861132732
+                      Email_Id: APPUPRAMOD6@GMAIL.COM
+                      Gender: "1"
+                      Hostel_Code: 100289
+                      Caste: 1
+                      Caste_Description: ಪರಿಶಿಷ್ಟ ಜಾತಿಗಳು
+                      SubCaste_Description: LAMBANI
+      operationId: POST_ssp_HostelstudentsDetails-api-HMIS_Hostel_Students_Details
+      requestBody:
+        content:
+          application/json:
+            example:
+              - SSP_StudentId: "19200473283"
+                Financial_Year: "2122"
+              - SSP_StudentId: "20210937032"
+                Financial_Year: "2122"
+            schema:
+              type: string
+        required: true
+components:
+  schemas: {}
+  responses: {}
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}

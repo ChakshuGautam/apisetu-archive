@@ -1,0 +1,335 @@
+openapi: 3.0.0
+info:
+  title: Labour department of sevasindhu & the api is part of Mahiti kanaja
+  version: 1.0.0
+  description: >
+    This API gives details of Labour department.  The call is required
+    to provide request data over GET/POST method of http request. The details of
+    the request sample are provided under the API documentations.
+servers:
+  - url: https://sevasindhu.karnataka.gov.in/SevaSindhu_Mahithi/api/
+  - url: https://sevasindhu.karnataka.gov.in/SevaSindhu_Mahithi/api/
+paths:
+  /KarnatakaBuildingConstructionWorkersWelfareBoard:
+    get:
+      tags:
+        - API's for Labour Department
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  Applicat name as per aadhar number: RAMAPPA FAKIRAPPA GUDIHOLA
+                  Registration number: "0"
+                  Registration number0: "0"
+                  District: 2907~KOPPAL
+                  Circle old: 1263001~Labour Inspector Office(Labour Inspector Office- Kushtagi
+                    Circle )
+      description: Get Building and Other Construction Workers Welfare Board details
+      summary: Get Building and Other Construction Workers Welfare Board details
+      operationId: GET_labour-dept-welfare-board
+      parameters:
+        - name: RefNo
+          in: query
+          required: true
+          description: reference number of a registerd applicant of construction workers
+            welfare
+          schema:
+            type: string
+  /ContinuationExistingRegistration:
+    get:
+      tags:
+        - API's for Labour Department
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  Applicat name as in aadhar: RAGHAVENDRA K
+                  Registration number: Sagar/SHI//HPR/29/2017-18
+                  District: 2915~SHIMOGA
+                  Circle old: 1263042~Sagar Circle
+      summary: To get application for Continuation of existing registration for next 1
+        or 3 years
+      description: To get application for Continuation of existing registration for
+        next 1 or 3 years
+      operationId: GET_labour-dept-existing-registration
+      parameters:
+        - name: RefNo
+          in: query
+          required: true
+          description: reference number of existing appicant
+          schema:
+            type: string
+  /MarriageAssistance:
+    get:
+      tags:
+        - API's for Labour Department
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  Name of the applicant: Thippakka
+                  District: 2913~CHITRADURGA
+                  Circle old: 1262939~Challkere Circle
+                  Marriage Assistance is for ?: "Son/Daughter : 3~Daughter, Name of the person
+                    married : Kanaka H N, Gender : 2~Female/ಸ್ತ್ರೀ, Age : 26,
+                    Date of marriage : 28/06/2021, Place of marriage : Recidence
+                    Of KanyadataraHirekerehalli , Age of partner : 32, Marriage
+                    cetificate number : MKM-HM39-2021-22, Application reference
+                    number : KB002S210020408"
+      summary: To get the Marriage assistance of a labour department
+      description: To get the Marriage assistance of a labour department
+      operationId: GET_labour-dept-marriage-assistance
+      parameters:
+        - name: RefNo
+          in: query
+          required: true
+          description: reference number of married applicant of labour department
+          schema:
+            type: string
+  /MedicalAssistance:
+    get:
+      tags:
+        - API's for Labour Department
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  Applicant's full name: Balakrishna V N
+                  Registration number: 297278/2020-21
+                  Name of the beneficiary/dependent hospitalized: Balakrishna V N
+                  District: 2918~TUMKUR
+                  Circle old: 1263005~Madhugiri Circle
+      description: To get Medical Assistance
+      summary: To get Medical Assistance
+      operationId: GET_labour-dept-medical-assistance
+      parameters:
+        - name: RefNo
+          in: query
+          required: true
+          description: reference number of medical assittance
+          schema:
+            type: string
+  /DeliveryAssistance:
+    get:
+      tags:
+        - API's for Labour Department
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  Name of the beneficiary: M SHRUTHI
+                  Registration number: LO-HSD/CHD/RGN.21443
+                  District: 2913~CHITRADURGA
+                  Circle old: 1262977~Hosadurga Circle
+      summary: Get Delivery Assistance of labour department
+      description: Get Delivery Assistance of labour department
+      operationId: GET_labour-dept-delivery-assistance
+      parameters:
+        - name: RefNo
+          in: query
+          required: true
+          description: reference number of delivary assistance
+          schema:
+            type: string
+  /FuneralAssistance:
+    get:
+      tags:
+        - API's for Labour Department
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  Name of the deceased worker: VISHWANATH
+                  District: 2905~BIDAR
+                  Name of the applicant: Kavita
+                  Registration number: Lo_Bidar/BID/RGN.23232/2019-20
+                  Circle old: 1262937~Bidar Circle
+      description: To get Funeral Assistance of labour department
+      summary: To get Funeral Assistance of labour department
+      operationId: GET_labour-dept-funeral-assistance
+      parameters:
+        - name: RefNo
+          in: query
+          required: true
+          description: reference number of funeral assistance
+          schema:
+            type: string
+  /AccidentAssistance:
+    get:
+      tags:
+        - API's for Labour Department
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  Name of the beneficiary: Raju R
+                  Registration number of the beneficiary: 19/2011-12
+                  District: 2915~SHIMOGA
+                  Circle old: 1262858~1st Circle Bhadravathi
+      description: To get the Accident assistance from labour department
+      summary: To get the Accident assistance from labour department
+      operationId: GET_labour-dept-accident-assistance
+      parameters:
+        - name: RefNo
+          in: query
+          required: true
+          description: reference num of accident assistance
+          schema:
+            type: string
+  /ThayiMaguSahayaHasta:
+    get:
+      tags:
+        - API's for Labour Department
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  Name of the beneficiary: M SHRUTHI
+                  Registration number of the benificiary: LO-HSD/CHD/RGN.21443
+                  District: 2913~CHITRADURGA
+                  Circle old: 1262977~Hosadurga Circle
+      description: To get the thayi magusahaya hasta from labour department
+      summary: To get the thayi magusahaya hasta from labour department
+      operationId: GET_labour-dept-thayi-magusahaya-hasta
+      parameters:
+        - name: RefNo
+          in: query
+          required: true
+          description: reference num of thayi magusahaya hasta
+          schema:
+            type: string
+  /Pension:
+    get:
+      tags:
+        - API's for Labour Department
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  Name of the beneficiary: Ishappa
+                  Registration number of the benificiary: 525/2016-17
+                  District: 2905~BIDAR
+                  Circle old: 1262937~Bidar Circle
+      description: To get the Application for Pension from labour department
+      summary: To get the Application for Pension from labour department
+      operationId: GET_labour-dept-application-for-pension
+      parameters:
+        - name: RefNo
+          in: query
+          required: true
+          description: reference num of Application for Pension
+          schema:
+            type: string
+  /DisabilityPensionExgratia:
+    get:
+      tags:
+        - API's for Labour Department
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  Name of the beneficiary: MUNAFSAB ATTAR
+                  Registration number of the benificiary: "2492"
+                  District: 2911~HAVERI
+                  Circle old: 1262971~Haveri Circle
+      description: To get the disability pension and exgratia from labour department
+      summary: To get the disability pension and exgratia from labour department
+      operationId: GET_labour-dept-disability-pension-and-exgratia
+      parameters:
+        - name: RefNo
+          in: query
+          required: true
+          description: reference num of Application for disability pension and exgratia
+          schema:
+            type: string
+  /EducationalAssistance:
+    get:
+      tags:
+        - API's for Labour Department
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  Name of the beneficiary: Eregowda
+                  Registration number of the benificiary: Lo2-Circle 48/BNG/RGN.192603/2020-21
+                  District: 2920~BANGALORE URBAN
+                  Circle old: 1263089~Yadagiri Circle
+      description: To get the educational assistance from labour department
+      summary: To get the educational assistance from labour department
+      operationId: GET_labour-dept-educational-assistance
+      parameters:
+        - name: RefNo
+          in: query
+          required: true
+          description: reference num of Application for educational assistance from labour
+            department
+          schema:
+            type: string
+  /MajorAilmentsAssistance:
+    get:
+      tags:
+        - API's for Labour Department
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  Name of the applicant: Madabavi Prem
+                  Registration number: DWD-1-CR-98/2013-14
+                  District: 2909~DHARWAD
+                  Circle old: 1262980~Hubli 1st Circle Dharwad
+      description: To get the major ailments from labour department
+      summary: To get the major ailments from labour department
+      operationId: GET_labour-dept-major-ailments
+      parameters:
+        - name: RefNo
+          in: query
+          required: true
+          description: reference num of Application for major ailments from labour
+            department
+          schema:
+            type: string
+components:
+  schemas: {}
+  responses: {}
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  links: {}
+  callbacks: {}

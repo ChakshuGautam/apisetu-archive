@@ -1,0 +1,538 @@
+openapi: 3.0.1
+info:
+  title: Content
+  description: |-
+      PM eVidya DIKSHA - One Nation, One Digital Platform for School Education. An initiative of the National Council of Educational Research and Training (Ministry of Education, Govt of India) <i>[Updated on 4th July 2023]</i>
+  termsOfService: https://diksha.gov.in/term-of-use.html
+  contact:
+    name: Provided by -Diksha
+    url: https://diksha.gov.in/
+  version: 1.0.0
+servers:
+- url: https://diksha.gov.in/api/content
+paths:
+  /v1/search:
+    post:
+      tags:
+      - Content Search API
+      summary: This web service will be used to search about content.
+      operationId: v1/search
+      
+      
+
+      requestBody:
+        content:
+          application/json:
+            schema:
+
+              properties:
+                  request:
+                    type: object
+                    properties:
+                      filters:
+                        type: object
+                        properties:
+                         status:
+                           type: string
+                           example: []
+                         origin:
+                           type: string
+                           example: ['do_31381707734733619211658']
+                      fields:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            status:
+                              type: string
+                          
+                        example:
+                        -  status: ""
+                           identifier: ""
+                           board: ""
+                           medium: ""
+                           gradeLevel: ""
+                           subject: ""
+                        -  attributions: ""
+                           origin: ""
+                           createdOn: ""
+                           publishedOn: ""
+                           lastStatusChangedOn: ""
+                           importError: ""
+                     
+                      limit:
+                        type: integer
+                        example: 10
+      
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  id:
+                    type: string
+                    example: "api.content.search"
+                  ver:
+                    type: string
+                    example: "1.0"
+                  ts:
+                    type: string
+                    example: "2023-06-22T07:53:25.028Z"
+                  params:
+                    type: object
+                    properties:
+                      resmsgid: 
+                        type: string                        
+                        example: "ddca0e40-10d1-11ee-a2fd-5f923ef83a4f"
+                      msgid: 
+                        type: string                        
+                        example: "ddc887a0-10d1-11ee-a213-11650cb2b679"
+                      status: 
+                        type: string                        
+                        example: "successful"
+                      err: 
+                        type: string                        
+                        example: null
+                      errmsg: 
+                        type: string                        
+                        example: null
+                  responseCode:
+                    type: string
+                    example: "OK"
+                  result:
+                    type: object
+                    properties:
+                      count: 
+                        type: integer                        
+                        example: 1
+                      content: 
+                        type: array                        
+                        items:
+                          type: object
+                          properties:
+                            identifier:
+                              type: string
+                            origin:
+                              type: string
+                            createdOn:
+                              type: string
+                            objectType:
+                              type: string
+                            status:
+                              type: string
+                        example:
+                        -  identifier: "do_31382327157437235217204"
+                           origin: "do_31381707734733619211658"
+                           createdOn: "2023-06-22T05:18:00.860+0000"
+                           objectType: "Content"
+                           status: "Draft"
+
+   
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  id:
+                    type: string
+                    example: "api.content.search"
+                  ver:
+                    type: string
+                    example: "1.0"
+                  ts:
+                    type: string
+                    example: "2023-06-22T08:05:36.339Z"
+                  params:
+                    type: object
+                    properties:
+                      resmsgid: 
+                        type: string                        
+                        example: "91af4230-10d3-11ee-a2fd-5f923ef83a4f"
+                      msgid: 
+                        type: string                        
+                        example: null
+                      status: 
+                        type: string                        
+                        example: "failed"
+                      err: 
+                        type: string                        
+                        example: "ERR_CONTENT_SEARCH_FIELDS_MISSING"
+                      errmsg: 
+                        type: string                        
+                        example: "Required fields for search content are missing"
+                  responseCode:
+                    type: string
+                    example: "CLIENT_ERROR"
+                  result:
+                    type: object
+                  
+
+   
+
+  /v1/read/{doId}:
+    get:
+      tags:
+      - Read Content API
+      summary: This web service will be used to get all detail of content.
+      operationId: v1/read
+      parameters:
+        - in: path
+          name: doId
+          required: true
+          example: do_31321952161600307211993
+          schema:
+            type: string
+    
+
+      
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  id:
+                    type: string
+                    example: "api.content.read"
+                  ver:
+                    type: string
+                    example: "1.0"
+                  ts:
+                    type: string
+                    example: "2023-06-22T08:17:45.387Z"
+                  params:
+                    type: object
+                    properties:
+                      resmsgid: 
+                        type: string                        
+                        example: "443b27b0-10d5-11ee-a2fd-5f923ef83a4f"
+                      msgid: 
+                        type: string                        
+                        example: "443a8b70-10d5-11ee-a213-11650cb2b679"
+                      status: 
+                        type: string                        
+                        example: "successful"
+                      err: 
+                        type: string                        
+                        example: null
+                      errmsg: 
+                        type: string                        
+                        example: null
+                  responseCode:
+                    type: string
+                    example: "OK"
+                  result:
+                    type: object
+                    properties:
+                      content: 
+                        type: object                        
+                        properties:
+                          ownershipType: 
+                            type: string
+                            example: ['createdBy']
+                          copyright: 
+                            type: string
+                            example: "NCERT"
+                          keywords: 
+                            type: string
+                            example: ["What\\'s in the mailbox", 'Informal Letter writing', 'The letter']
+                          subject: 
+                            type: string
+                            example: ['English']
+                          channel: 
+                            type: string
+                            example: "01241974041332940818"
+                          downloadUrl: 
+                            type: string
+                            example: "https://obj.diksha.gov.in/ntp-content-production/content/do_31321952161600307211993/comic-book-whats-in-the-mail-box_1680073248227_do_31321952161600307211993_2_SPINE.ecar"
+                          organisation: 
+                            type: string
+                            example: ['CBSE']
+                          language: 
+                            type: string
+                            example: ['English']
+                          mimeType: 
+                            type: string
+                            example: "application/vnd.ekstep.content-collection"
+                          variants: 
+                            type: string
+                            example: {'spine': {'ecarUrl': 'https://obj.diksha.gov.in/ntp-content-production/content/do_31321952161600307211993/comic-book-whats-in-the-mail-box_1680073248227_do_31321952161600307211993_2_SPINE.ecar', 'size': '81623'}, 'online': {'ecarUrl': 'https://obj.diksha.gov.in/ntp-content-production/content/do_31321952161600307211993/comic-book-whats-in-the-mail-box_1680073248298_do_31321952161600307211993_2_ONLINE.ecar', 'size': '5342'}}
+                          leafNodes: 
+                            type: string
+                            example: ['do_31321903556185292812905']
+                          objectType: 
+                            type: string
+                            example: "Content"
+                          se_mediums: 
+                            type: string
+                            example: ['English']
+                          gradeLevel: 
+                            type: string
+                            example: ['Class 3']
+                          me_totalRatingsCount: 
+                            type: string
+                            example: 94
+                          appIcon: 
+                            type: string
+                            example: "https://obj.diksha.gov.in/ntp-content-production/content/do_31321903538537267212904/artifact/16_bvnvrokht6hn97eqcklwk2fs6ppx2z.thumb.png"
+                          primaryCategory: 
+                            type: string
+                            example: "Digital Textbook"
+                          appId: 
+                            type: string
+                            example: "prod.diksha.app"
+                          contentEncoding: 
+                            type: string
+                            example: "gzip"
+                          lockKey: 
+                            type: string
+                            example: "db9a00d6-80ba-411c-adab-3b31b6599fd5"
+                          totalCompressedSize: 
+                            type: string
+                            example: 6085424
+                          mimeTypesCount: 
+                            type: string
+                            example: "{\"application/pdf\":1,\"application/vnd.ekstep.content-collection\":1}"
+                          sYS_INTERNAL_LAST_UPDATED_ON: 
+                            type: string
+                            example: "2023-03-29T07:00:48.227+0000"
+                          contentType: 
+                            type: string
+                            example: "TextBook"
+                          se_gradeLevels: 
+                            type: string
+                            example: ['Class 3']
+                          trackable: 
+                            type: string
+                            example: {'enabled': 'No', 'autoBatch': 'No'}
+                          identifier: 
+                            type: string
+                            example: "do_31321952161600307211993"
+                          audience: 
+                            type: string
+                            example: ['Student']
+                          subjectIds: 
+                            type: string
+                            example: ['ekstep_ncert_k-12_subject_english']
+                          toc_url: 
+                            type: string
+                            example: "https://obj.diksha.gov.in/ntp-content-production/content/do_31321952161600307211993/artifact/do_31321952161600307211993_toc.json"
+                          visibility: 
+                            type: string
+                            example: "Default"
+                          contentTypesCount: 
+                            type: string
+                            example: "{\"TextBookUnit\":1,\"Resource\":1}"
+                          consumerId: 
+                            type: string
+                            example: "30b3ba11-b2d2-4c3a-bece-a3bf663f4320"
+                          childNodes: 
+                            type: string
+                            example: ['do_31321952161651916811995', 'do_31321903556185292812905']
+                          mediaType: 
+                            type: string
+                            example: "content"
+                          osId: 
+                            type: string
+                            example: "org.ekstep.quiz.app"
+                          languageCode: 
+                            type: string
+                            example: ['en']
+                          lastPublishedBy: 
+                            type: string
+                            example: "System"
+                          version: 
+                            type: string
+                            example: 2
+                          se_subjects: 
+                            type: string
+                            example: ['English']
+                          license: 
+                            type: string
+                            example: "CC BY-SA 4.0"
+                          prevState: 
+                            type: string
+                            example: "Review"
+                          size: 
+                            type: string
+                            example: 81623
+                          lastPublishedOn: 
+                            type: string
+                            example: "2023-03-29T07:00:48.167+0000"
+                          name: 
+                            type: string
+                            example: "Comic Book - What's in the mail box"
+                          mediumIds: 
+                            type: string
+                            example: ['ekstep_ncert_k-12_medium_english']
+                          status: 
+                            type: string
+                            example: "Live"
+                          code: 
+                            type: string
+                            example: "0125196274181898243"
+                          credentials: 
+                            type: string
+                            example: {'enabled': 'No'}
+                          prevStatus: 
+                            type: string
+                            example: "Processing"
+                          origin: 
+                            type: string
+                            example: "do_31321909245057433612567"
+                          description: 
+                            type: string
+                            example: "Comic Book - What's in the mail box"
+                          medium: 
+                            type: string
+                            example: ['English']
+                          idealScreenSize: 
+                            type: string
+                            example: "normal"
+                          createdOn: 
+                            type: string
+                            example: "2021-02-19T05:05:34.769+0000"
+                          se_boards: 
+                            type: string
+                            example: ['CBSE']
+                          copyrightYear: 
+                            type: string
+                            example: 2021
+                          contentDisposition: 
+                            type: string
+                            example: "inline"
+                          licenseterms: 
+                            type: string
+                            example: "By creating any type of content (resources, books, courses etc.) on DIKSHA, you consent to publish it under the Creative Commons License Framework. Please choose the applicable creative commons license you wish to apply to your content."
+                          lastUpdatedOn: 
+                            type: string
+                            example: "2023-03-29T07:00:48.462+0000"
+                          originData: 
+                            type: string
+                            example: {'name': "Comic Book - What's in the mail box", 'copyType': 'deep', 'license': 'CC BY-SA 4.0'}
+                          dialcodeRequired: 
+                            type: string
+                            example: "No"
+                          lastStatusChangedOn: 
+                            type: string
+                            example: "2023-03-29T07:00:48.462+0000"
+                          createdFor: 
+                            type: string
+                            example: ['01241974041332940818']
+                          creator: 
+                            type: string
+                            example: "NCERT"
+                          os: 
+                            type: string
+                            example: ['All']
+                          se_FWIds: 
+                            type: string
+                            example: ['ekstep_ncert_k-12']
+                          pkgVersion: 
+                            type: string
+                            example: 2
+                          versionKey: 
+                            type: string
+                            example: "1613711136378"
+                          migrationVersion: 
+                            type: string
+                            example: 1.1
+                          idealScreenDensity: 
+                            type: string
+                            example: "hdpi"
+                          framework: 
+                            type: string
+                            example: "ekstep_ncert_k-12"
+                          depth: 
+                            type: string
+                            example: 0
+                          s3Key: 
+                            type: string
+                            example: "content/do_31321952161600307211993/artifact/do_31321952161600307211993_toc.json"
+                          boardIds: 
+                            type: string
+                            example: ['ekstep_ncert_k-12_board_cbse']
+                          me_averageRating: 
+                            type: string
+                            example: 4
+                          lastSubmittedOn: 
+                            type: string
+                            example: "2021-02-19T05:05:35.045+0000"
+                          createdBy: 
+                            type: string
+                            example: "1a488c8d-06cd-40bf-ba97-f547c3382750f"
+                          compatibilityLevel: 
+                            type: string
+                            example: 1
+                          leafNodesCount: 
+                            type: string
+                            example: 1
+                          userConsent: 
+                            type: string
+                            example: "Yes"
+                          gradeLevelIds: 
+                            type: string
+                            example: ['ekstep_ncert_k-12_gradelevel_class3']
+                          board: 
+                            type: string
+                            example: "CBSE"
+                          resourceType: 
+                            type: string
+                            example: "Book"
+
+   
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  id:
+                    type: string
+                    example: "api.content.hierarchy.get"
+                  ver:
+                    type: string
+                    example: "3.0"
+                  ts:
+                    type: string
+                    example: "2023-06-22T07:47:09ZZ"
+                  params:
+                    type: object
+                    properties:
+                      resmsgid: 
+                        type: string                        
+                        example: "eca32cbb-4de4-43a6-bd43-aaa5d57be8ba"
+                      msgid: 
+                        type: string                        
+                        example: null
+                      err: 
+                        type: string                        
+                        example: "RESOURCE_NOT_FOUND"
+                      status: 
+                        type: string                        
+                        example: "failed"
+                      errmsg: 
+                        type: string                        
+                        example: "rootId do_313817077347 does not exist"
+                  responseCode:
+                    type: string
+                    example: "RESOURCE_NOT_FOUND"
+                  result:
+                    type: object
+                    
+
+   
+
+  
+  
+
+
+

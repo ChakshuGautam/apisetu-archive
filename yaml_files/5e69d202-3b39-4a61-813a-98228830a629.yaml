@@ -1,0 +1,104 @@
+info:
+  title: Labour Commissionerate
+  version: 1.0.0
+  x-ibm-name: karmasathi_api
+  description: Karmasathi API for the mobile APP for Migrant Labourer for Labour
+    Commissionerate
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/wb/wblc
+paths:
+  /mwalert:
+    post:
+      responses:
+        "200":
+          description: success
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              title: alertSchema
+              properties:
+                mw_id:
+                  type: number
+                taskid:
+                  type: string
+                latitude:
+                  type: string
+                longitude:
+                  type: string
+                raised_by:
+                  type: string
+                alert_name:
+                  type: string
+                alert_type:
+                  type: string
+                alert_details:
+                  type: string
+                document_type:
+                  type: string
+                recorded_audio:
+                  type: string
+                  format: binary
+                present_location:
+                  type: string
+                raisedby_other_details:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    mobile:
+                      type: string
+                    relationship:
+                      type: string
+      tags:
+        - Karmasathi api
+  /mobileVerification:
+    post:
+      responses:
+        "200":
+          description: success
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              title: mobileSchema
+              properties:
+                taskid:
+                  type: string
+                raised_by:
+                  type: string
+                mobile_mwin:
+                  type: number
+      tags:
+        - Karmasathi api
+openapi: 3.0.0
+servers:
+  - url: https://wb-gateway.napix.gov.in/wb/wblc/karmasathi
+security:
+  - clientID: []
+    clientSecret: []
+components:
+  securitySchemes:
+    clientID:
+      in: header
+      name: clientID
+      type: apiKey
+      x-key-type: client_id
+    clientSecret:
+      in: header
+      name: clientSecret
+      type: apiKey
+      x-key-type: client_secret
+x-ibm-endpoints:
+  - url: https://wb-gateway.napix.gov.in/wb/wblc/karmasathi
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  enforced: true
+  testable: true

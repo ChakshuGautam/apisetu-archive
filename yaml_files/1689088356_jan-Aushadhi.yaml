@@ -1,0 +1,1001 @@
+openapi: 3.0.3
+info:
+  title: Jan Aushadhi APIs
+  description: APIs to get the Jan Aushadhi <i>[Updated on 25 Nov 2021]</i>
+  termsOfService: https://web.umang.gov.in/
+  contact:
+    name: Jan Aushadhi Department 
+    url:  https://web.umang.gov.in/customer_support
+  version: 1.0.0
+servers:
+- url: https://app.umang.gov.in/t/negd.gov.in/api/dept/janAushadhi/1.0/
+paths:
+  /aboutus:
+    post:
+      tags:
+        - Informational
+      summary: The API will provide the Department Functioning related details.
+      description: The Department Functioning 
+      operationId: Data processing API
+      security:
+        - bearerAuth: []
+      requestBody:
+        description: Request Parameter
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestParameter'
+      responses:
+        '200':
+          description: Success Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+
+        '503':
+          description: The Backend Server currently unavailable. Please try again. 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/503ServerErrorResponse'
+        '400':
+          description: Bad Request
+  /searchmedicinebyname:
+    post:
+      tags:
+        - Informational
+      summary: This API is used to search the medicine by name.
+      description: search medicine by name
+      security:
+        - bearerAuth: []
+      
+      requestBody:
+        description: Request Parameter
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  minLength: 1
+                  description: Server token.
+                  example: xw1b7a23c7-68f8-482a-8cd1-73705e93b456/2
+                trkr:
+                  type: integer
+                  minLength: 1
+                  description: Request tracker.
+                  example: 213132   
+                lang:
+                  type: string
+                  minLength: 1
+                  description: Language.
+                  example: en
+                did:
+                  type: string
+                  minLength: 1
+                  description: Device ID.
+                  example:  123234  
+                usag:
+                  type: integer
+                  minLength: 1
+                  description: usage.
+                  example:  90
+                apitrkr:
+                  type: integer
+                  minLength: 1
+                  description: API tracker.
+                  example:  12345
+                usrid:
+                  type: integer
+                  minLength: 1
+                  description: User idAPI tracker.
+                  example:  23423423
+                srvid:
+                  type: integer
+                  minLength: 1
+                  description: Service ID.
+                  example:  175
+                mode:
+                  type: string
+                  minLength: 1
+                  description: User idAPI tracker.
+                  example:  web/mobile
+                pltfrm:
+                  type: string
+                  minLength: 1
+                  description: device paltform.
+                  example:  android
+                deptid:
+                  type: integer
+                  minLength: 1
+                  description: Department ID.
+                  example:  1088
+                subsid:
+                  type: integer
+                  minLength: 1
+                  description: Sub service ID.
+                  example:  0
+                subsid2:
+                  type: integer
+                  minLength: 1
+                  description: Sub service ID.
+                  example:  0
+                formtrkr:
+                  type: integer
+                  minLength: 1
+                  description: Sub service ID.
+                  example:  0
+                searchText:
+                  type: string
+                  minLength: 1
+                  description: Search medicine name.
+                  example:  crocin
+                orderBy:
+                  type: string
+                  minLength: 1
+                  description: order by condition.
+                  example:  MRP ASC
+                pageNo:
+                  type: integer
+                  minLength: 1
+                  description: Page number.
+                  example:  1
+                pageSize:
+                  type: integer
+                  minLength: 1
+                  description: Page size.
+                  example:  10
+
+      responses:
+        '200':
+          description: Success Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+
+        '400':
+          description: Bad Request
+        
+        '503':
+          description: The Backend Server currently unavailable. Please try again. 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/503ServerErrorResponse'        
+  /qualitypolicy:
+    post:
+      tags:
+        - Informational
+      summary: The following APIs are used to fetch quality assurance.
+      description: The following APIs are used to fetch quality assurance
+      security:
+        - bearerAuth: []
+      
+      requestBody:
+        description: Request Parameter
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestParameter'
+      responses:
+        '200':
+          description: Success Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+
+        '400':
+          description: Bad Request
+        
+        '503':
+          description: The Backend Server currently unavailable. Please try again. 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/503ServerErrorResponse'
+  /findstoredistance:
+    post:
+      tags:
+        - Informational
+      summary: The APIs are used to fetch nearby store details.
+      description: The APIs are used to fetch nearby store details
+      security:
+        - bearerAuth: []
+      
+      requestBody:
+        description: Request Parameter
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  minLength: 1
+                  description: Server token.
+                  example: xw1b7a23c7-68f8-482a-8cd1-73705e93b456/2
+                trkr:
+                  type: integer
+                  minLength: 1
+                  description: Request tracker.
+                  example: 213132   
+                lang:
+                  type: string
+                  minLength: 1
+                  description: Language.
+                  example: en
+                did:
+                  type: string
+                  minLength: 1
+                  description: Device ID.
+                  example:  123234  
+                usag:
+                  type: integer
+                  minLength: 1
+                  description: usage.
+                  example:  90
+                apitrkr:
+                  type: integer
+                  minLength: 1
+                  description: API tracker.
+                  example:  12345
+                usrid:
+                  type: integer
+                  minLength: 1
+                  description: User idAPI tracker.
+                  example:  23423423
+                srvid:
+                  type: integer
+                  minLength: 1
+                  description: Service ID.
+                  example:  175
+                mode:
+                  type: string
+                  minLength: 1
+                  description: User idAPI tracker.
+                  example:  web or mobile
+                pltfrm:
+                  type: string
+                  minLength: 1
+                  description: device paltform.
+                  example:  android
+                deptid:
+                  type: integer
+                  minLength: 1
+                  description: Department ID.
+                  example:  1088
+                subsid:
+                  type: integer
+                  minLength: 1
+                  description: Sub service ID.
+                  example:  0
+                subsid2:
+                  type: integer
+                  minLength: 1
+                  description: Sub service ID.
+                  example:  0
+                formtrkr:
+                  type: integer
+                  minLength: 1
+                  description: Sub service ID.
+                  example:  0
+                city:
+                  type: string
+                  minLength: 1
+                  description: City name.
+                  example:  Noida  
+                searchText:
+                  type: string
+                  minLength: 1
+                  description: Search medicine name.
+                  example:  crocin
+                orderBy:
+                  type: string
+                  minLength: 1
+                  description: order by condition.
+                  example:  MRP ASC
+                pageNo:
+                  type: integer
+                  minLength: 1
+                  description: Page number.
+                  example:  1
+                pageSize:
+                  type: integer
+                  minLength: 1
+                  description: Page size.
+                  example:  10
+      responses:
+        '200':
+          description: Success Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+
+        '400':
+          description: Bad Request
+        
+        '503':
+          description: The Backend Server currently unavailable. Please try again. 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/503ServerErrorResponse'
+  /feedbackcategorylist:
+    post:
+      tags:
+        - Informational
+      summary: The APIs are used to fetch feedback category list
+      description: The APIs are used to fetch feedback category list
+      security:
+        - bearerAuth: []
+      
+      requestBody:
+        description: Request Parameter
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  minLength: 1
+                  description: Server token.
+                  example: xw1b7a23c7-68f8-482a-8cd1-73705e93b456/2
+                trkr:
+                  type: integer
+                  minLength: 1
+                  description: Request tracker.
+                  example: 213132   
+                lang:
+                  type: string
+                  minLength: 1
+                  description: Language.
+                  example: en
+                did:
+                  type: string
+                  minLength: 1
+                  description: Device ID.
+                  example:  123234  
+                usag:
+                  type: integer
+                  minLength: 1
+                  description: usage.
+                  example:  90
+                apitrkr:
+                  type: integer
+                  minLength: 1
+                  description: API tracker.
+                  example:  12345
+                usrid:
+                  type: integer
+                  minLength: 1
+                  description: User idAPI tracker.
+                  example:  23423423
+                srvid:
+                  type: integer
+                  minLength: 1
+                  description: Service ID.
+                  example:  175
+                mode:
+                  type: string
+                  minLength: 1
+                  description: User idAPI tracker.
+                  example:  web or mobile
+                pltfrm:
+                  type: string
+                  minLength: 1
+                  description: device paltform.
+                  example:  android
+                deptid:
+                  type: integer
+                  minLength: 1
+                  description: Department ID.
+                  example:  1088
+                subsid:
+                  type: integer
+                  minLength: 1
+                  description: Sub service ID.
+                  example:  0
+                subsid2:
+                  type: integer
+                  minLength: 1
+                  description: Sub service ID.
+                  example:  0
+                formtrkr:
+                  type: integer
+                  minLength: 1
+                  description: Sub service ID.
+                  example:  0
+                categoryType:
+                  type: string
+                  minLength: 1
+                  description: Category Type.
+                  example:  1  
+               
+      responses:
+        '200':
+          description: Success Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+
+        '400':
+          description: Bad Request
+        
+        '503':
+          description: The Backend Server currently unavailable. Please try again. 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/503ServerErrorResponse'      
+  /feedback:
+    post:
+      tags:
+        - Transactional
+      summary: The APIs are used to submit feedback 
+      description: The APIs are used to submit feedback 
+      security:
+        - bearerAuth: []
+      
+      requestBody:
+        description: Request Parameter
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  minLength: 1
+                  description: Server token.
+                  example: xw1b7a23c7-68f8-482a-8cd1-73705e93b456/2
+                trkr:
+                  type: integer
+                  minLength: 1
+                  description: Request tracker.
+                  example: 213132   
+                lang:
+                  type: string
+                  minLength: 1
+                  description: Language.
+                  example: en
+                did:
+                  type: string
+                  minLength: 1
+                  description: Device ID.
+                  example:  123234  
+                usag:
+                  type: integer
+                  minLength: 1
+                  description: usage.
+                  example:  90
+                apitrkr:
+                  type: integer
+                  minLength: 1
+                  description: API tracker.
+                  example:  12345
+                usrid:
+                  type: integer
+                  minLength: 1
+                  description: User idAPI tracker.
+                  example:  23423423
+                srvid:
+                  type: integer
+                  minLength: 1
+                  description: Service ID.
+                  example:  175
+                mode:
+                  type: string
+                  minLength: 1
+                  description: User idAPI tracker.
+                  example:  web or mobile
+                pltfrm:
+                  type: string
+                  minLength: 1
+                  description: device paltform.
+                  example:  android
+                deptid:
+                  type: integer
+                  minLength: 1
+                  description: Department ID.
+                  example:  1088
+                subsid:
+                  type: integer
+                  minLength: 1
+                  description: Sub service ID.
+                  example:  0
+                subsid2:
+                  type: integer
+                  minLength: 1
+                  description: Sub service ID.
+                  example:  0
+                formtrkr:
+                  type: integer
+                  minLength: 1
+                  description: Sub service ID.
+                  example:  0
+                lat:
+                  type: integer
+                  minLength: 1
+                  description: lat paramameter.
+                  example:  21
+                lon:
+                  type: integer
+                  minLength: 1
+                  description: lon paramameter.
+                  example:  90  
+                lac:
+                  type: integer
+                  minLength: 1
+                  description: lac paramameter.
+                  example:  90
+                reportType:
+                  type: integer
+                  minLength: 1
+                  description: reportType, Note-If feedback report then send 0, if suggestion then 1, if bug report then 2
+                  example:  1
+                title:
+                  type: string
+                  minLength: 1
+                  description: title.
+                  example:  Non-availability of Drugs
+                message:
+                  type: string
+                  minLength: 1
+                  description: Message.
+                  example:  Paytm should be accepted at Jan Aushadhi Kendra
+                userMobileNo:
+                  type: integer
+                  minLength: 1
+                  description: user mobile number.
+                  example:  9999999999  
+                userEmailId:
+                  type: string
+                  minLength: 1
+                  description: user email id.
+                  example:  user@domain.com 
+                userDateofBirth:
+                  type: object
+                  minLength: 1
+                  description: date of birth.
+                  example:  1975-09-12
+                userState:
+                  type: string
+                  minLength: 1
+                  description: user city.
+                  example:  Noida
+                userFirstName:
+                  type: string
+                  minLength: 1
+                  description: User first name.
+                  example:  Suresh
+                userLastName:
+                  type: string
+                  minLength: 1
+                  description: User Last Name.
+                  example:  Singh
+
+      responses:
+        '200':
+          description: Success Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+
+        '400':
+          description: Bad Request
+        
+        '503':
+          description: The Backend Server currently unavailable. Please try again. 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/503ServerErrorResponse'
+  /feedbacklist:
+    post:
+      tags:
+        - Informational
+      summary: The APIs are used to see the feedback submitted by a user 
+      description: The APIs are used to see the feedback submitted by a user
+      security:
+        - bearerAuth: []
+      
+      requestBody:
+        description: Request Parameter
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  minLength: 1
+                  description: Server token.
+                  example: xw1b7a23c7-68f8-482a-8cd1-73705e93b456/2
+                trkr:
+                  type: integer
+                  minLength: 1
+                  description: Request tracker.
+                  example: 213132   
+                lang:
+                  type: string
+                  minLength: 1
+                  description: Language.
+                  example: en
+                did:
+                  type: string
+                  minLength: 1
+                  description: Device ID.
+                  example:  123234  
+                usag:
+                  type: integer
+                  minLength: 1
+                  description: usage.
+                  example:  90
+                apitrkr:
+                  type: integer
+                  minLength: 1
+                  description: API tracker.
+                  example:  12345
+                usrid:
+                  type: integer
+                  minLength: 1
+                  description: User idAPI tracker.
+                  example:  23423423
+                srvid:
+                  type: integer
+                  minLength: 1
+                  description: Service ID.
+                  example:  175
+                mode:
+                  type: string
+                  minLength: 1
+                  description: User idAPI tracker.
+                  example:  web or mobile
+                pltfrm:
+                  type: string
+                  minLength: 1
+                  description: device paltform.
+                  example:  android
+                deptid:
+                  type: integer
+                  minLength: 1
+                  description: Department ID.
+                  example:  1088
+                subsid:
+                  type: integer
+                  minLength: 1
+                  description: Sub service ID.
+                  example:  0
+                subsid2:
+                  type: integer
+                  minLength: 1
+                  description: Sub service ID.
+                  example:  0
+                formtrkr:
+                  type: integer
+                  minLength: 1
+                  description: Sub service ID.
+                  example:  0
+                mobileNo:
+                  type: integer
+                  minLength: 1
+                  description: mobile number.
+                  example:  9999999999
+      responses:
+        '200':
+          description: Success Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+
+        '400':
+          description: Bad Request
+        
+        '503':
+          description: The Backend Server currently unavailable. Please try again. 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/503ServerErrorResponse'
+  /getmedicinebygcid:
+    post:
+      tags:
+        - Informational
+      summary: The APIs are used to get the generic medicine details based on the gcid of the medicine 
+      description: The APIs are used to get the generic medicine details based on the gcid of the medicine 
+      security:
+        - bearerAuth: []
+      
+      requestBody:
+        description: Request Parameter
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  minLength: 1
+                  description: Server token.
+                  example: xw1b7a23c7-68f8-482a-8cd1-73705e93b456/2
+                trkr:
+                  type: integer
+                  minLength: 1
+                  description: Request tracker.
+                  example: 213132   
+                lang:
+                  type: string
+                  minLength: 1
+                  description: Language.
+                  example: en
+                did:
+                  type: string
+                  minLength: 1
+                  description: Device ID.
+                  example:  123234  
+                usag:
+                  type: integer
+                  minLength: 1
+                  description: usage.
+                  example:  90
+                apitrkr:
+                  type: integer
+                  minLength: 1
+                  description: API tracker.
+                  example:  12345
+                usrid:
+                  type: integer
+                  minLength: 1
+                  description: User idAPI tracker.
+                  example:  23423423
+                srvid:
+                  type: integer
+                  minLength: 1
+                  description: Service ID.
+                  example:  175
+                mode:
+                  type: string
+                  minLength: 1
+                  description: User idAPI tracker.
+                  example:  web or mobile
+                pltfrm:
+                  type: string
+                  minLength: 1
+                  description: device paltform.
+                  example:  android
+                deptid:
+                  type: integer
+                  minLength: 1
+                  description: Department ID.
+                  example:  1088
+                subsid:
+                  type: integer
+                  minLength: 1
+                  description: Sub service ID.
+                  example:  0
+                subsid2:
+                  type: integer
+                  minLength: 1
+                  description: Sub service ID.
+                  example:  0
+                formtrkr:
+                  type: integer
+                  minLength: 1
+                  description: Sub service ID.
+                  example:  0
+                medicineId:
+                  type: integer
+                  minLength: 1
+                  description: medicine id.
+                  example:  19519
+      responses:
+        '200':
+          description: Success Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+
+        '400':
+          description: Bad Request
+        
+        '503':
+          description: The Backend Server currently unavailable. Please try again. 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/503ServerErrorResponse'
+  /statelist:
+    post:
+      tags:
+        - Informational
+      summary: The APIs are used to fetch state list 
+      description: The APIs are used to fetch state list 
+      security:
+        - bearerAuth: []
+      requestBody:
+        description: Request Parameter
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestParameter'
+      responses:
+        '200':
+          description: Success Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+
+        '503':
+          description: The Backend Server currently unavailable. Please try again. 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/503ServerErrorResponse'
+        '400':
+          description: Bad Request
+  /faq:
+    post:
+      tags:
+        - Informational
+      summary: The API will provide the Department FAQ related details.
+      description: The Department FAQ 
+      security:
+        - bearerAuth: []
+      requestBody:
+        description: Request Parameter
+        content:
+          application/json:
+            schema:
+               $ref: '#/components/schemas/RequestParameter'
+      responses:
+        '200':
+          description: Success Response
+          content:
+            application/json:
+              schema: 
+                $ref: '#/components/schemas/SuccessResponse'
+
+        '400':
+          description: Bad Request
+        
+        '503':
+          description: The Backend Server currently unavailable. Please try again. 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/503ServerErrorResponse'
+components:
+  securitySchemes: 
+    bearerAuth: 
+      type: http
+      scheme: bearer
+      bearerFormat: text
+
+  schemas:
+      RequestParameter:
+        description: Request Parameters.
+        type: object
+        properties:
+          tkn:
+            type: string
+            minLength: 1
+            description: Server token.
+            example: xw1b7a23c7-68f8-482a-8cd1-73705e93b456/2
+          trkr:
+            type: integer
+            minLength: 1
+            description: Request tracker.
+            example: 213132   
+          lang:
+            type: string
+            minLength: 1
+            description: Language.
+            example: en
+          did:
+            type: string
+            minLength: 1
+            description: Device ID.
+            example:  123234  
+          usag:
+            type: integer
+            minLength: 1
+            description: usage.
+            example:  90
+          apitrkr:
+            type: integer
+            minLength: 1
+            description: API tracker.
+            example:  12345
+          usrid:
+            type: integer
+            minLength: 1
+            description: User idAPI tracker.
+            example:  23423423
+          srvid:
+            type: integer
+            minLength: 1
+            description: Service ID.
+            example:  175
+          mode:
+            type: string
+            minLength: 1
+            description: User idAPI tracker.
+            example:  web/mobile
+          pltfrm:
+            type: string
+            minLength: 1
+            description: device paltform.
+            example:  android
+          deptid:
+            type: integer
+            minLength: 1
+            description: Department ID.
+            example:  1088
+          subsid:
+            type: integer
+            minLength: 1
+            description: Sub service ID.
+            example:  0
+          subsid2:
+            type: integer
+            minLength: 1
+            description: Sub service ID.
+            example:  0
+          formtrkr:
+            type: integer
+            minLength: 1
+            description: Sub service ID.
+            example:  0
+      
+      SuccessResponse:
+        description: Success Response.
+        type: object
+        properties:
+          rs:
+            type: string
+            minLength: 1
+            example: S
+          rc:
+            type: number
+            minLength: 1
+            example: 200
+          rd:
+            type: string
+            minLength: 1
+            example: OK
+          pd:
+            type: string
+            minLength: 1
+            example: The Detailed Response.
+      
+      
+      503ServerErrorResponse:
+        type: object
+        properties:
+          rs:
+            type: string
+            minLength: 1
+            example: F
+          rc:
+            type: integer
+            minLength: 1
+            example: 503
+          rd:
+            type: string
+            minLength: 1
+            example: Failed to get response from department
+          pd:
+            type: string
+            minLength: 1
+            example: null

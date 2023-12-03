@@ -1,0 +1,942 @@
+---
+openapi: 3.0.0
+info:
+  title: Post Matric Scholarship - Bihar (PMS-Bihar)
+  description: Post Matric Scholarship Bihar for SC/ST/BC/EBC Category 2023 is an opportunity offered by the Education Department, Government of Bihar to SC/ST/BC/EBC category students of Bihar who are studying at a postmatric level in a recognized institution in the state. The main objective of the scholarship scheme is to promote higher education in the state. <i>[Updated on 31st August 2023]</i>
+  termsOfService: https://web.umang.gov.in/uaw/ts/v1/en/index.htm
+  contact:
+    name: Provided by - UMANG
+    url: https://web.umang.gov.in
+  version: 1.0.0
+servers:
+  - url: https://apigw.umangapp.in
+    description: Production server
+  
+security: 
+  - x-api-key: []
+  
+paths:
+  /PMSBiharApi/ws1/getPost:
+    post:
+      tags:
+        - Post Payment Status Web Service
+      summary: Get the post payment details of the student using this service
+      description: This api is used to get the post payment details
+      operationId: PMSBiharApi/ws1/getPost
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-bG20230710094339
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90
+                usag:
+                  type: string
+                  description: usage
+                  example: 1
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 397
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: windows
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1                
+                deptid:
+                  type: string
+                  description: deptid
+                  example: 2068
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                UserID:
+                  type: string
+                  description: UserID
+                  example: 2226GYGN
+                AadharNo:
+                  type: string
+                  description: AadharNo
+                  example: 828133286716
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "397"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "2068"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: response object
+                    properties:
+                      Message:
+                        type: string
+                        description: Message
+                        example: OK
+                      Data:
+                        type: array
+                        description: data object item
+                        items:
+                          type: object
+                          properties:
+                            CourseName:
+                              type: string
+                              description: CourseName
+                              example: D.EL.ED
+                            MakerStatus_D1:
+                              type: string
+                              description: MakerStatus_D1
+                              example: Accepted
+                            MakerStatusRemarks_D1:
+                              type: string
+                              description: MakerStatusRemarks_D1
+                              example: null
+                            VerifierStatusRemarks_D3:
+                              type: string
+                              description: VerifierStatusRemarks_D3
+                              example: null
+                            BankAccountStatusRemarks:
+                              type: string
+                              description: BankAccountStatusRemarks
+                              example: null
+                            AcademicYear:
+                              type: string
+                              description: AcademicYear
+                              example: 2021-2022
+                            VerifierStatus_D3:
+                              type: string
+                              description: VerifierStatus_D3
+                              example: Accepted
+                            ApplicationFinalizedByStudent:
+                              type: string
+                              description: ApplicationFinalizedByStudent
+                              example: Finalized
+                            InstitutionVerificationStatus:
+                              type: string
+                              description: InstitutionVerificationStatus
+                              example: Approved
+                            UserID:
+                              type: string
+                              description: UserID
+                              example: 2226GYGN
+                            ChekckerStatus_D2:
+                              type: string
+                              description: ChekckerStatus_D2
+                              example: Accepted
+                            CheckerStatusRemarks_D2:
+                              type: string
+                              description: CheckerStatusRemarks_D2
+                              example: null
+                            BankAccountStatus:
+                              type: string
+                              description: BankAccountStatus
+                              example: Accepted
+                            ApplicationID:
+                              type: string
+                              description: ApplicationID
+                              example: PMS2122/01441844
+                            StudentName:
+                              type: string
+                              description: StudentName
+                              example: MAUSAM KUMARI
+                            PaymentStatus:
+                              type: string
+                              description: PaymentStatus
+                              example: Payment Done *** UTR - C082222277536 *** Date - 17/08/2022 *** Amount -
+                                6675 Rs.
+                            CollegeName:
+                              type: string
+                              description: CollegeName
+                              example: Tagore Teachers Training College
+                      Result:
+                        type: string
+                        description: Result
+                        example: 1
+        "400":
+          description: Bad Request/Validation Error
+  /PMSBiharApi/ws1/GetInstWiseCrsList:
+    post:
+      tags:
+        - Get Institute Wise Course List Web Service
+      summary: Get institute wise course list using this service
+      description: This api is used to get the institute wise course list
+      operationId: PMSBiharApi/ws1/GetInstWiseCrsList
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-bG20230710094339
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90
+                usag:
+                  type: string
+                  description: usage
+                  example: 1
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 397
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: windows
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: deptid
+                  example: 2068
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                CollegeId:
+                  type: string
+                  description: CollegeId
+                  example: 10903
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "397"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "2068"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200 OK
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: array
+                    description: data object item
+                    items:
+                      type: object
+                      properties:
+                        FinYear:
+                          type: string
+                          description: FinYear
+                          example: 2019-2020
+                        CollegeFee:
+                          type: string
+                          description: CollegeFee
+                          example: 0
+                        SpecializedCourse:
+                          type: string
+                          description: SpecializedCourse
+                          example: (10+2) In Arts
+                        CollegeName:
+                          type: string
+                          description: CollegeName
+                          example: A.N. SARVODAY H.S. USFA (10281406103)
+                        CourseDuration:
+                          type: string
+                          description: CourseDuration
+                          example: 3
+        "400":
+          description: Bad Request/Validation Error
+  /PMSBiharApi/ws1/GetInstitutionList:
+    post:
+      tags:
+        - Get Institute List Web Service
+      summary: Get institute list using this service
+      description: This api is used to get the institute list
+      operationId: PMSBiharApi/ws1/GetInstitutionList
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-bG20230710094339
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90
+                usag:
+                  type: string
+                  description: usage
+                  example: 1
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 397
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: windows
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: deptid
+                  example: 2068
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                State:
+                  type: string
+                  description: State
+                  example: 10
+                District:
+                  type: string
+                  description: District
+                  example: 230
+                SearchText:
+                  type: string
+                  description: SearchText
+                  example: null
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "397"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "2068"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: array
+                    description: data object item
+                    items:
+                      type: object
+                      properties:
+                        District_Name:
+                          type: string
+                          description: District_Name
+                          example: PATNA
+                        VerificationStatus:
+                          type: string
+                          description: VerificationStatus
+                          example: Provisionally Verified
+                        Address:
+                          type: string
+                          description: Address
+                          example: N/A
+                        contact_person_mobile:
+                          type: string
+                          description: contact_person_mobile
+                          example: 9431487339
+                        CollegeId:
+                          type: string
+                          description: CollegeId
+                          example: 10860
+                        state_name:
+                          type: string
+                          description: state_name
+                          example: BIHAR
+                        contact_person_name:
+                          type: string
+                          description: contact_person_name
+                          example: RAMESH CHANDRA UPADHAYAY
+                        User_id:
+                          type: string
+                          description: User_id
+                          example: INST000010860
+                        InstituteType:
+                          type: string
+                          description: InstituteType
+                          example: Senior Secondary(10+2)
+                        CollegeName:
+                          type: string
+                          description: CollegeName
+                          example: 10 +2 SCHOOL MANER  (10280703420)
+        "400":
+          description: Bad Request/Validation Error
+  /PMSBiharApi/ws1/GetStateList:
+    post:
+      tags:
+        - Get State List Web Service
+      summary: Get state list using this service
+      description: This api is used to get the state list
+      operationId: PMSBiharApi/ws1/GetStateList
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-bG20230710094339
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90
+                usag:
+                  type: string
+                  description: usage
+                  example: 1
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 397
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: windows
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: deptid
+                  example: 2068
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "397"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "2068"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: array
+                    description: data object item
+                    items:
+                      type: object
+                      properties:
+                        StateName:
+                          type: string
+                          description: StateName
+                          example: ANDAMAN AND NICOBAR ISLANDS
+                        StateCode:
+                          type: string
+                          description: StateCode
+                          example: 35
+        "400":
+          description: Bad Request/Validation Error
+  /PMSBiharApi/ws1/GetDistrictList:
+    post:
+      tags:
+        - Get District List Web Service
+      summary: Get district list using this service
+      description: This api is used to get the district list
+      operationId: PMSBiharApi/ws1/GetDistrictList
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-bG20230710094339
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90
+                usag:
+                  type: string
+                  description: usage
+                  example: 1
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 397
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: windows
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: deptid
+                  example: 2068
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                StateCode:
+                  type: string
+                  description: StateCode
+                  example: 10
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "397"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "2068"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: array
+                    description: data object item
+                    items:
+                      type: object
+                      properties:
+                        DistrictName:
+                          type: string
+                          description: DistrictName
+                          example: ARARIA
+                        StateCode:
+                          type: string
+                          description: StateCode
+                          example: 10
+                        DistrictCode:
+                          type: string
+                          description: DistrictCode
+                          example: 209
+                        DistrictName_InHindi:
+                          type: string
+                          description: DistrictName_InHindi
+                          example: अररिया
+        "400":
+          description: Bad Request/Validation Error
+components:
+  securitySchemes:
+    x-api-key:
+      type: apiKey
+      name: x-api-key
+      in: header

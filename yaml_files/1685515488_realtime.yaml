@@ -1,0 +1,86 @@
+openapi: 3.0.3
+info:
+  title: Real Time Air Quality Index 
+  description: Get Real time National Air Quality Index values from different monitoring stations across India. The pollutants monitored are Sulphur Dioxide (SO2), Nitrogen Dioxide (NO2), Particulate Matter (PM10 and PM2.5) , Carbon Monoxide (CO), Ozone(O3) etc. <p><b>To avail complete data and its API, please visit the link below</b>.<p>[Open Government Data Platform - Resource Page](https://data.gov.in/resource/real-time-air-quality-index-various-locations#api)
+  version: 2.2.0
+servers:
+  - url: https://api.data.gov.in
+paths:
+  /resource/3b01bcb8-0b14-4abf-b6f2-c1bfd384ba69:
+    get:
+      tags:
+        - Resource
+      summary: Get data of Real time Air Quality Index from various locations
+      description: |
+        By passing in the appropriate options, you can get resource level data
+      parameters:
+        - name: api-key
+          in: query
+          description: >-
+            User API Key to test this API is
+            "579b464db66ec23bdd0000017db212e92c76426c51124c7fc0555235". This is a sample key, which will return maximum of 10 records at a time. To avail complete data via your personal key, [click here](https://data.gov.in/resource/real-time-air-quality-index-various-locations#api)
+          required: true
+          schema:
+            type: string
+            default: 579b464db66ec23bdd0000017db212e92c76426c51124c7fc0555235
+        - name: format
+          in: query
+          description: output format(i.e. json/xml/csv) (default json)
+          required: true
+          schema:
+            type: string
+            enum:
+              - xml
+              - json
+              - csv
+            example: xml
+        - name: offset
+          in: query
+          description: number of records to skip for pagination
+          required: false
+          schema:
+            type: integer
+            minimum: 0
+            format: int32
+            example: '0'
+        - name: limit
+          in: query
+          description: maximum number of records to return
+          required: false
+          schema:
+            type: integer
+            maximum: 1000
+            minimum: 0
+            format: int32
+            example: 10
+        - name: filters[country]
+          in: query
+          description: Filters the result with field country
+          required: false
+          schema:
+            type: string
+        - name: filters[state]
+          in: query
+          description: Filters the result with field state
+          required: false
+          schema:
+            type: string
+        - name: filters[city]
+          in: query
+          description: Filters the result with field city
+          required: false
+          schema:
+            type: string
+        - name: filters[station]
+          in: query
+          description: Filters the result with field station
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'OK: The request was successful.'
+        '400':
+          description: 'Bad Request: The request is malformed, has bad input parameters or has client-side errors.'
+        '403':
+          description: 'Forbidden: Access to the requested resource is forbidden.'

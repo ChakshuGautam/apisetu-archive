@@ -1,0 +1,3014 @@
+---
+openapi: 3.0.0
+info:
+  title: Computerization and Computer Networking of Consumer Fora in Country (ConfoNet)
+  description: Confonet is an internet based Case Monitoring System developed for automating the work flow of the consumer commissions, starting from case registration until announcement of judgment.The CONFONET project has been implemented in the backdrop of The Consumer Protection Act, 1986 and The Consumer Protection Act, 2019. Under the provision of the Act, quasi-judicial machinery, namely, Consumer Dispute Redressal Commissions at the district level known as (DCDRC) and Consumer Dispute Redressal Commissions at the State level known as (SCDRC) and Consumer Dispute Redressal Commissions at the National Level known as (NCDRC) were setup. The project was initiated and an Executive Finance Committee (EFC) was prepared to provide a turnkey solution at each of the District Commissions, State Commissions & National Commission, including linkages with respective State Governments and Central Governments. <i>[Updated on 11th September 2023]</i>
+  termsOfService: https://web.umang.gov.in/uaw/ts/v1/en/index.htm
+  contact:
+    name: Provided by - UMANG
+    url: https://web.umang.gov.in
+  version: 1.0.0
+servers:
+  - url: https://apigw.umangapp.in
+    description: Production Server
+    
+security: 
+  - x-api-key: []
+    
+paths:
+  /confonetApi/ws1/statelist:
+    post:
+      tags:
+        - State List Web Service
+      summary: Get the state list using this service
+      description: This api is used to get the state list
+      operationId: confonetApi/ws1/statelist
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: W-23456789
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90  
+                usag:
+                  type: string
+                  description: usag
+                  example: 213213                   
+                usrid:
+                  type: string
+                  description: user id
+                  example: 0
+                srvid:
+                  type: string
+                  description: service id
+                  example: 160
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: app                 
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 34345                 
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 989
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0             
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "160"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "989"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: CF0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success    
+                  pd:
+                    type: object
+                    description: state list objects
+                    properties:
+                      slist:
+                        type: array
+                        description: state list object items
+                        items:
+                         type: object
+                         description: state list object item
+                         example: {
+                                 "7": "Andaman Nicobar"
+                                 }
+  /confonetApi/ws1/districtlist:
+    post:
+      tags:
+        - District List Web Service
+      summary: Get the district list using this service
+      description: This api is used to get the district list
+      operationId: confonetApi/ws1/districtlist
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: W-23456789
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90  
+                usag:
+                  type: string
+                  description: usag
+                  example: 213213                   
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 160
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME               
+                did:
+                  type: string
+                  description: did
+                  example: "https://web.umang.gov.in/confonet/api/deptt/confonet/?redirectUrl=confonetCommon/causeList?GLOBAL_SERVICE_ID=990"               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 990
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                scode:
+                  type: string
+                  description: scode
+                  example: 7                
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "160"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "990"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: CF0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success    
+                  pd:
+                    type: object
+                    description: district list objects
+                    properties:
+                      dlist:
+                        type: array
+                        description: district list object items
+                        items:                       
+                          type: object
+                          description: district list object item
+                          example:  {
+                                  "597": "Andaman"
+                                  }
+  /confonetApi/ws1/ncdrcbasesearch:
+    post:
+      tags:
+        - NCDRC Base Search Web Service
+      summary: Get the ncdrc base search data using this service
+      description: This api is used to get the ncdrc base search data
+      operationId: confonetApi/ws1/ncdrcbasesearch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: W-23456789
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90  
+                usag:
+                  type: string
+                  description: usag
+                  example: 213213                   
+                usrid:
+                  type: string
+                  description: user id
+                  example: 0
+                srvid:
+                  type: string
+                  description: service id
+                  example: 160
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: app                 
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 34345                 
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 990
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0     
+                stateid:
+                  type: string
+                  description: stateid
+                  example: 0 
+                districtid:
+                  type: string
+                  description: districtid
+                  example: 0 
+                caseid:
+                  type: string
+                  description: caseid
+                  example: AE/46/2018                 
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "160"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "990"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: CF0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success    
+                  pd:
+                    type: object
+                    description: base search list objects
+                    properties:
+                      cs:
+                        type: array
+                        description: ncdrc object items
+                        items:                             
+                          type: object
+                          description: ncdrc object item
+                          example: {
+                                 "Unique Id": "0/0/AE/46/2018"
+                                 }
+  /confonetApi/ws1/statebasesearch:
+    post:
+      tags:
+        - State Base Search Web Service
+      summary: Get the data for state base search using this service
+      description: This api is used to get the data for state base search
+      operationId: confonetApi/ws1/statebasesearch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: W-23456789
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90  
+                usag:
+                  type: string
+                  description: usag
+                  example: 213213                   
+                usrid:
+                  type: string
+                  description: user id
+                  example: 0
+                srvid:
+                  type: string
+                  description: service id
+                  example: 160
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: app                 
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 34345                 
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 989
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0  
+                stateid:
+                  type: string
+                  description: stateid
+                  example: 0 
+                districtid:
+                  type: string
+                  description: districtid
+                  example: 0 
+                caseid:
+                  type: string
+                  description: caseid
+                  example: "AE/46/2018"                
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "160"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "989"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: CF0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success    
+                  pd:
+                    type: object
+                    description: state base search objects
+                    properties:
+                      cs:
+                        type: array
+                        description: state base search object items
+                        items:                     
+                          type: object
+                          description: state base search object item
+                          example:  {
+                                  "Unique Id": "0/0/AE/46/2018"
+                                  }
+  /confonetApi/ws1/stateanddistrict:
+    post:
+      tags:
+        - State & District Base Search Web Service
+      summary: Get the state and district details using this service
+      description: This api is used to get the state and district details
+      operationId: confonetApi/ws1/stateanddistrict
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: W-23456789
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90  
+                usag:
+                  type: string
+                  description: usag
+                  example: 213213                   
+                usrid:
+                  type: string
+                  description: user id
+                  example: 0
+                srvid:
+                  type: string
+                  description: service id
+                  example: 160
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: app                 
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 34345                 
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 989
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 123   
+                stateid:
+                  type: string
+                  description: stateid
+                  example: 12 
+                districtid:
+                  type: string
+                  description: districtid
+                  example: 53
+                caseid:
+                  type: string
+                  description: caseid
+                  example: "MA/14/12"                   
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "160"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "989"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: CF0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success    
+                  pd:
+                    type: object
+                    description: state and district objects
+                    properties:
+                      cs:
+                        type: array
+                        description: state & district object items
+                        items:                            
+                          type: object
+                          description: state & district object item
+                          example: {
+                                "Unique Id": "12/53/MA/14/12"
+                                 }
+  /confonetApi/ws1/ncdrcbasedisplay:
+    post:
+      tags:
+        - NCDRC Base Display Web Service
+      summary: Get the data for NCDRC base display using this service
+      description: This api is used to get the data for NCDRC base display
+      operationId: confonetApi/ws1/ncdrcbasedisplay
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: W-23456789
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90  
+                usag:
+                  type: string
+                  description: usag
+                  example: 213213                   
+                usrid:
+                  type: string
+                  description: user id
+                  example: 0
+                srvid:
+                  type: string
+                  description: service id
+                  example: 160
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: app                 
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 34345                 
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 991
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0 
+                stateid:
+                  type: string
+                  description: stateid
+                  example: 0 
+                districtid:
+                  type: string
+                  description: districtid
+                  example: 0                  
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "160"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "991"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: CF0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success    
+                  pd:
+                    type: object
+                    description: ncdrc base display object
+                    properties:
+                      status:
+                        type: string
+                        description: status
+                        example: success
+                      remarks:
+                        type: string
+                        description: remarks
+                        example: null
+                      display_heading:
+                        type: string
+                        description: display_heading
+                        example: NATIONAL CONSUMER DISPUTES REDRESSAL COMMISSION
+                      districtname:
+                        type: string
+                        description: districtname
+                        example: null
+                      districtid:
+                        type: string
+                        description: districtid
+                        example: 0
+                      data:
+                        type: object
+                        description: data object items
+                        items:
+                          type: object
+                          properties: 
+                            IN:                          
+                              type: string
+                              description: In value
+                              example: 38
+                            CASEID:                          
+                              type: string
+                              description: CASEID value
+                              example: null
+                            KBC:                          
+                              type: string
+                              description: KBC value
+                              example: null
+                            BN:                          
+                              type: string
+                              description: BN value
+                              example: 1
+                            CR:                          
+                              type: string
+                              description: CR value
+                              example: null  
+                      statename:
+                        type: string
+                        description: statename
+                        example: null
+                      stateid:
+                        type: string
+                        description: stateid
+                        example: 0
+                      column_settings:
+                        type: string
+                        description: column_settings
+                        example: BN,IN
+  /confonetApi/ws1/statebasedisplay:
+    post:
+      tags:
+        - State Base Display Web Service
+      summary: Get the data for state base display using this service
+      description: This api is used to get the data for state base display
+      operationId: confonetApi/ws1/statebasedisplay
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: W-23456789
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90  
+                usag:
+                  type: string
+                  description: usag
+                  example: 213213                   
+                usrid:
+                  type: string
+                  description: user id
+                  example: 0
+                srvid:
+                  type: string
+                  description: service id
+                  example: 160
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: app                 
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 34345                 
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 991
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 123
+                stateid:
+                  type: string
+                  description: stateid
+                  example: 21
+                districtid:
+                  type: string
+                  description: districtid
+                  example: 0                  
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "160"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "991"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: CF0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success    
+                  pd:
+                    type: object
+                    description: state base display object
+                    properties:
+                      status:
+                        type: string
+                        description: status
+                        example: success
+                      remarks:
+                        type: string
+                        description: remarks
+                        example: null
+                      display_heading:
+                        type: string
+                        description: display_heading
+                        example: STATE COMMISSION MAHARASHTRA
+                      districtname:
+                        type: string
+                        description: districtname
+                        example: null
+                      districtid:
+                        type: string
+                        description: districtid
+                        example: 0
+                      data:
+                        type: object
+                        description: data object items
+                        items:
+                          type: object
+                          properties: 
+                            IN:                          
+                              type: string
+                              description: In value
+                              example: 38
+                            COR:                          
+                              type: string
+                              description: COR value
+                              example: "HON'BLE MR. JUSTICE S. P. TAVADE, (PRESIDENT)\nHON'BLE MS. S. T. BARNE, (JUDICIAL MEMBER)\nHON'BLE MR. A. Z. KHWAJA, (JUDICIAL MEMBER)\n SMT. V. R. HANGARGEKAR, (REGISTRAR)\n  INCHARGE, (REGISTRAR)\nHON'BLE MR. K. M. LAWANDE, (MEMBER)\nHON'BLE MR. Dr. S. K. KAKADE, (MEMBER)\n  NONE, (MEMBER)\n"
+                            KBC:                          
+                              type: string
+                              description: KBC value
+                              example: null
+                            BN:                          
+                              type: string
+                              description: BN value
+                              example: BENCH 1  
+                      statename:
+                        type: string
+                        description: statename
+                        example: Maharashtra
+                      stateid:
+                        type: string
+                        description: stateid
+                        example: 21
+                      column_settings:
+                        type: string
+                        description: column_settings
+                        example: BN,IN,COR,KBC,CNO  
+  /confonetApi/ws1/districtbasedisplay:
+    post:
+      tags:
+        - District Base Display Web Service
+      summary: Get the data for district base display using this service
+      description: This api is used to get the data for district base display
+      operationId: confonetApi/ws1/districtbasedisplay
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: W-23456789
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90  
+                usag:
+                  type: string
+                  description: usag
+                  example: 213213                   
+                usrid:
+                  type: string
+                  description: user id
+                  example: 0
+                srvid:
+                  type: string
+                  description: service id
+                  example: 160
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: app                 
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 34345                 
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 991
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 123
+                stateid:
+                  type: string
+                  description: stateid
+                  example: 21
+                districtid:
+                  type: string
+                  description: districtid
+                  example: 470              
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "160"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "991"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: CF0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success    
+                  pd:
+                    type: object
+                    description: district base display object
+                    properties:
+                      status:
+                        type: string
+                        description: status
+                        example: success
+                      remarks:
+                        type: string
+                        description: remarks
+                        example: null
+                      display_heading:
+                        type: string
+                        description: display_heading
+                        example: DISTRICT CONSUMER COMMISSION BHANDARA
+                      districtname:
+                        type: string
+                        description: districtname
+                        example: Bhandara
+                      districtid:
+                        type: string
+                        description: districtid
+                        example: 470
+                      data:
+                        type: object
+                        description: data object items
+                        items:
+                          type: object
+                          properties: 
+                            IN:                          
+                              type: string
+                              description: In value
+                              example: 5
+                            COR:                          
+                              type: string
+                              description: COR value
+                              example: "HON'BLE MR. BHASKAR B. YOGI, (PRESIDENT)\nHON'BLE MR. NITIN M. GHARDE, (MEMBER)\nHON'BLE MRS. VRUSHALI JAGIRDAR, (MEMBER)\n"
+                            CASEID:                          
+                              type: string
+                              description: CASEID value
+                              example: null                            
+                            KBC:                          
+                              type: string
+                              description: KBC value
+                              example: null
+                            BN:                          
+                              type: string
+                              description: BN value
+                              example: BENCH 1  
+                            CR:                          
+                              type: string
+                              description: CR value
+                              example: null                           
+                      statename:
+                        type: string
+                        description: statename
+                        example: Maharashtra
+                      stateid:
+                        type: string
+                        description: stateid
+                        example: 21
+                      column_settings:
+                        type: string
+                        description: column_settings
+                        example: BN,IN,COR                         
+  /confonetApi/ws1/ncdrcbasecauselist:
+    post:
+      tags:
+        - NCDRC Cause List Web Service
+      summary: Get the ncdrc base cause list using this service
+      description: This api is used to get the ncdrc base cause list
+      operationId: confonetApi/ws1/ncdrcbasecauselist
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: W-23456789
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90  
+                usag:
+                  type: string
+                  description: usag
+                  example: 213213                   
+                usrid:
+                  type: string
+                  description: user id
+                  example: 0
+                srvid:
+                  type: string
+                  description: service id
+                  example: 160
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: app                 
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 34345                 
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 990
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0  
+                stateid:
+                  type: string
+                  description: stateid
+                  example: 0
+                districtid:
+                  type: string
+                  description: districtid
+                  example: 0
+                date:
+                  type: string
+                  description: date
+                  example: 18-02-2019                
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "160"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "990"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: CF0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success    
+                  pd:
+                    type: object
+                    description: ncdrc base cause list objects
+                    properties:
+                      cl:
+                        type: array
+                        description: cl object item array
+                        items:
+                          type: object
+                          description: cl object item
+                          example: {
+                                    "1": "1"
+                                   }                                  
+  /confonetApi/ws1/statebasecauselist:
+    post:
+      tags:
+        - State Base Cause List Web Service
+      summary: Get the state base cause list using this service
+      description: This api is used to get the state base cause list
+      operationId: confonetApi/ws1/statebasecauselist
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: W-23456789
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90  
+                usag:
+                  type: string
+                  description: usag
+                  example: 213213                   
+                usrid:
+                  type: string
+                  description: user id
+                  example: 0
+                srvid:
+                  type: string
+                  description: service id
+                  example: 160
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: app                 
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 34345                 
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 990
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0  
+                stateid:
+                  type: string
+                  description: stateid
+                  example: 8
+                districtid:
+                  type: string
+                  description: districtid
+                  example: 0
+                date:
+                  type: string
+                  description: date
+                  example: 25/08/2023                
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "160"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "990"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: CF0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success    
+                  pd:
+                    type: object
+                    description: state base cause list objects
+                    properties:
+                      cl:
+                        type: array
+                        description: cl object item array
+                        items:
+                          type: object
+                          description: cl object item
+                          example: {
+                                    "1": "1"
+                                   }                                   
+  /confonetApi/ws1/districtbasecauselist:
+    post:
+      tags:
+        - District Base Cause List Web Service
+      summary: Get the district base cause list using this service
+      description: This api is used to get the district base cause list
+      operationId: confonetApi/ws1/districtbasecauselist
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: W-23456789
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90  
+                usag:
+                  type: string
+                  description: usag
+                  example: 213213                   
+                usrid:
+                  type: string
+                  description: user id
+                  example: 0
+                srvid:
+                  type: string
+                  description: service id
+                  example: 160
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: app                 
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 34345                 
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 990
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0  
+                stateid:
+                  type: string
+                  description: stateid
+                  example: 8
+                districtid:
+                  type: string
+                  description: districtid
+                  example: 6
+                date:
+                  type: string
+                  description: date
+                  example: 25/08/2023                
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "160"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "990"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: CF0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success    
+                  pd:
+                    type: object
+                    description: district base cause list objects
+                    properties:
+                      cl:
+                        type: array
+                        description: cl object item array
+                        items:
+                          type: object
+                          description: cl object item
+                          example: {
+                                    "1": "1"
+                                   }                                   
+  /confonetApi/ws1/downloadcauselist:
+    post:
+      tags:
+        - Download Cause List Web Service
+      summary: Download the cause list using this service
+      description: This api is used to download the cause list
+      operationId: confonetApi/ws1/downloadcauselist
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: W-23456789
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90  
+                usag:
+                  type: string
+                  description: usag
+                  example: 213213                   
+                usrid:
+                  type: string
+                  description: user id
+                  example: 0
+                srvid:
+                  type: string
+                  description: service id
+                  example: 160
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: app                 
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 34345                 
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 341
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 123
+                fmt:
+                  type: string
+                  description: fmt
+                  example: P
+                state_id:
+                  type: string
+                  description: state_id
+                  example: 0
+                district_id:
+                  type: string
+                  description: district_id
+                  example: 0
+                courtid:
+                  type: string
+                  description: courtid
+                  example: 1    
+                dtOfHearing:
+                  type: string
+                  description: dtOfHearing
+                  example: 2019-02-18                  
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "160"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "990"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: CF0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success    
+                  pd:
+                    type: string
+                    description: download link
+                    example: "http://cms.nic.in/ncdrcusersWeb/GetCLHtml.do?method=GetCLHtml&state_id=0&district_id=0&courtid=1&fmt=P&dtOfHearing=2019-02-18"
+  /confonetApi/ws1/ncdrcbasecasehistory:
+    post:
+      tags:
+        - NCDRC Base Case History Web Service
+      summary: Get the data for ncdrc base case history using this service
+      description: This api is used to get the ncdrc base case history
+      operationId: confonetApi/ws1/ncdrcbasecasehistory
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: W-23456789
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90  
+                usag:
+                  type: string
+                  description: usag
+                  example: 213213                   
+                usrid:
+                  type: string
+                  description: user id
+                  example: 0
+                srvid:
+                  type: string
+                  description: service id
+                  example: 160
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: app                 
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 34345                 
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 990
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0  
+                stateCode:
+                  type: string
+                  description: stateCode
+                  example: 0 
+                districtCode:
+                  type: string
+                  description: districtCode
+                  example: 0 
+                caseNo:
+                  type: string
+                  description: caseNo
+                  example: CC/1523/2016                
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "160"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "990"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: CF0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: null    
+                  pd:
+                    type: object
+                    description: NCDRC base case objects
+                    properties:
+                      fano:
+                        type: string
+                        description: fano
+                        example: CC/1523/2016
+                      case_id_in:
+                        type: string
+                        description: case_id_in
+                        example: 0/0/CC/1523/2016
+                      complainant:
+                        type: string
+                        description: complainant
+                        example: PUNEET SINGLA &amp; ANR.
+                      respondent:
+                        type: string
+                        description: respondent
+                        example: UNITECH LTD. 
+                      historyList:
+                        type: array
+                        description: history list object items
+                        items:
+                          type: object
+                          properties: 
+                            uploadOrder:                          
+                              type: string
+                              description: uploadOrder value
+                              example: null
+                            fileType:                          
+                              type: string
+                              description: fileType value
+                              example: null
+                            dtofHearingYYYYMMDD:                          
+                              type: string
+                              description: dtofHearingYYYYMMDD value
+                              example: 2016-09-28 00:00:00.0                   
+                            dtofHearing:                          
+                              type: string
+                              description: dtofHearing value
+                              example: 28/09/2016
+                            dtofnHearing:                          
+                              type: string
+                              description: dtofnHearing value
+                              example: 09/11/2016
+                            caseStage:                          
+                              type: string
+                              description: caseStage value
+                              example: Adjourn    
+                            proceeding:                          
+                              type: string
+                              description: proceeding value
+                              example: Proceeding  
+                            order:                          
+                              type: string
+                              description: order value
+                              example: DailyOrder
+  /confonetApi/ws1/statebasecasehistory:
+    post:
+      tags:
+        - State Base Case History Web Service
+      summary: Get the state base case history using this service
+      description: This api is used to get the state base case history
+      operationId: confonetApi/ws1/statebasecasehistory
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: W-23456789
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90  
+                usag:
+                  type: string
+                  description: usag
+                  example: 213213                   
+                usrid:
+                  type: string
+                  description: user id
+                  example: 0
+                srvid:
+                  type: string
+                  description: service id
+                  example: 160
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: app                 
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 34345                 
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 990
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 123         
+                stateCode:
+                  type: string
+                  description: stateCode
+                  example: 17 
+                districtCode:
+                  type: string
+                  description: districtCode
+                  example: 0 
+                caseNo:
+                  type: string
+                  description: caseNo
+                  example: EA/16/18                   
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "160"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "990"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: CF0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success    
+                  pd:
+                    type: object
+                    description: state base case objects
+                    properties:
+                      fano:
+                        type: string
+                        description: fano
+                        example: EA/16/18
+                      case_id_in:
+                        type: string
+                        description: case_id_in
+                        example: 17/0/EA/16/18
+                      complainant:
+                        type: string
+                        description: complainant
+                        example: SUVARNA RAJENDRAN
+                      respondent:
+                        type: string
+                        description: respondent
+                        example: DR.RENI PHILIP
+                      historyList:
+                        type: array
+                        description: history list object items
+                        items:
+                          type: object
+                          properties: 
+                            uploadOrder:                          
+                              type: string
+                              description: uploadOrder value
+                              example: null
+                            fileType:                          
+                              type: string
+                              description: fileType value
+                              example: null
+                            dtofHearingYYYYMMDD:                          
+                              type: string
+                              description: dtofHearingYYYYMMDD value
+                              example: 2016-09-05 00:00:00.0                   
+                            dtofHearing:                          
+                              type: string
+                              description: dtofHearing value
+                              example: 05/09/2016
+                            dtofnHearing:                          
+                              type: string
+                              description: dtofnHearing value
+                              example: 03/11/2016
+                            caseStage:                          
+                              type: string
+                              description: caseStage value
+                              example: Admit    
+                            proceeding:                          
+                              type: string
+                              description: proceeding value
+                              example: Proceeding  
+                            order:                          
+                              type: string
+                              description: order value
+                              example: DailyOrder
+  /confonetApi/ws1/districtbasecasehistory:
+    post:
+      tags:
+        - District Base Case History Web Service
+      summary: Get the district base case history using this service
+      description: This api is used to get the district base case history
+      operationId: confonetApi/ws1/districtbasecasehistory
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: W-23456789
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90  
+                usag:
+                  type: string
+                  description: usag
+                  example: 213213                   
+                usrid:
+                  type: string
+                  description: user id
+                  example: 0
+                srvid:
+                  type: string
+                  description: service id
+                  example: 160
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: app                 
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 34345                 
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 341
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0  
+                stateCode:
+                  type: string
+                  description: stateCode
+                  example: 12
+                districtCode:
+                  type: string
+                  description: districtCode
+                  example: 53
+                caseNo:
+                  type: string
+                  description: caseNo
+                  example: MA/14/12               
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "160"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "990"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: CF0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success    
+                  pd:
+                    type: object
+                    description: state base case objects
+                    properties:
+                      fano:
+                        type: string
+                        description: fano
+                        example: MA/14/12
+                      case_id_in:
+                        type: string
+                        description: case_id_in
+                        example: 12/53/MA/14/12
+                      complainant:
+                        type: string
+                        description: complainant
+                        example: Vikas Bansal
+                      respondent:
+                        type: string
+                        description: respondent
+                        example: M.C. Ferozepur &amp; Others
+                      historyList:
+                        type: array
+                        description: history list object items
+                        items:
+                          type: object
+                          properties: 
+                            uploadOrder:                          
+                              type: string
+                              description: uploadOrder value
+                              example: null
+                            fileType:                          
+                              type: string
+                              description: fileType value
+                              example: null
+                            dtofHearingYYYYMMDD:                          
+                              type: string
+                              description: dtofHearingYYYYMMDD value
+                              example: 2014-06-17 00:00:00.0                  
+                            dtofHearing:                          
+                              type: string
+                              description: dtofHearing value
+                              example: 17/06/2014
+                            dtofnHearing:                          
+                              type: string
+                              description: dtofnHearing value
+                              example: 24/07/2014
+                            caseStage:                          
+                              type: string
+                              description: caseStage value
+                              example: Issue Notice/Directions    
+                            proceeding:                          
+                              type: string
+                              description: proceeding value
+                              example: Proceeding  
+                            order:                          
+                              type: string
+                              description: order value
+                              example: DailyOrder
+  /confonetApi/ws1/fororder:
+    post:
+      tags:
+        - Fetch Order Web Service
+      summary: Get the order details using this service
+      description: This api is used to get the order details
+      operationId: confonetApi/ws1/fororder
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: W-23456789
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90  
+                usag:
+                  type: string
+                  description: usag
+                  example: 213213                   
+                usrid:
+                  type: string
+                  description: user id
+                  example: 0
+                srvid:
+                  type: string
+                  description: service id
+                  example: 160
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: app                 
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 34345                 
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 990
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                fmt:
+                  type: string
+                  description: fmt
+                  example: P 
+                caseidin:
+                  type: string
+                  description: caseidin
+                  example: 0/0/CC/1523/2016
+                dtOfHearing:
+                  type: string
+                  description: dtOfHearing
+                  example: 2018-07-03                 
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "160"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "990"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: CF0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success    
+                  pd:
+                    type: string
+                    description: order link
+                    example: "http://cms.nic.in/ncdrcusersWeb/GetDailyOrder.do?method=GetJudgement&fmt=P&caseidin=0%2F0%2FCC%2F1523%2F2016&dtofhearing=2018-07-03"
+  /confonetApi/ws1/fororderandjudgement:
+    post:
+      tags:
+        - For Order and Judgement Web Service
+      summary: Get the for order and judgement details using this service
+      description: This api is used to get the for order and judgement details
+      operationId: confonetApi/ws1/fororderandjudgement
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: W-23456789
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90  
+                usag:
+                  type: string
+                  description: usag
+                  example: 213213                   
+                usrid:
+                  type: string
+                  description: user id
+                  example: 0
+                srvid:
+                  type: string
+                  description: service id
+                  example: 160
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: app                 
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 34345                 
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 990
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0     
+                fmt:
+                  type: string
+                  description: fmt
+                  example: P
+                caseidin:
+                  type: string
+                  description: caseidin
+                  example: 0/0/CC/1523/2016
+                dtOfHearing:
+                  type: string
+                  description: dtOfHearing
+                  example: 2018-07-03          
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "160"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "990"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: CF0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success    
+                  pd:
+                    type: object
+                    description: for & judgement link
+                    example: "http://cms.nic.in/ncdrcusersWeb/GetJudgement.do?method=GetJudgement&fmt=P&caseidin=0%2F0%2FCC%2F1523%2F2016&dtofhearing=2018-07-03"
+  /confonetApi/ws1/getpdfcasestatus:
+    post:
+      tags:
+        - Get PDF Case Status Web Service
+      summary: Get the pdf case status using this service
+      description: This api is used to get the pdf case status
+      operationId: confonetApi/ws1/getpdfcasestatus
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: W-23456789
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90  
+                usag:
+                  type: string
+                  description: usag
+                  example: 213213                   
+                usrid:
+                  type: string
+                  description: user id
+                  example: 0
+                srvid:
+                  type: string
+                  description: service id
+                  example: 160
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: app                 
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 34345                 
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 990
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0      
+                cid:
+                  type: string
+                  description: cid
+                  example: "23/0/A/19/1"
+                dtOfHearing:
+                  type: string
+                  description: dtOfHearing
+                  example: "2019-02-02" 
+                lang:
+                  type: string
+                  description: lang
+                  example: en                 
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "160"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "990"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: CF0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success    
+                  pd:
+                    type: string
+                    description: pdf case status link
+                    example: "http://cms.nic.in/ncdrcusersWeb/GetPdfCaseStaus.do?method=GetPdfCaseStaus&cid=23%2F0%2FA%2F19%2F1&dtOfHearing=2019-02-02"    
+components:
+  securitySchemes:
+    x-api-key:
+      type: apiKey
+      name: x-api-key
+      in: header

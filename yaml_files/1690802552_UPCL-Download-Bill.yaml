@@ -1,0 +1,246 @@
+openapi: 3.0.0
+info:
+  title: Uttarakhand Power Corporation Limited (UPCL)
+  description: |-
+  
+      **<h1>Download Bill API</h1>**
+      
+       Uttarakhand Power Corporation Limited (UPCL), a Government of Uttarakhand Undertaking is a sole electricity distribution licensee of the state. Today, UPCL is supplying electricity to its 2.6 million consumers across the State . The turnover of the Company during Financial Year 2020-21 was Rs. 6941 Cr. UPCL is committed to supply quality and reliable power to its consumers at affordable cost.
+  
+       **Last 3-Month Bill Downloads :**
+         The API will grant you access to download the bills for the past three months. This feature will assist you in managing billing-related inquiries, providing accurate and up-to-date information to your customers.<i>[Updated on 28th July 2023]</i>. 
+  contact:
+    name: Provided by UPCL
+    url: https://www.upcl.org
+  version: 1.0.0
+servers:
+  - url: https://appservices.upcl.org:8443/famapp/api/v01/famData
+    description: Production Server 
+
+security:
+  - APIKey: []
+
+paths:
+  /consumerLast3monthBill:
+    get:
+      tags:
+        - Consumer Bill API 
+      summary: Consumer Bill API.
+      description: This API used to download the bills for the past three months.
+      parameters:
+        - name: scno
+          in: query
+          schema:
+            type: integer
+          example: '40100800103'
+      responses:
+        '200':
+          description: Successful Response
+          
+        '401':
+          description: Unauthorized
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: Keep-Alive
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Expires:
+              schema:
+                type: integer
+                example: '0'
+            Date:
+              schema:
+                type: string
+                example: Fri, 28 Jul 2023 06:57:46 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Server:
+              schema:
+                type: string
+                example: noname
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, no-store, max-age=0, must-revalidate
+            X-Powered-By:
+              schema:
+                type: boolean
+                example: 'false'
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            Pragma:
+              schema:
+                type: string
+                example: no-cache
+            X-Frame-Options:
+              schema:
+                type: string
+                example: DENY
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: 'default-src https:'
+            Vary:
+              schema:
+                type: string
+                example: Access-Control-Request-Headers
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000; includeSubDomains;
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                error_code: 401
+                details: Please provide the valid authorize key.
+                message: The user is not authenticated to access the resource.
+        '404':
+          description: Not Found
+          headers:
+            Vary:
+              schema:
+                type: string
+                example: Access-Control-Request-Headers
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, no-store, max-age=0, must-revalidate
+            Pragma:
+              schema:
+                type: string
+                example: no-cache
+            Expires:
+              schema:
+                type: integer
+                example: '0'
+            X-Frame-Options:
+              schema:
+                type: string
+                example: DENY
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Date:
+              schema:
+                type: string
+                example: Fri, 28 Jul 2023 07:12:02 GMT
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=60
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                error_code: 404
+                details: Consumer not found.
+                message: Consumer with UK11208021857 does not Exist.
+        '417':
+          description: Expectation Failed
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: Keep-Alive
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Expires:
+              schema:
+                type: integer
+                example: '0'
+            Date:
+              schema:
+                type: string
+                example: Fri, 28 Jul 2023 06:58:21 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Server:
+              schema:
+                type: string
+                example: noname
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, no-store, max-age=0, must-revalidate
+            X-Powered-By:
+              schema:
+                type: boolean
+                example: 'false'
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            Pragma:
+              schema:
+                type: string
+                example: no-cache
+            X-Frame-Options:
+              schema:
+                type: string
+                example: DENY
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: 'default-src https:'
+            Vary:
+              schema:
+                type: string
+                example: Access-Control-Request-Headers
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000; includeSubDomains;
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                error_code: 417
+                details: Somthing went Wrong.
+                message: Error while downloading bills.
+components:
+  securitySchemes:
+    APIKey:
+      type: apiKey
+      in: header
+      name: APIKey

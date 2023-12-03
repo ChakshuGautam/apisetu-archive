@@ -1,0 +1,5745 @@
+---
+openapi: 3.0.0
+info:
+  title: Madhya Pradesh Police’s Mobile App (MPeCop)
+  description: MPeCop Mobile Application is an effort of Madhya Pradesh Police to empower the Citizens of Madhya Pradesh. Users can avail important services such as telephone numbers and helpline numbers of the senior offices/police stations, search for seized vehicles, search for missing persons and unknown dead bodies. <i>[Updated on 31st March 2023]</i>.
+  termsOfService: https://web.umang.gov.in/uaw/ts/v1/en/index.htm
+  contact:
+    name: Provided by - UMANG
+    url: https://web.umang.gov.in
+  version: 1.0.0
+servers:
+  - url: https://apigw.umangapp.in
+    description: Production Server
+security:
+ - x-api-key: []
+paths:
+  /MpEcopApi/ws1/login:
+    post:
+      tags:
+        - Login API
+      summary: MPeCop Login API
+      description: This API is Used to Login to MPeCop
+      operationId: MpEcopApi/ws1/login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: Location
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 191
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1310
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 420
+                did:
+                  type: string
+                  description: Device Id
+                  example: 122
+                loginid:
+                  type: string
+                  description: loginid
+                  example: pramodumang
+                password:
+                  type: string
+                  description: password
+                  example: Pramod@123
+                langcd:
+                  type: string
+                  description: language code
+                  example: 6
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer 686548e3-d08b-3a82-9f81-2ef2f5efb95c
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:
+                      validateUserResponseBean:
+                        type: object
+                        description: validated user details
+                        properties:
+                          firstName:
+                            type: string
+                            description: first Name
+                            example: Pramod
+                          int_checkLogin:
+                            type: string
+                            description: integer check Login
+                            example: 0
+                          loginStatus:
+                            type: string
+                            description: login status
+                            example: Success!!
+                          loginStatusCode:
+                            type: string
+                            description: login status code
+                            example: S
+                          userRegCount:
+                            type: string
+                            description: user Reg Count
+                            example: 0
+                          bStatus:
+                            type: string
+                            description: bstatus
+                            example: true
+        "400":
+          description: Bad Request/Validation Error
+  /MpEcopApi/ws1/userprofile:
+    post:
+      tags:
+        - Get User Profile API
+      summary: User Profile Detail API
+      description: This API is Used to Get Profile Detail
+      operationId: MpEcopApi/ws1/userprofile
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: Location
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                loginid:
+                  type: string
+                  description: login id
+                  example: pramodumang
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer 686548e3-d08b-3a82-9f81-2ef2f5efb95c
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: MP0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:
+                      userProfileResponseBean:
+                        type: object
+                        description: user profile response details
+                        properties:
+                          dateOfBirth:
+                            type: string
+                            description: date Of Birth
+                            example: 1984-04-22
+                          email:
+                            type: string
+                            description: email
+                            example: pramod.singh@digispice.com
+                          firstName:
+                            type: string
+                            description: first Name
+                            example: Pramod
+                          lastName:
+                            type: string
+                            description: last Name
+                            example: Singh
+                          loginId:
+                            type: string
+                            description: login Id
+                            example: pramodumang
+                          middleName:
+                            type: string
+                            description: middle Name
+                            example: Pramod
+                          mobileNum:
+                            type: string
+                            description: mobile number
+                            example: 919711567630
+                          bStatus:
+                            type: string
+                            description: bstatus
+                            example: true
+        "400":
+          description: Bad Request/Validation Error
+  /MpEcopApi/ws1/missingpersonlist:
+    post:
+      tags:
+        - Get List Of Missing Person API
+      summary: Get List Of Missing Person
+      description: This API is Used to Get List of Missing Person
+      operationId: MpEcopApi/ws1/missingpersonlist
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: Location
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                policestationcd:
+                  type: string
+                  description: police station code
+                  example: 1
+                districtcd:
+                  type: string
+                  description: district code
+                  example: 1
+                gender:
+                  type: string
+                  description: gender
+                  example: null
+                age:
+                  type: string
+                  description: age
+                  example: 71
+                category:
+                  type: string
+                  description: category
+                  example: abc
+                fromdate:
+                  type: string
+                  description: from date
+                  example: 2018-04-01 00:00:00
+                todate:
+                  type: string
+                  description: to date
+                  example: 2018-04-01 00:00:00
+                placeburnmark:
+                  type: string
+                  description: placeburnmark
+                  example: abc
+                placeblackmark:
+                  type: string
+                  description: placeblackmark
+                  example: abc
+                placeleucoderma:
+                  type: string
+                  description: placeleucoderma
+                  example: abc
+                placemole:
+                  type: string
+                  description: placemole
+                  example: abc
+                placescar:
+                  type: string
+                  description: placescar
+                  example: abc
+                placetattoo:
+                  type: string
+                  description: placetattoo
+                  example: abc
+                foundstatus:
+                  type: string
+                  description: foundstatus
+                  example: abc
+                firregnum:
+                  type: string
+                  description: firregnum
+                  example: abc
+                personname:
+                  type: string
+                  description: personname
+                  example: abc
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer 686548e3-d08b-3a82-9f81-2ef2f5efb95c
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:
+                      missingPersonResponseBean:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            age:
+                              type: string
+                              example: 15
+                            foundStatus:
+                              type: string
+                              example: लापता
+                            fullName:
+                              type: string
+                              example: कमलवाती पनिका
+                            genderCd:
+                              type: string
+                              example: 2
+                            missingPersonRegNum:
+                              type: string
+                              example: 21350006180022
+                            psName:
+                              type: string
+                              example: बुढार
+                            uploadedFileList:
+                              type: string
+                              example: /9j
+                            bStatus:
+                              type: string
+                              example: true
+        "400":
+          description: Bad Request/Validation Error
+  /MpEcopApi/ws1/missingpersondetails:
+    post:
+      tags:
+        - Get Missing Person Details API
+      summary: Get Missing Person Details Based On Complaint Registration Number
+      description: This API is Used to Get Missing Person Details Based on Complaint
+        registration number
+      operationId: MpEcopApi/ws1/missingpersondetails
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: Location
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                regnum:
+                  type: string
+                  description: registration number
+                  example: 21350006180022
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer 686548e3-d08b-3a82-9f81-2ef2f5efb95c
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1519"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:
+                      missingPersonResponseBean:
+                          type: object
+                          properties:
+                            age:
+                              type: string
+                              example: 15
+                            district:
+                              type: string
+                              example: शहडोल
+                            fileName:
+                              type: string
+                              example: गुमशुदा कमलवती पनिका उर्फ नेहा.jpg
+                            fullName:
+                              type: string
+                              example: कमलवाती पनिका
+                            genderCd:
+                              type: string
+                              example: 0
+                            incidentPlace:
+                              type: string
+                              example: वेद इंजीनयरिंग वर्कशाप बुढार
+                            ioFullName:
+                              type: string
+                              example: VINOD   TIWARI
+                            ioMobille:
+                              type: string
+                              example: 919424687588
+                            ioRank:
+                              type: string
+                              example: सहायकउप - निरीक्षक
+                            ioRankCategory:
+                              type: string
+                              example: अनुसूचित जनजाति
+                            missingDate:
+                              type: string
+                              example: 31 Mar 2018
+                            missingPersonFileSrNo:
+                              type: string
+                              example: 2135000618002201
+                            missingPersonRegNum:
+                              type: string
+                              example: 21350006180022
+                            officeInchargeName:
+                              type: string
+                              example: KANHAIYA LAL  VERMA
+                            officeInchargeRank:
+                              type: string
+                              example: SI (Sub-Inspector)
+                            policeStation:
+                              type: string
+                              example: बुढार
+                            recordCreatedOn:
+                              type: string
+                              example: 01 Apr 2018
+                            state:
+                              type: string
+                              example: मध्य प्रदेश
+                            uploadedFile:
+                              type: string
+                              example: /9j
+                            bStatus:
+                              type: string
+                              example: true
+        "400":
+          description: Bad Request/Validation Error
+  /MpEcopApi/ws1/district:
+    post:
+      tags:
+        - Get District List API
+      summary: Get District List
+      description: This API is Used to Get District List
+      operationId: MpEcopApi/ws1/district
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: Location
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                langcd:
+                  type: string
+                  description: lang code
+                  example: 6
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer 686548e3-d08b-3a82-9f81-2ef2f5efb95c
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1519"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:
+                      masterResponseBean:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            districtCode:
+                              type: string
+                              example: 0
+                            districtName:
+                              type: string
+                              example: शहडोल
+                            bStatus:
+                              type: string
+                              example: false
+        "400":
+          description: Bad Request/Validation Error
+  /MpEcopApi/ws1/policestation:
+    post:
+      tags:
+        - Get Police Station Name List API
+      summary: Get Police Station Name List
+      description: This API is Used to Get Police Station Name List
+      operationId: MpEcopApi/ws1/policestation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: Location
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                langcd:
+                  type: string
+                  description: lang code
+                  example: 6
+                districtcd:
+                  type: string
+                  description: district code
+                  example: 21733
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer 686548e3-d08b-3a82-9f81-2ef2f5efb95c
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1519"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:
+                      masterResponseBean:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            policeStationCd:
+                              type: string
+                              example: 21733002
+                            policeStationName:
+                              type: string
+                              example: अम्बुआ
+                            bStatus:
+                              type: string
+                              example: false
+        "400":
+          description: Bad Request/Validation Error
+  /MpEcopApi/ws1/gender:
+    post:
+      tags:
+        - Get Gender List API
+      summary: Get Gender List
+      description: This API is Used to Get Gender List
+      operationId: MpEcopApi/ws1/gender
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: Location
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                langcd:
+                  type: string
+                  description: lang code
+                  example: 6
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer 686548e3-d08b-3a82-9f81-2ef2f5efb95c
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1519"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:
+                      masterResponseBean:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            genderCd:
+                              type: string
+                              example: 1
+                            genderName:
+                              type: string
+                              example: हिजड़ा/किन्\u200dनर
+                            bStatus:
+                              type: string
+                              example: false
+        "400":
+          description: Bad Request/Validation Error
+  /MpEcopApi/ws1/documenttype:
+    post:
+      tags:
+        - Get Document Type List API
+      summary: Get Document Type List
+      description: This API is Used to Get Document Type List
+      operationId: MpEcopApi/ws1/documenttype
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: Location
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                langcd:
+                  type: string
+                  description: lang code
+                  example: 6
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer 686548e3-d08b-3a82-9f81-2ef2f5efb95c
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1519"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:
+                      masterResponseBean:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            nationalIdCd:
+                              type: string
+                              example: 0
+                            nationalIdType:
+                              type: string
+                              example: 0
+                            bStatus:
+                              type: string
+                              example: false
+        "400":
+          description: Bad Request/Validation Error
+  /MpEcopApi/ws1/secquestion:
+    post:
+      tags:
+        - Get Security Questions Result API
+      summary: Get Security Questions Result
+      description: This API is Used to Get Security Questions Result
+      operationId: MpEcopApi/ws1/secquestion
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: Location
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                langcd:
+                  type: string
+                  description: lang code
+                  example: 6
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer 686548e3-d08b-3a82-9f81-2ef2f5efb95c
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1519"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:
+                      getSecurityQuestionsResult:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            nationalIdTypeCd:
+                              type: string
+                              example: 0
+                            strNationalIdType:
+                              type: string
+                              example: 0
+        "400":
+          description: Bad Request/Validation Error
+  /MpEcopApi/ws1/hospital:
+    post:
+      tags:
+        - Get Hospital List API
+      summary: Get Hospital List
+      description: This API is Used to Get Hospital List
+      operationId: MpEcopApi/ws1/hospital
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: Location
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                langcd:
+                  type: string
+                  description: lang code
+                  example: 6
+                districtcd:
+                  type: string
+                  description: district code
+                  example: 21733
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer 686548e3-d08b-3a82-9f81-2ef2f5efb95c
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:
+                      hospitalResponseBean:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            hospitalAddress:
+                              type: string
+                              example: सोंधवा
+                            hospitalCd:
+                              type: string
+                              example: 217332777
+                            hospitalName:
+                              type: string
+                              example: सामूदायिक स्वास्थ्य केंद्र सोंधवा
+                            bStatus:
+                              type: string
+                              example: true
+        "400":
+          description: Bad Request/Validation Error
+  /MpEcopApi/ws1/lostartical:
+    post:
+      tags:
+        - Get Lost Article Category API
+      summary: Get Lost Article Category
+      description: This API is Used to Get Lost Article Category
+      operationId: MpEcopApi/ws1/lostartical
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: Location
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                langcd:
+                  type: string
+                  description: lang code
+                  example: 6
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer 686548e3-d08b-3a82-9f81-2ef2f5efb95c
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:
+                      lostArticleResponseBean:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            codeType:
+                              type: string
+                              example: इलेक्ट्रिकल और इलेक्ट्रॉनिक सामान
+                            parentCd:
+                              type: string
+                              example: 13
+                            bStatus:
+                              type: string
+                              example: true
+        "400":
+          description: Bad Request/Validation Error
+  /MpEcopApi/ws1/elecgoods:
+    post:
+      tags:
+        - Get Electronic Goods List API
+      summary: Get Electronic Goods List
+      description: This api is Used to Get Electronic Goods List
+      operationId: MpEcopApi/ws1/elecgoods
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: Location
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                langcd:
+                  type: string
+                  description: lang code
+                  example: 6
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer 686548e3-d08b-3a82-9f81-2ef2f5efb95c
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:
+                      lostArticleSubTypeResponseBean: 
+                        type: object
+                        properties:
+                          documentTypeCd:
+                            type: string
+                            example: 0
+                          electronicGoods:
+                            type: string
+                            example: मोबाइल फोन
+                          electronicGoodsCd:
+                            type: string
+                            example: 470
+                          bStatus:
+                            type: string
+                            example: true
+        "400":
+          description: Bad Request/Validation Error
+  /MpEcopApi/ws1/doctypegoods:
+    post:
+      tags:
+        - Get Electronic Goods Document Type List API
+      summary: Get Electronic Goods Document Type List
+      description: This API is used to Get Electronic Goods Document Type List
+      operationId: MpEcopApi/ws1/doctypegoods
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: Location
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                langcd:
+                  type: string
+                  description: lang code
+                  example: 6
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer 686548e3-d08b-3a82-9f81-2ef2f5efb95c
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:
+                      lostArticleSubTypeResponseBean:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            documentType:
+                              type: string
+                              example: बैंक ड्राफ्ट
+                            documentTypeCd:
+                              type: string
+                              example: 332
+                            electronicGoodsCd:
+                              type: string
+                              example: 470
+                            bStatus:
+                              type: string
+                              example: true
+        "400":
+          description: Bad Request/Validation Error
+  /MpEcopApi/ws1/nationality:
+    post:
+      tags:
+        - Get Nationality List API
+      summary: Get Nationality List
+      description: This API is Used to Get Nationality List
+      operationId: MpEcopApi/ws1/nationality
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: Location
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                langcd:
+                  type: string
+                  description: lang code
+                  example: 6
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer 686548e3-d08b-3a82-9f81-2ef2f5efb95c
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:
+                      nationalityResponseBean:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            nationality:
+                              type: string
+                              example: बैंक ड्राफ्ट
+                            nationalityCd:
+                              type: string
+                              example: 332
+                            bStatus:
+                              type: string
+                              example: true
+        "400":
+          description: Bad Request/Validation Error
+  /MpEcopApi/ws1/mvtype:
+    post:
+      tags:
+        - Get Motor Vehicle Type List API
+      summary: Get Motor Vehicle Type List
+      description: This API is Used to Get Motor Vehicle Type List
+      operationId: MpEcopApi/ws1/mvtype
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: Location
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                langcd:
+                  type: string
+                  description: lang code
+                  example: 6
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer 686548e3-d08b-3a82-9f81-2ef2f5efb95c
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:
+                      automobileTypeResponseBean:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            automobileType:
+                              type: string
+                              example: बैंक ड्राफ्ट
+                            automobileCd:
+                              type: string
+                              example: 332
+                            bStatus:
+                              type: string
+                              example: true
+        "400":
+          description: Bad Request/Validation Error
+  /MpEcopApi/ws1/mvmake:
+    post:
+      tags:
+        - Get Motor Vehicle Make List API
+      summary: Get Motor Vehicle Make List
+      description: This API is Used to Get Motor Vehicle Make List
+      operationId: MpEcopApi/ws1/mvmake
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: Location
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                langcd:
+                  type: string
+                  description: lang code
+                  example: 6
+                makecd:
+                  type: string
+                  description: make code
+                  example: 1
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer 686548e3-d08b-3a82-9f81-2ef2f5efb95c
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:
+                      automobileMakeResponseBean:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            automobileMake:
+                              type: string
+                              example: एटलस
+                            automobileMakeCd:
+                              type: string
+                              example: 1
+                            bStatus:
+                              type: string
+                              example: true
+        "400":
+          description: Bad Request/Validation Error
+  /MpEcopApi/ws1/mvmodel:
+    post:
+      tags:
+        - Get Motor Vehicle Type List API
+      summary: Get Motor Vehicle Type List
+      description: This API is Used to Get Motor Vehicle Type List
+      operationId: MpEcopApi/ws1/mvmodel
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: Location
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                langcd:
+                  type: string
+                  description: lang code
+                  example: 6
+                makecd:
+                  type: string
+                  description: make code
+                  example: 1
+                maketype:
+                  type: string
+                  description: make type
+                  example: 1                
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer 686548e3-d08b-3a82-9f81-2ef2f5efb95c
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:
+                      automobileModelResponseBean:
+                        type: object
+                        properties:
+                          automobileModel:
+                            type: string
+                            example: एटलस
+                          automobileModelCd:
+                            type: string
+                            example: 779
+                          bStatus:
+                            type: string
+                            example: true
+        "400":
+          description: Bad Request/Validation Error
+  /MpEcopApi/ws1/missingvehiclelist:
+    post:
+      tags:
+        - Get Missing Vehicle List API
+      summary: Get Missing Vehicle List
+      description: This API is Used to Get Missing Vehicle List
+      operationId: MpEcopApi/ws1/missingvehiclelist
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: Location
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                pscode:
+                  type: string
+                  description: ps code
+                  example: 6
+                districtcd:
+                  type: string
+                  description: district code
+                  example: 6
+                mvtype:
+                  type: string
+                  description: mv type
+                  example: 6
+                mvmake:
+                  type: string
+                  description: mv make
+                  example: 6
+                mvmodel:
+                  type: string
+                  description: mv model
+                  example: 6
+                enginenum:
+                  type: string
+                  description: engine number
+                  example: 6
+                registrationnum:
+                  type: string
+                  description: registration num
+                  example: 6
+                chasisnum:
+                  type: string
+                  description: chasis number
+                  example: 6
+                startdate:
+                  type: string
+                  description: start date
+                  example: 2018-04-01 00:00:00
+                enddate:
+                  type: string
+                  description: end date
+                  example: 2018-04-01 00:00:00
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer 686548e3-d08b-3a82-9f81-2ef2f5efb95c
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:
+                      robbedVeichalResponseBean:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            districtCd:
+                              type: string
+                              example: 21734
+                            firRegNum:
+                              type: string
+                              example: 21734009180251
+                            mvMake:
+                              type: string
+                              example: हीरो होंडा
+                            mvMakeCd:
+                              type: string
+                              example: 34
+                            mvModel:
+                              type: string
+                              example: हीरो होंडा पेशन प्रो
+                            mvModelCd:
+                              type: string
+                              example: 710
+                            mvType:
+                              type: string
+                              example: N
+                            mvTypeCd:
+                              type: string
+                              example: 4
+                            policeStation:
+                              type: string
+                              example: बैढन
+                            recordCreatedOn:
+                              type: string
+                              example: 21734009
+                            bStatus:
+                              type: string
+                              example: true
+        "400":
+          description: Bad Request/Validation Error
+  /MpEcopApi/ws1/vehicledetails:
+    post:
+      tags:
+        - Get Missing Vehicle Details List API
+      summary: Get Missing Vehicle Details List
+      description: This API is Used to Get Missing Vehicle Details List
+      operationId: MpEcopApi/ws1/vehicledetails
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: Location
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                regnum:
+                  type: string
+                  description: registration num
+                  example: 21316016180253
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer 686548e3-d08b-3a82-9f81-2ef2f5efb95c
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:
+                      stolenVeichalResponseBean:
+                        type: object
+                        properties:
+                          chassisNum:
+                            type: string
+                            example: MD2DDDZZZNWH83367
+                          district:
+                            type: string
+                            example: भोपाल
+                          engineNum:
+                            type: string
+                            example: DUMCNH62115
+                          fileSrNum:
+                            type: string
+                            example: 21316016180253
+                          firRegNum:
+                            type: string
+                            example: 21316016180253
+                          fromDate:
+                            type: string
+                            example: 2018-04-07 19:30:00.0
+                          invstOfficerMobile:
+                            type: string
+                            example: 919907369386
+                          invstOfficerName:
+                            type: string
+                            example: Ayaz Chaanda
+                          invstOfficerRank:
+                            type: string
+                            example: उपनिरीक्षक/ अवर निरीक्षक
+                          mvColorCd:
+                            type: string
+                            example: Red
+                          mvMake:
+                            type: string
+                            example: बजाज
+                          mvModel:
+                            type: string
+                            example: प्लेटिना 125
+                          mvType:
+                            type: string
+                            example: मोटर साइकिल
+                          officeInchargeName:
+                            type: string
+                            example: Ayaz Chaanda
+                          officeInchargeRank:
+                            type: string
+                            example: SI (Sub-Inspector)
+                          policeStation:
+                            type: string
+                            example: हबीब गंज
+                          recordCreatedOn:
+                            type: string
+                            example: 2018-04-08 22:57:57.0
+                          registrationNum:
+                            type: string
+                            example: MP04MH9479
+                          type:
+                            type: string
+                            example: N
+                          bStatus:
+                            type: string
+                            example: true
+        "400":
+          description: Bad Request/Validation Error
+  /MpEcopApi/ws1/state:
+    post:
+      tags:
+        - Get State List API
+      summary: Get State List
+      description: This API is Used to Fet State List
+      operationId: MpEcopApi/ws1/state
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: Location
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                langcd:
+                  type: string
+                  description: lang code
+                  example: 6
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer 686548e3-d08b-3a82-9f81-2ef2f5efb95c
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: MP0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:
+                      stateResponseBean:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            stateCd:
+                              type: string
+                              example: 0
+                            stateList:
+                              type: string
+                              example: UP
+                            bStatus:
+                              type: string
+                              example: true
+        "400":
+          description: Bad Request/Validation Error
+  /MpEcopApi/ws1/propertyreg:
+    post:
+      tags:
+        - Get Property Registration Number List API
+      summary: Get Property Registration Number List
+      description: This API is Used to Get Property Registration Number List
+      operationId: MpEcopApi/ws1/propertyreg
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: Location
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                langcd:
+                  type: string
+                  description: lang code
+                  example: 6
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer 686548e3-d08b-3a82-9f81-2ef2f5efb95c
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: MP0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:
+                      propertyRegNumResponseBean:
+                        type: object
+                        properties:
+                          propertyRegNumber:
+                            type: string
+                            example: 21329017180501
+                          bStatus:
+                            type: string
+                            example: true
+        "400":
+          description: Bad Request/Validation Error
+  /MpEcopApi/ws1/relativetype:
+    post:
+      tags:
+        - Get Relative Type API
+      summary: Get Relative Type
+      description: This API is Used to Get Relative Type
+      operationId: MpEcopApi/ws1/relativetype
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: Location
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                langcd:
+                  type: string
+                  description: lang code
+                  example: 6
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer 686548e3-d08b-3a82-9f81-2ef2f5efb95c
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: MP0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:
+                      relativesTypeResponseBean:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            relationType:
+                              type: string
+                              example: पिता
+                            relationTypeCd:
+                              type: string
+                              example: 5
+                            bStatus:
+                              type: string
+                              example: true
+        "400":
+          description: Bad Request/Validation Error
+  /MpEcopApi/ws1/compnature:
+    post:
+      tags:
+        - Get Complaint Nature API
+      summary: Get Complaint Nature
+      description: This API is Used to Get Complaint Nature
+      operationId: MpEcopApi/ws1/compnature
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: Location
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                langcd:
+                  type: string
+                  description: lang code
+                  example: 6
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer 686548e3-d08b-3a82-9f81-2ef2f5efb95c
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:
+                      complaintNatureResponseBean:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            complNature:
+                              type: string
+                              example: जनता
+                            complNatureCd:
+                              type: string
+                              example: 1
+                            bStatus:
+                              type: string
+                              example: true
+        "400":
+          description: Bad Request/Validation Error
+  /MpEcopApi/ws1/infonature:
+    post:
+      tags:
+        - Get Nature of Information API
+      summary: Get Motor Vehicle Type List
+      description: This API is Used to Get Motor Vehicle Type List
+      operationId: MpEcopApi/ws1/infonature
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: Location
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                langcd:
+                  type: string
+                  description: lang code
+                  example: 6
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer 686548e3-d08b-3a82-9f81-2ef2f5efb95c
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:
+                      natureOfInfoResponseBean:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            citizenInfoCd:
+                              type: string
+                              example: 1
+                            citizenInfoTip:
+                              type: string
+                              example: कानून और व्यवस्था
+                            bStatus:
+                              type: string
+                              example: true
+        "400":
+          description: Bad Request/Validation Error
+  /MpEcopApi/ws1/checkuser:
+    post:
+      tags:
+        - Check User API
+      summary: Check if User Exists
+      description: This API is Used to Check if User Exists
+      operationId: MpEcopApi/ws1/checkuser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: Location
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                langcd:
+                  type: string
+                  description: lang code
+                  example: 6
+                loginid:
+                  type: string
+                  description: login Id
+                  example: pramodumang
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer 686548e3-d08b-3a82-9f81-2ef2f5efb95c
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:
+                      userAvailableResponseBean: 
+                        type: object
+                        properties:
+                          msg:
+                            type: string
+                            example: EXIST
+                          bStatus:
+                            type: string
+                            example: true
+        "400":
+          description: Bad Request/Validation Error
+  /MpEcopApi/ws1/forgetpass:
+    post:
+      tags:
+        - Get Forget Password Detail API
+      summary: Get User Details In Case Of Forgets Password
+      description: This API is Used to Get User Details in Case User Forgets Password
+      operationId: MpEcopApi/ws1/forgetpass
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: Location
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                loginid:
+                  type: string
+                  description: loginId
+                  example: pramodumang
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer 686548e3-d08b-3a82-9f81-2ef2f5efb95c
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:
+                      forgotPasswordResponseBean:
+                        type: object
+                        properties:
+                          email:
+                            type: string
+                            example: pramod.singh@digispice.com
+                          loginId:
+                            type: string
+                            example: pramodumang
+                          name:
+                            type: string
+                            example: Pramod  Singh
+                          securityQuestionFirst:
+                            type: string
+                            example: 4
+                          securityQuestionSecond:
+                            type: string
+                            example: 2
+                          bStatus:
+                            type: string
+                            example: true
+        "400":
+          description: Bad Request/Validation Error
+  /MpEcopApi/ws1/uidbody:
+    post:
+      tags:
+        - Get List Of Unidentified Dead Body API
+      summary: Get List Of Unidentified Dead Body
+      description: This API is Used to Get List of Unidentified Dead Body
+      operationId: MpEcopApi/ws1/uidbody
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: Location
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                policeStationCd:
+                  type: string
+                  description: police station code
+                  example: 0
+                districtCd:
+                  type: string
+                  description: district code
+                  example: 21733
+                gender:
+                  type: string
+                  description: gender
+                  example: 0
+                age:
+                  type: string
+                  description: age
+                  example: 0
+                fromDate:
+                  type: string
+                  description: from date
+                  example: 04/20/2017
+                toDate:
+                  type: string
+                  description: to date
+                  example: 04/20/2018
+                placeBurnmark:
+                  type: string
+                  description: place burn mark
+                  example: 0
+                placeBlackmark:
+                  type: string
+                  description: place black mark
+                  example: 0
+                placeLeucoderma:
+                  type: string
+                  description: placeLeucoderma
+                  example: 0
+                placeMole:
+                  type: string
+                  description: placeMole
+                  example: 0
+                placeScar:
+                  type: string
+                  description: placeScar
+                  example: 0
+                placeTattoo:
+                  type: string
+                  description: placeTattoo
+                  example: 0
+                firRegNum:
+                  type: string
+                  description: firRegNum
+                  example: 0
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer 686548e3-d08b-3a82-9f81-2ef2f5efb95c
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:
+                      forgotPasswordResponseBean:
+                        type: object
+                        properties:
+                          email:
+                            type: string
+                            example: pramod.singh@digispice.com
+                          loginId:
+                            type: string
+                            example: pramodumang
+                          name:
+                            type: string
+                            example: Pramod  Singh
+                          securityQuestionFirst:
+                            type: string
+                            example: 4
+                          securityQuestionSecond:
+                            type: string
+                            example: 2
+                          bStatus:
+                            type: string
+                            example: true
+        "400":
+          description: Bad Request/Validation Error
+  /MpEcopApi/ws1/seizedvehicle:
+    post:
+      tags:
+        - Get List of Seized Vehicles API
+      summary: Get List of Seized Vehicles
+      description: This API is Used to List of Seized Vehicles
+      operationId: MpEcopApi/ws1/seizedvehicle
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: Location
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                policeStationCd:
+                  type: string
+                  description: police station code
+                  example: 21733005
+                districtCd:
+                  type: string
+                  description: district code
+                  example: 21733
+                mvType:
+                  type: string
+                  description: mvType
+                  example: 0
+                mvMake:
+                  type: string
+                  description: mvMake
+                  example: 0
+                mvModel:
+                  type: string
+                  description: mvModel
+                  example: 0
+                startDate:
+                  type: string
+                  description: start Date
+                  example: 03/20/2018
+                endDate:
+                  type: string
+                  description: end Date
+                  example: 04/20/2018
+                engineno:
+                  type: string
+                  description: engine number
+                  example: 20184
+                registrationNo:
+                  type: string
+                  description: registration number
+                  example: 201889
+                chasisNo:
+                  type: string
+                  description: chasis number
+                  example: 201889
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer 686548e3-d08b-3a82-9f81-2ef2f5efb95c
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:
+                      seizedVeichalResponseBean:
+                        type: object
+                        properties:
+                          districtCd:
+                            type: string
+                            example: 21733
+                          langCd:
+                            type: string
+                            example: 6
+                          mvMake:
+                            type: string
+                            example: फार्स /टेम्पो बजाज
+                          mvMakeCd:
+                            type: string
+                            example: 178
+                          mvModel:
+                            type: string
+                            example: ट्रेक्स क्रूजर
+                          mvModelCd:
+                            type: string
+                            example: 343
+                          mvType:
+                            type: string
+                            example: जीप/स्मॉल वैन/मल्टी परपज़ वैन
+                          mvTypeCd:
+                            type: string
+                            example: 13
+                          propRegNum:
+                            type: string
+                            example: 21733005180900028
+                          psCode:
+                            type: string
+                            example: 21733005
+                          psName:
+                            type: string
+                            example: बोरी
+                          recordCreatedOn:
+                            type: string
+                            example: 2018-03-22 16:05:10.0
+                          seizureNum:
+                            type: string
+                            example: 217330051800023
+                          bStatus:
+                            type: string
+                            example: true
+        "400":
+          description: Bad Request/Validation Error
+  /MpEcopApi/ws1/psdetails:
+    post:
+      tags:
+        - Get Police Station Details API
+      summary: Get Motor Vehicle Type List
+      description: This API is Used to Get Motor Vehicle Type List
+      operationId: MpEcopApi/ws1/psdetails
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: Location
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                districtcd:
+                  type: string
+                  description: district code
+                  example: 21303
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer 686548e3-d08b-3a82-9f81-2ef2f5efb95c
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:
+                      policeStationResponseBean:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            districtName:
+                              type: string
+                              example: AGAR MALWA
+                            phoneNo:
+                              type: string
+                              example: 07362-258379
+                            policeStationName:
+                              type: string
+                              example: AGAR
+                            bStatus:
+                              type: string
+                              example: false
+        "400":
+          description: Bad Request/Validation Error
+  /MpEcopApi/ws1/contactus:
+    post:
+      tags:
+        - Get Contact Details API
+      summary: Get Contact Details
+      description: This api is used to get contact details
+      operationId: MpEcopApi/ws1/contactus
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: Location
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                districtcd:
+                  type: string
+                  description: district code
+                  example: 21303
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer 686548e3-d08b-3a82-9f81-2ef2f5efb95c
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:
+                      contactUsResponseBean:
+                        type: object
+                        properties:
+                          districtName:
+                            type: string
+                            example: AGAR MALWA
+                          emailId:
+                            type: string
+                            example: sp_agar@mppolice.gov.in
+                          officerName:
+                            type: string
+                            example: MANOJ SINGH (SP)
+                          phoneNo:
+                            type: string
+                            example: 07362-259800
+                          bStatus:
+                            type: string
+                            example: false
+        "400":
+          description: Bad Request/Validation Error
+  /vendor/token:
+    post:
+      tags:
+        - To Authorize or Authenticate User API
+      summary: To Authorize or Authenticate User
+      description: This API is Used to Authorize or Authenticate user
+      operationId: vendor/token
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                grant_type:
+                  type: string
+                  description: Defines the type of user
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Basic 686548e3-d08b-3a82-9f81-2ef2f5efb95c
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  access_token:
+                    type: string
+                    description: Access token
+                    example: 54987733-463d-3920-aeb3-dc1db63c
+                  refresh_token:
+                    type: string
+                    description: Refresh token
+                    example: 14027e79-3bc7-3650-abd4-14879138
+                  scope:
+                    type: string
+                    description: Scope
+                    example: default
+                  token_type:
+                    type: string
+                    description: token type
+                    example: Bearer
+                  expires_in:
+                    type: integer
+                    description: expires in
+                    example: 3274
+        "400":
+          description: Bad Request/Validation Error
+  /mpecop/unbody/1.0.0/district:
+    post:
+      tags:
+        - Unidentified Body Web Service API
+      summary: Unidentified Body Web Service
+      description: This Web Service Will be Used for Unidentified Body
+      operationId: mpecop/unbody/1.0.0/district
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: Location
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 1
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 6
+                formtrkr:
+                  type: string
+                  description: form tracker
+                  example: 0
+                langcd:
+                  type: string
+                  description: lang code
+                  example: 6
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer 686548e3-d08b-3a82-9f81-2ef2f5efb95c
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:
+                      getDistrictResult:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            strDistrictName:
+                              type: string
+                              example: अनुपपुर
+                            districtCd:
+                              type: string
+                              example: 21730
+                            bStatus:
+                              type: string
+                              example: true
+        "400":
+          description: Bad Request/Validation Error
+  /mpecop/unbody/1.0.0/identificationlist:
+    post:
+      tags:
+        - Fetch Identification List API
+      summary: To Fetch Identification List
+      description: This API is Used to Fetch Identification List
+      operationId: mpecop/unbody/1.0.0/identificationlist
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: Location
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                langcd:
+                  type: string
+                  description: lang code
+                  example: 6
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 6
+                formtrkr:
+                  type: string
+                  description: form tracker
+                  example: 0
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer 686548e3-d08b-3a82-9f81-2ef2f5efb95c
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:
+                      getIdentificationMarkResult:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            idMarkCd:
+                              type: string
+                              example: काले निशान (बड़े)
+                            identityMarkType:
+                              type: string
+                              example: 4
+                            bStatus:
+                              type: string
+                              example: true
+        "400":
+          description: Bad Request/Validation Error
+  /mpecop/unbody/1.0.0/gender:
+    post:
+      tags:
+        - Get Gender List API
+      summary: Get Gender List
+      description: This API is Used to Get Gender List
+      operationId: mpecop/unbody/1.0.0/gender
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: Location
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 6
+                formtrkr:
+                  type: string
+                  description: form tracker
+                  example: 0
+                langcd:
+                  type: string
+                  description: lang code
+                  example: 6
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer 686548e3-d08b-3a82-9f81-2ef2f5efb95c
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:
+                      getGenderResult:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            genderCd:
+                              type: string
+                              example: 1
+                            strGenderType:
+                              type: string
+                              example: हिजड़ा/किन्\u200dनर
+                            bStatus:
+                              type: string
+                              example: true
+        "400":
+          description: Bad Request/Validation Error
+  /mpecop/unbody/1.0.0/policestation:
+    post:
+      tags:
+        - Fetch Police Station List API
+      summary: To Fetch Police Station List
+      description: This API is Used to Fetch Police Station List
+      operationId: mpecop/unbody/1.0.0/policestation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: Location
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 6
+                formtrkr:
+                  type: string
+                  description: form tracker
+                  example: 0
+                langcd:
+                  type: string
+                  description: lang code
+                  example: 6
+                districtcd:
+                  type: string
+                  description: district code
+                  example: 21730
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer 686548e3-d08b-3a82-9f81-2ef2f5efb95c
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:
+                      getPoliceStationResult:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            policeStationCd:
+                              type: string
+                              example: 21730001
+                            policeStationName:
+                              type: string
+                              example: अमरकंटक
+                            bStatus:
+                              type: string
+                              example: true
+        "400":
+          description: Bad Request/Validation Error
+  /mpecop/unbody/1.0.0/uidbody:
+    post:
+      tags:
+        - Fetch Unidentified Bodies List API
+      summary: To Fetch Unidentified Bodies List
+      description: This API is Used to Fetch Unidentified Bodies List
+      operationId: mpecop/unbody/1.0.0/uidbody
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: Location
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 6
+                formtrkr:
+                  type: string
+                  description: form tracker
+                  example: 0
+                policeStationCd:
+                  type: string
+                  description: police station code
+                  example: 0
+                districtcd:
+                  type: string
+                  description: district code
+                  example: 21730
+                gender:
+                  type: string
+                  description: gender
+                  example: 0
+                age:
+                  type: string
+                  description: age
+                  example: 0
+                fromDate:
+                  type: string
+                  description: from date
+                  example: 15/04/2019
+                toDate:
+                  type: string
+                  description: to date
+                  example: 16/04/2019
+                placeBurnmark:
+                  type: string
+                  description: place Burn mark
+                  example: null
+                placeBlackmark:
+                  type: string
+                  description: placeBlackmark
+                  example: 0
+                placeLeucoderma:
+                  type: string
+                  description: placeLeucoderma
+                  example: 0
+                placeMole:
+                  type: string
+                  description: placeMole
+                  example: 0
+                placeScar:
+                  type: string
+                  description: placeScar
+                  example: 0
+                placeTattoo:
+                  type: string
+                  description: placeTattoo
+                  example: 0
+                firRegNum:
+                  type: string
+                  description: firRegNum
+                  example: 0
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer 686548e3-d08b-3a82-9f81-2ef2f5efb95c
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:
+                      getUIDBListResult:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            dbInquestNum:
+                              type: string
+                              example: 213300061900051
+                            fileName:
+                              type: string
+                              example: अमरकंटक
+                            uploadedFile:
+                              type: string
+                              example: अमरकंटक
+                            fileUploadedSrNo:
+                              type: string
+                              example: 0
+                            policeStation:
+                              type: string
+                              example: बाणगंगा
+                            age:
+                              type: string
+                              example: 0
+                            isDbIdentified:
+                              type: string
+                              example: अज्ञात
+                            placeBurnmark:
+                              type: string
+                              example: 0
+                            placeBlackmark:
+                              type: string
+                              example: 0
+                            placeLeucoderma:
+                              type: string
+                              example: 0
+                            placeMole:
+                              type: string
+                              example: 0
+                            placeScar:
+                              type: string
+                              example: 0
+                            placeTattoo:
+                              type: string
+                              example: 0
+                            bStatus:
+                              type: string
+                              example: true
+                            full_NAME:
+                              type: string
+                              example: abc
+        "400":
+          description: Bad Request/Validation Error
+  /mpecop/unbody/1.0.0/uidbodydetails:
+    post:
+      tags:
+        - Fetch Unidentified Dead Body Details List API
+      summary: To Fetch Unidentified Dead Body Details List
+      description: This a is Used to Fetch Unidentified Dead Body Details List
+      operationId: mpecop/unbody/1.0.0/uidbodydetails
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: Location
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 6
+                formtrkr:
+                  type: string
+                  description: form tracker
+                  example: 0
+                uidno:
+                  type: string
+                  description: uid number
+                  example: 213550101900003
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer 686548e3-d08b-3a82-9f81-2ef2f5efb95c
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:
+                      getUIDBListResult:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            fullName:
+                              type: string
+                              example: abc
+                            fileName:
+                              type: string
+                              example: mnq
+                            dbInquestNum:
+                              type: string
+                              example: 213550101900003
+                            uploadedFile:
+                              type: string
+                              example: abc
+                            uploadedFileSrNum:
+                              type: string
+                              example: 0
+                            policeStation:
+                              type: string
+                              example: जेरोन
+                            age:
+                              type: integer
+                              example: 35
+                            informationSrc:
+                              type: string
+                              example: SANTOSH SINGH
+                            informationRecDt:
+                              type: string
+                              example: abc
+                            otherInformation:
+                              type: string
+                              example: फरियादी ने मय हमराही
+                            foundPlc:
+                              type: string
+                              example: मजल
+                            DB_CONDITIONS:
+                              type: string
+                              example: पीएम रिपोर्ट आने पर स्पष्ट किया जायेगा
+                            injuryMarks:
+                              type: string
+                              example: पीएम रिपोर्ट आने पर स्पष्ट किया जायेगा
+                            belongingRecovery:
+                              type: string
+                              example: abc
+                            dbFoundAt:
+                              type: string
+                              example: abc
+                            recordCreatedON:
+                              type: string
+                              example: 09 Mar 2019
+                            deathDate:
+                              type: string
+                              example: 01 Jan 1961
+                            state:
+                              type: string
+                              example: मध्य प्रदेश
+                            district:
+                              type: string
+                              example: टीकमगढ़
+                            iFullName:
+                              type: string
+                              example: SANTOSH  SINGH
+                            ioMobile:
+                              type: string
+                              example: 91
+                            iRank:
+                              type: string
+                              example: उपनिरीक्षक/ अवर निरीक्षक
+                            errorCode:
+                              type: string
+                              example: 0
+                            Message:
+                              type: string
+                              example: उपनिरीक्षक/ अवर निरीक्षक
+                            bStatus:
+                              type: string
+                              example: true
+        "400":
+          description: Bad Request/Validation Error
+components:
+  securitySchemes:
+    x-api-key:
+      type: apiKey
+      name: x-api-key
+      in: header

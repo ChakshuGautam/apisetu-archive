@@ -1,0 +1,59 @@
+host: delhigw.napix.gov.in
+info:
+  title: Parivahan
+  version: 1.0.0
+  x-ibm-name: mparivahan-master-api-remove-state
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/nic/parivahan
+paths:
+  /masterapi/service/removeState:
+    post:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Mparivahan master api remove state
+schemes:
+  - https
+swagger: "2.0"
+basePath: /nic/parivahan/mparivahan
+security:
+  - Oauth2Token:
+      - napix
+securityDefinitions:
+  clientID:
+    in: header
+    name: X-Client-Id
+    type: apiKey
+  Oauth2Token:
+    flow: application
+    type: oauth2
+    scopes:
+      napix: napixScope
+    tokenUrl: //oauth2/token
+    x-ibm-oauth-provider: nic-oauth-provider-application-grant-type
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  servers:
+    - url: https://delhigw.napix.gov.in/nic/parivahan/mparivahan
+      type:
+        - production
+        - development
+  enforced: true
+  testable: true
+  oauth-servers:
+    Oauth2Token:
+      tokenUrls:
+        - https://degateway.napix.gov.in:443/nic/parivahan//oauth2/token
+      refreshUrls: []
+      authorizationUrls: []
+  application-authentication:
+    certificate: false

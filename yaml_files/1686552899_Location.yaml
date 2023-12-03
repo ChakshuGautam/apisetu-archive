@@ -1,0 +1,191 @@
+openapi: 3.0.1
+info:
+  title: Location
+  description: |-
+      PM eVidya DIKSHA - One Nation, One Digital Platform for School Education. An initiative of the National Council of Educational Research and Training (Ministry of Education, Govt of India) <i>[Updated on 12th June 2023]</i>
+  termsOfService: https://diksha.gov.in/term-of-use.html
+  contact:
+    name: provided by -Diksha
+    url: https://diksha.gov.in/
+  version: 1.0.0
+servers:
+- url: https://diksha.gov.in/api/data
+  description: Prodcution Server 
+paths:
+  /v1/location/search:
+    post:
+      tags:
+      - Search Location API
+      summary: This Web Service will be used to search location of state.
+      operationId: v1/location/search
+      security:
+      - bearerAuth: []
+      - ApiKeyAuth: []
+
+      requestBody:
+        content:
+          application/json:
+            schema:
+
+              properties:
+                  filters:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        example: state
+                  sort_by:
+                    type: object
+                    properties:
+                      code:
+                        type: string
+                        example: asc
+                  limit:
+                    type: integer
+                    example: 5
+      
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  id:
+                    type: string
+                    example: "api.location.search"
+                  ver:
+                    type: string
+                    example: "v1"
+                  ts:
+                    type: string
+                    example: "2023-05-18 07:37:05:132+0000"
+                  params:
+                    type: object
+                    properties:
+                      resmsgid: 
+                        type: string                        
+                        example: "63f5623e3a6dcbeac98a1b4a53a3cd50"
+                      msgid: 
+                        type: string                        
+                        example: "63f5623e3a6dcbeac98a1b4a53a3cd50"
+                      err: 
+                        type: string                        
+                        example: null
+                      status: 
+                        type: string                        
+                        example: "SUCCESS"
+                      errmsg: 
+                        type: string                        
+                        example: null
+                  responseCode:
+                    type: string
+                    example: "OK"
+                  result:
+                    type: object
+                    properties:
+                      response: 
+                        type: array                        
+                        items:
+                          type: object
+                          properties:
+                            code:
+                              type: string
+                            name:
+                              type: string
+                            id:
+                              type: string
+                            type:
+                              type: string
+                        example:
+                        -  code: "01"
+                           name: "Jammu And Kashmir"
+                           id: "4a994d9d-5677-40a8-83eb-e3c5eec73b92"
+                           type: "state"
+                        -  code: "02"
+                           name: "Himachal Pradesh"
+                           id: "3332bb89-63e1-4e05-9927-25df984aec1f"
+                           type: "state"
+                        -  code: "03"
+                           name: "Punjab"
+                           id: "f82b3f03-76d2-40e4-927e-adda5aa053b1"
+                           type: "state"
+                        -  code: "04"
+                           name: "Chandigarh"
+                           id: "3095874c-5acf-4467-a5d0-9180ab9e318e"
+                           type: "state"
+                        -  code: "05"
+                           name: "Uttarakhand"
+                           id: "1aada48c-43dc-406a-bc07-ea50f804b657"
+                           type: "state"
+                      count: 
+                        type: integer                        
+                        example: 36
+
+   
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  id:
+                    type: string
+                    example: "api.location.search"
+                  ver:
+                    type: string
+                    example: "v1"
+                  ts:
+                    type: string
+                    example: "2023-06-06 11:17:37:663+0000"
+                  params:
+                    type: object
+                    properties:
+                      resmsgid: 
+                        type: string                        
+                        example: "9c19c73eb48a29166631205fb6362f10"
+                      msgid: 
+                        type: string                        
+                        example: "9c19c73eb48a29166631205fb6362f10"
+                      err: 
+                        type: string                        
+                        example: "UOS_0028"
+                      status: 
+                        type: string                        
+                        example: "FAILED"
+                      errmsg: 
+                        type: string                        
+                        example: "Requested data for this operation is not valid."
+                  responseCode:
+                    type: string
+                    example: "CLIENT_ERROR"
+                  result:
+                    type: string
+                    example: {}
+
+   
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  message:
+                    type: string
+                    example: "Unauthorized"
+
+   
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Text
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-authenticated-user-token
+

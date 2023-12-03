@@ -1,0 +1,870 @@
+openapi: 3.0.3
+info:  
+  title: Gujarat Industrial Development Corporation, Gujarat
+  description:  >- 
+                GIDC is state undertaking corporation, providing industrial infrastructure to industrialists. We want to share documents available with us to industrialists and access to our admin department as a central repository. This will reduce time to collect missing documents for various online services required and can process applications faster by Corporation
+  termsOfService: https://apisetu.gov.in/api-policy
+  version: 3.0.0
+servers:
+  - url: 'https://apisetu.gov.in/certificate/v3/gujaratgidc'
+paths:
+  
+  /amcer:
+    post:
+      tags:
+        - APIs
+      summary: Amalgamation Order
+      description: API to verify Amalgamation Order.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: amcer
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - PartyCode
+                    - OutwardDate
+                    - ApplicantEmailId
+                    - TypeofCertificate
+                      
+                  properties:
+                    PartyCode:
+                      type: string
+                      description: Party Code
+                      example: "Enter Party Code"
+                       
+                    
+                    OutwardDate:
+                      type: string
+                      description: Issued Date
+                      example: "Enter Approved or Outward Date"
+                       
+                    
+                    ApplicantEmailId:
+                      type: string
+                      description: Email Id
+                      example: "Enter Applicant Registered Email-Id"
+                       
+                    
+                    TypeofCertificate:
+                      type: string
+                      description: Select Certificate
+                      example: "Final,Provisional"
+                       
+                    
+                      
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /exord:
+    post:
+      tags:
+        - APIs
+      summary: Extension Order
+      description: API to verify Extension Order.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: exord
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - PartyCode
+                    - OutwardDate
+                    - ApplicantEmailId
+                    - TypeofCertificate
+                      
+                  properties:
+                    PartyCode:
+                      type: string
+                      description: Party Code
+                      example: "Enter Party Code"
+                       
+                    
+                    OutwardDate:
+                      type: string
+                      description: Outward Date
+                      example: "Enter Approved or Outward Date"
+                       
+                    
+                    ApplicantEmailId:
+                      type: string
+                      description: Email Id
+                      example: "Enter Applicant Registered Email-Id"
+                       
+                    
+                    TypeofCertificate:
+                      type: string
+                      description: Select Certificate
+                      example: "-"
+                       
+                    
+                      
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /mocer:
+    post:
+      tags:
+        - APIs
+      summary: Mortgage Permission
+      description: API to verify Mortgage Permission.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: mocer
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - PartyCode
+                    - OutwardDate
+                    - ApplicantEmailId
+                    - TypeofCertificate
+                      
+                  properties:
+                    PartyCode:
+                      type: string
+                      description: Party Code
+                      example: "Enter Party Code"
+                       
+                    
+                    OutwardDate:
+                      type: string
+                      description: Outward Date
+                      example: "Enter Approved or Outward Date"
+                       
+                    
+                    ApplicantEmailId:
+                      type: string
+                      description: Email Id
+                      example: "Enter Applicant Registered Email-Id"
+                       
+                    
+                    TypeofCertificate:
+                      type: string
+                      description: Select Certificate
+                      example: "-"
+                       
+                    
+                      
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /paord:
+    post:
+      tags:
+        - APIs
+      summary: Plan Approval/ Amendment Order
+      description: API to verify Plan Approval/ Amendment Order.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: paord
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - PartyCode
+                    - OutwardDate
+                    - ApplicantEmailId
+                    - TypeofCertificate
+                      
+                  properties:
+                    PartyCode:
+                      type: string
+                      description: Party Code
+                      example: "Enter Party Code"
+                       
+                    
+                    OutwardDate:
+                      type: string
+                      description: Outward Date
+                      example: "Enter Approved or Outward Date"
+                       
+                    
+                    ApplicantEmailId:
+                      type: string
+                      description: Email Id
+                      example: "Enter Applicant Registered Email-Id"
+                       
+                    
+                    TypeofCertificate:
+                      type: string
+                      description: Select Certificate
+                      example: "-"
+                       
+                    
+                      
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /rouse:
+    post:
+      tags:
+        - APIs
+      summary: Rights of Use Permission
+      description: API to verify Rights of Use Permission.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: rouse
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - PartyCode
+                    - OutwardDate
+                    - ApplicantEmailId
+                    - TypeofCertificate
+                      
+                  properties:
+                    PartyCode:
+                      type: string
+                      description: Party Code
+                      example: "Enter Party Code"
+                       
+                    
+                    OutwardDate:
+                      type: string
+                      description: Issued Date
+                      example: "Enter Approved or Outward Date"
+                       
+                    
+                    ApplicantEmailId:
+                      type: string
+                      description: Email Id
+                      example: "Enter Applicant Registered Email-Id"
+                       
+                    
+                    TypeofCertificate:
+                      type: string
+                      description: Select Certificate
+                      example: "Final,Provisional"
+                       
+                    
+                      
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /sdpro:
+    post:
+      tags:
+        - APIs
+      summary: Sub Division Permission Order
+      description: API to verify Sub Division Permission Order.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: sdpro
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - PartyCode
+                    - OutwardDate
+                    - ApplicantEmailId
+                    - TypeofCertificate
+                      
+                  properties:
+                    PartyCode:
+                      type: string
+                      description: Party Code
+                      example: "Enter Party Code"
+                       
+                    
+                    OutwardDate:
+                      type: string
+                      description: Issued Date
+                      example: "Enter Approved or Outward Date"
+                       
+                    
+                    ApplicantEmailId:
+                      type: string
+                      description: Email Id
+                      example: "Enter Applicant Registered Email-Id"
+                       
+                    
+                    TypeofCertificate:
+                      type: string
+                      description: Select Certificate
+                      example: "Final,Provisional"
+                       
+                    
+                      
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /sucer:
+    post:
+      tags:
+        - APIs
+      summary: Subletting Order
+      description: API to verify Subletting Order.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: sucer
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - PartyCode
+                    - OutwardDate
+                    - ApplicantEmailId
+                    - TypeofCertificate
+                      
+                  properties:
+                    PartyCode:
+                      type: string
+                      description: Party Code
+                      example: "Enter Party Code"
+                       
+                    
+                    OutwardDate:
+                      type: string
+                      description: Issued Date
+                      example: "Enter Approved or Outward Date"
+                       
+                    
+                    ApplicantEmailId:
+                      type: string
+                      description: Email Id
+                      example: "Enter Applicant Registered Email-Id"
+                       
+                    
+                    TypeofCertificate:
+                      type: string
+                      description: Select Certificate
+                      example: "Final,Provisional"
+                       
+                    
+                      
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /rsord:
+    post:
+      tags:
+        - APIs
+      summary: Surrender Order
+      description: API to verify Surrender Order.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: rsord
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - PartyCode
+                    - OutwardDate
+                    - ApplicantEmailId
+                    - TypeofCertificate
+                      
+                  properties:
+                    PartyCode:
+                      type: string
+                      description: Party Code
+                      example: "Enter Party Code"
+                       
+                    
+                    OutwardDate:
+                      type: string
+                      description: Outward Date
+                      example: "Enter Approved or Outward Date"
+                       
+                    
+                    ApplicantEmailId:
+                      type: string
+                      description: Email Id
+                      example: "Enter Applicant Registered Email-Id"
+                       
+                    
+                    TypeofCertificate:
+                      type: string
+                      description: Select Certificate
+                      example: "Rescindment,Refund"
+                       
+                    
+                      
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /trcer:
+    post:
+      tags:
+        - APIs
+      summary: Transfer Certificate/ Order
+      description: API to verify Transfer Certificate/ Order.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: trcer
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - PartyCode
+                    - OutwardDate
+                    - ApplicantEmailId
+                    - TypeofCertificate
+                      
+                  properties:
+                    PartyCode:
+                      type: string
+                      description: Party Code
+                      example: "Enter Party Code"
+                       
+                    
+                    OutwardDate:
+                      type: string
+                      description: Issued Date
+                      example: "Enter Approved or Outward Date"
+                       
+                    
+                    ApplicantEmailId:
+                      type: string
+                      description: Email Id
+                      example: "Enter Applicant Registered Email-Id"
+                       
+                    
+                    TypeofCertificate:
+                      type: string
+                      description: Select Certificate
+                      example: "Final,Provisional"
+                       
+                    
+                      
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+components:
+  schemas:
+    ConsentArtifactSchema:
+      $ref: './common/ConsentArtifactSchema.yaml#/ConsentArtifactSchema'
+    AcademicCertificateSchema:
+      $ref: './common/AcademicCertificateSchema.yaml#/AcademicCertificateSchema'
+          
+  responses:
+    400Error:
+      $ref: './common/ErrorResponse.yaml#/400Error'
+    401Error:
+      $ref: './common/ErrorResponse.yaml#/401Error'
+    404Error:
+      $ref: './common/ErrorResponse.yaml#/404Error'
+    500Error:
+      $ref: './common/ErrorResponse.yaml#/500Error'
+    502Error:
+      $ref: './common/ErrorResponse.yaml#/502Error'
+    503Error:
+      $ref: './common/ErrorResponse.yaml#/503Error'
+    504Error:
+      $ref: './common/ErrorResponse.yaml#/504Error'
+  securitySchemes:
+    clientId:
+      type: apiKey
+      in: header
+      name: X-APISETU-CLIENTID
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-APISETU-APIKEY

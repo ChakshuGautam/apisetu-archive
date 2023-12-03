@@ -1,0 +1,1264 @@
+---
+openapi: 3.0.0
+info:
+  title: ISRO-IIST
+  description: ISTI Portal is a centralised repository of the content generated related to science, technology and innovation within the Indian STI ecosystem with a significant thrust on reaching out to students, scientists, researchers, youth and the general public to help them choose fellowships, scholarships, funding, and startup opportunities in India.The Portal is a user-friendly destination with repositories of ongoing and recently completed research projects, developed technologies, recognised innovations, funding opportunities, fellowships & scholarships, organisations, academia-industry partnerships, etc. The Portal also provides information about the programmes and schemes the government of India offers to boost scientific activities and the ways in which India's government is fostering innovations. It projects India's STI policies, regulations, & vision through various documents developed by the government's numerous science ministries and departments, like S&T Roadmaps, STI policy documents, S&T indicators and S&T investments. It also has information on people carrying out the research, agencies involved in funding, international collaborations, organisations working in STI space, and so on.ISTI Portal provides insights and analytics of the information related to research, technologies, innovations, funding, etc. These analytics help funding agencies make informed decisions, formulate new schemes and programmes, and make decisions related to project funding. At the same time, researchers can study trends in research funding.Hence,it is a one-stop window for information about developments in India on science,technology and innovation. <i>[Updated on 6th July 2023]</i>
+  termsOfService: https://web.umang.gov.in/uaw/ts/v1/en/index.htm
+  contact:
+    name: Provided by - UMANG
+    url: https://web.umang.gov.in
+  version: 1.0.0
+servers:
+  - url: https://apigw.umangapp.in
+    description: Production Server
+
+security: 
+  - x-api-key: []
+
+paths:
+  /ISTIApi/ws1/parentMenu:
+    post:
+      tags:
+        - Parent Menu
+      summary: Get the parent menu using this api
+      description: This API is used to get the parent menu
+      operationId: ISTIApi/ws1/parentMenu
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-zS20230509093048
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 21
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90                  
+                usrid:
+                  type: string
+                  description: user id
+                  example: 2003966454
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1728
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: windows
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                deptid:
+                  type: string
+                  description: department id
+                  example: 370
+                subsid:
+                  type: string
+                  description: subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "370"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1727"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                        type: array
+                        description: parent menu data object
+                        items:
+                          type: object
+                          properties:
+                            parentmenuname:
+                              type: string
+                              description: parent menu name
+                              example: Research
+                            parentmenuid:
+                              type: string
+                              description: parent menu id
+                              example: 6747
+        "400":
+          description: Bad Request/Validation Error
+  /ISTIApi/ws1/childMenu:
+    post:
+      tags:
+        - Child Menu
+      summary: Get the child menu details of all services.
+      description: This API is used to get the child menu details of all services like Scientific Research,Funding Opportunities etc.
+      operationId: ISTIApi/ws1/childMenu
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 21
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90                    
+                usrid:
+                  type: string
+                  description: user id
+                  example: 2003966454
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1728
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: windows
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                deptid:
+                  type: string
+                  description: department id
+                  example: 370
+                subsid:
+                  type: string
+                  description: subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                nid:
+                  type: string
+                  description: nid
+                  example: 5021                 
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "370"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1728"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                        type: array
+                        description: child menu object
+                        items:
+                          type: object
+                          properties:
+                            p1:
+                              type: string
+                              description: p1
+                              example: 5021
+                            p2:
+                              type: string
+                              description: p2
+                              example: 5022
+                            customized:
+                              type: string
+                              description: customized
+                              example: 1
+                            p3:
+                              type: string
+                              description: p3
+                              example: 0
+                            hidden:
+                              type: string
+                              description: hidden
+                              example: 0
+                            p4:
+                              type: string
+                              description: p4
+                              example: 0
+                            p5:
+                              type: string
+                              description: p5
+                              example: 0
+                            p6:
+                              type: string
+                              description: p6
+                              example: 0
+                            p7:
+                              type: string
+                              description: p7
+                              example: 0                              
+                            p8:
+                              type: string
+                              description: p8
+                              example: 0
+                            mlid:
+                              type: string
+                              description: mlid
+                              example: 5022
+                            p9:
+                              type: string
+                              description: p9
+                              example: 0
+                            language:
+                              type: string
+                              description: language
+                              example: und
+                            router_path:
+                              type: string
+                              description: router_path
+                              example: <nolink>
+                            expanded:
+                              type: string
+                              description: expanded
+                              example: 0
+                            menu_name:
+                              type: string
+                              description: menu_name
+                              example: main-menu
+                            options:
+                              type: string
+                              description: options
+                              example: a3s5
+                            field_area_id:
+                              type: string
+                              description: field_area_id
+                              example: null
+                            plid:
+                              type: string
+                              description: plid
+                              example: 5021
+                            has_children:
+                              type: string
+                              description: has_children
+                              example: 1
+                            link_path:
+                              type: string
+                              description: link_path
+                              example: <nolink>
+                            module:
+                              type: string
+                              description: module
+                              example: menu
+                            weight:
+                              type: string
+                              description: weight
+                              example: -50
+                            link_title:
+                              type: string
+                              description: link_title
+                              example: Research Grants
+                            external:
+                              type: string
+                              description: external
+                              example: 0
+                            depth:
+                              type: string
+                              description: depth
+                              example: 2
+                            i18n_tsid:
+                              type: string
+                              description: i18n_tsid
+                              example: 0
+                            updated:
+                              type: string
+                              description: updated
+                              example: 0                            
+        "400":
+          description: Bad Request/Validation Error
+  /ISTIApi/ws1/getViews:
+    post:
+      tags:
+        - Get Views
+      summary: Get the views details of all services.
+      description: This API is used to get view details of all services like Scientific Research,Funding Opportunities etc.
+      operationId: ISTIApi/ws1/getViews
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 21
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90                    
+                usrid:
+                  type: string
+                  description: user id
+                  example: 2003966454
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1727
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: windows
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                deptid:
+                  type: string
+                  description: department id
+                  example: 370
+                subsid:
+                  type: string
+                  description: subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                mlid:
+                  type: string
+                  description: mlid
+                  example: 4935  
+                fieldAreaId:
+                  type: string
+                  description: fieldAreaId
+                  example: 2347                   
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "370"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1727"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                        type: array
+                        description: view object
+                        items:
+                          type: object
+                          properties:
+                            n_title:
+                              type: string
+                              description: n_title
+                              example: Process development of high quality layered transition metal carbides/ nitrides/ carbonitrides (MAX)
+                            n_id:
+                              type: string
+                              description: n_id
+                              example: 154094                     
+        "400":
+          description: Bad Request/Validation Error
+  /ISTIApi/ws1/getDetails:
+    post:
+      tags:
+        - Get Details of Technology Service
+      summary: Get the details of technology services.
+      description: This API is used to get the details of Technologies service.
+      operationId: ISTIApi/ws1/getDetails
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 21
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90                    
+                usrid:
+                  type: string
+                  description: user id
+                  example: 2003966454
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1735
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: windows
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                deptid:
+                  type: string
+                  description: department id
+                  example: 370
+                subsid:
+                  type: string
+                  description: subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                nid:
+                  type: string
+                  description: nid
+                  example: 167838                 
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "370"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1735"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                          type: object
+                          properties:
+                            comment_count:
+                              type: string
+                              description: comment_count
+                              example: 0
+                            vuuid:
+                              type: string
+                              description: vuuid
+                              example: cf33038d-5386-45c3-930c-b9862b8ca323
+                            rdf_mapping:
+                              type: object
+                              description: rdf mapping data object
+                              properties: 
+                                  rdftype:                                
+                                    type: array
+                                    description: rdftype array
+                                    items:
+                                      type: string
+                                      description: rdftype names
+                                      example: sioc:Item   
+                                  comment_count:                                
+                                    type: object
+                                    description: comment_count object
+                                    properties:
+                                      predicates:                                
+                                        type: array
+                                        description: predicates array
+                                        items:
+                                          type: string
+                                          description: predicate names
+                                          example: sioc:num_replies                                  
+                                      datatype:                                    
+                                        type: string
+                                        description: datatype names
+                                        example: xsd:integer  
+                                  uid:                                
+                                    type: object
+                                    description: uid object
+                                    properties:
+                                      predicates:                                
+                                        type: array
+                                        description: predicates array
+                                        items:
+                                          type: string
+                                          description: predicate names
+                                          example: sioc:has_creator                                
+                                      type:                                    
+                                        type: string
+                                        description: type names
+                                        example: rel     
+                                  last_activity:                                
+                                    type: object
+                                    description: last_activity object
+                                    properties:
+                                      predicates:                                
+                                        type: array
+                                        description: predicates array
+                                        items:
+                                          type: string
+                                          description: predicate names
+                                          example: sioc:last_activity_date                               
+                                      datatype:                                    
+                                        type: string
+                                        description: datatype names
+                                        example: xsd:dateTime      
+                                      callback:                                    
+                                        type: string
+                                        description: callback names
+                                        example: date_iso8601   
+                                  created:                                
+                                    type: object
+                                    description: created object
+                                    properties:
+                                      predicates:                                
+                                        type: array
+                                        description: predicates array
+                                        items:
+                                          type: string
+                                          description: predicate names
+                                          example: dc:date                              
+                                      datatype:                                    
+                                        type: string
+                                        description: datatype names
+                                        example: xsd:dateTime      
+                                      callback:                                    
+                                        type: string
+                                        description: callback names
+                                        example: date_iso8601    
+                                  name:                                
+                                    type: object
+                                    description: name object
+                                    properties:
+                                      predicates:                                
+                                        type: array
+                                        description: predicates array
+                                        items:
+                                          type: string
+                                          description: predicate names
+                                          example: foaf:name
+                                  title:                                
+                                    type: object
+                                    description: title object
+                                    properties:
+                                      predicates:                                
+                                        type: array
+                                        description: predicates array
+                                        items:
+                                          type: string
+                                          description: predicate names
+                                          example: dc:title
+                                  body:                                
+                                    type: object
+                                    description: body object
+                                    properties:
+                                      predicates:                                
+                                        type: array
+                                        description: predicates array
+                                        items:
+                                          type: string
+                                          description: predicate names
+                                          example: content encoded 
+                                  changed:                                
+                                    type: object
+                                    description: changed object
+                                    properties:
+                                      predicates:                                
+                                        type: array
+                                        description: predicates array
+                                        items:
+                                          type: string
+                                          description: predicate names
+                                          example: dc:modified                            
+                                      datatype:                                    
+                                        type: string
+                                        description: datatype names
+                                        example: xsd:dateTime      
+                                      callback:                                    
+                                        type: string
+                                        description: callback names
+                                        example: date_iso8601                                          
+                            data:
+                              type: string
+                              description: data
+                              example: a7s7
+                            log:
+                              type: string
+                              description: log
+                              example: Created by FeedsNodeProcessor  
+                            field_web_link:
+                              type: object
+                              description: field_web_link
+                              example: []     
+                            field_technology_readiness:
+                                type: object
+                                properties:
+                                  und:                                
+                                    type: array
+                                    description: field_technology_readiness array
+                                    items:
+                                      type: object
+                                      properties:
+                                        format:
+                                          type: string
+                                          description: format
+                                          example: field_technology_readiness
+                                        value:
+                                          type: string
+                                          description: value
+                                          example: TRL-9
+                                        safe_value:
+                                          type: string
+                                          description: safe_value
+                                          example: TRL-9   
+                            last_comment_uid:
+                              type: string
+                              description: last_comment_uid
+                              example: 1
+                            nid:
+                              type: string
+                              description: nid
+                              example: 167838                                                                       
+                            field_website_link:
+                                type: object
+                                properties:
+                                  und:                                
+                                    type: array
+                                    description: field_website_link array
+                                    items:
+                                      type: object
+                                      properties:
+                                        original_title:
+                                          type: string
+                                          description: original_title
+                                          example: null  
+                                        original_url:
+                                          type: string
+                                          description: original_url
+                                          example: https://csirprojects.anusandhan.net/
+                                        attributes:
+                                          type: object
+                                          description: attributes
+                                          example: []
+                                        title:
+                                          type: string
+                                          description: title
+                                          example: null
+                                        url:
+                                          type: object
+                                          description: url
+                                          example: agnikul.in                                        
+                            language:
+                              type: string
+                              description: language
+                              example: und
+                            title:
+                              type: string
+                              description: title
+                              example: AGNINBAAN (LAUNCH VEHICLE FOR MICRO-SATELLITES) AND AGNILET (3D PRINTED ROCKET ENGINE)                             
+                            type:
+                              type: string
+                              description: type
+                              example: technology
+                            body:
+                                type: object
+                                properties:
+                                  und:                                
+                                    type: array
+                                    description: body object array
+                                    items:
+                                      type: object
+                                      properties:
+                                        summary:
+                                          type: string
+                                          description: summary
+                                          example: null  
+                                        format:
+                                          type: string
+                                          description: format
+                                          example: filtered_html
+                                        safe_summary:
+                                          type: string
+                                          description: safe_summary
+                                          example: abc
+                                        value:
+                                          type: string
+                                          description: value
+                                          example: AgniKul is working on designing, manufacturing, testing, and launching orbital class rockets for micro-and nano-satellites.
+                                        safe_value:
+                                          type: object
+                                          description: safe_value
+                                          example: AgniKul is working on designing, manufacturing, testing, and launching orbital class rockets for micro-and nano-satellites.
+                            uuid:
+                              type: string
+                              description: uuid
+                              example: b295ee88-5907-42f9-adb3-50c40a8a567d
+                            translate:
+                              type: string
+                              description: translate
+                              example: 0
+                            field_incubator:
+                                type: object
+                                properties:
+                                  und:                                
+                                    type: array
+                                    description: field incubator object array
+                                    items:
+                                      type: object
+                                      properties:
+                                        format:
+                                          type: string
+                                          description: format
+                                          example: filtered_html
+                                        value:
+                                          type: string
+                                          description: value
+                                          example: IITM Incubation Cell, Madras
+                                        safe_value:
+                                          type: string
+                                          description: safe_value
+                                          example: IITM Incubation Cell, Madras                                        
+                            vid:
+                              type: string
+                              description: vid
+                              example: 89415
+                            revision_uid:
+                              type: string
+                              description: revision_uid
+                              example: 1
+                            uid:
+                              type: string
+                              description: uid
+                              example: 1
+                            promote:
+                              type: string
+                              description: promote
+                              example: 0
+                            field_social_benefits:
+                              type: object
+                              description: field_social_benefits
+                              example: []
+                            translations:
+                              type: object
+                              description: translations
+                              properties: 
+                                original:
+                                  type: string
+                                  description: original
+                                  example: null
+                                data:
+                                  type: object
+                                  description: data
+                                  example: []                             
+                            field_sub_area:
+                              type: object
+                              description: field_sub_area
+                              properties:
+                                 und:                                
+                                    type: array
+                                    description: field incubator object array
+                                    items:
+                                      type: object
+                                      properties:
+                                        format:
+                                          type: string
+                                          description: format
+                                          example: null
+                                        value:
+                                          type: string
+                                          description: value
+                                          example: Layered transition metals
+                                        safe_value:
+                                          type: string
+                                          description: safe_value
+                                          example: Layered transition metals
+                            revision_timestamp:
+                              type: string
+                              description: revision_timestamp
+                              example: 1667282883
+                            field_investment:
+                              type: object
+                              description: field_investment
+                              properties:
+                                 und:                                
+                                    type: array
+                                    description: field_investment object array
+                                    items:
+                                      type: object
+                                      properties:
+                                        format:
+                                          type: string
+                                          description: format
+                                          example: null
+                                        value:
+                                          type: string
+                                          description: value
+                                          example: null
+                                        safe_value:
+                                          type: string
+                                          description: safe_value
+                                          example: null                            
+                            field_email:
+                              type: object
+                              description: field_email
+                              properties:
+                                 und:                                
+                                    type: array
+                                    description: field_email object array
+                                    items:
+                                      type: object
+                                      properties:
+                                        email:
+                                          type: string
+                                          description: email
+                                          example: office@incubation.iitm.ac.in                          
+                            field_developing_agency:
+                              type: object
+                              description: field_developing_agency
+                              example: []
+                            field_benefits:
+                              type: object
+                              description: field_benefits
+                              properties:
+                                 und:                                
+                                    type: array
+                                    description: field_benefits object array
+                                    items:
+                                      type: object
+                                      properties:
+                                        format:
+                                          type: string
+                                          description: format
+                                          example: filtered_html
+                                        value:
+                                          type: string
+                                          description: value
+                                          example: Single piece, 3D printed rocket engines.. 
+                                        safe_value:
+                                          type: string
+                                          description: safe_value
+                                          example: Single piece, 3D printed rocket engines, first of its kind...                                      
+                            tnid:
+                              type: string
+                              description: tnid
+                              example: 0
+                            created:
+                              type: string
+                              description: created
+                              example: 1667282883   
+                            field_company_transferred_to:
+                              type: string
+                              description: field_company_transferred_to
+                              example: []
+                            custom_vocabulary_data:
+                              type: object
+                              description: custom_vocabulary_data
+                              properties:
+                                vocabulary_machine_name:
+                                  type: string
+                                  description: vocabulary_machine_name
+                                  example: Research areas  
+                                name:
+                                  type: string
+                                  description: name
+                                  example: Engineering Sciences, Astronomy & Space Sciences, Startup Technologies
+                                tid:
+                                  type: string
+                                  description: tid
+                                  example: 4783     
+                            metatags:
+                              type: object
+                              description: metatags
+                              properties:
+                                 und:                                
+                                    type: object
+                                    description: und object 
+                                    properties:
+                                      keywords:                                    
+                                        type: object
+                                        properties:
+                                          value:
+                                            type: string
+                                            description: value
+                                            example: Startup technologies, startup technologies... 
+                                      description:                                    
+                                        type: object
+                                        properties:
+                                          value:
+                                            type: string
+                                            description: value
+                                            example: Agnikul has designed and built a product that makes space journey simple.. 
+                            last_comment_timestamp:
+                              type: string
+                              description: last comment timestamp
+                              example: 1667282883    
+                            field_area:
+                              type: object
+                              description: field_area
+                              properties:
+                                 und:                                
+                                    type: array
+                                    description: field_area object array
+                                    items:
+                                      type: object
+                                      properties:
+                                        tid:
+                                          type: string
+                                          description: tid
+                                          example: 2396   
+                            picture:
+                              type: string
+                              description: picture
+                              example: 0  
+                            field_focus_area:
+                              type: object
+                              description: field_focus_area
+                              properties:
+                                 und:                                
+                                    type: array
+                                    description: field_focus_area object array
+                                    items:
+                                      type: object
+                                      properties:
+                                        format:
+                                          type: string
+                                          description: format
+                                          example: filtered_html
+                                        value:
+                                          type: string
+                                          description: value
+                                          example: 3D printed rocket engine and vehicle
+                                        safe_value:
+                                          type: string
+                                          description: safe_value
+                                          example: 3D printed rocket engine and vehicle  
+                            field_patent:
+                              type: object
+                              description: field_patent
+                              properties:
+                                 und:                                
+                                    type: array
+                                    description: field_patent object array
+                                    items:
+                                      type: object
+                                      properties:
+                                        format:
+                                          type: string
+                                          description: format
+                                          example: filtered_html
+                                        value:
+                                          type: string
+                                          description: value
+                                          example: 1
+                                        safe_value:
+                                          type: string
+                                          description: safe_value
+                                          example: 1
+                            last_comment_name:
+                              type: string
+                              description: last_comment_name
+                              example: abc
+                            field_status:
+                              type: object
+                              description: field_status
+                              example: []
+                            sticky:
+                              type: string
+                              description: sticky
+                              example: 0  
+                            name:
+                              type: string
+                              description: name
+                              example: admin 
+                            comment:
+                              type: string
+                              description: comment
+                              example: 0  
+                            field_file_single:
+                              type: object
+                              description: field_file_single
+                              example: []
+                            status:
+                              type: string
+                              description: status
+                              example: 1
+                            changed:
+                              type: string
+                              description: changed
+                              example: 1667282883
+                            cid:
+                              type: integer
+                              description: cid
+                              example: 0                                
+        "400":
+          description: Bad Request/Validation Error          
+components:
+  securitySchemes:
+    x-api-key:
+      type: apiKey
+      name: x-api-key
+      in: header

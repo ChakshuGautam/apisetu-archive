@@ -1,0 +1,127 @@
+openapi: 3.0.3
+info:  
+  title: Shriram Housing Finance Limited, Maharashtra
+  description:  >- 
+                Shriram Housing Finance Limited (SHFL) is a housing finance organisation registered with the National Housing Bank (NHB). We are a part of the Shriram Group, with a rich legacy of almost five decades.Implementing the National Vision of &lsquo;Housing for All&rsquo; in our &lsquo;Shriram&rsquo; way by reaching out to all section of the population with innovative home loan schemes. SHFL will use DigiLocker services to improve customer experience and Security features of Customer Documents
+  termsOfService: https://apisetu.gov.in/api-policy
+  version: 3.0.0
+servers:
+  - url: 'https://apisetu.gov.in/certificate/v3/shriramhousing'
+paths:
+  
+  /ircer:
+    post:
+      tags:
+        - APIs
+      summary: Interest Certificate
+      description: API to verify Interest Certificate.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: ircer
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - Lnno
+                    - Intyear
+                    - MobileNo
+                      
+                  properties:
+                    Lnno:
+                      type: string
+                      description: Agreement Number
+                      example: "SBTHAHEA0000660"
+                       
+                    
+                    Intyear:
+                      type: string
+                      description: Interest Period
+                      example: "2021-2022"
+                       
+                    
+                    MobileNo:
+                      type: string
+                      description: MobileNumber
+                      example: "9876546798"
+                       
+                    
+                      
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+components:
+  schemas:
+    ConsentArtifactSchema:
+      $ref: './common/ConsentArtifactSchema.yaml#/ConsentArtifactSchema'
+    AcademicCertificateSchema:
+      $ref: './common/AcademicCertificateSchema.yaml#/AcademicCertificateSchema'
+          
+  responses:
+    400Error:
+      $ref: './common/ErrorResponse.yaml#/400Error'
+    401Error:
+      $ref: './common/ErrorResponse.yaml#/401Error'
+    404Error:
+      $ref: './common/ErrorResponse.yaml#/404Error'
+    500Error:
+      $ref: './common/ErrorResponse.yaml#/500Error'
+    502Error:
+      $ref: './common/ErrorResponse.yaml#/502Error'
+    503Error:
+      $ref: './common/ErrorResponse.yaml#/503Error'
+    504Error:
+      $ref: './common/ErrorResponse.yaml#/504Error'
+  securitySchemes:
+    clientId:
+      type: apiKey
+      in: header
+      name: X-APISETU-CLIENTID
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-APISETU-APIKEY

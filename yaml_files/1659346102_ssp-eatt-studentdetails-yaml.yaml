@@ -1,0 +1,111 @@
+openapi: 3.0.0
+info:
+  title: SSP-EATT-Studentdetails
+  version: 1.0.0
+  description: This Api comes under the department of SSP.this API gives details
+    of SSP-EATT-students .
+servers:
+  - url: https://unidata.karnataka.gov.in:8080/get_sspstudentdetails/api/eatt_SSP_StudentDetails
+  - url: https://unidata.karnataka.gov.in:8080/
+paths:
+  /get_sspstudentdetails/api/eatt_SSP_StudentDetails:
+    post:
+      responses:
+        "200":
+          description: Operation Succesful
+          content:
+            application/json:
+              schema:
+                example:
+                  statusCode: 1
+                  status: Success
+                  message: You have Successfully got Student Details.
+                  StudentList:
+                    status: Success
+                    message: You have Successfully got Student Details.
+                    Student_Id: 20210195588
+                    Financial_Year_Code: 2122
+                    Student_Name: RAKESHA
+                    Registration_Number: A2025245
+                    Admission_Year: 2021
+                    Fees_Paid: " "
+                    State_Code: 29
+                    State_Name: Karnataka
+                    Res_District_Code: 535
+                    Res_District_Name: DAVANGERE
+                    Res_Taluk_Code: 5512
+                    Res_Taluk_Name: Davanagere
+                    District_Code: 535
+                    District_Name: DAVANGERE
+                    Taluk_Code: 5512
+                    Taluk_Name: Davanagere
+                    University_Code: 1037
+                    University_Name: "Davangere University, Davangere(Id: U-0218)"
+                    College_Code: 10654
+                    College_Name: "A R G Arts and Commerce College, Davangere(Id: C-42258)"
+                    Course_Code: 103
+                    Course_Name: B.A.
+                    Course_Year: 2
+                    Course_Year_Name: SECOND
+                    Discipline_Code: 1079
+                    Descipline_name: HES
+                    Seat_Type_Code: 0
+                    Seat_Type_Name: ""
+                    Mode_Of_Admission_Code: 3
+                    Entrance_Exam_Code: 0
+                    Religion_Id: 1
+                    Religion_Name: Hindu
+                    Religion_Categoty_Id: 4
+                    Religion_Categoty_Name: Cat IIA
+                    eattgroup: Degree
+                    previous_qualifying: N
+                    previous_state_name: Karnataka
+                    previous_university_name: "Davangere University, Davangere(Id: U-0218)"
+                    previous_college_name: "A R G Arts and Commerce College, Davangere(Id: C-42258)"
+                    previous_course_name: B.A.
+                    Previous_Course_duration: 3 Years
+                    exam_type_id: 0
+                    exam_type_name: ""
+                    sslc_before_2004: 2017
+                    sslc_other_state: ""
+                    sslc_state_name: ""
+                    puc_before_2010: 0
+                    puc_other_state: ""
+                    puc_state: ""
+                    sslc_igcse: 0
+                    puc_igcse: 0
+                    is_defense_family: 0
+                    is_scst: 6
+                    is_parent_salaried: 0
+                    is_annual_10lakh: 20000
+                    is_praticing_physician: 0
+      operationId: POST_get_sspstudentdetails-api-eatt_SSP_StudentDetails
+      requestBody:
+        content:
+          application/json:
+            example:
+              Student_Id: "20210195588"
+            schema:
+              type: string
+        required: true
+      parameters:
+        - name: UserId
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: Password
+          in: header
+          required: true
+          schema:
+            type: string
+components:
+  schemas: {}
+  responses: {}
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}

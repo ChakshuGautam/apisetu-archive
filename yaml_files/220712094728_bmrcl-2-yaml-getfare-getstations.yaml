@@ -1,0 +1,125 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "BMRCL Get Stations and Get Fare-Calculations",
+    "version": "1.0.0",
+    "description": "This Api comes under Mahiti-kanja department.This Api is meant to fetch details of bmrcl Stations and fare-calculations.\n"
+  },
+  "servers": [
+    {
+      "url": "http://mahitiapi.bmrc.co.in/"
+    },
+    {
+      "url": "https://mahitiapi.bmrc.co.in/"
+    }
+  ],
+  "paths": {
+    "/api/BMRCController/GetStationsforLine": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Successful Operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "StationOrder": "1",
+                    "vStationCode": "BYPH",
+                    "vStationName": "Baiyappanahalli",
+                    "vStationNameK": "ಬೈಯಪ್ಪನಹಳ್ಳಿ",
+                    "Line": "1",
+                    "LineColor": "Purple",
+                    "Latitude": "12.990459",
+                    "Longitude": "77.652649"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "To get BMRCL station details.",
+        "operationId": "GET_mahiti-kanaja-bmrcl-get-stations",
+        "parameters": [
+          {
+            "name": "Line",
+            "in": "query",
+            "required": true,
+            "description": "Track line number of metro train.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      }
+    },
+    "/api/BMRCController/GetFare": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Successful Operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "Token": "10",
+                    "CSC": "9.5",
+                    "GroupTicket": "na"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "To get fare calculation details for bmrcl department.",
+        "operationId": "GET_mahiti-kanaja-bmrcl-get-fare-calculation",
+        "parameters": [
+          {
+            "name": "FromStation",
+            "in": "query",
+            "required": true,
+            "description": "to get fare calculation with FromStation parameter.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ToStation",
+            "in": "query",
+            "required": true,
+            "description": "to get fare calculation with ToStation parameter.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {},
+    "responses": {},
+    "parameters": {},
+    "examples": {},
+    "requestBodies": {},
+    "headers": {},
+    "securitySchemes": {
+      "basic": {
+        "description": "This API supports Basic Authentication.\n",
+        "type": "http",
+        "scheme": "basic"
+      }
+    },
+    "links": {},
+    "callbacks": {}
+  }
+}

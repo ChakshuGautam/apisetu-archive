@@ -1,0 +1,874 @@
+openapi: 3.0.0
+paths:
+  /srv/v2/search/autocomplete:
+    get:
+      tags:
+        - myScheme Search API-v2
+        
+      operationId: autocomplete-v2
+      summary: Search scheme with auto suggestions
+      description: This API is used to facilitate search of scheme(s) based on their name, tags or short title and provides suggestions.
+      parameters:
+        
+        - name: suggest
+          required: true
+          in: query
+          example: Search schemes based on scheme name, scheme short title and scheme tags
+          schema:
+            type: string
+        - name: size
+          required: false
+          in: query
+          example: How many records you want to get - 10
+          schema:
+            type: number
+        - name: lang
+          required: false
+          in: query
+          example: Get schemes data language wise - en | hi
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Search scheme.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/SchemesSchema"
+        "400":
+          &a2
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequestSchema"
+        "403":
+          &a3
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ForbiddenSchema"
+        "500":
+          &a4
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerErrorSchema"
+      
+      security:
+        &a6
+        - clientId: []
+        - apiKey: []
+  /srv/v2/search/schemes:
+    get:
+      tags:
+        - myScheme Search API
+      operationId: search-scheme-v2
+      summary: Search scheme 
+      description: The purpose of this API is to facilitate scheme searches based on scheme name, tags, scheme short title, age, minority, beneficiaryState, residence, etc.
+      parameters:
+        
+        - name: q
+          required: false
+          in: query
+          example: "Need to convert q parameter values using function
+            encodeURIComponent(JSON.stringify()). For example
+            encodeURIComponent(JSON.stringify([
+                    {'identifier':'gender','value':'Female'},
+                    {'identifier':'age-general','min':'28','max':'28'},
+                    {'identifier':'maritalStatus','value':'Married'},
+                    {'identifier':'beneficiaryState','value':'Delhi'},
+                    {'identifier':'beneficiaryState','value':'All'},
+                    {'identifier':'residence','value':'Rural'},
+                    {'identifier':'residence','value':'Both'},
+                    {'identifier':'caste','value':'General'},
+                    {'identifier':'disability','value':'No'},
+                    {'identifier':'minority','value':'No'},
+                    {'identifier':'isStudent','value':'No'},
+                    {'identifier':'employmentStatus','value':'Employed'},
+                    {'identifier':'isGovEmployee','value':'No'},
+                    {'identifier':'occupation','value':'Health Worker'},
+                    {'identifier':'isBpl','value':'No'},
+                    {'identifier':'familyIncomeAnnual','min':'20000','max':'20000'}
+                ])) 
+              
+                Converted value => %5B%7B%22identifier%22%3A%22gender%22%2C%22value%22%3A%22Female%22%7D%2C%7B%22identifier%22%3A%22age-general%22%2C%22min%22%3A%2228%22%2C%22max%22%3A%2228%22%7D%2C%7B%22identifier%22%3A%22maritalStatus%22%2C%22value%22%3A%22Married%22%7D%2C%7B%22identifier%22%3A%22beneficiaryState%22%2C%22value%22%3A%22Delhi%22%7D%2C%7B%22identifier%22%3A%22beneficiaryState%22%2C%22value%22%3A%22All%22%7D%2C%7B%22identifier%22%3A%22residence%22%2C%22value%22%3A%22Rural%22%7D%2C%7B%22identifier%22%3A%22residence%22%2C%22value%22%3A%22Both%22%7D%2C%7B%22identifier%22%3A%22caste%22%2C%22value%22%3A%22General%22%7D%2C%7B%22identifier%22%3A%22disability%22%2C%22value%22%3A%22No%22%7D%2C%7B%22identifier%22%3A%22minority%22%2C%22value%22%3A%22No%22%7D%2C%7B%22identifier%22%3A%22isStudent%22%2C%22value%22%3A%22No%22%7D%2C%7B%22identifier%22%3A%22employmentStatus%22%2C%22value%22%3A%22Employed%22%7D%2C%7B%22identifier%22%3A%22isGovEmployee%22%2C%22value%22%3A%22No%22%7D%2C%7B%22identifier%22%3A%22occupation%22%2C%22value%22%3A%22Health%20Worker%22%7D%2C%7B%22identifier%22%3A%22isBpl%22%2C%22value%22%3A%22No%22%7D%2C%7B%22identifier%22%3A%22familyIncomeAnnual%22%2C%22min%22%3A%2220000%22%2C%22max%22%3A%2220000%22%7D%5D
+                
+                List of all available parameters (identifier) =>
+                
+                Parameter Name - schemeName, 
+                Type - String,
+                Possible Values - 'Pradhan Mantri Mudra Yojana | Pradhan Mantri Jeevan Jyoti Bima Yojana',
+                    
+                Parameter Name - schemeShortTitle, 
+                Type - String,
+                Possible Values - 'pmmy | pmjjby',
+                    
+                Parameter Name - nodalMinistryName,
+                Type - String,
+                Possible Values - 'Ministry Of Rural Development',
+                
+                Parameter Name - nodalDepartmentName, 
+                Type - String,
+                Possible Values - 'Department of Rural Development',
+                
+                Parameter Name - targetBeneficiaries, 
+                Type - String,
+                Possible Values - 'Individual | Family',
+                
+                Parameter Name - schemeCategory, 
+                Type - String,
+                Possible Values - 'Social welfare & Empowerment | Skills & Employment',
+                    
+                Parameter Name - schemeSubCategory, 
+                Type - String,
+                Possible Values - 'Citizen empowerment | Rural services | Welfare measures',
+                
+                Parameter Name - dbtScheme, 
+                Type - String,
+                Possible Values - 'Yes | No',
+                
+                Parameter Name - level, 
+                Type - String,
+                Possible Values - 'Central | State',
+                    
+                Parameter Name - tags, 
+                Type - String,
+                Possible Values - 'Skill Development | Transgender | SC | ST | Loan',
+                
+                Parameter Name - nationality, 
+                Type - String,
+                Possible Values - 'Indian',
+                
+                Parameter Name - gender, 
+                Type - String,
+                Possible Values - 'Male | Female | Transgender',
+                
+                Parameter Name - minority, 
+                Type - String,
+                Possible Values - 'Yes | No',
+                
+                Parameter Name - nri, 
+                Type - String,
+                Possible Values - 'Yes | No',
+                
+                Parameter Name - beneficiaryState, 
+                Type - String,
+                Possible Values - 'All | Delhi',
+                
+                Parameter Name - residence, 
+                Type - String,
+                Possible Values - 'Both | Rural',
+                
+                Parameter Name - caste, 
+                Type - String,
+                Possible Values - 'All | Scheduled Caste (SC) | Scheduled Tribe (ST)',
+                
+                Parameter Name - disability, 
+                Type - String,
+                Possible Values - 'Yes | No',
+                
+                Parameter Name - unemployed, 
+                Type - String,
+                Possible Values - 'Yes | No',
+                
+                Parameter Name - occupation, 
+                Type - String,
+                Possible Values - 'Student | All | Safai Karamchari',
+                
+                Parameter Name - familyIncomeAnnual, 
+                Type - Integer,
+                Possible Values - '10000 | 200000',
+                
+                Parameter Name - individualIncomeAnnual, 
+                Type - Integer,
+                Possible Values - '10000 | 200000',
+                
+                Parameter Name - maritalStatus, 
+                Type - String,
+                Possible Values - 'All | Never Married | Married',
+                
+                Parameter Name - briefDescription, 
+                Type - String,
+                Possible Values - 'All | Never Married | Married',
+                
+                Parameter Name - slug, 
+                Type - String,
+                Possible Values - 'prems-st | icwf | scholarship',
+                
+                Parameter Name - benefitTypes, 
+                Type - String,
+                Possible Values - 'prems-st | icwf | scholarship',
+                
+                Parameter Name - age, 
+                Type - integer,
+                Possible Values - '10 | 20',
+                
+                Parameter Name - parentIncomeAnnual, 
+                Type - integer,
+                Possible Values - '10000 | 200000',
+                
+                Parameter Name - isGovEmployee, 
+                Type - String,
+                Possible Values - 'Yes | No',
+                
+                Parameter Name - isBpl, 
+                Type - String,
+                Possible Values - 'Yes | No',
+                
+                Parameter Name - isEconomicDistress, 
+                Type - String,
+                Possible Values - 'Yes | No',
+                
+                Parameter Name - employmentStatus, 
+                Type - String,
+                Possible Values - 'All | Self-Employed | Entrepreneur',
+                
+                Parameter Name - isStudent
+                Type - String,
+                Possible Values - 'Yes | No'"
+          schema:
+            type: string
+        - name: keyword
+          required: false
+          in: query
+          example: Search scheme name, scheme brief description and scheme tags
+          schema:
+            type: string
+        - name: from
+          required: false
+          in: query
+          example: Pagination start value - 0
+          schema:
+            type: number
+        - name: size
+          required: false
+          in: query
+          example: Pagination end value - 10
+          schema:
+            type: number
+        - name: sort
+          required: false
+          in: query
+          example: Sorting by scheme name and relevance - schemename-asc | schemename-desc
+            | multiple_sort
+          schema:
+            type: string
+        - name: lang
+          required: false
+          in: query
+          example: Get schemes data language wise - en | hi
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Search scheme.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/SchemesSchema"
+        "400": *a2
+        "403": *a3
+        "500": *a4
+      
+      security: *a6
+  /srv/v3/search/autocomplete:
+    get:
+      tags:
+        - myScheme Search API-v3
+      operationId: autocomplete-v3
+      summary: Search autocomplete API - v3
+      description: The purpose of this API is to facilitate scheme searches based on scheme name, tags, and scheme short title, along with providing auto suggestions.
+      parameters:
+        
+        - name: suggest
+          required: true
+          in: query
+          example: Search schemes based on scheme name, scheme short title and scheme tags
+          schema:
+            type: string
+        - name: size
+          required: false
+          in: query
+          example: How many records you want to get - 10
+          schema:
+            type: number
+        - name: lang
+          required: false
+          in: query
+          example: Get schemes data language wise - en | hi
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Search scheme.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/SchemesSchema"
+        "400":
+          &a20
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequestSchema"
+        "403":
+          &a21
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ForbiddenSchema"
+        "500":
+          &a22
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerErrorSchema"
+      
+   
+      security:
+        &a24
+        - clientId: []
+        - apiKey: []
+  /srv/v3/search/schemes:
+    get:
+      tags:
+        - myScheme Search API-v3
+      operationId: search-scheme-v3
+      summary: Search schemes API - v3
+      description: The purpose of this API is to facilitate scheme searches based on scheme name, tags, scheme short title, age, minority, beneficiaryState, residence, etc.
+      parameters:
+        
+        - name: q
+          required: false
+          in: query
+          example: "Need to convert q parameter values using function
+            encodeURIComponent(JSON.stringify()). For example
+            encodeURIComponent(JSON.stringify([
+                    {'identifier':'gender','value':'Female'},
+                    {'identifier':'age-general','min':'28','max':'28'},
+                    {'identifier':'maritalStatus','value':'Married'},
+                    {'identifier':'beneficiaryState','value':'Delhi'},
+                    {'identifier':'beneficiaryState','value':'All'},
+                    {'identifier':'residence','value':'Rural'},
+                    {'identifier':'residence','value':'Both'},
+                    {'identifier':'caste','value':'General'},
+                    {'identifier':'disability','value':'No'},
+                    {'identifier':'minority','value':'No'},
+                    {'identifier':'isStudent','value':'No'},
+                    {'identifier':'employmentStatus','value':'Employed'},
+                    {'identifier':'isGovEmployee','value':'No'},
+                    {'identifier':'occupation','value':'Health Worker'},
+                    {'identifier':'isBpl','value':'No'},
+                    {'identifier':'familyIncomeAnnual','min':'20000','max':'20000'}
+                ])) 
+              
+                Converted value => %5B%7B%22identifier%22%3A%22gender%22%2C%22value%22%3A%22Female%22%7D%2C%7B%22identifier%22%3A%22age-general%22%2C%22min%22%3A%2228%22%2C%22max%22%3A%2228%22%7D%2C%7B%22identifier%22%3A%22maritalStatus%22%2C%22value%22%3A%22Married%22%7D%2C%7B%22identifier%22%3A%22beneficiaryState%22%2C%22value%22%3A%22Delhi%22%7D%2C%7B%22identifier%22%3A%22beneficiaryState%22%2C%22value%22%3A%22All%22%7D%2C%7B%22identifier%22%3A%22residence%22%2C%22value%22%3A%22Rural%22%7D%2C%7B%22identifier%22%3A%22residence%22%2C%22value%22%3A%22Both%22%7D%2C%7B%22identifier%22%3A%22caste%22%2C%22value%22%3A%22General%22%7D%2C%7B%22identifier%22%3A%22disability%22%2C%22value%22%3A%22No%22%7D%2C%7B%22identifier%22%3A%22minority%22%2C%22value%22%3A%22No%22%7D%2C%7B%22identifier%22%3A%22isStudent%22%2C%22value%22%3A%22No%22%7D%2C%7B%22identifier%22%3A%22employmentStatus%22%2C%22value%22%3A%22Employed%22%7D%2C%7B%22identifier%22%3A%22isGovEmployee%22%2C%22value%22%3A%22No%22%7D%2C%7B%22identifier%22%3A%22occupation%22%2C%22value%22%3A%22Health%20Worker%22%7D%2C%7B%22identifier%22%3A%22isBpl%22%2C%22value%22%3A%22No%22%7D%2C%7B%22identifier%22%3A%22familyIncomeAnnual%22%2C%22min%22%3A%2220000%22%2C%22max%22%3A%2220000%22%7D%5D
+                
+                List of all available parameters (identifier) =>
+                
+                Parameter Name - schemeName, 
+                Type - String,
+                Possible Values - 'Pradhan Mantri Mudra Yojana | Pradhan Mantri Jeevan Jyoti Bima Yojana',
+                    
+                Parameter Name - schemeShortTitle, 
+                Type - String,
+                Possible Values - 'pmmy | pmjjby',
+                    
+                Parameter Name - nodalMinistryName,
+                Type - String,
+                Possible Values - 'Ministry Of Rural Development',
+                
+                Parameter Name - nodalDepartmentName, 
+                Type - String,
+                Possible Values - 'Department of Rural Development',
+                
+                Parameter Name - targetBeneficiaries, 
+                Type - String,
+                Possible Values - 'Individual | Family',
+                
+                Parameter Name - schemeCategory, 
+                Type - String,
+                Possible Values - 'Social welfare & Empowerment | Skills & Employment',
+                    
+                Parameter Name - schemeSubCategory, 
+                Type - String,
+                Possible Values - 'Citizen empowerment | Rural services | Welfare measures',
+                
+                Parameter Name - dbtScheme, 
+                Type - String,
+                Possible Values - 'Yes | No',
+                
+                Parameter Name - level, 
+                Type - String,
+                Possible Values - 'Central | State',
+                    
+                Parameter Name - tags, 
+                Type - String,
+                Possible Values - 'Skill Development | Transgender | SC | ST | Loan',
+                
+                Parameter Name - nationality, 
+                Type - String,
+                Possible Values - 'Indian',
+                
+                Parameter Name - gender, 
+                Type - String,
+                Possible Values - 'Male | Female | Transgender',
+                
+                Parameter Name - minority, 
+                Type - String,
+                Possible Values - 'Yes | No',
+                
+                Parameter Name - nri, 
+                Type - String,
+                Possible Values - 'Yes | No',
+                
+                Parameter Name - beneficiaryState, 
+                Type - String,
+                Possible Values - 'All | Delhi',
+                
+                Parameter Name - residence, 
+                Type - String,
+                Possible Values - 'Both | Rural',
+                
+                Parameter Name - caste, 
+                Type - String,
+                Possible Values - 'All | Scheduled Caste (SC) | Scheduled Tribe (ST)',
+                
+                Parameter Name - disability, 
+                Type - String,
+                Possible Values - 'Yes | No',
+                
+                Parameter Name - unemployed, 
+                Type - String,
+                Possible Values - 'Yes | No',
+                
+                Parameter Name - occupation, 
+                Type - String,
+                Possible Values - 'Student | All | Safai Karamchari',
+                
+                Parameter Name - familyIncomeAnnual, 
+                Type - Integer,
+                Possible Values - '10000 | 200000',
+                
+                Parameter Name - individualIncomeAnnual, 
+                Type - Integer,
+                Possible Values - '10000 | 200000',
+                
+                Parameter Name - maritalStatus, 
+                Type - String,
+                Possible Values - 'All | Never Married | Married',
+                
+                Parameter Name - briefDescription, 
+                Type - String,
+                Possible Values - 'All | Never Married | Married',
+                
+                Parameter Name - slug, 
+                Type - String,
+                Possible Values - 'prems-st | icwf | scholarship',
+                
+                Parameter Name - benefitTypes, 
+                Type - String,
+                Possible Values - 'prems-st | icwf | scholarship',
+                
+                Parameter Name - age, 
+                Type - integer,
+                Possible Values - '10 | 20',
+                
+                Parameter Name - parentIncomeAnnual, 
+                Type - integer,
+                Possible Values - '10000 | 200000',
+                
+                Parameter Name - isGovEmployee, 
+                Type - String,
+                Possible Values - 'Yes | No',
+                
+                Parameter Name - isBpl, 
+                Type - String,
+                Possible Values - 'Yes | No',
+                
+                Parameter Name - isEconomicDistress, 
+                Type - String,
+                Possible Values - 'Yes | No',
+                
+                Parameter Name - employmentStatus, 
+                Type - String,
+                Possible Values - 'All | Self-Employed | Entrepreneur',
+                
+                Parameter Name - isStudent
+                Type - String,
+                Possible Values - 'Yes | No'"
+          schema:
+            type: string
+        - name: keyword
+          required: false
+          in: query
+          example: Search scheme name, scheme brief description and scheme tags
+          schema:
+            type: string
+        - name: from
+          required: false
+          in: query
+          example: Pagination start value - 0
+          schema:
+            type: number
+        - name: size
+          required: false
+          in: query
+          example: Pagination end value - 10
+          schema:
+            type: number
+        - name: sort
+          required: false
+          in: query
+          example: Sorting by scheme name and relevance - schemename-asc | schemename-desc
+            | multiple_sort
+          schema:
+            type: string
+        - name: lang
+          required: false
+          in: query
+          example: Get schemes data language wise - en | hi
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Search scheme.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/SchemesSchema"
+        "400": *a20
+        "403": *a21
+        "500": *a22
+      
+      security: *a24
+  /srv/v3/search/schemes/facets:
+    get:
+      tags:
+        - myScheme Search API-v3    
+      operationId: scheme facets-v3
+      summary: Get aggregated scheme data - v3
+      description: The purpose of this API is to facilitate scheme searches based on scheme name, tags, scheme short title, age, minority, beneficiaryState, residence, and return aggregated scheme data.
+      parameters:
+        
+        - name: q
+          required: false
+          in: query
+          example: "Need to convert q parameter values using function
+            encodeURIComponent(JSON.stringify()). For example
+            encodeURIComponent(JSON.stringify([
+                    {'identifier':'gender','value':'Female'},
+                    {'identifier':'age-general','min':'28','max':'28'},
+                    {'identifier':'maritalStatus','value':'Married'},
+                    {'identifier':'beneficiaryState','value':'Delhi'},
+                    {'identifier':'beneficiaryState','value':'All'},
+                    {'identifier':'residence','value':'Rural'},
+                    {'identifier':'residence','value':'Both'},
+                    {'identifier':'caste','value':'General'},
+                    {'identifier':'disability','value':'No'},
+                    {'identifier':'minority','value':'No'},
+                    {'identifier':'isStudent','value':'No'},
+                    {'identifier':'employmentStatus','value':'Employed'},
+                    {'identifier':'isGovEmployee','value':'No'},
+                    {'identifier':'occupation','value':'Health Worker'},
+                    {'identifier':'isBpl','value':'No'},
+                    {'identifier':'familyIncomeAnnual','min':'20000','max':'20000'}
+                ])) 
+              
+                Converted value => %5B%7B%22identifier%22%3A%22gender%22%2C%22value%22%3A%22Female%22%7D%2C%7B%22identifier%22%3A%22age-general%22%2C%22min%22%3A%2228%22%2C%22max%22%3A%2228%22%7D%2C%7B%22identifier%22%3A%22maritalStatus%22%2C%22value%22%3A%22Married%22%7D%2C%7B%22identifier%22%3A%22beneficiaryState%22%2C%22value%22%3A%22Delhi%22%7D%2C%7B%22identifier%22%3A%22beneficiaryState%22%2C%22value%22%3A%22All%22%7D%2C%7B%22identifier%22%3A%22residence%22%2C%22value%22%3A%22Rural%22%7D%2C%7B%22identifier%22%3A%22residence%22%2C%22value%22%3A%22Both%22%7D%2C%7B%22identifier%22%3A%22caste%22%2C%22value%22%3A%22General%22%7D%2C%7B%22identifier%22%3A%22disability%22%2C%22value%22%3A%22No%22%7D%2C%7B%22identifier%22%3A%22minority%22%2C%22value%22%3A%22No%22%7D%2C%7B%22identifier%22%3A%22isStudent%22%2C%22value%22%3A%22No%22%7D%2C%7B%22identifier%22%3A%22employmentStatus%22%2C%22value%22%3A%22Employed%22%7D%2C%7B%22identifier%22%3A%22isGovEmployee%22%2C%22value%22%3A%22No%22%7D%2C%7B%22identifier%22%3A%22occupation%22%2C%22value%22%3A%22Health%20Worker%22%7D%2C%7B%22identifier%22%3A%22isBpl%22%2C%22value%22%3A%22No%22%7D%2C%7B%22identifier%22%3A%22familyIncomeAnnual%22%2C%22min%22%3A%2220000%22%2C%22max%22%3A%2220000%22%7D%5D
+                
+                List of all available parameters (identifier) =>
+                
+                Parameter Name - schemeName, 
+                Type - String,
+                Possible Values - 'Pradhan Mantri Mudra Yojana | Pradhan Mantri Jeevan Jyoti Bima Yojana',
+                    
+                Parameter Name - schemeShortTitle, 
+                Type - String,
+                Possible Values - 'pmmy | pmjjby',
+                    
+                Parameter Name - nodalMinistryName,
+                Type - String,
+                Possible Values - 'Ministry Of Rural Development',
+                
+                Parameter Name - nodalDepartmentName, 
+                Type - String,
+                Possible Values - 'Department of Rural Development',
+                
+                Parameter Name - targetBeneficiaries, 
+                Type - String,
+                Possible Values - 'Individual | Family',
+                
+                Parameter Name - schemeCategory, 
+                Type - String,
+                Possible Values - 'Social welfare & Empowerment | Skills & Employment',
+                    
+                Parameter Name - schemeSubCategory, 
+                Type - String,
+                Possible Values - 'Citizen empowerment | Rural services | Welfare measures',
+                
+                Parameter Name - dbtScheme, 
+                Type - String,
+                Possible Values - 'Yes | No',
+                
+                Parameter Name - level, 
+                Type - String,
+                Possible Values - 'Central | State',
+                    
+                Parameter Name - tags, 
+                Type - String,
+                Possible Values - 'Skill Development | Transgender | SC | ST | Loan',
+                
+                Parameter Name - nationality, 
+                Type - String,
+                Possible Values - 'Indian',
+                
+                Parameter Name - gender, 
+                Type - String,
+                Possible Values - 'Male | Female | Transgender',
+                
+                Parameter Name - minority, 
+                Type - String,
+                Possible Values - 'Yes | No',
+                
+                Parameter Name - nri, 
+                Type - String,
+                Possible Values - 'Yes | No',
+                
+                Parameter Name - beneficiaryState, 
+                Type - String,
+                Possible Values - 'All | Delhi',
+                
+                Parameter Name - residence, 
+                Type - String,
+                Possible Values - 'Both | Rural',
+                
+                Parameter Name - caste, 
+                Type - String,
+                Possible Values - 'All | Scheduled Caste (SC) | Scheduled Tribe (ST)',
+                
+                Parameter Name - disability, 
+                Type - String,
+                Possible Values - 'Yes | No',
+                
+                Parameter Name - unemployed, 
+                Type - String,
+                Possible Values - 'Yes | No',
+                
+                Parameter Name - occupation, 
+                Type - String,
+                Possible Values - 'Student | All | Safai Karamchari',
+                
+                Parameter Name - familyIncomeAnnual, 
+                Type - Integer,
+                Possible Values - '10000 | 200000',
+                
+                Parameter Name - individualIncomeAnnual, 
+                Type - Integer,
+                Possible Values - '10000 | 200000',
+                
+                Parameter Name - maritalStatus, 
+                Type - String,
+                Possible Values - 'All | Never Married | Married',
+                
+                Parameter Name - briefDescription, 
+                Type - String,
+                Possible Values - 'All | Never Married | Married',
+                
+                Parameter Name - slug, 
+                Type - String,
+                Possible Values - 'prems-st | icwf | scholarship',
+                
+                Parameter Name - benefitTypes, 
+                Type - String,
+                Possible Values - 'prems-st | icwf | scholarship',
+                
+                Parameter Name - age, 
+                Type - integer,
+                Possible Values - '10 | 20',
+                
+                Parameter Name - parentIncomeAnnual, 
+                Type - integer,
+                Possible Values - '10000 | 200000',
+                
+                Parameter Name - isGovEmployee, 
+                Type - String,
+                Possible Values - 'Yes | No',
+                
+                Parameter Name - isBpl, 
+                Type - String,
+                Possible Values - 'Yes | No',
+                
+                Parameter Name - isEconomicDistress, 
+                Type - String,
+                Possible Values - 'Yes | No',
+                
+                Parameter Name - employmentStatus, 
+                Type - String,
+                Possible Values - 'All | Self-Employed | Entrepreneur',
+                
+                Parameter Name - isStudent
+                Type - String,
+                Possible Values - 'Yes | No'"
+          schema:
+            type: string
+        - name: lang
+          required: false
+          in: query
+          example: Get schemes data language wise - en | hi
+          schema:
+            type: string
+        - name: keyword
+          required: false
+          in: query
+          example: Search scheme name, scheme brief description and scheme tags
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Search scheme.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/SchemesSchema"
+        "400": *a20
+        "403": *a21
+        "500": *a22
+      
+      security: *a24        
+      
+info:
+  title: myScheme Search
+  description: >-2
+     This document provides detailed description of myScheme search APIs. These APIs can be used to search schemes or get scheme suggestions based on the parameters provided such as scheme name, tags, scheme short title, age, minority, beneficiaryState, residence, etc. 
+         
+    # Authentication
+     The API comply to  API Setu authentication. <a href="https://partners.apisetu.gov.in/directory/api/apisetu/1692012237_API-Authentication">Click here</a> for more details.  
+     
+     <i>[Updated on 21st August 2023]</i>
+     
+  version: "1.3.0"
+  contact:
+    name: myScheme Team
+    url: https://www.myscheme.gov.in
+    email: support-myscheme@digitalindia.gov.in
+  termsOfService: https://www.myscheme.gov.in/terms-conditions
+  license:
+    name: Privacy Policy
+    url: https://www.myscheme.gov.in/privacy-policy
+ 
+servers:
+  - url: https://apisetu.gov.in/dic/myscheme
+    description: Production Server 
+    variables: {}
+components:
+  securitySchemes:
+    clientId:
+      type: apiKey
+      in: header
+      name: X-APISETU-CLIENTID
+    apiKey:
+      type: apiKey
+      name: X-APISETU-APIKEY
+      in: header 
+  schemas:
+    BadRequestSchema:
+      type: object
+      properties:
+        status:
+          type: string
+          example: Failure
+        statusCode:
+          type: number
+          example: 400
+        data:
+          type: string
+          example: "{}"
+        errorDescription:
+          type: string
+          example: This is bad request
+      required:
+        - status
+        - statusCode
+        - data
+        - errorDescription
+    ForbiddenSchema:
+      type: object
+      properties:
+        status:
+          type: string
+          example: Failure
+        statusCode:
+          type: number
+          example: 403
+        data:
+          type: string
+          example: "{}"
+        errorDescription:
+          type: string
+          example: Forbidden
+      required:
+        - status
+        - statusCode
+        - data
+        - errorDescription
+    InternalServerErrorSchema:
+      type: object
+      properties:
+        status:
+          type: string
+          example: Failure
+        statusCode:
+          type: number
+          example: 500
+        data:
+          type: string
+          example: "{}"
+        errorDescription:
+          type: string
+          example: Internal server error
+      required:
+        - status
+        - statusCode
+        - data
+        - errorDescription
+    SchemesSchema:
+      type: object
+      properties:
+        status:
+          type: string
+          example: Success
+        statusCode:
+          type: string
+          example: 200
+        errorDescription:
+          type: string
+          example: ""
+        error:
+          type: string
+          example: "{}"
+        data:
+          type: object
+          example: ""
+      required:
+        - status
+        - statusCode
+        - errorDescription
+        - error
+        - data

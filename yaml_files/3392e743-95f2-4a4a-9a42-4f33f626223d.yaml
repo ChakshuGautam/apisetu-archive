@@ -1,0 +1,67 @@
+host: degateway.napix.gov.in:443
+info:
+  title: Jeevan Pramaan
+  version: 2.0.0
+  x-ibm-name: gwdlcotp
+  description: Jeevan Pramaan Digital Life Certificate Device OTP Validation  This
+    API is for capturing device info and registration with OTP validation
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/nic/jeevan-pramaan
+paths:
+  /client_otp:
+    post:
+      summary: PArams
+      consumes:
+        - application/xml
+      security:
+        - clientID: []
+          ClientAuthKey: []
+      responses:
+        "200":
+          description: Ok
+      parameters:
+        - in: body
+          name: BodyParams
+          schema:
+            type: string
+            title: Schema
+        - in: header
+          name: AUthorization
+          type: string
+          format: byte
+      tags:
+        - Gwdlcotp
+schemes:
+  - https
+swagger: "2.0"
+basePath: /nic/jeevan-pramaan/dlc2.0
+security:
+  - clientID: []
+    ClientAuthKey: []
+securityDefinitions:
+  clientID:
+    in: header
+    name: X-clientID
+    type: apiKey
+    x-key-type: client_id
+  ClientAuthKey:
+    in: header
+    name: X-ClientKey
+    type: apiKey
+    x-key-type: client_secret
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  servers:
+    - url: https://degateway.napix.gov.in:443/nic/jeevan-pramaan/dlc2.0
+      type:
+        - production
+        - development
+      description: ""
+  enforced: true
+  testable: true
+  application-authentication:
+    certificate: false

@@ -1,0 +1,209 @@
+openapi: 3.0.1
+info:
+  title: Channel API
+  description: |-
+      PM eVidya DIKSHA - One Nation, One Digital Platform for School Education.
+      An initiative of the National Council of Educational Research and Training (Ministry of Education, Govt of India) <i>[Updated on 29th May 2023]</i>
+  termsOfService: https://diksha.gov.in/term-of-use.html
+  contact:
+    name: Provided by -Diksha
+    url: https://diksha.gov.in/
+  version: 1.0.0
+servers:
+- url: https://diksha.gov.in/api/channel
+  description: Production Server 
+paths:
+  /v1/read/{channelId}:
+    get:
+      tags:
+      - Read Channel API
+      summary: This Web Service will be used to get detail of Channel.
+      operationId: v1/read
+      security:
+      - bearerAuth: []
+      parameters:
+      
+        - in: path
+          name: channelId
+          required: true
+          example: 01246376237871104093
+          schema:
+            type: string
+      
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  id:
+                    type: string
+                    example: "api.channel.read"
+                  ver:
+                    type: string
+                    example: "1.0"
+                  ts:
+                    type: string
+                    example: "2023-05-17T09:22:16.542Z"
+                  params:
+                    type: object
+                    properties:
+                      resmsgid: 
+                        type: string                        
+                        example: "50bf87e0-f494-11ed-a2fd-5f923ef83a4f"
+                      msgid: 
+                        type: string                        
+                        example: "50baccf0-f494-11ed-a213-11650cb2b679"
+                      status: 
+                        type: string                        
+                        example: "successful"
+                      err: 
+                        type: string                        
+                        example: null
+                      errmsg: 
+                        type: string                        
+                        example: null
+                  responseCode:
+                    type: string
+                    example: "OK"
+                  result:
+                    type: object
+                    properties:
+                      channel: 
+                        type: object                        
+                        properties:
+                          code: 
+                            type: string
+                            example: "01246376237871104093"
+                          frameworks: 
+                            type: string
+                            example: [{'name': 'State (Uttar Pradesh)', 'relation': 'hasSequenceMember', 'identifier': 'up_k-12', 'description': 'Uttar Pradesh k-12', 'objectType': 'Framework', 'status': 'Live', 'type': 'K-12'}]
+                          channel: 
+                            type: string
+                            example: "01246376237871104093"
+                          description: 
+                            type: string
+                            example: "UttarPradesh"
+                          createdOn: 
+                            type: string
+                            example: "2018-03-19T10:13:35.594+0000"
+                          objectType: 
+                            type: string
+                            example: "Channel"
+                          collectionPrimaryCategories: 
+                            type: string
+                            example: ['Content Playlist', 'Course', 'Digital Textbook', 'Question paper']
+                          appId: 
+                            type: string
+                            example: "prod.diksha.app"
+                          primaryCategories: 
+                            type: string
+                            example: [{'identifier': 'obj-cat:asset_asset_all', 'name': 'Asset', 'targetObjectType': 'Asset'}, {'identifier': 'obj-cat:certasset_asset_all', 'name': 'CertAsset', 'targetObjectType': 'Asset'}, {'identifier': 'obj-cat:content-playlist_collection_all', 'name': 'Content Playlist', 'targetObjectType': 'Collection'}, {'identifier': 'obj-cat:course_collection_all', 'name': 'Course', 'targetObjectType': 'Collection'}, {'identifier': 'obj-cat:course-assessment_content_all', 'name': 'Course Assessment', 'targetObjectType': 'Content'}, {'identifier': 'obj-cat:digital-textbook_collection_all', 'name': 'Digital Textbook', 'targetObjectType': 'Collection'}, {'identifier': 'obj-cat:etextbook_content_all', 'name': 'eTextbook', 'targetObjectType': 'Content'}, {'identifier': 'obj-cat:explanation-content_content_all', 'name': 'Explanation Content', 'targetObjectType': 'Content'}, {'identifier': 'obj-cat:learning-resource_content_all', 'name': 'Learning Resource', 'targetObjectType': 'Content'}, {'identifier': 'obj-cat:multiple-choice-question_question_all', 'name': 'Multiple Choice Question', 'targetObjectType': 'Question'}, {'identifier': 'obj-cat:practice-question-set_content_all', 'name': 'Practice Question Set', 'targetObjectType': 'Content'}, {'identifier': 'obj-cat:question-paper_collection_all', 'name': 'Question Paper', 'targetObjectType': 'Collection'}, {'identifier': 'obj-cat:subjective-question_question_all', 'name': 'Subjective Question', 'targetObjectType': 'Question'}, {'identifier': 'obj-cat:teacher-resource_content_all', 'name': 'Teacher Resource', 'targetObjectType': 'Content'}, {'identifier': 'obj-cat:exam-question-set_questionset_01246376237871104093', 'name': 'Exam Question Set', 'targetObjectType': 'QuestionSet'}]
+                          additionalCategories: 
+                            type: string
+                            example: ['Asset', 'CCT', 'CertAsset', 'Certificate Template', 'Classroom Teaching Video', 'Concept Map', 'Content Playlist', 'Course', 'Course Assessment', 'Course Unit', 'Curiosity Question Set', 'Digital Textbook', 'eTextbook', 'Exam Question', 'Exam Question Set', 'Experiential Resource', 'Explanation Content', 'Explanation Video', 'FLN', 'Focus Spot', 'FTB Question', 'Learning Outcome Definition', 'Learning Resource', 'Lesson Plan', 'Lesson Plan Unit', 'Marking Scheme Rubric', 'Multiple Choice Question', 'Pedagogy Flow', 'Plugin', 'Practice Question Set', 'Practice Set', 'Previous Board Exam Papers', 'Question Paper', 'Subjective Question', 'Teacher Resource', 'Template', 'Textbook', 'Textbook Unit', 'TV Lesson']
+                          lastUpdatedOn: 
+                            type: string
+                            example: "2021-04-28T21:19:17.305+0000"
+                          collectionAdditionalCategories: 
+                            type: string
+                            example: ['Textbook', 'Lesson Plan', 'CCT', 'FLN']
+                          contentAdditionalCategories: 
+                            type: string
+                            example: ['Classroom Teaching Video', 'Concept Map', 'Curiosity Question Set', 'Experiential Resource', 'Explanation Video', 'Focus Spot', 'Learning Outcome Definition', 'Lesson Plan', 'Marking Scheme Rubric', 'Pedagogy Flow', 'Previous Board Exam Papers', 'TV Lesson', 'Textbook', 'CCT', 'FLN']
+                          identifier: 
+                            type: string
+                            example: "01246376237871104093"
+                          lastStatusChangedOn: 
+                            type: string
+                            example: "2019-06-11T07:18:39.477+0000"
+                          consumerId: 
+                            type: string
+                            example: "498ddb9f-d8a3-40c5-9a3a-b2edb822589b"
+                          assetAdditionalCategories: 
+                            type: string
+                            example: []
+                          autoCreateBatch: 
+                            type: string
+                            example: "Disabled"
+                          languageCode: 
+                            type: string
+                            example: []
+                          versionKey: 
+                            type: string
+                            example: "1619644757305"
+                          contentPrimaryCategories: 
+                            type: string
+                            example: ['Course Assessment', 'eTextbook', 'Explanation Content', 'Learning Resource', 'Practice Question Set', 'Teacher Resource', 'Exam Question']
+                          name: 
+                            type: string
+                            example: "up"
+                          defaultCourseFramework: 
+                            type: string
+                            example: "TPD"
+                          assetPrimaryCategories: 
+                            type: string
+                            example: ['Asset', 'CertAsset', 'Certificate Template']
+                          status: 
+                            type: string
+                            example: "Live"
+                          defaultFramework: 
+                            type: string
+                            example: "up_k-12"
+
+   
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  id:
+                    type: string
+                    example: "api.channel.read"
+                  ver:
+                    type: string
+                    example: "1.0"
+                  ts:
+                    type: string
+                    example: "2023-05-22T10:27:26.078Z"
+                  params:
+                    type: object
+                    properties:
+                      resmsgid: 
+                        type: string                        
+                        example: "3f1421e0-f88b-11ed-a2fd-5f923ef83a4f"
+                      msgid: 
+                        type: string                        
+                        example: null
+                      status: 
+                        type: string                        
+                        example: "failed"
+                      err: 
+                        type: string                        
+                        example: "NOT_FOUND"
+                      errmsg: 
+                        type: string                        
+                        example: "Error! Node(s) doesn't Exists. | [Invalid Node Id.]: 0124637623787110"
+                  responseCode:
+                    type: string
+                    example: "RESOURCE_NOT_FOUND"
+                  result:
+                    type: object
+                    properties:
+                      messages: 
+                        type: string                        
+                        example: null
+
+   
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Text
+
+

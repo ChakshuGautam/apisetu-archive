@@ -1,0 +1,2329 @@
+---
+openapi: 3.0.0
+info:
+  title: Department of Civil Supplies and Consumer Affairs (Chandigarh)
+  description: The department of Food and Supplies (Chandigarh), manages Direct Benefits Transfer Scheme for foodgrains in Chandigarh for regulating production, supply and distribution of, and trade and commerce in, essential commodities with a view to maintain or increase supplies thereof and secure their equitable distribution and availability at fair prices by enforcing the Essential Commodities Act, 1955 and various Control Orders made there under. User can apply for Ration card using this Department Tile. <i>[Updated on 5th September 2023]</i>
+  termsOfService: https://web.umang.gov.in/uaw/ts/v1/en/index.htm
+  contact:
+    name: Provided by - UMANG
+    url: https://web.umang.gov.in
+  version: 1.0.0
+servers:
+  - url: https://apigw.umangapp.in
+    description: Production server
+    
+security:
+  - x-api-key: []
+  
+paths:
+  /chandigarhApi/ws1/getMasterData:
+    post:
+      tags:
+        - Master Data Web Service
+      summary: Get the master data using this service
+      description: This api is used to get the master data
+      operationId: chandigarhApi/ws1/getMasterData
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: W-23456789
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90  
+                usag:
+                  type: string
+                  description: usag
+                  example: 1                   
+                usrid:
+                  type: string
+                  description: user id
+                  example: 10001201
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1518
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: 1      
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1                   
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 341
+                did:
+                  type: string
+                  description: did
+                  example: 1
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0             
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "341"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1518"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: master data objects
+                    properties:
+                      compoundWallTypeMaster:
+                        type: object
+                        description: compoundWallTypeMaster object items
+                        properties:     
+                          response:
+                            type: array
+                            description: compoundWallTypeMaster object item
+                            items:
+                              type: object
+                              properties:
+                                compoundWallTypeName:
+                                  type: string
+                                  description: compoundWallTypeName
+                                  example: NO 
+                                compoundWallTypeCode:
+                                  type: string
+                                  description: compoundWallTypeCode
+                                  example: 2
+                      dfsoMaster:
+                        type: object
+                        description: dfsoMaster object items
+                        properties:     
+                          response:
+                            type: array
+                            description: dfsoMaster object item
+                            items:
+                              type: object
+                              properties:
+                                dfscoCode:
+                                  type: string
+                                  description: dfscoCode
+                                  example: 1055 
+                                dfscoName:
+                                  type: string
+                                  description: dfscoName
+                                  example: District Food and Supply Office
+                      gasAgencyMaster:
+                        type: object
+                        description: gasAgencyMaster object items
+                        properties:     
+                          response:
+                            type: array
+                            description: gasAgencyMaster object item
+                            items:
+                              type: object
+                              properties:
+                                gasCompanyCode:
+                                  type: string
+                                  description: gasCompanyCode
+                                  example: 3 
+                                gasAgencyId:
+                                  type: string
+                                  description: gasAgencyId
+                                  example: 1
+                                gasAgencyName:
+                                  type: string
+                                  description: gasAgencyName
+                                  example: SUN RISE GAS
+                                gasAgencyDistrictCode:
+                                  type: string
+                                  description: gasAgencyDistrictCode
+                                  example: 055                                 
+                      buildingTypeMaster:
+                        type: object
+                        description: buildingTypeMaster object items
+                        properties:     
+                          response:
+                            type: array
+                            description: buildingTypeMaster object item
+                            items:
+                              type: object
+                              properties:
+                                buildingTypeCode:
+                                  type: string
+                                  description: buildingTypeCode
+                                  example: 1 
+                                buildingTypeName:
+                                  type: string
+                                  description: buildingTypeName
+                                  example: KUCCHA
+                      afsoMaster:
+                        type: object
+                        description: afsoMaster object items
+                        properties:     
+                          response:
+                            type: array
+                            description: afsoMaster object item
+                            items:
+                              type: object
+                              properties:
+                                afsoName:
+                                  type: string
+                                  description: afsoName
+                                  example: Circle Food and Supply Office 
+                                dfsoCode:
+                                  type: string
+                                  description: dfsoCode
+                                  example: 1055
+                                afsoCode:
+                                  type: string
+                                  description: afsoCode
+                                  example: 1055001                                  
+                      reservationCategoryMaster:
+                        type: object
+                        description: reservationCategoryMaster object items
+                        properties:     
+                          response:
+                            type: array
+                            description: reservationCategoryMaster object item
+                            items:
+                              type: object
+                              properties:
+                                reservationCategoryName:
+                                  type: string
+                                  description: reservationCategoryName
+                                  example: CO-OPER
+                                reservationCategoryCode:
+                                  type: string
+                                  description: reservationCategoryCode
+                                  example: 1
+                      enclosureListNewFPSPremises:
+                        type: object
+                        description: enclosureListNewFPSPremises object items
+                        properties:     
+                          response:
+                            type: array
+                            description: enclosureListNewFPSPremises object item
+                            items:
+                              type: object
+                              properties:
+                                enclosureName:
+                                  type: string
+                                  description: enclosureName
+                                  example: FPS PREMISES PHOTO 
+                                enclosureCode:
+                                  type: string
+                                  description: enclosureCode
+                                  example: 22
+                      bankMaster:
+                        type: object
+                        description: bankMaster object items
+                        properties:     
+                          response:
+                            type: array
+                            description: bankMaster object item
+                            items:
+                              type: object
+                              properties:
+                                bankCode:
+                                  type: string
+                                  description: bankCode
+                                  example: 02 
+                                bankName:
+                                  type: string
+                                  description: bankName
+                                  example: ALLAHABAD BANK
+                      enclosureListForIDProof:
+                        type: object
+                        description: enclosureListForIDProof object items
+                        properties:     
+                          response:
+                            type: array
+                            description: enclosureListForIDProof object item
+                            items:
+                              type: object
+                              properties:
+                                enclosureName:
+                                  type: string
+                                  description: enclosureName
+                                  example: DRIVING LICENSE
+                                enclosureCode:
+                                  type: string
+                                  description: enclosureCode
+                                  example: 6
+                      enclosureListNewFPSDocument:
+                        type: object
+                        description: enclosureListNewFPSDocument object items
+                        properties:     
+                          response:
+                            type: array
+                            description: enclosureListNewFPSDocument object item
+                            items:
+                              type: object
+                              properties:
+                                enclosureName:
+                                  type: string
+                                  description: enclosureName
+                                  example: AFFIDAVIT
+                                enclosureCode:
+                                  type: string
+                                  description: enclosureCode
+                                  example: 1
+                      roofingTypeMaster:
+                        type: object
+                        description: roofingTypeMaster object items
+                        properties:     
+                          response:
+                            type: array
+                            description: roofingTypeMaster object item
+                            items:
+                              type: object
+                              properties:
+                                roofingTypeName:
+                                  type: string
+                                  description: roofingTypeName
+                                  example: ASBESTOS SHEET 
+                                roofingTypeCode:
+                                  type: string
+                                  description: roofingTypeCode
+                                  example: 2
+                      enclosureListNewFPSRent:
+                        type: object
+                        description: enclosureListNewFPSRent object items
+                        properties:     
+                          response:
+                            type: array
+                            description: enclosureListNewFPSRent object item
+                            items:
+                              type: object
+                              properties:
+                                enclosureName:
+                                  type: string
+                                  description: enclosureName
+                                  example: RENT AGREEMENT 
+                                enclosureCode:
+                                  type: string
+                                  description: enclosureCode
+                                  example: 21
+                      enclosureListNewFPSPhoto:
+                        type: object
+                        description: enclosureListNewFPSPhoto object items
+                        properties:     
+                          response:
+                            type: array
+                            description: enclosureListNewFPSPhoto object item
+                            items:
+                              type: object
+                              properties:
+                                enclosureName:
+                                  type: string
+                                  description: enclosureName
+                                  example: FPS OWNER PHOTO
+                                enclosureCode:
+                                  type: string
+                                  description: enclosureCode
+                                  example: 19
+                      tehsilMaster:
+                        type: object
+                        description: tehsilMaster object items
+                        properties:     
+                          response:
+                            type: array
+                            description: tehsilMaster object item
+                            items:
+                              type: object
+                              properties:
+                                tehsilCode:
+                                  type: string
+                                  description: tehsilCode
+                                  example: 00277
+                                tehsilName:
+                                  type: string
+                                  description: tehsilName
+                                  example: CHANDIGARH
+                                distirctCode:
+                                  type: string
+                                  description: distirctCode
+                                  example: 055                                  
+                      enclosureListForRCModificationMemberAddition:
+                        type: object
+                        description: enclosureListForRCModificationMemberAddition object items
+                        properties:     
+                          response:
+                            type: array
+                            description: enclosureListForRCModificationMemberAddition object item
+                            items:
+                              type: object
+                              properties:
+                                enclosureName:
+                                  type: string
+                                  description: enclosureName
+                                  example: AFFIDAVIT
+                                enclosureCode:
+                                  type: string
+                                  description: enclosureCode
+                                  example: 1
+                      gasCompanyMaster:
+                        type: object
+                        description: gasCompanyMaster object items
+                        properties:     
+                          response:
+                            type: array
+                            description: gasCompanyMaster object item
+                            items:
+                              type: object
+                              properties:
+                                gasCompanyCode:
+                                  type: string
+                                  description: gasCompanyCode
+                                  example: 1 
+                                gasCompanyName:
+                                  type: string
+                                  description: gasCompanyName
+                                  example: Hindustan Petroleum Corporation Limited
+                      enclosureListForResidenceProof:
+                        type: object
+                        description: enclosureListForResidenceProof object items
+                        properties:     
+                          response:
+                            type: array
+                            description: enclosureListForResidenceProof object item
+                            items:
+                              type: object
+                              properties:
+                                enclosureName:
+                                  type: string
+                                  description: enclosureName
+                                  example: DRIVING LICENSE
+                                enclosureCode:
+                                  type: string
+                                  description: enclosureCode
+                                  example: 6
+                      enclosureListForRCModificationMemberDeletionOther:
+                        type: object
+                        description: enclosureListForRCModificationMemberDeletionOther object items
+                        properties:     
+                          response:
+                            type: array
+                            description: enclosureListForRCModificationMemberDeletionOther object item
+                            items:
+                              type: object
+                              example: null
+                      educationMaster:
+                        type: object
+                        description: educationMaster object items
+                        properties:     
+                          response:
+                            type: array
+                            description: educationMaster object item
+                            items:
+                              type: object
+                              properties:
+                                educationName:
+                                  type: string
+                                  description: educationName
+                                  example: AGRICULTURE
+                                educationCode:
+                                  type: string
+                                  description: educationCode
+                                  example: 38
+                      incomeTaxPaidStatusMaster:
+                        type: object
+                        description: incomeTaxPaidStatusMaster object items
+                        properties:     
+                          response:
+                            type: array
+                            description: incomeTaxPaidStatusMaster object item
+                            items:
+                              type: object
+                              properties:
+                                incomeTaxPaidStatusCode:
+                                  type: string
+                                  description: incomeTaxPaidStatusCode
+                                  example: 2
+                                incomeTaxPaidStatusName:
+                                  type: string
+                                  description: incomeTaxPaidStatusName
+                                  example: NO
+                      enclosureListForBankProof:
+                        type: object
+                        description: enclosureListForBankProof object items
+                        properties:     
+                          response:
+                            type: array
+                            description: enclosureListForBankProof object item
+                            items:
+                              type: object
+                              example: null
+                      enclosureListForRCModificationMemberDeletionDeath:
+                        type: object
+                        description: enclosureListForRCModificationMemberDeletionDeath object items
+                        properties:     
+                          response:
+                            type: array
+                            description: enclosureListForRCModificationMemberDeletionDeath object item
+                            items:
+                              type: object
+                              properties:
+                                enclosureName:
+                                  type: string
+                                  description: enclosureName
+                                  example: OTHER 
+                                enclosureCode:
+                                  type: string
+                                  description: enclosureCode
+                                  example: 18
+                      villageMaster:
+                        type: object
+                        description: villageMaster object items
+                        properties:     
+                          response:
+                            type: array
+                            description: villageMaster object item
+                            items:
+                              type: object
+                              properties:
+                                tehsilCode:
+                                  type: string
+                                  description: tehsilCode
+                                  example: 00277 
+                                distirctCode:
+                                  type: string
+                                  description: distirctCode
+                                  example: 055
+                                villageName:
+                                  type: string
+                                  description: villageName
+                                  example: KAIMBWALA
+                                villageCode:
+                                  type: string
+                                  description: villageCode
+                                  example: 0405500277040089                                  
+                      enclosureListForOtherMandatoryProof:
+                        type: object
+                        description: enclosureListForOtherMandatoryProof object items
+                        properties:     
+                          response:
+                            type: array
+                            description: enclosureListForOtherMandatoryProof object item
+                            items:
+                              type: object
+                              properties:
+                                enclosureName:
+                                  type: string
+                                  description: enclosureName
+                                  example: AFFIDAVIT 
+                                enclosureCode:
+                                  type: string
+                                  description: enclosureCode
+                                  example: 1
+                      nationalityMaster:
+                        type: object
+                        description: nationalityMaster object items
+                        properties:     
+                          response:
+                            type: array
+                            description: nationalityMaster object item
+                            items:
+                              type: object
+                              properties:
+                                nationalityCode:
+                                  type: string
+                                  description: nationalityCode
+                                  example: INDIAN 
+                                nationalityName:
+                                  type: string
+                                  description: nationalityName
+                                  example: INDIAN
+                      enclosureListNewFPSCertificate:
+                        type: object
+                        description: enclosureListNewFPSCertificate object items
+                        properties:     
+                          response:
+                            type: array
+                            description: enclosureListNewFPSCertificate object item
+                            items:
+                              type: object
+                              properties:
+                                enclosureName:
+                                  type: string
+                                  description: enclosureName
+                                  example: IT CERTIFICATE 
+                                enclosureCode:
+                                  type: string
+                                  description: enclosureCode
+                                  example: 20
+                      connectionTypeMaster:
+                        type: object
+                        description: connectionTypeMaster object items
+                        properties:     
+                          response:
+                            type: array
+                            description: connectionTypeMaster object item
+                            items:
+                              type: object
+                              properties:
+                                connectionTypeCode:
+                                  type: string
+                                  description: connectionTypeCode
+                                  example: 1
+                                connectionTypeName:
+                                  type: string
+                                  description: connectionTypeName
+                                  example: Single
+                      occupationMaster:
+                        type: object
+                        description: occupationMaster object items
+                        properties:     
+                          response:
+                            type: array
+                            description: occupationMaster object item
+                            items:
+                              type: object
+                              properties:
+                                occupationCode:
+                                  type: string
+                                  description: occupationCode
+                                  example: 1
+                                occupationName:
+                                  type: string
+                                  description: occupationName
+                                  example: AGRICULTURE LABOUR
+                      casteCategoryMaster:
+                        type: object
+                        description: casteCategoryMaster object items
+                        properties:     
+                          response:
+                            type: array
+                            description: casteCategoryMaster object item
+                            items:
+                              type: object
+                              properties:
+                                casteCategoryCode:
+                                  type: string
+                                  description: casteCategoryCode
+                                  example: 6 
+                                casteCategoryName:
+                                  type: string
+                                  description: casteCategoryName
+                                  example: BL
+                      ownershipPremisesTypeMaster:
+                        type: object
+                        description: ownershipPremisesTypeMaster object items
+                        properties:     
+                          response:
+                            type: array
+                            description: ownershipPremisesTypeMaster object item
+                            items:
+                              type: object
+                              properties:
+                                ownershipPremisesTypeCode:
+                                  type: string
+                                  description: ownershipPremisesTypeCode
+                                  example: 1 
+                                ownershipPremisesTypeName:
+                                  type: string
+                                  description: ownershipPremisesTypeName
+                                  example: OWN
+                      bankBranchMaster:
+                        type: object
+                        description: bankBranchMaster object items
+                        properties:     
+                          response:
+                            type: array
+                            description: bankBranchMaster object item
+                            items:
+                              type: object
+                              properties:
+                                bankCode:
+                                  type: string
+                                  description: bankCode
+                                  example: 82 
+                                bankBranchCode:
+                                  type: string
+                                  description: bankBranchCode
+                                  example: 001
+                                bankBranchName:
+                                  type: string
+                                  description: bankBranchName
+                                  example: MADHYA MARG BRANCH
+                                ifscCode:
+                                  type: string
+                                  description: ifscCode
+                                  example: BMBL0000018                                  
+                      relationshipMaster:
+                        type: object
+                        description: relationshipMaster object items
+                        properties:     
+                          response:
+                            type: array
+                            description: relationshipMaster object item
+                            items:
+                              type: object
+                              properties:
+                                relationshipName:
+                                  type: string
+                                  description: relationshipName
+                                  example: SELF
+                                relationshipCode:
+                                  type: string
+                                  description: relationshipCode
+                                  example: 1
+                      genderTypeMaster:
+                        type: object
+                        description: genderTypeMaster object items
+                        properties:     
+                          response:
+                            type: array
+                            description: genderTypeMaster object item
+                            items:
+                              type: object
+                              properties:
+                                genderTypeName:
+                                  type: string
+                                  description: genderTypeName
+                                  example: MALE 
+                                genderTypeCode:
+                                  type: string
+                                  description: genderTypeCode
+                                  example: 1
+                      enclosureListNewFPSImpression:
+                        type: object
+                        description: enclosureListNewFPSImpression object items
+                        properties:     
+                          response:
+                            type: array
+                            description: enclosureListNewFPSImpression object item
+                            items:
+                              type: object
+                              properties:
+                                enclosureName:
+                                  type: string
+                                  description: enclosureName
+                                  example: SIGNATURE
+                                enclosureCode:
+                                  type: string
+                                  description: enclosureCode
+                                  example: 17
+                      districtMaster:
+                        type: object
+                        description: districtMaster object items
+                        properties:     
+                          response:
+                            type: array
+                            description: districtMaster object item
+                            items:
+                              type: object
+                              properties:
+                                districtCode:
+                                  type: string
+                                  description: districtCode
+                                  example: 055 
+                                districtName:
+                                  type: string
+                                  description: districtName
+                                  example: CHANDIGARH                                
+        "400":
+          description: Bad Request/Validation Error
+  /chandigarhApi/ws1/NEWRCAPP:
+    post:
+      tags:
+        - New Ration Card Application Web Service
+      summary: Apply for the new ration card using this service
+      description: This api is used to apply for the new ration card
+      operationId: chandigarhApi/ws1/NEWRCAPP
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: W-23456789
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90  
+                usag:
+                  type: string
+                  description: usag
+                  example: 1                   
+                usrid:
+                  type: string
+                  description: user id
+                  example: 10001201
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1518
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: 1      
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1                   
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 341
+                did:
+                  type: string
+                  description: did
+                  example: 1
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0   
+                rcHeader:
+                  type: object
+                  description: rcHeader
+                  properties: 
+                    user_id:                  
+                      type: string
+                      description: user_id
+                      example: umanguser
+                    application_id:                  
+                      type: string
+                      description: application id
+                      example: UMANG0000002
+                    server_mac:                  
+                      type: string
+                      description: server_mac
+                      example: DC:FG:TG:ER:09 
+                    server_ip:                  
+                      type: string
+                      description: server_ip
+                      example: 10.1.11.124
+                    request_id:                  
+                      type: string
+                      description: request_id
+                      example: NOTHING
+                    membercount:                  
+                      type: string
+                      description: membercount
+                      example: 1 
+                    hof_name_en:                  
+                      type: string
+                      description: hof_name_en
+                      example: Mrs Head 
+                    hof_name_ll:                  
+                      type: string
+                      description: hof_name_ll
+                      example: ""
+                    mother_name_en:                  
+                      type: string
+                      description: mother_name_en
+                      example: Mrs Mother
+                    mother_name_ll:                  
+                      type: string
+                      description: mother_name_ll
+                      example: ""
+                    father_name_en:                  
+                      type: string
+                      description: father_name_en
+                      example: Mr Father
+                    father_name_ll:                  
+                      type: string
+                      description: father_name_ll
+                      example: ""
+                    spouse_name_en:                  
+                      type: string
+                      description: spouse_name_en
+                      example: Spouse
+                    spouse_name_ll:                  
+                      type: string
+                      description: spouse_name_ll
+                      example: ""
+                    age:                  
+                      type: string
+                      description: age
+                      example: 29 
+                    dob:                  
+                      type: string
+                      description: dob
+                      example: 1968-01-01
+                    gender_code:                  
+                      type: string
+                      description: gender_code
+                      example: 2 
+                    mobile_number:                  
+                      type: string
+                      description: mobile_number
+                      example: 0
+                    natinality:                  
+                      type: string
+                      description: natinality
+                      example: NRI
+                    uid_number:                  
+                      type: string
+                      description: uid_number
+                      example: 564378291670
+                    bank_code:                  
+                      type: string
+                      description: bank_code
+                      example: 06 
+                    bank_branch_code:                  
+                      type: string
+                      description: bank_branch_code
+                      example: ""
+                    account_number:                  
+                      type: string
+                      description: account_number
+                      example: 763266464366466
+                    ifsc_code:                  
+                      type: string
+                      description: ifsc_code
+                      example: HDFC0000959
+                    present_house_number:                  
+                      type: string
+                      description: present_house_number
+                      example: H No- 1
+                    present_landmark:                  
+                      type: string
+                      description: present_landmark
+                      example: ITBP TEST
+                    present_district_code:                  
+                      type: string
+                      description: present_district_code
+                      example: 055
+                    present_tahsil_code:                  
+                      type: string
+                      description: present_tahsil_code
+                      example: 00277
+                    present_village_town_code:                  
+                      type: string
+                      description: present_village_town_code
+                      example: 0405500277040089
+                    present_pin:                  
+                      type: string
+                      description: present_pin
+                      example: 000000
+                    permanent_house_number:                  
+                      type: string
+                      description: permanent_house_number
+                      example: d
+                    permanent_landmark:                  
+                      type: string
+                      description: permanent_landmark
+                      example: l
+                    permanent_district_name_en:                  
+                      type: string
+                      description: permanent_district_name_en
+                      example: ""
+                    permanent_district_name_ll:                  
+                      type: string
+                      description: permanent_district_name_ll
+                      example: 1 
+                    permanent_tahsil_nameen:                  
+                      type: string
+                      description: permanent_tahsil_nameen
+                      example: ""
+                    permanent_tahsil_name_ll:                  
+                      type: string
+                      description: permanent_tahsil_name_ll
+                      example: ""
+                    permanent_village_town_name_en:                  
+                      type: string
+                      description: permanent_village_town_name_en
+                      example: ""
+                    permanent_village_town_name_ll:                  
+                      type: string
+                      description: permanent_village_town_name_ll
+                      example: ""
+                    permanent_pin:                  
+                      type: string
+                      description: permanent_pin
+                      example: ""
+                    occupation_code:                  
+                      type: string
+                      description: occupation_code
+                      example: 1
+                    hof_annual_salary:                  
+                      type: string
+                      description: hof_annual_salary
+                      example: 0
+                    gas_connection_type_code:                  
+                      type: string
+                      description: gas_connection_type_code
+                      example: 0
+                    gas_company_code:                  
+                      type: string
+                      description: gas_company_code
+                      example: 0 
+                    gas_company_district_code:                  
+                      type: string
+                      description: gas_company_district_code
+                      example: 0 
+                    gas_agency_code:                  
+                      type: string
+                      description: gas_agency_code
+                      example: 0
+                    gas_consumer_name_en:                  
+                      type: string
+                      description: gas_consumer_name_en
+                      example: "" 
+                    gas_consumer_name_ll:                  
+                      type: string
+                      description: gas_consumer_name_ll
+                      example: "" 
+                    gas_consumer_number:                  
+                      type: string
+                      description: gas_consumer_number
+                      example: ""
+                    old_ration_cardnumber:                  
+                      type: string
+                      description: old_ration_cardnumber
+                      example: ""
+                    hof_photo:                  
+                      type: string
+                      description: hof_photo
+                      example: 2
+                    enclosure_id_01:                  
+                      type: string
+                      description: enclosure_id_01
+                      example: 1
+                    enclosure_document_01:                  
+                      type: string
+                      description: enclosure_document_01
+                      example: 2
+                    enclosure_id_02:                  
+                      type: string
+                      description: enclosure_id_02
+                      example: 1
+                    enclosure_document_02:                  
+                      type: string
+                      description: enclosure_document_02
+                      example: 2
+                    enclosure_id_03:                  
+                      type: string
+                      description: enclosure_id_03
+                      example: 1
+                    enclosure_document_03:                  
+                      type: string
+                      description: enclosure_document_03
+                      example: 2
+                    enclosure_id_04:                  
+                      type: string
+                      description: enclosure_id_04
+                      example: 4
+                    enclosure_document_04:                  
+                      type: string
+                      description: enclosure_document_04
+                      example: 5
+                    dfso_code:                  
+                      type: string
+                      description: dfso_code
+                      example: 1055
+                    afso_code:                  
+                      type: string
+                      description: afso_code
+                      example: 1055001
+                    npr_tin:                  
+                      type: string
+                      description: npr_tin
+                      example: ""
+                    present_house_no_ll:                  
+                      type: string
+                      description: present_house_no_ll
+                      example: ""
+                    present_landmark_locality_ll:                  
+                      type: string
+                      description: present_landmark_locality_ll
+                      example: ""
+                    present_state_name_en:                  
+                      type: string
+                      description: present_state_name_en
+                      example: ""
+                    present_state_name_ll:                  
+                      type: string
+                      description: present_state_name_ll
+                      example: ""
+                    permanent_house_no_ll:                  
+                      type: string
+                      description: permanent_house_no_ll
+                      example: ""
+                    permanent_landmark_locality_ll:                  
+                      type: string
+                      description: permanent_landmark_locality_ll
+                      example: ""
+                    permanent_state_name_en:                  
+                      type: string
+                      description: permanent_state_name_en
+                      example: ""
+                    permanent_state_name_ll:                  
+                      type: string
+                      description: permanent_state_name_ll
+                      example: ""
+                    bpl_family_id:                  
+                      type: string
+                      description: bpl_family_id
+                      example: ""
+                    card_type:                  
+                      type: string
+                      description: card_type
+                      example: 0
+                    aadhar_enrollment_id:                  
+                      type: string
+                      description: aadhar_enrollment_id
+                      example: ""
+                    epic_voter_id_number:                  
+                      type: string
+                      description: epic_voter_id_number
+                      example: ""                     
+                memberDetail:
+                    type: array
+                    description: memberDetails list
+                    items:                
+                      type: object
+                      description: memberDetail
+                      properties:
+                        memberid:                  
+                          type: string
+                          description: memberid
+                          example: UMANG000000201 
+                        member_name_en:                  
+                          type: string
+                          description: member_name_en
+                          example: Member 01
+                        member_name_ll:                  
+                          type: string
+                          description: member_name_ll
+                          example: ""
+                        member_mother_nameen:                  
+                          type: string
+                          description: member_mother_nameen
+                          example: Mother 01 
+                        member_mother_name_ll:                  
+                          type: string
+                          description: member_mother_name_ll
+                          example: ""
+                        member_father_nameen:                  
+                          type: string
+                          description: member_father_nameen
+                          example: Father 01
+                        member_father_namell:                  
+                          type: string
+                          description: member_father_namell
+                          example: ""
+                        member_spouse_name_en:                  
+                          type: string
+                          description: member_spouse_name_en
+                          example: Spouse 01
+                        member_spouse_name_ll:                  
+                          type: string
+                          description: member_spouse_name_ll
+                          example:  ""
+                        member_age:                  
+                          type: string
+                          description: member_age
+                          example: 45
+                        member_dob:                  
+                          type: string
+                          description: member_dob
+                          example: 1968-01-01
+                        member_gender_code:                  
+                          type: string
+                          description: member_gender_code
+                          example: 2
+                        member_mobile_number:                  
+                          type: string
+                          description: member_mobile_number
+                          example: 0
+                        member_nationality:                  
+                          type: string
+                          description: member_nationality
+                          example: INDIAN
+                        member_uid_number:                  
+                          type: string
+                          description: member_uid_number
+                          example: 0
+                        member_bank_code:                  
+                          type: string
+                          description: member_bank_code
+                          example: 0
+                        member_bank_branch_code:                  
+                          type: string
+                          description: member_bank_branch_code
+                          example: 1
+                        member_account_number:                  
+                          type: string
+                          description: member_account_number
+                          example: ""
+                        member_ifsc_code:                  
+                          type: string
+                          description: member_ifsc_code
+                          example: ""
+                        member_aadhar_enrollment_id:                  
+                          type: string
+                          description: member_aadhar_enrollment_id
+                          example: "" 
+                        member_npr_id:                  
+                          type: string
+                          description: member_npr_id
+                          example: "" 
+                        member_relation_code:                  
+                          type: string
+                          description: member_relation_code
+                          example: ""
+                        member_occupation_code:                  
+                          type: string
+                          description: member_occupation_code
+                          example: 1
+                        member_annual_salary:                  
+                          type: string
+                          description: member_annual_salary
+                          example: 0
+                        member_opting_commodity:                  
+                          type: string
+                          description: member_opting_commodity
+                          example: 0  
+                        epic_voter_id_number:                  
+                          type: string
+                          description: epic_voter_id_number
+                          example: ""                      
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "341"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1518"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: array
+                    description: response object 
+                    items:
+                      type: object
+                      properties:
+                        strReferenceNo:
+                          type: string
+                          description: strReferenceNo
+                          example: RT2308110007
+                        strStatus:
+                          type: string
+                          description: strStatus
+                          example: SUCCESS
+  /chandigarhApi/ws1/getrationcarddetails:
+    post:
+      tags:
+        - Get Ration Card Details 
+      summary: Get the info about the ration card number in chandigarh dept
+      description: This api is used to get the ration card details of the ration card number
+      operationId: chandigarhApi/ws1/getrationcarddetails
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 27.138700
+                lon:
+                  type: string
+                  description: longitude
+                  example: 77.783897
+                lac:
+                  type: string
+                  description: lac
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 90
+                usrid:
+                  type: string
+                  description: user id
+                  example: 09
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1518
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: andorid
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                deptid:
+                  type: string
+                  description: department id
+                  example: 341
+                subsid:
+                  type: string
+                  description: subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                rationCardNumber:
+                  type: string
+                  description: rationCardNumber
+                  example: 262000000004
+                userName:
+                  type: string
+                  description: userName
+                  example: umanguser
+                userPassword:
+                  type: string
+                  description: userPassword
+                  example: Umang$123                  
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "341"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1518"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    properties:
+                      rationCardMemberDetail:                     
+                        type: array
+                        description: ration card member detail
+                        items:
+                          type: object
+                          properties:
+                            memberaadhaarnumber:
+                              type: string
+                              description: member aadhaar number
+                              example: XXXX-XXXX-3919
+                            memberage:
+                              type: string
+                              description: member age
+                              example: 59
+                            memberrelationship:
+                              type: string
+                              description: member relationship
+                              example: SELF   
+                            membername:
+                              type: string
+                              description: member name en
+                              example: SHAKARIBEN SRAVANBHAI CHOTHA
+                            memberid:
+                              type: string
+                              description: member id
+                              example: 26200000000401
+                      statusCode:                     
+                        type: string
+                        description: status code
+                        example: 001
+                      statusRemarks:                     
+                        type: string
+                        description: status remarks
+                        example: SUCCESS
+                      rationCardDetail:                     
+                        type: object
+                        description: ration card detail
+                        properties: 
+                            mobilenumber:
+                              type: string
+                              description: mobilenumber
+                              example: null
+                            fatherorspousename:
+                              type: string
+                              description: father or spouse name 
+                              example: TBC
+                            hofname:
+                              type: string
+                              description: hof name
+                              example: Shakariben Sravanbhai Chotha
+                            statename:
+                              type: string
+                              description: state name
+                              example: DADRA & NAGAR HAVELI
+                            housenumber:
+                              type: string
+                              description: house number
+                              example: 77
+                            districtname:
+                              type: string
+                              description: district name
+                              example: Dadra and Nagar Haveli
+                            fpsid:
+                              type: string
+                              description: fpsid
+                              example: 149600100036
+                            fpsname:
+                              type: string
+                              description: fps name 
+                              example: DAXINAPATH VAN KAMDAR KHEDUT SEVA SAHAKARI MANDALI VASDA
+                            cardtype:
+                              type: string
+                              description: card type
+                              example: PHH
+                            subdistrictname:
+                              type: string
+                              description: subdistrict name
+                              example: Dadra and Nagar Haveli
+                            landmark:
+                              type: string
+                              description: landmark
+                              example: Chothapada
+                            villagename:
+                              type: string
+                              description: village name
+                              example: Vansda
+                            rationcardnumber:
+                              type: string
+                              description: ration card number
+                              example: 262000000004                           
+        "400":
+          description: Bad Request/Validation Error      
+  /chandigarhApi/ws1/updateCHRC:
+    post:
+      tags:
+        - Modify Ration card Details 
+      summary: Modify and update the ration card details in chandigarh dept
+      description: This api is used to modify and update the ration card details in chandigarh dept
+      operationId: chandigarhApi/ws1/updateCHRC
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 27.138700
+                lon:
+                  type: string
+                  description: longitude
+                  example: 77.783897
+                lac:
+                  type: string
+                  description: lac
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 90
+                usrid:
+                  type: string
+                  description: user id
+                  example: 09
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1699
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: andorid
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                deptid:
+                  type: string
+                  description: department id
+                  example: 317
+                subsid:
+                  type: string
+                  description: subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                rcDetails:
+                  type: object
+                  description: rcDetails
+                  properties:   
+                    applicationID:
+                      type: string
+                      description: applicationID
+                      example: UMG001
+                    clientMACID:
+                      type: string
+                      description: clientMACID
+                      example: 0000
+                    clientIPAddress:
+                      type: string
+                      description: clientIPAddress
+                      example: 10.23.45.34
+                    requestID:
+                      type: string
+                      description: requestID
+                      example: 0
+                    userID:
+                      type: string
+                      description: userID
+                      example: umanguser
+                    rationCardNumber:
+                      type: string
+                      description: rationCardNumber
+                      example: 262000000004
+                    memberAdditionEnclosure_id_01:
+                      type: string
+                      description: memberAdditionEnclosure_id_01
+                      example: 15
+                    memberAdditionEnclosure_document_01:
+                      type: string
+                      description: memberAdditionEnclosure_document_01
+                      example: 0
+                    memberDeletionEnclosure_id_01:
+                      type: string
+                      description: memberDeletionEnclosure_id_01
+                      example: 15
+                    memberDeletionEnclosure_document_01:
+                      type: string
+                      description: memberDeletionEnclosure_document_01
+                      example: 0 
+                memberAdditionDetail:                     
+                  type: array
+                  description: member addition details
+                  items:
+                    type: object
+                    properties:
+                      member_name_en:
+                        type: string
+                        description: member name english
+                        example: TEST MEMNAME EN
+                      member_name_ll:
+                        type: string
+                        description: member name ll
+                        example: abc
+                      member_mother_name_en:
+                        type: string
+                        description: member mother name english
+                        example: TEST MOTHNAME EN
+                      member_mother_name_ll:
+                        type: string
+                        description: member mother name ll
+                        example: abc 
+                      member_father_name_en:
+                        type: string
+                        description: member father name english
+                        example: TEST FATHNAME EN
+                      member_father_namell:
+                        type: string
+                        description: member father name ll
+                        example: abc 
+                      member_spouse_name_en:
+                        type: string
+                        description: member spouse name en
+                        example: TEST SPOUSENAME EN 
+                      member_spouse_name_ll:
+                        type: string
+                        description: member_spouse_name_ll
+                        example: abc 
+                      member_age:
+                        type: string
+                        description: member age
+                        example: 3
+                      member_dob:
+                        type: string
+                        description: member dob
+                        example: 2017-01-01
+                      member_gender_code:
+                        type: string
+                        description: member gender code
+                        example: 1
+                      member_mobile_number:
+                        type: string
+                        description: member mobile number
+                        example: 939514024
+                      member_nationality:
+                        type: string
+                        description: member nationality
+                        example: INDIAN
+                      member_uid_number:
+                        type: string
+                        description: member uid number
+                        example: 0
+                      member_bank_code:
+                        type: string
+                        description: member bank code
+                        example: 0
+                      member_bank_branch_code:
+                        type: string
+                        description: member bank branch code
+                        example: 0 
+                      member_account_number:
+                        type: string
+                        description: member account number
+                        example: 0
+                      member_ifsc_code:
+                        type: string
+                        description: member ifsc code
+                        example: 0 
+                      member_aadhar_enrollment_id:
+                        type: string
+                        description: member aadhar enrollment Id
+                        example: 0
+                      member_relation_code:
+                        type: string
+                        description: member relation code
+                        example: 51
+                      member_occupation_code:
+                        type: string
+                        description: member occupation code
+                        example: 1
+                      member_annual_salary:
+                        type: string
+                        description: member annual salary
+                        example: 0
+                      memberid:
+                        type: string
+                        description: member Id
+                        example: UMG00101 
+                      member_opting_commodity:
+                        type: string
+                        description: member opting commodity
+                        example: 0
+                      epic_voter_id_number:
+                        type: string
+                        description: epic_voter_id_number
+                        example: 0
+                memberDeletionDetail:                     
+                  type: array
+                  description: member deletion details
+                  items:
+                    type: object
+                    properties:
+                      memberID:
+                        type: string
+                        description: member Id
+                        example: 04400000000402                                              
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "341"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1518"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:                    
+                        type: array
+                        description: response json
+                        items:
+                          type: object
+                          properties:
+                            strReferenceNo:
+                              type: string
+                              description: str reference number
+                              example: RTM2108030001
+                            strStatus:
+                              type: string
+                              description: str status
+                              example: SUCCESS
+        "400":
+          description: Bad Request/Validation Error 
+  /chandigarhApi/ws1/newCHFPSApp:
+    post:
+      tags:
+        - New Fair Price Shop Application
+      summary: Request for the new fair price shop in chandigarh dept
+      description: This api is used to request for the new fair price shop in chandigarh dept
+      operationId: chandigarhApi/ws1/newCHFPSApp
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 27.138700
+                lon:
+                  type: string
+                  description: longitude
+                  example: 77.783897
+                lac:
+                  type: string
+                  description: lac
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 90
+                usrid:
+                  type: string
+                  description: user id
+                  example: 09
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1517
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: windows
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                deptid:
+                  type: string
+                  description: department id
+                  example: 341
+                subsid:
+                  type: string
+                  description: subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                userid:
+                  type: string
+                  description: userid
+                  example: anupam123
+                userpassword:
+                  type: string
+                  description: userpassword
+                  example: anupam123
+                dfsocode:
+                  type: string
+                  description: dfsocode
+                  example: 1055
+                afsocode:
+                  type: string
+                  description: afsocode
+                  example: 1055001                  
+                applicant_name_en:
+                  type: string
+                  description: applicant_name_en
+                  example: Anupam Sahu
+                applicant_name_ll:
+                  type: string
+                  description: applicant_name_ll
+                  example: અનુપમ સાહુ
+                father_name_en:
+                  type: string
+                  description: father_name_en
+                  example: TEST
+                father_name_ll:
+                  type: string
+                  description: father_name_ll
+                  example: અનુપમ સાહુ
+                mother_name_en:
+                  type: string
+                  description: mother_name_en
+                  example: TEST
+                mother_name_ll:
+                  type: string
+                  description: mother_name_ll
+                  example: અનુપમ સાહુ 
+                owner_gender:
+                  type: string
+                  description: owner_gender
+                  example: 2
+                annual_income:
+                  type: string
+                  description: annual_income
+                  example: 10                
+                qualification_code:
+                  type: string
+                  description: qualification_code
+                  example: 1
+                caste_category_code:
+                  type: string
+                  description: caste_category_code
+                  example: 1 
+                reservation_category_id:
+                  type: string
+                  description: reservation_category_id
+                  example: 1
+                occupation_code:
+                  type: string
+                  description: occupation_code
+                  example: 1
+                designation:
+                  type: string
+                  description: designation
+                  example: "" 
+                isIncomeTaxPayee:
+                  type: string
+                  description: isIncomeTaxPayee
+                  example: 0
+                incomeTaxPaidAmount:
+                  type: string
+                  description: incomeTaxPaidAmount
+                  example: 500
+                license_type:
+                  type: string
+                  description: license_type
+                  example: "" 
+                building_id:
+                  type: string
+                  description: building_id
+                  example: 1
+                roofing_id:
+                  type: string
+                  description: roofing_id
+                  example: 1
+                compound_wall_id:
+                  type: string
+                  description: compound_wall_id
+                  example: 1
+                ownershipofpremises_id:
+                  type: string
+                  description: ownershipofpremises_id
+                  example: 1
+                pancard_no:
+                  type: string
+                  description: pancard_no
+                  example: ""
+                oldLicenseNumberIfAny:
+                  type: string
+                  description: oldLicenseNumberIfAny
+                  example: ""
+                remarks:
+                  type: string
+                  description: remarks
+                  example: ""   
+                statecode:
+                  type: string
+                  description: statecode
+                  example: 04                                  
+                districtcode:
+                  type: string
+                  description: districtcode
+                  example: 055
+                tehsilcode:
+                  type: string
+                  description: tehsilcode
+                  example: 00277
+                present_house_no_en:
+                  type: string
+                  description: present_house_no_en
+                  example: TESTHOUSENO01
+                present_house_no_ll:
+                  type: string
+                  description: present_house_no_ll
+                  example: "" 
+                present_landmark_en:
+                  type: string
+                  description: present_landmark_en
+                  example: NEAR TESTING LANDMARK
+                present_landmark_ll:
+                  type: string
+                  description: present_landmark_ll
+                  example: ""  
+                present_plot_no:
+                  type: string
+                  description: present_plot_no
+                  example: 1 
+                present_khata_no:
+                  type: string
+                  description: present_khata_no
+                  example: 1
+                present_mouza:
+                  type: string
+                  description: present_mouza
+                  example: 1   
+                present_street_address:
+                  type: string
+                  description: present_street_address
+                  example: Test Address     
+                present_east_boundary:
+                  type: string
+                  description: present_east_boundary
+                  example: east   
+                present_west_boundary:
+                  type: string
+                  description: present_west_boundary
+                  example: west   
+                present_north_boundary:
+                  type: string
+                  description: present_north_boundary
+                  example: north   
+                present_south_boundary:
+                  type: string
+                  description: present_south_boundary
+                  example: south   
+                present_village_town_id:
+                  type: string
+                  description: present_village_town_id
+                  example: 0405500277040089   
+                present_pin:
+                  type: string
+                  description: present_pin
+                  example: 123566    
+                enclosure01:
+                  type: string
+                  description: enclosure01
+                  example: ""   
+                enclosures_proof_code01:
+                  type: string
+                  description: enclosures_proof_code01
+                  example: 1
+                enclosuresfiletype01:
+                  type: string
+                  description: enclosuresfiletype01
+                  example: ""
+                enclosure01a:
+                  type: string
+                  description: enclosure01a
+                  example: ""   
+                enclosures_proof_code01a:
+                  type: string
+                  description: enclosures_proof_code01a
+                  example: 1
+                enclosuresfiletype01a:
+                  type: string
+                  description: enclosuresfiletype01a
+                  example: ""   
+                enclosure02:
+                  type: string
+                  description: enclosure02
+                  example: ""   
+                enclosures_proof_code02:
+                  type: string
+                  description: enclosures_proof_code02
+                  example: ""  
+                enclosuresfiletype02:
+                  type: string
+                  description: enclosuresfiletype02
+                  example: ""
+                enclosure03:
+                  type: string
+                  description: enclosure03
+                  example: ""   
+                enclosures_proof_code03:
+                  type: string
+                  description: enclosures_proof_code03
+                  example: "" 
+                enclosuresfiletype03:
+                  type: string
+                  description: enclosuresfiletype03
+                  example: "" 
+                enclosure04:
+                  type: string
+                  description: enclosure04
+                  example: ""   
+                enclosures_proof_code04:
+                  type: string
+                  description: enclosures_proof_code04
+                  example: 20
+                enclosuresfiletype04:
+                  type: string
+                  description: enclosuresfiletype04
+                  example: ""
+                enclosure05:
+                  type: string
+                  description: enclosure05
+                  example: AQSkZJRgABAQEA3ADcAA   
+                enclosures_proof_code05:
+                  type: string
+                  description: enclosures_proof_code05
+                  example: 17
+                enclosuresfiletype05:
+                  type: string
+                  description: enclosuresfiletype05
+                  example: ""  
+                enclosure06:
+                  type: string
+                  description: enclosure06
+                  example: ""  
+                enclosures_proof_code06:
+                  type: string
+                  description: enclosures_proof_code06
+                  example: 22
+                enclosuresfiletype06:
+                  type: string
+                  description: enclosuresfiletype06
+                  example: ""                    
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "341"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1518"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:                   
+                        type: array
+                        description: response json
+                        items:
+                          type: object
+                          properties:
+                            strReferenceNo:
+                              type: string
+                              description: str reference number
+                              example: 1000000081
+                            strStatus:
+                              type: string
+                              description: str status
+                              example: SUCCESS
+        "400":
+          description: Bad Request/Validation Error          
+components:
+  securitySchemes:
+    x-api-key:
+      type: apiKey
+      name: x-api-key
+      in: header

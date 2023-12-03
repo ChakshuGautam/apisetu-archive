@@ -1,0 +1,94 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Udyog Mitra",
+    "version": "1.0.0",
+    "description": "This udyog-mitra Api comes under Mahiti-kanaja department.\n"
+  },
+  "servers": [
+    {
+      "url": "http://ebiz.cmsuat.co.in"
+    },
+    {
+      "url": "https://ebiz.cmsuat.co.in/eBiz/api/MahitiKhanijaApi/GetMahitiKhanijaDetails"
+    }
+  ],
+  "paths": {
+    "/eBiz/api/MahitiKhanijaApi/GetMahitiKhanijaDetails": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Operation Successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "responseData": [
+                      {
+                        "application_no": "2021220700052",
+                        "company_name": "test",
+                        "address": "address, blore, Bagalkote, Karnataka, India, 566666",
+                        "investment": "2470.00 Crores",
+                        "category": "General",
+                        "applicationtype": "IN PRINCIPLE",
+                        "proposaltype": "Substantial Expansion",
+                        "proposedEmployment": "319",
+                        "water": "87687.00 KLPD",
+                        "land": "876876.00 Acre",
+                        "power": "7786.00 KVA"
+                      },
+                      {
+                        "application_no": "2021220700051",
+                        "company_name": "test",
+                        "address": "address1, blore, BANGALORE URBAN, Karnataka, India, 566666",
+                        "investment": "775.00 Crores",
+                        "category": "General",
+                        "applicationtype": "IN PRINCIPLE",
+                        "proposaltype": "Establishment of New Enterprise",
+                        "proposedEmployment": "88",
+                        "water": "8743.00 KLPD",
+                        "land": "49857.00 Acre",
+                        "power": "3453.00 KVA"
+                      }
+                    ],
+                    "responseVal": 0,
+                    "reason": "SUCCESS"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "To get details from udyog mitra department.",
+        "operationId": "POST_mahiti-kanaja-udyog-mitra",
+        "requestBody": {
+          "content": {
+            "application/json": {
+                  "example":
+                     {
+                    "fromDate": "2021-07-01",
+                    "toDate": "2021-07-31",
+                    "category": "1"
+                     },
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {},
+    "responses": {},
+    "parameters": {},
+    "examples": {},
+    "requestBodies": {},
+    "headers": {},
+    "securitySchemes": {},
+    "links": {},
+    "callbacks": {}
+  }
+}

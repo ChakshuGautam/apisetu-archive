@@ -1,0 +1,96 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "MAHITI PROPERTY BWSSB GET CUSTOMER API",
+    "version": "1.0.0",
+    "description": "This API is the part of Mahiti Kanaja department. This Api is meant to get customer details based on the RRnumber.\n"
+  },
+  "servers": [
+    {
+      "url": "http://bwsajala.karnataka.gov.in"
+    },
+    {
+      "url": "https://bwsajala.karnataka.gov.in/bwssbapi/api/BWSSB/ConsumerDetails"
+    }
+  ],
+  "paths": {
+    "/bwssbapi/api/BWSSB/ConsumerDetails": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "success": true,
+                    "message": "success",
+                    "data": [
+                      {
+                        "RR_Number": "C-341822",
+                        "ConsumerID": 12422,
+                        "ConsumerName": "M.RAMAIAH",
+                        "Address": "43RDCUBBON PETBangalore0",
+                        "SubDivision": "Central1",
+                        "ConType": "Partial ND",
+                        "BillNumber": "C-341822090",
+                        "MRDate": "14/09/2021",
+                        "DueDate": "29/09/2021",
+                        "PresentReading": "995000",
+                        "PreviousReading": "990000",
+                        "ConSumption": 5000,
+                        "BillAmount": 1290,
+                        "PaidBillNumber": "C-341822080",
+                        "PaidBillAmount": 8005,
+                        "PayDate": "2021-08-27T19:51:20",
+                        "PaidAmount": 8000,
+                        "Mode": "Kiosk Payment"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Get consumer data for specific params",
+        "operationId": "POST_mahiti-kanaja-bwssb-get-consumer",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "RRnumber": "C-341822",
+                "BWSSBSecurityId": "#$BwssBSajala$#"
+              },
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "parameters": [
+          {
+            "name": "RRNumber",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {},
+    "responses": {},
+    "parameters": {},
+    "examples": {},
+    "requestBodies": {},
+    "headers": {},
+    "securitySchemes": {},
+    "links": {},
+    "callbacks": {}
+  }
+}

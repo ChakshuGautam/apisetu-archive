@@ -1,0 +1,161 @@
+openapi: 3.0.3
+info:  
+  title: Food and Civil Supplies Department, Tripura, Tripura
+  description:  >- 
+                Ration Cards issued by Food and Supplies Department, Tripura are available for download on DigiLocker.
+  termsOfService: https://apisetu.gov.in/api-policy
+  version: 3.0.0
+servers:
+  - url: 'https://apisetu.gov.in/certificate/v3/epdstr'
+paths:
+  
+  /ratcr:
+    post:
+      tags:
+        - APIs
+      summary: Ration Card
+      description: API to verify Ration Card.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: ratcr
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - fatherName
+                    - hofName
+                    - yob
+                    - aadhaarLastFourNo
+                    - rationCardNo
+                    - districtCode
+                    
+                    - GENDER
+                      
+                  properties:
+                    fatherName:
+                      type: string
+                      description: Father Name
+                      example: ""
+                       
+                    
+                    hofName:
+                      type: string
+                      description: Head of Name
+                      example: ""
+                       
+                    
+                    yob:
+                      type: string
+                      description: Year of Birth
+                      example: "YYYY"
+                       
+                    
+                    aadhaarLastFourNo:
+                      type: string
+                      description: Aadhaar Last 4 Digit
+                      example: "0000"
+                       
+                    
+                    rationCardNo:
+                      type: string
+                      description: Ration Card No
+                      example: "000000000000"
+                       
+                    
+                    districtCode:
+                      type: string
+                      description: Districts
+                      example: "West Tripura,South Tripura,Dhalai,North Tripura,GOMATI,KHOWAI,SEPAHIJALA,UNAKOTI"
+                       
+                    
+                    
+                    GENDER:
+                      type: string
+                      description: Gender - Male for male, Female for female and O for other
+                      example: "Male"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+components:
+  schemas:
+    ConsentArtifactSchema:
+      $ref: './common/ConsentArtifactSchema.yaml#/ConsentArtifactSchema'
+    AcademicCertificateSchema:
+      $ref: './common/AcademicCertificateSchema.yaml#/AcademicCertificateSchema'
+          
+  responses:
+    400Error:
+      $ref: './common/ErrorResponse.yaml#/400Error'
+    401Error:
+      $ref: './common/ErrorResponse.yaml#/401Error'
+    404Error:
+      $ref: './common/ErrorResponse.yaml#/404Error'
+    500Error:
+      $ref: './common/ErrorResponse.yaml#/500Error'
+    502Error:
+      $ref: './common/ErrorResponse.yaml#/502Error'
+    503Error:
+      $ref: './common/ErrorResponse.yaml#/503Error'
+    504Error:
+      $ref: './common/ErrorResponse.yaml#/504Error'
+  securitySchemes:
+    clientId:
+      type: apiKey
+      in: header
+      name: X-APISETU-CLIENTID
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-APISETU-APIKEY

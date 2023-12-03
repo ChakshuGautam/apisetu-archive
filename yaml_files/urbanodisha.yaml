@@ -1,0 +1,328 @@
+openapi: 3.0.3
+info:  
+  title: Housing and Urban Development Department Odisha, Odisha
+  description:  >- 
+                H&UD Department, Govt of Odisha has launched the platform  SUJOG to provide all key municipal services across all the ULBs in the state. SUJOG  is making urban governance transparent, technology-enabled, and time-bound through teamwork, thereby leading to transformation in the lives of citizens in all Urban Local Bodies of the state. Citizens can now retrieve their Marriage certificate, Trade License Certificate and Building permit in DigiLocker.
+  termsOfService: https://apisetu.gov.in/api-policy
+  version: 3.0.0
+servers:
+  - url: 'https://apisetu.gov.in/certificate/v3/urbanodisha'
+paths:
+  
+  /bpcer:
+    post:
+      tags:
+        - APIs
+      summary: Building Plan
+      description: API to verify Building Plan.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: bpcer
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf  
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - FullName
+                    - Mobile
+                    - ApprovalNumber
+                    - City
+                      
+                  properties:
+                    FullName:
+                      type: string
+                      description: FullName
+                      example: "Mohan"
+                       
+                    
+                    Mobile:
+                      type: string
+                      description: Mobile
+                      example: "9111111111"
+                       
+                    
+                    ApprovalNumber:
+                      type: string
+                      description: ApprovalNumber
+                      example: "BP/CTC/003298"
+                       
+                    
+                    City:
+                      type: string
+                      description: ULB
+                      example: ""
+                       
+                    
+                      
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+              application/pdf:
+                example: Response body contains contents of the certificate in PDF format.
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /rmcer:
+    post:
+      tags:
+        - APIs
+      summary: Marriage Certificate
+      description: API to verify Marriage Certificate.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: rmcer
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - Mobile
+                    - FullName
+                    - MrNumber
+                    - City
+                      
+                  properties:
+                    Mobile:
+                      type: string
+                      description: Mobile
+                      example: "9111111111"
+                       
+                    
+                    FullName:
+                      type: string
+                      description: FullName
+                      example: "Mohan"
+                       
+                    
+                    MrNumber:
+                      type: string
+                      description: MrNumber
+                      example: "MR/CTC/003898"
+                       
+                    
+                    City:
+                      type: string
+                      description: ULB
+                      example: ""
+                       
+                    
+                      
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /tdlcs:
+    post:
+      tags:
+        - APIs
+      summary: Trade License/ Certificate
+      description: API to verify Trade License/ Certificate.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: tdlcs
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - Mobile
+                    - FullName
+                    - LicenseNumber
+                    - City
+                      
+                  properties:
+                    Mobile:
+                      type: string
+                      description: Mobile
+                      example: "9111111111"
+                       
+                    
+                    FullName:
+                      type: string
+                      description: FullName
+                      example: "Mohan"
+                       
+                    
+                    LicenseNumber:
+                      type: string
+                      description: LicenseNumber
+                      example: "TL/CTC/2023-06-01/031984"
+                       
+                    
+                    City:
+                      type: string
+                      description: ULB
+                      example: ""
+                       
+                    
+                      
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+components:
+  schemas:
+    ConsentArtifactSchema:
+      $ref: './common/ConsentArtifactSchema.yaml#/ConsentArtifactSchema'
+    AcademicCertificateSchema:
+      $ref: './common/AcademicCertificateSchema.yaml#/AcademicCertificateSchema'
+          
+  responses:
+    400Error:
+      $ref: './common/ErrorResponse.yaml#/400Error'
+    401Error:
+      $ref: './common/ErrorResponse.yaml#/401Error'
+    404Error:
+      $ref: './common/ErrorResponse.yaml#/404Error'
+    500Error:
+      $ref: './common/ErrorResponse.yaml#/500Error'
+    502Error:
+      $ref: './common/ErrorResponse.yaml#/502Error'
+    503Error:
+      $ref: './common/ErrorResponse.yaml#/503Error'
+    504Error:
+      $ref: './common/ErrorResponse.yaml#/504Error'
+  securitySchemes:
+    clientId:
+      type: apiKey
+      in: header
+      name: X-APISETU-CLIENTID
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-APISETU-APIKEY

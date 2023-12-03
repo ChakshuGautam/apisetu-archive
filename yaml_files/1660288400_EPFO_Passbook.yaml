@@ -1,0 +1,718 @@
+---
+  openapi: "3.0.0"
+  info: 
+    title: "Employees' Provident Fund Organization (EPFO)-View Passbook"
+    description: "EPFO (Employees’ Provident Fund Organisation) Passbook API help to check employees or onboarding user’s provident funds (PF) details via API Setu. EPFO Passbook API is a system which helps an enterprise to do check details of employees PF account by using the UAN number and OTP with highest accuracy in record time with this user friendly application. <i>[Updated on 10th August 2022]</i>"
+    termsOfService: "https://web.umang.gov.in/uaw/ts/v1/en/index.htm"
+    contact: 
+      name: "Provided by - UMANG"
+      url: "https://web.umang.gov.in"
+    version: "1.0.0"
+  servers: 
+    - 
+      url: "https://apigw.umangapp.in"
+  paths: 
+    /epfoApi/ws1/loginmob: 
+      post: 
+        tags: 
+          - "User Authentication APIs"
+        summary: "Generate Token for given mobile number"
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                example: 
+                  tkn: "os1a0bf692-b293-4e83-a5ff-44c91e599e18/2"
+                  trkr: "UW-nP20210518091722"
+                  lang: "en"
+                  usrid: "2010205769"
+                  mode: "web"
+                  pltfrm: "windows"
+                  did: null
+                  formtrkr: "0"
+                  uan: "xxxxxxxxxxxx"
+                  deptid: "495"
+                  srvid: "37"
+                  subsid: "l3_1001"
+                  subsid2: ""
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "37"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "495"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "l3_1001"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json: 
+                schema: 
+                  type: "object"
+                  properties: 
+                    rs: 
+                      type: "string"
+                    rc: 
+                      type: "string"
+                    rd: 
+                      type: "string"
+                    payload: 
+                      type: "object"
+                      properties: 
+                        token: 
+                          type: "string"
+                        reftoken: 
+                          type: "string"
+                        errormsg: 
+                          type: "string"
+                        mno: 
+                          type: "string"
+                  x-examples: 
+                    example-1: 
+                      rs: "S"
+                      rc: "EPFO0000"
+                      rd: "Success"
+                      payload: 
+                        token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmF0aW9uIjoiMDItMDgtMjAyMiAxMzozMjo0NSIsInV1aWQiOiJlZmVmYTBmYy04NjdjLTRlZmYtODc4ZS01YjQzODZkYWU0NmMifQ==.Ch4Y6GBX6ZqkZDU4GzJefgyYtPDCFmKnatAaRVePFDU="
+                        reftoken: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1YW4iOiIxMDAwODkyOTM1MDUiLCJ1dWlkIjoiZDg4MzcyOWItODEwNC00NWI0LTgwYzItYjUzOTM4YWU0ZjYwIn0=.rKkvHo+SA4n0VjhdgBBITyoDA5K5/J6o/HR7MaiAXq8="
+                        errormsg: null
+                        mno: "9538982244"
+    /umangApiShard/otpws/generate: 
+      post: 
+        tags: 
+          - "User Authentication APIs"
+        summary: "Generate OTP for given mobile number"
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                example: 
+                  dgt: "6"
+                  lang: "en"
+                  ort: "epfo"
+                  mno: "xxxxxxxxxxxx"
+                  trkr: "UW-nP20210518091722"
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "37"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "495"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "l3_1001"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json: 
+                schema: 
+                  type: "object"
+                  properties: 
+                    rs: 
+                      type: "string"
+                    rc: 
+                      type: "string"
+                    rd: 
+                      type: "string"
+                    pd: 
+                      type: "object"
+                      properties: 
+                        rtry: 
+                          type: "string"
+                        tout: 
+                          type: "string"
+                        man: 
+                          type: "string"
+                        wmsg: 
+                          type: "string"
+                        tmsg: 
+                          type: "string"
+                        maskmno: 
+                          type: "string"
+                        maskemail: 
+                          type: "string"
+                        smscli: 
+                          type: "string"
+                  x-examples: 
+                    example-1: 
+                      rs: "S"
+                      rc: "OTP0000"
+                      rd: "An OTP has been generated and sent to your mobile number successfully."
+                      pd: 
+                        rtry: "9|30|"
+                        tout: "120"
+                        man: "true"
+                        wmsg: "Please wait for OTP"
+                        tmsg: "Timed out"
+                        maskmno: null
+                        maskemail: null
+                        smscli: "iUMANG"
+    /umangApiShard/otpws/validate: 
+      post: 
+        tags: 
+          - "User Authentication APIs"
+        summary: "Validate OTP received on mobile number"
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                example: 
+                  lang: "en"
+                  ort: "EPFO"
+                  otp: "906887"
+                  mno: "xxxxxxxxxxxx"
+                  trkr: "UW-nP20210518091722"
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "37"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "495"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "l3_1001"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json: 
+                schema: 
+                  type: "object"
+                  properties: 
+                    rs: 
+                      type: "string"
+                      example: "OTP0001"
+                    rc: 
+                      type: "string"
+                      example: "S"
+                    rd: 
+                      type: "string"
+                      example: "OTP validated successfully."
+                    pd: 
+                      type: "string"
+                      example: null
+    /epfoApi/ws1/loginvalidateotp: 
+      post: 
+        tags: 
+          - "User Authentication APIs"
+        summary: "Validate OTP received on mobile number"
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                example: 
+                  tkn: "rac1d63b45-7079-47e8-8163-e0d935fbf0c4/2"
+                  trkr: "UW-pU20220405072640"
+                  lang: "en"
+                  usrid: "2010205769"
+                  mode: "web"
+                  pltfrm: "windows"
+                  did: null
+                  formtrkr: "0"
+                  mno: "xxxxxxxxxxxx"
+                  ort: "EPFO"
+                  otp: "546829"
+                  uan: "xxxxxxxxxxxx"
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "37"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "495"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "l3_1003"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json: 
+                schema: 
+                  type: "object"
+                  properties: 
+                    rs: 
+                      type: "string"
+                    rc: 
+                      type: "string"
+                    rd: 
+                      type: "string"
+                    payloadLogin: 
+                      type: "string"
+                    payloadValidateOTP: 
+                      type: "object"
+                      properties: 
+                        rc: 
+                          type: "string"
+                        rs: 
+                          type: "string"
+                        rd: 
+                          type: "string"
+                        pd: 
+                          type: "string"
+                  x-examples: 
+                    example-1: 
+                      rs: "F"
+                      rc: "EPFO0105"
+                      rd: "Invalid OTP or You are already logged in."
+                      payloadLogin: null
+                      payloadValidateOTP: 
+                        rc: "OTP0031"
+                        rs: "F"
+                        rd: "Sorry, that was an invalid OTP. Please provide the 6-digit numeric OTP that you received on your mobile."
+                        pd: null
+    /epfoApi/ws1/fmid: 
+      post: 
+        tags: 
+          - "APIs"
+        summary: "Fetch the establishment details."
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                example: 
+                  tkn: "os1a0bf692-b293-4e83-a5ff-44c91e599e18/2"
+                  trkr: "UW-sM20220506103650"
+                  lang: "en"
+                  usrid: "2010205769"
+                  mode: "web"
+                  pltfrm: "windows"
+                  did: null
+                  formtrkr: "0"
+                  token: "xxxxxxxxxxxx"
+                  uan: "xxxxxxxxxxxx"
+                  srvid: "37"
+                  deptid: "495"
+                  subsid: "l3_1001"
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "37"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "495"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "l3_1001"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json: 
+                schema: 
+                  type: "object"
+                  properties: 
+                    rs: 
+                      type: "string"
+                    rc: 
+                      type: "string"
+                    rd: 
+                      type: "string"
+                    payload: 
+                      type: "object"
+                      properties: 
+                        errormsg: 
+                          type: "string"
+                        estdetails: 
+                          type: "array"
+                          items: 
+                            type: "object"
+                            properties: 
+                              est_ID: 
+                                type: "string"
+                              est_NAME: 
+                                type: "string"
+                              member_ID: 
+                                type: "string"
+                              office_ID: 
+                                type: "string"
+                  x-examples: 
+                    example-1: 
+                      rs: "S"
+                      rc: "EPFO0000"
+                      rd: "Success"
+                      payload: 
+                        errormsg: null
+                        estdetails: 
+                          - 
+                            est_ID: "DLCPM0027109000"
+                            est_NAME: "F D S MANAGEMENT SERVICES PRIVATE LIMITED"
+                            member_ID: "DLCPM00271090000001147"
+                            office_ID: "101"
+    /epfoApi/ws1/fpassbook: 
+      post: 
+        tags: 
+          - "APIs"
+        summary: "Fetch passbook details"
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+              example: "{\"tkn\": \"me149ee66d-0520-4af2-96e-34bed74081712\", \"trkr\": \"UW-eG20210520080641\", \"lang\": \"en\", \"usrid\": \"2010205769\", \"mode\": \"web\", \"pltfrm\": \"windows\", \"did\": null, \"formtrkr\": \"0\", \"token\": \"xxxxxxxxxxxx\", \"uan\": \"xxxxxxxxxxxx\", \"memid\": \"MHBAN00XXXXXXXXXXX\", \"ofcid\": \"3XX\", \"memstatus\": \"\", \"srvid\": \"37\", \"deptid\": \"495\", \"subsid\": \"l3_1001\" }"
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "37"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "495"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "l3_1001"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json: 
+                schema: 
+                  type: "object"
+                  properties: 
+                    rs: 
+                      type: "string"
+                    rc: 
+                      type: "string"
+                    rd: 
+                      type: "string"
+                    payload: 
+                      type: "object"
+                      properties: 
+                        fo_DATA_LOG_DATE: 
+                          type: "string"
+                        err_MSG: 
+                          type: "string"
+                        office_NAME: 
+                          type: "string"
+                        passbook: 
+                          type: "array"
+                          items: 
+                            type: "object"
+                            properties: 
+                              batch_no: 
+                                type: "string"
+                              tr_date_my: 
+                                type: "string"
+                              approved_on: 
+                                type: "string"
+                              cr_ee_share: 
+                                type: "string"
+                              cr_er_share: 
+                                type: "string"
+                              cr_pen_bal: 
+                                type: "string"
+                              db_cr_flag: 
+                                type: "string"
+                              particular: 
+                                type: "string"
+                              member_id: 
+                                type: "string"
+                              est_name: 
+                                type: "string"
+                              member_name: 
+                                type: "string"
+                              trrno: 
+                                type: "string"
+                              dob: 
+                                type: "string"
+                              doe_epf: 
+                                type: "string"
+                              doj_epf: 
+                                type: "string"
+                              father_name: 
+                                type: "string"
+                              f_s_flag: 
+                                type: "string"
+                              r_order: 
+                                type: "string"
+                              table_name: 
+                                type: "string"
+                              month_year: 
+                                type: "string"
+                              doe_eps: 
+                                type: "string"
+                              office: 
+                                type: "string"
+                              actual_ser: 
+                                type: "string"
+                              tr_approved: 
+                                type: "string"
+                  x-examples: 
+                    example-1: 
+                      rs: "S"
+                      rc: "EPFO0000"
+                      rd: "Success"
+                      payload: 
+                        fo_DATA_LOG_DATE: "20-09-2017 10:57:04"
+                        err_MSG: null
+                        office_NAME: "(RO)DELHI (NORTH)"
+                        passbook: 
+                          - 
+                            batch_no: "1"
+                            tr_date_my: "01/04/2015"
+                            approved_on: "2015-04-01 00:00:00"
+                            cr_ee_share: "0"
+                            cr_er_share: "0"
+                            cr_pen_bal: "0"
+                            db_cr_flag: "C"
+                            particular: "OB Int. Updated upto 31/03/2015"
+                            member_id: "DLCPM00XXXXXXXXXXXXXXXXX"
+                            est_name: "XXXX MANAGEMENT XXXXX PRIVATE LIMITED"
+                            member_name: "AXXXXX KXXXXXR"
+                            trrno: "0"
+                            dob: "01-JAN-19XXX"
+                            doe_epf: "2022-08-10 09:07:29"
+                            doj_epf: "15-06-01 00:00:00"
+                            father_name: "XXXXXXXAR XXXXXR"
+                            f_s_flag: "F"
+                            r_order: "1"
+                            table_name: "MBL"
+                            month_year: "201504"
+                            doe_eps: "2022-08-10 09:07:29"
+                            office: null
+                            actual_ser: "A"
+                            tr_approved: "2022-08-10 09:07:29"

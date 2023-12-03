@@ -1,0 +1,69 @@
+host: delhigw.napix.gov.in
+info:
+  title: CGHS
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/nic/cghs
+  version: 1.0.0
+  x-ibm-name: empanelledhoslist
+  description: This API gives the list of all CGHS empanelled hospital in a city.
+    It takes CityId as an input parameter.
+tags: []
+paths:
+  /empanelledHosList:
+    get:
+      tags:
+        - Empanelledhoslist
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      parameters:
+        - in: query
+          name: cghsCityId
+          type: integer
+          required: true
+    parameters: []
+schemes:
+  - https
+swagger: "2.0"
+basePath: /nic/cghs/empanelledhoslist
+security:
+  - oauth:
+      - napix
+  - {}
+securityDefinitions:
+  oauth:
+    flow: application
+    type: oauth2
+    scopes:
+      napix: ""
+    tokenUrl: //oauth2/token
+    x-ibm-oauth-provider: nic-oauth-provider-application-grant-type
+  clientIdHeader:
+    in: header
+    name: X-IBM-Client-Id
+    type: apiKey
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  servers:
+    - url: https://delhigw.napix.gov.in/nic/cghs/empanelledhoslist
+      type:
+        - production
+        - development
+  enforced: true
+  testable: true
+  oauth-servers:
+    oauth:
+      tokenUrls:
+        - https://degateway.napix.gov.in:443/nic/cghs//oauth2/token
+      refreshUrls: []
+      authorizationUrls: []
+  application-authentication:
+    certificate: false

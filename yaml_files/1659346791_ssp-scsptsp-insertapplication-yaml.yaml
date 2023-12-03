@@ -1,0 +1,68 @@
+openapi: 3.0.0
+info:
+  title: SSP-SCSPTSP-InsertApplication
+  version: 1.0.0
+  description: This API comes under the department of SSP. This APi gives
+    insertApplication Details.
+servers:
+  - url: https://sw.kar.nic.in/SCSPTSPBeneficiaryService/SCSP/InsertApplicationDetailsPush
+  - url: https://sw.kar.nic.in/
+paths:
+  /SCSPTSPBeneficiaryService/SCSP/InsertApplicationDetailsPush:
+    post:
+      responses:
+        "200":
+          description: Operation_successful
+          content:
+            application/json:
+              schema:
+                example:
+                  Status: Success
+      description: insert application data into SSPT/TSP.
+      operationId: POST_SCSPTSPBeneficiaryService-SCSP-InsertApplicationDetailsPush
+      requestBody:
+        content:
+          application/json:
+            example:
+              UserCode: 3a3b3084ad185ef39b26d6aaf012d1de1
+              FinancialYear: 2021
+              DeptCd: 1
+              SectorCd: 1
+              SchemeCd: 1037
+              BenefitCode: 162
+              BenefitAmount: "0"
+              Benf_Name: Ashwini L
+              father_name: Lakshminarayana L S
+              gender: F
+              Caste: 1
+              dateofbirth: 2002-02-06
+              MobileNo: 6360489336
+              DistrictCd: 525
+              TalukCd: 5543
+              Gp_Code: 0
+              Hobli_Code: 0
+              VillageCd: ""
+              MP_Code: 0
+              MLA_Code: 0
+              AadhaarNo: "123456789123"
+              vC_RDNo: RD0038814054950
+              vI_RDNo: RD0038814055274
+              vRationCardNo: ""
+              EntryDate: 2021-02-20 10:08:08
+              BenifitDistCd: 548
+              BenifitTalukCd: 5535
+              Benifitaddress: ""
+              Dept_Unique_No: "21220488383"
+            schema:
+              type: string
+        required: true
+components:
+  schemas: {}
+  responses: {}
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}

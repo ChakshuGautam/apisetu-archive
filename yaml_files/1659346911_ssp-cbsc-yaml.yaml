@@ -1,0 +1,95 @@
+openapi: 3.0.0
+info:
+  title: SSP-CBSC-Get scholarship details.
+  version: 1.0.0
+  description: This Api comes under the SSP department.This API gives the CBSC
+    scholarship details.
+servers:
+  - url: https://partners.digitallocker.gov.in/public/verification/api/search/2/xml
+  - url: https://partners.digitallocker.gov.in/public/
+paths:
+  /public/verification/api/search/2/xml:
+    post:
+      responses:
+        "200":
+          description: Operation Successful
+          content:
+            application/xml:
+              schema:
+                example: <?xml version="1.0" encoding="utf-8"?> <VerifyDataResponse Status="1"
+                  statusMsg="success" ts="2019-10-28 11:50:00" txn="1502716932">
+                  <DocDetails> <DocContent/> <DataContent> <Certificate
+                  language="99" name="Class X Marksheet" type="SSCER"
+                  number="4082552" issuedAt="" issueDate="" validFromDate=""
+                  status="A"> <IssuedBy> <Organization name="Central Board of
+                  Secondary Education" code="" tin="" uid="" type="CG"> <Address
+                  type="" line1="" line2="" house="" landmark="" locality=""
+                  vtc="" district="" pin="" state="" country="IN"/>
+                  </Organization> </IssuedBy> <IssuedTo> <Person uid="" title=""
+                  name="VENKATESH T V" dob="20-06-2001" swd="VIJAYA KUMAR T G"
+                  swdIndicator="" motherName="MEENAKSHI T M" gender="Male"
+                  maritalStatus="" religion="" phone="" email=""> <Address
+                  type="permanent" line1="" line2="" house="" landmark=""
+                  locality="" vtc="" district="" pin="" state="" country="IN"/>
+                  <Photo format=""/> </Person> </IssuedTo> <CertificateData>
+                  <School name="SRI CHAITANYA TECHNO SCHL KYATHASANDRA TUMKUR
+                  KK" code="41314" regionName="" regionCode="M"/> <Examination
+                  name="SECONDARY SCHOOL EXAMINATION" centerCode=""
+                  admitCardId="" month="MARCH" year="2017"/> <Performance
+                  result="QUAL" marksTotal="" marksMax="" percentage=""
+                  cgpa="10" cgpaMax="" resultDate="" updateDate="01-01-1970">
+                  <Subjects> <Subject name="ENGLISH COMM." code="101"
+                  marksTheory="" marksMaxTheory="" marksPractical=""
+                  marksMaxPractical="" marksTotal="" marksMax="" gp="10"
+                  gpMax="" grade="A1"/> <Subject name="KANNADA" code="015"
+                  marksTheory="" marksMaxTheory="" marksPractical=""
+                  marksMaxPractical="" marksTotal="" marksMax="" gp="10"
+                  gpMax="" grade="A1"/> <Subject name="MATHEMATICS" code="041"
+                  marksTheory="" marksMaxTheory="" marksPractical=""
+                  marksMaxPractical="" marksTotal="" marksMax="" gp="10"
+                  gpMax="" grade="A1"/> <Subject name="SCIENCE" code="086"
+                  marksTheory="" marksMaxTheory="" marksPractical=""
+                  marksMaxPractical="" marksTotal="" marksMax="" gp="10"
+                  gpMax="" grade="A1"/> <Subject name="SOCIAL SCIENCE"
+                  code="087" marksTheory="" marksMaxTheory="" marksPractical=""
+                  marksMaxPractical="" marksTotal="" marksMax="" gp="10"
+                  gpMax="" grade="A1"/> <Subject name="" code="" marksTheory=""
+                  marksMaxTheory="" marksPractical="" marksMaxPractical=""
+                  marksTotal="" marksMax="" gp="" gpMax="" grade=""/> <Subject
+                  name="" code="" marksTheory="" marksMaxTheory=""
+                  marksPractical="" marksMaxPractical="" marksTotal=""
+                  marksMax="" gp="" gpMax="" grade=""/> </Subjects>
+                  </Performance> </CertificateData> </Certificate>
+                  </DataContent> </DocDetails> </VerifyDataResponse>
+      description: Get scholarship details of cbsc
+      operationId: POST_public-verification-api-search-2-xml
+      requestBody:
+        content:
+          application/xml:
+            example: <?xml version="1.0" encoding="utf-8"?> <VerifyDataRequest
+              xmlns:ns2="http://tempuri.org/" ver="1.0" ts="2019-10-28 11:50:00"
+              txn="1502716932" verifierId="in.gov.karnataka.dpar"
+              keyhash="f0439082366ac1ad011929a5bb6c8f873ca284028c209a6ee110ceea307bdb27">
+              <DataConsumer id="in.gov.karnataka.dpar"/> <DataProvider
+              id="in.gov.cbse"/> <Data docType="SSCER" format="xml"/> <Citizen
+              uid="215051602786" fullName="T V VENKATESH" dob="01/11/1985"
+              mobile="8989898989" email="test@gmail.com"/> <Parameters> <Param
+              key="IssuerId" value="in.gov.cbse"/> <Param key="DocType"
+              value="SSCER"/> <Param key="UID" value="215051602786"/> <Param
+              key="FullName" value="T V VENKATESH"/> <Param key="year"
+              value="2017"/> <Param key="rollno" value="4082552"/> </Parameters>
+              <Consent id="123" src="CF/VF" purpose="test"/>
+              </VerifyDataRequest>
+            schema:
+              type: string
+        required: true
+components:
+  schemas: {}
+  responses: {}
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}

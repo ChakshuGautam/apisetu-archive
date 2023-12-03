@@ -1,0 +1,73 @@
+host: delhigw.napix.gov.in
+info:
+  title: Parivahan
+  version: 1.0.0
+  x-ibm-name: sarathi-api-get-sarathi-cm-dashboard-for-as
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/nic/parivahan
+paths:
+  /service/getSarathiCMDBForAS/{user}/{password}/{transDate}:
+    post:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      parameters:
+        - in: path
+          name: user
+          type: string
+          required: true
+        - in: path
+          name: password
+          type: string
+          required: true
+        - in: path
+          name: transDate
+          type: string
+          required: true
+      tags:
+        - Sarathi api get sarathi cm dashboard for as
+schemes:
+  - https
+swagger: "2.0"
+basePath: /nic/parivahan/SarathiAPIService
+security:
+  - OAuth2Token:
+      - napix
+securityDefinitions:
+  clientID:
+    in: header
+    name: X-Client-Id
+    type: apiKey
+    x-key-type: client_id
+  OAuth2Token:
+    flow: application
+    type: oauth2
+    scopes:
+      napix: napixScope
+    tokenUrl: //oauth2/token
+    x-ibm-oauth-provider: nic-oauth-provider-application-grant-type
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  servers:
+    - url: https://delhigw.napix.gov.in/nic/parivahan/SarathiAPIService
+      type:
+        - production
+        - development
+  enforced: true
+  testable: true
+  oauth-servers:
+    OAuth2Token:
+      tokenUrls:
+        - https://degateway.napix.gov.in:443/nic/parivahan//oauth2/token
+      refreshUrls: []
+      authorizationUrls: []
+  application-authentication:
+    certificate: false

@@ -1,0 +1,163 @@
+openapi: 3.0.0
+paths:
+  /srv/v3/public/schemes/ministries/count:
+    get:
+      operationId: schemes-ministry-count
+      summary: Ministry Scheme Count
+      description: This API returns ministry wise scheme count.
+      
+      responses:
+        "200":
+          description: It returns ministry wise scheme count
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MinistriesCountDto"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequestSchema"
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ForbiddenSchema"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerErrorSchema"
+      tags:
+        - Ministry Wise Schemes Count
+info:
+  title: Ministry Wise Schemes Count
+  description: >-2
+    This document provides detailed description about API to get count of schemes based on their respective ministries. 
+    
+    # Authentication
+     The API comply to  API Setu authentication. <a href="https://partners.apisetu.gov.in/directory/api/apisetu/1692012237_API-Authentication">Click here</a> for more details.
+      
+  version: "1.0"
+  contact:
+    name: myScheme Team
+    url: https://www.myscheme.gov.in
+    email: support-myscheme@digitalindia.gov.in
+  termsOfService: https://www.myscheme.gov.in/terms-conditions
+  license:
+    name: Privacy Policy
+    url: https://www.myscheme.gov.in/privacy-policy
+tags: []
+servers:
+  - url: https://apisetu.gov.in/dic/myscheme
+    description: Production Server 
+security: 
+  - clientId: []
+  - apiKey: []
+components:
+ securitySchemes:
+    clientId:
+      type: apiKey
+      in: header
+      name: X-APISETU-CLIENTID
+    apiKey:
+      type: apiKey
+      name: X-APISETU-APIKEY
+      in: header            
+ schemas:
+    BadRequestSchema:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Failure Status
+          example: Failure
+        statusCode:
+          type: string
+          description: Http Status Code
+          example: 400
+        data:
+          type: object
+          description: Blank Object
+          example: {}
+        errorDescription:
+          type: string
+          description: Error Description
+          example: This is bad request
+    ForbiddenSchema:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Failure Status
+          example: Failure
+        statusCode:
+          type: string
+          description: Http Status Code
+          example: 403
+        data:
+          type: object
+          description: Blank Object
+          example: {}
+        errorDescription:
+          type: string
+          description: Error Description
+          example: Forbidden
+    InternalServerErrorSchema:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Failure Status
+          example: Failure
+        statusCode:
+          type: string
+          description: Http Status Code
+          example: 500
+        data:
+          type: object
+          description: Blank Object
+          example: {}
+        errorDescription:
+          type: string
+          description: Error Description
+          example: Internal server error
+    MinistryCount:
+      type: object
+      properties:
+        count:
+          type: number
+          example: 10
+        ministryName:
+          type: string
+          example: Ministry Of Agriculture and Farmers Welfare
+        hi:
+          type: object
+          example:
+            value: कृषि एवं किसान कल्याण मंत्रालय
+    MinistriesCountDto:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Success Status
+          example: Success
+        statusCode:
+          type: string
+          description: Http Status Code
+          example: 200
+        errorDescription:
+          type: string
+          description: Error Description
+          example: ""
+        error:
+          type: object
+          description: Blank Error Object
+          example: {}
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/MinistryCount"

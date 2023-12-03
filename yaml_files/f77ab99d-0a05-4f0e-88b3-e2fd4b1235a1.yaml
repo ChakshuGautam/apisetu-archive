@@ -1,0 +1,78 @@
+host: delhigw.napix.gov.in
+info:
+  title: CGHS
+  version: 1.0.0
+  x-ibm-name: savempin
+  description: This API saves MPIN of the beneficairy. After login beneficiary can
+    set their MPIN. Once they logout from the application MPIN reset
+    automatically.
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/nic/cghs
+paths:
+  /saveMPin:
+    post:
+      tags:
+        - Savempin
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      parameters:
+        - in: body
+          name: saveMPinData
+          schema:
+            type: object
+            title: saveMPin
+            properties:
+              mpin:
+                type: string
+              benId:
+                type: string
+              latestToken:
+                type: string
+              initialToken:
+                type: string
+          required: true
+schemes:
+  - https
+swagger: "2.0"
+basePath: /nic/cghs/savempin
+security:
+  - oauth:
+      - napix
+securityDefinitions:
+  oauth:
+    flow: application
+    type: oauth2
+    scopes:
+      napix: ""
+    tokenUrl: //oauth2/token
+    x-ibm-oauth-provider: nic-oauth-provider-application-grant-type
+  clientIdHeader:
+    in: header
+    name: X-IBM-Client-Id
+    type: apiKey
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  servers:
+    - url: https://delhigw.napix.gov.in/nic/cghs/savempin
+      type:
+        - production
+        - development
+  enforced: true
+  testable: true
+  oauth-servers:
+    oauth:
+      tokenUrls:
+        - https://degateway.napix.gov.in:443/nic/cghs//oauth2/token
+      refreshUrls: []
+      authorizationUrls: []
+  application-authentication:
+    certificate: false

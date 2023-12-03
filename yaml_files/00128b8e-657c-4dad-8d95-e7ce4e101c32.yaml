@@ -1,0 +1,47 @@
+info:
+  title: NAPIX
+  version: 1.0.0
+  x-ibm-name: apisetu-apis
+  description: This is a temparory API for the list of APIs published on APISetu
+    platform which fetches the details statically
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/napix/napix
+paths:
+  /:
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: success
+      tags:
+        - Apisetu apis
+openapi: 3.0.0
+servers:
+  - url: https://degateway.napix.gov.in:443/napix/napix/apisetu
+components:
+  securitySchemes:
+    ClientID:
+      in: header
+      name: client-id
+      type: apiKey
+      x-key-type: client_id
+      description: Client ID of the consuming application
+    ClientSecret:
+      in: header
+      name: client-secret
+      type: apiKey
+      x-key-type: client_secret
+      description: Client Secret of the consuming application
+x-ibm-endpoints:
+  - url: https://degateway.napix.gov.in:443/napix/napix/apisetu
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  enforced: true
+  testable: true

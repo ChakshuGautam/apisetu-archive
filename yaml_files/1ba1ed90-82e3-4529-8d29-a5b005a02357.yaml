@@ -1,0 +1,43 @@
+info:
+  title: Reproductive & Child Health
+  version: 1.0.0
+  x-ibm-name: video-poc
+  description: Audio files, video files, ebook files and tutorial files keeps at
+    server  to access in Anmol application
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/nic/rch
+paths:
+  /app-url/{videofile}:
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: success
+      parameters:
+        - in: path
+          name: videofile
+          schema:
+            type: string
+            title: videonameschema
+          required: true
+      tags:
+        - Video poc
+openapi: 3.0.0
+servers:
+  - url: https://delhigw.napix.gov.in/nic/rch/video-poc
+x-ibm-endpoints:
+  - url: https://delhigw.napix.gov.in/nic/rch/video-poc
+    type:
+      - production
+      - development
+x-ibm-configuration:
+  cors:
+    enabled: false
+  type: rest
+  phase: realized
+  enforced: true
+  testable: true

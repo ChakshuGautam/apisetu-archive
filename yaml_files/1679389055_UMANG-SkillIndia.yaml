@@ -1,0 +1,2824 @@
+---
+  openapi: "3.0.0"
+  info: 
+    title: "Pradhan Mantri Kaushal Vikas Yojana - Skill India Portal(PMKVY-SIP)"
+    description: "Pradhan Mantri Kaushal Vikas Yojana (PMKVY) is the flagship scheme of the Ministry of Skill Development & Entrepreneurship (MSDE) implemented by National Skill Development Corporation. The objective of this Skill Certification Scheme is to enable a large number of Indian youth to take up industry-relevant skill training that will help them in securing a better livelihood. Individuals with prior learning experience or skills will also be assessed and certified under Recognition of Prior Learning (RPL).<i>[Updated on 24th February 2023]</i>"
+    termsOfService: "https://web.umang.gov.in/uaw/ts/v1/en/index.htm"
+    contact: 
+      name: "Provided by - UMANG"
+      url: "https://web.umang.gov.in"
+    version: "1.0.0"
+  servers: 
+    - 
+      url: "https://apigw.umangapp.in"
+      description: Production Server
+  security:
+  - bearerAuth: []
+  paths: 
+    /pmkvySIPApi/ws1/authorize: 
+      post:
+        tags: 
+          - PMKVY SIP Authorization API
+        summary: PMKVY SIP authorization API
+        description: Get authorized with PMKVY SIP using this API
+        operationId: pmkvySIPApi/ws1/authorize
+        requestBody: 
+          content: 
+            application/x-www-form-urlencoded: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: 213132
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 191
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 1310
+                  mode:
+                    type: string
+                    description: mode of access
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform of access
+                    example: android
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 303
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "303"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "1310"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"            
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        xcsrf:
+                          type: string
+                          example: YzsGEZZ226z7DpaXNbgGhdUXXBJx0U4KRi/WJvPw6TVhJEqHcf7dWzd10/QrS2nhJ1zR+Z7g7AKh6tClQr9lQw==
+                        cookie:
+                          type: string
+                          example: _csrf=MTY3NjI2ODUxNnxJa0ZvT1Uxc2RXVkpRblptVFdVd1ZtcElkazUyV2xCS1RHcGxkblpOWVVsSk5UaFZSMmMzUmxCcVNGazlJZ289fB5qo9C8_gMxTTC1ppilAjzdz32G-OJYp74HDNXoNHqz; Path=/; Domain=skillindia.gov.in; Expires=Mon, 13 Feb 2023 18:08:36 GMT; Max-Age=43200; HttpOnly; Secure                          
+          400:
+            description: Bad Request/Validation Error
+    /pmkvySIPApi/ws1/login: 
+      post:
+        tags: 
+          - PMKVY SIP Login API
+        summary: PMKVY SIP Login API
+        description: To Login into PMKVY SIP using this API
+        operationId: pmkvySIPApi/ws1/login
+        requestBody: 
+          content: 
+            application/x-www-form-urlencoded: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: 213132
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 191
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 1310
+                  mode:
+                    type: string
+                    description: mode of access
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform of access
+                    example: android
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 303
+                  userName:
+                    type: string
+                    description: username
+                    example: umang
+                  password:
+                    type: string
+                    description: password
+                    example: ZWthdXNoYWw=
+                  xCsrfToken:
+                    type: string
+                    description: xCsrfToken
+                    example: bDCHJ279zK8oLzk9+un11CTxx5brXFjA53Ow9Sd1ihrBbYl7Q1nrZbjwvYVYdy4UtbDF0W0N/IMiodLku1IFiw==
+                  cookie:
+                    type: string
+                    description: cooke info
+                    example: _csrf=MTY3NjI2OTkzN3xJbVl3V0dsNkx6Sk1WRnBxZVRWSlQzRnNUbXgyV0ZsRlEyMHdNR2xpYUZKS1drOVVWSFZYVTNkc1VUQTlJZ289fIV8bU2JXrDXqoOnb7VlZC8ShsAyWdx2GBuekpWRv8iy; Path=/; Domain=skillindia.gov.in; Expires=Mon, 13 Feb 2023 18:32:17 GMT; Max-Age=43200; HttpOnly; Secure
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "303"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "1310"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"            
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        message:
+                          type: string
+                          example: Account Locked. Please Click on Forgot Password
+          400:
+            description: Bad Request/Validation Error
+    /pmkvySIPApi/ws1/registerCandidate: 
+      post:
+        tags: 
+          - PMKVY SIP Candidate Registration API
+        summary: PMKVY SIP Candidate Registration API
+        description: This API will be used to register user
+        operationId: pmkvySIPApi/ws1/registerCandidate
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: 213132
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 191
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 1310
+                  mode:
+                    type: string
+                    description: mode of access
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform of access
+                    example: android
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 303
+                  xcsrfToken:
+                    type: string
+                    description: xcsrfToken
+                    example: YggnYNSaiGZqeudS/DjRkHROZ+XrNnzGdikWXq9i090dTcWvKRHF/pieZPho4b7N9Uz8qMlYaI8SzcXny9JG0A==
+                  cookie:
+                    type: string
+                    description: cookie info
+                    example: _csrf=MTY3NjI2OTkzN3xJbVl3V0dsNkx6Sk1WRnBxZVRWSlQzRnNUbXgyV0ZsRlEyMHdNR2xpYUZKS1drOVVWSFZYVTNkc1VUQTlJZ289fIV8bU2JXrDXqoOnb7VlZC8ShsAyWdx2GBuekpWRv8iy; Path=/; Domain=skillindia.gov.in; Expires=Mon, 13 Feb 2023 18:32:17 GMT; Max-Age=43200; HttpOnly; Secure
+                  authorization:
+                    type: string
+                    description: token
+                    example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVtYW5nQHRlc3QuY29tIiwiZXhwIjoxNTk2MTI3NTM1LCJmaXJzdE5hbWUiOiJ1bWFuZyIsImhhc0ZpbGxlZFJlZ2lzdHJhdGlvbkluZm8iOmZhbHNlLCJpYXQiOjE1OTYxMTMxMzUsImlzcyI6Ik5TRENfU2VydmVyIiwicm9sZSI6InVtYW5nIiwic3RhdHVzIjoiIiwidG9rZW4iOiJLS2NpNVhiIiwidXNlck5hbWUiOiJ1bWFuZyJ9.rbo4UWKxZtbgV5_hdXsPpkMWvHoF-ujh7NWBHcS9c6g
+                  registerDTO: 
+                    type: object
+                    properties:
+                      interestedIn:
+                        type: string
+                        description: interest area
+                        example: PMKVY Training
+                      personalDetails:          
+                        type: object
+                        description: personal details
+                        properties:
+                          namePrefix:
+                            type: string
+                            description: name prefix
+                            example: Mr
+                          firstName:
+                            type: string
+                            description: first name
+                            example: Avishek
+                          dob:
+                            type: string
+                            description: date of birth
+                            example: 2006-07-06T00:00:00.000Z
+                          gender:
+                            type: string
+                            description: gender
+                            example: Male
+                          guardianName:
+                            type: string
+                            description: guardian name
+                            example: sdf
+                          profilePicture:
+                            type: string
+                            description: profile picture 
+                            example: eyJhbGciOiJIUzI1NiIsInR5cCI6I
+                      contactDetails:          
+                        type: object
+                        description: contact details
+                        properties:
+                          email:
+                            type: string
+                            description: email
+                            example: email2arindam@gmail.com
+                          phone:
+                            type: integer
+                            description: phone number
+                            example: 9123456789
+                          permanentAddress:
+                            type: object
+                            description: permanent Address details
+                            properties: 
+                              pinCode:
+                                type: string
+                                description: pincode number
+                                example: 560016
+                              state:
+                                type: string
+                                description: state name
+                                example: ASSAM
+                              stateId:
+                                type: integer
+                                description: state id
+                                example: 18
+                              stateObj:
+                                type: object
+                                description: state object info
+                                properties: 
+                                  code:
+                                    type: integer
+                                    description: state code
+                                    example: 18
+                                  name:
+                                    type: string
+                                    description: state name
+                                    example: ASSAM
+                              districtDetails:
+                                type: object
+                                description: district object info
+                                properties: 
+                                  district:
+                                    type: string
+                                    description: district name
+                                    example: CHIRANG
+                                  districtId:
+                                    type: integer
+                                    description: district id
+                                    example: 612
+                                  districtDetailsObj:
+                                    type: object
+                                    description: district Details Obj
+                                    properties: 
+                                      code:
+                                        type: string
+                                        description: district code
+                                        example: 612
+                                      name:
+                                        type: string
+                                        description: district name
+                                        example: CHIRANG
+                                      specialArea:
+                                        type: boolean
+                                        description: if district is in special Area
+                                        example: false
+                                      northEast:
+                                        type: boolean
+                                        description: if district is in northEast
+                                        example: true                                                                                                           
+                      educationalDetails:          
+                        type: array
+                        description: educational Details
+                        items:
+                          type: object  
+                          properties:                                              
+                            education:
+                              type: string
+                              description: education name
+                              example: MD
+                      coursePreferences:          
+                        type: array
+                        description: list of course preferences
+                        items:
+                          type: object                       
+                          properties:
+                            sector:
+                              type: string
+                              description: sector name
+                              example: BFSI
+                            subSector:
+                              type: string
+                              description: sub sector name
+                              example: Non Banking Financial Services
+                            sectorID:
+                              type: string
+                              description: sector id
+                              example: 5
+                            subSectorID:
+                              type: string
+                              description: gender
+                              example: 503
+                            sectorObj:
+                              type: object
+                              description: sector Details Obj
+                              properties: 
+                                sectorID:
+                                  type: string
+                                  description: sector id
+                                  example: 5
+                                sector:
+                                  type: string
+                                  description: sector name
+                                  example: BFSI                                     
+                                nameOfSector:
+                                  type: string
+                                  description: sector name
+                                  example: BFSI
+                                sectorCode:
+                                  type: string
+                                  description: sector code
+                                  example: BSC
+                                sectorLogo:
+                                  type: string
+                                  description: sector logo
+                                  example: sector-logos-and-chairman-signatures/5-Banking, Financial Services & Insurance-BSC/BFSI-Logo.png
+                                sscSignature:
+                                  type: string
+                                  description: ssc signature
+                                  example: sector-logos-and-chairman-signatures/5-Banking, Financial Services & Insurance-BSC/5-BFSI_CHMN_sign.png
+                                occupations: 
+                                  type: array
+                                  description: list of occupations
+                                  items:
+                                    type: object                       
+                                    properties:
+                                        occupationID:
+                                          type: string
+                                          description: occupation ID
+                                          example: 1
+                                        occupationDesc:
+                                          type: string
+                                          description: occupation description
+                                          example: Life Insurance Agent
+                                        occupationCode:
+                                          type: string
+                                          description: occupation code
+                                          example: 01
+                                subSectors: 
+                                    type: array
+                                    description: list of subSectors
+                                    items:
+                                      type: object                       
+                                      properties:
+                                          subSectorID:
+                                            type: string
+                                            description: subSector ID
+                                            example: 501
+                                          subSectorName:
+                                            type: string
+                                            description: subSector Name
+                                            example: BFSI
+                                          category:
+                                            type: string
+                                            description: category
+                                            example: abc
+                            subSectorObj:
+                              type: object
+                              description: subSector Details Obj
+                              properties: 
+                                  subSectorID:
+                                    type: string
+                                    description: sub sector id
+                                    example: 503
+                                  subSectorName:
+                                    type: string
+                                    description: sub sector name
+                                    example: Non Banking Financial Services                                     
+                                  category:
+                                    type: string
+                                    description: sector name
+                                    example: abc
+                            jobRole:
+                              type: string
+                              description: type of role for the job 
+                              example: engineer
+                            qpCode:
+                              type: string
+                              description: qpCode
+                              example: hfdgfd
+                            createdDate:
+                              type: string
+                              description: created date
+                              example: 2020-07-07T11:04:02.240Z                                  
+                      associatedPrograms:          
+                        type: array
+                        description: list of all associated Programs
+                        items:
+                          type: object                       
+                          properties:
+                            associatedProgramName:
+                              type: string
+                              description: associated Program Name
+                              example: abc
+                            profile:
+                              type: string
+                              description: profile
+                              example: abc
+                            cioType:
+                              type: string
+                              description: cioType
+                              example: abc
+                            cioId:
+                              type: string
+                              description: cioId
+                              example: abc
+                            cioName:
+                              type: string
+                              description: cioName
+                              example: abc
+                            rojgarMelaId:
+                              type: string
+                              description: rojgarMelaId
+                              example: abc
+                      changeStatusChecked:          
+                        type: boolean
+                        description: flag to know if changeStatus is Checked
+                        example: true                        
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "303"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "1310"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"            
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: F
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 400
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: An internal error occurred. Pls try again later.
+                    pd:
+                      type: string
+                      description: Response Payload
+                      example: Unauthorized
+          400:
+            description: Bad Request/Validation Error            
+    /pmkvySIPApi/ws1/forgotPassword: 
+      post: 
+        tags: 
+          - Forgot Password API
+        summary: Recover Forgotten Password API
+        description: This API is used to get forgotten password for a valid user
+        operationId: pmkvySIPApi/ws1/forgotPassword
+        requestBody: 
+          content: 
+            application/x-www-form-urlencoded: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: 213132
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 191
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 1310
+                  mode:
+                    type: string
+                    description: mode of access
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform of access
+                    example: android
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 473
+                  xcsrfToken:
+                    type: string
+                    description: xcsrfToken
+                    example: YggnYNSaiGZqeudS/DjRkHROZ+XrNnzGdikWXq9i090dTcWvKRHF/pieZPho4b7N9Uz8qMlYaI8SzcXny9JG0A==
+                  cookie:
+                    type: string
+                    description: cookie info
+                    example: _csrf=MTY3NjI2OTkzN3xJbVl3V0dsNkx6Sk1WRnBxZVRWSlQzRnNUbXgyV0ZsRlEyMHdNR2xpYUZKS1drOVVWSFZYVTNkc1VUQTlJZ289fIV8bU2JXrDXqoOnb7VlZC8ShsAyWdx2GBuekpWRv8iy; Path=/; Domain=skillindia.gov.in; Expires=Mon, 13 Feb 2023 18:32:17 GMT; Max-Age=43200; HttpOnly; Secure
+                  userID:
+                    type: string
+                    description: user id
+                    example: CAN_1735661
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "303"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "1310"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"           
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        message:
+                          type: string
+                          example: OTP Sent                                           
+          400:
+            description: Bad Request/Validation Error
+    /pmkvySIPApi/ws1/changePassword:
+      post: 
+        tags: 
+          - Change Password API
+        summary: Change Password API
+        description: This API is used to change password for a valid user
+        operationId: pmkvySIPApi/ws1/changePassword
+        requestBody: 
+          content: 
+            application/x-www-form-urlencoded: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: 213132
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 191
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 1310
+                  mode:
+                    type: string
+                    description: mode of access
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform of access
+                    example: android
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 473
+                  xcsrfToken:
+                    type: string
+                    description: xcsrfToken
+                    example: YggnYNSaiGZqeudS/DjRkHROZ+XrNnzGdikWXq9i090dTcWvKRHF/pieZPho4b7N9Uz8qMlYaI8SzcXny9JG0A==
+                  cookie:
+                    type: string
+                    description: cookie info
+                    example: _csrf=MTY3NjI2OTkzN3xJbVl3V0dsNkx6Sk1WRnBxZVRWSlQzRnNUbXgyV0ZsRlEyMHdNR2xpYUZKS1drOVVWSFZYVTNkc1VUQTlJZ289fIV8bU2JXrDXqoOnb7VlZC8ShsAyWdx2GBuekpWRv8iy; Path=/; Domain=skillindia.gov.in; Expires=Mon, 13 Feb 2023 18:32:17 GMT; Max-Age=43200; HttpOnly; Secure
+                  userID:
+                    type: string
+                    description: user id
+                    example: CAN_1735661
+                  phoneOtp:
+                    type: string
+                    description: phone otp
+                    example: 741262
+                  emailOtp:
+                    type: string
+                    description: email otp
+                    example: 834213
+                  password:
+                    type: string
+                    description: password
+                    example: Q2hldGFuQDEyMw==
+                  confirmPassword:
+                    type: string
+                    description: confirm password
+                    example: Q2hldGFuQDEyMw==                    
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "303"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "1310"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"           
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        message:
+                          type: string
+                          example: Invalid OTP                                          
+          400:
+            description: Bad Request/Validation Error
+    /pmkvySIPApi/ws1/getEnrollmentDetails:
+      post: 
+        tags: 
+          - Candidate Enrolment Details API
+        summary: Candidate Enrolment details Of a Valid User API
+        description: This API is used to get candidate enrolment details of a valid user
+        operationId: /pmkvySIPApi/ws1/getEnrollmentDetails
+        requestBody: 
+          content: 
+            application/x-www-form-urlencoded: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: 213132
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 191
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 1312
+                  mode:
+                    type: string
+                    description: mode of access
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform of access
+                    example: android
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 303
+                  xcsrfToken:
+                    type: string
+                    description: xcsrfToken
+                    example: YggnYNSaiGZqeudS/DjRkHROZ+XrNnzGdikWXq9i090dTcWvKRHF/pieZPho4b7N9Uz8qMlYaI8SzcXny9JG0A==
+                  cookie:
+                    type: string
+                    description: cookie info
+                    example: _csrf=MTY3NjI2OTkzN3xJbVl3V0dsNkx6Sk1WRnBxZVRWSlQzRnNUbXgyV0ZsRlEyMHdNR2xpYUZKS1drOVVWSFZYVTNkc1VUQTlJZ289fIV8bU2JXrDXqoOnb7VlZC8ShsAyWdx2GBuekpWRv8iy; Path=/; Domain=skillindia.gov.in; Expires=Mon, 13 Feb 2023 18:32:17 GMT; Max-Age=43200; HttpOnly; Secure
+                  authorization:
+                    type: string
+                    description: authorization key
+                    example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNoZXRhbi5rQHRyYW5zbmV1cm9uLmNvbSIsImV4cCI6MTU5NjYyNzM3MywiZmlyc3ROYW1lIjoiR2F1cmF2IiwiaGFzRmlsbGVkUmVnaXN0cmF0aW9uSW5mbyI6ZmFsc2UsImlhdCI6MTU5NjYxMjk3MywiaXNzIjoiTlNEQ19TZXJ2ZXIiLCJyb2xlIjoiQ2FuZGlkYXRlIiwic3RhdHVzIjoiIiwidG9rZW4iOiJ1cHo5NlcxIiwidXNlck5hbWUiOiJDQU5fMTczNTY2MSJ9.7BqoD00Z8wjca1bCJ25trsvC2-ngEbQK5beLpjoFqfE                    
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "303"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "1312"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"           
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        data:
+                          type: object
+                          description: enrolment details
+                          properties:
+                            BatchId:
+                              type: integer
+                              description: batch Id
+                              example: 26959
+                            AssessmentStartDate:
+                              type: string
+                              description: Assesment start date
+                              example: 2020-02-05T00:00:00Z
+                            QPCode:
+                              type: string
+                              description: QPCode
+                              example: FFS/Q0103
+                            BatchStartDate:
+                              type: string
+                              description: Batch start date
+                              example: 2019-11-29T00:00:00Z
+                            BatchName:
+                              type: string
+                              description: Batch name
+                              example: RPL4/SSC_FFS_PIA/2018-2020/BICE_000034/(FFS/Q0103)/26959
+                            JoRole:
+                              type: string
+                              description: job role
+                              example: Assistant Carpenter - Wooden Furniture
+                            BatchStartTime:
+                              type: string
+                              description: Batch start time
+                              example: 2019-11-28T03:30:00Z
+                            CandidateID:
+                              type: string
+                              description: Candidate id
+                              example: CAN_1735661
+                            AssessmentStatus:
+                              type: string
+                              description: Assessment status
+                              example: ASSESSMENT DONE
+                            BatchEndTime:
+                              type: string
+                              description: Batch end time
+                              example: 2019-11-28T11:30:00Z
+                            AssessmentEndDate:
+                              type: string
+                              description: Assessment end date
+                              example: 2020-02-05T00:00:00Z
+                            BatchStatus:
+                              type: string
+                              description: Batch status
+                              example: BATCH CREATED
+                            CandidateName:
+                              type: string
+                              description: Candidate name
+                              example: Gaurav
+                            BatchEndDate:
+                              type: string
+                              description: Batch end date
+                              example: 2019-11-29T00:00:00Z                             
+                              
+                            
+          400:
+            description: Bad Request/Validation Error
+    /pmkvySIPApi/ws1/getAssessmentDetails:
+      post: 
+        tags: 
+          - Get Candidate Assessment Details  API
+        summary: Candidate Assessment Details  API
+        description: This API is used to get candidate assessment details of a valid user
+        operationId: pmkvySIPApi/ws1/getAssessmentDetails
+        requestBody: 
+          content: 
+            application/x-www-form-urlencoded: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: 213132
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 191
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 1312
+                  mode:
+                    type: string
+                    description: mode of access
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform of access
+                    example: android
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 303
+                  xcsrfToken:
+                    type: string
+                    description: xcsrfToken
+                    example: YggnYNSaiGZqeudS/DjRkHROZ+XrNnzGdikWXq9i090dTcWvKRHF/pieZPho4b7N9Uz8qMlYaI8SzcXny9JG0A==
+                  cookie:
+                    type: string
+                    description: cookie info
+                    example: _csrf=MTY3NjI2OTkzN3xJbVl3V0dsNkx6Sk1WRnBxZVRWSlQzRnNUbXgyV0ZsRlEyMHdNR2xpYUZKS1drOVVWSFZYVTNkc1VUQTlJZ289fIV8bU2JXrDXqoOnb7VlZC8ShsAyWdx2GBuekpWRv8iy; Path=/; Domain=skillindia.gov.in; Expires=Mon, 13 Feb 2023 18:32:17 GMT; Max-Age=43200; HttpOnly; Secure
+                  authorization:
+                    type: string
+                    description: authorization key
+                    example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNoZXRhbi5rQHRyYW5zbmV1cm9uLmNvbSIsImV4cCI6MTU5NjYyNzM3MywiZmlyc3ROYW1lIjoiR2F1cmF2IiwiaGFzRmlsbGVkUmVnaXN0cmF0aW9uSW5mbyI6ZmFsc2UsImlhdCI6MTU5NjYxMjk3MywiaXNzIjoiTlNEQ19TZXJ2ZXIiLCJyb2xlIjoiQ2FuZGlkYXRlIiwic3RhdHVzIjoiIiwidG9rZW4iOiJ1cHo5NlcxIiwidXNlck5hbWUiOiJDQU5fMTczNTY2MSJ9.7BqoD00Z8wjca1bCJ25trsvC2-ngEbQK5beLpjoFqfE                    
+                   
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "303"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "1312"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"           
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        data:
+                          type: object
+                          description: assessment details
+                          properties:
+                            BatchName:
+                              type: string
+                              description: batch name
+                              example: RPL4/SSC_FFS_PIA/2018-2020/BICE_000034/(FFS/Q0103)/26959
+                            JoRole:
+                              type: string
+                              description: job role
+                              example: Assistant Carpenter - Wooden Furniture
+                            CandidateID:
+                              type: string
+                              description: candidate id
+                              example: CAN_1735661
+                            BatchId:
+                              type: integer
+                              description: batch id
+                              example: 26959 
+                            CandidateName:
+                              type: string
+                              description: candidate name
+                              example: Gaurav
+                            Marksheet:
+                              type: string
+                              description: marksheet
+                              example: marksheets/generated-pdfs/pmkvy/CAN_1735661-y2166u02cmsqrgdg.pdf
+                            QPCode:
+                              type: string
+                              description: QPCode
+                              example: FFS/Q0103
+                            Certificate:
+                              type: string
+                              description: certificate
+                              example: certificates/generated-pdfs/pmkvy/CAN_1735661-nxhbwxbu0pisaq56.pdf
+                            Result:
+                              type: string
+                              description: result
+                              example: PASS                             
+          400:
+            description: Bad Request/Validation Error
+    /pmkvySIPApi/ws1/getDownloadUrl:
+      post: 
+        tags: 
+          - Download URL API
+        summary: Download URL API
+        description: This API is used to get training centre details of a valid user
+        operationId: pmkvySIPApi/ws1/getDownloadUrl
+        requestBody: 
+          content: 
+            application/x-www-form-urlencoded: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: 213132
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 191
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 1312
+                  mode:
+                    type: string
+                    description: mode of access
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform of access
+                    example: android
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 303
+                  xcsrfToken:
+                    type: string
+                    description: xcsrfToken
+                    example: YggnYNSaiGZqeudS/DjRkHROZ+XrNnzGdikWXq9i090dTcWvKRHF/pieZPho4b7N9Uz8qMlYaI8SzcXny9JG0A==
+                  cookie:
+                    type: string
+                    description: cookie info
+                    example: _csrf=MTY3NjI2OTkzN3xJbVl3V0dsNkx6Sk1WRnBxZVRWSlQzRnNUbXgyV0ZsRlEyMHdNR2xpYUZKS1drOVVWSFZYVTNkc1VUQTlJZ289fIV8bU2JXrDXqoOnb7VlZC8ShsAyWdx2GBuekpWRv8iy; Path=/; Domain=skillindia.gov.in; Expires=Mon, 13 Feb 2023 18:32:17 GMT; Max-Age=43200; HttpOnly; Secure
+                  authorization:
+                    type: string
+                    description: authorization key
+                    example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNoZXRhbi5rQHRyYW5zbmV1cm9uLmNvbSIsImV4cCI6MTU5NjYyNzM3MywiZmlyc3ROYW1lIjoiR2F1cmF2IiwiaGFzRmlsbGVkUmVnaXN0cmF0aW9uSW5mbyI6ZmFsc2UsImlhdCI6MTU5NjYxMjk3MywiaXNzIjoiTlNEQ19TZXJ2ZXIiLCJyb2xlIjoiQ2FuZGlkYXRlIiwic3RhdHVzIjoiIiwidG9rZW4iOiJ1cHo5NlcxIiwidXNlck5hbWUiOiJDQU5fMTczNTY2MSJ9.7BqoD00Z8wjca1bCJ25trsvC2-ngEbQK5beLpjoFqfE
+                  key:
+                    type: string
+                    description: key
+                    example: marksheets/generated-pdfs/pmkvy/CAN_1735661-y2166u02cmsqrgdg.pdf                   
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "303"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "1312"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"           
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: string
+                      description: Response Payload
+                      example: https://nsdcbusinessuat.s3.ap-south-1.amazonaws.com/marksheets/generated-pdfs/pmkvy/CAN_1735661-y2166u02cmsqrgdg.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJJIMMSIY7JXUDB7A%2F20200805%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20200805T082629Z&X-Amz-Expires=600000&X-Amz-SignedHeaders=host&X-Amz-Signature=dcf63c1ed581c95eb9dcb3bd2644a7fa2548a8cf6bc618449ccf5aa756b13b88                                         
+          400:
+            description: Bad Request/Validation Error
+    /pmkvySIPApi/ws1/getTrainingCentres:
+      post: 
+        tags: 
+          - Get Training Centre Details API
+        summary: Training Centre Details API
+        description: This API is used to get training centre details of a valid user
+        operationId: pmkvySIPApi/ws1/getTrainingCentres
+        requestBody: 
+          content: 
+            application/x-www-form-urlencoded: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: 213132
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 191
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 1311
+                  mode:
+                    type: string
+                    description: mode of access
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform of access
+                    example: android
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 303
+                  stateCode:
+                    type: string
+                    description: state code
+                    example: 29
+                  districtCode:
+                    type: string
+                    description: district code
+                    example: 630
+                  sectorId:
+                    type: string
+                    description: sector Id
+                    example: 2
+                  qpCode:
+                    type: string
+                    description: qpCode
+                    example: AMH/Q1947
+                  pageNo:
+                    type: string
+                    description: page no
+                    example: 1
+                  size:
+                    type: string
+                    description: size
+                    example: 10                           
+                  xcsrfToken:
+                    type: string
+                    description: xcsrfToken
+                    example: YggnYNSaiGZqeudS/DjRkHROZ+XrNnzGdikWXq9i090dTcWvKRHF/pieZPho4b7N9Uz8qMlYaI8SzcXny9JG0A==
+                  authorization:
+                    type: string
+                    description: authorization key
+                    example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNoZXRhbi5rQHRyYW5zbmV1cm9uLmNvbSIsImV4cCI6MTU5NjYyNzM3MywiZmlyc3ROYW1lIjoiR2F1cmF2IiwiaGFzRmlsbGVkUmVnaXN0cmF0aW9uSW5mbyI6ZmFsc2UsImlhdCI6MTU5NjYxMjk3MywiaXNzIjoiTlNEQ19TZXJ2ZXIiLCJyb2xlIjoiQ2FuZGlkYXRlIiwic3RhdHVzIjoiIiwidG9rZW4iOiJ1cHo5NlcxIiwidXNlck5hbWUiOiJDQU5fMTczNTY2MSJ9.7BqoD00Z8wjca1bCJ25trsvC2-ngEbQK5beLpjoFqfE                    
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "303"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "1311"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"           
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        pagination:
+                          type: object
+                          description: pagination details
+                          properties:
+                            pageCount:
+                              type: integer
+                              description: page count
+                              example: 0
+                            nextPage:
+                              type: integer
+                              description: next page
+                              example: -1
+                            sortOrder:
+                              type: integer
+                              description: sort order
+                              example: 0
+                            limit:
+                              type: integer
+                              description: limit
+                              example: 10 
+                            count:
+                              type: integer
+                              description: count
+                              example: 3
+                            sortBy:
+                              type: integer
+                              description: sort By
+                              example: abc
+                            prevPage:
+                              type: integer
+                              description: previous page
+                              example: -1
+                            skip:
+                              type: integer
+                              description: skip
+                              example: 0
+                            pageNum:
+                              type: integer
+                              description: page number
+                              example: 1
+                        data:
+                          type: object
+                          description: training centre details
+                          properties:
+                            jobRoles:
+                              type: array
+                              description: job role Details
+                              items:
+                                type: object  
+                                properties:                                              
+                                  name:
+                                    type: string
+                                    description: job name
+                                    example: Self Employed Tailor
+                                  sector:
+                                    type: object
+                                    description: sector details
+                                    properties:
+                                      sectorID:
+                                        type: string
+                                        description: sector id
+                                        example: 2
+                                      subSectors:
+                                        type: array
+                                        description: subSectors Details
+                                        items:
+                                          type: object  
+                                          properties:                                              
+                                            subSectorName:
+                                              type: string                                   
+                                              description: sub sector name
+                                              example: Apparel
+                                            subSectorID:
+                                              type: integer
+                                              description: sub sector Id
+                                              example: 202
+                                      sectorName:
+                                        type: string
+                                        description: sector name
+                                        example: Apparels
+                                  qp:
+                                    type: string
+                                    description: qp
+                                    example: AMH/Q1947 
+                            address:
+                              type: integer
+                              description: count
+                              example: 3
+                            centreHeadDetails:
+                              type: object
+                              description: centre head details
+                              properties:
+                                phone:
+                                  type: integer
+                                  description: phone number
+                                  example: 9449263060
+                                name:
+                                  type: string
+                                  description: centre head name
+                                  example: M Saraswathi
+                                email:
+                                  type: string
+                                  description: centre head email id
+                                  example: saraswathi.life@gmail.com                                                             
+                            _id:
+                              type: integer
+                              description: previous page
+                              example: 5cdd9d0fc13dec19d4008395
+                            userName:
+                              type: string
+                              description: username
+                              example: TC029365
+                            trainingCentreName:
+                              type: integer
+                              description: trainingCentre Name
+                              example: Labournet_Life Organisation_Chickaballapur_Center                            
+                                          
+          400:
+            description: Bad Request/Validation Error
+    /pmkvySIPApi/ws1/getStateMaster:
+      post: 
+        tags: 
+          - Get State Master Details API
+        summary: Get State Master Details API
+        description: This API is used to get state master details
+        operationId: pmkvySIPApi/ws1/getStateMaster
+        requestBody: 
+          content: 
+            application/x-www-form-urlencoded: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: 213132
+                  usrid:
+                    type: string
+                    description: user Id
+                    example: 191
+                  srvid:
+                    type: string
+                    description: service Id
+                    example: 1310
+                  mode:
+                    type: string
+                    description: mode of access
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform of access
+                    example: android
+                  deptid:
+                    type: string
+                    description: department Id
+                    example: 303
+                  countryId:
+                    type: string
+                    description: country Id
+                    example: 91                  
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "303"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "1310"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"           
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        country:
+                          type: string
+                          description: country name                        
+                          example: INDIA
+                        countryCode:
+                          type: integer
+                          description: country code                       
+                          example: 91
+                        states:
+                          type: array
+                          description: states info                       
+                          items:
+                            type: object  
+                            properties:                                              
+                              code:
+                                type: integer
+                                description: state code
+                                example: 13
+                              name:
+                                type: string
+                                description: state name
+                                example: NAGALAND                             
+          400:
+            description: Bad Request/Validation Error
+    /pmkvySIPApi/ws1/getDistrictMaster:
+      post: 
+        tags: 
+          - District Master Details API
+        summary: Get District Master Details API
+        description: This API is used to get district master details
+        operationId: pmkvySIPApi/ws1/getDistrictMaster
+        requestBody: 
+          content: 
+            application/x-www-form-urlencoded: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: 213132
+                  usrid:
+                    type: string
+                    description: user Id
+                    example: 191
+                  srvid:
+                    type: string
+                    description: service Id
+                    example: 1310
+                  mode:
+                    type: string
+                    description: mode of access
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform of access
+                    example: android
+                  deptid:
+                    type: string
+                    description: department Id
+                    example: 303
+                  stateId:
+                    type: string
+                    description: state Id
+                    example: 19                   
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "303"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "1310"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"           
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        zone:
+                          type: string
+                          description: zone                       
+                          example: IMAC
+                        districts:
+                          type: array
+                          description: districts info                       
+                          items:
+                            type: object  
+                            properties:                                              
+                              specialArea:
+                                type: boolean
+                                description: special Area flag
+                                example: false
+                              code:
+                                type: integer
+                                description: state code
+                                example: 303
+                              name:
+                                type: string
+                                description: state name
+                                example: 24 PARAGANAS NORTH
+                              northEast:
+                                type: boolean
+                                description: northEast flag
+                                example: false
+                        stateCode:
+                          type: integer
+                          description: state code                       
+                          example: 19  
+                        state:
+                          type: string
+                          description: state name                      
+                          example: WEST BENGAL                           
+          400:
+            description: Bad Request/Validation Error
+    /pmkvySIPApi/ws1/getSectorMaster:
+      post: 
+        tags: 
+          - Get Sector Master Details API
+        summary: Sector Master Details API
+        description: This API is used to get sector master details
+        operationId: pmkvySIPApi/ws1/getSectorMaster
+        requestBody: 
+          content: 
+            application/x-www-form-urlencoded: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: 213132
+                  usrid:
+                    type: string
+                    description: user Id
+                    example: 191
+                  srvid:
+                    type: string
+                    description: service Id
+                    example: 1310
+                  mode:
+                    type: string
+                    description: mode of access
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform of access
+                    example: android
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 303                    
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "303"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "1310"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"           
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: array
+                      description: Response Payload                      
+                      items:
+                        type: object  
+                        properties:                                              
+                          sectorID:
+                            type: string
+                            description: sector Id
+                            example: 13
+                          nameOfSector:
+                            type: string
+                            description: name of sector
+                            example: Agriculture
+                          subSectors:
+                            type: array
+                            description: sub sectors info                     
+                            items:
+                              type: object  
+                              properties:                                              
+                                subSectorName:
+                                  type: string
+                                  description: sub sector name
+                                  example: Agriculture Crop Production
+                                subSectorID:
+                                  type: string
+                                  description: sub sector Id
+                                  example: 1302
+                                category:
+                                  type: string
+                                  description: category name
+                                  example: abc
+                          sscSignature:
+                            type: string
+                            description: ssc signature
+                            example: sector-logos-and-chairman-signatures/13-Agriculture-AGR/13-Agriculture-AGR_CHMN_skasthana.png
+                          sectorCode:
+                            type: string
+                            description: code of sector
+                            example: AGR
+                          sectorLogo:
+                            type: string
+                            description: logo of sector
+                            example: sector-logos-and-chairman-signatures/13-Agriculture-AGR/13-Agriculture-AGR-sector-logo.png
+                          occupations:
+                            type: array
+                            description: occupations info                     
+                            items:
+                              type: object  
+                              properties:                                              
+                                occupationDesc:
+                                  type: string
+                                  description: occupation Description
+                                  example: Field Crops Cultivation (Food Crops)
+                                occupationCode:
+                                  type: string
+                                  description: occupation Code
+                                  example: 01
+                                occupationID:
+                                  type: string
+                                  description: occupation Id
+                                  example: 1
+                          sector:
+                            type: string
+                            description: name of sector
+                            example: Agriculture                                 
+                            
+          400:
+            description: Bad Request/Validation Error
+    /pmkvySIPApi/ws1/getSubSectorMaster:
+      post: 
+        tags: 
+          - Get Sub Sector Master Details API
+        summary: Sub Sector Master Details API
+        description: This API is used to get Sub sector master details
+        operationId: pmkvySIPApi/ws1/getSubSectorMaster
+        requestBody: 
+          content: 
+            application/x-www-form-urlencoded: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: 213132
+                  usrid:
+                    type: string
+                    description: user Id
+                    example: 191
+                  srvid:
+                    type: string
+                    description: service Id
+                    example: 1310
+                  mode:
+                    type: string
+                    description: mode of access
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform of access
+                    example: android
+                  deptid:
+                    type: string
+                    description: department Id
+                    example: 303
+                  subSectorId:
+                    type: string
+                    description: sub sector Id
+                    example: 13                   
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "303"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "1310"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"           
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload                       
+                      properties:                                              
+                          sectorID:
+                            type: string
+                            description: sector Id
+                            example: 13
+                          nameOfSector:
+                            type: string
+                            description: name of sector
+                            example: Agriculture
+                          subSectors:
+                            type: array
+                            description: sub sectors info                     
+                            items:
+                              type: object  
+                              properties:                                              
+                                subSectorName:
+                                  type: string
+                                  description: sub sector name
+                                  example: Agriculture Crop Production
+                                subSectorID:
+                                  type: string
+                                  description: sub sector Id
+                                  example: 1302
+                                category:
+                                  type: string
+                                  description: category name
+                                  example: abc
+                          sscSignature:
+                            type: string
+                            description: ssc signature
+                            example: sector-logos-and-chairman-signatures/13-Agriculture-AGR/13-Agriculture-AGR_CHMN_skasthana.png
+                          sectorCode:
+                            type: string
+                            description: code of sector
+                            example: AGR
+                          sectorLogo:
+                            type: string
+                            description: logo of sector
+                            example: sector-logos-and-chairman-signatures/13-Agriculture-AGR/13-Agriculture-AGR-sector-logo.png
+                          occupations:
+                            type: array
+                            description: occupations info                     
+                            items:
+                              type: object  
+                              properties:                                              
+                                occupationDesc:
+                                  type: string
+                                  description: occupation Description
+                                  example: Field Crops Cultivation (Food Crops)
+                                occupationCode:
+                                  type: string
+                                  description: occupation Code
+                                  example: 01
+                                occupationID:
+                                  type: string
+                                  description: occupation Id
+                                  example: 1
+                          sector:
+                            type: string
+                            description: name of sector
+                            example: Agriculture                                 
+                            
+          400:
+            description: Bad Request/Validation Error            
+    /pmkvySIPApi/ws1/getBySectorSubSectorID:
+      post: 
+        tags: 
+          - Get Master By Sector Subsector Details API
+        summary: Master By Sector Subsector Details API
+        description: This API is used to get master by sector subsector details
+        operationId: pmkvySIPApi/ws1/getBySectorSubSectorID
+        requestBody: 
+          content: 
+            application/x-www-form-urlencoded: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: 213132
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 191
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 1310
+                  mode:
+                    type: string
+                    description: mode of access
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform of access
+                    example: android
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 473 
+                  sectorID:
+                    type: string
+                    description: sector id
+                    example: 2
+                  subSectorID:
+                    type: string
+                    description: sub sector id
+                    example: 202
+                  fields:
+                    type: string
+                    description: fields
+                    example: qpCode,nsqfLevel,qpParamOne,jobRole,jobRoleDesc,version,sectors                 
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "303"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "1310"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"           
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload  
+                      properties:                                              
+                        data:
+                          type: array
+                          description: sector sub sectors info                     
+                          items:
+                              type: object  
+                              properties:                                              
+                                sectors:
+                                  type: object
+                                  properties:
+                                    sectorID:
+                                      type: string                                  
+                                      description: sector Id
+                                      example: 2
+                                    sectorName:
+                                      type: string
+                                      description: sector name
+                                      example: Apparels
+                                    subSectors:
+                                      type: object
+                                      description: subSectors data
+                                      properties:                                      
+                                        subSectorID:
+                                          type: string
+                                          description: sub sector Id
+                                          example: 202
+                                        subSectorName:
+                                          type: string
+                                          description: sub sector name
+                                          example: Apparel                                         
+                                qpCode:
+                                  type: string
+                                  description: qpCode
+                                  example: AMH/Q1101
+                                version:
+                                  type: string
+                                  description: version number
+                                  example: 1.0
+                                nsqfLevel:
+                                  type: string
+                                  description: nsqfLevel
+                                  example: 5
+                                jobRole:
+                                  type: string
+                                  description: job Role
+                                  example: Advance Pattern Maker(CAD/CAM)
+                                jobRoleDesc:
+                                  type: string
+                                  description: jobRole Desc
+                                  example: The advance pattern maker uses the CAD system to recreate the pattern design techniques by transferring ideas to the computer, digitizing and modifying patterns and also the use of CAM to get the patterns and lays cut out in the actual sizes
+                                qpParamOne:
+                                  type: object
+                                  description: qpParamOne                                 
+                                  properties:                                              
+                                    paramID:
+                                      type: string
+                                      description: param ID
+                                      example: 1
+                                    paramDesc:
+                                      type: string
+                                      description: param Desc
+                                      example: Technical
+                                updated_at:
+                                  type: string
+                                  description: updated time
+                                  example: 0001-01-01T00:00:00Z                           
+          400:
+            description: Bad Request/Validation Error
+    /pmkvySIPApi/ws1/getEducationDetails:
+      post: 
+        tags: 
+          - Get Education Master Details API
+        summary: Education Master Details API API
+        description: This API is used to get education master details
+        operationId: pmkvySIPApi/ws1/getEducationDetails
+        requestBody: 
+          content: 
+            application/x-www-form-urlencoded: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: 213132
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 191
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 1310
+                  mode:
+                    type: string
+                    description: mode of access
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform of access
+                    example: android
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 473                 
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "303"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "1310"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"           
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: array
+                      description: Response Payload                     
+                      items:
+                          type: object  
+                          properties:                                              
+                              eduQualDesc:
+                                type: string                                  
+                                description: educational qualification
+                                example: I.T.I
+                              eduQualID:
+                                type: string
+                                description: educational qualification Id
+                                example: 16
+                              CreatedAt:
+                                type: string
+                                description: created time
+                                example: 0001-01-01T00:00:00Z
+                              ID:
+                                type: string
+                                description: Id
+                                example: 5dc90602bf689732accfe339                                         
+                              UpdatedAt:
+                                type: string
+                                description: updated at
+                                example: 0001-01-01T00:00:00Z                      
+          400:
+            description: Bad Request/Validation Error
+    /pmkvySIPApi/ws1/getAssociatedProgram:
+      post: 
+        tags: 
+          - Get Associated Program Master Details API
+        summary: Associated Program Master Details API
+        description: This API is used to get associated program master details
+        operationId: pmkvySIPApi/ws1/getAssociatedProgram
+        requestBody: 
+          content: 
+            application/x-www-form-urlencoded: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: 213132
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 191
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 1310
+                  mode:
+                    type: string
+                    description: mode of access
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform of access
+                    example: android
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 473                 
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "303"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "1310"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"           
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: array
+                      description: Response Payload                     
+                      items:
+                          type: object  
+                          properties:                                              
+                              name:
+                                type: string                                  
+                                description: name 
+                                example: Counselling - Industrial Training Institute
+                              id:
+                                type: integer
+                                description: Id
+                                example: 5
+                              needCounsellingDetails:
+                                type: boolean
+                                description: needCounsellingDetails flag
+                                example: true                      
+          400:
+            description: Bad Request/Validation Error            
+  components:
+    securitySchemes:
+      bearerAuth:
+        type: http
+        scheme: bearer
+        bearerFormat: text

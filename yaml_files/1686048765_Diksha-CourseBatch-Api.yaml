@@ -1,0 +1,328 @@
+openapi: 3.0.1
+info:
+  title: Course-Batch Management
+  description: |-
+      PM eVidya DIKSHA - One Nation, One Digital Platform for School Education. An initiative of the National Council of Educational Research and Training (Ministry of Education, Govt of India) <i>[Updated on 6th June 2023]</i>
+  termsOfService: https://diksha.gov.in/term-of-use.html
+  contact:
+    name: Provided by -Diksha
+    url: https://diksha.gov.in/
+  version: 1.0.0
+servers:
+- url: https://diksha.gov.in/api/course
+  description: Production Server 
+paths:
+  /v1/batch/read/{batchId}:
+    get:
+      tags:
+      - CourseBatch Read API
+      summary: This web service will be used to get detail of CourseBatch.
+      operationId: v1/batch/read
+      security:
+      - bearerAuth: []
+      - ApiKeyAuth: []
+      parameters:
+      
+        - in: path
+          name: batchId
+          required: true
+          example: 01368600979709952013
+          schema:
+            type: string
+      
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  id:
+                    type: string
+                    example: "api.course.batch.read"
+                  ver:
+                    type: string
+                    example: "v1"
+                  ts:
+                    type: string
+                    example: "2023-05-16 08:37:23:798+0000"
+                  params:
+                    type: object
+                    properties:
+                      resmsgid: 
+                        type: string                        
+                        example: null
+                      msgid: 
+                        type: string                        
+                        example: "85851320-cd10-4e5f-bb21-18fd02e6530a"
+                      err: 
+                        type: string                        
+                        example: null
+                      status: 
+                        type: string                        
+                        example: "success"
+                      errmsg: 
+                        type: string                        
+                        example: null
+                  responseCode:
+                    type: string
+                    example: "OK"
+                  result:
+                    type: object
+                    properties:
+                      response: 
+                        type: object                        
+                        properties:
+                          certTemplates: 
+                            type: string
+                            example: {'do_3136852727562977281117': {'identifier': 'do_3136852727562977281117', 'previewUrl': 'https://ntpproductionall.blob.core.windows.net/ntp-content-production/content/do_3136852727562977281117/artifact/do_3136852727562977281117_1670565598446_mp-hindi-praman.svg', 'data': '"{\\"title\\":\\"MPDigitalCourseSVGTemplate\\"}"', 'criteria': {'user': {'rootOrgId': '012936530816278528135'}, 'enrollment': {'status': 2}}, 'name': 'MPDigitalCourseSVGTemplate', 'issuer': {'name': 'mp', 'url': 'https://diksha.gov.in/mp/'}, 'url': 'https://ntpproductionall.blob.core.windows.net/ntp-content-production/content/do_3136852727562977281117/artifact/do_3136852727562977281117_1670565598446_mp-hindi-praman.svg', 'signatoryList': [{'image': 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMEAAACMCAMAAADyWj0cAAABlVBMVEUAAADr9f3F1e7N2/Hl8fzQ4PTh7frw+v65y+vb6PawwOGfuerB0OuNodCgs96yxefc6vlRa8B+l9WJot5OYbA0RqmrveSpwusmOaNvh8p4hrmIot+SqdylteBwgL2Xpc7U4vRCW8BIZMRebrMLF4MeL6BhdcFpit2BltE5SaA9TpxxjdgHD3BaeM1qe7oTKqMkPbMoQK0xSrsnOIw3Vb89Tq9BU7VXbLdqfcR1kNGHlMOUsOgBAj8UI5cmSLczQpE8WbtJWKVKYbdphc2hr9ITHokTIXkRF1lXabFTbMQfPrkdNbEjRMIpTcQgKGwrOpkxTbM+ULVBV65XddRff9ZpdqYdN5gIC1QbKJAkMpcdK4Q+R30+Zc1TYJ8vR7xNds07W8kAAYEAAG8AAXoAAWkAAIYAAI0AAHQAAFoABKAAC5kQH50AB6cJI64AAWUDFaAADaAAAZUAAIkAAGEAAFEAAZoGF5YAA5EADI8AAEkXLq4AE6oKGI0CDYgFDHgAE44AAC8VMrwJH6QSIZEIEH8JDWkAABiEft7dAAAAYXRSTlMACCwmDCAQBDgYRlAzaFg/FLJ6aLPUSkTnjn5vYk+KXxzDup/+756Ndc7GiPullP7u4+Dg0MzDrJaCclr++evVy7y7llX5+fCnpfjy7OPj3dTNv6iblfv48efmwcCp1rTVYyXXhgAAB/5JREFUeNrt22VbG0EQAOC5u7gST4gRxd3dKdShULezuCcQvEjb310ChZIC5QiXhn2eez9CCLt7M7NzBgKBQCAQCAQCgUAgEAgEAoGgCsSEFJCG907igDRLW8EBSJO3REYAbYS6AQQ1JSJEgDRs5rUWkNZEtakAZbLdyAuko4gIhBmTBNBFvGDSIVMdIEsbYHyNmW4xoMqwS7lAmR5HtRYR7aEFN4DsaG8UUCTSj+f6CQCQd5EGQI/Ebg2lhzE4gU3RLqgxsRzuBrcF2JhHBmd04UUp1BS+0HKXERB270Yx41XAuUbSiEFNdUT2xRxjh1AOmeKh6JPWy32EPfaSgFrCevPfZXCjOpnZYrEYbDbfdPOL483Y0cSqsryLsBz5a1uMtBSb1N4UYHZP57cSliXJzY3Ol40G/ErEST6z7TUNIzXT+VR9w69OImbn6cREX9/HdptBKbsh2PTpbhxqyJef+tIE13Huh580yqQiEfw708UT3+xQO9i7sF6vv3bPsm75uNXZ1j1vDZs7fJeUqYevDQ7mOce22ZLc0ClqtifMpeYlGhtcpYr/UHA9jq/SVC/O7aPAEfe/rGf6QTZ7TXB30SPAlfxZeJ9DKhC25S/KiuYg13u+LjqvP8xGxgVi9dXN6yW5yPXbtWZHgKbHHbfth7ZxOkxPEJVUfOt6aDNCrziv3c8YN0DDlR976RaOi2V+3ZaiKDrMuG5JuJchNhcqzogqCKDm3ONRmbo5TxmJq1uun261z3QHy6NYOkhPSoAbxcTrgNXj9Rr+PTRLZy4Uym63SuDuzHQnXpqIc4V+q7myMvuUP8WGyHHbpTmIdNRkA3AlkkhuH5YyzrK5eGsDVGKQOi/3wyQ7fKWnKGy919s/7mStyosp99AtPNd39XeK2l3CK+3cSNnFSoyTq+Xr5Y6MPSp98ejT3LyttEIijc5PDUqAT/inQmHXh0OFGo53/xw7vD/7sSxeXVtj9VAib8/mrMahQWuM3K8HPhFrbRHqEw4VU+11X1pRyUxCh10upgeF88Z09Fk4T2Zjj4dwXsc/688f68xwDwp6GSvbP1njpSBv/vlI/mfbCDa2KkXAI9lsshhoaoB7cVPGvyol+X4NOx/0858foGoU3vR6l+HeS+KihqCMdGlszHWeF2M/66E6RIa+TLSnNH7eZwDurYOU8/cqHRxooRok9q7EjkcJfBi5MoOOPBOxnq3N2s/nIuCfqvXxTnJVBvxwp4JQroVZmmcWCQCx781BFYJIqztKHDaKgS/uwiCUwRYe1TnJyLzJFM8fvCGAX5jGk4k+M9QB8DiDaTgnnxMBKLY+ANSnUhQb+771HOM3/PU9icSUUspvSUuZLr7QxwQBPm2VIieYizeaBykf8Ai3PYkmX1mAZ4T/+GLP0jF0h/pNqpRioq64GCZpA4/jn01Gk40E8E7UG7741iBFFmOFs8ixbA5o2/ZlvB1qXTpaSt9qmMwrAEBcyq1pJp4IF36XH9tmX76XpzQwe3cyz+wSqA4jNQKgml8BEL1jNMrp+vOD002neEkDud0U2vlolkK1qEuNkZZmDKDa+3E5TJV0aoSP5nM7uqGzQBXh4RcAUlOkzWfaenQ5UCXvGc39w39j/XAVh6pq2PPXAbREGJoaK2tE8bbC0D2bZ12s+NhQB9XWzNSDZOHH0uekCT9bOLdTfhpe4SMVVAxz9McSfaMYVF99JGJcKnwAKXF2686Ypcl3LhEYycOMsfL0nViPeS3wX4gXDiKhyPRFsxouPnkSCjc73pIO3a64svS1ja8nV1Xwv7SMRWjGDb9NF1yYyBCgSDoAxLfFytKXfaxvgP9H2+JzqeGcKaUqHZgVOtwN0LxPwB0ppzKJPiUGtePZI04D+W3khwM0Ydcdm+epRGZK+c/+dERd5ekFSfw0lNvykX1H3W6v9C4XwbtOms9beqmRiN8MVdVBnQ5BHbYOkP7hQBvnXBa3bkcPW2/9eNMeE4SqcpCnObFIqbGBcI79zrGi4I3JxFODBK6oq1+Tl0/0dQdUlTg9WPq/82EcsKUomVdwO/fd2PnquL7vKvUqZcQSqC7PBgEwR70rJYCm+ZOIQ/r2bxa9N81UtrAG/5mSdAF0pDo4dw/PorEZLdyoBg/vt/gJsJJz3MqPuieabH9oT5Tim9ZZNs5lT1W1J4vbNgIenKYwk2/m0D18SUef2h/m06T1bx7dFkRSzfJJ96CBhwq/LTI0PYmYRwmowhw9sXS7DFBV5+guHs2i+3YQbuvMbg/LAVWq9kyiq+lhlh9u1x52Ej2jyL4fJzVPb2am0C0/Uo2JjXkVgCqJ2hrKvEK3fIr1b9mNIMLlsyNe7DSg+x4H3p7OHurRfZNGNZROdDnQfRtLMRDL9oxigCqFsRjtMyO7fYk0LWTUYwZUyfVWdnPGAqiqs29n0zp0ty9i+JhMNqK7fYmH46FtPbpvpePBONvZhGz5l5bunG43Ibv9Yk5TLNZtQPfsyznJZl9q0N1+nf2h0IwF4fEv59Y96JZ/qaZ/fX0A3e0X0/SHol4nIMtsYtcHUH0H/YS5mV1fRvfqCagGyKwJ4fjRGjNRD7r5CypjLvQZ4fUXd+yRAQOyp4+ANR2TcYQvn8DcJL0ZfIA3H7mS+3K5FXTPvwA0gVC8CdAlNrLZAXSvfwLgVnoD5QMA7jj9/qE9/nAnboZ6ge4NyNMJpBiTFt2rKKfP9ZKkH93bYACSORmuUqF7JiyolV8ztWEjNIcm7QAAAABJRU5ErkJggg==', 'name': 'Madhya Pradesh', 'id': 'mp', 'designation': 'Director'}]}}
+                          endDate: 
+                            type: string
+                            example: null
+                          description: 
+                            type: string
+                            example: ""
+                          oldCreatedDate: 
+                            type: string
+                            example: null
+                          updatedDate: 
+                            type: string
+                            example: null
+                          batchId: 
+                            type: string
+                            example: "01368600979709952013"
+                          cert_templates: 
+                            type: string
+                            example: {'do_3136852727562977281117': {'identifier': 'do_3136852727562977281117', 'previewUrl': 'https://obj.diksha.gov.in/ntp-content-production/content/do_3136852727562977281117/artifact/do_3136852727562977281117_1670565598446_mp-hindi-praman.svg', 'data': '"{\\"title\\":\\"MPDigitalCourseSVGTemplate\\"}"', 'criteria': {'user': {'rootOrgId': '012936530816278528135'}, 'enrollment': {'status': 2}}, 'name': 'MPDigitalCourseSVGTemplate', 'issuer': {'name': 'mp', 'url': 'https://diksha.gov.in/mp/'}, 'url': 'https://obj.diksha.gov.in/ntp-content-production/content/do_3136852727562977281117/artifact/do_3136852727562977281117_1670565598446_mp-hindi-praman.svg', 'signatoryList': [{'image': 'data:image/png;base64,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', 'name': 'Madhya Pradesh', 'id': 'mp', 'designation': 'Director'}]}}
+                          oldEndDate: 
+                            type: string
+                            example: null
+                          oldEnrollmentEndDate: 
+                            type: string
+                            example: null
+                          id: 
+                            type: string
+                            example: "01368600979709952013"
+                          courseId: 
+                            type: string
+                            example: "do_3136846013039820801838"
+                          collectionId: 
+                            type: string
+                            example: "do_3136846013039820801838"
+                          identifier: 
+                            type: string
+                            example: "01368600979709952013"
+                          createdFor: 
+                            type: string
+                            example: ['012936530816278528135']
+                          oldUpdatedDate: 
+                            type: string
+                            example: null
+                          tandc: 
+                            type: string
+                            example: null
+                          createdDate: 
+                            type: string
+                            example: "2022-12-10T06:50:57.254Z"
+                          createdBy: 
+                            type: string
+                            example: "8004de5c-a8f9-402f-a274-b7138b9d4892"
+                          mentors: 
+                            type: string
+                            example: ['43cc45df-a9fe-4cb9-a439-f6185a9d4777', 'a39b4df8-f600-444e-8a83-1f2e4a5075f8', 'cd56b767-2465-446b-888c-97b9863397f8']
+                          name: 
+                            type: string
+                            example: "प्रारंभिक कक्षाओं में गणित - Batch 1"
+                          oldStartDate: 
+                            type: string
+                            example: null
+                          enrollmentType: 
+                            type: string
+                            example: "open"
+                          enrollmentEndDate: 
+                            type: string
+                            example: null
+                          startDate: 
+                            type: string
+                            example: "2022-12-10T00:00:00.000Z"
+                          status: 
+                            type: string
+                            example: 1
+
+   
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  id:
+                    type: string
+                    example: "api.course.batch.read"
+                  ver:
+                    type: string
+                    example: "v1"
+                  ts:
+                    type: string
+                    example: "2023-05-24 11:44:07:020+0000"
+                  params:
+                    type: object
+                    properties:
+                      resmsgid: 
+                        type: string                        
+                        example: null
+                      msgid: 
+                        type: string                        
+                        example: "21e30edb-5813-46c9-a54e-c6f7c7d45636"
+                      err: 
+                        type: string                        
+                        example: "UNAUTHORIZED_USER"
+                      status: 
+                        type: string                        
+                        example: "SERVER_ERROR"
+                      errmsg: 
+                        type: string                        
+                        example: "You are not authorized."
+                  responseCode:
+                    type: string
+                    example: "CLIENT_ERROR"
+                  result:
+                    type: object
+                   
+
+   
+
+  /v1/batch/list:
+    post:
+      tags:
+      - CourseBatch List API
+      summary: This web service will be used to get list of all created CourseBatch.
+      operationId: v1/batch/list
+      security:
+      - bearerAuth: []
+
+      requestBody:
+        content:
+          application/json:
+            schema:
+
+              properties:
+                  request:
+                    type: object
+                    properties:
+                      filters:
+                        type: object
+                        properties:
+                         courseId:
+                           type: string
+                           example: do_313010955659239424132
+      
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  id:
+                    type: string
+                    example: "api.course.batch.search"
+                  ver:
+                    type: string
+                    example: "v1"
+                  ts:
+                    type: string
+                    example: "2023-05-16 08:54:30:059+0000"
+                  params:
+                    type: object
+                    properties:
+                      resmsgid: 
+                        type: string                        
+                        example: null
+                      msgid: 
+                        type: string                        
+                        example: "3f35d881-ae6d-4089-b3a9-ba5a55ea60c9"
+                      err: 
+                        type: string                        
+                        example: null
+                      status: 
+                        type: string                        
+                        example: "success"
+                      errmsg: 
+                        type: string                        
+                        example: null
+                  responseCode:
+                    type: string
+                    example: "OK"
+                  result:
+                    type: object
+                    properties:
+                      response: 
+                        type: object                        
+                        properties:
+                          count: 
+                            type: string
+                            example: 1
+                          content: 
+                            type: string
+                            example: [{'identifier': '0130121534718935041', 'createdFor': ['012936530816278528135'], 'createddate': '2020-05-02 05:23:34:422+0000', 'endDate': None, 'description': ' यह बैच CM RISE -डिजिटल शिक्षक प्रशिक्षण कार्यक्रम  के एक भाग के रूप में बनाया गया है।', 'enrollmentenddate': None, 'updatedDate': None, 'batchId': '0130121534718935041', 'cert_templates': {'MPCourseCompletionSVGTemplate': {'template': 'https://ntpproductionall.blob.core.windows.net/e-credentials/File-01312839590382796827932.svg', 'identifier': 'MPCourseCompletionSVGTemplate', 'previewUrl': 'https://obj.diksha.gov.in/e-credentials/File-01312839590382796827932.svg', 'criteria': '{"enrollment":{"status":2}}', 'name': 'Completion Certificate', 'issuer': '{"name":"mp","url":"https://diksha.gov.in/mp/"}', 'signatoryList': '[{"image":"https://diksha.gov.in/tenant/ntp/logo.png","name":"Commissioner, Rajya Shiksha Kendra","id":"mp","designation":"Commissioner, Rajya Shiksha Kendra"}]'}, 'MPCourseTemplate': {'template': 'https://ntpproductionall.blob.core.windows.net/ntp-content-production/cert-templates/CM_Rise_Digital_Shikshak_Training_for_MP.zip', 'identifier': 'MPCourseTemplate', 'criteria': '{"enrollment":{"status":2}}', 'name': 'Course Completion Certificate', 'issuer': '{"name":"mp","url":"https://diksha.gov.in/mp/"}', 'signatoryList': '[{"image":"https://diksha.gov.in/tenant/ntp/logo.png","name":"Commissioner, Rajya Shiksha Kendra","id":"mp","designation":"Commissioner, Rajya Shiksha Kendra"}]'}}, 'startdate': '2020-05-02', 'tandc': None, 'createdDate': None, 'enddate': None, 'createdBy': 'a39b4df8-f600-444e-8a83-1f2e4a5075f8', 'mentors': ['b836c58f-e7bb-4cac-aabd-35bf5ca15354', '505e0629-8728-4ba1-9503-2fa0189c4d80', '30875401-3a59-4944-9218-1d7249b731d2', 'c7e94523-2172-4d15-b88f-4d4d48790401', '9e12397a-8efb-485b-82c5-7da4a7d20b67', '69862fa7-8e72-404b-9c3d-30bb0ac4c009', '43c36048-550f-4b84-adae-92c6f0337458', 'b78db595-5ace-42d8-9604-8659e74edca4', 'bb8d22ee-fbfc-4b72-b641-0c7a1753a1ea', '07ea5b42-31ca-431b-a6bf-05ea6aa7f22d', 'c3e29d10-be9e-4ff4-92d7-1ad55a8726b7', '2554ece9-6e87-4a64-9df7-aadb80d5a43d', 'de91ab5e-f786-4a17-8429-38d7565c6c1b', 'c285829f-05de-495b-82fc-6ad8af7ef934', '9dbc49cb-d27e-4556-91d9-c6ebe3a10d40', '044691a3-34dc-40f2-9e35-62daea221305', '70d191f3-159b-43d7-befb-2d46bc34bfc9', '1ea39da5-3e68-4948-8057-fa1f67a64508', 'a6ef1b49-6ad8-4b2c-8199-2add8db612b1', 'd9121605-ac3e-4ca4-a4f8-058503c7885a', 'b6a3dde7-489a-4462-a714-bcc6754eef84'], 'name': 'CM RISE- डिजिटल शिक्षक प्रशिक्षण|मध्य प्रदेश 1', 'updateddate': '2020-05-02 06:02:51:464+0000', 'id': '0130121534718935041', 'enrollmentType': 'open', 'courseId': 'do_313010955659239424132', 'enrollmentEndDate': None, 'collectionId': 'do_313010955659239424132', 'startDate': '2020-05-02', 'status': 1}]
+
+   
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  id:
+                    type: string
+                    example: "api.course.batch.search"
+                  ver:
+                    type: string
+                    example: "v1"
+                  ts:
+                    type: string
+                    example: "2023-05-24 11:56:34:651+0000"
+                  params:
+                    type: object
+                    properties:
+                      resmsgid: 
+                        type: string                        
+                        example: null
+                      msgid: 
+                        type: string                        
+                        example: "ec8d81fe-0819-4444-a743-1271ea19e7d7"
+                      err: 
+                        type: string                        
+                        example: "INTERNAL_ERROR"
+                      status: 
+                        type: string                        
+                        example: "INTERNAL_ERROR"
+                      errmsg: 
+                        type: string                        
+                        example: "Process failed,please try again later."
+                  responseCode:
+                    type: string
+                    example: "SERVER_ERROR"
+                  result:
+                    type: object
+                    
+
+   
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Text
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-authenticated-user-token
+
+
+

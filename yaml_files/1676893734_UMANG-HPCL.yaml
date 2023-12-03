@@ -1,0 +1,1371 @@
+---
+  openapi: "3.0.0"
+  info: 
+    title: "Hindustan Petroleum Corporation Limited (HPCL)"
+    description: "Hindustan Petroleum Corporation Limited (HPCL), commonly referred to as HP, is an Indian oil and gas refining company headquartered in Mumbai.HPCL was incorporated in 1974.Since 2018, ONGC has owned a majority stake in the company.The company is ranked 367th on the Fortune Global 500 list of the world's biggest corporations as of 2016.On 24 October 2019, the company became a Maharatna PSU.<i>[Updated on 20th February 2023]</i>"
+    termsOfService: "https://web.umang.gov.in/uaw/ts/v1/en/index.htm"
+    contact: 
+      name: "Provided by - UMANG"
+      url: "https://web.umang.gov.in"
+    version: "1.0.0"
+  servers: 
+    - 
+      url: "https://apigw.umangapp.in"
+      description: Production Server
+  paths: 
+    /hpclApi/ws1/kyc/getDistributors: 
+      post:
+        tags: 
+          - Get Distributors API
+        summary: Get Distributors API
+        description: Get all the Distributors Using this API
+        operationId: hpclApi/ws1/kyc/getDistributors
+        security:
+         - bearerAuth: []
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: 212121
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  lat:
+                    type: string
+                    description: latitude
+                    example: 90
+                  lon:
+                    type: string
+                    description: longitude
+                    example: 90
+                  lac:
+                    type: string
+                    description: Location
+                    example: 90
+                  usag:
+                    type: string
+                    description: usag
+                    example: 12
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 123
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 32
+                  mode:
+                    type: string
+                    description: mode of access
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform of access
+                    example: android
+                  apitrkr:
+                    type: string
+                    description: api tracher
+                    example: 21
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 473
+                  did:
+                    type: string
+                    description: Device id
+                    example: 122
+                  RequestId:
+                    type: string
+                    description: Request id
+                    example: 001
+                  Source:
+                    type: string
+                    description: Source
+                    example: U
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "32"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "1301"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "Userid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "umang"
+          - 
+            name: "Token"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "U4@9Te5t"            
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        ErrorCode:
+                          type: string
+                          example: 200
+                        ErrorMessage:
+                          type: string
+                          example: Success
+                        DistributorsList:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              DealerCode:
+                                type: string
+                                example: 17197400
+                              DealerName:
+                                type: string
+                                example: ASOPALAV H P GAS
+                              DealerAddress:
+                                type: string
+                                example: GANDHI NAGARABU ROAD
+                              DistrictCode:
+                                type: string
+                                example: 371
+                              DistrictName:
+                                type: string
+                                example: SIROHI
+                              StateCode:
+                                type: string
+                                example: RJ
+                              StateName:
+                                type: string
+                                example: Rajasthan
+                              LGDStateCode:
+                                type: string
+                                example: 8
+                              LGDDistrictCode:
+                                type: string
+                                example: 115  
+                              MobileNo:
+                                type: string
+                                example: 9829422011
+                              PhoneNo:
+                                type: string
+                                example: 220111
+                              Pincode:
+                                type: string
+                                example: 0
+                              Email:
+                                type: string
+                                example: asopalav.sirohi@hpgas.hpcl.co.in
+                              City:
+                                type: string
+                                example: ABU ROAD
+                              Latitude:
+                                type: string
+                                example: null
+                              Longitude:
+                                type: string
+                                example: null                               
+          400:
+            description: Bad Request/Validation Error
+    /hpclApi/ws1/kyc/GetDocumentList: 
+      post: 
+        tags: 
+          - Get DoumentsList API
+        summary: Get List Of Documents API
+        description: Get all the list of documents using this API
+        operationId: hpclApi/ws1/kyc/GetDocumentList
+        security:
+         - bearerAuth: []
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: 212121
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  lat:
+                    type: string
+                    description: latitude
+                    example: 90
+                  lon:
+                    type: string
+                    description: longitude
+                    example: 90
+                  lac:
+                    type: string
+                    description: Location
+                    example: 90
+                  usag:
+                    type: string
+                    description: usag
+                    example: 12
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 123
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 32
+                  mode:
+                    type: string
+                    description: mode of access
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform of access
+                    example: android
+                  apitrkr:
+                    type: string
+                    description: api tracher
+                    example: 21
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 473
+                  did:
+                    type: string
+                    description: Device id
+                    example: 122
+                  RequestId:
+                    type: string
+                    description: Request id
+                    example: 001
+                  Source:
+                    type: string
+                    description: Source
+                    example: U
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "32"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "1301"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "Userid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "umang"
+          - 
+            name: "Token"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "U4@9Te5t"            
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        ErrorCode:
+                          type: string
+                          example: 200
+                        ErrorMessage:
+                          type: string
+                          example: Success
+                        DocumentsList:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              DocumentId:
+                                type: integer
+                                example: 1
+                              DocumentType:
+                                type: string
+                                example: POI-POA
+                              DocumentName:
+                                type: string
+                                example: Passport                               
+          400:
+            description: Bad Request/Validation Error
+    /hpclApi/ws1/kyc/CheckDuplicate: 
+      post: 
+        tags: 
+          - Check Duplicates API
+        summary: Checks The Duplicates Record
+        description: Check  the Duplicate record using this API
+        operationId: hpclApi/ws1/kyc/CheckDuplicate
+        security:
+         - bearerAuth: []
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: 212121
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  lat:
+                    type: string
+                    description: latitude
+                    example: 90
+                  lon:
+                    type: string
+                    description: longitude
+                    example: 90
+                  lac:
+                    type: string
+                    description: Location
+                    example: 90
+                  usag:
+                    type: string
+                    description: usage
+                    example: 12
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 123
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 32
+                  mode:
+                    type: string
+                    description: mode of access
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform of access
+                    example: android
+                  apitrkr:
+                    type: string
+                    description: api tracher
+                    example: 21
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 473
+                  did:
+                    type: string
+                    description: Device id
+                    example: 122
+                  RequestId:
+                    type: string
+                    description: Request id
+                    example: 001
+                  Source:
+                    type: string
+                    description: Source
+                    example: U
+                  DealerCode:
+                    type: string
+                    description: Dealer code number
+                    example: 19639300
+                  AadhaarNo:
+                    type: string
+                    description: Aadhar number
+                    example: 252532545262
+                  BankIFSC:
+                    type: string
+                    description: Bank IFSC Code
+                    example: YESB0000519
+                  BankAccountNo:
+                    type: string
+                    description: Bank Account No
+                    example: 910010029045458
+                  MobileNo:
+                    type: string
+                    description: Mobile No
+                    example: 6855442245                    
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "32"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "1301"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "Userid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "umang"
+          - 
+            name: "Token"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "U4@9Te5t"            
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        RequestStatus:
+                          type: string
+                          example: C
+                        ResponseMessage:
+                          type: string
+                          example: Success
+                        ErrorCode:
+                          type: string
+                          example: 200
+                        ErrorMessage:
+                          type: string
+                          example: Success                                                                                
+          400:
+            description: Bad Request/Validation Error
+    /hpclApi/ws1/kyc/RegisterForNewConnection: 
+      post: 
+        tags: 
+          - Register New Connection API
+        summary: Register For A New Connection API
+        description: Register for a new connection using this API
+        operationId: hpclApi/ws1/kyc/RegisterForNewConnection
+        security:
+         - bearerAuth: []
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: 213132
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  lat:
+                    type: string
+                    description: latitude
+                    example: 90
+                  lon:
+                    type: string
+                    description: longitude
+                    example: 90
+                  lac:
+                    type: string
+                    description: Location
+                    example: 90
+                  usag:
+                    type: string
+                    description: usage
+                    example: 12
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 123
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 32
+                  mode:
+                    type: string
+                    description: mode of access
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform of access
+                    example: android
+                  apitrkr:
+                    type: string
+                    description: api tracher
+                    example: 21
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 473
+                  did:
+                    type: string
+                    description: Device id
+                    example: 122
+                  RequestId:
+                    type: string
+                    description: Request id
+                    example: 005
+                  Source:
+                    type: string
+                    description: Source
+                    example: U
+                  DistributorCode:
+                    type: string
+                    description: Distributor code no
+                    example: 13802
+                  ConsumerFirstName:
+                    type: string
+                    description: Consumer first Name
+                    example: Surya
+                  ConsumerMiddleName:
+                    type: string
+                    description: Consumer middle name
+                    example: Teja
+                  ConsumerLastName:
+                    type: string
+                    description: Consumer last name
+                    example: U
+                  Gender:
+                    type: string
+                    description: Gender
+                    example: M
+                  DOB:
+                    type: string
+                    description: Source
+                    example: 1992-01-24
+                  HouseNo:
+                    type: string
+                    description: House number
+                    example: 5-547C
+                  BuildingName:
+                    type: string
+                    description: Building name
+                    example: Ramlal
+                  StreetName:
+                    type: string
+                    description: Street name
+                    example: Saptagiri Street
+                  Landmark:
+                    type: string
+                    description: Landmark
+                    example: Neear by Balaji temple
+                  VillageCode:
+                    type: string
+                    description: Village Code
+                    example: 0004
+                  VillageName:
+                    type: string
+                    description: Village Name
+                    example: Vikuntapuram
+                  SubdistrictCode:
+                    type: string
+                    description: Subdistrict Code
+                    example: 00015
+                  SubdistrictName:
+                    type: string
+                    description: Subdistrict Name
+                    example: Vizag
+                  CityTown:
+                    type: string
+                    description: CityTown name
+                    example: Vizag
+                  ConsumerDistrictCode:
+                    type: string
+                    description: ConsumerDistrict Code
+                    example: 18
+                  PinCode:
+                    type: string
+                    description: Pincode
+                    example: 500046
+                  MobileNo:
+                    type: string
+                    description: Mobile No
+                    example: 8376033109
+                  EmailId:
+                    type: string
+                    description: Email Id
+                    example: goldy111.gold@gmail.com
+                  NeedSubsidy:
+                    type: string
+                    description: NeedSubsidy Y or N
+                    example: Y
+                  AadhaarNo:
+                    type: string
+                    description: Aadhaar Number
+                    example: 694704838997
+                  BankIFSCCode:
+                    type: string
+                    description: Bank IFSC Code
+                    example: YESB0000519
+                  BankAccountNo:
+                    type: string
+                    description: Bank Account Number
+                    example: 910010029045458
+                  NameInBankAccount:
+                    type: string
+                    description: Name as in Bank Account
+                    example: Surya teja s
+                  CylinderType:
+                    type: string
+                    description: CylinderType
+                    example: 14.2KG
+                  NoOfCylinder:
+                    type: string
+                    description: NoOfCylinder
+                    example: 2
+                  POIDoc:
+                    type: object
+                    description: POI document
+                    properties:
+                        DocType:
+                          type: string
+                          description: document type
+                          example: 6
+                        Value:
+                          type: string
+                          description: document value
+                          example: DYNPK4067B
+                        IssuingAuthority:
+                          type: string
+                          description: Issuing Authority
+                          example: EC
+                        DocAttached:
+                          type: object
+                          description: attached document description
+                          properties:
+                              FileName:
+                                type: string
+                                description: file name
+                                example: IdentityFile.pdf
+                              FileMimeType:                                
+                                type: string
+                                description: file type
+                                example: pdf
+                              FileData:                                
+                                type: string
+                                description: file data
+                                example: JVBERi0xLjQKMSAwIG9iago8PAovVGl0bGUgKP7/KQovQ3JlYXRvciAo/v8AdwBrAGgAdABtAGwAdABvAHAAZABmACAAMAA
+                  POADoc:
+                    type: object
+                    description: POA document
+                    properties:
+                        DocType:
+                          type: string
+                          description: document type
+                          example: 3
+                        Value:
+                          type: string
+                          description: document value
+                          example: 539262332520
+                        IssuingAuthority:
+                          type: string
+                          description: Issuing Authority
+                          example: UIDAI
+                        DocAttached:
+                          type: object
+                          description: attached document description
+                          properties:
+                              FileName:
+                                type: string
+                                description: file name
+                                example: Aadhar.jpg
+                              FileMimeType:                                
+                                type: string
+                                description: file type
+                                example: image
+                              FileData:                                
+                                type: string
+                                description: file data
+                                example: /9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAIBAQIBAQICAgICAgICAwUDAwMDAwYEBAMFBwYHBwcGBwcICQsJCAgKCAcH
+                  PhotoAttached:
+                    type: object
+                    description: POA document
+                    properties:
+                        FileName:
+                          type: string
+                          description: File Name
+                          example: Photo.jpg
+                        FileMimeType:
+                          type: string
+                          description: file type
+                          example: image
+                        FileData:
+                          type: string
+                          description: file data
+                          example: /9j/4AAQSkZJRgABAQEBLAEsAAD/4Q4IRXhpZgAATU0AKgAAAAgABwESAAMAAAABAAEAAAEaAAUAAAABAAAAYgEbAAUA                    
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "32"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "1301"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "Userid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "umang"
+          - 
+            name: "Token"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "U4@9Te5t"            
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        RequestStatus:
+                          type: string
+                          example: Success
+                        RegistrationRefNo:
+                          type: string
+                          example: 3201380200000326                          
+                        ErrorCode:
+                          type: string
+                          example: 200
+                        ErrorMessage:
+                          type: string
+                          example: Success                          
+          400:
+            description: Bad Request/Validation Error
+    /hpclApi/ws1/kyc/CheckRegistrationStatus: 
+      post: 
+        tags: 
+          - Check Registration Status API
+        summary: Check Registration Status API
+        description: Check Registration Status of the documents using this API
+        operationId: hpclApi/ws1/kyc/CheckRegistrationStatus
+        security:
+         - bearerAuth: []
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: 212121
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  lat:
+                    type: string
+                    description: latitude
+                    example: 90
+                  lon:
+                    type: string
+                    description: longitude
+                    example: 90
+                  lac:
+                    type: string
+                    description: Location
+                    example: 90
+                  usag:
+                    type: string
+                    description: usag
+                    example: 12
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 123
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 32
+                  mode:
+                    type: string
+                    description: mode of access
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform of access
+                    example: android
+                  apitrkr:
+                    type: string
+                    description: api tracher
+                    example: 21
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 473
+                  did:
+                    type: string
+                    description: Device id
+                    example: 122
+                  RequestId:
+                    type: string
+                    description: Request id
+                    example: 50033
+                  Source:
+                    type: string
+                    description: Source
+                    example: U
+                  RegistrationRefNo:
+                    type: string
+                    description: Registration Reference No
+                    example: 3201088900000331                  
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "32"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "1302"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "Userid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "umang"
+          - 
+            name: "Token"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "U4@9Te5t"            
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        RegistrationRefNo:
+                          type: string
+                          example: 3201088900000331
+                        StatusCode:
+                          type: string
+                          example: N
+                        StatusDescription:
+                          type: string
+                          example: Document Pending at Dealer
+                        PaymentStatus:
+                          type: string
+                          example: ""
+                        ErrorCode:
+                          type: string
+                          example: 200
+                        ErrorMessage:
+                          type: string
+                          example: Success                         
+          400:
+            description: Bad Request/Validation Error
+    /hpclApi/ws1/kyc/ValidateIFSC: 
+      post: 
+        tags: 
+          - Validate IFSC API
+        summary: To Validate IFSC API
+        description: To Validate IFSC code of the bank using this API
+        operationId: hpclApi/ws1/kyc/ValidateIFSC
+        security:
+         - bearerAuth: []
+        requestBody: 
+          content: 
+            application/json:
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: 212121
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  lat:
+                    type: string
+                    description: latitude
+                    example: 90
+                  lon:
+                    type: string
+                    description: longitude
+                    example: 90
+                  lac:
+                    type: string
+                    description: Location
+                    example: 90
+                  usag:
+                    type: string
+                    description: usag
+                    example: 12
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 123
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 32
+                  mode:
+                    type: string
+                    description: mode of access
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform of access
+                    example: android
+                  apitrkr:
+                    type: string
+                    description: api tracher
+                    example: 21
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 473
+                  did:
+                    type: string
+                    description: Device id
+                    example: 122
+                  RequestId:
+                    type: string
+                    description: Request id
+                    example: 50033
+                  Source:
+                    type: string
+                    description: Source
+                    example: U
+                  IFSCCode:
+                    type: string
+                    description: IFSC Code
+                    example: YESB0000519                  
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "32"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "1302"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "Userid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "umang"
+          - 
+            name: "Token"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "U4@9Te5t"            
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        IFSCCode:
+                          type: string
+                          example: YESB0000519
+                        BankName:
+                          type: string
+                          example: YES BANK
+                        BranchName:
+                          type: string
+                          example: KUKATPALLY, HYDERABAD
+                        BranchAddress:
+                          type: string
+                          example: ""
+                        AccountLength:
+                          type: string
+                          example: 15
+                        ErrorCode:
+                          type: string
+                          example: 200                         
+                        ErrorMessage:
+                          type: string
+                          example: Success                         
+          400:
+            description: Bad Request/Validation Error            
+  components:
+    securitySchemes:
+      bearerAuth:
+        type: http
+        scheme: bearer
+        bearerFormat: text

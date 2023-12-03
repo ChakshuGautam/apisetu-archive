@@ -1,0 +1,1320 @@
+---
+  openapi: "3.0.0"
+  info: 
+    title: "CRIS - Centre for Railway Information Systems (NGET)"
+    description: "The Centre for Railway Information Systems (CRIS) designs, develops, implements and maintains most of the important information systems of Indian Railways. <i>[Updated on 28th August 2022]</i>"
+    termsOfService: "https://web.umang.gov.in/uaw/ts/v1/en/index.htm"
+    contact: 
+      name: "Provided by - UMANG"
+      url: "https://web.umang.gov.in"
+    version: "1.0.0"
+  servers: 
+    - 
+      url: "https://apigw.umangapp.in"
+      description: Production Server
+  paths: 
+    /CRISApi/ws1/nget/availabilityFareEnquiry: 
+      post: 
+        tags: 
+          - Get Availability Fare Enquiry Status API
+        summary: Get Availability Fare Enquiry Status API
+        description: Get Availability Fare Enquiry Status API
+        operationId: CRISApi/ws1/nget/availabilityFareEnquiry
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 1966
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 376
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: 0
+                  subsid2:
+                    type: string
+                    description: sub service id 2
+                    example: 0
+                  trainNumber:
+                    type: string
+                    description: train number
+                    example: 09098
+                  journeyDate:
+                    type: string
+                    description: journey date
+                    example: 20211031
+                  fromStation:
+                    type: string
+                    description: from station
+                    example: NDLS
+                  toStation:
+                    type: string
+                    description: to station
+                    example: LKO
+                  journeyClass:
+                    type: string
+                    description: journey class
+                    example: SL
+                  journeyQuota:
+                    type: string
+                    description: journey quota
+                    example: GN
+                  paymentEnquiryFlag:
+                    type: string
+                    description: payment enquiry flag
+                    example: N
+                  enquiryRequestDto:
+                    type: object
+                    properties:
+                      masterId:
+                        type: string
+                        example: UmangApiUser
+                      enquiryType:
+                        type: string
+                        example: 3
+                      reservationChoice:
+                        type: string
+                        example: 99
+                      moreThanOneDay:
+                        type: string
+                        example: true
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "376"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "1966"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        baseFare:
+                          type: string
+                          example: 224
+                        totalFare:
+                          type: string
+                          example: 275
+                        dynamicFare:
+                          type: string
+                          example: 0
+                        distance:
+                          type: string
+                          example: 115
+                        serviceTax:
+                          type: string
+                          example: 0.0
+                        bkgCfg:
+                          type: object
+                          properties:
+                            gstinPattern:
+                              type: string
+                              example: ^([0]{1}[1-9]{1}|[1]{1}[0-9]{1}|[2]{1}[0-7]{1}|[2]{1}[9]{1}|[3]{1}[0-7]{1})[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}[a-zA-Z0-9]{3}$
+                            beyondArpBooking:
+                              type: string
+                              example: false
+                            redemptionBooking:
+                              type: string
+                              example: false
+                            maxRetentionDays:
+                              type: string
+                              example: 5
+                            atasEnable:
+                              type: string
+                              example: false
+                            pmfInputMaxLength:
+                              type: string
+                              example: 0
+                            maxPassengers:
+                              type: string
+                              example: 6
+                            travelInsuranceFareMsg:
+                              type: string
+                              example: Do you want to take Travel Insurance\n(₹0.35/person)?
+                            lowerBerthApplicable:
+                              type: string
+                              example: true
+                        upiRdsFlag:
+                          type: string
+                          example: false
+                        enqClass:
+                          type: string
+                          example: SL
+                        trainNo:
+                          type: string
+                          example: 09098
+                        wpServiceTax:
+                          type: string
+                          example: 2.7
+                        tatkalFare:
+                          type: string
+                          example: 0
+                        serverId:
+                          type: string
+                          example: Server-0
+                        taRdsFlag:
+                          type: string
+                          example: false
+                        fuelAmount:
+                          type: string
+                          example: 0.0
+                        reqEnqParam:
+                          type: string
+                          example: 09098#NDLS#LKO#NDLS#SL
+                        trainName:
+                          type: string
+                          example: NEWSUVIDHASUP
+                        from:
+                          type: string
+                          example: NDLS
+                        avlDayList:
+                          type: array
+                          items: 
+                            type: object
+                            properties:
+                              reason:
+                                type: string
+                                example: null
+                              currentBkgFlag:
+                                type: string
+                                example: N
+                              availablityStatus:
+                                type: string
+                                example: TRAIN DEPARTED
+                              wlType:
+                                type: string
+                                example: 0
+                              availablityDate:
+                                type: string
+                                example: 31-10-2021
+                              reasonType:
+                                type: string
+                                example: W
+                              availablityType:
+                                type: string
+                                example: 0
+                        cateringCharge:
+                          type: string
+                          example: 0
+                        reservationCharge:
+                          type: string
+                          example: 20
+                        travelInsuranceCharge:
+                          type: string
+                          example: 0.0
+                        travelInsuranceServiceTax:
+                          type: string
+                          example: 0.0
+                        totalCollectibleAmount:
+                          type: string
+                          example: 292.7
+                        ftBookingMsgFlag:
+                          type: string
+                          example: false
+                        nextEnqDate:
+                          type: string
+                          example: 2021-11-06T00:00:00
+                        informationMessage:
+                          type: array
+                          items: 
+                            type: object
+                            properties:
+                              popup:
+                                type: string
+                                example: true
+                              paramName:
+                                type: string
+                                example: AVL_DTLS
+                              message:
+                                type: string
+                                example: Dynamic Pricing is applicable in this train. Fare may increase at the time of booking.
+                        totalConcession:
+                          type: string
+                          example: 0
+                        superfastCharge:
+                          type: string
+                          example: 30
+                        lastUpdateTime:
+                          type: string
+                          example: 0 Minutes and 1 Seconds
+          400:
+            description: Bad Request/Validation Error
+    /CRISApi/ws1/nget/pnrEnquiry: 
+      post: 
+        tags: 
+          - Get PNR Enquiry Status API
+        summary: Get PNR Enquiry status API
+        description: Get PNR Equiry Status API
+        operationId: CRISApi/ws1/nget/pnrEnquiry
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 1966
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 376
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: 0
+                  subsid2:
+                    type: string
+                    description: sub service id 2
+                    example: 0
+                  pnrnumber:
+                    type: string
+                    description: pnr number
+                    example: 2341520437
+                  pnrEnqType:
+                    type: string
+                    description: pnr enquiry type
+                    example: ALL
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "376"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "1966"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        departureTime:
+                          type: string
+                          example: 0
+                        timeStamp:
+                          type: string
+                          example: 2021-11-03T14:59:54.79
+                        errorMessage:
+                          type: string
+                          example: FLUSHED PNR / PNR NOT YET GENERATED- (134381610)
+                        specialFlag:
+                          type: string
+                          example: 0
+                        serverId:
+                          type: string
+                          example: 0
+                        timeTableChangeFlag:
+                          type: string
+                          example: 0
+          400:
+            description: Bad Request/Validation Error
+    /CRISApi/ws1/nget/trainSchedule: 
+      post: 
+        tags: 
+          - Get Train Schedule Status API
+        summary: Get Train Schedule Status API
+        description: Get Train schedule Status API
+        operationId: CRISApi/ws1/nget/trainSchedule
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 1966
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 376
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: 0
+                  subsid2:
+                    type: string
+                    description: sub service id 2
+                    example: 0
+                  trainNumber:
+                    type: string
+                    description: train number
+                    example: 02952
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "376"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "1966"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        trainRunsOnSun:
+                          type: string
+                          example: Y
+                        trainRunsOnMon:
+                          type: string
+                          example: Y
+                        trainRunsOnTue:
+                          type: string
+                          example: Y
+                        trainRunsOnWed:
+                          type: string
+                          example: Y
+                        trainRunsOnThu:
+                          type: string
+                          example: Y
+                        trainRunsOnFri:
+                          type: string
+                          example: Y
+                        trainRunsOnSat:
+                          type: string
+                          example: Y
+                        trainName:
+                          type: string
+                          example: MUMBAI RAJDHANI
+                        trainNumber:
+                          type: string
+                          example: 02952
+                        stationFrom:
+                          type: string
+                          example: NDLS
+                        stationTo:
+                          type: string
+                          example: MMCT
+                        trainOwner:
+                          type: string
+                          example: 0
+                        serverId:
+                          type: string
+                          example: Server-0
+                        duration:
+                          type: string
+                          example: 0
+                        timeStamp:
+                          type: string
+                          example: 2021-11-03T18:49:16.959
+                        stationList:
+                          type: array
+                          items: 
+                            type: object
+                            properties:
+                              departureTime:
+                                type: string
+                                example: 16:25
+                              stationCode:
+                                type: string
+                                example: NDLS
+                              haltTime:
+                                type: string
+                                example: --
+                              dayCount:
+                                type: string
+                                example: 1
+                              routeNumber:
+                                type: string
+                                example: 1
+                              distance:
+                                type: string
+                                example: 0
+                              arrivalTime:
+                                type: string
+                                example: --
+                              stationName:
+                                type: string
+                                example: NEW DELHI
+                              stnSerialNumber:
+                                type: string
+                                example: 1
+          400:
+            description: Bad Request/Validation Error
+    /CRISApi/ws1/nget/trainBetweenStations: 
+      post: 
+        tags: 
+          - Get Train Between Stations API
+        summary: Get Train Between Stations API
+        description: Get Train Between Stations API
+        operationId: CRISApi/ws1/nget/trainBetweenStations
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 1966
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 376
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: 0
+                  subsid2:
+                    type: string
+                    description: sub service id 2
+                    example: 0
+                  fromStation:
+                    type: string
+                    description: from station
+                    example: NDLS
+                  toStation:
+                    type: string
+                    description: to station
+                    example: LKO
+                  journeyDate:
+                    type: string
+                    description: journey date
+                    example: 20211101
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "376"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "1966"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        serveyFlag:
+                          type: string
+                          example: true
+                        timeStamp:
+                          type: string
+                          example: 2021-11-03T15:47:29.273
+                        alternateEnquiryFlag:
+                          type: string
+                          example: false
+                        errorMessage:
+                          type: string
+                          example: Journey Date is not within ARP range..
+                        sectorName:
+                          type: string
+                          example: NDLS-LKO
+                        serverId:
+                          type: string
+                          example: Server-0
+                        vikalpInSpecialTrainsAccomFlag:
+                          type: string
+                          example: false
+          400:
+            description: Bad Request/Validation Error
+    /CRISApi/ws1/nget/trainList: 
+      post: 
+        tags: 
+          - Get Train List API
+        summary: Get Train List API
+        description: Get Train List API
+        operationId: CRISApi/ws1/nget/trainList
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 1966
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 376
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: 0
+                  subsid2:
+                    type: string
+                    description: sub service id 2
+                    example: 0
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "376"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "1966"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        trainList:
+                          type: array
+                          items: 
+                            type: string
+                            example: 02101 - LTT HWH FEST SPL,07550 - SC CCT SPL,06328 - GUV PUU EXP,01245 - CSMT GKP SPL,01243 - CSMT GKP SPL,16603 - MAVELI EXPRESS,16604 - MAVELI EXPRESS,01249 - CSMT GKP SPL,01247 - LTT DBG SPL,01248 - KRMI PUNE SPL,02309 - RJPB NDLS AC SPL,01015 - LTT GKP SPL,12617 - MANGALA LDWEEP,02549 - KYQ ANVT SPECIAL,02131 - JBP FESTIVAL SPL,02877 - HWH ERS SPL,04836 - RE HSR SPL,12153 - HABIBGANJ EXP,18502 - GIMB VSKP EXP,04835 - HSR RE SPL,05029 - PUNE FESTIVL SPL,18503 - VSKP  SNSI   EXP,12154 - HBJ LTT SUP EXP,18507 - VSKP ASR HKG EXP,12150 - DNR PUNE EXP,12371 - HWH JSM EXP,12372 - JSM HWH SF EXP,12373 - SDAH RPH INTRCTY,12374 - RPH SDAH INTRCTY
+          400:
+            description: Bad Request/Validation Error
+    /CRISApi/ws1/nget/stationLinguisticNames: 
+      post: 
+        tags: 
+          - Get Station Linguistic Names API
+        summary: Get Station Linguistic Names API
+        description: Get Station Linguistic Names API
+        operationId: CRISApi/ws1/nget/stationLinguisticNames
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 1966
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 376
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: 0
+                  subsid2:
+                    type: string
+                    description: sub service id 2
+                    example: 0
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "376"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "1966"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        stationNames:
+                          type: array
+                          items: 
+                            type: string
+                            example: AMRELI - AE,AULENDA - AED,ANANT PAITH - AEH,ARNEJ - AEJ,ANEKAL ROAD - AEK,ATELI - AEL,AMRELI PARA - AEP,ADDERI - AEX,AGRA FORT - AF,ANGAMALI - AFK,ASAFPUR - AFR,ARANGHATA - AG,AGRA CITY - AGA,AGRADWIP - AGAE,AGAS - AGAS,AGRA CANTT - AGC,ANGADI - AGCI,AGASOD - AGD,KATORA - KTO,KATEPURNA - KTP,KOTHA PAKKI - KTPK,KATHAL PUKHURI - KTPR,KUDRA - KTQ,KOTHAR - KTR
+          400:
+            description: Bad Request/Validation Error
+    /CRISApi/ws1/nget/classAndQuota: 
+      post: 
+        tags: 
+          - Get Class And Quota API
+        summary: Get Class and  Quota API
+        description: Get Class and Quota API
+        operationId: CRISApi/ws1/nget/classAndQuota
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 1966
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 376
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: 0
+                  subsid2:
+                    type: string
+                    description: sub service id 2
+                    example: 0
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "376"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "1966"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        trainQuota:
+                          type: array
+                          items: 
+                            type: string
+                            example: GENERAL - GN, LADIES - LD, TATKAL - TQ, SENIOR CITIZEN - SS, DIVYANGJAN - HP, PREMIUM TATKAL - PT
+                        trainClass:
+                          type: array
+                          items: 
+                            type: string
+                            example: FIRST AC - 1AC, SECOND AC - 2AC, FIRST CLASS - FC, THIRD AC - 3AC, CHAIR CAR - CC, SLEEPER CLASS - SL, TWO TIER - 2T, SECOND SITTING - 2S, THIRD AC ECONOMY - 3E, EXECUTIVE CLASS - EC, ANUBHUTI CLASS - EA
+          400:
+            description: Bad Request/Validation Error
+ 
+    

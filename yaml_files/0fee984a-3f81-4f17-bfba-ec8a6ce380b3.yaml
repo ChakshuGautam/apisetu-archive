@@ -1,0 +1,71 @@
+host: wb-gateway.napix.gov.in
+info:
+  title: WB Land Records
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/wb/wblandrecords
+  version: 1.0.0
+  x-ibm-name: listblockwithname
+  description: This API provide the block name based on district code, block code
+    . Its required a password to authenticate the API
+paths:
+  /listblockwithname/{dcode}/{bcode}/{requestFrom}/{password}:
+    get:
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      parameters: []
+      tags:
+        - Listblockwithname
+    parameters:
+      - in: path
+        name: dcode
+        type: string
+        required: true
+      - in: path
+        name: bcode
+        type: string
+        required: true
+      - in: path
+        name: requestFrom
+        type: string
+        required: true
+      - in: path
+        name: password
+        type: string
+        required: true
+schemes:
+  - https
+swagger: "2.0"
+basePath: /wb/wblandrecords
+security:
+  - clientID: []
+    clientSecret: []
+parameters: {}
+securityDefinitions:
+  clientID:
+    in: header
+    name: client_id
+    type: apiKey
+    x-key-type: client_id
+  clientSecret:
+    in: header
+    name: client_secret
+    type: apiKey
+    x-key-type: client_secret
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  servers:
+    - url: https://wb-gateway.napix.gov.in/wb/wblandrecords
+      type:
+        - production
+        - development
+      description: ""
+  enforced: true
+  testable: true
+  application-authentication: {}

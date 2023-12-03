@@ -1,0 +1,54 @@
+host: delhigw.napix.gov.in
+info:
+  title: Parivahan
+  version: 1.0.0
+  x-ibm-name: vahan-hsrp-vehicle-details-service
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/nic/parivahan
+paths:
+  /service/hsrpVehicleDetails:
+    post:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Vahan hsrp vehicle details service
+schemes:
+  - https
+swagger: "2.0"
+basePath: /nic/parivahan/hsrpws
+consumes:
+  - application/json
+security:
+  - Client ID Header: []
+    Client Secret Header: []
+securityDefinitions:
+  Client ID Header:
+    in: header
+    name: X-Client-Id
+    type: apiKey
+    x-key-type: client_id
+  Client Secret Header:
+    in: header
+    name: X-Client-Secret
+    type: apiKey
+    x-key-type: client_secret
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  servers:
+    - url: https://delhigw.napix.gov.in/nic/parivahan/hsrpws
+      type:
+        - production
+        - development
+  enforced: true
+  testable: true
+  application-authentication:
+    certificate: false

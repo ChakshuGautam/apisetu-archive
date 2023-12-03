@@ -1,0 +1,100 @@
+openapi: 3.0.0
+info:
+  title: SSP-UniversityAdmission-API
+  version: 1.0.0
+  description: This API comes under the department of SSP. This APi gives the
+    details of UniversityAdmission list.
+servers:
+  - url: https://sevasindhu.karnataka.gov.in/
+  - url: https://sevasindhu.karnataka.gov.in/UniAPI/api/University_Data
+paths:
+  /UniAPI/api/University_Data:
+    post:
+      responses:
+        "200":
+          description: Operation Successful
+          content:
+            application/json:
+              schema:
+                example:
+                  statusCode: 1
+                  status: Success
+                  message: Admission data saved Successfully. 3 Records Inserted
+                  statusMessage:
+                    - Message_Type: SUCCESS
+                      Message: Admission data saved Successfully
+                      University_Code: 1079
+                      Registration_Number: Reg273291433361
+                      College_SSP_Code: 0
+                      Course_Code: 0
+                      Discipline_Code: 0
+                      Course_Year: 0
+                    - Message_Type: SUCCESS
+                      Message: Admission data saved Successfully
+                      University_Code: 1079
+                      Registration_Number: Reg92454610164
+                      College_SSP_Code: 0
+                      Course_Code: 0
+                      Discipline_Code: 0
+                      Course_Year: 0
+                    - Message_Type: SUCCESS
+                      Message: Admission data saved Successfully
+                      University_Code: 1079
+                      Registration_Number: Reg7965442254815
+                      College_SSP_Code: 0
+                      Course_Code: 0
+                      Discipline_Code: 0
+                      Course_Year: 0
+      description: get the university admission list.
+      operationId: POST_UniAPI-api-University_Data
+      requestBody:
+        content:
+          application/json:
+            example:
+              University_Code: "1079"
+              University_name: Department of State Educational Research & Training (D.S.E.R.T)
+              Registration_Number: Reg273291433361
+              Academic_Year: "2122"
+              Student_Name: Guru kumar
+              Course_Year: "3"
+              College_Name: ACHARYA D.Ed COLLEGE
+              College_SSP_Code: "23528"
+              Course_Name: B.A.(Hons)
+              Course_Code: "102"
+              Discipline_Name: ECONOMICS
+              Discipline_Code: "623"
+              UG_PG: UG
+            schema:
+              type: string
+        required: true
+      parameters:
+        - name: UserId
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: Password
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: ODP
+          in: header
+          required: true
+          schema:
+            type: string
+components:
+  schemas: {}
+  responses: {}
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}

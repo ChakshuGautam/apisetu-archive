@@ -1,0 +1,195 @@
+---
+openapi: 3.0.0
+info:
+  title: Tea Board
+  description: The one stop destination to avail the licensing and assistance disbursement activities prevailed by Tea Board India <i>[Updated on 7th August 2023]</i>.
+  termsOfService: https://web.umang.gov.in/uaw/ts/v1/en/index.htm
+  contact:
+    name: Provided by - UMANG
+    url: https://web.umang.gov.in
+  version: 1.0.0
+servers:
+  - url: https://apigw.umangapp.in
+    description: Production server
+
+security: 
+  - x-api-key: []
+
+paths:
+  /TeaBoardApi/ws1/GetStatus:
+    post:
+      tags:
+        - Add Details  Web Service
+      summary: Add new user using this service
+      description: This API is used to add new user details
+      operationId: TeaBoardApi/ws1/GetStatus
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en  
+                lat:
+                  type: string
+                  description: latitude
+                  example: 21
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90      
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                usag:
+                  type: string
+                  description: usage
+                  example: 90                   
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 123234                   
+                usrid:
+                  type: string
+                  description: user id
+                  example: 09
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1544               
+                deptid:
+                  type: string
+                  description: service id
+                  example: 344               
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: andorid
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                deptRequestBody:
+                  type: array
+                  description: lldata object items
+                  items:
+                    type: object
+                    properties:                        
+                      REFID:
+                        type: string
+                        description: REFID
+                        example: 20200504104838737
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "371"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1739"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"          
+      responses:          
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: OK
+                  pd:
+                    type: object
+                    properties:
+                      Current_Status:
+                        type: object
+                        properties:
+                          Status:
+                            type: string
+                            description: Status
+                            example: License Issued
+                          Type:
+                            type: string
+                            description: Type
+                            example: Licensing
+                          Applicant_Name:
+                            type: string
+                            description: Applicant_Name
+                            example: M/S. KAMAL TEWARI & SONS
+                          file_no:
+                            type: string
+                            description: file_no
+                            example: 20200504104838737                                                    
+        "400":
+          description: Bad Request/Validation Error  
+components:
+  securitySchemes:
+    x-api-key:
+      type: apiKey
+      name: x-api-key
+      in: header

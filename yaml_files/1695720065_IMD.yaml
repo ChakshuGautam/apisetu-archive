@@ -1,0 +1,39 @@
+openapi: 3.0.0
+info:
+  title:  Indian Meteorological Department (IMD)
+  description: >-2
+     The India Meteorological Department (IMD), Ministry of Earth Sciences (MoES) has created application programming interfaces (APIs) for a range of observation and forecast products. Organizations wishing to utilize these APIs in accordance with IMD's terms and conditions may get in touch with the designated Nodal Officer, Dr. Sankar Nath, Sc-E, IMD, New Delhi (Contact information: email - sankar.nath@imd.gov.in). It's important to note that access to the APIs is granted only after being added to the whitelist.
+        
+     <i>Updated on 26<sup>th</sup>  Septmeber  2023 <i/>
+     
+  version: "1.0"
+  contact: 
+    name: "Indian Meteorological Department (IMD), Ministry of Earth Sciences (MoES)"
+    url: https://mausam.imd.gov.in
+servers:
+  - url: https://*.imd.gov.in
+    
+ 
+  
+paths:
+  /api-endpoints:
+    get:
+      tags:
+      - IMD's
+      summary: Link to all IMD's APIs
+      description: >-
+      
+        <a href="https://mausam.imd.gov.in/imd_latest/contents/api.pdf" target="_blank">Click for IMD's APIs</a>
+      
+      
+      responses:
+        200:
+          description: OK      
+      
+      
+
+   
+       
+
+  
+ 

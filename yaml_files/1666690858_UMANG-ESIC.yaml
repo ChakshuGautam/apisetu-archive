@@ -1,0 +1,5438 @@
+---
+  openapi: "3.0.0"
+  info: 
+    title: "Employees' State Insurance Corporation (ESIC)"
+    description: "Employees' State Insurance Corporation is one of the two main statutory social security bodies under the ownership of Ministry of Labour and Employment, Government of India, the other being the Employees' Provident Fund Organisation. <i>[Updated on 25th Oct 2022]</i>"
+    termsOfService: "https://web.umang.gov.in/uaw/ts/v1/en/index.htm"
+    contact: 
+      name: "Provided by - UMANG"
+      url: "https://web.umang.gov.in"
+    version: "1.0.0"
+  servers: 
+    - 
+      url: "https://apigw.umangapp.in"
+      description: Production Server
+  paths: 
+    /ESICApi/ws1/login: 
+      post: 
+        tags: 
+          - Login API
+        summary: Login API for ESIC
+        description: This API is Used for User Login
+        operationId: ESICApi/ws1/login      
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  lat:
+                    type: string
+                    description: latitude
+                    example: null
+                  lon:
+                    type: string
+                    description: longitude
+                    example: null
+                  lac:
+                    type: string
+                    description: location
+                    example: 96
+                  usag:
+                    type: string
+                    description: Usage
+                    example: app
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform
+                    example: CHROME
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 20
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 420
+                  aadhaarNumber:
+                    type: string
+                    description: aadhaar number
+                    example: 544247655289
+                  mobileNumber:
+                    type: string
+                    description: mobile number
+                    example: 6876543210
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "420"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "20"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: EM0000
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        messageCode:
+                          type: string
+                          example: 8000
+                        message:
+                          type: string
+                          example: Successfully Login
+                        resultParameters:
+                          type: array
+                          items: 
+                            type: object
+                            properties:
+                              Aadhaarnumber:
+                                type: string
+                                example: 54xxxxxx5289
+                              SessionID:
+                                type: string
+                                example: adfc3e8d-5cb3-11e8-8470-1866da88a22c
+                              MobileNumber:
+                                type: string
+                                example: 6876543210
+                              IPNumber:
+                                type: string
+                                example: 1111111111
+          400:
+            description: Bad Request/Validation Error
+    /ESICApi/ws1/logout: 
+      post: 
+        tags: 
+          - Logout API
+        summary: Logout API for ESIC
+        description: This API is Used for User Logout
+        operationId: ESICApi/ws1/logout 
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  lat:
+                    type: string
+                    description: latitude
+                    example: null
+                  lon:
+                    type: string
+                    description: longitude
+                    example: null
+                  lac:
+                    type: string
+                    description: location
+                    example: 96
+                  usag:
+                    type: string
+                    description: Usage
+                    example: app
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform
+                    example: CHROME
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 20
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 420
+                  sessionID:
+                    type: string
+                    description: session id
+                    example: 23e72677-5a7a-11e8-8470-1866da88a22c
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "420"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "20"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: EM0000
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        messageCode:
+                          type: string
+                          example: 8003
+                        message:
+                          type: string
+                          example: Logout Successfully
+                        resultParameters:
+                          type: object
+                          example: null
+          400:
+            description: Bad Request/Validation Error
+    /ESICApi/ws1/state: 
+      post: 
+        tags: 
+          - State API
+        summary: Master Data State API for ESIC
+        description: Master Data State API for ESIC
+        operationId: ESICApi/ws1/state
+        
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  lat:
+                    type: string
+                    description: latitude
+                    example: null
+                  lon:
+                    type: string
+                    description: longitude
+                    example: null
+                  lac:
+                    type: string
+                    description: location
+                    example: 96
+                  usag:
+                    type: string
+                    description: Usage
+                    example: app
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform
+                    example: CHROME
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 20
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 420
+                  mobileNumber:
+                    type: string
+                    description: mobile number
+                    example: 6876543210
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "420"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "20"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: EM0000
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        responseCode:
+                          type: string
+                          example: 8800
+                        stateList:
+                          type: array
+                          items: 
+                            type: object
+                            properties:
+                              StateName:
+                                type: string
+                                example: Andaman and  Nicobar
+                              StatePk:
+                                type: string
+                                example: 102
+                        responseMessage:
+                          type: string
+                          example: Sucessfull
+          400:
+            description: Bad Request/Validation Error
+    /ESICApi/ws1/district: 
+      post: 
+        tags: 
+          - District API
+        summary: Master Data District API for ESIC
+        description: Master Data District API for ESIC
+        operationId: ESICApi/ws1/district
+        
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  lat:
+                    type: string
+                    description: latitude
+                    example: null
+                  lon:
+                    type: string
+                    description: longitude
+                    example: null
+                  lac:
+                    type: string
+                    description: location
+                    example: 96
+                  usag:
+                    type: string
+                    description: Usage
+                    example: app
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform
+                    example: CHROME
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 20
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 420
+                  mobileNumber:
+                    type: string
+                    description: mobile number
+                    example: 6876543210
+                  sessionId:
+                    type: string
+                    description: session id
+                    example: e6d758a1-5cb4-11e8-8470-1866da88a22c
+                  statepk:
+                    type: string
+                    description: state id
+                    example: 23
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "420"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "20"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: EM0000
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        responseCode:
+                          type: string
+                          example: 8802
+                        districtList:
+                          type: array
+                          items: 
+                            type: object
+                            properties:
+                              DistrictName:
+                                type: string
+                                example: Kadapa
+                              Districtpk:
+                                type: string
+                                example: 266
+                        responseMessage:
+                          type: string
+                          example: Sucessfull
+          400:
+            description: Bad Request/Validation Error
+    /ESICApi/ws1/location: 
+      post: 
+        tags: 
+          - Location API
+        summary: Master Data Location API for ESIC
+        description: Master Data Location API for ESIC
+        operationId: ESICApi/ws1/location
+        
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  lat:
+                    type: string
+                    description: latitude
+                    example: null
+                  lon:
+                    type: string
+                    description: longitude
+                    example: null
+                  lac:
+                    type: string
+                    description: location
+                    example: 96
+                  usag:
+                    type: string
+                    description: Usage
+                    example: app
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform
+                    example: CHROME
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 20
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 420
+                  mobileNumber:
+                    type: string
+                    description: mobile number
+                    example: 6876543210
+                  locationType:
+                    type: string
+                    description: location type
+                    example: 1
+                  statepk:
+                    type: string
+                    description: state id
+                    example: 105
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "420"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "20"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: EM0000
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        responseCode:
+                          type: string
+                          example: 8804
+                        locationList:
+                          type: array
+                          items: 
+                            type: object
+                            properties:
+                              Location:
+                                type: string
+                                example: RO - Hyderabad
+                              LocationPk:
+                                type: string
+                                example: 766
+                        responseMessage:
+                          type: string
+                          example: Success
+          400:
+            description: Bad Request/Validation Error
+    /ESICApi/ws1/checkclaim: 
+      post: 
+        tags: 
+          - Checkclaim API
+        summary: Checkclaim API for ESIC
+        description: Checkclaim API for ESIC
+        operationId: ESICApi/ws1/checkclaim
+        
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  lat:
+                    type: string
+                    description: latitude
+                    example: null
+                  lon:
+                    type: string
+                    description: longitude
+                    example: null
+                  lac:
+                    type: string
+                    description: location
+                    example: 96
+                  usag:
+                    type: string
+                    description: Usage
+                    example: app
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform
+                    example: CHROME
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 20
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 420
+                  aadhaarNumber:
+                    type: string
+                    description: aadhaar number
+                    example: 544xxxxxxx89
+                  mobileNumber:
+                    type: string
+                    description: mobile number
+                    example: 6876543210
+                  ipNumber:
+                    type: string
+                    description: ip number
+                    example: 1111111111
+                  sessionId:
+                    type: string
+                    description: session id
+                    example: e6d758a1-5cb4-11e8-8470-1866da88a22c
+                  parameter1:
+                    type: string
+                    description: parameter1
+                    example: 2011
+                  parameter2:
+                    type: string
+                    description: parameter2
+                    example: 2018
+                  type:
+                    type: string
+                    description: type
+                    example: 2
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "420"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "20"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: EM0000
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        responseCode:
+                          type: string
+                          example: 8407
+                        responseMessage:
+                          type: string
+                          example: Success
+                        insuredPersonName:
+                          type: string
+                          example: TESTUMANG
+                        insuranceNumber:
+                          type: string
+                          example: 1111111111
+                        theclaimdetailsFortheIp:
+                          type: array
+                          items: 
+                            type: object
+                            properties:
+                              ClaimId:
+                                type: string
+                                example: 104
+                              ClaimDate:
+                                type: string
+                                example: 2/1/2018
+                              ClaimType:
+                                type: string
+                                example: Sickness Benefit
+                              ClaimStatus:
+                                type: string
+                                example: Assigned
+                              AcknowledgementNumber:
+                                type: string
+                                example: SB_1011541
+                              AcknowledgementStatus:
+                                type: string
+                                example: InProgress Acknowledgement
+                              LocationofClaimpresent:
+                                type: string
+                                example: BO - Ajmeri Gate
+          400:
+            description: Bad Request/Validation Error
+    /ESICApi/ws1/entitlementbenefit: 
+      post: 
+        tags: 
+          - Entitlementbenefit API
+        summary: Entitlementbenefit API for ESIC
+        description: Entitlementbenefit API for ESIC
+        operationId: ESICApi/ws1/entitlementbenefit
+        
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  lat:
+                    type: string
+                    description: latitude
+                    example: null
+                  lon:
+                    type: string
+                    description: longitude
+                    example: null
+                  lac:
+                    type: string
+                    description: location
+                    example: 96
+                  usag:
+                    type: string
+                    description: Usage
+                    example: app
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform
+                    example: CHROME
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 20
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 420
+                  aadhaarNumber:
+                    type: string
+                    description: aadhaar number
+                    example: 544xxxxxxx89
+                  mobileNumber:
+                    type: string
+                    description: mobile number
+                    example: 6876543210
+                  ipNumber:
+                    type: string
+                    description: ip number
+                    example: 1111111111
+                  sessionId:
+                    type: string
+                    description: session id
+                    example: e6d758a1-5cb4-11e8-8470-1866da88a22c
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "420"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "20"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: EM0000
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        message:
+                          type: string
+                          example: Success
+                        responseCode:
+                          type: string
+                          example: 8100
+                        ipname:
+                          type: string
+                          example: TESTUMANG
+                        ipnumber:
+                          type: string
+                          example: 1111111111
+                        outputResponseParams:
+                          type: string
+                          example: null
+                        benefitDataList:
+                          type: array
+                          items: 
+                            type: object
+                            properties:
+                              BenefitType:
+                                type: string
+                                example: Temporary Disablement Benefit
+                              EntitilementStatus:
+                                type: string
+                                example: Yes
+                              AdditionalInformation:
+                                type: string
+                                example: Subject to Employement Injury
+          400:
+            description: Bad Request/Validation Error
+    /ESICApi/ws1/ipccontridetails: 
+      post: 
+        tags: 
+          - IPC Contribution Details API
+        summary: IPC Contribution Details API for ESIC
+        description: IPC Contribution Details API for ESIC
+        operationId: ESICApi/ws1/ipccontridetails
+        
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  lat:
+                    type: string
+                    description: latitude
+                    example: null
+                  lon:
+                    type: string
+                    description: longitude
+                    example: null
+                  lac:
+                    type: string
+                    description: location
+                    example: 96
+                  usag:
+                    type: string
+                    description: Usage
+                    example: app
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform
+                    example: CHROME
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 20
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 420
+                  aadhaarNumber:
+                    type: string
+                    description: aadhaar number
+                    example: 544xxxxxxx89
+                  mobileNumber:
+                    type: string
+                    description: mobile number
+                    example: 6876543210
+                  sessionId:
+                    type: string
+                    description: session id
+                    example: e6d758a1-5cb4-11e8-8470-1866da88a22c
+                  iP_Number:
+                    type: string
+                    description: ip number
+                    example: 1111111111
+                  year:
+                    type: string
+                    description: year
+                    example: 2017
+                  month:
+                    type: string
+                    description: month
+                    example: apr-sep
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "420"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "20"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: EM0000
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        message:
+                          type: string
+                          example: Success
+                        total:
+                          type: array
+                          items: 
+                            type: object
+                            properties:
+                              TotalDays:
+                                type: string
+                                example: 5
+                              TotalWages:
+                                type: string
+                                example: 1960.00
+                              TotalContribution:
+                                type: string
+                                example: 22.00
+                        messageCode:
+                          type: string
+                          example: 8300
+                        insuredPersonName:
+                          type: string
+                          example: TESTUMANG
+                        insuranceNumber:
+                          type: string
+                          example: 1111111111
+                        participations:
+                          type: array
+                          items: 
+                            type: object
+                            properties:
+                              Period:
+                                type: string
+                                example: Apr'17
+                              WageDays:
+                                type: string
+                                example: 1
+                              TotalWages:
+                                type: string
+                                example: 140
+                              Contribution:
+                                type: string
+                                example: 2
+          400:
+            description: Bad Request/Validation Error
+    /ESICApi/ws1/familydetails: 
+      post: 
+        tags: 
+          - Family Details API
+        summary: Family Details API for ESIC
+        description: This API is Used to Get Family Details for ESIC
+        operationId: ESICApi/ws1/familydetails
+        
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  lat:
+                    type: string
+                    description: latitude
+                    example: null
+                  lon:
+                    type: string
+                    description: longitude
+                    example: null
+                  lac:
+                    type: string
+                    description: location
+                    example: 96
+                  usag:
+                    type: string
+                    description: Usage
+                    example: app
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform
+                    example: CHROME
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 20
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 420
+                  aadhaarNumber:
+                    type: string
+                    description: aadhaar number
+                    example: 544xxxxxxx89
+                  mobileNumber:
+                    type: string
+                    description: mobile number
+                    example: 6876543210
+                  ipNumber:
+                    type: string
+                    description: ip number
+                    example: 1111111111
+                  sessionId:
+                    type: string
+                    description: session id
+                    example: e6d758a1-5cb4-11e8-8470-1866da88a22c
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "420"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "20"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: EM0000
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        dispensarydetailsforipandfamily:
+                          type: object
+                          properties:
+                            IPDispensary:
+                              type: string
+                              example: Mayapuri-II, DL (ESIC Disp.)
+                            familyDispensary:
+                              type: string
+                              example: Mayapuri-II, DL (ESIC Disp.)
+                        responseCode:
+                          type: string
+                          example: 8204
+                        responseMessage:
+                          type: string
+                          example: Sucessfull
+                        familyList:
+                          type: array
+                          items: 
+                            type: object
+                            properties:
+                              Name:
+                                type: string
+                                example: test
+                              Age:
+                                type: string
+                                example: 38
+                              Gender:
+                                type: string
+                                example: M
+                              Relation:
+                                type: string
+                                example: Dependant mother
+                              Aadhar_No:
+                                type: string
+                                example: xxxxxxxxxxx
+                              UHID_No:
+                                type: string
+                                example: DUMM.0000000199
+          400:
+            description: Bad Request/Validation Error
+    /ESICApi/ws1/ipdetails: 
+      post: 
+        tags: 
+          - IP Details API
+        summary: IP details API for ESIC
+        description: This API is Used to Get IP details for ESIC
+        operationId: ESICApi/ws1/ipdetails
+        
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  lat:
+                    type: string
+                    description: latitude
+                    example: null
+                  lon:
+                    type: string
+                    description: longitude
+                    example: null
+                  lac:
+                    type: string
+                    description: location
+                    example: 96
+                  usag:
+                    type: string
+                    description: Usage
+                    example: app
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform
+                    example: CHROME
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 20
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 420
+                  aadhaarNumber:
+                    type: string
+                    description: aadhaar number
+                    example: 544xxxxxxx89
+                  mobileNumber:
+                    type: string
+                    description: mobile number
+                    example: 6876543210
+                  ipNumber:
+                    type: string
+                    description: ip number
+                    example: 1111111111
+                  sessionId:
+                    type: string
+                    description: session id
+                    example: e6d758a1-5cb4-11e8-8470-1866da88a22c
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "420"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "20"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: EM0000
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        responseCode:
+                          type: string
+                          example: 8200
+                        responseMessage:
+                          type: string
+                          example: Sucessfull
+                        insuredList:
+                          type: array
+                          items: 
+                            type: object
+                            properties:
+                              Insurance_No:
+                                type: string
+                                example: 1111111111
+                              UHID_No:
+                                type: string
+                                example: DUMM.0000000198
+                              Ip_Disp:
+                                type: string
+                                example: Mayapuri-II, DL (ESIC Disp.)
+                              Family_Disp:
+                                type: string
+                                example: Mayapuri-II, DL (ESIC Disp.)
+                              Registration_date:
+                                type: string
+                                example: 01/01/2015
+                              First_Date_App:
+                                type: string
+                                example: 02/02/2010
+          400:
+            description: Bad Request/Validation Error
+    /ESICApi/ws1/personaldetails: 
+      post: 
+        tags: 
+          - Personal Details API
+        summary: Get Personal Details API for ESIC
+        description: This API is used to get personal details for ESIC
+        operationId: ESICApi/ws1/personaldetails
+        
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  lat:
+                    type: string
+                    description: latitude
+                    example: null
+                  lon:
+                    type: string
+                    description: longitude
+                    example: null
+                  lac:
+                    type: string
+                    description: location
+                    example: 96
+                  usag:
+                    type: string
+                    description: Usage
+                    example: app
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform
+                    example: CHROME
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 20
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 420
+                  aadhaarNumber:
+                    type: string
+                    description: aadhaar number
+                    example: 544xxxxxxx89
+                  mobileNumber:
+                    type: string
+                    description: mobile number
+                    example: 6876543210
+                  ipNumber:
+                    type: string
+                    description: ip number
+                    example: 1111111111
+                  sessionId:
+                    type: string
+                    description: session id
+                    example: e6d758a1-5cb4-11e8-8470-1866da88a22c
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "420"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "20"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: EM0000
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        responseCode:
+                          type: string
+                          example: 8207
+                        responseMessage:
+                          type: string
+                          example: Sucessfull
+                        pesonalDetailsList:
+                          type: array
+                          items: 
+                            type: object
+                            properties:
+                              Employee_Name:
+                                type: string
+                                example: TESTUMANG
+                              DOB:
+                                type: string
+                                example: 2/2/1960 12:00:00 AM
+                              Father_Husband:
+                                type: string
+                                example: test
+                              Mobile_No:
+                                type: string
+                                example: 9999999999
+                              Phone_No:
+                                type: string
+                                example: null
+                              Aadhar_No:
+                                type: string
+                                example: xxxxxxxxxxxx
+                              Disability_Type:
+                                type: string
+                                example: null
+                              Current_Employer_Name:
+                                type: string
+                                example: test
+                              Present_Address:
+                                type: string
+                                example: asdczxczxczxcz
+                              Pre_State:
+                                type: string
+                                example: Andhra Pradesh
+                              Pre_District:
+                                type: string
+                                example: Ananthpuram
+                              Pre_Pin_code:
+                                type: string
+                                example: null
+                              Permanent_Address:
+                                type: string
+                                example: asdczxczxczxcz
+                              Per_State:
+                                type: string
+                                example: Andhra Pradesh
+                              Per_District:
+                                type: string
+                                example: Ananthpuram
+                              Per_Pin_code:
+                                type: string
+                                example: null
+                              Nominee_Name:
+                                type: string
+                                example: test
+                              Relationship_Ip:
+                                type: string
+                                example: Spouse
+                              Nominee_Permanent_Address:
+                                type: string
+                                example: sadsadzxzczxczcxczx
+                              Nominee_State:
+                                type: string
+                                example: Andhra Pradesh
+                              Nominee_District:
+                                type: string
+                                example: Ananthpuram
+                              Nominee_Pin_code:
+                                type: string
+                                example: null
+                              Nominee_Mobile_No:
+                                type: string
+                                example: null
+                              Nominee_Aadhar_No:
+                                type: string
+                                example: null
+          400:
+            description: Bad Request/Validation Error
+    /ESICApi/ws1/esicfaqdetails: 
+      post: 
+        tags: 
+          - ESIC FAQ Details API
+        summary: Get ESIC FAQ Details API for ESIC
+        description: This API is Used to Get FAQ Details for ESIC
+        operationId: ESICApi/ws1/esicfaqdetails
+        
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  lat:
+                    type: string
+                    description: latitude
+                    example: null
+                  lon:
+                    type: string
+                    description: longitude
+                    example: null
+                  lac:
+                    type: string
+                    description: location
+                    example: 96
+                  usag:
+                    type: string
+                    description: Usage
+                    example: app
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform
+                    example: CHROME
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 20
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 420
+                  mobileNumber:
+                    type: string
+                    description: mobile number
+                    example: 6876543210
+                  faqType:
+                    type: string
+                    description: faq Type
+                    example: Employer_En
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "420"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "20"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: EM0000
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        message:
+                          type: string
+                          example: Success
+                        result:
+                          type: string
+                          example: null
+                        responseCode:
+                          type: string
+                          example: 8700
+                        responseMessage:
+                          type: string
+                          example: null
+                        dt:
+                          type: array
+                          items: 
+                            type: object
+                            properties:
+                              question:
+                                type: string
+                                example: 1. What is ESI Scheme?
+                              answer:
+                                type: string
+                                example: Employees’ State Insurance Scheme of India is a multi-dimensional Social Security Scheme tailored to provide Socio-economic protection to the 'employees' in the organized sector against the events of sickness, maternity, disablement and death due to employment injury and to provide medical care to the insured employees and their families.
+          400:
+            description: Bad Request/Validation Error
+    /ESICApi/ws1/esichospitalsdetailsloc: 
+      post: 
+        tags: 
+          - ESIC Hospitals Details Loc API
+        summary: ESIC Hospitals Details loc API for ESIC
+        description: This API is Used to Get Hospitals Details for ESIC
+        operationId: ESICApi/ws1/esichospitalsdetailsloc
+        
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  lat:
+                    type: string
+                    description: latitude
+                    example: null
+                  lon:
+                    type: string
+                    description: longitude
+                    example: null
+                  lac:
+                    type: string
+                    description: location
+                    example: 96
+                  usag:
+                    type: string
+                    description: Usage
+                    example: app
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform
+                    example: CHROME
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 20
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 420
+                  mobileNumber:
+                    type: string
+                    description: mobile number
+                    example: 6876543210
+                  sessionId:
+                    type: string
+                    description: session id
+                    example: e6d758a1-5cb4-11e8-8470-1866da88a22c
+                  stateId:
+                    type: string
+                    description: state Id
+                    example: 22
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "420"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "20"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: EM0000
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        responseCode:
+                          type: string
+                          example: 8903
+                        locationList:
+                          type: array
+                          items: 
+                            type: object
+                            properties:
+                              HospitalName:
+                                type: string
+                                example: Bapunagar, GJ (ESIC Model Hosp.)
+                              Address1:
+                                type: string
+                                example: Model Hospital, Bapunagar, Ahmedabad.
+                              Address2:
+                                type: string
+                                example: null
+                              Address3:
+                                type: string
+                                example: null
+                        responseMessage:
+                          type: string
+                          example: Success
+          400:
+            description: Bad Request/Validation Error
+    /ESICApi/ws1/ipsearchemployer: 
+      post: 
+        tags: 
+          - IP Search Employer Details API
+        summary: IP Search Employer Details API for ESIC
+        description: This API is used to get IP search employer details for ESIC
+        operationId: ESICApi/ws1/ipsearchemployer
+        
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  lat:
+                    type: string
+                    description: latitude
+                    example: null
+                  lon:
+                    type: string
+                    description: longitude
+                    example: null
+                  lac:
+                    type: string
+                    description: location
+                    example: 96
+                  usag:
+                    type: string
+                    description: Usage
+                    example: app
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform
+                    example: CHROME
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 20
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 420
+                  mobileNumber:
+                    type: string
+                    description: mobile number
+                    example: 8218574112
+                  sessionId:
+                    type: string
+                    description: session id
+                    example: e6d758a1-5cb4-11e8-8470-1866da88a22c
+                  employerCode:
+                    type: string
+                    description: employer Code
+                    example: 11000000000000002
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "420"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "20"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: EM0000
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        responseCode:
+                          type: string
+                          example: 8500
+                        iplist:
+                          type: array
+                          items: 
+                            type: object
+                            properties:
+                              IPName:
+                                type: string
+                                example: TEST TES
+                              FatherORHusbandName:
+                                type: string
+                                example: test fa
+                        responseMessage:
+                          type: string
+                          example: Success
+          400:
+            description: Bad Request/Validation Error
+    /ESICApi/ws1/employerdetails: 
+      post: 
+        tags: 
+          - Employer Details API
+        summary: Get Employer Details API for ESIC
+        description: This API is Used to Get Employer Details for ESIC
+        operationId: ESICApi/ws1/employerdetails
+        
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  lat:
+                    type: string
+                    description: latitude
+                    example: null
+                  lon:
+                    type: string
+                    description: longitude
+                    example: null
+                  lac:
+                    type: string
+                    description: location
+                    example: 96
+                  usag:
+                    type: string
+                    description: Usage
+                    example: app
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform
+                    example: CHROME
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 20
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 420
+                  mobileNumber:
+                    type: string
+                    description: mobile number
+                    example: 6876543210
+                  type:
+                    type: string
+                    description: ip number
+                    example: 1
+                  state:
+                    type: string
+                    description: state
+                    example: 20
+                  district:
+                    type: string
+                    description: district
+                    example: 139
+                  employerCode:
+                    type: string
+                    description: employer Code
+                    example: null
+                  employerName:
+                    type: string
+                    description: employer Name
+                    example: null
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "420"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "20"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: EM0000
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        message:
+                          type: string
+                          example: Success
+                        messageCode:
+                          type: string
+                          example: 8600
+                        employerdetails:
+                          type: array
+                          items: 
+                            type: object
+                            properties:
+                              Employercode:
+                                type: string
+                                example: 10001158150000002
+                              EmployerName:
+                                type: string
+                                example: TEST56
+                              Address:
+                                type: string
+                                example: 123we123we123we
+                              IPCount:
+                                type: string
+                                example: 2375
+                        sessionid:
+                          type: string
+                          example: 143b4385-6028-11e8-8470-1866da88a22c
+          400:
+            description: Bad Request/Validation Error
+    /ESICApi/ws1/hospitalstate: 
+      post: 
+        tags: 
+          - Hospital State Details API
+        summary: Get Hospital State Details API for ESIC
+        description: This API is Used to Get Hospital State Details for ESIC
+        operationId: ESICApi/ws1/hospitalstate
+        
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  lat:
+                    type: string
+                    description: latitude
+                    example: null
+                  lon:
+                    type: string
+                    description: longitude
+                    example: null
+                  lac:
+                    type: string
+                    description: location
+                    example: 96
+                  usag:
+                    type: string
+                    description: Usage
+                    example: app
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform
+                    example: CHROME
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 20
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 420
+                  mobileNumber:
+                    type: string
+                    description: mobile number
+                    example: 6876543210
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "420"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "20"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: EM0000
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        responseCode:
+                          type: string
+                          example: 8900
+                        responseMessage:
+                          type: string
+                          example: Success
+                        stateList:
+                          type: array
+                          items: 
+                            type: object
+                            properties:
+                              StateName:
+                                type: string
+                                example: Andaman and Nicobar Islands
+                              StateId:
+                                type: string
+                                example: 11
+          400:
+            description: Bad Request/Validation Error
+    /ESICApi/ws1/branchofficedetails: 
+      post: 
+        tags: 
+          - Branch Office Details API
+        summary: Get Branch Office Details API for ESIC
+        description: This API is Used to get Branch Office Details for ESIC
+        operationId: ESICApi/ws1/branchofficedetails
+        
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  lat:
+                    type: string
+                    description: latitude
+                    example: null
+                  lon:
+                    type: string
+                    description: longitude
+                    example: null
+                  lac:
+                    type: string
+                    description: location
+                    example: 96
+                  usag:
+                    type: string
+                    description: Usage
+                    example: app
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform
+                    example: CHROME
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 20
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 420
+                  aadhaarNumber:
+                    type: string
+                    description: mobile number
+                    example: 544xxxxxxx89
+                  mobileNumber:
+                    type: string
+                    description: mobile number
+                    example: 6876543210
+                  sessionId:
+                    type: string
+                    description: session id
+                    example: e6d758a1-5cb4-11e8-8470-1866da88a22c
+                  locationType:
+                    type: string
+                    description: location type
+                    example: 1
+                  statepk:
+                    type: string
+                    description: state id
+                    example: 105
+                  districtpk:
+                    type: string
+                    description: district id
+                    example: 264
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "420"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "20"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: EM0000
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        responseCode:
+                          type: string
+                          example: 8207
+                        responseMessage:
+                          type: string
+                          example: Sucessfull
+                        locationList:
+                          type: array
+                          items: 
+                            type: object
+                            properties:
+                              Location:
+                                type: string
+                                example: RO - Hyderabad
+                              LocationPk:
+                                type: string
+                                example: 766
+          400:
+            description: Bad Request/Validation Error
+    /ESICApi/ws1/myfeedback: 
+      post: 
+        tags: 
+          - My Feedback Details API
+        summary: My Feedback Details API for ESIC
+        description: This API is Used to Get Feedback Details for ESIC
+        operationId: ESICApi/ws1/myfeedback
+        
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  lat:
+                    type: string
+                    description: latitude
+                    example: null
+                  lon:
+                    type: string
+                    description: longitude
+                    example: null
+                  lac:
+                    type: string
+                    description: location
+                    example: 96
+                  usag:
+                    type: string
+                    description: Usage
+                    example: app
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform
+                    example: CHROME
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 20
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 420
+                  aadhaarNumber:
+                    type: string
+                    description: mobile number
+                    example: 544xxxxxxx89
+                  mobileNumber:
+                    type: string
+                    description: mobile number
+                    example: 6876543210
+                  sessionId:
+                    type: string
+                    description: session id
+                    example: e6d758a1-5cb4-11e8-8470-1866da88a22c
+                  ipNumber:
+                    type: string
+                    description: ip number
+                    example: 1111111111
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "420"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "20"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: EM0000
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        responseCode:
+                          type: string
+                          example: 9000
+                        responseMessage:
+                          type: string
+                          example: Success
+                        feedbackObj:
+                          type: object
+                          properties:
+                            Employee_Name:
+                              type: string
+                              example: TESTUMANG
+                            DOB:
+                              type: string
+                              example: 2/2/1960 12:00:00 AM
+          400:
+            description: Bad Request/Validation Error
+    /ESICApi/ws1/submitopiniondetails: 
+      post: 
+        tags: 
+          - Submit Opinion Details API
+        summary: Submit Opinion Details API for ESIC
+        description: This API is Used to Submit Opinion Details for ESIC
+        operationId: ESICApi/ws1/submitopiniondetails
+        
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  lat:
+                    type: string
+                    description: latitude
+                    example: null
+                  lon:
+                    type: string
+                    description: longitude
+                    example: null
+                  lac:
+                    type: string
+                    description: location
+                    example: 96
+                  usag:
+                    type: string
+                    description: Usage
+                    example: app
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform
+                    example: CHROME
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 20
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 420
+                  mobileNumber:
+                    type: string
+                    description: mobile number
+                    example: 6876543210
+                  ipNumber:
+                    type: string
+                    description: ip number
+                    example: 1111111111
+                  locationPk:
+                    type: string
+                    description: ip number
+                    example: 11
+                  officialName:
+                    type: string
+                    description: ip number
+                    example: staff
+                  visitPurpose:
+                    type: string
+                    description: visit Purpose
+                    example: Other(Please Specify)
+                  otherVisitPurpose:
+                    type: string
+                    description: other Visit Purpose
+                    example: E-Pehchan
+                  ofiicialBehaviour:
+                    type: string
+                    description: ofiicial Behaviour
+                    example: great
+                  promptness:
+                    type: string
+                    description: promptness
+                    example: good
+                  isProblemResolved:
+                    type: string
+                    description: is Problem Resolved
+                    example: yes
+                  satisfactionLevel:
+                    type: string
+                    description: satisfaction Level
+                    example: good
+                  samePurpose:
+                    type: string
+                    description: same Purpose
+                    example: 5 times
+                  otherMatter:
+                    type: string
+                    description: other Matter
+                    example: 2 times
+                  officeFacilities:
+                    type: string
+                    description: office Facilities
+                    example: good
+                  otherFeedbackSuggestion:
+                    type: string
+                    description: other Feedback Suggestion
+                    example: no
+                  email:
+                    type: string
+                    description: email
+                    example: eMail@gmail.com
+                  sessionId:
+                    type: string
+                    description: session id
+                    example: e6d758a1-5cb4-11e8-8470-1866da88a22c
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "420"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "20"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: EM0000
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        responseCode:
+                          type: string
+                          example: 8807
+                        responseMessage:
+                          type: string
+                          example: Inserted Sucessfully
+          400:
+            description: Bad Request/Validation Error
+    /ESICApi/ws1/epdf: 
+      post: 
+        tags: 
+          - Download ePehchan PDF API
+        summary: Get EPFO API for ESIC
+        description: This API is Used to Download ePehchan PDF for ESIC
+        operationId: ESICApi/ws1/epdf
+        
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  lat:
+                    type: string
+                    description: latitude
+                    example: null
+                  lon:
+                    type: string
+                    description: longitude
+                    example: null
+                  lac:
+                    type: string
+                    description: location
+                    example: 96
+                  usag:
+                    type: string
+                    description: Usage
+                    example: app
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform
+                    example: CHROME
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 20
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 420
+                  aadhaarNumber:
+                    type: string
+                    description: mobile number
+                    example: 544xxxxxxx89
+                  mobileNumber:
+                    type: string
+                    description: mobile number
+                    example: 6876543210
+                  ipNumber:
+                    type: string
+                    description: ip number
+                    example: 1111111111
+                  sessionId:
+                    type: string
+                    description: session id
+                    example: e6d758a1-5cb4-11e8-8470-1866da88a22c
+                  employercode:
+                    type: string
+                    description: ip number
+                    example: 45000075660000102
+                  language:
+                    type: string
+                    description: ip number
+                    example: 1
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "420"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "20"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: EM0000
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        pdf:
+                          type: string
+                          example: xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+          400:
+            description: Bad Request/Validation Error
+    /ESICApi/ws1/getstates: 
+      post: 
+        tags: 
+          - Get States Details API
+        summary: get States API for ESIC
+        description: This API is Used to Get States Details for ESIC
+        operationId: ESICApi/ws1/getstates
+        
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  lat:
+                    type: string
+                    description: latitude
+                    example: null
+                  lon:
+                    type: string
+                    description: longitude
+                    example: null
+                  lac:
+                    type: string
+                    description: location
+                    example: 96
+                  usag:
+                    type: string
+                    description: Usage
+                    example: app
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform
+                    example: CHROME
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 20
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 420
+                  sessionId:
+                    type: string
+                    description: session id
+                    example: e6d758a1-5cb4-11e8-8470-1866da88a22c
+                  locationtype:
+                    type: string
+                    description: location type
+                    example: 1
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "420"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "20"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: EM0000
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        responseCode:
+                          type: string
+                          example: 9100
+                        locationList:
+                          type: string
+                          example: null
+                        stateList:
+                          type: array
+                          items: 
+                            type: object
+                            properties:
+                              StateName:
+                                type: string
+                                example: Andaman and  Nicobar
+                              StatePk:
+                                type: string
+                                example: 102
+                        responseMessage:
+                          type: string
+                          example: Successfull
+          400:
+            description: Bad Request/Validation Error
+    /ESICApi/ws1/getdistrict: 
+      post: 
+        tags: 
+          - Get District Details API
+        summary: Get District Details API for ESIC
+        description: This API is Used to Get District Details for ESIC
+        operationId: ESICApi/ws1/getdistrict
+        
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  lat:
+                    type: string
+                    description: latitude
+                    example: null
+                  lon:
+                    type: string
+                    description: longitude
+                    example: null
+                  lac:
+                    type: string
+                    description: location
+                    example: 96
+                  usag:
+                    type: string
+                    description: Usage
+                    example: app
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform
+                    example: CHROME
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 20
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 420
+                  sessionId:
+                    type: string
+                    description: session id
+                    example: e6d758a1-5cb4-11e8-8470-1866da88a22c
+                  locationtype:
+                    type: string
+                    description: location type
+                    example: 1
+                  state:
+                    type: string
+                    description: state
+                    example: 26
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "420"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "20"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: EM0000
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        responseCode:
+                          type: string
+                          example: 9100
+                        responseMessage:
+                          type: string
+                          example: Success
+                        districtList:
+                          type: array
+                          items: 
+                            type: object
+                            properties:
+                              districtName:
+                                type: string
+                                example: Araria
+                              districtpk:
+                                type: string
+                                example: 287
+          400:
+            description: Bad Request/Validation Error
+    /ESICApi/ws1/getroles: 
+      post: 
+        tags: 
+          - Get Roles Details API
+        summary: Get Roles Details API for ESIC
+        description: This API is Used to Get Roles Details for ESIC
+        operationId: ESICApi/ws1/getroles
+        
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  lat:
+                    type: string
+                    description: latitude
+                    example: null
+                  lon:
+                    type: string
+                    description: longitude
+                    example: null
+                  lac:
+                    type: string
+                    description: location
+                    example: 96
+                  usag:
+                    type: string
+                    description: Usage
+                    example: app
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform
+                    example: CHROME
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 20
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 420
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "420"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "20"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: EM0000
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        dispensarydetailsforipandfamily:
+                          type: object
+                          properties:
+                            IPDispensary:
+                              type: string
+                              example: Mayapuri-II, DL (ESIC Disp.)
+                            familyDispensary:
+                              type: string
+                              example: Mayapuri-II, DL (ESIC Disp.)
+                        responseCode:
+                          type: string
+                          example: 9200
+                        responseMessage:
+                          type: string
+                          example: Success
+                        sessionid:
+                          type: string
+                          example: 3a27be7c-7f7a-11e8-8470-1866da88a22c
+                        roleList:
+                          type: array
+                          items: 
+                            type: object
+                            properties:
+                              roles:
+                                type: string
+                                example: RO/SRO
+                              type:
+                                type: string
+                                example: 1
+          400:
+            description: Bad Request/Validation Error
+    /ESICApi/ws1/getlocation: 
+      post: 
+        tags: 
+          - Get Location Details API
+        summary: Get Location Details API for ESIC
+        description: This API is Used to Get Location Details for ESIC
+        operationId: ESICApi/ws1/getlocation
+        
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  lat:
+                    type: string
+                    description: latitude
+                    example: null
+                  lon:
+                    type: string
+                    description: longitude
+                    example: null
+                  lac:
+                    type: string
+                    description: location
+                    example: 96
+                  usag:
+                    type: string
+                    description: Usage
+                    example: app
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform
+                    example: CHROME
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 20
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 420
+                  sessionId:
+                    type: string
+                    description: session id
+                    example: e6d758a1-5cb4-11e8-8470-1866da88a22c
+                  locationtype:
+                    type: string
+                    description: location type
+                    example: 3
+                  state:
+                    type: string
+                    description: state
+                    example: 23
+                  district:
+                    type: string
+                    description: district
+                    example: 416
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "420"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "20"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: EM0000
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        responseCode:
+                          type: string
+                          example: 9100
+                        locationList:
+                          type: array
+                          items: 
+                            type: object
+                            properties:
+                              location:
+                                type: string
+                                example: Chirala, AP (ESIS Disp.)
+                        responseMessage:
+                          type: string
+                          example: Success
+          400:
+            description: Bad Request/Validation Error
+    /ESICApi/ws1/getpehchanemployer: 
+      post: 
+        tags: 
+          - Get Pehchan Employer Details API
+        summary: Get pehchan Employer Details API for ESIC
+        description: This API is Used to Get Pehchan Employer Details for ESIC
+        operationId: ESICApi/ws1/getpehchanemployer
+        
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  lat:
+                    type: string
+                    description: latitude
+                    example: null
+                  lon:
+                    type: string
+                    description: longitude
+                    example: null
+                  lac:
+                    type: string
+                    description: location
+                    example: 96
+                  usag:
+                    type: string
+                    description: Usage
+                    example: app
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform
+                    example: CHROME
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 20
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 420
+                  aadhaarNumber:
+                    type: string
+                    description: aadhaar number
+                    example: 544xxxxxxx89
+                  mobileNumber:
+                    type: string
+                    description: mobile number
+                    example: 6876543210
+                  ipNumber:
+                    type: string
+                    description: ip number
+                    example: 1111111111
+                  sessionId:
+                    type: string
+                    description: session id
+                    example: e6d758a1-5cb4-11e8-8470-1866da88a22c
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "420"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "20"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: EM0000
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        responseCode:
+                          type: string
+                          example: 8211
+                        responseMessage:
+                          type: string
+                          example: Success
+                        EmployerDetails:
+                          type: array
+                          items: 
+                            type: object
+                            properties:
+                              EmployerName:
+                                type: string
+                                example: test
+                              EmployerCode:
+                                type: string
+                                example: 11001182430001018
+                              EmployerAddress:
+                                type: string
+                                example: test
+          400:
+            description: Bad Request/Validation Error
+    /ESICApi/ws1/cat: 
+      post: 
+        tags: 
+          - Get Grievance Category API
+        summary: Get Grievance Category API for ESIC
+        description: This API is Used to Get Grievance Category for ESIC
+        operationId: ESICApi/ws1/cat
+        
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  lat:
+                    type: string
+                    description: latitude
+                    example: null
+                  lon:
+                    type: string
+                    description: longitude
+                    example: null
+                  lac:
+                    type: string
+                    description: location
+                    example: 96
+                  usag:
+                    type: string
+                    description: Usage
+                    example: app
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform
+                    example: CHROME
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 20
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 420
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "420"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "20"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: EM0000
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        grievanceCategory:
+                          type: object
+                          properties:
+                            medical:
+                              type: string
+                              example: Medical
+                            nonMedical:
+                              type: string
+                              example: Non Medical
+          400:
+            description: Bad Request/Validation Error
+    /ESICApi/ws1/officeagainst: 
+      post: 
+        tags: 
+          - Office Against Details API
+        summary: Office Against Details API for ESIC
+        description: This API is Used to Get Office Against Details for ESIC
+        operationId: ESICApi/ws1/officeagainst
+        
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  lat:
+                    type: string
+                    description: latitude
+                    example: null
+                  lon:
+                    type: string
+                    description: longitude
+                    example: null
+                  lac:
+                    type: string
+                    description: location
+                    example: 96
+                  usag:
+                    type: string
+                    description: Usage
+                    example: app
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform
+                    example: CHROME
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 20
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 420
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "420"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "20"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: EM0000
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        grievanceAgainst:
+                          type: object
+                          properties:
+                            employer:
+                              type: string
+                              example: Employer
+                            healthBenefit:
+                              type: string
+                              example: Health Benefit
+                            other:
+                              type: string
+                              example: other
+                            governmentEmployee_Office:
+                              type: string
+                              example: Government Employee/Office
+          400:
+            description: Bad Request/Validation Error
+    /ESICApi/ws1/officename: 
+      post: 
+        tags: 
+          - Get Office Name Details API
+        summary: Get office name details API for ESIC
+        description: This API is used to get office name details for ESIC
+        operationId: ESICApi/ws1/officename
+        
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  lat:
+                    type: string
+                    description: latitude
+                    example: null
+                  lon:
+                    type: string
+                    description: longitude
+                    example: null
+                  lac:
+                    type: string
+                    description: location
+                    example: 96
+                  usag:
+                    type: string
+                    description: Usage
+                    example: app
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform
+                    example: CHROME
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 20
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 420
+                  req:
+                    type: object
+                    properties:
+                      typeOfOffice: 
+                        type: string
+                        example: 11
+                      stateId: 
+                        type: string
+                        example: 28
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "420"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "20"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: EM0000
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        locationList:
+                          type: array
+                          items: 
+                            type: object
+                            properties:
+                              location:
+                                type: string
+                                example: MRO - Mayapuri
+                              locationPk:
+                                type: string
+                                example: 68
+          400:
+            description: Bad Request/Validation Error
+    /ESICApi/ws1/reminder: 
+      post: 
+        tags: 
+          - Reminder API
+        summary: Reminder API for ESIC
+        description: This API is used to Set Reminder for ESIC
+        operationId: ESICApi/ws1/reminder
+        
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  lat:
+                    type: string
+                    description: latitude
+                    example: null
+                  lon:
+                    type: string
+                    description: longitude
+                    example: null
+                  lac:
+                    type: string
+                    description: location
+                    example: 96
+                  usag:
+                    type: string
+                    description: Usage
+                    example: app
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform
+                    example: CHROME
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 20
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 420
+                  req:
+                    type: object
+                    properties:
+                      grievanceNo: 
+                        type: string
+                        example: PG18018717
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "420"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "20"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: EM0000
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        grievanceDetails:
+                          type: string
+                          example: null
+                        reminderList:
+                          type: string
+                          example: null
+          400:
+            description: Bad Request/Validation Error
+    /ESICApi/ws1/downloadpdf: 
+      post: 
+        tags: 
+          - Download PDF API
+        summary: Download PDF API for ESIC
+        description: This API is Used to Download PDF for ESIC
+        operationId: ESICApi/ws1/downloadpdf
+        
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  lat:
+                    type: string
+                    description: latitude
+                    example: null
+                  lon:
+                    type: string
+                    description: longitude
+                    example: null
+                  lac:
+                    type: string
+                    description: location
+                    example: 96
+                  usag:
+                    type: string
+                    description: Usage
+                    example: app
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform
+                    example: CHROME
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 20
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 420
+                  aadhaarNumber:
+                    type: string
+                    description: aadhaar number
+                    example: 544xxxxxxx89
+                  mobileNumber:
+                    type: string
+                    description: mobile number
+                    example: 6876543210
+                  ipNumber:
+                    type: string
+                    description: ip number
+                    example: 1111111111
+                  sessionId:
+                    type: string
+                    description: session id
+                    example: e6d758a1-5cb4-11e8-8470-1866da88a22c
+                  year:
+                    type: string
+                    description: ip number
+                    example: 2021
+                  month:
+                    type: string
+                    description: ip number
+                    example: apr-sep
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "420"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "20"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: EM0000
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        pdf:
+                          type: string
+                          example: Base64
+                        messagecode:
+                          type: string
+                          example: null
+                        messageName:
+                          type: string
+                          example: null
+          400:
+            description: Bad Request/Validation Error

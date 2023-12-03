@@ -1,0 +1,1616 @@
+---
+openapi: 3.0.0
+info:
+  title: Shram Sewa MP Labour Department
+  description: The Department of Labour facilitates harmonious industrial relations through effective enforcement of various labour laws, protecting and safeguarding the interests of workers. It is also committed to create healthy work environment for smooth production process and facilitating vocational skill development for enhanced employability. The Government’s attention is also focused on promoting the welfare and providing social security to the labour force of both organized and unorganized sectors. 
+  
+    <i>[Updated on 22nd November 2023]</i>
+    
+  termsOfService: https://web.umang.gov.in/uaw/ts/v1/en/index.htm
+  contact:
+    name: Provided by - UMANG
+    url: https://web.umang.gov.in
+  version: 1.0.0
+servers:
+  - url: https://apigw.umangapp.in
+    description: Production Server
+
+security: 
+  - x-api-key: []
+
+paths:
+  /mplabourApi/ws1/getstatusbyid:
+    post:
+      tags:
+        - Status By ID Web Service
+      summary: Get the status by id using this service
+      description: This api is used to get the status by id
+      operationId: mplabourApi/ws1/getstatusbyid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 2
+                lon:
+                  type: string
+                  description: longitude
+                  example: 2
+                lac:
+                  type: string
+                  description: lac
+                  example: 96
+                usag:
+                  type: string
+                  description: usage
+                  example: app
+                aud:
+                  type: string
+                  description: aud
+                  example: null                  
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4960
+                srvid:
+                  type: string
+                  description: service id
+                  example: 148
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: mplabour                  
+                deptid:
+                  type: string
+                  description: Dept Id
+                  example: 785
+                did:
+                  type: string
+                  description: did
+                  example: 46e459850d06868b                  
+                subsid:
+                  type: string
+                  description: subsid
+                  example: null
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: null
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: null
+                req_id:
+                  type: string
+                  description: req_id
+                  example: 10630044
+                purpose:
+                  type: string
+                  description: purpose
+                  example: EST_STATUS                  
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "161"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "994"
+      responses:          
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: MPL0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                      type: object
+                      properties:
+                        applicantionName:
+                          type: integer
+                          description: applicantionName
+                          example: Establishment Registration
+                        isform:
+                          type: string
+                          description: isform
+                          example: false
+                        isEntriesPurna:
+                          type: string
+                          description: isEntriesPurna
+                          example: false
+                        isBlackNo:
+                          type: string
+                          description: isBlackNo
+                          example: false
+                        isPassportPhoto:
+                          type: string
+                          description: isPassportPhoto
+                          example: false
+                        idIdentity:
+                          type: string
+                          description: idIdentity
+                          example: false
+                        isChallanReceipt:
+                          type: string
+                          description: isChallanReceipt
+                          example: false
+                        isEstAddress:
+                          type: string
+                          description: isEstAddress
+                          example: false
+                        isLimited_partner:
+                          type: string
+                          description: isLimited_partner
+                          example: false
+                        isClear:
+                          type: string
+                          description: isClear
+                          example: false
+                        isFeeCalculation:
+                          type: string
+                          description: isFeeCalculation
+                          example: false
+                        isShulk:
+                          type: string
+                          description: isShulk
+                          example: false
+                        isKoiEkFee:
+                          type: string
+                          description: isKoiEkFee
+                          example: false
+                        isOriginalChallan:
+                          type: string
+                          description: isOriginalChallan
+                          example: false
+                        isTreasuryReceipt:
+                          type: string
+                          description: isTreasuryReceipt
+                          example: false
+                        isLokSevaReceipt:
+                          type: string
+                          description: isLokSevaReceipt
+                          example: false
+                        isFeeAavedak:
+                          type: string
+                          description: isFeeAavedak
+                          example: false
+                        isPhotoAavedak:
+                          type: string
+                          description: isPhotoAavedak
+                          example: false
+                        isSignAavedak:
+                          type: string
+                          description: isSignAavedak
+                          example: false
+                        isOther:
+                          type: string
+                          description: isOther
+                          example: false
+                        fo_remarks:
+                          type: string
+                          description: fo_remarks
+                          example: accept
+                        applicantionType:
+                          type: string
+                          description: applicantionType
+                          example: null
+                        applicantStatus:
+                          type: string
+                          description: applicantStatus
+                          example: Rejected after Document Verification
+                        recStatus1:
+                          type: string
+                          description: recStatus1
+                          example: 90
+                        shopName:
+                          type: string
+                          description: shopName
+                          example: Meera Electric works
+                        district:
+                          type: string
+                          description: district
+                          example: Dummy District
+                        busineeType:
+                          type: string
+                          description: busineeType
+                          example: Dance, Music, Acting Classes/Academy
+                        est_ID:
+                          type: string
+                          description: est_ID
+                          example: 1063
+                        is_TimeoUt:
+                          type: string
+                          description: is_TimeoUt
+                          example: 0
+                        procId:
+                          type: string
+                          description: procId
+                          example: 26
+                        secret_Key:
+                          type: string
+                          description: secret_Key
+                          example: null
+                        ownerName:
+                          type: string
+                          description: ownerName
+                          example: Dharmendra
+                        recStatus:
+                          type: string
+                          description: recStatus
+                          example: 90
+                        shopAddress:
+                          type: string
+                          description: shopAddress
+                          example: "160 trilok nagar ujjain road dewas"                          
+                  pdExp:
+                    type: object
+                    description: error Description
+                    properties:
+                      message:
+                          type: string
+                          description: message
+                          example: null.                                            
+        "400":
+          description: Bad Request/Validation Error
+  /mplabourApi/ws1/displaycomplaintstatus:
+    post:
+      tags:
+        - Complaint Status Web Service
+      summary: Get the complaint status using this service
+      description: This api is used to get the complaint status
+      operationId: mplabourApi/ws1/displaycomplaintstatus
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 2
+                lon:
+                  type: string
+                  description: longitude
+                  example: 2
+                lac:
+                  type: string
+                  description: lac
+                  example: 96
+                usag:
+                  type: string
+                  description: usage
+                  example: app
+                aud:
+                  type: string
+                  description: aud
+                  example: null                  
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4960
+                srvid:
+                  type: string
+                  description: service id
+                  example: 148
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: mplabour                  
+                deptid:
+                  type: string
+                  description: Dept Id
+                  example: 785
+                did:
+                  type: string
+                  description: did
+                  example: 46e459850d06868b                  
+                subsid:
+                  type: string
+                  description: subsid
+                  example: null
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: null
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: null
+                id:
+                  type: string
+                  description: id
+                  example: 1033                  
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "161"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "994"
+      responses:          
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: MPL0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                      type: object
+                      properties:
+                        r:
+                          type: object
+                          description: response
+                          properties:
+                            response:
+                              type: string
+                              description: response
+                              example: Success
+                        d:
+                          type: object
+                          description: description
+                          properties:
+                            columns:
+                              type: array
+                              description: column object items
+                              items:
+                                type: string
+                                description: column names
+                                example: Applicant_Name    
+                            rows:
+                              type: array
+                              description: rows object items
+                              items:
+                                type: array
+                                description: row objects
+                                items:
+                                  type: string
+                                  description: row object values   
+                                  example: Shiv Narayan Pandey                                
+                  pdExp:
+                    type: object
+                    description: error Description
+                    properties:
+                      message:
+                          type: string
+                          description: message
+                          example: null.                                            
+        "400":
+          description: Bad Request/Validation Error
+  /mplabourApi/ws1/getminiumwages:
+    post:
+      tags:
+        - Minimum Wages Web Service
+      summary: Get the minimum wages details using this service
+      description: This api is used to get the minimum wages details
+      operationId: mplabourApi/ws1/getminiumwages
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 2
+                lon:
+                  type: string
+                  description: longitude
+                  example: 2
+                lac:
+                  type: string
+                  description: lac
+                  example: 96
+                usag:
+                  type: string
+                  description: usage
+                  example: app
+                aud:
+                  type: string
+                  description: aud
+                  example: null                  
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4960
+                srvid:
+                  type: string
+                  description: service id
+                  example: 148
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: mplabour                  
+                deptid:
+                  type: string
+                  description: Dept Id
+                  example: 785
+                did:
+                  type: string
+                  description: did
+                  example: 46e459850d06868b                  
+                subsid:
+                  type: string
+                  description: subsid
+                  example: null
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: null
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: null                  
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "161"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "994"
+      responses:          
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: MPL0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                      type: object
+                      properties:
+                        result:
+                          type: object
+                          description: response
+                          properties:
+                            response:
+                              type: string
+                              description: response
+                              example: SUCCESS
+                        data:
+                          type: object
+                          description: description
+                          properties:
+                            columns:
+                              type: array
+                              description: column object items
+                              items:
+                                type: string
+                                description: column names
+                                example: Basic_AK_Mon    
+                            rows:
+                              type: array
+                              description: rows object items
+                              items:
+                                type: array
+                                description: row objects
+                                items:
+                                  type: string
+                                  description: row object values   
+                                  example: 6500                              
+                  pdExp:
+                    type: object
+                    description: error Description
+                    properties:
+                      message:
+                          type: string
+                          description: message
+                          example: null.                                            
+        "400":
+          description: Bad Request/Validation Error          
+  /mplabourApi/ws1/orderdetails:
+    post:
+      tags:
+        - Order Details Web Service
+      summary: Get the order details using this service
+      description: This api is used to get the order details
+      operationId: mplabourApi/ws1/orderdetails
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 2
+                lon:
+                  type: string
+                  description: longitude
+                  example: 2
+                lac:
+                  type: string
+                  description: lac
+                  example: 96
+                usag:
+                  type: string
+                  description: usage
+                  example: app
+                aud:
+                  type: string
+                  description: aud
+                  example: null                  
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4960
+                srvid:
+                  type: string
+                  description: service id
+                  example: 148
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: mplabour                  
+                deptid:
+                  type: string
+                  description: Dept Id
+                  example: 785
+                did:
+                  type: string
+                  description: did
+                  example: 46e459850d06868b                  
+                subsid:
+                  type: string
+                  description: subsid
+                  example: null
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: null
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: null   
+                id:
+                  type: string
+                  description: formtrkr
+                  example: 0                  
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "161"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "994"
+      responses:          
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: MPL0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                      type: object
+                      properties:
+                            columns:
+                              type: array
+                              description: column object items
+                              items:
+                                type: string
+                                description: column names
+                                example: Display_Name
+                            rows:
+                              type: array
+                              description: rows object items
+                              items:
+                                type: array
+                                description: row objects
+                                items:
+                                  type: string
+                                  description: row object values   
+                                  example: "Establishment(12/03/2019)"                                                                  
+                  pdExp:
+                    type: object
+                    description: error Description
+                    properties:
+                      message:
+                          type: string
+                          description: message
+                          example: null.                                            
+        "400":
+          description: Bad Request/Validation Error
+  /mplabourApi/ws1/newsdetails:
+    post:
+      tags:
+        - News Details Web Service
+      summary: Get the news details using this service
+      description: This api is used to get the news details
+      operationId: mplabourApi/ws1/newsdetails
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 2
+                lon:
+                  type: string
+                  description: longitude
+                  example: 2
+                lac:
+                  type: string
+                  description: lac
+                  example: 96
+                usag:
+                  type: string
+                  description: usage
+                  example: app
+                aud:
+                  type: string
+                  description: aud
+                  example: null                  
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4960
+                srvid:
+                  type: string
+                  description: service id
+                  example: 148
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: mplabour                  
+                deptid:
+                  type: string
+                  description: Dept Id
+                  example: 785
+                did:
+                  type: string
+                  description: did
+                  example: 46e459850d06868b                  
+                subsid:
+                  type: string
+                  description: subsid
+                  example: null
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: null
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: null
+                id:
+                  type: string
+                  description: id
+                  example: 0                
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "161"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "994"
+      responses:          
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: MPL0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                     type: object
+                     properties:
+                            columns:
+                              type: array
+                              description: column object items
+                              items:
+                                type: string
+                                description: column names
+                                example: News_Subject
+                            rows:
+                              type: array
+                              description: rows object items
+                              items:
+                                type: array
+                                description: row objects
+                                items:
+                                  type: string
+                                  description: row object values   
+                                  example: "DATE EXTENSION- COPY MAKING TENDER YEAR-2019"                             
+                  pdExp:
+                    type: object
+                    description: error Description
+                    properties:
+                      message:
+                          type: string
+                          description: message
+                          example: null.                                            
+        "400":
+          description: Bad Request/Validation Error
+  /mplabourApi/ws1/formsdetails:
+    post:
+      tags:
+        - Forms Details Web Service
+      summary: Get the forms details using this service
+      description: This api is used to get the forms details
+      operationId: mplabourApi/ws1/formsdetails
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 2
+                lon:
+                  type: string
+                  description: longitude
+                  example: 2
+                lac:
+                  type: string
+                  description: lac
+                  example: 96
+                usag:
+                  type: string
+                  description: usage
+                  example: app
+                aud:
+                  type: string
+                  description: aud
+                  example: null                  
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4960
+                srvid:
+                  type: string
+                  description: service id
+                  example: 148
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: mplabour                  
+                deptid:
+                  type: string
+                  description: Dept Id
+                  example: 785
+                did:
+                  type: string
+                  description: did
+                  example: 46e459850d06868b                  
+                subsid:
+                  type: string
+                  description: subsid
+                  example: null
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: null
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: null
+                id:
+                  type: string
+                  description: id
+                  example: 0                
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "161"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "994"
+      responses:          
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: MPL0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                     type: object
+                     properties:
+                            columns:
+                              type: array
+                              description: column object items
+                              items:
+                                type: string
+                                description: column names
+                                example: Form_name
+                            rows:
+                              type: array
+                              description: rows object items
+                              items:
+                                type: array
+                                description: row objects
+                                items:
+                                  type: string
+                                  description: row object values   
+                                  example: "छात्रवृत्त्िा एवं शिक्ष्ाा प्रोत्साहन वर्ष 2018-19"                             
+                  pdExp:
+                    type: object
+                    description: error Description
+                    properties:
+                      message:
+                          type: string
+                          description: message
+                          example: null.                                            
+        "400":
+          description: Bad Request/Validation Error
+  /mplabourApi/ws1/eventsdetails:
+    post:
+      tags:
+        - Events Details Web Service
+      summary: Get the events details using this service
+      description: This api is used to get the events details
+      operationId: mplabourApi/ws1/eventsdetails
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 2
+                lon:
+                  type: string
+                  description: longitude
+                  example: 2
+                lac:
+                  type: string
+                  description: lac
+                  example: 96
+                usag:
+                  type: string
+                  description: usage
+                  example: app
+                aud:
+                  type: string
+                  description: aud
+                  example: null                  
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4960
+                srvid:
+                  type: string
+                  description: service id
+                  example: 148
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: mplabour                  
+                deptid:
+                  type: string
+                  description: Dept Id
+                  example: 785
+                did:
+                  type: string
+                  description: did
+                  example: 46e459850d06868b                  
+                subsid:
+                  type: string
+                  description: subsid
+                  example: null
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: null
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: null
+                id:
+                  type: string
+                  description: id
+                  example: 0                
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "161"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "994"
+      responses:          
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: MPL0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                     type: object
+                     properties:
+                            columns:
+                              type: array
+                              description: column object items
+                              items:
+                                type: string
+                                description: column names
+                                example: Event_Name
+                            rows:
+                              type: array
+                              description: rows object items
+                              items:
+                                type: array
+                                description: row objects
+                                items:
+                                  type: string
+                                  description: row object values   
+                                  example: "Association of Industries DEWAS - Workshop dated 16/11/2017"                             
+                  pdExp:
+                    type: object
+                    description: error Description
+                    properties:
+                      message:
+                          type: string
+                          description: message
+                          example: null.                                            
+        "400":
+          description: Bad Request/Validation Error
+  /mplabourApi/ws1/circularsdetails:
+    post:
+      tags:
+        - Circular Details Web Service
+      summary: Get the circular details using this service
+      description: This api is used to get the circular details
+      operationId: mplabourApi/ws1/circularsdetails
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 2
+                lon:
+                  type: string
+                  description: longitude
+                  example: 2
+                lac:
+                  type: string
+                  description: lac
+                  example: 96
+                usag:
+                  type: string
+                  description: usage
+                  example: app
+                aud:
+                  type: string
+                  description: aud
+                  example: null                  
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4960
+                srvid:
+                  type: string
+                  description: service id
+                  example: 148
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: mplabour                  
+                deptid:
+                  type: string
+                  description: Dept Id
+                  example: 785
+                did:
+                  type: string
+                  description: did
+                  example: 46e459850d06868b                  
+                subsid:
+                  type: string
+                  description: subsid
+                  example: null
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: null
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: null
+                id:
+                  type: string
+                  description: id
+                  example: 0                
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "161"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "994"
+      responses:          
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: MPL0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                     type: object
+                     properties:
+                            columns:
+                              type: array
+                              description: column object items
+                              items:
+                                type: string
+                                description: column names
+                                example: Circular_Subject
+                            rows:
+                              type: array
+                              description: rows object items
+                              items:
+                                type: array
+                                description: row objects
+                                items:
+                                  type: string
+                                  description: row object values   
+                                  example: "विभागीय भविष्य नीधी के अंशदाताओं के वर्ष 2017, 2018 के ब्याज पत्रक भेजने बाबद"                             
+                  pdExp:
+                    type: object
+                    description: error Description
+                    properties:
+                      message:
+                          type: string
+                          description: message
+                          example: null.                                            
+        "400":
+          description: Bad Request/Validation Error
+  /mplabourApi/ws1/easeofbusiness:
+    post:
+      tags:
+        - Ease of Business Web Service
+      summary: Get the ease of business using this service
+      description: This api is used to get the ease of business
+      operationId: mplabourApi/ws1/easeofbusiness
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 2
+                lon:
+                  type: string
+                  description: longitude
+                  example: 2
+                lac:
+                  type: string
+                  description: lac
+                  example: 96
+                usag:
+                  type: string
+                  description: usage
+                  example: app
+                aud:
+                  type: string
+                  description: aud
+                  example: null                  
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4960
+                srvid:
+                  type: string
+                  description: service id
+                  example: 148
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: mplabour                  
+                deptid:
+                  type: string
+                  description: Dept Id
+                  example: 785
+                did:
+                  type: string
+                  description: did
+                  example: 46e459850d06868b                  
+                subsid:
+                  type: string
+                  description: subsid
+                  example: null
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: null
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: null               
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "161"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "994"
+      responses:          
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: MPL0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                     type: object
+                     properties:
+                            result:
+                              type: object
+                              description: result object
+                              properties:
+                                response:
+                                  type: string
+                                  description: response
+                                  example: SUCCESS
+                            rows:
+                              type: array
+                              description: rows object items
+                              items:
+                                type: object
+                                description: row objects
+                                properties:
+                                  url:
+                                    type: string
+                                    description: url  
+                                    example: "http://labour.mp.gov.in/KnowledgeSharing/public/View_Form.aspx?id=139"    
+                                  sub_Head:
+                                    type: string
+                                    description: sub_Head  
+                                    example: "(i) Approval of plan of construction / Extension of any building to be used as Factory"   
+                                  heading:
+                                    type: string
+                                    description: heading  
+                                    example: "The Factories Act, 1948"                                       
+                  pdExp:
+                    type: object
+                    description: error Description
+                    properties:
+                      message:
+                          type: string
+                          description: message
+                          example: null.                                            
+        "400":
+          description: Bad Request/Validation Error
+components:
+  securitySchemes:
+    x-api-key:
+      type: apiKey
+      name: x-api-key
+      in: header

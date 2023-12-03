@@ -1,0 +1,82 @@
+info:
+  title: NAPIX
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/napix/napix
+  version: 1.0.0
+  x-ibm-name: overview
+  description: Overview of API Management Platform - which includes number of
+    domains onboarded, apis published, subscribers and total api hits.
+paths:
+  /:
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ok
+      parameters: []
+      tags:
+        - Overview
+openapi: 3.0.0
+servers:
+  - url: https://degateway.napix.gov.in:443/napix/napix/overview
+    description: Overview endpoint of the backend
+security:
+  - ClientID: []
+    ClientSecret: []
+components:
+  schemas:
+    response:
+      type: object
+      title: response
+      properties:
+        total_hits:
+          type: string
+          title: total_hits
+          example: 10,50,200
+          description: Number of cumulative API hits on the platform in comma separated
+            string format
+        apis_published:
+          type: integer
+          title: apis_published
+          example: 600
+          description: Number of APIs published on the platform
+        domains_onboarded:
+          type: integer
+          title: domains_onboarded
+          example: 30
+          description: Number of domains onboarded on the platform
+        total_subscribers:
+          type: integer
+          title: total_subscribers
+          example: 50
+          description: Number of subscribers on the platform
+      description: The okay response schema
+  responses: {}
+  securitySchemes:
+    ClientID:
+      in: header
+      name: client-id
+      type: apiKey
+      x-key-type: client_id
+      description: Client ID of the application that is consuming this API
+    ClientSecret:
+      in: header
+      name: client-secret
+      type: apiKey
+      x-key-type: client_secret
+      description: Client Secret of the consuming application
+x-ibm-endpoints:
+  - url: https://degateway.napix.gov.in:443/napix/napix/overview
+    description: Overview endpoint of the backend
+x-ibm-configuration:
+  cors:
+    policy: []
+    enabled: true
+  type: rest
+  phase: realized
+  enforced: true
+  testable: true

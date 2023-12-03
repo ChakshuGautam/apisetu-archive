@@ -1,0 +1,2036 @@
+---
+openapi: 3.0.0
+info:
+  title: Centralised Public Grievance Redress and Monitoring System (CPGRAMS)
+  description: Centralised Public Grievance Redress and Monitoring System (CPGRAMS) is an online platform available to the citizens 24x7 to lodge their grievances to the public authorities on any subject related to service delivery. It is a single portal connected to all the Ministries/Departments of Government of India and States. Every Ministry and States have role-based access to this system. CPGRAMS is also accessible to the citizens through standalone mobile application downloadable through Google Play store and mobile application integrated with UMANG.The status of the grievance filed in CPGRAMS can be tracked with the unique registration ID provided at the time of registration of the complainant. CPGRAMS also provides appeal facility to the citizens if they are not satisfied with the resolution by the Grievance Officer. After closure of grievance if the complainant is not satisfied with the resolution, he/she can provide feedback. If the rating is ‘Poor’ the option to file an appeal is enabled. The status of the Appeal can also be tracked by the petitioner with the grievance registration number. <i>[Updated on 18th September 2023]</i>
+  termsOfService: https://web.umang.gov.in/uaw/ts/v1/en/index.htm
+  contact:
+    name: Provided by - UMANG
+    url: https://web.umang.gov.in
+  version: 1.0.0
+servers:
+  - url: https://apigw.umangapp.in
+    description: Production Server
+    
+security:
+  - x-api-key: []
+    
+paths:
+  /cpgramApi/login:
+    post:
+      tags:
+        - Login Web Service
+      summary: Login to cpgrams using this service
+      description: This api is used to login to cpgrams
+      operationId: cpgramApi/login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: W-23456789
+                lang:
+                  type: string
+                  description: lang
+                  example: en            
+                lat:
+                  type: string
+                  description: latitude
+                  example: null
+                lon:
+                  type: string
+                  description: longitude
+                  example: null
+                lac:
+                  type: string
+                  description: lac
+                  example: null  
+                usag:
+                  type: string
+                  description: usag
+                  example: null                   
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 62
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME                 
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1                
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 556
+                did:
+                  type: string
+                  description: did
+                  example: "https://web.umang.gov.in/cpgrams/api/deptt/cpgrams/?redirectUrl=cpgramLogin/lodgeGrievance?GLOBAL_SERVICE_ID=555"
+                userid:
+                  type: string
+                  description: userid
+                  example: 9309514024
+                password:
+                  type: string
+                  description: password
+                  example: Beyourbest@1
+                remember:
+                  type: string
+                  description: remember
+                  example: true                
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "62"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "556"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: SU0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success    
+                  pd:
+                    type: object
+                    description: login object
+                    properties:
+                      Name:
+                        type: string
+                        description: name
+                        example: Test
+                      Gender:
+                        type: string
+                        description: gender
+                        example: Female
+                      Email:
+                        type: string
+                        description: email
+                        example: nandupuja@gmail.com
+                      Mobile:
+                        type: string
+                        description: mobile
+                        example: 9309514024
+                      Address1:
+                        type: string
+                        description: address1
+                        example: Siddrameshwara Nilaya
+                      Address2:
+                        type: string
+                        description: address2
+                        example: null
+                      Address3:
+                        type: string
+                        description: address3
+                        example: null  
+                      country:
+                        type: string
+                        description: country
+                        example: India 
+                      State:
+                        type: string
+                        description: state
+                        example: Karnataka 
+                      District:
+                        type: string
+                        description: district
+                        example: Bengaluru (Bangalore) Urban   
+                      pin:
+                        type: string
+                        description: pin
+                        example: 560016
+                      DeviceId:
+                        type: string
+                        description: deviceId
+                        example: web
+                      LoginTime:
+                        type: string
+                        description: logintime
+                        example: 05/09/2023 
+                      IsLoggedIn:
+                        type: string
+                        description: isloggedin
+                        example: Y 
+                      UserCode:
+                        type: string
+                        description: usercode
+                        example: 1959585
+                      sessionid:
+                        type: string
+                        description: sessionid
+                        example: bh49f2                   
+  /cpgramApi/sendotp:
+    post:
+      tags:
+        - Send OTP Web Service
+      summary: Get the otp on registered mobile using this service
+      description: This api is used to get the otp on registered mobile number
+      operationId: cpgramApi/sendotp
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-AST1486560987759
+                lat:
+                  type: string
+                  description: latitude
+                  example: null
+                lang:
+                  type: string
+                  description: lang
+                  example: en                
+                lon:
+                  type: string
+                  description: longitude
+                  example: null
+                lac:
+                  type: string
+                  description: lac
+                  example: null
+                usag:
+                  type: string
+                  description: usag
+                  example: null                  
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 62
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1                   
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME               
+                userid:
+                  type: string
+                  description: userid
+                  example: "7088355864"               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 556
+                did:
+                  type: integer
+                  description: did
+                  example: "https://web.umang.gov.in/cpgrams/api/deptt/cpgrams/?redirectUrl=cpgramLogin/lodgeGrievance?GLOBAL_SERVICE_ID=555"                 
+                email:
+                  type: string
+                  description: email
+                  example: ashish.upadhyay@spicedigital.in
+                password:
+                  type: string
+                  description: password
+                  example: ashi1234567
+                confirmpassword:
+                  type: string
+                  description: confirmpassword
+                  example: ashi1234567
+                deviceid:
+                  type: string
+                  description: deviceid
+                  example: ASW1234gfd                
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "62"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "556"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: SU0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success    
+                  pd:
+                    type: object
+                    description: otp object
+                    properties:
+                      Message:
+                        type: string
+                        description: message
+                        example: "OTP has been send on your registered mobile number"
+  /cpgramApi/logout:
+    post:
+      tags:
+        - Log Out Web Service
+      summary: Logout using this service
+      description: This api is used to logout
+      operationId: cpgramApi/logout
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-AST1486560987759
+                lat:
+                  type: string
+                  description: latitude
+                  example: null
+                lang:
+                  type: string
+                  description: lang
+                  example: en                
+                lon:
+                  type: string
+                  description: longitude
+                  example: null
+                lac:
+                  type: string
+                  description: lac
+                  example: null
+                usag:
+                  type: string
+                  description: usag
+                  example: null                  
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 62
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1                   
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME               
+                userid:
+                  type: string
+                  description: userid
+                  example: "8283812322"               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 556
+                did:
+                  type: integer
+                  description: did
+                  example: "https://web.umang.gov.in/cpgrams/api/deptt/cpgrams/?redirectUrl=cpgramLogin/lodgeGrievance?GLOBAL_SERVICE_ID=555"              
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "62"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "556"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: SU0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success    
+                  pd:
+                    type: object
+                    description: otp object
+                    properties:
+                      Message:
+                        type: string
+                        description: message
+                        example: "User Loged Out Successfully"
+  /cpgramApi/newuser:
+    post:
+      tags:
+        - New User Web Service
+      summary: NewUser using this service
+      description: This api is used to register newuser
+      operationId: cpgramApi/newuser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-AST1486560987759
+                lat:
+                  type: string
+                  description: latitude
+                  example: null
+                lang:
+                  type: string
+                  description: lang
+                  example: en                
+                lon:
+                  type: string
+                  description: longitude
+                  example: null
+                lac:
+                  type: string
+                  description: lac
+                  example: null
+                usag:
+                  type: string
+                  description: usag
+                  example: null                  
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 62
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1                   
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME               
+                userid:
+                  type: string
+                  description: userid
+                  example: "8979448927"               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 557
+                did:
+                  type: string
+                  description: did
+                  example: "https://web.umang.gov.in/cpgrams/api/deptt/cpgrams/?redirectUrl=newUser?GLOBAL_SERVICE_ID=557"  
+                name:
+                  type: string
+                  description: name
+                  example: sname
+                gender:
+                  type: string
+                  description: gender
+                  example: Male
+                email:
+                  type: string
+                  description: email
+                  example: upadhyay27ashish94@gmail.com
+                password:
+                  type: string
+                  description: password
+                  example: ashi1234
+                confirmpass:
+                  type: string
+                  description: confirmpass
+                  example: ashi1234
+                add1:
+                  type: string
+                  description: add1
+                  example: xx  
+                add2:
+                  type: string
+                  description: add2
+                  example: xx
+                add3:
+                  type: string
+                  description: add3
+                  example: xx
+                countrycode:
+                  type: string
+                  description: countrycode
+                  example: 001
+                statecode:
+                  type: string
+                  description: statecode
+                  example: UC
+                districtcode:
+                  type: string
+                  description: districtcode
+                  example: 49        
+                pin:
+                  type: string
+                  description: pin
+                  example: 249201 
+                otp:
+                  type: string
+                  description: otp
+                  example: ""                   
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "62"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "557"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: SU0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success    
+                  pd:
+                    type: object
+                    description: new user response object
+                    properties:
+                      Message:
+                        type: string
+                        description: message
+                        example: "You have been registered ,please verify otp to activate your account."
+  /cpgramApi/update:
+    post:
+      tags:
+        - Update Profile Web Service
+      summary: Update the profile using this service
+      description: This api is used to update the profile
+      operationId: cpgramApi/update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-AST1486560987759
+                lat:
+                  type: string
+                  description: latitude
+                  example: null
+                lang:
+                  type: string
+                  description: lang
+                  example: en                
+                lon:
+                  type: string
+                  description: longitude
+                  example: null
+                lac:
+                  type: string
+                  description: lac
+                  example: null
+                usag:
+                  type: string
+                  description: usag
+                  example: null                  
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 62
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1                   
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME               
+                userid:
+                  type: string
+                  description: userid
+                  example: "4006891151"               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 558
+                did:
+                  type: string
+                  description: did
+                  example: "https://web.umang.gov.in/cpgrams/api/deptt/cpgrams/?redirectUrl=cpgramLogin/lodgeGrievance?GLOBAL_SERVICE_ID=555"  
+                name:
+                  type: string
+                  description: name
+                  example: Harpreet singh
+                gender:
+                  type: string
+                  description: gender
+                  example: Male
+                email:
+                  type: integer
+                  description: email
+                  example: harpreet@spicedigital.in
+                password:
+                  type: string
+                  description: password
+                  example: ashi1234
+                add1:
+                  type: string
+                  description: add1
+                  example: AAAAA
+                add2:
+                  type: string
+                  description: add2
+                  example: 558
+                add3:
+                  type: string
+                  description: add3
+                  example: AAAAA
+                countrycode:
+                  type: string
+                  description: countrycode
+                  example: 001
+                statecode:
+                  type: string
+                  description: statecode
+                  example: UC
+                districtcode:
+                  type: string
+                  description: districtcode
+                  example: 49
+                pin:
+                  type: string
+                  description: pin
+                  example: 249201
+                deviceid:
+                  type: string
+                  description: deviceid
+                  example: ASW1234gfd
+                usercode:
+                  type: string
+                  description: usercode
+                  example: 147
+                sessiontoken:
+                  type: string
+                  description: sessiontoken
+                  example: h40f28                  
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "62"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "558"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: SU0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success    
+                  pd:
+                    type: object
+                    description: update profile object
+                    properties:
+                      Name:
+                        type: string
+                        description: name
+                        example: Harpreet singh 
+                      Gender:
+                        type: string
+                        description: gender
+                        example: Ma
+                      Email:
+                        type: string
+                        description: email
+                        example: harpreet@spicedigital.in
+                      Address1:
+                        type: string
+                        description: address1
+                        example: AAAAA
+                      Address2:
+                        type: string
+                        description: address2
+                        example: AAAAA
+                      Address3:
+                        type: string
+                        description: address3
+                        example: AAAAA
+                      Country:
+                        type: string
+                        description: country
+                        example: India
+                      State:
+                        type: string
+                        description: state
+                        example: Uttarakhand
+                      District:
+                        type: string
+                        description: district
+                        example: Dehradun
+                      Pin:
+                        type: string
+                        description: pin
+                        example: 249201
+                      DeviceID:
+                        type: string
+                        description: deviceId
+                        example: ASW1234gfd
+                      LoginTime:
+                        type: string
+                        description: logintime
+                        example: "8/27/2017 3:18:30 PM"
+                      Mobile:
+                        type: string
+                        description: mobile
+                        example: "8283812322" 
+                      sessionid:
+                        type: string
+                        description: sessionid
+                        example: "28dj6b"     
+  /cpgramApi/country:
+    post:
+      tags:
+        - Country List Web Service
+      summary: Get the country list using this service
+      description: This api is used to get the countrylist
+      operationId: cpgramApi/country
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-AST1486560987759
+                lat:
+                  type: string
+                  description: latitude
+                  example: null
+                lang:
+                  type: string
+                  description: lang
+                  example: en                
+                lon:
+                  type: string
+                  description: longitude
+                  example: null
+                lac:
+                  type: string
+                  description: lac
+                  example: null
+                usag:
+                  type: string
+                  description: usag
+                  example: null                  
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 62
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1                   
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME               
+                userid:
+                  type: string
+                  description: userid
+                  example: "4006891151"               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 557
+                did:
+                  type: string
+                  description: did
+                  example: "https://web.umang.gov.in/cpgrams/api/deptt/cpgrams/?redirectUrl=newUser?GLOBAL_SERVICE_ID=557"                
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "62"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "557"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: SU0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success    
+                  pd:
+                    type: object
+                    description: country list object
+                    properties:
+                      message:
+                        type: string
+                        description: message
+                        example: null 
+                      countrylist:
+                        type: array
+                        description: country list object item                          
+                        items:  
+                          type: object
+                          properties:                            
+                            country_code:                     
+                              type: string
+                              description: country_code
+                              example: 001
+                            country_name:
+                              type: string
+                              description: country_name
+                              example: India
+  /cpgramApi/state:
+    post:
+      tags:
+        - State List Web Service
+      summary: Get the state list dropdown using this service
+      description: This api is used to get the state list dropdown
+      operationId: cpgramApi/state
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-AST1486560987759
+                lat:
+                  type: string
+                  description: latitude
+                  example: null
+                lang:
+                  type: string
+                  description: lang
+                  example: en                
+                lon:
+                  type: string
+                  description: longitude
+                  example: null
+                lac:
+                  type: string
+                  description: lac
+                  example: null
+                usag:
+                  type: string
+                  description: usag
+                  example: null                  
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 62
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1                   
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME                          
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 557
+                did:
+                  type: string
+                  description: did
+                  example: "https://web.umang.gov.in/cpgrams/api/deptt/cpgrams/?redirectUrl=newUser?GLOBAL_SERVICE_ID=557"  
+                countrycode:
+                  type: string
+                  description: countrycode
+                  example: 001                  
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "62"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "557"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: SU0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success    
+                  pd:
+                    type: object
+                    description: state list object
+                    properties:
+                      message:
+                        type: string
+                        description: message
+                        example: null 
+                      statelist:
+                        type: array
+                        description: state list object item                          
+                        items:  
+                          type: object
+                          properties:                            
+                            state_code:                     
+                              type: string
+                              description: state_code
+                              example: AN
+                            state_name:
+                              type: string
+                              description: state_name
+                              example: Andaman And Nicobar Islands 
+  /cpgramApi/district:
+    post:
+      tags:
+        - District Web Service
+      summary: Get the district list dropdown using this service
+      description: This api is used to get the district list dropdown
+      operationId: cpgramApi/district
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-AST1486560987759
+                lat:
+                  type: string
+                  description: latitude
+                  example: null
+                lang:
+                  type: string
+                  description: lang
+                  example: en                
+                lon:
+                  type: string
+                  description: longitude
+                  example: null
+                lac:
+                  type: string
+                  description: lac
+                  example: null
+                usag:
+                  type: string
+                  description: usag
+                  example: null                  
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 62
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1                   
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME               
+                userid:
+                  type: string
+                  description: userid
+                  example: "4006891151"               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 557
+                did:
+                  type: string
+                  description: did
+                  example: "https://web.umang.gov.in/cpgrams/api/deptt/cpgrams/?redirectUrl=newUser?GLOBAL_SERVICE_ID=557"  
+                statecode:
+                  type: string
+                  description: statecode
+                  example: MH                  
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "62"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "557"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: SU0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success    
+                  pd:
+                    type: object
+                    description: district list object
+                    properties:                  
+                      message:
+                        type: string
+                        description: message
+                        example: null 
+                      districtlist:
+                        type: array
+                        description: district list object item                          
+                        items:  
+                          type: object
+                          properties:                            
+                            distcode:                     
+                              type: string
+                              description: distcode
+                              example: 45
+                            distname:
+                              type: string
+                              description: distname
+                              example: Uttarkashi
+  /cpgramApi/change:
+    post:
+      tags:
+        - Change Password Web Service
+      summary: Change the password using this service
+      description: This api is used to change the password
+      operationId: cpgramApi/change
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-AST1486560987759
+                lat:
+                  type: string
+                  description: latitude
+                  example: null
+                lang:
+                  type: string
+                  description: lang
+                  example: en                
+                lon:
+                  type: string
+                  description: longitude
+                  example: null
+                lac:
+                  type: string
+                  description: lac
+                  example: null
+                usag:
+                  type: string
+                  description: usag
+                  example: null                  
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 62
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1                   
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME               
+                userid:
+                  type: string
+                  description: userid
+                  example: "9309514024"               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 558
+                did:
+                  type: string
+                  description: did
+                  example: "https://web.umang.gov.in/cpgrams/api/deptt/cpgrams/?redirectUrl=newUser?GLOBAL_SERVICE_ID=557"  
+                sesiontoken:
+                  type: string
+                  description: sesiontoken
+                  example: j6bh40
+                password:
+                  type: string
+                  description: password
+                  example: ashi1234
+                newpass:
+                  type: string
+                  description: newpass
+                  example: harpreet@spicedigital.in
+                deviceid:
+                  type: string
+                  description: deviceid
+                  example: ASW1234gfd
+                usercode:
+                  type: string
+                  description: usercode
+                  example: 147                  
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "62"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "558"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: SU0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success    
+                  pd:
+                    type: object
+                    description: change password object
+                    properties:
+                      Message:
+                        type: string
+                        description: message
+                        example: Password Updated Successfully 
+  /cpgramApi/min:
+    post:
+      tags:
+        - Ministry Dropdown Web Service
+      summary: Get the ministry dropdown using this service
+      description: This api is used to get the ministry dropdown
+      operationId: cpgramApi/min
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-AST1486560987759
+                lat:
+                  type: string
+                  description: latitude
+                  example: null
+                lang:
+                  type: string
+                  description: lang
+                  example: en                
+                lon:
+                  type: string
+                  description: longitude
+                  example: null
+                lac:
+                  type: string
+                  description: lac
+                  example: null
+                usag:
+                  type: string
+                  description: usag
+                  example: null                  
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 62
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1                   
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME               
+                userid:
+                  type: string
+                  description: userid
+                  example: "4006891151"               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 555
+                did:
+                  type: string
+                  description: did
+                  example: "https://web.umang.gov.in/cpgrams/api/deptt/cpgrams/?redirectUrl=cpgramLogin/lodgeGrievance?GLOBAL_SERVICE_ID=555"  
+                type:
+                  type: string
+                  description: type
+                  example: MIN                  
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "62"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "555"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: SU0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success    
+                  pd:
+                    type: object
+                    description: ministry list object
+                    properties:                  
+                      message:
+                        type: string
+                        description: message
+                        example: null 
+                      ministrylist:
+                        type: array
+                        description: ministry list object item                          
+                        items:  
+                          type: object
+                          properties:                            
+                            org_code:                     
+                              type: string
+                              description: org_code
+                              example: CBODT
+                            org_name:
+                              type: string
+                              description: org_name
+                              example: Central Board of Direct Taxes (Income Tax)
+  /cpgramApi/notif:
+    post:
+      tags:
+        - Notification Web Service
+      summary: Notification is obtained using this service
+      description: This api is used for notification
+      operationId: cpgramApi/notif
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-AST1486560987759
+                lat:
+                  type: string
+                  description: latitude
+                  example: null
+                lang:
+                  type: string
+                  description: lang
+                  example: en                
+                lon:
+                  type: string
+                  description: longitude
+                  example: null
+                lac:
+                  type: string
+                  description: lac
+                  example: null
+                usag:
+                  type: string
+                  description: usag
+                  example: null                  
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 62
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1                   
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME                              
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 557
+                did:
+                  type: string
+                  description: did
+                  example: "https://web.umang.gov.in/cpgrams/api/deptt/cpgrams/?redirectUrl=newUser?GLOBAL_SERVICE_ID=557"                  
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "62"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "557"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: NF0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: null
+  /cpgramApi/verifyotp:
+    post:
+      tags:
+        - Verify OTP Web Service
+      summary: Verify the otp using this service
+      description: This api is used to verify the otp
+      operationId: cpgramApi/verifyotp
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-AST1486560987759
+                lat:
+                  type: string
+                  description: latitude
+                  example: null
+                lang:
+                  type: string
+                  description: lang
+                  example: en                
+                lon:
+                  type: string
+                  description: longitude
+                  example: null
+                lac:
+                  type: string
+                  description: lac
+                  example: null
+                usag:
+                  type: string
+                  description: usag
+                  example: null                  
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 62
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1                   
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME               
+                userid:
+                  type: string
+                  description: userid
+                  example: "8669126828"               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 557
+                did:
+                  type: integer
+                  description: did
+                  example: "https://web.umang.gov.in/cpgrams/api/deptt/cpgrams/?redirectUrl=newUser?GLOBAL_SERVICE_ID=557"                 
+                email:
+                  type: string
+                  description: email
+                  example: prasadnandu111@gmail.com
+                password:
+                  type: string
+                  description: password
+                  example: ashi1234567
+                confirmpassword:
+                  type: string
+                  description: confirmpassword
+                  example: ashi1234567
+                countrycode:
+                  type: string
+                  description: countrycode
+                  example: 001    
+                pin:
+                  type: string
+                  description: pin
+                  example: 560016
+                name:
+                  type: string
+                  description: name
+                  example: sname
+                gender:
+                  type: string
+                  description: gender
+                  example: Ma
+                statecode:
+                  type: string
+                  description: statecode
+                  example: KN
+                districtcode:
+                  type: string
+                  description: districtcode
+                  example: 533  
+                add1:
+                  type: string
+                  description: add1
+                  example: sid nilaya 
+                add2:
+                  type: string
+                  description: add2
+                  example: null 
+                add3:
+                  type: string
+                  description: add3
+                  example: null                 
+                otp:
+                  type: string
+                  description: otp
+                  example: 248179                   
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "62"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "557"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: SU0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success    
+                  pd:
+                    type: object
+                    description: otp verify object
+                    properties:
+                      Message:
+                        type: string
+                        description: message
+                        example: "OTP Verified "                        
+components:
+  securitySchemes:
+    x-api-key:
+      type: apiKey
+      name: x-api-key
+      in: header

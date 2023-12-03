@@ -1,0 +1,91 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Bevarages Api",
+    "version": "1.0.0",
+    "description": "Bevarages-Api comes under mahiti-kanajadepartment which get details of ksbcl based on lgdcode and supplier.\n"
+  },
+  "servers": [
+
+    {
+      "url": "https://miapp.ksbcl.com/KSBCLAPI/api/Depot"
+    },
+    {
+      "url": "https://miapp.ksbcl.com/KSBCLAPI/api/Supplier"
+    }
+  ],
+  "paths": {
+    "/KSBCLAPI/api/Depot": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Operation Successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "kdistname": "ಬೆಂಗಳೂರು ನಗರ",
+                    "kdptname": "ಕೇಂದ್ರ ಕಛೇರಿ",
+                    "kaddress": "ಕೇಂದ್ರ ಕಛೇರಿಗೆ: 4ನೇ ಮಹಡಿ, ಟಿಟಿಎಂಸಿ “ಎ” ಬ್ಲಾಕ್, ಬಿಎಂಟಿಸಿ, ಕೆ.ಹೆಚ್ ರಸ್ತೆ, ಶಾಂತಿನಗರ, ಬೆಂಗಳೂರು-560027",
+                    "kcontact": "ಬಿ.ರಾಧಾಕೃಷ್ಣ",
+                    "edistname": "BENGALURU URBAN",
+                    "edptname": "HEAD OFFICE",
+                    "eaddress": "KARNATAKA STATE BEVERAGES CORPORATION LIMITED ,4th floor, TTMC A block, BMTC building, KH Road, Shantinagar, Bengaluru - 560 027",
+                    "econtact": "B RADHAKRISHNA",
+                    "email": "homail@ksbcl.com",
+                    "contno": 9448994030
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "To get details of ksbcl based on lgdcode.",
+        "operationId": "GET_mahiti-kanaja-beverages-lgdcode",
+        "parameters": [
+          {
+            "name": "lgdcode",
+            "in": "query",
+            "required": true,
+            "description": "lgdcode is used for fetching details for ksbcl based on lgdcode.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/KSBCLAPI/api/Supplier": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Operation Successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "suppname": "Amrut Distilleries Pvt Ltd (0009)",
+                    "suppadd": "Unit   2, Survey No  49, Kambipura,  Kambipura, Bangalore, BENGALURU 560027"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "To get details of ksbcl based on supplier.",
+        "operationId": "GET_mahiti-kanaja-beverages-supplier"
+      }
+    }
+  },
+  "components": {
+    "schemas": {},
+    "responses": {},
+    "parameters": {},
+    "examples": {},
+    "requestBodies": {},
+    "headers": {},
+    "securitySchemes": {},
+    "links": {},
+    "callbacks": {}
+  }
+}

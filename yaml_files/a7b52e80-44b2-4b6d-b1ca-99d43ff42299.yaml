@@ -1,0 +1,63 @@
+info:
+  title: LGD
+  version: 1.0.0
+  x-ibm-name: operationdetailsbytransactionid
+  description: To fetch all the Operation Details of a particular transaction done
+    in Local Government directory (LGD) taking Transaction Id as input
+    parameter.
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/nic/lgd
+paths:
+  /OperationDetails/{transactionid}:
+    post:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: success
+      parameters:
+        - in: path
+          name: transactionid
+          schema:
+            type: number
+          required: true
+      tags:
+        - Operationdetailsbytransactionid
+openapi: 3.0.0
+servers:
+  - url: https://delhigw.napix.gov.in/nic/lgd
+    description: LGD Vanity Endpoint
+security:
+  - clientID: []
+    clientSecret: []
+components:
+  schemas:
+    tid:
+      type: number
+  securitySchemes:
+    clientID:
+      in: header
+      name: X-IBM-Client-Id
+      type: apiKey
+      x-key-type: client_id
+    clientSecret:
+      in: header
+      name: X-IBM-Client-Secret
+      type: apiKey
+      x-key-type: client_secret
+x-ibm-endpoints:
+  - url: https://delhigw.napix.gov.in/nic/lgd
+    type:
+      - production
+      - development
+    description: LGD Vanity Endpoint
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  enforced: true
+  testable: true

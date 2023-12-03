@@ -1,0 +1,137 @@
+host: delhigw.napix.gov.in
+info:
+  title: Dedupe
+  version: "1.0"
+  x-ibm-name: preprocsequencing
+  description: Preproc Sequencing
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/nic/dedupe
+tags:
+  - name: transaction
+    description: transaction
+paths:
+  /api/transaction/getPreprocSequencing:
+    post:
+      tags:
+        - Preprocsequencing
+      summary: PreprocSequencing
+      consumes:
+        - application/json
+      produces:
+        - "*/*"
+      responses:
+        "200":
+          schema:
+            type: array
+            items:
+              type: object
+              title: PreprocSequencing
+              properties:
+                id:
+                  type: integer
+                  format: int32
+                seq_id:
+                  type: integer
+                  format: int32
+                column_id:
+                  type: integer
+                  format: int32
+                preproc_id:
+                  type: integer
+                  format: int32
+                column_name:
+                  type: string
+                preproc_desc:
+                  type: string
+                preproc_type:
+                  type: string
+                replace_with:
+                  type: string
+                is_predefined:
+                  type: integer
+                  format: int32
+                preproc_criteria:
+                  type: string
+          description: OK
+        "201":
+          description: Created
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+      parameters:
+        - in: header
+          name: column_id
+          type: integer
+          format: int32
+          required: true
+          description: column_id
+      operationId: PreprocSequencingUsingPOST
+schemes:
+  - https
+swagger: "2.0"
+basePath: /nic/dedupe
+security:
+  - Oauth:
+      - napix
+definitions:
+  PreprocSequencing:
+    type: object
+    title: PreprocSequencing
+    properties:
+      id:
+        type: integer
+        format: int32
+      seq_id:
+        type: integer
+        format: int32
+      column_id:
+        type: integer
+        format: int32
+      preproc_id:
+        type: integer
+        format: int32
+      column_name:
+        type: string
+      preproc_desc:
+        type: string
+      preproc_type:
+        type: string
+      replace_with:
+        type: string
+      is_predefined:
+        type: integer
+        format: int32
+      preproc_criteria:
+        type: string
+securityDefinitions:
+  Oauth:
+    flow: application
+    type: oauth2
+    scopes:
+      napix: ""
+    tokenUrl: //oauth2/token
+    x-ibm-oauth-provider: nic-oauth-provider-application-grant-type
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  servers:
+    - url: https://delhigw.napix.gov.in/nic/dedupe
+      type:
+        - production
+        - development
+  enforced: true
+  testable: true
+  oauth-servers:
+    Oauth:
+      tokenUrls:
+        - https://degateway.napix.gov.in:443/nic/dedupe//oauth2/token
+      refreshUrls: []
+      authorizationUrls: []
+  application-authentication:
+    certificate: false

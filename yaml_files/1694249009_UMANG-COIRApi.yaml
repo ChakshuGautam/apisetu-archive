@@ -1,0 +1,501 @@
+---
+openapi: 3.0.0
+info:
+  title: Coir Vikas Yojana (CVY)
+  description: Coir Vikas Yojana (CVY) is a scheme initiated by Coir Board that functions under the Ministry of Micro, Small, and Medium Enterprises (MSME). It has been rolled out with the goal of facilitating the development of export as well as domestic markets.Coir Vikas Yojana also aims at providing effective training and skill development, entrepreneurship/employment creation and development, trade-related services, improved raw material usage, welfare activities related to coir workers, and empowerment of women. <i>[Updated on 25th August 2023]</i>
+  termsOfService: https://web.umang.gov.in/uaw/ts/v1/en/index.htm
+  contact:
+    name: Provided by - UMANG
+    url: https://web.umang.gov.in
+  version: 1.0.0
+servers:
+  - url: https://apigw.umangapp.in
+    description: Production Server
+    
+security: 
+  - x-api-key: []
+
+paths:
+  /coirApi/ws1/mcy:
+    post:
+      tags:
+        - Mahila Coir Yojna Web Service
+      summary: Get the mahila coir yojna status using this service
+      description: This api is used to get the status of mahila coir yojna
+      operationId: coirApi/ws1/mcy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: W-23456789
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 12.972
+                lon:
+                  type: string
+                  description: longitude
+                  example: 77.595
+                lac:
+                  type: string
+                  description: lac
+                  example: 90  
+                usag:
+                  type: string
+                  description: usag
+                  example: 90                 
+                usrid:
+                  type: string
+                  description: user id
+                  example: 10001201
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1218
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: andorid                       
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 199
+                did:
+                  type: string
+                  description: did
+                  example: 123234
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 123234                  
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0    
+                applicationNumber:
+                  type: string
+                  description: applicationNumber
+                  example: 100007
+                schemeCode:
+                  type: string
+                  description: schemeCode
+                  example: MCY
+                beneficiaryId:
+                  type: string
+                  description: beneficiaryId
+                  example: 107516                
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "198"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1171"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: OK
+                  pd:
+                            type: array
+                            description: mcy object item
+                            items:
+                              type: object
+                              properties:
+                                appln_status:
+                                  type: string
+                                  description: appln_status
+                                  example: Claim Sanctioned   
+  /coirApi/ws1/emp:
+    post:
+      tags:
+        - Employee Web Service
+      summary: Get the employee status using this service
+      description: This api is used to get the employee status
+      operationId: coirApi/ws1/emp
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: W-23456789
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 12.972
+                lon:
+                  type: string
+                  description: longitude
+                  example: 77.595
+                lac:
+                  type: string
+                  description: lac
+                  example: 90  
+                usag:
+                  type: string
+                  description: usag
+                  example: 90                 
+                usrid:
+                  type: string
+                  description: user id
+                  example: 10001201
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1218
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: andorid                       
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 199
+                did:
+                  type: string
+                  description: did
+                  example: 123234
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 123234                
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0    
+                applicationNumber:
+                  type: string
+                  description: applicationNumber
+                  example: 1002
+                schemeCode:
+                  type: string
+                  description: schemeCode
+                  example: EMP
+                beneficiaryId:
+                  type: string
+                  description: beneficiaryId
+                  example: 100000                
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "198"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1171"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: OK
+                  pd:
+                            type: array
+                            description: emp object item
+                            items:
+                              type: object
+                              properties:
+                                appln_status:
+                                  type: string
+                                  description: appln_status
+                                  example: Claim Submitted
+  /coirApi/ws1/awd:
+    post:
+      tags:
+        - Award Status Web Service
+      summary: Get the award status using this service
+      description: This api is used to get the award status
+      operationId: coirApi/ws1/awd
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: W-23456789
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 12.972
+                lon:
+                  type: string
+                  description: longitude
+                  example: 77.595
+                lac:
+                  type: string
+                  description: lac
+                  example: 90  
+                usag:
+                  type: string
+                  description: usag
+                  example: 90                 
+                usrid:
+                  type: string
+                  description: user id
+                  example: 10001201
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1218
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: andorid                       
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 199
+                did:
+                  type: string
+                  description: did
+                  example: 123234
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 123234                  
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0    
+                applicationNumber:
+                  type: string
+                  description: applicationNumber
+                  example: 1098
+                schemeCode:
+                  type: string
+                  description: schemeCode
+                  example: AWD
+                beneficiaryId:
+                  type: string
+                  description: beneficiaryId
+                  example: 100000                
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "198"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1171"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: OK
+                  pd:
+                            type: array
+                            description: award object array
+                            items:
+                              type: object
+                              properties:
+                                appln_status:
+                                  type: string
+                                  description: appln_status
+                                  example: Application Verified                                  
+components:
+  securitySchemes:
+    x-api-key:
+      type: apiKey
+      name: x-api-key
+      in: header

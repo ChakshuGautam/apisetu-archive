@@ -1,0 +1,82 @@
+host: wb-gateway.napix.gov.in
+info:
+  title: Food & Supplies Department
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/wb/food-supplies
+  version: 1.0.0
+  x-ibm-name: khadyasathi-info-via-aadhar
+  description: API for fetching Khadyasathi information by Aadhar number. This API
+    is JWT  based. It can cater single as well as bulk data rendering.
+paths:
+  /:
+    post:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      parameters:
+        - in: header
+          name: Authorization
+          type: string
+          required: true
+        - in: body
+          name: body
+          schema:
+            type: object
+            title: body
+            properties:
+              type:
+                type: integer
+                title: type
+              param:
+                type: object
+                title: param
+                properties:
+                  txn:
+                    type: string
+                    title: txn
+                  PData:
+                    type: string
+                    title: PData
+              clientId:
+                type: string
+                title: clientId
+          required: true
+      tags:
+        - Khadyasathi info via aadhar
+schemes:
+  - https
+swagger: "2.0"
+basePath: /wb/food-supplies/khadyasathi-info-via-aadhar
+security:
+  - clientID: []
+    clientSecret: []
+securityDefinitions:
+  clientID:
+    in: header
+    name: clientID
+    type: apiKey
+    x-key-type: client_id
+  clientSecret:
+    in: header
+    name: clientSecret
+    type: apiKey
+    x-key-type: client_secret
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  servers:
+    - url: https://wb-gateway.napix.gov.in/wb/food-supplies/khadyasathi-info-via-aadhar
+      type:
+        - production
+        - development
+      description: ""
+  enforced: true
+  testable: true
+  application-authentication: {}

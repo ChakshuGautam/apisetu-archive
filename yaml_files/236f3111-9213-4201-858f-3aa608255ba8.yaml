@@ -1,0 +1,60 @@
+info:
+  title: NAPIX
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/napix/napix
+  version: 1.0.0
+  x-ibm-name: published-apis
+  description: This API is for fetching the details of the external APIs which are
+    published and managed on NAPIX platform
+paths:
+  /:
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ok
+      parameters:
+        - in: query
+          name: type
+          schema:
+            type: string
+            title: api type
+            description: API Type
+          example: external
+          required: true
+          description: Type of the API
+      tags:
+        - Published apis
+openapi: 3.0.0
+servers:
+  - url: https://degateway.napix.gov.in:443/napix/napix/apis
+security:
+  - ClinetID: []
+    ClientSecret: []
+components:
+  securitySchemes:
+    ClinetID:
+      in: header
+      name: client-id
+      type: apiKey
+      x-key-type: client_id
+      description: Client ID of the consuming application
+    ClientSecret:
+      in: header
+      name: client-secret
+      type: apiKey
+      x-key-type: client_secret
+      description: Client Secret of the consuming application
+x-ibm-endpoints:
+  - url: https://degateway.napix.gov.in:443/napix/napix/apis
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  enforced: true
+  testable: true

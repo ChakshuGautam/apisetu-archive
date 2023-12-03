@@ -1,0 +1,66 @@
+host: wbgw.napix.gov.in
+info:
+  title: Backward Class Welfare Department, West Bengal
+  version: 1.0.0
+  x-ibm-name: app-stat
+  description: The API is a data driven and fetches the Application status from
+    the Caste Certificate Portal of BCWD, Government of West Bengal. The API
+    takes application number as input and returns with status ,AppNo , TicktNo,
+    Application  Status, UpdatedOn as present in the portal in the form of a
+    JSON response. It is published for consumption of the stakeholders as
+    approved by the department.
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/wb/bcwd
+paths:
+  /appldetails:
+    post:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      parameters:
+        - in: body
+          name: ApplNo
+          schema:
+            type: string
+            title: ApplNo
+            maxLength: 50
+            minLength: 6
+          required: true
+      tags:
+        - App stat
+schemes:
+  - https
+swagger: "2.0"
+basePath: /wb/bcwd/bsk-api
+security:
+  - client-id: []
+    client-secret: []
+securityDefinitions:
+  client-id:
+    in: header
+    name: ""
+    type: apiKey
+    x-key-type: client_id
+  client-secret:
+    in: header
+    name: client-secret
+    type: apiKey
+    x-key-type: client_secret
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  servers:
+    - url: https://wbgw.napix.gov.in/wb/bcwd/bsk-api
+      type:
+        - production
+        - development
+  enforced: true
+  testable: true
+  application-authentication: {}

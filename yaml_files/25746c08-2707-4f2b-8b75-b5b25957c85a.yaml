@@ -1,0 +1,94 @@
+host: bgw.napix.gov.in
+info:
+  title: API Management for Tripura
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/nic/trapi
+  version: 1.0.0
+  x-ibm-name: revenue_torsapi
+  description: This API may be used to verify any Document Registered using the
+    TRIPURA ONLINE REGISTRATION SYSTEM (TORS)
+    (https://registration.tripura.gov.in). The API provides data about the
+    parties, the property, the deed's execution date, the fees, and more.
+paths:
+  /tors:
+    get:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      parameters:
+        - in: query
+          name: deed_no
+          type: number
+          required: true
+        - in: query
+          name: deed_yr
+          type: number
+          required: true
+          allowEmptyValue: false
+        - in: query
+          name: book
+          type: string
+          required: true
+        - in: query
+          name: sro_dist_code
+          type: number
+          required: true
+        - in: query
+          name: sro_office_code
+          type: number
+          required: true
+      tags:
+        - Revenue torsapi
+schemes:
+  - https
+swagger: "2.0"
+basePath: /nic/trapi/torsapi
+security:
+  - Client ID: []
+    Client Key: []
+    Oauth_Token:
+      - napix
+securityDefinitions:
+  Client ID:
+    in: header
+    name: NIC-Client-ID
+    type: apiKey
+    x-key-type: client_id
+  Client Key:
+    in: header
+    name: NIC-Client-Key
+    type: apiKey
+    x-key-type: client_secret
+  Oauth_Token:
+    flow: application
+    type: oauth2
+    scopes:
+      napix: NAPIX Scope
+    tokenUrl: //oauth2/token
+    x-ibm-oauth-provider: nic-oauth-provider-application-grant-type
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  servers:
+    - url: https://bgw.napix.gov.in/nic/trapi/torsapi
+      type:
+        - production
+        - development
+      description: Bhubaneswar External Gateway
+  enforced: true
+  testable: true
+  oauth-servers:
+    Oauth_Token:
+      tokenUrls:
+        - https://begateway.napix.gov.in:443/nic/trapi//oauth2/token
+      refreshUrls: []
+      authorizationUrls: []
+  application-authentication:
+    certificate: false

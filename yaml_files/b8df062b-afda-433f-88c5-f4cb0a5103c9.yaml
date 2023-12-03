@@ -1,0 +1,77 @@
+info:
+  title: Department Of Higher Education and School Education Department, Govt of
+    West Bengal
+  version: 1.0.0
+  x-ibm-name: wbscc-dashboard-service
+  description: WBSCC DASHBOARD SERVICE provides DASHBOARD DATA for different Stake
+    Level which will be used by WBSCC Mobile APP designed by WTL.
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/wb/education
+paths:
+  /dashboard:
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: success
+        "401":
+          description: NOT AUTHORIZED
+        "404":
+          description: DATA NOT FOUND
+      parameters:
+        - in: query
+          name: stake_id
+          schema:
+            type: number
+            title: stake_id
+            readOnly: true
+            description: Stake Level
+          example: stake_id=99
+          required: true
+          description: Stake Level
+        - in: query
+          name: user_id
+          schema:
+            type: string
+            title: user_id
+            readOnly: true
+            description: User ID
+          example: user_id=WBSCC1234567890
+          required: true
+          description: User ID
+      tags:
+        - Wbscc dashboard service
+openapi: 3.0.0
+servers:
+  - url: https://wbgw.napix.gov.in/wb/education/wbscc
+security:
+  - clientID: []
+    clientSecret: []
+components:
+  securitySchemes:
+    clientID:
+      in: header
+      name: X-NIC-Client-Id
+      type: apiKey
+      x-key-type: client_id
+    clientSecret:
+      in: header
+      name: X-NIC-Client-Secret
+      type: apiKey
+      x-key-type: client_secret
+x-ibm-endpoints:
+  - url: https://wbgw.napix.gov.in/wb/education/wbscc
+    type:
+      - production
+      - development
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  enforced: true
+  testable: true

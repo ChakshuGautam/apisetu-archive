@@ -1,0 +1,681 @@
+openapi: 3.0.0
+paths:
+  /srv/v3/public/schemes:
+    get:
+      operationId: published-schemes-details
+      summary: Get Published Schemes Details
+      description: This API is used to get details of a scheme based on its slug.
+      parameters:
+        
+        - name: lang
+          required: false
+          in: query
+          example:  Get schemes data language wise - en | hi
+          description: ""
+          schema:
+            type: string
+        - name: slug
+          required: true
+          in: query
+          example: apy
+          description: Get scheme details by scheme slug
+          schema:
+            type: string
+      responses:
+        "200":
+          description: It return published scheme content detail.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PublishedSchemeDetailsDto"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequestSchema"
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ForbiddenSchema"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerErrorSchema"
+      tags:
+        - Published Scheme Details
+  
+  /srv/v3/public/schemes/{schemeId}/documents:
+    get:
+      operationId: public-doc-details
+      summary: Get Published Scheme document
+      description: This API is used to get documents required by a scheme based on its id
+      parameters:
+        
+        - name: lang
+          required: false
+          in: query
+          example:  Get schemes documents language wise - en | hi
+          description: ""
+          schema:
+            type: string
+        - name: schemeId
+          required: true
+          in: path
+          description: Enter scheme Id
+          example: 646f0145240424124da45c85
+          schema:
+            type: string
+      responses:
+        "200":
+          description: It returns published scheme document details
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DocumentDto"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequestSchema"
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ForbiddenSchema"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerErrorSchema"
+      tags:
+        - Get Scheme Documents Details
+        
+  /srv/v3/public/schemes/{schemeId}/faqs:
+    get:
+      operationId: public-faq-list
+      summary: Get Published Scheme FAQs
+      description: This API is used to get FAQs for a scheme based on its id
+      parameters:
+        
+        - name: lang
+          required: false
+          in: query
+          example: Get schemes FAQs language wise - en | hi
+          description: ""
+          schema:
+            type: string
+        - name: schemeId
+          required: true
+          in: path
+          description: Enter Scheme Id
+          example: 646f0145240424124da45c85
+          schema:
+            type: string
+      responses:
+        "200":
+          description: It returns published FAQs details
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SchemeFAQDto"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequestSchema"
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ForbiddenSchema"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerErrorSchema"
+      tags:
+        - Get Scheme FAQ's 
+
+info:
+  title: Get Schemes
+  description: >-2
+     This document provides detailed description of myScheme scheme detail APIs. These APIs can be used to get details of a scheme based on slug or id provided. 
+        
+     # Authentication
+     The API comply to  API Setu authentication. <a href="https://partners.apisetu.gov.in/directory/api/apisetu/1692012237_API-Authentication">Click here</a> for more details.  
+     
+     <i>[Updated on 15th August 2023]</i>
+  
+  version: "1.0"
+  contact:
+    name: myScheme Team
+    url: https://www.myscheme.gov.in
+    email: support-myscheme@digitalindia.gov.in
+  termsOfService: https://www.myscheme.gov.in/terms-conditions
+  license:
+    name: Privacy Policy
+    url: https://www.myscheme.gov.in/privacy-policy
+tags: []
+servers:
+  - url: https://apisetu.gov.in/dic/myscheme/
+    description: Production Server 
+    variables: {}
+security: 
+  - clientId: []
+  - apiKey: []
+components:
+  securitySchemes:
+    clientId:
+      type: apiKey
+      in: header
+      name: X-APISETU-CLIENTID
+    apiKey:
+      type: apiKey
+      name: X-APISETU-APIKEY
+      in: header 
+  schemas:
+    BadRequestSchema:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Failure Status
+          example: Failure
+        statusCode:
+          type: string
+          description: Http Status Code
+          example: 400
+        data:
+          type: object
+          description: Blank Object
+          example: {}
+        errorDescription:
+          type: string
+          description: Error Description
+          example: This is bad request
+    ForbiddenSchema:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Failure Status
+          example: Failure
+        statusCode:
+          type: string
+          description: Http Status Code
+          example: 403
+        data:
+          type: object
+          description: Blank Object
+          example: {}
+        errorDescription:
+          type: string
+          description: Error Description
+          example: Forbidden
+    InternalServerErrorSchema:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Failure Status
+          example: Failure
+        statusCode:
+          type: string
+          description: Http Status Code
+          example: 500
+        data:
+          type: object
+          description: Blank Object
+          example: {}
+        errorDescription:
+          type: string
+          description: Error Description
+          example: Internal server error
+    Scheme:
+      type: object
+      properties:
+        schemeId:
+          type: string
+          example: 628620db006d968be8d60866
+          description: Scheme Id
+        en:
+          type: object
+          example:
+            basicDetails:
+              schemeOpenDate: "2014-07-18"
+              schemeCloseDate: "2025-07-18"
+              state:
+                value: 20
+                label: Jharkhand
+              nodalMinistryName: 
+                value: 712
+                label: Ministry Of Social Justice and Empowerment
+              nodalDepartmentName:
+                value: 2000012
+                label: Labour, Employment, Training and Skill Department
+              otherMinistryName: 
+                value: 488
+                label: Ministry of Education
+              otherDepartmentNames:
+                - value: 1608
+                  label: Department Of Higher Education
+              targetBeneficiaries:
+                - value: individual
+                  label: Individual
+              schemeSubCategory:
+                - value: Pension
+                  label: Pension
+              dbtScheme: false
+              implementingAgency: Jharkhand Building And Other Construction Worker Welfare
+                Board (JBOCWW Board)
+              tags:
+                - Pension
+                - Construction Worker
+                - Financial Assistance
+              schemeName: Pension Yojana (JBOCWWB)
+              schemeShortTitle: PY-JBOCWWB
+              level:
+                value: state
+                label: State
+              schemeCategory:
+                - value: 628ce7f6d6d1a3bde46852d0
+                  label: Banking,Financial Services and Insurance
+            schemeContent:
+              references:
+                - title: Guidelines
+                  url: https://shramadhan.jharkhand.gov.in/schemmeDetailsShow.action
+                - title: Application Process
+                  url: https://shramadhan.jharkhand.gov.in/ftp/WebAdmin/documents/BOC_SCHEME_BENEFIT_APPLICANT_SIDE.pdf
+                - title: District-Wise Contact Details Of Labour Offices
+                  url: https://shramadhan.jharkhand.gov.in/ftp/WebAdmin/documents/labourcontactdetails.pdf
+              schemeImageUrl: ""
+              briefDescription: '"Pension Yojana (JBOCWWB)" is a scheme by the Department of
+                Labour, Employment, Training & Skill Development Govt of
+                Jharkhand. The scheme provides pension of ₹ 1,000/- per month to
+                those who have contributed to the JBOCWWB for at least 30
+                years.'
+              detailedDescription:
+                - type: align_justify
+                  children:
+                    - type: paragraph
+                      children:
+                        - text: '"Pension Yojana (JBOCWWB)" is a scheme by the Department of Labour,
+                            Employment, Training & Skill Development Govt of
+                            Jharkhand. This is a 100% State Sponsored Scheme.
+                            Only the residents/domicile of the state of
+                            Jharkhand can apply to this scheme. Applications for
+                            this scheme are accepted online through the official
+                            website of the department. The scheme provides
+                            pension of ₹ 1,000/- per month to those who have
+                            contributed to the Jharkhand Building and Other
+                            Construction Worker Welfare Board (JBOCWW Board) for
+                            at least 30 years.'
+              benefitTypes:
+                id: 1
+                value: cash
+                label: Cash
+              benefits:
+                - type: align_justify
+                  children:
+                    - type: paragraph
+                      children:
+                        - text: The scheme provides pension of ₹ 1,000/- per month.
+              detailedDescription_md: >
+                &amp;quot;Pension Yojana (JBOCWWB)&amp;quot; is a scheme by the
+                Department of Labour, Employment, Training &amp;amp; Skill
+                Development Govt of Jharkhand. This is a 100% State Sponsored
+                Scheme. Only the residents/domicile of the state of Jharkhand
+                can apply to this scheme. Applications for this scheme are
+                accepted online through the official website of the department.
+                The scheme provides pension of ₹ 1,000/- per month to those who
+                have contributed to the Jharkhand Building and Other
+                Construction Worker Welfare Board (JBOCWW Board) for at least 30
+                years.
+            applicationProcess:
+              - mode: Online
+                url: https://shramadhan.jharkhand.gov.in/home
+                process:
+                  - type: block_quote
+                    children:
+                      - text: "Registration:"
+                        bold: true
+                  - type: paragraph
+                    children:
+                      - text: "Step 1: "
+                        bold: true
+                      - text: "Visit the "
+                      - type: link
+                        link: https://shramadhan.jharkhand.gov.in/home
+                        children:
+                          - text: Official website
+                      - text: " of Comprehensive Labour Management System for Factory Establishment /
+                          Worker Registration / Inspection / Management &
+                          Grievance Redressal; Department of Labour, Employment,
+                          Training & Skill Development; Govt. of Jharkhand."
+                  - type: paragraph
+                    children:
+                      - text: "Step 2:"
+                        bold: true
+                      - text: ' At the top right corner, click "Login". On the pop-up screen, click
+                          "Register Here".'
+                  - type: paragraph
+                    children:
+                      - text: "Step 3:"
+                        bold: true
+                      - text: ' On the next page, a Registration Form will appear. Provide the following
+                          mandatory details: First Name, Last Name, Email, and
+                          Mobile. Create a Username and a Password. Confirm the
+                          Password. Fill in the Captcha Code. Click "Register".
+                          Your Mobile Number and Email ID will be verified via
+                          One Time Password (OTP). Upon successful verification
+                          of the OTP, your registration will be successful. The
+                          Login Credentials will be sent to your registered
+                          Email ID and Mobile Number.'
+                  - type: paragraph
+                    children:
+                      - text: ""
+                  - type: block_quote
+                    children:
+                      - text: "Application:"
+                        bold: true
+                  - type: paragraph
+                    children:
+                      - text: "Step 1:"
+                        bold: true
+                      - text: " Visit the "
+                      - type: link
+                        link: https://shramadhan.jharkhand.gov.in/home
+                        children:
+                          - text: Official website
+                      - text: " of Comprehensive Labour Management System for Factory Establishment /
+                          Worker Registration / Inspection / Management &
+                          Grievance Redressal; Department of Labour, Employment,
+                          Training & Skill Development; Govt. of Jharkhand."
+                  - type: paragraph
+                    children:
+                      - text: "Step 2:"
+                        bold: true
+                      - text: ' At the top right corner, click "Login". Fill in your Username and
+                          Password. Click "Login".'
+                  - type: paragraph
+                    children:
+                      - text: "Step 3:"
+                        bold: true
+                      - text: ' In the ribbon, click "Services > BOC Scheme Benefit > Application Form.
+                          On the next page, the "Scheme Benefit Form"
+                          (Application Form) will open. '
+                  - type: paragraph
+                    children:
+                      - text: "a)   In the \"Basic Details\" section, fill in the mandatory fields
+                          (fields ending with a red asterisk mark): BOC
+                          Registration Number, Applicant's Name, Applicant's
+                          Father's Name / Husband's Name, Applicant's Date of
+                          Birth, Applicant's Aadhaar Number, District, Sex."
+                  - type: paragraph
+                    children:
+                      - text: b)   In the "Select Scheme" section, select the scheme from the list that
+                          you wish to apply for.
+                  - type: paragraph
+                    children:
+                      - text: c)   In the "Upload Section", upload the mandatory documents (those ending
+                          with a red asterisk mark) in the specified file size
+                          and file type.
+                  - type: paragraph
+                    children:
+                      - text: "Step 4:"
+                        bold: true
+                      - text: ' Finally, click on "Submit Request" to submit your application. On the
+                          next page, your "Application ID" will be displayed,
+                          confirming the successful submission of the
+                          application. Please note down this Application ID for
+                          future reference. The Application ID will also be sent
+                          to your registered Email ID.'
+                  - type: paragraph
+                    children:
+                      - text: ""
+                  - type: block_quote
+                    children:
+                      - text: "Check Application Status: "
+                        bold: true
+                  - type: paragraph
+                    children:
+                      - text: "Step 1:"
+                        bold: true
+                      - text: " Once submitted, the application goes for 3-level approval: Clerk >
+                          Labour Superintendent > DLC."
+                  - type: paragraph
+                    children:
+                      - text: "Step 2:"
+                        bold: true
+                      - text: " Go to Services > BOC Scheme Benefit > Application Status."
+                  - type: paragraph
+                    children:
+                      - text: "Step 3:"
+                        bold: true
+                      - text: ' On the next page, fill in your Application ID, and click "Search". The
+                          status of your application will be displayed in a
+                          tabular format: Application ID, Applicant Name, Scheme
+                          Applied, Application Status, Remarks, Date, and Time.
+                          '
+                  - type: paragraph
+                    children:
+                      - text: "Step 4:"
+                        bold: true
+                      - text: ' Once the DLC approves the application, the "Application Status" changes
+                          to "Approved". The Applicant can take print of this
+                          page by clicking “PRINT” and submit the same at the
+                          Labour Office to avail of the scheme benefit.'
+            schemeDefinitions: []
+            eligibilityCriteria:
+              eligibilityDescription_md: >+
+                
+                1. The applicant should be a domicile in the state of Jharkhand.
+
+                1. The applicant should have been a Worker registered with the Jharkhand Building and Other Construction Worker Welfare Board (JBOCWW Board).
+
+                1. The applicant should be between 18-60 years of age.
+
+                1. The applicant should be at least 60 years of age in order to receive the pension.
+
+                1. The applicant should have engaged in construction work such as masons, carpenters, electricians, porters, painters, etc.
+
+                1. The registered worker should have made continuous contributions for 30 years. 
+
+              eligibilityDescription:
+                - type: ol_list
+                  children:
+                    - type: list_item
+                      children:
+                        - text: The applicant should be a domicile in the state of Jharkhand.
+                    - type: list_item
+                      children:
+                        - text: The applicant should have been a Worker registered with the Jharkhand
+                            Building and Other Construction Worker Welfare Board
+                            (JBOCWW Board).
+                    - type: list_item
+                      children:
+                        - text: The applicant should be between 18-60 years of age.
+                    - type: list_item
+                      children:
+                        - text: The applicant should be at least 60 years of age in order to receive the
+                            pension.
+                    - type: list_item
+                      children:
+                        - text: The applicant should have engaged in construction work such as masons,
+                            carpenters, electricians, porters, painters, etc.
+                    - type: list_item
+                      children:
+                        - text: "The registered worker should have made continuous contributions for 30
+                            years. "
+          description: Scheme content based on selected language
+        slug:
+          type: string
+          example: apy
+          description: Scheme unique slug
+    PublishedSchemeDetailsDto:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Success Status
+          example: Success
+        statusCode:
+          type: string
+          description: Http Status Code
+          example: 200
+        errorDescription:
+          type: string
+          description: Error Description
+          example: ""
+        error:
+          type: object
+          description: Blank Error Object
+          example: {}
+        data:
+          $ref: "#/components/schemas/Scheme"
+          
+    DOC:
+      type: object
+      properties:
+        en:
+          type: object
+          example:
+            documents_required:
+              - type: ol_list
+                children:
+                  - type: list_item
+                    children:
+                      - text: Proof of Identity (Aadhaar card)
+                  - type: list_item
+                    children:
+                      - text: Ration Card
+                  - type: list_item
+                    children:
+                      - text: Domicile Certificate
+                  - type: list_item
+                    children:
+                      - text: Caste Certificate (for reserved category)
+                  - type: list_item
+                    children:
+                      - text: Passport size Photograph of the applicant
+          description: Documents details
+          
+    DocumentDto:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Success Status
+          example: Success
+        statusCode:
+          type: string
+          description: Http Status Code
+          example: 200
+        errorDescription:
+          type: string
+          description: Error Description
+          example: ""
+        error:
+          type: object
+          description: Blank Error Object
+          example: {}
+        data:
+          $ref: "#/components/schemas/DOC"
+          
+    SchemeFAQ:
+      type: object
+      properties:
+        en:
+          type: object
+          example:
+            faqs:
+              - question: What is the maximum size of the loan under the Swarnima Scheme?
+                answer: Under this scheme, the eligible woman entrepreneur can obtain a term
+                  loan of max. ₹1,00,000/- @ 5% per annum.
+              - question: What is the minimum amount that I am required to invest on my own if
+                  the project cost is under Rs.2 LPA?
+                answer: The beneficiary women is not required to invest any amount of her own on
+                  the projects upto cost of Rs.2,00,000/-.
+              - question: How much will be the interest rate for the loan?
+                answer: |-
+                  The rate of interest would be as follows - 
+                  NBCFDC to SCA: 2% per annum
+                  SCA to Beneficiary: 5% per annum
+              - question: By when am I expected to repay the loan?
+                answer: Loan is to be repaid in quarterly instalments with maximum 8 years
+                  (including the moratorium period of six months on the recovery
+                  of principal).
+              - question: I seek to know more about the Pattern of Financing?
+                answer: The loan will be provided up to 95% and balance 5% provided by the State
+                  Channelizing Agencies (SCAs) or Beneficiary contribution. The
+                  utilization period is 4 months from the date of disbursement
+                  of the loan.
+              - question: Can women entrepreneurs from GENERAL category also apply to this
+                  scheme?
+                answer: Yes, the scheme is open to women entrepreneurs from all the categories.
+              - question: I am a 21 years old female entrepreneur. I wish to know if there is an
+                  age-criteria to be eligible to apply to this scheme?
+                answer: Yes, the applicant should be atleast 18 years in age in order to be
+                  eligible to apply to this scheme. You are therefore eligible
+                  to apply.
+              - question: Can a male entrepreneur from OBC category also apply to this scheme?
+                answer: No, as per the latest guidelines, this scheme is not meant for male
+                  entrepreneurs.
+              - question: Should the project / venture need to be from a specific sector in
+                  order to be eligible for the Swarnima scheme?
+                answer: >-
+                  NBCFDC supports the economically weaker section in developing
+                  self-employment ventures only under the following sectors:
+
+                  Agriculture and Allied Activities.
+
+                  Small Business.
+
+                  Artisan and Traditional Occupation.
+
+                  Technical and Professional Trades/Courses.
+
+                  Transport and Service Sector.
+              - question: Is there a helpline number where I can get answers for my queries reg.
+                  the application process?
+                answer: Yes, the Toll Free Number is 18001023399.
+              - question: What are SCAs?
+                answer: NBCFDC grants financial assistance through State Channelising Agencies
+                  (SCAs). Also, they provide funding through SCAs/ Self Help
+                  Groups (SHGs). The SCAs or Banks will release up to 50% of
+                  total funding to women with annual income up to Rs.1.50 Lakh.
+              - question: How do I know if a field in the application form is mandatory?
+                answer: The mandatory fields have a red asterisk (*) mark at the end.
+          description: FAQS details
+    SchemeFAQDto:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Success Status
+          example: Success
+        statusCode:
+          type: string
+          description: Http Status Code
+          example: 200
+        errorDescription:
+          type: string
+          description: Error Description
+          example: ""
+        error:
+          type: object
+          description: Blank Error Object
+          example: {}
+        data:
+          $ref: "#/components/schemas/SchemeFAQ"

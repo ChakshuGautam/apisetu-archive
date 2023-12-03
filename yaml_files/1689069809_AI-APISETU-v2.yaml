@@ -1,0 +1,253 @@
+openapi: 3.0.1
+info:
+  version: "1.0.0"
+  title: "AI/ML - APIs"
+  description: "APISetu AI ML APIs which includes services like Name Matching, Face Matching, Face Liveness and other real life utility services.<i>[Updated on 9th June 2023]</i>"
+servers:
+  - url: "https://apisetu.gov.in/dic/apisetu"
+    description: Production Server 
+
+security:
+        - clientId: []
+        - apiKey: []
+
+paths:
+  /srv/v1/aiml/face-match:
+    post:
+      summary: "API to detect face match status between two images."
+      description: "Face Match API v1 is designed to give a matching accuracy of approx 60% between two images tested on almost 100 use cases. This is developed using Python modules like OpenCV & Face Recognition."
+      operationId: face-match
+      tags:
+        - AI APIs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FaceMatchRequest"
+      responses:
+        "200":
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  matchAccuracyRate:
+                    type: string
+                    example: 64%
+                  txnId:
+                    type: string
+                    format: uuid
+                    example: c9bf9e57-1685-4c89-bafb-ff5af830be8a
+        "400":
+          description: Bad request/Invalid Parameter 
+          content:
+            application/json:              
+              schema:
+               type: object              
+              examples:
+                Bad Request:
+                  $ref: '#/components/examples/badRequest'
+                Invalid/Missing request parameters.:
+                  $ref: '#/components/examples/invalidParameter'
+        401:
+          description: Invalid authentication
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/401"
+
+        500:
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/500"
+  
+  /srv/v2/aiml/face-match:
+    post:
+      summary: "API to detect face match status between two images."
+      description: "Face Match API v2 is designed to give a matching accuracy of approx 80% between two images tested on almost 100 use cases. This is developed using Python modules like OpenCV, Face Recognition, DeepFace, Numpy."
+      operationId: face-match-v2
+      tags:
+        - AI APIs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FaceMatchRequest"
+      responses:
+        "200":
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  matchAccuracyRate:
+                    type: string
+                    example: 64%
+                  txnId:
+                    type: string
+                    format: uuid
+                    example: c9bf9e57-1685-4c89-bafb-ff5af830be8a
+        "400":
+          description: Bad request/Invalid Parameter 
+          content:
+            application/json:              
+              schema:
+               type: object              
+              examples:
+                Bad Request:
+                  $ref: '#/components/examples/badRequest'
+                Invalid/Missing request parameters.:
+                  $ref: '#/components/examples/invalidParameter'
+        401:
+          description: Invalid authentication
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/401"
+
+        500:
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/500"
+  /srv/v1/aiml/face-liveness:
+    post:
+      summary: "API to detect the liveliness of an image."
+      description: "Liveness API is designed to detect an image as real/not real.The accuracy of this model is approx 90% tested on various usecases. This is developed by training models using Python modules like Torch, numpy, OpenCV, Tensorflow."
+      operationId: liveliness
+      tags:
+        -  AI APIs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LivelinessRequest"
+      responses:
+        "200":
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/200"
+        "400":
+          description: Bad request/Invalid Parameter 
+          content:
+            application/json:              
+              schema:
+               type: object              
+              examples:
+                Bad Request:
+                  $ref: '#/components/examples/badRequest'
+                Invalid/Missing request parameters.:
+                  $ref: '#/components/examples/invalidParameter'
+        401:
+          description: Invalid authentication
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/401"
+
+        500:
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/500"
+components:
+  securitySchemes:
+    clientId:
+      type: apiKey
+      in: header
+      name: X-APISETU-CLIENTID
+    apiKey:
+      type: apiKey
+      name: X-APISETU-APIKEY
+      in: header     
+    
+  schemas:
+    FaceMatchRequest:
+      type: object
+      required:
+        - txnId
+        - firstPhoto
+        - secondPhoto
+      properties:
+        txnId:
+          type: string
+          format: uuid
+        firstPhoto:
+          type: string
+          format: base64
+          example: TWFueSBoYW5kcyBtYWtlIGxpZ2h0IHdvcmsu=
+        secondPhoto:
+          type: string
+          format: base64
+          example: bGlnaHQgd29yay4=
+    LivelinessRequest:
+      type: object
+      required:
+        - txnId
+        - photo
+      properties:
+        txnId:
+          type: string
+          format: uuid
+        photo:
+          type: string
+          format: base64
+          example: bGlnaHQgd29yay4=
+    200:
+      type: object
+      required:
+        - txnId
+        - result
+        - accuracyRate
+      properties:
+        txnId:
+          type: string
+          example: "uuid"   
+        result:
+          type: string
+          example: "Real/Not Real" 
+        livenessAccuracyRate:
+          type: string
+          example: "20 percent" 
+    401:
+      type: object
+      required:
+        - error
+        - errorDescription
+      properties:
+        error:
+          type: string
+          example: "invalid_authentication"
+        errorDescription:
+          type: string
+          example: "Authentication failed."
+    500:
+      type: object
+      required:
+        - error
+        - errorDescription
+      properties:
+        error:
+          type: string
+          example: "internal_server_error"
+        errorDescription:
+          type: string
+          example: "Internal server error"
+
+  examples:
+    badRequest:
+      value:
+        error: "bad_request"
+        errorDescription: "Invalid JSON received."
+    invalidParameter:
+      value:
+        error: "invalid_parameter"
+        errorDescription: "Invalid/Missing request parameters."

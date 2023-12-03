@@ -1,0 +1,1870 @@
+---
+openapi: 3.0.0
+info:
+  title: TN MSME
+  description: MSME stands for Micro, Small and Medium Enterprises. These include start-ups and other business initiatives which are comparatively small in budget and have limited operations.Micro, Small and Medium Enterprises(MSME) sector has emerged as a highly vibrant and dynamic sector of the Indian economy over the last five decades. MSMEs not only play a crucial role in providing large employment opportunities at comparatively lower capital cost than large industries but also help in industrialization of rural & backward areas, thereby, reducing regional imbalances, assuring more equitable distribution of national income and wealth. MSMEs are complementary to large industries as ancillary units and this sector contributes enormously to the socio-economic development of the country.UMANG interface helps entrepreneurs to access the MSME services for e.g. Registration , Apply schemes and track status and FAQs <i>[Updated on 10th August 2023]</i>.
+  termsOfService: https://web.umang.gov.in/uaw/ts/v1/en/index.htm
+  contact:
+    name: Provided by - UMANG
+    url: https://web.umang.gov.in
+  version: 1.0.0
+servers:
+  - url: https://apigw.umangapp.in
+    description: Production Server
+  
+security:
+  - x-api-key: []
+  
+paths:
+  /tnmsmeApi/ws1/token:
+    post:
+      tags:
+        - Token Web Service
+      summary: Get token details using this service
+      description: This api is used to get the token details
+      operationId: tnmsmeApi/ws1/token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: W-23456789
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90
+                usag:
+                  type: string
+                  description: usage
+                  example: 1
+                usrid:
+                  type: string
+                  description: user id
+                  example: 10001201
+                srvid:
+                  type: string
+                  description: service id
+                  example: 60015
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: 1
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1                  
+                deptid:
+                  type: string
+                  description: deptid
+                  example: 20004
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                flag:
+                  type: string
+                  description: flag
+                  example: token
+                cf_code:
+                  type: string
+                  description: cf_code
+                  example: umang
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20004"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "60015"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: string
+                    description: token string
+                    example: "\"flag\":\"token\": null\"token_val\":\"GPJAQT9DXBFC\": null"
+        "400":
+          description: Bad Request/Validation Error
+  /tnmsmeApi/ws1/login:
+    post:
+      tags:
+        - Login Web Service
+      summary: Login using this service
+      description: This api is used to login
+      operationId: tnmsmeApi/ws1/login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: W-23456789
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90
+                usag:
+                  type: string
+                  description: usage
+                  example: 1
+                usrid:
+                  type: string
+                  description: user id
+                  example: 10001201
+                srvid:
+                  type: string
+                  description: service id
+                  example: 60015
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: 1
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: deptid
+                  example: 20004
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                si:
+                  type: string
+                  description: si
+                  example: login
+                usernam:
+                  type: string
+                  description: usernam
+                  example: sasassasas@gmail.com
+                passwd:
+                  type: string
+                  description: passwd
+                  example: Sure1234
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20004"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "60015"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: string
+                    description: token string
+                    example: "{\"si\":\"login\",\"email\":\"zxc@zxc.zxc\",\"flag\":\"success\",\"token\":\"TUR5DN7GIE2Y\",\"message\":\"Successfully logged in\",\"additional_details\":[{\"scheme\":\"UYEGP\",\"flag\":\"status\",\"application_no\":\"2022/017/00034/ZQAC\",\"message\":\" APPLICATION NUMBER - '2022/017/00034/ZQAC' filed on - '2022-09-19' You have successfully submitted your UYEGP application and will be verified by DIC/RJD office.\"}]}"
+        "400":
+          description: Bad Request/Validation Error
+  /tnmsmeApi/ws1/registration:
+    post:
+      tags:
+        - Registration Web Service
+      summary: Get registration done using this service
+      description: This api is used to do the registration
+      operationId: tnmsmeApi/ws1/registration
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: W-23456789
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90
+                usag:
+                  type: string
+                  description: usage
+                  example: 1
+                usrid:
+                  type: string
+                  description: user id
+                  example: 10001201
+                srvid:
+                  type: string
+                  description: service id
+                  example: 60015
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: 1
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: deptid
+                  example: 20004
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                token:
+                  type: string
+                  description: token
+                  example: F3GE1MBJOAWU
+                si:
+                  type: string
+                  description: si
+                  example: regis
+                mi:
+                  type: string
+                  description: mi
+                  example: 9708045600
+                email:
+                  type: string
+                  description: email
+                  example: sasassasas@gmail.com
+                ename:
+                  type: string
+                  description: ename
+                  example: Suresh Ji
+                aadhaar:
+                  type: string
+                  description: aadhaar
+                  example: b9O1p1L9YorjDQ/xULIUWg==
+                dob:
+                  type: string
+                  description: dob
+                  example: 11-11-1111
+                passwd:
+                  type: string
+                  description: passwd
+                  example: Sure1234
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20004"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "60015"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: string
+                    description: token string
+                    example: "{\"si\":\"regis\",\"code\":103,\"flag\":\"success\",\"message\":\"Successfully registered.\"}"
+        "400":
+          description: Bad Request/Validation Error
+  /tnmsmeApi/ws1/master:
+    post:
+      tags:
+        - Master Web Service
+      summary: Get master details using this service
+      description: This api is used to get the master details
+      operationId: tnmsmeApi/ws1/master
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: W-23456789
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90
+                usag:
+                  type: string
+                  description: usage
+                  example: 1
+                usrid:
+                  type: string
+                  description: user id
+                  example: 10001201
+                srvid:
+                  type: string
+                  description: service id
+                  example: 60015
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: 1
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: deptid
+                  example: 20004
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                scheme:
+                  type: string
+                  description: scheme
+                  example: UYEGP
+                flag:
+                  type: string
+                  description: flag
+                  example: distr
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20004"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "60015"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: string
+                    description: token string
+                    example: "[{\"dtcode\":\"017\",\"dtname\":\"Ariyalur\"},{\"dtcode\":\"035\",\"dtname\":\"Chengalpet\"},{\"dtcode\":\"002\",\"dtname\":\"Chennai\"},{\"dtcode\":\"012\",\"dtname\":\"Coimbatore\"},{\"dtcode\":\"018\",\"dtname\":\"Cuddalore\"},{\"dtcode\":\"005\",\"dtname\":\"Dharmapuri\"},{\"dtcode\":\"013\",\"dtname\":\"Dindigul\"},{\"dtcode\":\"010\",\"dtname\":\"Erode\"},{\"dtcode\":\"033\",\"dtname\":\"Kallakurichi\"},{\"dtcode\":\"003\",\"dtname\":\"Kanchipuram\"},{\"dtcode\":\"030\",\"dtname\":\"Kanniyakumari\"},{\"dtcode\":\"014\",\"dtname\":\"Karur\"},{\"dtcode\":\"031\",\"dtname\":\"Krishnagiri\"},{\"dtcode\":\"024\",\"dtname\":\"Madurai\"},{\"dtcode\":\"038\",\"dtname\":\"Mayiladuthurai\"},{\"dtcode\":\"019\",\"dtname\":\"Nagapattinam\"},{\"dtcode\":\"009\",\"dtname\":\"Namakkal\"},{\"dtcode\":\"011\",\"dtname\":\"Nilgiris\"},{\"dtcode\":\"016\",\"dtname\":\"Perambalur\"},{\"dtcode\":\"022\",\"dtname\":\"Pudukottai\"},{\"dtcode\":\"027\",\"dtname\":\"Ramanathapuam\"},{\"dtcode\":\"036\",\"dtname\":\"Ranipet\"},{\"dtcode\":\"008\",\"dtname\":\"Salem\"},{\"dtcode\":\"023\",\"dtname\":\"Sivagangai\"},{\"dtcode\":\"034\",\"dtname\":\"Tenkasi\"},{\"dtcode\":\"021\",\"dtname\":\"Thanjavur\"},{\"dtcode\":\"025\",\"dtname\":\"Theni\"},{\"dtcode\":\"015\",\"dtname\":\"Thiruchirappalli\"},{\"dtcode\":\"001\",\"dtname\":\"Thiruvallore\"},{\"dtcode\":\"020\",\"dtname\":\"Thiruvarur\"},{\"dtcode\":\"028\",\"dtname\":\"Thoothukudi\"},{\"dtcode\":\"029\",\"dtname\":\"Tirunelveli\"},{\"dtcode\":\"037\",\"dtname\":\"Tirupattur\"},{\"dtcode\":\"032\",\"dtname\":\"Tirupur\"},{\"dtcode\":\"006\",\"dtname\":\"Tiruvannamalai\"},{\"dtcode\":\"004\",\"dtname\":\"Vellore\"},{\"dtcode\":\"007\",\"dtname\":\"Villupuram\"},{\"dtcode\":\"026\",\"dtname\":\"Virudhunagar\"}]"
+        "400":
+          description: Bad Request/Validation Error
+  /tnmsmeApi/ws1/existence:
+    post:
+      tags:
+        - Existence Web Service
+      summary: Check existence using this service
+      description: This api is used to check the existence
+      operationId: tnmsmeApi/ws1/existence
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: W-23456789
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90
+                usag:
+                  type: string
+                  description: usage
+                  example: 1
+                usrid:
+                  type: string
+                  description: user id
+                  example: 10001201
+                srvid:
+                  type: string
+                  description: service id
+                  example: 60015
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: 1
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: deptid
+                  example: 20004
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                scheme:
+                  type: string
+                  description: scheme
+                  example: UYEGP
+                flag:
+                  type: string
+                  description: flag
+                  example: mobil
+                mobile_no:
+                  type: string
+                  description: mobile_no
+                  example: 1234567122
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20004"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "60015"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: string
+                    description: token string
+                    example: "{\"error_code\":0,\"error_msg\":\"Not-Exist\"}"
+        "400":
+          description: Bad Request/Validation Error
+  /tnmsmeApi/ws1/trackStatus:
+    post:
+      tags:
+        - Track Status Web Service
+      summary: Track the status using this service
+      description: This api is used to track the status
+      operationId: tnmsmeApi/ws1/trackStatus
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: W-23456789
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90
+                usag:
+                  type: string
+                  description: usage
+                  example: 1
+                usrid:
+                  type: string
+                  description: user id
+                  example: 10001201
+                srvid:
+                  type: string
+                  description: service id
+                  example: 60015
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: 1
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: deptid
+                  example: 20004
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                flag:
+                  type: string
+                  description: flag
+                  example: status
+                application_no:
+                  type: string
+                  description: application_no
+                  example: 2022/013/00151/SAJH
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20004"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "60015"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: string
+                    description: token string
+                    example: "{\"code\":108,\"status\":\" APPLICATION NUMBER - '2022/013/00151/SAJH' filed on - '04-08-2022' You have successfully submitted your UYEGP application and will be verified by DIC/RJD office.\"}"
+        "400":
+          description: Bad Request/Validation Error
+  /tnmsmeApi/ws1/uploadApi:
+    post:
+      tags:
+        - Upload API Web Service
+      summary: Upload the api using this service
+      description: This api is used to upload the api
+      operationId: tnmsmeApi/ws1/uploadApi
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: W-23456789
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90
+                usag:
+                  type: string
+                  description: usage
+                  example: 1
+                usrid:
+                  type: string
+                  description: user id
+                  example: 10001201
+                srvid:
+                  type: string
+                  description: service id
+                  example: 60015
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: 1
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: deptid
+                  example: 20004
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                si:
+                  type: string
+                  description: si
+                  example: UYEGP
+                method:
+                  type: string
+                  description: method
+                  example: updoc
+                token:
+                  type: string
+                  description: token
+                  example: OY38V9Q2TLN7
+                email:
+                  type: string
+                  description: email
+                  example: sasassasa11s@gmail.com
+                appl_id:
+                  type: string
+                  description: appl_id
+                  example: 2022/013/00158/SAJH
+                doc:
+                  type: object
+                  description: doc object
+                  properties:
+                    one:
+                      type: string
+                      description: one
+                      example: base 64
+                    two:
+                      type: string
+                      description: two
+                      example: base 64
+                    three:
+                      type: string
+                      description: three
+                      example: base 64
+                    four:
+                      type: string
+                      description: four
+                      example: base 64
+                    five:
+                      type: string
+                      description: five
+                      example: base 64   
+                    six:
+                      type: string
+                      description: six
+                      example: base 64                        
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20004"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "60015"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: string
+                    description: token string
+                    example: "{\"si\":\"UYEGP\",\"method\":\"updoc\",\"code\":\"106\",\"application_no\":\"2022/017/00034/ZQAC\",\"messgae\":\"you have uploaded all the documents and Successfully submitted your application\",\"acknowledgement_link\":\"https://rtionline.tn.gov.in/msmedemo/template_indcom/uyegp/umang_ack_public_without_photo.php?fid=2022/017/00034/ZQAC\"}"
+        "400":
+          description: Bad Request/Validation Error
+  /tnmsmeApi/ws1/downloadApp:
+    post:
+      tags:
+        - Download App Web Service
+      summary: Download app using this service
+      description: This api is used to download the app
+      operationId: tnmsmeApi/ws1/downloadApp
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: W-23456789
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90
+                usag:
+                  type: string
+                  description: usage
+                  example: 1
+                usrid:
+                  type: string
+                  description: user id
+                  example: 10001201
+                srvid:
+                  type: string
+                  description: service id
+                  example: 60015
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: 1
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: deptid
+                  example: 20004
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                flag:
+                  type: string
+                  description: flag
+                  example: print
+                application_no:
+                  type: string
+                  description: application_no
+                  example: 2022/013/00145/SAJH
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20004"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "60015"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: string
+                    description: token string
+                    example: "{\"application_no\":\"2022/013/00145/SAJH\",\"acknowledgement\":base64"
+        "400":
+          description: Bad Request/Validation Error
+  /tnmsmeApi/ws1/appSaveApi:
+    post:
+      tags:
+        - App Save Api Web Service
+      summary: App save Api done using this service
+      description: This api is used to do the app save
+      operationId: tnmsmeApi/ws1/appSaveApi
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: W-23456789
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90
+                usag:
+                  type: string
+                  description: usage
+                  example: 1
+                usrid:
+                  type: string
+                  description: user id
+                  example: 10001201
+                srvid:
+                  type: string
+                  description: service id
+                  example: 60015
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: 1
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: deptid
+                  example: 20004
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                si:
+                  type: string
+                  description: si
+                  example: UYEGP
+                method:
+                  type: string
+                  description: method
+                  example: draft
+                token:
+                  type: string
+                  description: token
+                  example: DUMWR2Y6NZXL
+                email:
+                  type: string
+                  description: email
+                  example: sasass1100@gmail.com
+                appl_profile:
+                  type: object
+                  description: appl_profile
+                  properties:
+                    app_name:
+                      type: string
+                      description: app_name
+                      example: Suresh
+                    app_initial:
+                      type: string
+                      description: app_initial
+                      example: Mrs.
+                    app_sex:
+                      type: string
+                      description: app_sex
+                      example: Male 
+                    community:
+                      type: string
+                      description: community
+                      example: 5
+                    religion:
+                      type: string
+                      description: religion
+                      example: 1
+                    app_married:
+                      type: string
+                      description: app_married
+                      example: yes
+                    spl_cat_ph:
+                      type: string
+                      description: spl_cat_ph
+                      example: no
+                    spl_cat_exman:
+                      type: string
+                      description: spl_cat_exman
+                      example: no
+                    app_dob:
+                      type: string
+                      description: app_dob
+                      example: 11/12/1989  
+                    app_age:
+                      type: string
+                      description: app_age
+                      example: 33  
+                    name_father:
+                      type: string
+                      description: name_father
+                      example: JesuRaj
+                    name_spouse:
+                      type: string
+                      description: name_spouse
+                      example: Chandra 
+                    per_doorno:
+                      type: string
+                      description: per_doorno
+                      example: 66 
+                    corres_doorno:
+                      type: string
+                      description: corres_doorno
+                      example: 66 
+                    per_street:
+                      type: string
+                      description: per_street
+                      example: West street  
+                    per_ward:
+                      type: string
+                      description: per_ward
+                      example: 3  
+                    corres_street:
+                      type: string
+                      description: corres_street
+                      example: West street   
+                    corres_ward:
+                      type: string
+                      description: corres_ward
+                      example: d3    
+                    per_dist:
+                      type: string
+                      description: per_dist
+                      example: 013  
+                    corres_dist:
+                      type: string
+                      description: corres_dist
+                      example: 013
+                    per_taluk:
+                      type: string
+                      description: per_taluk
+                      example: 1150   
+                    corres_taluk:
+                      type: string
+                      description: corres_taluk
+                      example: 1150 
+                    per_village:
+                      type: string
+                      description: per_village
+                      example: Ariyanellure 
+                    corres_village:
+                      type: string
+                      description: corres_village
+                      example: Ariyanellure 
+                    per_pincode:
+                      type: string
+                      description: per_pincode
+                      example: 624303 
+                    corres_pincode:
+                      type: string
+                      description: corres_pincode
+                      example: 624303 
+                    adhaar_no:
+                      type: string
+                      description: adhaar_no
+                      example: 781099044545 
+                    per_mobile:
+                      type: string
+                      description: per_mobile
+                      example: 1267606659 
+                    corres_mobile:
+                      type: string
+                      description: corres_mobile
+                      example: 2367606659 
+                    per_email:
+                      type: string
+                      description: per_email
+                      example: sasasa1s11.com     
+                    residing_3yrs:
+                      type: string
+                      description: residing_3yrs
+                      example: yes   
+                    train_undergone:
+                      type: string
+                      description: train_undergone
+                      example: yes    
+                    train_inst_name:
+                      type: string
+                      description: train_inst_name
+                      example: Kaveri
+                    train_duration_from:
+                      type: string
+                      description: train_duration_from
+                      example: 2021-02-01  
+                    train_duration_to:
+                      type: string
+                      description: train_duration_to
+                      example: 2021-03-30
+                    ee_regno:
+                      type: string
+                      description: ee_regno
+                      example: 23123      
+                    ee_date:
+                      type: string
+                      description: ee_date
+                      example: 2021-05-21   
+                    photo:
+                      type: string
+                      description: photo
+                      example: "data:image/jpeg;base64,/"
+                    annual_income:
+                      type: string
+                      description: annual_income
+                      example: 100000
+                    pre_activity_exp:
+                      type: string
+                      description: pre_activity_exp
+                      example: Plumbing   
+                    eight_pass:
+                      type: string
+                      description: eight_pass
+                      example: yes   
+                    tech:
+                      type: string
+                      description: tech
+                      example: EEE   
+                    acad:
+                      type: string
+                      description: acad
+                      example: BTECH  
+                    subsidy_linked_loan:
+                      type: string
+                      description: subsidy_linked_loan
+                      example: no  
+                unit_profile:
+                  type: object
+                  description: unit_profile
+                  properties:
+                    line_of_act:
+                      type: string
+                      description: line_of_act
+                      example: Food Grain Trade
+                    unit_name:
+                      type: string
+                      description: unit_name
+                      example: Balaji Trades     
+                    unit_category:
+                      type: string
+                      description: unit_category
+                      example: Business
+                    unit_doorno:
+                      type: string
+                      description: unit_doorno
+                      example: 66 
+                    unit_area:
+                      type: string
+                      description: unit_area
+                      example: SIDCO
+                    unit_street:
+                      type: string
+                      description: unit_street
+                      example: 5th Main Road
+                    unit_dist:
+                      type: string
+                      description: unit_dist
+                      example: 013 
+                    unit_taluk:
+                      type: string
+                      description: unit_taluk
+                      example: 1150
+                    unit_block:
+                      type: string
+                      description: unit_block
+                      example: 2260
+                    unit_village:
+                      type: string
+                      description: unit_village
+                      example: Panjampatti
+                    unit_pincode:
+                      type: string
+                      description: unit_pincode
+                      example: 624303 
+                    legis_const:
+                      type: string
+                      description: legis_const
+                      example: 67
+                    working_capital:
+                      type: string
+                      description: working_capital
+                      example: 200000
+                    other_fix_assets:
+                      type: string
+                      description: other_fix_assets
+                      example: 3000
+                    total_pc:
+                      type: string
+                      description: total_pc
+                      example: 50000
+                    loan_from_bank:
+                      type: string
+                      description: loan_from_bank
+                      example: yes
+                    repayment_made:
+                      type: string
+                      description: repayment_made
+                      example: yes
+                    loan_balance:
+                      type: string
+                      description: loan_balance
+                      example: 0                      
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20004"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "60015"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: string
+                    description: token string
+                    example: "{\"si\":\"UYEGP\",\"method\":\"draft\",\"code\":\"104\",\"flag\":\"success\",\"token\":\"W2SB5CRHJDLZ\",\"application_no\":\"2022/013/00160/SAJH\",\"document_required\":{\"one\":\"Transfer certificate/ Record Sheet issued by School/College\",\"two\":\"Ration Card or if Ration card is not available Nativity certificate from the Thasildharrn/ Aadhar card xerox / Election voters identity card xerox\",\"three\":\"Valid Quotations with GST number\"},\"messgae\":\"Successfully Saved your draft application. please upload documents\"}"
+        "400":
+          description: Bad Request/Validation Error
+  /tnmsmeApi/ws1/forgotPassword:
+    post:
+      tags:
+        - Forgot Password Web Service
+      summary: Forgot Password done using this service
+      description: This api is used to recover the forgot password
+      operationId: tnmsmeApi/ws1/forgotPassword
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: W-23456789
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90
+                usag:
+                  type: string
+                  description: usage
+                  example: 1
+                usrid:
+                  type: string
+                  description: user id
+                  example: 10001201
+                srvid:
+                  type: string
+                  description: service id
+                  example: 60015
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: 1
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: deptid
+                  example: 20004
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                flag:
+                  type: string
+                  description: flag
+                  example: fpass
+                usernam:
+                  type: string
+                  description: usernam
+                  example: sasassasas@gmail.com
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20004"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "60015"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: string
+                    description: token string
+                    example: "{\"flag\":\"fpass\",\"message\":\"The sasassasas@gmail.com is not available!!\"}"
+        "400":
+          description: Bad Request/Validation Error          
+components:
+  securitySchemes:
+    x-api-key:
+      type: apiKey
+      name: x-api-key
+      in: header

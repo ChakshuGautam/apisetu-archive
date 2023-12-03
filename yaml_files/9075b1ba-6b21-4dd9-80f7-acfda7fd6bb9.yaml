@@ -1,0 +1,72 @@
+host: wbgw.napix.gov.in
+info:
+  title: Kolkata DC
+  version: 1.0.0
+  x-ibm-name: kanya-transferstatus-id-and-year
+  description: kanya-transferstatus-id-and-year kanya-transferstatus-id-and-year
+    kanya-transferstatus-id-and-year kanya-transferstatus-id-and-year
+    kanya-transferstatus-id-and-year kanya-transferstatus-id-and-year
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/wb/kolkatadc
+paths:
+  /:
+    post:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      parameters:
+        - in: formData
+          name: authuser
+          type: string
+          required: true
+        - in: formData
+          name: authpassword
+          type: string
+          required: true
+        - in: formData
+          name: year
+          type: string
+          required: true
+        - in: formData
+          name: applicant_id
+          type: string
+          required: true
+      tags:
+        - Kanya transferstatus id and year
+schemes:
+  - https
+swagger: "2.0"
+basePath: /wb/kolkatadc/kanya-transferstatus-id-and-year
+security:
+  - clientID: []
+    clientSecret: []
+securityDefinitions:
+  clientID:
+    in: header
+    name: X-NIC-Client-Id
+    type: apiKey
+    x-key-type: client_id
+  clientSecret:
+    in: header
+    name: X-NIC-Client-Secret
+    type: apiKey
+    x-key-type: client_secret
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  servers:
+    - url: https://wbgw.napix.gov.in/wb/kolkatadc/kanya-transferstatus-id-and-year
+      type:
+        - production
+        - development
+      description: WB GW
+  enforced: true
+  testable: true
+  application-authentication: {}

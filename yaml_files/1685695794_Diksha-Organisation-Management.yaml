@@ -1,0 +1,457 @@
+openapi: 3.0.1
+info:
+  title: Organization Management
+  description: |-
+      PM eVidya DIKSHA - One Nation, One Digital Platform for School Education. An initiative of the National Council of Educational Research and Training (Ministry of Education, Govt of India) <i>[Updated on 2nd June 2023]</i>
+  termsOfService: https://diksha.gov.in/term-of-use.html
+  contact:
+    name: provided by -Diksha
+    url: https://diksha.gov.in/
+  version: 1.0.0
+servers:
+- url: https://diksha.gov.in/api/org
+  description: Prodcution Server
+paths:
+  /v1/read:
+    post:
+      tags:
+      - Organisation Get API
+      summary: This Web Service Will be Used to Get Detail of Organization
+      operationId: v1/read
+      security:
+      - bearerAuth: []
+      - ApiKeyAuth: []
+
+      requestBody:
+        content:
+          application/json:
+            schema:
+
+              properties:
+                  request:
+                    type: object
+                    properties:
+                      organisationId:
+                        type: string
+                        example: 0123221758376673287017
+      
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  id:
+                    type: string
+                    example: "api.org.read"
+                  ver:
+                    type: string
+                    example: "v1"
+                  ts:
+                    type: string
+                    example: "2023-05-15 11:42:54:931+0000"
+                  params:
+                    type: object
+                    properties:
+                      resmsgid: 
+                        type: string                        
+                        example: "d2e708b265414451db0e1cbdb476b0e6"
+                      msgid: 
+                        type: string                        
+                        example: "d2e708b265414451db0e1cbdb476b0e6"
+                      err: 
+                        type: string                        
+                        example: null
+                      status: 
+                        type: string                        
+                        example: "SUCCESS"
+                      errmsg: 
+                        type: string                        
+                        example: null
+                  responseCode:
+                    type: string
+                    example: "OK"
+                  result:
+                    type: object
+                    properties:
+                      response: 
+                        type: object                        
+                        properties:
+                          dateTime: 
+                            type: string
+                            example: null
+                          preferredLanguage: 
+                            type: string
+                            example: null
+                          keys: 
+                            type: string
+                            example: {'encKeys': ['3'], 'signKeys': ['2']}
+                          organisationSubType: 
+                            type: string
+                            example: null
+                          channel: 
+                            type: string
+                            example: "ekstep"
+                          approvedBy: 
+                            type: string
+                            example: null
+                          description: 
+                            type: string
+                            example: "Ekstep"
+                          updatedDate: 
+                            type: string
+                            example: "2020-06-29 05:02:18:574+0000"
+                          organisationType: 
+                            type: string
+                            example: 5
+                          addressId: 
+                            type: string
+                            example: null
+                          orgType: 
+                            type: string
+                            example: null
+                          isTenant: 
+                            type: string
+                            example: True
+                          provider: 
+                            type: string
+                            example: null
+                          locationId: 
+                            type: string
+                            example: null
+                          orgCode: 
+                            type: string
+                            example: null
+                          theme: 
+                            type: string
+                            example: null
+                          id: 
+                            type: string
+                            example: "0123221758376673287017"
+                          communityId: 
+                            type: string
+                            example: null
+                          isApproved: 
+                            type: string
+                            example: null
+                          email: 
+                            type: string
+                            example: "dummy@ekstep.org"
+                          slug: 
+                            type: string
+                            example: "ekstep"
+                          isSSOEnabled: 
+                            type: string
+                            example: null
+                          thumbnail: 
+                            type: string
+                            example: null
+                          orgName: 
+                            type: string
+                            example: "EKSTEP"
+                          updatedBy: 
+                            type: string
+                            example: null
+                          locationIds: 
+                            type: string
+                            example: ['3095874c-5acf-4467-a5d0-9180ab9e318e']
+                          externalId: 
+                            type: string
+                            example: "ekstep"
+                          orgLocation: 
+                            type: string
+                            example: [{'type': 'state', 'id': '3095874c-5acf-4467-a5d0-9180ab9e318e'}]
+                          isRootOrg: 
+                            type: string
+                            example: True
+                          rootOrgId: 
+                            type: string
+                            example: "0123221758376673287017"
+                          imgUrl: 
+                            type: string
+                            example: null
+                          approvedDate: 
+                            type: string
+                            example: null
+                          isSchool: 
+                            type: string
+                            example: False
+                          homeUrl: 
+                            type: string
+                            example: null
+                          orgTypeId: 
+                            type: string
+                            example: null
+                          isDefault: 
+                            type: string
+                            example: null
+                          createdDate: 
+                            type: string
+                            example: "2017-08-31 09:24:31:199+0000"
+                          createdBy: 
+                            type: string
+                            example: "e9280b815c0e41972bf754e9409b66d778b8e11bb91844892869a1e828d7d2f2a"
+                          parentOrgId: 
+                            type: string
+                            example: null
+                          hashTagId: 
+                            type: string
+                            example: "0123221758376673287017"
+                          noOfMembers: 
+                            type: string
+                            example: null
+                          status: 
+                            type: string
+                            example: 1
+
+   
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  id:
+                    type: string
+                    example: "api.org.read"
+                  ver:
+                    type: string
+                    example: "v1"
+                  ts:
+                    type: string
+                    example: "2023-05-23 07:44:14:181+0000"
+                  params:
+                    type: object
+                    properties:
+                      resmsgid: 
+                        type: string                        
+                        example: "a3ce4e538ebc60622192ab698cea658f"
+                      msgid: 
+                        type: string                        
+                        example: "a3ce4e538ebc60622192ab698cea658f"
+                      err: 
+                        type: string                        
+                        example: "UOS_ORGRED0030"
+                      status: 
+                        type: string                        
+                        example: "FAILED"
+                      errmsg: 
+                        type: string                        
+                        example: "Mandatory parameter organisationId is missing."
+                  responseCode:
+                    type: string
+                    example: "CLIENT_ERROR"
+                  result:
+                    type: object
+                    
+
+   
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  id:
+                    type: string
+                    example: "api.org.read"
+                  ver:
+                    type: string
+                    example: "v1"
+                  ts:
+                    type: string
+                    example: "2023-05-23 07:42:51:901+0000"
+                  params:
+                    type: object
+                    properties:
+                      resmsgid: 
+                        type: string                        
+                        example: "f25d9d5ac41e76b187d6d9e9a1f8bf52"
+                      msgid: 
+                        type: string                        
+                        example: "f25d9d5ac41e76b187d6d9e9a1f8bf52"
+                      err: 
+                        type: string                        
+                        example: "UOS_ORGRED0013"
+                      status: 
+                        type: string                        
+                        example: "FAILED"
+                      errmsg: 
+                        type: string                        
+                        example: "Requested organisation resource not found"
+                  responseCode:
+                    type: string
+                    example: "RESOURCE_NOT_FOUND"
+                  result:
+                    type: object
+                    
+
+   
+
+  /v1/search:
+    post:
+      tags:
+      - Organisation List
+      summary: This Web Service Will be Used to Get List of all Created Organization
+      operationId: v1/search
+      security:
+      - bearerAuth: []
+
+
+      requestBody:
+        content:
+          application/json:
+            schema:
+
+              properties:
+                  request:
+                    type: object
+                    properties:
+                      filters:
+                        type: object
+                        properties:
+                         isRootOrg:
+                           type: string
+                           example: False
+                         rootOrgId:
+                           type: string
+                           example: 0123221758376673287017
+                      fields:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            i:
+                              type: string
+                            d:
+                              type: string
+                        example:
+                        -  id: ""
+                        -  channel: ""
+                           
+                        -  orgName: ""
+                          
+                        -  extrnalId: ""
+                        
+                      sortBy:
+                        type: object
+                        properties:
+                         createdDate:
+                           type: string
+                           example: Desc
+                      limit:
+                        type: integer
+                        example: 1002
+      
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  id:
+                    type: string
+                    example: "api.org.search"
+                  ver:
+                    type: string
+                    example: "v1"
+                  ts:
+                    type: string
+                    example: "2023-05-16 05:24:29:827+0000"
+                  params:
+                    type: object
+                    properties:
+                      resmsgid: 
+                        type: string                        
+                        example: "a45be2981104a23b82e3d34be52c8e69"
+                      msgid: 
+                        type: string                        
+                        example: "a45be2981104a23b82e3d34be52c8e69"
+                      err: 
+                        type: string                        
+                        example: null
+                      status: 
+                        type: string                        
+                        example: "SUCCESS"
+                      errmsg: 
+                        type: string                        
+                        example: null
+                  responseCode:
+                    type: string
+                    example: "OK"
+                  result:
+                    type: object
+                    properties:
+                      response: 
+                        type: object                        
+                        properties:
+                          count: 
+                            type: string
+                            example: 17
+                          content: 
+                            type: string
+                            example: [{'orgName': 'Ekstep-sub-org-8', 'channel': 'ekstep', 'externalId': 'school-g', 'id': '012758197962342400238', 'isRootOrg': None}, {'orgName': 'Ekstep-sub-org-6', 'channel': 'ekstep', 'externalId': 'school-e', 'id': '012758199394672640205', 'isRootOrg': None}, {'orgName': 'EKSTEP2', 'channel': 'ekstep', 'externalId': 'ekstep_1', 'id': '01293175966832230496', 'isRootOrg': None}, {'orgName': 'Dummy school', 'channel': 'ekstep', 'externalId': '2909010871', 'id': '0129994502493552641261', 'isRootOrg': None}, {'orgName': 'EKSTEP3', 'channel': 'ekstep', 'externalId': 'ekstep_3', 'id': '012936517122908160122', 'isRootOrg': None}, {'orgName': 'ekstep suborg1', 'channel': 'ekstep', 'externalId': 'ekstep_suborg1', 'id': '012425541439766528174', 'isRootOrg': None}, {'orgName': 'Ekstep-sub-org-10', 'channel': 'ekstep', 'externalId': 'school-i', 'id': '012758198413754368239', 'isRootOrg': None}, {'orgName': 'Ekstep-sub-org-3', 'channel': 'ekstep', 'externalId': 'school-b', 'id': '012758192371523584198', 'isRootOrg': None}, {'orgName': 'Ekstep-sub-org-7', 'channel': 'ekstep', 'externalId': 'school-f', 'id': '012758195954147328263', 'isRootOrg': None}, {'orgName': 'Ekstep-sub-org-9', 'channel': 'ekstep', 'externalId': 'school-h', 'id': '012758196372660224265', 'isRootOrg': None}, {'orgName': 'Ekstep-sub-org-4', 'channel': 'ekstep', 'externalId': 'school-c', 'id': '012758195905298432262', 'isRootOrg': None}, {'orgName': 'test school', 'channel': 'ekstep', 'externalId': '1234567', 'id': '012889757045891072174', 'isRootOrg': None}, {'orgName': 'Ekstep-sub-org-11', 'channel': 'ekstep', 'externalId': 'school-j', 'id': '012758201414352896266', 'isRootOrg': None}, {'orgName': 'EKSTEP', 'channel': 'ekstep', 'externalId': 'ekstep', 'id': '0123221758376673287017', 'isRootOrg': None}, {'orgName': 'Ekstep-sub-org-2', 'channel': 'ekstep', 'externalId': 'school-a', 'id': '012758184752259072261', 'isRootOrg': None}, {'orgName': 'EKSTEP3', 'channel': 'ekstep', 'externalId': 'ekstep_2', 'id': '012931766481321984160', 'isRootOrg': None}, {'orgName': 'Ekstep-sub-org-5', 'channel': 'ekstep', 'externalId': 'school-d', 'id': '012758199019094016237', 'isRootOrg': None}]
+
+   
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  id:
+                    type: string
+                    example: "api.org.search"
+                  ver:
+                    type: string
+                    example: "v1"
+                  ts:
+                    type: string
+                    example: "2023-05-23 07:39:50:191+0000"
+                  params:
+                    type: object
+                    properties:
+                      resmsgid: 
+                        type: string                        
+                        example: "1fe82973dbfe7364c5be8cb4fe65dbd2"
+                      msgid: 
+                        type: string                        
+                        example: "1fe82973dbfe7364c5be8cb4fe65dbd2"
+                      err: 
+                        type: string                        
+                        example: "UOS_ORGSER0030"
+                      status: 
+                        type: string                        
+                        example: "FAILED"
+                      errmsg: 
+                        type: string                        
+                        example: "Mandatory parameter filters is missing."
+                  responseCode:
+                    type: string
+                    example: "CLIENT_ERROR"
+                  result:
+                    type: object
+                    
+
+   
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Text
+      
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-authenticated-user-token
+
+
+

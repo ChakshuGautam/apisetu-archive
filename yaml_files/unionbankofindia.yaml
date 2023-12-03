@@ -1,0 +1,463 @@
+openapi: 3.0.3
+info:  
+  title: Union Bank of India, All States
+  description:  >- 
+                Union Bank of India issues Account Statement, Interest Certificate and Form-16 documents to its Account Holders. In Digi Locker, UBI customers can request Account Statement by using Account Number, Interest Certificate for Term Deposit accounts by using Customer ID and Form16 document by using PAN number. Union Bank of India made these services available for more than 16 crore customers
+  termsOfService: https://apisetu.gov.in/api-policy
+  version: 3.0.0
+servers:
+  - url: 'https://apisetu.gov.in/certificate/v3/unionbankofindia'
+paths:
+  
+  /astmt:
+    post:
+      tags:
+        - APIs
+      summary: Account Statement
+      description: API to verify Account Statement.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: astmt
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - AccountNumber
+                    - startDate
+                    - endDate
+                    
+                    
+                    - UID
+                    
+                    - FullName
+                    
+                    - DOB
+                      
+                  properties:
+                    AccountNumber:
+                      type: string
+                      description: AccountNumber
+                      example: "526753126735"
+                       
+                    
+                    startDate:
+                      type: string
+                      description: Start Date
+                      example: "09-10-2022"
+                       
+                    
+                    endDate:
+                      type: string
+                      description: End Date
+                      example: "12-12-2022"
+                       
+                    
+                                        
+                    
+                    UID:
+                      type: string
+                      description: Aadhaar number
+                      example: "123412341234"
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /osfrm:
+    post:
+      tags:
+        - APIs
+      summary: Form 16
+      description: API to verify Form 16.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: osfrm
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - PanNumber
+                    - FinancialQuarter
+                    - FinancialYear
+                    
+                    
+                    - UID
+                    
+                    - FullName
+                    
+                    - DOB
+                      
+                  properties:
+                    PanNumber:
+                      type: string
+                      description: PAN NO
+                      example: "KJFPS7654R"
+                       
+                    
+                    FinancialQuarter:
+                      type: string
+                      description: Financial Quarter
+                      example: "Q1,Q2,Q3,Q4"
+                       
+                    
+                    FinancialYear:
+                      type: string
+                      description: Financial Year
+                      example: "2021-22,2022-23"
+                       
+                    
+                                        
+                    
+                    UID:
+                      type: string
+                      description: Aadhaar number
+                      example: "123412341234"
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /ircer:
+    post:
+      tags:
+        - APIs
+      summary: Interest Certificate
+      description: API to verify Interest Certificate.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: ircer
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - CifId
+                    - startDate
+                    - endDate
+                    
+                    
+                    - UID
+                    
+                    - FullName
+                    
+                    - DOB
+                      
+                  properties:
+                    CifId:
+                      type: string
+                      description: CIF ID
+                      example: "675456781"
+                       
+                    
+                    startDate:
+                      type: string
+                      description: Start Date
+                      example: "12-09-2022"
+                       
+                    
+                    endDate:
+                      type: string
+                      description: End Date
+                      example: "12-12-2022"
+                       
+                    
+                                        
+                    
+                    UID:
+                      type: string
+                      description: Aadhaar number
+                      example: "123412341234"
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /lintr:
+    post:
+      tags:
+        - APIs
+      summary: Loan interest certificate
+      description: API to verify Loan interest certificate.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: lintr
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - LoanAccountNumber
+                    - FinancialYear
+                    
+                    
+                    - UID
+                    
+                    - FullName
+                    
+                    - DOB
+                      
+                  properties:
+                    LoanAccountNumber:
+                      type: string
+                      description: Loan Account Number
+                      example: "Enter 15 digit Loan Account Number"
+                       
+                    
+                    FinancialYear:
+                      type: string
+                      description: Financial Year
+                      example: ""
+                       
+                    
+                                        
+                    
+                    UID:
+                      type: string
+                      description: Aadhaar number
+                      example: "123412341234"
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+components:
+  schemas:
+    ConsentArtifactSchema:
+      $ref: './common/ConsentArtifactSchema.yaml#/ConsentArtifactSchema'
+    AcademicCertificateSchema:
+      $ref: './common/AcademicCertificateSchema.yaml#/AcademicCertificateSchema'
+          
+  responses:
+    400Error:
+      $ref: './common/ErrorResponse.yaml#/400Error'
+    401Error:
+      $ref: './common/ErrorResponse.yaml#/401Error'
+    404Error:
+      $ref: './common/ErrorResponse.yaml#/404Error'
+    500Error:
+      $ref: './common/ErrorResponse.yaml#/500Error'
+    502Error:
+      $ref: './common/ErrorResponse.yaml#/502Error'
+    503Error:
+      $ref: './common/ErrorResponse.yaml#/503Error'
+    504Error:
+      $ref: './common/ErrorResponse.yaml#/504Error'
+  securitySchemes:
+    clientId:
+      type: apiKey
+      in: header
+      name: X-APISETU-CLIENTID
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-APISETU-APIKEY

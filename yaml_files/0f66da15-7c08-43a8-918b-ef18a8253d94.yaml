@@ -1,0 +1,77 @@
+host: bgw.napix.gov.in
+info:
+  title: API Management for Tripura
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/nic/trapi
+  version: 1.0.0
+  x-ibm-name: dit_edistrict
+  description: This API exposes the metadata of the certificates(PRTC, Caste,
+    Income, Marriage & Survival) delivered through eDistrict Tripura Portal upon
+    providing the Application Reference Number.
+paths:
+  /all_service:
+    get:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      parameters:
+        - in: query
+          name: service_id
+          type: string
+          required: true
+      tags:
+        - Dit edistrict
+schemes:
+  - https
+swagger: "2.0"
+basePath: /nic/trapi/edistrict
+security:
+  - Client ID: []
+    Client Key: []
+    Oauth_Token:
+      - napix
+parameters: {}
+securityDefinitions:
+  Client ID:
+    in: header
+    name: NIC-Client-ID
+    type: apiKey
+    x-key-type: client_id
+  Client Key:
+    in: header
+    name: NIC-Client-Key
+    type: apiKey
+    x-key-type: client_secret
+  Oauth_Token:
+    flow: application
+    type: oauth2
+    scopes:
+      napix: NAPIX Scope
+    tokenUrl: //oauth2/token
+    x-ibm-oauth-provider: nic-oauth-provider-application-grant-type
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  servers:
+    - url: https://bgw.napix.gov.in/nic/trapi/edistrict
+      type:
+        - production
+        - development
+      description: Bhubaneswar External Gateway
+  enforced: true
+  testable: true
+  oauth-servers:
+    Oauth_Token:
+      tokenUrls:
+        - https://begateway.napix.gov.in:443/nic/trapi//oauth2/token
+      refreshUrls: []
+      authorizationUrls: []
+  application-authentication:
+    certificate: false

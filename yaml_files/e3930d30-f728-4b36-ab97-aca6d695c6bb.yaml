@@ -1,0 +1,70 @@
+host: wb-gateway.napix.gov.in
+info:
+  title: Food & Supplies Department
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/wb/food-supplies
+  version: 1.0.0
+  x-ibm-name: wbulc-authenticate
+  description: WBULC Signin API for fetching life certificate information by
+    various departments under Govt of West Bengal. For signin credential please
+    contact Administrator.
+paths:
+  /:
+    post:
+      consumes:
+        - application/json
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      parameters: []
+      tags:
+        - Wbulc authenticate
+    parameters: []
+schemes:
+  - https
+swagger: "2.0"
+basePath: /wb/food-supplies/wbulc-authenticate
+security:
+  - clientID: []
+    clientSecret: []
+parameters:
+  clientId:
+    in: body
+    name: clientId
+    schema:
+      type: string
+    required: true
+  clientSecret:
+    in: body
+    name: clientSecret
+    schema:
+      type: string
+    required: true
+securityDefinitions:
+  clientID:
+    in: header
+    name: clientID
+    type: apiKey
+    x-key-type: client_id
+  clientSecret:
+    in: header
+    name: clientSecret
+    type: apiKey
+    x-key-type: client_secret
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  servers:
+    - url: https://wb-gateway.napix.gov.in/wb/food-supplies/wbulc-authenticate
+      type:
+        - production
+        - development
+      description: ""
+  enforced: true
+  testable: true
+  application-authentication: {}

@@ -1,0 +1,65 @@
+host: degateway.napix.gov.in:443
+info:
+  title: Jeevan Pramaan
+  version: 1.0.0
+  x-ibm-name: pensionerauth
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/nic/jeevan-pramaan
+paths:
+  /pensioner_auth:
+    post:
+      summary: PArams
+      consumes:
+        - application/xml
+      security:
+        - clientID: []
+          ClientAuthKey: []
+      responses:
+        "200":
+          description: Ok
+      parameters:
+        - in: body
+          name: BodyParams
+          schema:
+            type: string
+            title: Schema
+        - in: header
+          name: AUthorization
+          type: string
+          format: byte
+      tags:
+        - Pensionerauth
+schemes:
+  - https
+swagger: "2.0"
+basePath: /nic/jeevan-pramaan/jeevanpramaan
+security:
+  - clientID: []
+    ClientAuthKey: []
+securityDefinitions:
+  clientID:
+    in: header
+    name: X-clientID
+    type: apiKey
+    x-key-type: client_id
+  ClientAuthKey:
+    in: header
+    name: X-ClientKey
+    type: apiKey
+    x-key-type: client_secret
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  servers:
+    - url: https://degateway.napix.gov.in:443/nic/jeevan-pramaan/jeevanpramaan
+      type:
+        - production
+        - development
+      description: ""
+  enforced: true
+  testable: true
+  application-authentication:
+    certificate: false

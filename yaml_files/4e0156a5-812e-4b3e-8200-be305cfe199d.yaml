@@ -1,0 +1,81 @@
+info:
+  title: Department Of Higher Education and School Education Department, Govt of
+    West Bengal
+  version: 1.0.0
+  x-ibm-name: wbscc-loan-disbursed-details-national-service
+  description: WBSCC Loan Disbursement Applicant List (National) Service gives
+    details of first Disbursement of all sanctioned loan under WBSCC where
+    Applicants are studying within India.
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/wb/education
+paths:
+  /wbscc-loan-disbursed-details-national:
+    post:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: success
+        "401":
+          description: NOT AUTHORIZED
+        "404":
+          description: DATA NOT FOUND
+        "422":
+          description: Valid Date Range Missing
+      parameters:
+        - in: query
+          name: fromDate
+          schema:
+            type: string
+            title: fromDate
+            description: From Date
+          example: fromDate=08-05-2022
+          required: true
+          description: From Date
+        - in: query
+          name: toDate
+          schema:
+            type: string
+            title: toDate
+            description: To Date
+          example: toDate=09-05-2022
+          required: true
+          description: To Date
+      requestBody:
+        content:
+          multipart/form-data: {}
+      tags:
+        - Wbscc loan disbursed details national service
+openapi: 3.0.0
+servers:
+  - url: https://wbgw.napix.gov.in/wb/education/wbscc
+security:
+  - clientID: []
+    clientSecret: []
+components:
+  securitySchemes:
+    clientID:
+      in: header
+      name: X-NIC-Client-Id
+      type: apiKey
+      x-key-type: client_id
+    clientSecret:
+      in: header
+      name: X-NIC-Client-Secret
+      type: apiKey
+      x-key-type: client_secret
+x-ibm-endpoints:
+  - url: https://wbgw.napix.gov.in/wb/education/wbscc
+    type:
+      - production
+      - development
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  enforced: true
+  testable: true

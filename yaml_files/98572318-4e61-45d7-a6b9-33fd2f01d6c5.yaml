@@ -1,0 +1,84 @@
+info:
+  title: Department Of Higher Education and School Education Department, Govt of
+    West Bengal
+  version: 1.0.0
+  x-ibm-name: wbscc-loan-disbursement-applicant-list-foreign-service
+  description: WBSCC Loan Disbursement Applicant List (Foreign) Service gives
+    details of first Disbursement of all Foreign Applications Loan Sanction
+    under WBSCC.
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/wb/education
+paths:
+  /loan_disbursement_applicant_list_foreign:
+    post:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: success
+        "401":
+          description: NOT AUTHORIZED
+        "404":
+          description: DATA NOT FOUND
+        "422":
+          description: Valid Date Range Missing
+      parameters:
+        - in: query
+          name: fromDate
+          schema:
+            type: string
+            title: fromDate
+            readOnly: true
+            description: FROM DATE
+          example: fromDate=13-11-2022
+          required: true
+        - in: query
+          name: toDate
+          schema:
+            type: string
+            title: toDate
+            readOnly: false
+          example: toDate=13-11-2023
+          required: true
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: string
+              readOnly: true
+      tags:
+        - Wbscc loan disbursement applicant list foreign service
+    parameters: []
+openapi: 3.0.0
+servers:
+  - url: https://wbgw.napix.gov.in/wb/education/wbscc
+security:
+  - clientID: []
+    clientSecret: []
+components:
+  securitySchemes:
+    clientID:
+      in: header
+      name: X-NIC-Client-Id
+      type: apiKey
+      x-key-type: client_id
+    clientSecret:
+      in: header
+      name: X-NIC-Client-Secret
+      type: apiKey
+      x-key-type: client_secret
+x-ibm-endpoints:
+  - url: https://wbgw.napix.gov.in/wb/education/wbscc
+    type:
+      - production
+      - development
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  enforced: true
+  testable: true

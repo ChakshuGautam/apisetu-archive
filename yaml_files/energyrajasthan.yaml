@@ -1,0 +1,131 @@
+openapi: 3.0.3
+info:  
+  title: Electrical Inspectorate, Rajasthan
+  description:  >- 
+                The ELECTRICAL INSPECTORATE DEPARTMENT Issues  Certificate for Energisation of HT and  EHT Electrical Installations including Renewable Energy sources under 43 and 32  CEA 2010. 2. ELECTRICAL INSPECTORATE DEPARTMENT are also issuing wire man supervisor Contractor Licences. It will help the citizens to see the status of their application and also helped them to take out certificate through Digilocker integrated with Raj eVault.
+  termsOfService: https://apisetu.gov.in/api-policy
+  version: 3.0.0
+servers:
+  - url: 'https://apisetu.gov.in/certificate/v3/energyrajasthan'
+paths:
+  
+  /cecpy:
+    post:
+      tags:
+        - APIs
+      summary: Certified Copy
+      description: API to verify Certified Copy.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: cecpy
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf  
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - UDF1
+                    
+                    
+                    - UID
+                    
+                    - FullName
+                    
+                    - DOB
+                      
+                  properties:
+                    UDF1:
+                      type: string
+                      description: Application Id
+                      example: "EID/2017-18/T/XXXX"
+                       
+                    
+                                        
+                    
+                    UID:
+                      type: string
+                      description: Aadhaar number
+                      example: "123412341234"
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"
+                    DOB:
+                      type: string
+                      description: Date of birth in DD-MM-YYYY format
+                      example: "31-12-1980"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+              application/pdf:
+                example: Response body contains contents of the certificate in PDF format.
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+components:
+  schemas:
+    ConsentArtifactSchema:
+      $ref: './common/ConsentArtifactSchema.yaml#/ConsentArtifactSchema'
+    AcademicCertificateSchema:
+      $ref: './common/AcademicCertificateSchema.yaml#/AcademicCertificateSchema'
+          
+  responses:
+    400Error:
+      $ref: './common/ErrorResponse.yaml#/400Error'
+    401Error:
+      $ref: './common/ErrorResponse.yaml#/401Error'
+    404Error:
+      $ref: './common/ErrorResponse.yaml#/404Error'
+    500Error:
+      $ref: './common/ErrorResponse.yaml#/500Error'
+    502Error:
+      $ref: './common/ErrorResponse.yaml#/502Error'
+    503Error:
+      $ref: './common/ErrorResponse.yaml#/503Error'
+    504Error:
+      $ref: './common/ErrorResponse.yaml#/504Error'
+  securitySchemes:
+    clientId:
+      type: apiKey
+      in: header
+      name: X-APISETU-CLIENTID
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-APISETU-APIKEY

@@ -1,0 +1,1156 @@
+---
+openapi: 3.0.0
+info:
+  title: Swayam Prabha
+  description: The SWAYAM PRABHA is a group of 80 DTH channels devoted to telecasting of high-quality educational programmes on 24X7 basis using the GSAT-15 satellite. Every day, there will be new content for at least 4 hours which would be repeated 5 more times in a day, updated contents, allowing the students to choose the time of their convenience. The channels are uplinked from BISAG-N, Gandhinagar. The contents are provided by NPTEL,IITs,UGC,CEC,IGNOU.The INFLIBNET Centre maintains the web portal. <i>[Updated on 14th September 2023]</i>
+  termsOfService: https://web.umang.gov.in/uaw/ts/v1/en/index.htm
+  contact:
+    name: Provided by - UMANG
+    url: https://web.umang.gov.in
+  version: 1.0.0
+servers:
+  - url: https://apigw.umangapp.in
+    description: Production Server
+    
+security:
+  - x-api-key: []
+    
+paths:
+  /SwayamPrabhaApi/ws1/usercategory:
+    post:
+      tags:
+        - User Category Web Service
+      summary: Get the user category using this service
+      description: This api is used to get the user category
+      operationId: SwayamPrabhaApi/ws1/usercategory
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 2
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 2
+                lon:
+                  type: string
+                  description: longitude
+                  example: 2
+                lac:
+                  type: string
+                  description: lac
+                  example: 2
+                usag:
+                  type: string
+                  description: usage
+                  example: 2
+                usrid:
+                  type: string
+                  description: user id
+                  example: 2
+                srvid:
+                  type: string
+                  description: service id
+                  example: 832
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: 1
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1                  
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 126
+                did:
+                  type: string
+                  description: did
+                  example: 1234
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "126"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "832"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: ED0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                    type: array
+                    description: user category objects
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: id
+                          example: 1
+                        name:
+                          type: string
+                          description: name
+                          example: Secondary/High Secondary
+        "400":
+          description: Bad Request/Validation Error
+  /SwayamPrabhaApi/ws1/viewarchive:
+    post:
+      tags:
+        - View Archive Videos Web Service
+      summary: View Archive Videos using this service
+      description: This api is used to view archive videos
+      operationId: SwayamPrabhaApi/ws1/viewarchive
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 2
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 2
+                lon:
+                  type: string
+                  description: longitude
+                  example: 2
+                lac:
+                  type: string
+                  description: lac
+                  example: 2
+                usag:
+                  type: string
+                  description: usage
+                  example: 2
+                usrid:
+                  type: string
+                  description: user id
+                  example: 2
+                srvid:
+                  type: string
+                  description: service id
+                  example: 832
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: 1
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 126
+                did:
+                  type: string
+                  description: did
+                  example: 1234
+                channelno:
+                  type: string
+                  description: channelno
+                  example: 8
+                period:
+                  type: string
+                  description: period
+                  example: archive
+                startrec:
+                  type: string
+                  description: startrec
+                  example: 5
+                countrec:
+                  type: string
+                  description: countrec
+                  example: 20
+                title:
+                  type: string
+                  description: title
+                  example: chem
+                startdate:
+                  type: string
+                  description: startdate
+                  example: 2017-01-15
+                enddate:
+                  type: string
+                  description: enddate
+                  example: 2017-05-24
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "126"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "832"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: ED0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                    type: array
+                    description: archived videos list object item
+                    items:
+                      type: object
+                      properties:
+                        title:
+                          type: string
+                          description: title
+                          example: CHEMISTRY OF ELEMENTS OF FIRST TRANSITION SERIES-1
+                        user_category:
+                          type: string
+                          description: user_category
+                          example: null
+                        duration:
+                          type: string
+                          description: duration
+                          example: 00:26:37
+                        subject:
+                          type: string
+                          description: subject
+                          example: Inorganic Chemistry  II
+                        subdomain:
+                          type: string
+                          description: subdomain
+                          example: Chemistry
+                        domain:
+                          type: string
+                          description: domain
+                          example: Physical & Basic Sciences
+                        professor:
+                          type: string
+                          description: professor
+                          example: Dr. R.Jadeja
+                        language:
+                          type: string
+                          description: language
+                          example: null
+                        telecast_date:
+                          type: string
+                          description: telecast_date
+                          example: 14-04-2017
+                        video_url:
+                          type: string
+                          description: video_url
+                          example: UbDvWARaVOU
+                        channel_no:
+                          type: string
+                          description: channel_no
+                          example: 8 
+                  pd2:
+                    type: string
+                    description: pd2 response description
+                    example: null                          
+        "400":
+          description: Bad Request/Validation Error
+  /SwayamPrabhaApi/ws1/faq:
+    post:
+      tags:
+        - FAQ Web Service
+      summary: Fetch the faq list dates using this service
+      description: This api is used to fetch the faq
+      operationId: SwayamPrabhaApi/ws1/faq
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 2
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 2
+                lon:
+                  type: string
+                  description: longitude
+                  example: 2
+                lac:
+                  type: string
+                  description: lac
+                  example: 2
+                usag:
+                  type: string
+                  description: usage
+                  example: 2
+                usrid:
+                  type: string
+                  description: user id
+                  example: 2
+                srvid:
+                  type: string
+                  description: service id
+                  example: 832
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: 1
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1                  
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 126
+                did:
+                  type: string
+                  description: did
+                  example: 1234
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "126"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "832"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: ED0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                    type: array
+                    description: faq object item
+                    items:
+                      type: object
+                      properties:
+                        question:
+                          type: string
+                          description: question
+                          example: What is SwayamPrabha?
+                        answer:
+                          type: string
+                          description: answer
+                          example: The SWAYAM-PRABHA is a group of 32 DTH channels devoted to telecasting
+                            of high-quality educational programmes on 24X7 basis
+                            using the GSAT-15 satellite. Every day, there will
+                            be new content for at least four hours which would
+                            be repeated 5 more times in a day, allowing the
+                            students to choose the time slot as per their
+                            convenience.
+        "400":
+          description: Bad Request/Validation Error
+  /SwayamPrabhaApi/ws1/submitfeed:
+    post:
+      tags:
+        - Submit Feedback Web Service
+      summary: Submit the feedback using this service
+      description: This api is used to submit the feedback
+      operationId: SwayamPrabhaApi/ws1/submitfeed
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 2
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 2
+                lon:
+                  type: string
+                  description: longitude
+                  example: 2
+                lac:
+                  type: string
+                  description: lac
+                  example: 2
+                usag:
+                  type: string
+                  description: usage
+                  example: 2
+                usrid:
+                  type: string
+                  description: user id
+                  example: 2
+                srvid:
+                  type: string
+                  description: service id
+                  example: 832
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: 1
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 126
+                did:
+                  type: string
+                  description: did
+                  example: 1234
+                name:
+                  type: string
+                  description: name
+                  example: piyush
+                mobile:
+                  type: string
+                  description: mobile
+                  example: 9455666767
+                email:
+                  type: string
+                  description: email
+                  example: piyush@inflibnet.ac.in
+                message:
+                  type: string
+                  description: message
+                  example: abcd
+                channel_no:
+                  type: string
+                  description: channel_no
+                  example: 8
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "126"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "832"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: ED0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                    type: object
+                    description: feedback detail object
+                    properties:
+                      status:
+                        type: string
+                        description: status
+                        example: success
+                      message:
+                        type: string
+                        description: message
+                        example: feedback submitted successfully
+                  pd2:
+                    type: object
+                    description: feedback detail error object
+                    properties:
+                      status:
+                        type: string
+                        description: status
+                        example: error
+                      message:
+                        type: object
+                        description: message
+                        example: mobile parameter have invalid value
+        "400":
+          description: Bad Request/Validation Error
+  /SwayamPrabhaApi/ws1/telecastdetails:
+    post:
+      tags:
+        - Telecast Details Web Service
+      summary: Get the telecast details using this service
+      description: This api is used to get the the telecast details
+      operationId: SwayamPrabhaApi/ws1/telecastdetails
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 2
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 2
+                lon:
+                  type: string
+                  description: longitude
+                  example: 2
+                lac:
+                  type: string
+                  description: lac
+                  example: 2
+                usag:
+                  type: string
+                  description: usage
+                  example: 2
+                usrid:
+                  type: string
+                  description: user id
+                  example: 2
+                srvid:
+                  type: string
+                  description: service id
+                  example: 832
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: 1
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1                  
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 126
+                did:
+                  type: string
+                  description: did
+                  example: 1234
+                channelno:
+                  type: string
+                  description: channelno
+                  example: null
+                period:
+                  type: string
+                  description: period
+                  example: null
+                startrec:
+                  type: string
+                  description: startrec
+                  example: null
+                countrec:
+                  type: string
+                  description: countrec
+                  example: null
+                title:
+                  type: string
+                  description: title
+                  example: null
+                startdate:
+                  type: string
+                  description: startdate
+                  example: null
+                enddate:
+                  type: string
+                  description: enddate
+                  example: 2017-05-24
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "126"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "832"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: ED0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                    type: array
+                    description: telecast detail object item
+                    items:
+                      type: object
+                      properties:
+                        title:
+                          type: string
+                          description: title
+                          example: PR in Hospital
+                        user_category:
+                          type: string
+                          description: user_category
+                          example: UG
+                        duration:
+                          type: string
+                          description: duration
+                          example: 00:28:20
+                        subject:
+                          type: string
+                          description: subject
+                          example: Public Relations/Corporate Communication
+                        subdomain:
+                          type: string
+                          description: subdomain
+                          example: M.C.& J.
+                        domain:
+                          type: string
+                          description: domain
+                          example: Social Sciences
+                        professor:
+                          type: string
+                          description: professor
+                          example: Ms. Swati Singh
+                        language:
+                          type: string
+                          description: language
+                          example: english
+                        telecast_date:
+                          type: string
+                          description: telecast_date
+                          example: 01-04-2017
+                        channel_no:
+                          type: string
+                          description: channel_no
+                          example: 5
+                        repeat_time:
+                          type: string
+                          description: repeat_time
+                          example: null
+                        telecast_time:
+                          type: string
+                          description: telecast_time
+                          example: null                        
+                  pd2:
+                    type: object
+                    description: telecast error object
+                    properties:
+                      status:
+                        type: string
+                        description: status
+                        example: error
+                      message:
+                       type: object
+                       description: telecast error message
+                       example: mobile parameter have invalid value                  
+        "400":
+          description: Bad Request/Validation Error
+  /SwayamPrabhaApi/ws1/channelallocate:
+    post:
+      tags:
+        - Allocate Channel Web Service
+      summary: Allocate the channel using this service
+      description: This api is used to allocate the channel
+      operationId: SwayamPrabhaApi/ws1/channelallocate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 2
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 2
+                lon:
+                  type: string
+                  description: longitude
+                  example: 2
+                lac:
+                  type: string
+                  description: lac
+                  example: 2
+                usag:
+                  type: string
+                  description: usage
+                  example: 2
+                usrid:
+                  type: string
+                  description: user id
+                  example: 2
+                srvid:
+                  type: string
+                  description: service id
+                  example: 832
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: 1
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 126
+                did:
+                  type: string
+                  description: did
+                  example: 1234
+                channelno:
+                  type: string
+                  description: channelno
+                  example: 8
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "126"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "832"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: ED0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                    type: array
+                    description: user category objects
+                    items:
+                      type: object
+                      description: channel object
+                      properties:
+                        id:
+                          type: string
+                          description: id
+                          example: 8
+                        name:
+                          type: string
+                          description: name
+                          example: "Channel 08: ARYABHATT: CEC/UGC: Physical sciences, Mathematics,
+                            Physics, Chemistry and related Subjects"
+                        manage_by:
+                          type: string
+                          description: manage_by
+                          example: CEC/UGC
+                        description:
+                          type: string
+                          description: description
+                          example: The Channel-08- Swayam Prabha DTH will broadcast high-quality,visually
+                            and graphically enriched content of physical and
+                            earth sciences to the undergraduate and postgraduate
+                            students of India.The physical sciences include
+                            mathematics, statistics, physics and chemistry while
+                            the earth sciences shall focus on geography and
+                            ngeology. The contents delivered through this
+                            channel shall enhance the learning experience of the
+                            Indian students at the UG and PG level.
+                        video_link:
+                          type: string
+                          description: video_link
+                          example: duoNstGmddE
+                        coordinator:
+                          type: object
+                          description: coordinator object
+                          properties:
+                            national:
+                              type: object
+                              description: national object
+                              properties:
+                                name:
+                                  type: string
+                                  description: name
+                                  example: Prof. Jagat Bhushan Nadda
+                                email:
+                                  type: string
+                                  description: email
+                                  example: director.cec@nic.in
+                                location:
+                                  type: string
+                                  description: location
+                                  example: New Delhi
+                                role:
+                                  type: string
+                                  description: role
+                                  example: National Coordinator
+                            channel:
+                              type: object
+                              description: channel object
+                              properties:
+                                name:
+                                  type: string
+                                  description: name
+                                  example: Dr. D. Damodar Prasad Director
+                                email:
+                                  type: string
+                                  description: email
+                                  example: emmrccalicut@yahoo.co.in
+                                location:
+                                  type: string
+                                  description: location
+                                  example: Calicut University,\r\nEMRC Calicut
+                                role:
+                                  type: string
+                                  description: role
+                                  example: Channel Coordinator
+                        domain:
+                          type: string
+                          description: domain
+                          example: Physical & Basic Sciences
+                        count:
+                          type: object
+                          description: count object
+                          properties:
+                            archive:
+                              type: string
+                              description: archive
+                              example: 25190
+                            current:
+                              type: string
+                              description: current
+                              example: 0
+                            upcoming:
+                              type: string
+                              description: upcoming
+                              example: 0
+                  pd2:
+                    type: object
+                    description: allocate channel error response description
+                    properties:
+                      status:
+                        type: string
+                        description: status
+                        example: error
+                      message:
+                       type: object
+                       description: telecast error message
+                       example: channel_no parameter have invalid value 
+        "400":
+          description: Bad Request/Validation Error
+components:
+  securitySchemes:
+    x-api-key:
+      type: apiKey
+      name: x-api-key
+      in: header

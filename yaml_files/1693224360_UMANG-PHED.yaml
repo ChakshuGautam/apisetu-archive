@@ -1,0 +1,3600 @@
+---
+openapi: 3.0.0
+info:
+  title: PHED (Public Health Engineering Department, Haryana)
+  description: Public Health Engineering Department (PHED) is committed to provide potable water to every citizen of the state.The main function of the Public Health Engineering Department is to plan, implement & maintain Rural and Urban Water Supply Schemes, rural sanitation schemes.Public Health Engineering Department enables users to apply for a new water / sewer connection, lodge complaint, online payment, utility & bill payments. <i>[Updated on 28th August 2023]</i>
+  termsOfService: https://web.umang.gov.in/uaw/ts/v1/en/index.htm
+  contact:
+    name: Provided by - UMANG
+    url: https://web.umang.gov.in
+  version: 1.0.0
+servers:
+  - url: https://apigw.umangapp.in
+    description: Production server
+
+security: 
+  - x-api-key: []
+
+paths:
+  /PhedApi/ws1/area:
+    post:
+      tags:
+        - Area Web Service
+      summary: Get the area using this service
+      description: This api is used to get the area
+      operationId: PhedApi/ws1/area
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 119
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 800
+                did:
+                  type: string
+                  description: Device Id
+                  example: "https://web.umang.gov.in/phed/api/deptt/phed/?redirectUrl=applyConnection?GLOBAL_SERVICE_ID=800"
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "119"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "800"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PHED0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  payload:
+                    type: object
+                    description: response object
+                    properties:
+                      result:
+                        type: array
+                        description: result objects
+                        items:
+                          type: object
+                          properties:
+                            text:
+                              type: string
+                              description: text
+                              example: Rural
+                            value:
+                              type: string
+                              description: value
+                              example: 1
+        "400":
+          description: Bad Request/Validation Error
+  /PhedApi/ws1/district:
+    post:
+      tags:
+        - District Web Service
+      summary: Get the district using this service
+      description: This api is used to get the district
+      operationId: PhedApi/ws1/district
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 119
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 800
+                did:
+                  type: string
+                  description: Device Id
+                  example: "https://web.umang.gov.in/phed/api/deptt/phed/?redirectUrl=applyConnection?GLOBAL_SERVICE_ID=800"
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "119"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "800"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PHED0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  payload:
+                    type: object
+                    description: response object
+                    properties:
+                      result:
+                        type: array
+                        description: result objects
+                        items:
+                          type: object
+                          properties:
+                            text:
+                              type: string
+                              description: text
+                              example: AMBALA
+                            value:
+                              type: string
+                              description: value
+                              example: 01
+        "400":
+          description: Bad Request/Validation Error  
+  /PhedApi/ws1/townblock:
+    post:
+      tags:
+        - Town Block Web Service
+      summary: Get the townblock using this service
+      description: This api is used to get the townblock
+      operationId: PhedApi/ws1/townblock
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 119
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 800
+                did:
+                  type: string
+                  description: Device Id
+                  example: "https://web.umang.gov.in/phed/api/deptt/phed/?redirectUrl=applyConnection?GLOBAL_SERVICE_ID=800"
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                areaid:
+                  type: string
+                  description: areaid
+                  example: 1
+                districtid:
+                  type: string
+                  description: districtid
+                  example: 01               
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "119"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "800"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PHED0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  payload:
+                    type: object
+                    description: response object
+                    properties:
+                      result:
+                        type: array
+                        description: result objects
+                        items:
+                          type: object
+                          properties:
+                            text:
+                              type: string
+                              description: text
+                              example: AMBALA-I
+                            value:
+                              type: string
+                              description: value
+                              example: 003
+        "400":
+          description: Bad Request/Validation Error  
+  /PhedApi/ws1/wardvillage:
+    post:
+      tags:
+        - Ward Village Web Service
+      summary: Get the ward village using this service
+      description: This api is used to get the ward village
+      operationId: PhedApi/ws1/wardvillage
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 119
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 800
+                did:
+                  type: string
+                  description: Device Id
+                  example: "https://web.umang.gov.in/phed/api/deptt/phed/?redirectUrl=applyConnection?GLOBAL_SERVICE_ID=800"
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                areaid:
+                  type: string
+                  description: areaid
+                  example: 2
+                townblock:
+                  type: string
+                  description: townblock
+                  example: 093                 
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "119"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "800"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PHED0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  payload:
+                    type: object
+                    description: response object
+                    properties:
+                      result:
+                        type: array
+                        description: result objects
+                        items:
+                          type: object
+                          properties:
+                            text:
+                              type: string
+                              description: text
+                              example: 1
+                            value:
+                              type: string
+                              description: value
+                              example: 10636
+        "400":
+          description: Bad Request/Validation Error  
+  /PhedApi/ws1/watersewer:
+    post:
+      tags:
+        - Water Sewer Web Service
+      summary: Get the watersewer using this service
+      description: This api is used to get the watersewer
+      operationId: PhedApi/ws1/watersewer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 119
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 800
+                did:
+                  type: string
+                  description: Device Id
+                  example: "https://web.umang.gov.in/phed/api/deptt/phed/?redirectUrl=applyConnection?GLOBAL_SERVICE_ID=800"
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                areaid:
+                  type: string
+                  description: areaid
+                  example: 2                 
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "119"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "800"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PHED0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  payload:
+                    type: object
+                    description: response object
+                    properties:
+                      result:
+                        type: array
+                        description: result objects
+                        items:
+                          type: object
+                          properties:
+                            text:
+                              type: string
+                              description: text
+                              example: Both (Water and Sewage)
+                            value:
+                              type: string
+                              description: value
+                              example: 3
+        "400":
+          description: Bad Request/Validation Error  
+  /PhedApi/ws1/connectionc:
+    post:
+      tags:
+        - Connection Category Web Service
+      summary: Get the connection category using this service
+      description: This api is used to get the connection category
+      operationId: PhedApi/ws1/connectionc
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 119
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 800
+                did:
+                  type: string
+                  description: Device Id
+                  example: "https://web.umang.gov.in/phed/api/deptt/phed/?redirectUrl=applyConnection?GLOBAL_SERVICE_ID=800"
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "119"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "800"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PHED0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  payload:
+                    type: object
+                    description: response object
+                    properties:
+                      result:
+                        type: array
+                        description: result objects
+                        items:
+                          type: object
+                          properties:
+                            text:
+                              type: string
+                              description: text
+                              example: Commercial
+                            value:
+                              type: string
+                              description: value
+                              example: 3
+        "400":
+          description: Bad Request/Validation Error  
+  /PhedApi/ws1/plumber:
+    post:
+      tags:
+        - Plumber Id  Web Service
+      summary: Get the plumber id using this service
+      description: This api is used to get the plumber id
+      operationId: PhedApi/ws1/plumber
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 119
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 800
+                did:
+                  type: string
+                  description: Device Id
+                  example: "https://web.umang.gov.in/phed/api/deptt/phed/?redirectUrl=applyConnection?GLOBAL_SERVICE_ID=800"
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                areaid:
+                  type: string
+                  description: areaid
+                  example: 2
+                townblock:
+                  type: string
+                  description: townblock
+                  example: 01               
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "119"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "800"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PHED0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  payload:
+                    type: object
+                    description: response object
+                    properties:
+                      result:
+                        type: array
+                        description: result objects
+                        items:
+                          type: object
+                          properties:
+                            text:
+                              type: string
+                              description: text
+                              example: "Ashok Kumar (Mobile :-9896129093 Address:-#117-B, Ward No.1, Shiv colony, Jagadhri, Distt. Yamuna Nagar)"
+                            value:
+                              type: string
+                              description: value
+                              example: 159
+        "400":
+          description: Bad Request/Validation Error  
+  /PhedApi/ws1/ownerproof:
+    post:
+      tags:
+        - Owner Proof Web Service
+      summary: Get the owner proof using this service
+      description: This api is used to get the owner proof
+      operationId: PhedApi/ws1/ownerproof
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 119
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 800
+                did:
+                  type: string
+                  description: Device Id
+                  example: "https://web.umang.gov.in/phed/api/deptt/phed/?redirectUrl=applyConnection?GLOBAL_SERVICE_ID=800"
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "119"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "800"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PHED0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  payload:
+                    type: object
+                    description: response object
+                    properties:
+                      result:
+                        type: array
+                        description: result objects
+                        items:
+                          type: object
+                          properties:
+                            text:
+                              type: string
+                              description: text
+                              example: Allotment letter by Govt Approved Agency
+                            value:
+                              type: string
+                              description: value
+                              example: 3
+        "400":
+          description: Bad Request/Validation Error  
+  /PhedApi/ws1/proof:
+    post:
+      tags:
+        - Get Proof List Web Service
+      summary: Get the proof list using this service
+      description: This api is used to get the proof list
+      operationId: PhedApi/ws1/proof
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 119
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 800
+                did:
+                  type: string
+                  description: Device Id
+                  example: "https://web.umang.gov.in/phed/api/deptt/phed/?redirectUrl=applyConnection?GLOBAL_SERVICE_ID=800"
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "119"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "800"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PHED0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  payload:
+                    type: object
+                    description: response object
+                    properties:
+                      result:
+                        type: array
+                        description: result objects
+                        items:
+                          type: object
+                          properties:
+                            text:
+                              type: string
+                              description: text
+                              example: Adhaar Card
+                            value:
+                              type: string
+                              description: value
+                              example: 2
+        "400":
+          description: Bad Request/Validation Error  
+  /PhedApi/ws1/newconnection:
+    post:
+      tags:
+        - New Connection Web Service
+      summary: Get the new connection using this service
+      description: This api is used to get the new connection
+      operationId: PhedApi/ws1/newconnection
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 3004301239
+                srvid:
+                  type: string
+                  description: service id
+                  example: 119
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 20
+                did:
+                  type: string
+                  description: Device Id
+                  example: "https://web.umang.gov.in/phed/api/deptt/phedHtml"
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                areacode:
+                  type: string
+                  description: areacode
+                  example: 1
+                connectiontype:
+                  type: string
+                  description: connectiontype
+                  example: 1
+                applicantname:
+                  type: string
+                  description: applicantname
+                  example: Anupam Sahu
+                personproofid:
+                  type: string
+                  description: personproofid
+                  example: 1
+                applicantfathername:
+                  type: string
+                  description: applicantfathername
+                  example: Baldev Prasad sahu
+                conn_cat:
+                  type: string
+                  description: conn_cat
+                  example: 1
+                corresponcenceaddress:
+                  type: string
+                  description: corresponcenceaddress
+                  example: bilaspur mopka
+                mobileno:
+                  type: string
+                  description: mobileno
+                  example: 8817878003
+                emailid:
+                  type: string
+                  description: emailid
+                  example: anupamsahu123@gmail.com       
+                idproofencl:
+                  type: string
+                  description: idproofencl
+                  example: "/9j/4AAQSkZJRgABAQEAYABgAAD//gA7Q1JFQVRPUjogZ.."  
+                idproofenclExtn:
+                  type: string
+                  description: idproofenclExtn
+                  example: jpg  
+                personproofserialno:
+                  type: string
+                  description: personproofserialno
+                  example: HR82883892992   
+                village_wardcode:
+                  type: string
+                  description: village_wardcode
+                  example: 3321 
+                locationaddress:
+                  type: string
+                  description: locationaddress
+                  example: bilaspur mopka 
+                ownershipproofid:
+                  type: string
+                  description: ownershipproofid
+                  example: 3
+                plumberid:
+                  type: string
+                  description: plumberid
+                  example: 0
+                persontype:
+                  type: string
+                  description: persontype
+                  example: 1
+                source:
+                  type: string
+                  description: source
+                  example: U
+                caste_id_proof:
+                  type: string
+                  description: caste_id_proof
+                  example: 0        
+                caste_id_photo:
+                  type: string
+                  description: caste_id_photo
+                  example: 0 
+                caste_id_mime:
+                  type: string
+                  description: caste_id_mime
+                  example: 0 
+                ownerproofencl:
+                  type: string
+                  description: ownerproofencl
+                  example: "/9j/4AAQSkZJRgABAQEAYABgAAD//gA7Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZy"
+                ownerproofenclExtn:
+                  type: string
+                  description: ownerproofenclExtn
+                  example: jpg    
+                plumberencl:
+                  type: string
+                  description: plumberencl
+                  example: "/9j/4AAQSkZJRgABAQEAYABgAAD//gA7Q1JFQVRPUjogZ2QtanBlZyB2MS"
+                plumberenclExtn:
+                  type: string
+                  description: plumberenclExtn
+                  example: jpg 
+                familyID:
+                  type: string
+                  description: familyID
+                  example: 1234567891                 
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "119"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "800"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PHED0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  payload:
+                    type: object
+                    description: response object
+                    properties:
+                      name:
+                        type: object
+                        description: name object parameters
+                        properties:
+                          name:
+                            type: string
+                            description: name
+                            example: "Your application for new connection received successfully. Your Receipts No.=1901745 Dated 01/11/2021. You can also check your application status through this receipt number      \r\n. If the application is found feasible, user can make payment (after intimate by SMS from Department) using 'Make Payment' service or URL services.phedharyana.gov.in "
+                          val1:
+                            type: string
+                            description: val1
+                            example: 1901745
+        "400":
+          description: Bad Request/Validation Error  
+  /PhedApi/ws1/urbansnk:
+    post:
+      tags:
+        - Rural/Urban For SNK  Web Service
+      summary: Get the rural/urban snk detail using this service
+      description: This api is used to get the rural/urban snk detail using this service
+      operationId: PhedApi/ws1/urbansnk
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 119
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 800
+                did:
+                  type: string
+                  description: Device Id
+                  example: "https://web.umang.gov.in/phed/api/deptt/phed/?redirectUrl=applyConnection?GLOBAL_SERVICE_ID=800"
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "119"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "800"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PHED0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  payload:
+                    type: object
+                    description: response object
+                    properties:
+                      result:
+                        type: array
+                        description: result objects
+                        items:
+                          type: object
+                          properties:
+                            text:
+                              type: string
+                              description: text
+                              example: Town
+                            value:
+                              type: string
+                              description: value
+                              example: 1
+        "400":
+          description: Bad Request/Validation Error  
+  /PhedApi/ws1/districtsnk:
+    post:
+      tags:
+        - District For SNK  Web Service
+      summary: Get the district snk detail using this service
+      description: This api is used to get the district snk detail using this service
+      operationId: PhedApi/ws1/districtsnk
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 119
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 800
+                did:
+                  type: string
+                  description: Device Id
+                  example: "https://web.umang.gov.in/phed/api/deptt/phed/?redirectUrl=applyConnection?GLOBAL_SERVICE_ID=800"
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "119"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "800"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PHED0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  payload:
+                    type: object
+                    description: response object
+                    properties:
+                      result:
+                        type: array
+                        description: result objects
+                        items:
+                          type: object
+                          properties:
+                            text:
+                              type: string
+                              description: text
+                              example: AMBALA
+                            value:
+                              type: string
+                              description: value
+                              example: 01
+        "400":
+          description: Bad Request/Validation Error          
+  /PhedApi/ws1/townvillagesnk:
+    post:
+      tags:
+        - Town/Village For SNK Web Service
+      summary: Get the town/village for SNK using this service
+      description: This api is used to get the town/village for SNK
+      operationId: PhedApi/ws1/townvillagesnk
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 119
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 800
+                did:
+                  type: string
+                  description: Device Id
+                  example: "https://web.umang.gov.in/phed/api/deptt/phed/?redirectUrl=applyConnection?GLOBAL_SERVICE_ID=800"
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                townvillage:
+                  type: string
+                  description: townvillage
+                  example: 2
+                districtid:
+                  type: string
+                  description: districtid
+                  example: 01               
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "119"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "800"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PHED0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  payload:
+                    type: object
+                    description: response object
+                    properties:
+                      result:
+                        type: array
+                        description: result objects
+                        items:
+                          type: object
+                          properties:
+                            text:
+                              type: string
+                              description: text
+                              example: AMBALA-I
+                            value:
+                              type: string
+                              description: value
+                              example: 003
+        "400":
+          description: Bad Request/Validation Error  
+  /PhedApi/ws1/wardvillagesnk:
+    post:
+      tags:
+        - Ward/Village For SNK Web Service
+      summary: Get the ward/village for SNK using this service
+      description: This api is used to get the ward/village for SNK
+      operationId: PhedApi/ws1/wardvillagesnk
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 119
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 800
+                did:
+                  type: string
+                  description: Device Id
+                  example: "https://web.umang.gov.in/phed/api/deptt/phed/?redirectUrl=applyConnection?GLOBAL_SERVICE_ID=800"
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                townvillage:
+                  type: string
+                  description: townvillage
+                  example: 2
+                townblock:
+                  type: string
+                  description: townblock
+                  example: 002                
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "119"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "800"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PHED0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  payload:
+                    type: object
+                    description: response object
+                    properties:
+                      result:
+                        type: array
+                        description: result objects
+                        items:
+                          type: object
+                          properties:
+                            text:
+                              type: string
+                              description: text
+                              example: Abdulgarh
+                            value:
+                              type: string
+                              description: value
+                              example: 0158           
+        "400":
+          description: Bad Request/Validation Error  
+  /PhedApi/ws1/complainttypesnk:
+    post:
+      tags:
+        - Complaint Type Web Service
+      summary: Get the complaint type using this service
+      description: This api is used to get the complaint type
+      operationId: PhedApi/ws1/complainttypesnk
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 119
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 800
+                did:
+                  type: string
+                  description: Device Id
+                  example: "https://web.umang.gov.in/phed/api/deptt/phed/?redirectUrl=applyConnection?GLOBAL_SERVICE_ID=800"
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                townvillage:
+                  type: string
+                  description: townvillage
+                  example: 1             
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "119"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "800"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PHED0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  payload:
+                    type: object
+                    description: response object
+                    properties:
+                      result:
+                        type: array
+                        description: result objects
+                        items:
+                          type: object
+                          properties:
+                            text:
+                              type: string
+                              description: text
+                              example: Sewarage Complaints
+                            value:
+                              type: string
+                              description: value
+                              example: 2
+        "400":
+          description: Bad Request/Validation Error  
+  /PhedApi/ws1/subcomplainttypesnk:
+    post:
+      tags:
+        - Sub Complaint Type Web Service
+      summary: Get the sub complaint type using this service
+      description: This api is used to get the sub complaint type
+      operationId: PhedApi/ws1/subcomplainttypesnk
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 119
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 800
+                did:
+                  type: string
+                  description: Device Id
+                  example: "https://web.umang.gov.in/phed/api/deptt/phed/?redirectUrl=applyConnection?GLOBAL_SERVICE_ID=800"
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                complainttype:
+                  type: string
+                  description: complainttype
+                  example: 2                 
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "119"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "800"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PHED0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  payload:
+                    type: object
+                    description: response object
+                    properties:
+                      result:
+                        type: array
+                        description: result objects
+                        items:
+                          type: object
+                          properties:
+                            text:
+                              type: string
+                              description: text
+                              example: "Sewerage Blocked/Over flow of Manholes"
+                            value:
+                              type: string
+                              description: value
+                              example: 2_3_1
+        "400":
+          description: Bad Request/Validation Error  
+  /PhedApi/ws1/newcomplaint:
+    post:
+      tags:
+        - New Complaint Web Service
+      summary: Submit the new complaint using this service
+      description: This api is used to submit the new complaint
+      operationId: PhedApi/ws1/newcomplaint
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 119
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 800
+                did:
+                  type: string
+                  description: Device Id
+                  example: "https://web.umang.gov.in/phed/api/deptt/phed/?redirectUrl=applyConnection?GLOBAL_SERVICE_ID=800"
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                is_urban:
+                  type: string
+                  description: is_urban
+                  example: 1
+                district_code:
+                  type: string
+                  description: district_code
+                  example: 01
+                wardvill_code:
+                  type: string
+                  description: wardvill_code
+                  example: 9611
+                c_mode:
+                  type: string
+                  description: c_mode
+                  example: 7
+                cc_code:
+                  type: string
+                  description: cc_code
+                  example: 1      
+                sub_code:
+                  type: string
+                  description: sub_code
+                  example: 1_1_0 
+                complainant_name:
+                  type: string
+                  description: complainant_name
+                  example: Jon Snow
+                complainant_father_name:
+                  type: string
+                  description: complainant_father_name
+                  example: jonsnow@spicedigital.in 
+                complainant_address:
+                  type: string
+                  description: complainant_address
+                  example: Winterfell 
+                complainant_mobile:
+                  type: string
+                  description: complainant_mobile
+                  example: 9815755721         
+                complainant_email:
+                  type: string
+                  description: complainant_email
+                  example: jonsnow@spicedigital.in  
+                complaint_details:
+                  type: string
+                  description: complaint_details
+                  example: King in The North
+                enter_by:
+                  type: string
+                  description: enter_by
+                  example: 90010               
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "119"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "800"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PHED0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  payload:
+                    type: object
+                    description: response object
+                    properties:
+                      name:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                              description: name
+                              example: Your Complaint No. 215666 is sent successfully.
+        "400":
+          description: Bad Request/Validation Error  
+  /PhedApi/ws1/casteproof:
+    post:
+      tags:
+        - Caste Proof Web Service
+      summary: Get the caste proof using this service
+      description: This api is used to get the caste proof
+      operationId: PhedApi/ws1/casteproof
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 119
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 800
+                did:
+                  type: string
+                  description: Device Id
+                  example: "https://web.umang.gov.in/phed/api/deptt/phed/?redirectUrl=applyConnection?GLOBAL_SERVICE_ID=800"
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "119"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "800"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PHED0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  payload:
+                    type: object
+                    description: response object
+                    properties:
+                      result:
+                        type: array
+                        description: result objects
+                        items:
+                          type: object
+                          properties:
+                            text:
+                              type: string
+                              description: text
+                              example: "Caste Certificate Issued by HOD (in case of Govt. Employee)"
+                            value:
+                              type: string
+                              description: value
+                              example: 2
+        "400":
+          description: Bad Request/Validation Error  
+  /PhedApi/ws1/appstatus:
+    post:
+      tags:
+        - Application Status Web Service
+      summary: Get the application status using this service
+      description: This api is used to get the application status
+      operationId: PhedApi/ws1/appstatus
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 119
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 800
+                did:
+                  type: string
+                  description: Device Id
+                  example: "https://web.umang.gov.in/phed/api/deptt/phed/?redirectUrl=applyConnection?GLOBAL_SERVICE_ID=800"
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                appno:
+                  type: string
+                  description: appno
+                  example: 28628              
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "119"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "800"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PHED0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  payload:
+                    type: object
+                    description: response object
+                    properties:
+                      result:
+                        type: array
+                        description: result objects
+                        items:
+                          type: object
+                          properties:
+                            receipt_id:
+                              type: string
+                              description: receipt_id
+                              example: 28628
+                            person_name:
+                              type: string
+                              description: person_name
+                              example: Balwant singh
+                            conn_name:
+                              type: string
+                              description: conn_name
+                              example: Sewage
+                            cat_name:
+                              type: string
+                              description: cat_name
+                              example: Domestic
+                            mobile:
+                              type: string
+                              description: mobile
+                              example: "*****887"
+                            status_id:
+                              type: string
+                              description: status_id
+                              example: 11
+                            status_by:
+                              type: string
+                              description: status_by
+                              example: JE
+                            status_name:
+                              type: string
+                              description: status_name
+                              example: Connection Installed  
+                            remarks:
+                              type: string
+                              description: remarks
+                              example: null
+                            pending_at:
+                              type: string
+                              description: pending_at
+                              example: Sanctioned  
+                            updated:
+                              type: string
+                              description: updated
+                              example: 13/07/2016  
+                            area_Type:
+                              type: string
+                              description: area_Type
+                              example: Urban                             
+        "400":
+          description: Bad Request/Validation Error  
+  /PhedApi/ws1/compstatus:
+    post:
+      tags:
+        - Complaint Status Web Service
+      summary: Get the complaint status using this service
+      description: This api is used to get the complaint status
+      operationId: PhedApi/ws1/compstatus 
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 119
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 800
+                did:
+                  type: string
+                  description: Device Id
+                  example: "https://web.umang.gov.in/phed/api/deptt/phed/?redirectUrl=applyConnection?GLOBAL_SERVICE_ID=800"
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                compid:
+                  type: string
+                  description: compid
+                  example: 204347                 
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "119"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "800"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PHED0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  payload:
+                    type: object
+                    description: response object
+                    properties:
+                      result:
+                        type: array
+                        description: result objects
+                        items:
+                          type: object
+                          properties:
+                            complaint_id:
+                              type: string
+                              description: complaint_id
+                              example: 204347
+                            response_details:
+                              type: string
+                              description: response_details
+                              example: test 44
+                            enter_date:
+                              type: string
+                              description: enter_date
+                              example: 4/6/2018 10:40:25 AM
+                            response_from:
+                              type: string
+                              description: response_from
+                              example: Shweta (SNK)
+                            closed_status:
+                              type: string
+                              description: closed_status
+                              example: Close                          
+        "400":
+          description: Bad Request/Validation Error  
+  /PhedApi/ws1/compdetails:
+    post:
+      tags:
+        - Complaint Details Web Service
+      summary: Get the complaint details using this service
+      description: This api is used to get the complaint details
+      operationId: PhedApi/ws1/compdetails
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 119
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME               
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 800
+                did:
+                  type: string
+                  description: Device Id
+                  example: "https://web.umang.gov.in/phed/api/deptt/phed/?redirectUrl=applyConnection?GLOBAL_SERVICE_ID=800"
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                compid:
+                  type: string
+                  description: compid
+                  example: 204347                
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "119"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "800"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PHED0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  payload:
+                    type: object
+                    description: response object
+                    properties:
+                      result:
+                        type: array
+                        description: result objects
+                        items:
+                          type: object
+                          properties:
+                            complaint_Mode:
+                              type: string
+                              description: complaint_Mode
+                              example: PHONE
+                            c_IsClose:
+                              type: string
+                              description: c_IsClose
+                              example: True
+                            c_date:
+                              type: string
+                              description: c_date
+                              example: 3/23/2018 1:45:57 PM
+                            townBlock:
+                              type: string
+                              description: townBlock
+                              example: AMBALA-I
+                            c_mail:
+                              type: string
+                              description: c_mail
+                              example: null
+                            c_by:
+                              type: string
+                              description: c_by
+                              example: Shweta
+                            se:
+                              type: string
+                              description: se
+                              example: BHAGWAN DASS BHANKHAR     
+                            c_Mobile:
+                              type: string
+                              description: c_Mobile
+                              example: 7015445120
+                            sdemob:
+                              type: string
+                              description: sdemob
+                              example: 9728286963 
+                            je:
+                              type: string
+                              description: je
+                              example: YAMAN
+                            ee:
+                              type: string
+                              description: ee
+                              example: SAURABH AHLAWAT
+                            jemob:
+                              type: string
+                              description: jemob
+                              example: 7404449129
+                            wardVillage:
+                              type: string
+                              description: wardVillage
+                              example: Ahema
+                            division:
+                              type: string
+                              description: division
+                              example: Ambala City PHED  
+                            subDiv:
+                              type: string
+                              description: subDiv
+                              example: Ambala City PHESD No. 5  
+                            sde:
+                              type: string
+                              description: sde
+                              example: ANIL KUMAR  
+                            complaint_Category:
+                              type: string
+                              description: complaint_Category
+                              example: Water Complaints  
+                            circle:
+                              type: string
+                              description: circle
+                              example: Ambala Circle  
+                            c_CloseDate:
+                              type: string
+                              description: c_CloseDate
+                              example: 4/11/2018 10:29:27 AM  
+                            c_det:
+                              type: string
+                              description: c_det
+                              example: sd  
+                            c_FName:
+                              type: string
+                              description: c_FName
+                              example: null  
+                            c_Name:
+                              type: string
+                              description: c_Name
+                              example: A  
+                            complaint_SubCategory:
+                              type: string
+                              description: complaint_SubCategory
+                              example: Impure Drinking Water  
+                            eemob:
+                              type: string
+                              description: eemob
+                              example: 9466888100
+                            c_Address:
+                              type: string
+                              description: c_Address
+                              example: a
+                            semob:
+                              type: string
+                              description: semob
+                              example: 9466162111
+                            district:
+                              type: string
+                              description: district
+                              example: AMBALA                                                                               
+        "400":
+          description: Bad Request/Validation Error            
+components:
+  securitySchemes:
+    x-api-key:
+      type: apiKey
+      name: x-api-key
+      in: header

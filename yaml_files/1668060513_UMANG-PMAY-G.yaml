@@ -1,0 +1,1038 @@
+---
+  openapi: "3.0.0"
+  info: 
+    title: "Pradhan Mantri Awaas Yojana – Gramin (PMAY-G)"
+    description: "The Pradhan Mantri Awaas Yojana – Gramin (PMAY-G) was introduced with the view to boost the “Housing for All” scheme. The central government came up with the vision to fulfil the “Housing for All” scheme by the year 2022. The main aim of the PMAY-G scheme is to provide pucca house with some of the basic amenities. This scheme is meant for people who do not own a house and people who live in kutcha houses or houses which are severely damaged. At present, the minimum size of the houses to be built under the PMAY-G scheme has been increased to 25 sq. mt. from 20 sq. mt. <i>[Updated on 2nd November 2022]</i>"
+    termsOfService: "https://web.umang.gov.in/uaw/ts/v1/en/index.htm"
+    contact: 
+      name: "Provided by - UMANG"
+      url: "https://web.umang.gov.in"
+    version: "1.0.0"
+  servers: 
+    - 
+      url: "https://apigw.umangapp.in"
+      description: Production Server
+  paths: 
+    /PMAYGApi/ws1/ftoTracking: 
+      post: 
+        tags: 
+          - FTO Tracking API
+        summary: FTO tracking API for PMAY-G
+        description: This API Tracks the FTO for PMAY-G
+        operationId: PMAYGApi/ws1/ftoTracking
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  lat:
+                    type: string
+                    description: latitude
+                    example: null
+                  lon:
+                    type: string
+                    description: longitude
+                    example: null
+                  lac:
+                    type: string
+                    description: Location
+                    example: null
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 1364
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 316
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: 0
+                  subsid2:
+                    type: string
+                    description: sub service id 2
+                    example: 0
+                  ftotracking:
+                    type: object
+                    description: fto tracking object
+                    properties:
+                      ftono:
+                        type: string
+                        example: 34709213810
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "316"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "1364"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        result:
+                          type: array
+                          items: 
+                            type: object
+                            properties:
+                              UniqueMessageId:
+                                type: string
+                                example: 0019DBTPAYREQ21092019297
+                              fto_no:
+                                type: string
+                                example: JH3416011_210919FTO_559311
+                              regenerateFTO:
+                                type: string
+                                example: N
+                              SendToPfms:
+                                type: string
+                                example: Y
+                              SendToPfmsDate:
+                                type: string
+                                example: 22/09/2019
+                              RecAtPfms:
+                                type: string
+                                example: Y
+                              RecAtPfmsDate:
+                                type: string
+                                example: 22/09/2019
+                              SendToBank:
+                                type: string
+                                example: Y
+                              SendToBankDate:
+                                type: string
+                                example: 22/09/2019
+                              AckStatus:
+                                type: string
+                                example: Y
+                              AckDate:
+                                type: string
+                                example: 22/09/2019
+                              DebitStatus:
+                                type: string
+                                example: Y
+                              DebitDate:
+                                type: string
+                                example: 22/09/2019
+                              BenStatus:
+                                type: string
+                                example: Y
+                              BenDate:
+                                type: string
+                                example: 22/09/2019
+          400:
+            description: Bad Request/Validation Error
+    /PMAYGApi/ws1/panchayatwisepwl: 
+      post: 
+        tags: 
+          - Panchayat Wise Pwl API
+        summary: Panchayat wise pwl API for PMAY-G
+        description: This API Fetches the Details of Panchayat wise Pwl for PMAY-G
+        operationId: PMAYGApi/ws1/panchayatwisepwl
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  lat:
+                    type: string
+                    description: latitude
+                    example: null
+                  lon:
+                    type: string
+                    description: longitude
+                    example: null
+                  lac:
+                    type: string
+                    description: Location
+                    example: null
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 1365
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 316
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: 0
+                  subsid2:
+                    type: string
+                    description: sub service id 2
+                    example: 0
+                  panchayatwisepwl:
+                    type: object
+                    description: fto tracking object
+                    properties:
+                      lgdstatecode:
+                        type: string
+                        example: 22
+                      lgdpanchayatcode:
+                        type: string
+                        example: 263745
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "316"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "1365"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        status:
+                          type: string
+                          example: true
+                        result:
+                          type: array
+                          items: 
+                            type: object
+                            properties:
+                              PanchayatName:
+                                type: string
+                                example: CHEUDIH
+                              RegistrationNo:
+                                type: string
+                                example: CH1119340
+                              BeneficiaryName:
+                                type: string
+                                example: MANA BAI
+                              FatherName:
+                                type: string
+                                example: UNK
+                              MotherName:
+                                type: string
+                                example: UNK
+                              Category:
+                                type: string
+                                example: SC
+                              Priority:
+                                type: string
+                                example: 1
+          400:
+            description: Bad Request/Validation Error
+    /PMAYGApi/ws1/installmentdetails: 
+      post: 
+        tags: 
+          - Installment Details API
+        summary: Installment Details API for PMAY-G
+        description: This API Gets the Installment Details
+        operationId: PMAYGApi/ws1/installmentdetails
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  lat:
+                    type: string
+                    description: latitude
+                    example: null
+                  lon:
+                    type: string
+                    description: longitude
+                    example: null
+                  lac:
+                    type: string
+                    description: Location
+                    example: null
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 1366
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 316
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: 0
+                  subsid2:
+                    type: string
+                    description: sub service id 2
+                    example: 0
+                  deptrequest:
+                    type: object
+                    description: fto tracking object
+                    properties:
+                      regno:
+                        type: string
+                        example: RJ1283596
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "316"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "1366"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        status:
+                          type: string
+                          example: true
+                        result:
+                          type: array
+                          items: 
+                            type: object
+                            properties:
+                              registration_number:
+                                type: string
+                                example: RJ1283596
+                              installment:
+                                type: string
+                                example: 1
+                              fin_year:
+                                type: string
+                                example: 2017-2018
+                              amount:
+                                type: string
+                                example: 30000.0
+                              fto_no:
+                                type: string
+                                example: RJ2725001_210417FTO_22814
+                              fto_date:
+                                type: string
+                                example: 2017-04-21T14:03:58.877
+                              payment_status:
+                                type: string
+                                example: ACCP
+                              payment_date:
+                                type: string
+                                example: 2017-05-02T00:00:00
+                              refund:
+                                type: string
+                                example: null
+          400:
+            description: Bad Request/Validation Error
+    /PMAYGApi/ws1/citizendetails: 
+      post: 
+        tags: 
+          - Citizen Details API
+        summary: Citizen Details API for PMAY-G
+        description: This API gets the Details of Citizen for PMAY-G
+        operationId: PMAYGApi/ws1/citizendetails
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  lat:
+                    type: string
+                    description: latitude
+                    example: null
+                  lon:
+                    type: string
+                    description: longitude
+                    example: null
+                  lac:
+                    type: string
+                    description: Location
+                    example: null
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 1367
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 316
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: 0
+                  subsid2:
+                    type: string
+                    description: sub service id 2
+                    example: 0
+                  deptrequest:
+                    type: object
+                    description: fto tracking object
+                    properties:
+                      regno:
+                        type: string
+                        example: RJ1283596
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "316"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "1367"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        status:
+                          type: string
+                          example: true
+                        personal:
+                          type: array
+                          items: 
+                            type: object
+                            properties:
+                              registration_number:
+                                type: string
+                                example: RJ1283596
+                              beneficiary_name:
+                                type: string
+                                example: DEVI SINGH
+                              father_name:
+                                type: string
+                                example: RUP SINGH
+                              mother_name:
+                                type: string
+                                example: BHWARI DEVI
+                              gender:
+                                type: string
+                                example: Male
+                              social_category:
+                                type: string
+                                example: Other
+                              dob:
+                                type: string
+                                example: 1987
+                              ageattimeofSurvey:
+                                type: string
+                                example: 24
+                              mgnrega_job_card:
+                                type: string
+                                example: RJ-272500101102968300/1203
+                              house_status:
+                                type: string
+                                example: Completed
+                              registration_finyear:
+                                type: string
+                                example: 2016-2017
+                              bank_name:
+                                type: string
+                                example: STATE BANK OF INDIA
+                              account_freezed:
+                                type: string
+                                example: Account freezed
+                              account_status:
+                                type: string
+                                example: Account Verified
+                        sanction:
+                          type: array
+                          items: 
+                            type: object
+                            properties:
+                              registration_number:
+                                type: string
+                                example: RJ1283596
+                              sanction_number:
+                                type: string
+                                example: RJ25001/4/63
+                              sanctioned_date:
+                                type: string
+                                example: 27-03-2017
+                              sanctioned_year:
+                                type: string
+                                example: 2016-2017
+                              sanctioned_amount:
+                                type: string
+                                example: 120000.0
+                              remand_status:
+                                type: string
+                                example: null
+                        ordersheet:
+                          type: array
+                          items: 
+                            type: object
+                            properties:
+                              registration_number:
+                                type: string
+                                example: RJ1283596
+                              installment:
+                                type: string
+                                example: 1
+                              ordersheet_no:
+                                type: string
+                                example: RJ25001-PMAYG-1-18632
+                              ordersheet_dt:
+                                type: string
+                                example: 2017-04-07T17:23:28.947
+                              fin_year:
+                                type: string
+                                example: 2017-2018
+                              amount_order:
+                                type: string
+                                example: 30000.0
+                        geotagging:
+                          type: array
+                          items: 
+                            type: object
+                            properties:
+                              registration_number:
+                                type: string
+                                example: RJ1283596
+                              house_status:
+                                type: string
+                                example: Completed
+                              inspection_date:
+                                type: string
+                                example: 2018-01-02T07:44:00
+                              house_photo:
+                                type: string
+                                example: http://awaassoft.nic.in/mobile/mphotoi/RJ/RJ1283596-7-12-1-2018 075145.jpeg
+                              latitude:
+                                type: string
+                                example: 25.433645000000002
+                              Longitude:
+                                type: string
+                                example: 73.82558666666667
+          400:
+            description: Bad Request/Validation Error
+    /PMAYGApi/ws1/convergencedetails: 
+      post: 
+        tags: 
+          - Convergence Details API
+        summary: Convergence details API for PMAY-G
+        description: This API Fetches the Details of Convergence for PMAY-G
+        operationId: PMAYGApi/ws1/convergencedetails
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  lat:
+                    type: string
+                    description: latitude
+                    example: null
+                  lon:
+                    type: string
+                    description: longitude
+                    example: null
+                  lac:
+                    type: string
+                    description: Location
+                    example: null
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 1368
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 316
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: 0
+                  subsid2:
+                    type: string
+                    description: sub service id 2
+                    example: 0
+                  deptrequest:
+                    type: object
+                    description: fto tracking object
+                    properties:
+                      regno:
+                        type: string
+                        example: RJ1283596
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "316"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "1368"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "0"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json:
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        status:
+                          type: string
+                          example: true
+                        result:
+                          type: array
+                          items: 
+                            type: object
+                            properties:
+                              ujjawala_connection:
+                                type: string
+                                example: Yes
+          400:
+            description: Bad Request/Validation Error
+  

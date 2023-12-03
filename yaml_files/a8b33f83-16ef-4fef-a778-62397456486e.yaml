@@ -1,0 +1,51 @@
+info:
+  title: NAPIX
+  version: 1.0.0
+  x-ibm-name: hits
+  description: This API fetches the hits on the NAPIX platform happened in the
+    last 30 days for displaying as a chart on frontend
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/napix/napix
+paths:
+  /:
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: success
+      parameters: []
+      tags:
+        - Hits
+openapi: 3.0.0
+servers:
+  - url: https://degateway.napix.gov.in:443/napix/napix/hits
+security:
+  - ClientID: []
+    ClientSecret: []
+components:
+  securitySchemes:
+    ClientID:
+      in: header
+      name: client-id
+      type: apiKey
+      x-key-type: client_id
+      description: Client ID of frontend application
+    ClientSecret:
+      in: header
+      name: client-secret
+      type: apiKey
+      x-key-type: client_secret
+      description: Client Secret of the consuming application
+x-ibm-endpoints:
+  - url: https://degateway.napix.gov.in:443/napix/napix/hits
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  enforced: true
+  testable: true

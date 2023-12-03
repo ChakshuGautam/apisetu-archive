@@ -1,0 +1,761 @@
+---
+  openapi: "3.0.0"
+  info: 
+    title: "Pensioners Portal (DOPPW)"
+    description: "The Department of Pension & Pensioners' Welfare is the nodal department for formulation of policies relating to pension and other retirement benefits of Central Govt. employees covered under CCS (Pension) Rules, 1972 Apart from formulation of pension policy for the Central Govt. Pensioners/Family Pensioners, it also seeks to promote pensioners welfare and serves as a forum for the redressal of Pensioners' grievances <i>[Updated on 9th January 2023]</i>"
+    termsOfService: "https://web.umang.gov.in/uaw/ts/v1/en/index.htm"
+    contact: 
+      name: "Provided by - UMANG"
+      url: "https://web.umang.gov.in"
+    version: "1.0.0"
+  servers: 
+    - 
+      url: "http://164.100.158.70/umangapistaging"
+      description: Staging Server
+  paths: 
+    /api/GetGratuity: 
+      post: 
+        tags: 
+          - Get Gratuity API
+        summary: Use to Calculate Gratuity
+        description: This API is used to Calculate Gratuity
+        operationId: /api/GetGratuity
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  HashKEY:
+                    type: string
+                    description: Used to Verify Authenticity
+                    example: 9178653239d9edc03e8e315ff8ec081e04981703c942606d30bcb7778b7c476a
+                  TS:
+                    type: string
+                    description: Real World Date Time value
+                    example: 2022-05-24T18:07:18
+                  hmac:
+                    type: string
+                    description: Used to Verify the Integrity of the Request
+                    example: a785b46d4b60554d816f67937311075f75d155c51f21e9fe1af59a45a5f8a8a9
+                  strGratuitytype:
+                    type: string
+                    description: Type of Gratuity
+                    example: R
+                  strRetirementtype:
+                    type: string
+                    description: Retirement Type
+                    example: V
+                  strDt_retire:
+                    type: string
+                    description: Retire Date
+                    example: 20/05/2017
+                  strDt_birth:
+                    type: string
+                    description: Birth Date
+                    example: 25/08/1975
+                  intLastEmolument:
+                    type: string
+                    description: Last Emolument
+                    example: 21500
+                  intQualifyingServiceYr:
+                    type: string
+                    description: Qualifying Service Year
+                    example: 22
+                  intQualifyingServiceMnth:
+                    type: string
+                    description: Qualifying Service Month
+                    example: 0
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json: 
+                schema: 
+                  type: "object"
+                  description: Response Payload
+                  properties:
+                    gratuityAmount:
+                      type: number
+                      example: 0.0
+                    alertMessage:
+                      type: string
+                      example: UnAuthorised Access (IP)
+          400:
+            description: Bad Request/Validation Error
+    /api/GrievanceRegistration: 
+      post: 
+        tags: 
+          - Grievance Registration API
+        summary: Use to Register Grievance
+        description: This API will be used to Register Grievance
+        operationId: /api/GrievanceRegistration
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  HashKEY:
+                    type: string
+                    description: Used to Verify Authenticity
+                    example: 9178653239d9edc03e8e315ff8ec081e04981703c942606d30bcb7778b7c476a
+                  TS:
+                    type: string
+                    description: Real World Date Time value
+                    example: 2022-05-24T18:07:18
+                  hmac:
+                    type: string
+                    description: Used to Verify the Integrity of the Request
+                    example: a785b46d4b60554d816f67937311075f75d155c51f21e9fe1af59a45a5f8a8a9
+                  MinistryDepartment:
+                    type: string
+                    description: Ministry Department
+                    example: CABST
+                  RetOffice:
+                    type: string
+                    description: Enter Retired Office Name
+                    example: FINANCE DEPT
+                  Name:
+                    type: string
+                    description: Name
+                    example: SRIKANT MISHRA
+                  Sex:
+                    type: string
+                    description: Sex
+                    example: M
+                  PPOHolderName:
+                    type: string
+                    description: PPO Holder Name
+                    example: ''
+                  Address1:
+                    type: string
+                    description: Address1
+                    example: DELHI
+                  Address2:
+                    type: string
+                    description: Address2
+                    example: ''
+                  Address3:
+                    type: string
+                    description: Address3
+                    example: '' 
+                  PINCode:
+                    type: string
+                    description: PINCode
+                    example: 
+                  State:
+                    type: string
+                    description: State
+                    example: DH
+                  MobileNo:
+                    type: string
+                    description: MobileNo
+                    example: 8882021232
+                  EmailID:
+                    type: string
+                    description: EmailID
+                    example: ''
+                  ArmyNo:
+                    type: string
+                    description: ArmyNo
+                    example: ''
+                  Rank_Record:
+                    type: string
+                    description: Rank Record
+                    example: ''
+                  PPONumber:
+                    type: string
+                    description: PPONumber
+                    example: ''
+                  TypeofRetirement:
+                    type: string
+                    description: Type of Retirement
+                    example: S
+                  Approached:
+                    type: string
+                    description: Approached
+                    example: CABST
+                  GrDescription:
+                    type: string
+                    description: Grievance Description
+                    example: TESTING GRIEVANCE
+                  Attachment:
+                    type: string
+                    description: Attachment
+                    example: ''
+                  ddlwhetherabove80:
+                    type: string
+                    description: ddl whether above 80
+                    example: 1
+                  Typeofpensioners:
+                    type: string
+                    description: Type of pensioners
+                    example: 1
+                  ddlGrievanceCategory:
+                    type: string
+                    description: ddl Grievance Category
+                    example: 101
+                  ddlGrievanceCateOther:
+                    type: string
+                    description: ddl Grievance Category Other
+                    example: ''
+                  ddlBankName:
+                    type: string
+                    description: ddl Bank Name
+                    example: 0
+                  BankIFSC:
+                    type: string
+                    description: Bank IFSC
+                    example: ''
+                  BankAccountNumber:
+                    type: string
+                    description: Bank Account Number
+                    example: 0
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json: 
+                schema: 
+                  type: "object"
+                  description: Response Payload
+                  properties:
+                    grievanceLodgeResponseStatus:
+                      type: string
+                      example: 
+                    alertMessage:
+                      type: string
+                      example: UnAuthorised Access (IP)
+          400:
+            description: Bad Request/Validation Error
+    /api/AppealRegistration: 
+      post: 
+        tags: 
+          - Appeal Registration API
+        summary: Use to Register Appeal
+        description: This API will be used to Register Appeal
+        operationId: /api/AppealRegistration
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  HashKEY:
+                    type: string
+                    description: Used to verify authenticity
+                    example: 9178653239d9edc03e8e315ff8ec081e04981703c942606d30bcb7778b7c476a
+                  TS:
+                    type: string
+                    description: Real world Date time value
+                    example: 2022-05-24T18:07:18
+                  hmac:
+                    type: string
+                    description: Used to verify the integrity of the request
+                    example: a785b46d4b60554d816f67937311075f75d155c51f21e9fe1af59a45a5f8a8a9
+                  RegistrationNo:
+                    type: string
+                    description: Registration Number
+                    example: DOPPW/E/2019/09573
+                  MobileNo:
+                    type: string
+                    description: Mobile Number
+                    example: V
+                  strAppealDescription:
+                    type: string
+                    description: Appeal description
+                    example: THIS APPEAL IS DONE FOR TESTING ONLY. THIS IS DONE BY TESTER. APPEAL REGISTRATION DONE BY APITESTING.                    
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json: 
+                schema: 
+                  type: "object"
+                  description: Response Payload
+                  properties:
+                    appealResponseStatus:
+                      type: string
+                      example: 
+                    alertMessage:
+                      type: string
+                      example: UnAuthorised Access (IP)
+          400:
+            description: Bad Request/Validation Error
+    /api/PensionRoadMap: 
+      post: 
+        tags: 
+          - Pension Road Map API
+        summary: Use to Fetch Road Map of Pension Process
+        description: This API will be used to Fetch Road Map of Pension Process
+        operationId: /api/PensionRoadMap
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  HashKEY:
+                    type: string
+                    description: Used to verify authenticity
+                    example: 9178653239d9edc03e8e315ff8ec081e04981703c942606d30bcb7778b7c476a
+                  TS:
+                    type: string
+                    description: Real world Date time value
+                    example: 2022-05-24T18:07:18
+                  hmac:
+                    type: string
+                    description: Used to verify the integrity of the request
+                    example: a785b46d4b60554d816f67937311075f75d155c51f21e9fe1af59a45a5f8a8a9
+                  strDt_birth:
+                    type: string
+                    description: Date of birth
+                    example: 16/12/1962
+                  strDt_retire:
+                    type: string
+                    description: Date of retirement
+                    example: 30/10/2005
+                  strDt_joining:
+                    type: string
+                    description: Date of joining
+                    example: 22/10/1985
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json: 
+                schema: 
+                  type: "object"
+                  description: Response Payload
+                  properties:
+                    pRoadMapStatus:
+                      type: string
+                      example: 
+                    lstitemslist:
+                      type: string
+                      example: 
+                    alertMessage:
+                      type: string
+                      example: UnAuthorised Access (IP)
+          400:
+            description: Bad Request/Validation Error
+    /api/GetCodeFile: 
+      post: 
+        tags: 
+          - Get Code File API
+        summary: Use to provide the Pension Details
+        description: This API will be used to provide the Ministry list, State list, Retirement type, Office Approached type, types of Pensioners, Category and Bank list
+        operationId: /api/GetCodeFile
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  HashKEY:
+                    type: string
+                    description: Used to verify authenticity
+                    example: 9178653239d9edc03e8e315ff8ec081e04981703c942606d30bcb7778b7c476a
+                  TS:
+                    type: string
+                    description: Real world Date time value
+                    example: 2022-05-24T18:07:18
+                  hmac:
+                    type: string
+                    description: Used to verify the integrity of the request
+                    example: a785b46d4b60554d816f67937311075f75d155c51f21e9fe1af59a45a5f8a8a9
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json: 
+                schema: 
+                  type: "object"
+                  description: Response Payload
+                  properties:
+                    alertMessage:
+                      type: string
+                      example: UnAuthorised Access (IP)
+                    dropwDownBindStatus:
+                      type: string
+                      example: 
+          400:
+            description: Bad Request/Validation Error
+    /api/ReturnData: 
+      post: 
+        tags: 
+          - Return Data API
+        summary: Use to Return Data
+        description: This API will be used to Return Data
+        operationId: /api/ReturnData
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  HashKEY:
+                    type: string
+                    description: Used to verify authenticity
+                    example: 9178653239d9edc03e8e315ff8ec081e04981703c942606d30bcb7778b7c476a
+                  TS:
+                    type: string
+                    description: Real world Date time value
+                    example: 2022-05-24T18:07:18
+                  hmac:
+                    type: string
+                    description: Used to verify the integrity of the request
+                    example: a785b46d4b60554d816f67937311075f75d155c51f21e9fe1af59a45a5f8a8a9
+                  Action:
+                    type: string
+                    description: Action
+                    example: F
+                  RegistrationNo:
+                    type: string
+                    description: Registration number
+                    example: DOPPW/E/2019/09361
+                  strMobileNo:
+                    type: string
+                    description: Mobile number
+                    example: 9573304236
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json: 
+                schema: 
+                  type: "object"
+                  description: Response Payload
+                  properties:
+                    responseStatusMsg:
+                      type: string
+                      example: 
+                    alertMessage:
+                      type: string
+                      example: UnAuthorised Access (IP)
+          400:
+            description: Bad Request/Validation Error
+    /api/Reminder: 
+      post: 
+        tags: 
+          - Reminder API
+        summary: Use to Submit Reminder
+        description: This API will be used to Submit Reminder
+        operationId: /api/Reminder
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  HashKEY:
+                    type: string
+                    description: Used to verify authenticity
+                    example: 9178653239d9edc03e8e315ff8ec081e04981703c942606d30bcb7778b7c476a
+                  TS:
+                    type: string
+                    description: Real world Date time value
+                    example: 2022-05-24T18:07:18
+                  hmac:
+                    type: string
+                    description: Used to verify the integrity of the request
+                    example: a785b46d4b60554d816f67937311075f75d155c51f21e9fe1af59a45a5f8a8a9
+                  RegistrationNo:
+                    type: string
+                    description: Registration Number
+                    example: DOPPW/E/2021/00073
+                  RemType:
+                    type: string
+                    description: Reminder type
+                    example: R
+                  ReminderRemarks:
+                    type: string
+                    description: Reminder Remarks
+                    example: This Reminder is given for test by dev.
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json: 
+                schema: 
+                  type: "object"
+                  description: Response Payload
+                  properties:
+                    reminderResponseStatus:
+                      type: string
+                      example: 
+                    alertMessage:
+                      type: string
+                      example: UnAuthorised Access (IP)
+          400:
+            description: Bad Request/Validation Error
+    /api/GetCategory: 
+      post: 
+        tags: 
+          - Get Category API
+        summary: Use to Get the Category
+        description: This API will be used to get the Category Details
+        operationId: /api/GetCategory
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  HashKEY:
+                    type: string
+                    description: Used to verify authenticity
+                    example: 9178653239d9edc03e8e315ff8ec081e04981703c942606d30bcb7778b7c476a
+                  TS:
+                    type: string
+                    description: Real world Date time value
+                    example: 2022-05-24T18:07:18
+                  hmac:
+                    type: string
+                    description: Used to verify the integrity of the request
+                    example: a785b46d4b60554d816f67937311075f75d155c51f21e9fe1af59a45a5f8a8a9
+        parameters: 
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json: 
+                schema: 
+                  type: "object"
+                  description: Response Payload
+                  properties:
+                    categoryCodeResponseStatus:
+                      type: string
+                      example: 
+                    alertMessage:
+                      type: string
+                      example: UnAuthorised Access (IP)
+          400:
+            description: Bad Request/Validation Error
+    /api/GetPension: 
+      post: 
+        tags: 
+          - Get Pension API
+        summary: Use to get the Pension Details
+        description: This API will be used to get the Pension Details
+        operationId: /api/GetPension
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  HashKEY:
+                    type: string
+                    description: Used to verify authenticity
+                    example: 9178653239d9edc03e8e315ff8ec081e04981703c942606d30bcb7778b7c476a
+                  TS:
+                    type: string
+                    description: Real world Date time value
+                    example: 2022-05-24T18:07:18
+                  hmac:
+                    type: string
+                    description: Used to verify the integrity of the request
+                    example: a785b46d4b60554d816f67937311075f75d155c51f21e9fe1af59a45a5f8a8a9
+                  intAverageEmolument:
+                    type: string
+                    description: Average Emolument
+                    example: 192000
+                  intLastbasic:
+                    type: string
+                    description: Last basic
+                    example: 20000
+                  intQualifyingServiceYr:
+                    type: string
+                    description: Qualifying Service Year
+                    example: 22
+                  intQualifyingServiceMnth:
+                    type: string
+                    description: Qualifying Service Month
+                    example: 0
+                  strDt_retire:
+                    type: string
+                    description: Date of retirement
+                    example: 30/05/2017
+                  strDt_birth:
+                    type: string
+                    description: Date of birth
+                    example: 10/05/1975
+                  strRetirementtype:
+                    type: string
+                    description: Type of retirement
+                    example: V
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json: 
+                schema: 
+                  type: "object"
+                  description: Response Payload
+                  properties:
+                    pensionResponseStatus:
+                      type: string
+                      example: 
+                    alertMessage:
+                      type: string
+                      example: UnAuthorised Access (IP)
+          400:
+            description: Bad Request/Validation Error
+    /api/GrievanceFeedback: 
+      post: 
+        tags: 
+          - Grievance Feedback API
+        summary: Use to get Grievance Feedback
+        description: This API will be used to get Grievance Feedback
+        operationId: /api/GrievanceFeedback
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  HashKEY:
+                    type: string
+                    description: Used to verify authenticity
+                    example: 9178653239d9edc03e8e315ff8ec081e04981703c942606d30bcb7778b7c476a
+                  TS:
+                    type: string
+                    description: Real world Date time value
+                    example: 2022-05-24T18:07:18
+                  hmac:
+                    type: string
+                    description: Used to verify the integrity of the request
+                    example: a785b46d4b60554d816f67937311075f75d155c51f21e9fe1af59a45a5f8a8a9
+                  RegistrationNo:
+                    type: string
+                    description: Registration Number
+                    example: DOPPW/E/2019/09482
+                  pCharRating:
+                    type: string
+                    description: User feedback rating  
+                    example: 3
+                  pstrComment:
+                    type: string
+                    description: User feedback comment
+                    example: THIS FEEDBACK IS GIVEN FOR TESTING
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json: 
+                schema: 
+                  type: "object"
+                  description: Response Payload
+                  properties:
+                    feedBackResponseStatus:
+                      type: string
+                      example: 
+                    alertMessage:
+                      type: string
+                      example: UnAuthorised Access (IP)
+          400:
+            description: Bad Request/Validation Error
+    /api/WhatsNew: 
+      post: 
+        tags: 
+          - Whats New API
+        summary: Use to Get what is new in the DOPPW
+        description: This API will be used to get what is new in the DOPPW
+        operationId: /api/WhatsNew
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  HashKEY:
+                    type: string
+                    description: Used to verify authenticity
+                    example: 9178653239d9edc03e8e315ff8ec081e04981703c942606d30bcb7778b7c476a
+                  TS:
+                    type: string
+                    description: Real world Date time value
+                    example: 2022-05-24T18:07:18
+                  hmac:
+                    type: string
+                    description: Used to verify the integrity of the request
+                    example: a785b46d4b60554d816f67937311075f75d155c51f21e9fe1af59a45a5f8a8a9
+                  Filter:
+                    type: string
+                    description: Used for several action codes
+                    example: N
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json: 
+                schema: 
+                  type: "object"
+                  description: Response Payload
+                  properties:
+                    gratuityAmount:
+                      type: string
+                      example: 0.0
+                    alertMessage:
+                      type: string
+                      example: UnAuthorised Access (IP)
+          400:
+            description: Bad Request/Validation Error
+    /api/RetireeStatus: 
+      post: 
+        tags: 
+          - Retiree Status API
+        summary: Use to fetch the Dashboard Details of the User
+        description: This API will be used to fetch the Dashboard Details of the User
+        operationId: /api/RetireeStatus
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  HashKEY:
+                    type: string
+                    description: Used to verify authenticity
+                    example: 9178653239d9edc03e8e315ff8ec081e04981703c942606d30bcb7778b7c476a
+                  TS:
+                    type: string
+                    description: Real world Date time value
+                    example: 2022-05-24T18:07:18
+                  hmac:
+                    type: string
+                    description: Used to verify the integrity of the request
+                    example: a785b46d4b60554d816f67937311075f75d155c51f21e9fe1af59a45a5f8a8a9
+                  Retiree_pswd:
+                    type: string
+                    description: User have to select date of birth
+                    example: 16/12/1962
+                  PAN:
+                    type: string
+                    description: PAN number of the user
+                    example: AHIPS4547F
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json: 
+                schema: 
+                  type: "object"
+                  description: Response Payload
+                  properties:
+                    retireeStatusResponseStatus:
+                      type: string
+                      example: 
+                    alertMessage:
+                      type: string
+                      example: UnAuthorised Access (IP)
+          400:
+            description: Bad Request/Validation Error

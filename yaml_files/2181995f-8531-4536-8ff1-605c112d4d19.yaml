@@ -1,0 +1,82 @@
+host: delhigw.napix.gov.in
+info:
+  title: CGHS
+  version: 1.0.0
+  x-ibm-name: otp
+  description: This API generates OTP for the CGHS beneficiaries for login.
+    Beneficiaries can put there Ben Id, registed Mobile Number if matched then
+    they receive OTP on there mobile.
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/nic/cghs
+tags:
+  - name: bookAppointment
+    description: "Beneficiary can book Appointment through myCGHS App "
+paths:
+  /otp:
+    post:
+      security:
+        - Oauth:
+            - napix
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      parameters:
+        - in: body
+          name: genOTP
+          schema:
+            type: object
+            title: genOTP
+            properties:
+              benId:
+                type: integer
+                title: benId
+              mobileNo:
+                type: string
+                title: mobileNo
+          required: true
+      tags:
+        - Otp
+    parameters: []
+schemes:
+  - https
+swagger: "2.0"
+basePath: /nic/cghs/otp
+security:
+  - Oauth:
+      - napix
+definitions: {}
+securityDefinitions:
+  Oauth:
+    flow: application
+    type: oauth2
+    scopes:
+      napix: ""
+    tokenUrl: //oauth2/token
+    x-ibm-oauth-provider: nic-oauth-provider-application-grant-type
+  clientIdHeader:
+    in: header
+    name: X-IBM-Client-Id
+    type: apiKey
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  servers:
+    - url: https://delhigw.napix.gov.in/nic/cghs/otp
+      type:
+        - production
+        - development
+  enforced: true
+  testable: true
+  oauth-servers:
+    Oauth:
+      tokenUrls:
+        - https://degateway.napix.gov.in:443/nic/cghs//oauth2/token
+      refreshUrls: []
+      authorizationUrls: []
+  application-authentication:
+    certificate: false

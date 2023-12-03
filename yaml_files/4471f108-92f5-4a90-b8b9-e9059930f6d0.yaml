@@ -1,0 +1,73 @@
+host: delhigw.napix.gov.in
+info:
+  title: Higher Education Division
+  version: v1.0
+  x-ibm-name: aisheinstitutelistbylgcode
+  description: It displays list of HEIs based on AISHE as per shared parameters.
+    AISHE APIs for NSP-NIC,NSP(States), AICTE, Tribal Ministry etc . It displays
+    basic information of list of HEIs as per shared parameters. State code and
+    District Code needs to be passed as LG Code.
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/nic/hediv
+paths:
+  /aisheHEIListByLgCode:
+    get:
+      consumes: []
+      produces: []
+      security:
+        - clientID: []
+        - {}
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Aisheinstitutelistbylgcode
+    parameters:
+      - in: query
+        name: institutionCategory
+        type: string
+      - in: query
+        name: stateLgdCode
+        type: integer
+      - in: query
+        name: districtLgdCode
+        type: integer
+      - in: query
+        name: subCategory
+        type: string
+      - in: query
+        name: surveyYear
+        type: string
+      - in: query
+        name: universityId
+        type: string
+schemes:
+  - https
+swagger: "2.0"
+basePath: /nic/hediv/aisheinstitutelistbylgcode
+security:
+  - clientID: []
+securityDefinitions:
+  clientID:
+    in: header
+    name: NIC-Client-ID
+    type: apiKey
+    x-key-type: client_id
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  servers:
+    - url: https://delhigw.napix.gov.in/nic/hediv/aisheinstitutelistbylgcode
+      type:
+        - production
+        - development
+      description: ""
+  enforced: true
+  testable: true
+  application-authentication:
+    certificate: false

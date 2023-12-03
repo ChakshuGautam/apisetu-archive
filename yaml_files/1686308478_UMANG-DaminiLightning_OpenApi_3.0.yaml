@@ -1,0 +1,559 @@
+---
+openapi: 3.0.0
+info:
+  title: Damini - Lightning Alert (Ministry of Earth Sciences, Govt. of India)
+  description:  Damini App was developed by the Indian Institute of Tropical Meteorology (IITM-Pune) and Earth System Science Organization (ESSO) under the ministry of earth sciences. The app monitors the lightning occurrence all over India and alerts the user of lightning near them by a GPS notification under 20 km and 40 km. User can view Lightning which occurred in last 5 min, 10 min & 15 min on the map. The app relies on a Lightning Location Network with about 76 sensors across India connected to the Central Processing Unit at IITM, Pune. This network provides exact information about lightning strikes and movement of the thunderstorm path <i>[Updated on 5th June 2023]</i>
+
+  termsOfService: https://web.umang.gov.in/uaw/ts/v1/en/index.htm
+  contact:
+    name: Provided by - UMANG
+    url: https://web.umang.gov.in
+  version: 1.0.0
+servers:
+  - url: https://apigw.umangapp.in
+    description: Production Server
+security:
+  - x-api-key: []
+    
+paths:
+  /DaminiApi/ws1/aboutus:
+    post:
+      tags:
+        - About Us Page 
+      summary: Get the info about the damini app
+      description: This api is used to get the about us page
+      operationId: DaminiApi/ws1/aboutus
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: en
+                lon:
+                  type: string
+                  description: longitude
+                  example: en
+                lac:
+                  type: string
+                  description: lac
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 1
+                usrid:
+                  type: string
+                  description: user id
+                  example: 191
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1310
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                did:
+                  type: string
+                  description: Device Id
+                  example: 122
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 420
+                subsid:
+                  type: string
+                  description: subsid
+                  example: subscriber Id
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: subscriber Id2
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 123234                 
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: string
+                    description: about page html
+                    example: <!DOCTYPE html><html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><meta name=\"viewport\" content=\"initial-scale=1, maximum-scale=1, user-scalable=no\"><title>About Us</title>                   
+        "400":
+          description: Bad Request/Validation Error
+  /DaminiApi/ws1/lightining:
+    post:
+      tags:
+        - Lightning Alert
+      summary: Get the details about lightning alert api
+      description: This api is used to get the details about lightning alert
+      operationId: DaminiApi/ws1/lightining
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: en
+                lon:
+                  type: string
+                  description: longitude
+                  example: en
+                lac:
+                  type: string
+                  description: lac
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 1
+                usrid:
+                  type: string
+                  description: user id
+                  example: 191
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1310
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                did:
+                  type: string
+                  description: Device Id
+                  example: 122
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 420
+                subsid:
+                  type: string
+                  description: subsid
+                  example: subscriber Id
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: subscriber Id2
+                action:
+                  type: string
+                  description: action
+                  example: lightning
+                apitrkr:
+                  type: string
+                  description: api tracker
+                  example: 123234                  
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    properties:
+                      alert:
+                        type: object
+                        properties:                    
+                          red:
+                            type: string
+                            description: alert description colour red
+                            example: In lightning zone. Move to safer place
+                          green:
+                            type: string
+                            description: alert description colour green
+                            example: No lightning warning
+                          yellow:
+                            type: string
+                            description: alert description colour yellow
+                            example: Possibility of lightning be prepared
+                      lightning_data:
+                        type: object
+                        properties:                    
+                          5min_record:
+                            type: array                       
+                            description: application type items
+                            items:
+                              type: object
+                              properties:
+                                address:
+                                  type: string
+                                  description: address
+                                  example: New  
+                                latitude:
+                                  type: string
+                                  description: latitude value
+                                  example: 27.9937469  
+                                time:
+                                  type: string
+                                  description: value
+                                  example: 1
+                                longitude:
+                                  type: string
+                                  description: longitude value
+                                  example: 84.1318104
+                          15min_record:
+                            type: array                       
+                            description: application type items
+                            items:
+                              type: object
+                              properties:
+                                address:
+                                  type: string
+                                  description: address
+                                  example: New  
+                                latitude:
+                                  type: string
+                                  description: latitude value
+                                  example: 27.9937469  
+                                time:
+                                  type: string
+                                  description: value
+                                  example: 1
+                                longitude:
+                                  type: string
+                                  description: longitude value
+                                  example: 84.1318104
+                          10min_record:
+                            type: array                       
+                            description: application type items
+                            items:
+                              type: object
+                              properties:
+                                address:
+                                  type: string
+                                  description: address
+                                  example: New  
+                                latitude:
+                                  type: string
+                                  description: latitude value
+                                  example: 27.9937469  
+                                time:
+                                  type: string
+                                  description: value
+                                  example: 1
+                                longitude:
+                                  type: string
+                                  description: longitude value
+                                  example: 84.1318104 
+                      hardcode_links:
+                        type: object
+                        properties:                    
+                          India:
+                            type: string
+                            description: India hardcode link
+                            example: http://prabhavi.com/damini/india.php
+                          about_us:
+                            type: string
+                            description: about us link
+                            example: http://103.251.184.43/about_us.php
+                          instruction:
+                            type: string
+                            description: instruction link
+                            example: http://103.251.184.43/instruction.html                             
+        "400":
+          description: Bad Request/Validation Error
+  /DaminiApi/ws1/instruction:
+    post:
+      tags:
+        - Instruction Page 
+      summary: Get the instructions list in the damini app
+      description: This api is used to get the instructions list in the damini app
+      operationId: DaminiApi/ws1/instruction
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: en
+                lon:
+                  type: string
+                  description: longitude
+                  example: en
+                lac:
+                  type: string
+                  description: lac
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 1
+                usrid:
+                  type: string
+                  description: user id
+                  example: 191
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1310
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                did:
+                  type: string
+                  description: Device Id
+                  example: 122
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 420
+                subsid:
+                  type: string
+                  description: subsid
+                  example: subscriber Id
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: subscriber Id2
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 123234     
+                action:
+                  type: string
+                  description: action
+                  example: instruction                  
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: string
+                    description: about page html
+                    example: <!DOCTYPE html>\n<html>\n  <head>\n  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\n  <meta name=\"viewport\" content=\"initial-scale=1, maximum-scale=1, user-scalable=no\">\n  <title>Instruction</title>\n  <head>\n  \n  \n  </head>\n  <body style=\"border:1px solid;background-color:#2E9AFE;\">\n  <div style=\"font-
+        "400":
+          description: Bad Request/Validation Error          
+components:
+  securitySchemes:
+    x-api-key:
+      type: apiKey
+      name: x-api-key
+      in: header

@@ -1,0 +1,532 @@
+openapi: 3.0.0
+info:  
+  title: UP State Board of High School and Intermediate Education, Uttar Pradesh Verification APIs
+  description: Board of High School and Intermediate Education, Allahabad (https://upmsp.edu.in) has made available Class X & Class XII (2013-2017) results, as declared on http://upresults.nic.in, in DigiLocker, which can be pulled by students into their accounts.
+  termsOfService: https://apisetu.gov.in/home/api_policy
+  version: 3.0.0
+servers:
+  - url: 'https://apisetu.gov.in/'
+paths:
+  /verify-demographic/v1/upmsp/sscer:
+    post:
+      tags:
+        - APIs
+      summary: API for demographic verification of result data in Class X Marksheet.
+      description: API for demographic verification of result data in Class X Marksheet.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: sscer-verify-demographic
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - verificationData
+                - consentArtifact
+                - rollno
+                - year
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                rollno:
+                  type: string
+                  description: Roll Number
+                  example: "1100040"
+                year:
+                  type: string
+                  description: Year
+                  example: "2016"
+                verificationData:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      description: Name as in mark sheet
+                      example: "Sunil Kumar"
+                    dob:
+                      type: string
+                      description: Date of birth as in mark sheet
+                      example: "dd-mm-yyyy"
+                    gender:
+                      type: string
+                      description: Gender
+                      example: "M/F/O"
+                    result:
+                      type: string
+                      description: Result
+                      example: "W-F&E.COMP/W-F&E.CRDT/F & EC/W/U-INC/''/W-F&E.COM/W-F&E COM/W-PADL/W-F&ECOMP/W-IMPR/W-F & EC/W-ABST/F&ECRDT/W-COMP/F&E COMP/FAILED/W-F&EC/PASS/W/W-PASS/F&ECOMP/PASSED/F&EC/W-FAIED/U-INC/INC/FAIL/W-F&E COMP/W-FAIL/F&E.COMP/W-F&E CRDT/W-F&E CRD/C/ABST/COMP/W-C/U/W-F&E.CRD/W-INC/F&E.CRDT/W-PASSED/PADL/W-FAILED/F&E CRDT"
+                  required:
+                    - name
+                    - dob
+                    - gender
+                    - result
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  txnId:
+                    type: string
+                    format: uuid
+                    description: A unique transaction id that was sent in the request.
+                    example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                  rollno:
+                    type: string
+                    description: Roll Number
+                    example: "1100040"
+                  year:
+                    type: string
+                    description: Year
+                    example: "2016"
+                  verificationResult:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        description: Y or N value indicating whether the value in the request matched with the value on record. 
+                        minLength: 1
+                        example: Y
+                      dob:
+                        type: string
+                        description: Y or N value indicating whether the value in the request matched with the value on record. 
+                        minLength: 1
+                        example: Y
+                      gender:
+                        type: string
+                        description: Y or N value indicating whether the value in the request matched with the value on record. 
+                        minLength: 1
+                        example: Y
+                      result:
+                        type: string
+                        description: Y or N value indicating whether the value in the request matched with the value on record. 
+                        minLength: 1
+                        example: Y
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  /verify-dob/v1/upmsp/sscer:
+    post:
+      tags:
+        - APIs
+      summary: API for date of birth verification in Class X Marksheet.
+      description: API for date of birth verification in Class X Marksheet.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: sscer-verify-dob
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - verificationData
+                - consentArtifact
+                - rollno
+                - year
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                rollno:
+                  type: string
+                  description: Roll Number
+                  example: "1100040"
+                year:
+                  type: string
+                  description: Year
+                  example: "2016"
+                verificationData:
+                  type: object
+                  properties:
+                    dob:
+                      type: string
+                      description: Date of birth as in mark sheet
+                      example: "dd-mm-yyyy"
+                  required:
+                    - dob
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  txnId:
+                    type: string
+                    format: uuid
+                    description: A unique transaction id that was sent in the request.
+                    example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                  rollno:
+                    type: string
+                    description: Roll Number
+                    example: "1100040"
+                  year:
+                    type: string
+                    description: Year
+                    example: "2016"
+                  verificationResult:
+                    type: object
+                    properties:
+                      dob:
+                        type: string
+                        description: Y or N value indicating whether the value in the request matched with the value on record. 
+                        minLength: 1
+                        example: Y
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  /verify-result/v1/upmsp/sscer:
+    post:
+      tags:
+        - APIs
+      summary: API for verification of aggregated result in Class X Marksheet.
+      description: API for verification of aggregated result in Class X Marksheet.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: sscer-verify-result
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - verificationData
+                - consentArtifact
+                - rollno
+                - year
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                rollno:
+                  type: string
+                  description: Roll Number
+                  example: "1100040"
+                year:
+                  type: string
+                  description: Year
+                  example: "2016"
+                verificationData:
+                  type: object
+                  properties:
+                    result:
+                      type: string
+                      description: Result
+                      example: "W-F&E.COMP/W-F&E.CRDT/F & EC/W/U-INC/''/W-F&E.COM/W-F&E COM/W-PADL/W-F&ECOMP/W-IMPR/W-F & EC/W-ABST/F&ECRDT/W-COMP/F&E COMP/FAILED/W-F&EC/PASS/W/W-PASS/F&ECOMP/PASSED/F&EC/W-FAIED/U-INC/INC/FAIL/W-F&E COMP/W-FAIL/F&E.COMP/W-F&E CRDT/W-F&E CRD/C/ABST/COMP/W-C/U/W-F&E.CRD/W-INC/F&E.CRDT/W-PASSED/PADL/W-FAILED/F&E CRDT"
+                  required:
+                    - result
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  txnId:
+                    type: string
+                    format: uuid
+                    description: A unique transaction id that was sent in the request.
+                    example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                  rollno:
+                    type: string
+                    description: Roll Number
+                    example: "1100040"
+                  year:
+                    type: string
+                    description: Year
+                    example: "2016"
+                  verificationResult:
+                    type: object
+                    properties:
+                      result:
+                        type: string
+                        description: Y or N value indicating whether the value in the request matched with the value on record. 
+                        minLength: 1
+                        example: Y
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  /verify-demographic/v1/upmsp/hscer:
+    post:
+      tags:
+        - APIs
+      summary: API for demographic verification of result data in Class XII Marksheet.
+      description: API for demographic verification of result data in Class XII Marksheet.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: hscer-verify-demographic
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - verificationData
+                - consentArtifact
+                - rollno
+                - year
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                rollno:
+                  type: string
+                  description: Roll Number
+                  example: "1100040"
+                year:
+                  type: string
+                  description: Year
+                  example: "2016"
+                verificationData:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      description: Name as in mark sheet
+                      example: "Sunil Kumar"
+                    gender:
+                      type: string
+                      description: Gender
+                      example: "M/F/O"
+                    result:
+                      type: string
+                      description: Result
+                      example: "W-U-INC/W-U/PADL/W-PADL/W-FAILED/W-ABST/W/W-PASSED/FAIL/U-INC/ABST/C/W-INC/PASS/W-FAIED/PASSED/FAILED/W-PASS/U/INC/W-FAIL"
+                  required:
+                    - name
+                    - gender
+                    - result
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  txnId:
+                    type: string
+                    format: uuid
+                    description: A unique transaction id that was sent in the request.
+                    example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                  rollno:
+                    type: string
+                    description: Roll Number
+                    example: "1100040"
+                  year:
+                    type: string
+                    description: Year
+                    example: "2016"
+                  verificationResult:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        description: Y or N value indicating whether the value in the request matched with the value on record. 
+                        minLength: 1
+                        example: Y
+                      gender:
+                        type: string
+                        description: Y or N value indicating whether the value in the request matched with the value on record. 
+                        minLength: 1
+                        example: Y
+                      result:
+                        type: string
+                        description: Y or N value indicating whether the value in the request matched with the value on record. 
+                        minLength: 1
+                        example: Y
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  /verify-result/v1/upmsp/hscer:
+    post:
+      tags:
+        - APIs
+      summary: API for verification of aggregated result in Class XII Marksheet.
+      description: API for verification of aggregated result in Class XII Marksheet.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: hscer-verify-result
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - verificationData
+                - consentArtifact
+                - rollno
+                - year
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                rollno:
+                  type: string
+                  description: Roll Number
+                  example: "1100040"
+                year:
+                  type: string
+                  description: Year
+                  example: "2016"
+                verificationData:
+                  type: object
+                  properties:
+                    result:
+                      type: string
+                      description: Result
+                      example: "W-U-INC/W-U/PADL/W-PADL/W-FAILED/W-ABST/W/W-PASSED/FAIL/U-INC/ABST/C/W-INC/PASS/W-FAIED/PASSED/FAILED/W-PASS/U/INC/W-FAIL"
+                  required:
+                    - result
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  txnId:
+                    type: string
+                    format: uuid
+                    description: A unique transaction id that was sent in the request.
+                    example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                  rollno:
+                    type: string
+                    description: Roll Number
+                    example: "1100040"
+                  year:
+                    type: string
+                    description: Year
+                    example: "2016"
+                  verificationResult:
+                    type: object
+                    properties:
+                      result:
+                        type: string
+                        description: Y or N value indicating whether the value in the request matched with the value on record. 
+                        minLength: 1
+                        example: Y
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+components:
+  schemas:
+    ConsentArtifactSchema:
+      $ref: './common/ConsentArtifactSchema.yaml#/ConsentArtifactSchema'
+  responses:
+    400Error:
+      $ref: './common/ErrorResponse.yaml#/400Error'
+    401Error:
+      $ref: './common/ErrorResponse.yaml#/401Error'
+    404Error:
+      $ref: './common/ErrorResponse.yaml#/404Error'
+    500Error:
+      $ref: './common/ErrorResponse.yaml#/500Error'
+    502Error:
+      $ref: './common/ErrorResponse.yaml#/502Error'
+    503Error:
+      $ref: './common/ErrorResponse.yaml#/503Error'
+    504Error:
+      $ref: './common/ErrorResponse.yaml#/504Error'
+  securitySchemes:
+    clientId:
+      type: apiKey
+      in: header
+      name: X-APISETU-CLIENTID
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-APISETU-APIKEY

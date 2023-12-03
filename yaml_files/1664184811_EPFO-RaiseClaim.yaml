@@ -1,0 +1,1792 @@
+---
+  openapi: "3.0.0"
+  info: 
+    title: "Employees' Provident Fund Organization (EPFO) - Raise Claim"
+    description: "EPFO (Employees’ Provident Fund Organisation) Passbook API help to check employees or onboarding user’s provident funds (PF) details via API Setu. EPFO Passbook API is a system which helps an enterprise to do check details of employees PF account by using the UAN number and OTP with highest accuracy in record time with this user friendly application. <i>[Updated on 21st Septmeber 2022]</i>"
+    termsOfService: "https://web.umang.gov.in/uaw/ts/v1/en/index.htm"
+    contact: 
+      name: "Provided by - UMANG"
+      url: "https://web.umang.gov.in"
+    version: "1.0.0"
+  servers: 
+    - 
+      url: "https://apigw.umangapp.in"
+  paths: 
+    /epfoApi/ws1/loginmob: 
+      post: 
+        tags: 
+          - "Login Mobile User Authentication API"
+        summary: "Generate Token for Given Mobile Number"
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  uan:
+                    type: string
+                    description: Universal Account Number
+                    example: xxxxxxxxxxxx
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 37
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 495
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: l3_1001
+                  subsid2:
+                    type: string
+                    description: sub service id 2
+                    example: 0
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "37"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "495"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "l3_1001"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json: 
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: EPFO0000
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    payload:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        token:
+                          type: string
+                          example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmF0aW9uIjoiMDItMDgtMjAyMiAxMzozMjo0NSIsInV1aWQiOiJlZmVmYTBmYy04NjdjLTRlZmYtODc4ZS01YjQzODZkYWU0NmMifQ==.Ch4Y6GBX6ZqkZDU4GzJefgyYtPDCFmKnatAaRVePFDU=
+                        reftoken:
+                          type: string
+                          example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1YW4iOiIxMDAwODkyOTM1MDUiLCJ1dWlkIjoiZDg4MzcyOWItODEwNC00NWI0LTgwYzItYjUzOTM4YWU0ZjYwIn0=.rKkvHo+SA4n0VjhdgBBITyoDA5K5/J6o/HR7MaiAXq8=
+                        errormsg:
+                          type: string
+                          example: null
+                        mno:
+                          type: string
+                          example: xxxxxx2244
+          400:
+            description: Bad Request/Validation Error
+    /umangApiShard/otpws/generate: 
+      post: 
+        tags: 
+          - "Generate OTP API"
+        summary: "Generate OTP for Given Mobile Number"
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  dgt: 
+                    type: string
+                    description: digit of OTP
+                    example: 6
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  ort:
+                    type: string
+                    description: ort
+                    example: epfo
+                  mno:
+                    type: string
+                    description: mobile number
+                    example: xxxxxxxxxxxx
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "37"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "495"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "l3_1001"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json: 
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: EPFO0000
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        rtry:
+                          type: string
+                          example: 9|30|
+                        tout:
+                          type: string
+                          example: 120
+                        man:
+                          type: string
+                          example: true
+                        wmsg:
+                          type: string
+                          example: Please wait for OTP
+                        tmsg:
+                          type: string
+                          example: Timed out
+                        maskmno:
+                          type: string
+                          example: null
+                        maskemail:
+                          type: string
+                          example: null
+                        smscli:
+                          type: string
+                          example: iUMANG
+          400:
+            description: Bad Request/Validation Error
+    /epfoApi/ws1/loginvalidateotp: 
+      post: 
+        tags: 
+          - "Login and Validate OTP API"
+        summary: "Login and Validate OTP Received on Mobile Number"
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  mno:
+                    type: string
+                    description: mobile number
+                    example: xxxxxxxxxxxx
+                  ort:
+                    type: string
+                    description: ort
+                    example: EPFO
+                  otp:
+                    type: string
+                    description: OTP recieved
+                    example: 546829
+                  uan:
+                    type: string
+                    description: UAN
+                    example: xxxxxxxxxxxx
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "37"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "495"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "l3_1003"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json: 
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: EPFO0000
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    payloadLogin:
+                      type: object
+                      description: Response payloadLogin
+                      properties:
+                        token:
+                          type: string
+                          example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmF0aW9uIjoiMDItMDgtMjAyMiAxMzozMjo0NSIsInV1aWQiOiJlZmVmYTBmYy04NjdjLTRlZmYtODc4ZS01YjQzODZkYWU0NmMifQ==.Ch4Y6GBX6ZqkZDU4GzJefgyYtPDCFmKnatAaRVePFDU=
+                        reftoken:
+                          type: string
+                          example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1YW4iOiIxMDAwODkyOTM1MDUiLCJ1dWlkIjoiZDg4MzcyOWItODEwNC00NWI0LTgwYzItYjUzOTM4YWU0ZjYwIn0=.rKkvHo+SA4n0VjhdgBBITyoDA5K5/J6o/HR7MaiAXq8=
+                        errormsg:
+                          type: string
+                          example: null
+                        mno:
+                          type: string
+                          example: xxxxxx2244
+                    payloadValidateOTP:
+                      type: object
+                      description: Response payloadValidateOTP
+                      properties:
+                        rc:
+                          type: string
+                          example: OTP0001
+                        rs:
+                          type: string
+                          example: S
+                        rd:
+                          type: string
+                          example: OTP validated successfully.
+                        pd:
+                          type: string
+                          example: null
+          400:
+            description: Bad Request/Validation Error
+    /epfoApi/ws1/oscelig: 
+      post: 
+        tags: 
+          - "OSC Eligibility API"
+        summary: "OSC Eligibility API"
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  uan:
+                    type: string
+                    description: UAN
+                    example: xxxxxxxxxxxx
+                  token:
+                    type: string
+                    description: authentication token
+                    example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmF0aW9uIjoiMzAtMDgtMjAyMiAxMDoxNzo0MiIsInV1aWQiOiIxM2JkZDQ4OC0xODIxLTQyODgtOTFhZC1iZGVkNzdmMzY1MjYifQ==.J280VE7Ek94BWkSw1Pl3VFUC67IOMxSfseO33g+vKfI=
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 37
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 495
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: l3_1001
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "37"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "495"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "l3_1002"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json: 
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: EPFO0000
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    payload:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        rs:
+                          type: string
+                          example: 
+                        rc:
+                          type: string
+                          example: 
+                        rd:
+                          type: string
+                          example: null
+                        error:
+                          type: string
+                          example: null
+                        ocsEligibilityDetails:
+                          type: object
+                          properties:
+                            iselig:
+                              type: string
+                              example: Y
+                            error:
+                              type: string
+                              example: null
+                            message:
+                              type: string
+                              example: null
+                            proc_status:
+                              type: string
+                              example: 0
+                            doe_EPS:
+                              type: string
+                              example: null
+                            aadhaar:
+                              type: string
+                              example: xxxxxxxxxxxx
+                            mobile_NUMBER:
+                              type: string
+                              example: xxxxxxxxxx
+                            member_ID:
+                              type: string
+                              example: MHBAN00345470000031739
+                            doe_EPF:
+                              type: string
+                              example: null
+                            status:
+                              type: string
+                              example: V
+                            email_ID:
+                              type: string
+                              example: xyz@test.com
+                            dob:
+                              type: string
+                              example: xx-xxx-xxxx
+                            doj_EPS:
+                              type: string
+                              example: xx-xxx-xxxx
+                            pan:
+                              type: string
+                              example: xxxxxxxxxx
+                            gender:
+                              type: string
+                              example: M
+                            leave_REASON:
+                              type: string
+                              example: null
+                            doj_EPF:
+                              type: string
+                              example: xx-xxx-xxxx
+                            bank_IFSC:
+                              type: string
+                              example: SBIN0007654
+                            bank_ACC_NO:
+                              type: string
+                              example: 20121745678
+                            bank_DETAILS:
+                              type: string
+                              example: STATE BANK OF INDIA,SLE COMPLEX, KOLKATA
+                            name:
+                              type: string
+                              example: ARINDAM CHATTERJEE
+                            father_OR_HUSBAND_NAME:
+                              type: string
+                              example: DEBASIS CHATTERJEE
+                            father_OR_HUSBAND:
+                              type: string
+                              example: F
+                            leave_REASON_CODE:
+                              type: string
+                              example: null
+          400:
+            description: Bad Request/Validation Error
+    /epfoApi/ws1/getservice: 
+      post: 
+        tags: 
+          - "Get Service API"
+        summary: "Get Service API"
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  uan:
+                    type: string
+                    description: UAN
+                    example: xxxxxxxxxxxx
+                  token:
+                    type: string
+                    description: authentication token
+                    example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmF0aW9uIjoiMzAtMDgtMjAyMiAxMDoxNzo0MiIsInV1aWQiOiIxM2JkZDQ4OC0xODIxLTQyODgtOTFhZC1iZGVkNzdmMzY1MjYifQ==.J280VE7Ek94BWkSw1Pl3VFUC67IOMxSfseO33g+vKfI=
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 37
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 495
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: l3_1001
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "37"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "495"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "l3_1002"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json: 
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: EPFO0000
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    payload:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        rs:
+                          type: string
+                          example: 
+                        rc:
+                          type: string
+                          example: 
+                        rd:
+                          type: string
+                          example: null
+                        error:
+                          type: string
+                          example: null
+                        serviceHistory:
+                          type: array
+                          items: 
+                            type: object
+                            properties:
+                                member_id:
+                                  type: string
+                                  example: MHBAN00345470000031739
+                                status:
+                                  type: string
+                                  example: V
+                                doj_epf:
+                                  type: string
+                                  example: xx-xxx-xxxx
+                                doj_eps:
+                                  type: string
+                                  example: xx-xxx-xxxx
+                                doe_epf:
+                                  type: string
+                                  example: null
+                                doe_eps:
+                                  type: string
+                                  example: null
+                                leave_reason_code:
+                                  type: string
+                                  example: null
+                                leave_reason:
+                                  type: string
+                                  example: null
+          400:
+            description: Bad Request/Validation Error
+    /epfoApi/ws1/checkbefore: 
+      post: 
+        tags: 
+          - "Check Before API"
+        summary: "Check Before API"
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  uan:
+                    type: string
+                    description: UAN
+                    example: xxxxxxxxxxxx
+                  token:
+                    type: string
+                    description: authentication token
+                    example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmF0aW9uIjoiMzAtMDgtMjAyMiAxMDoxNzo0MiIsInV1aWQiOiIxM2JkZDQ4OC0xODIxLTQyODgtOTFhZC1iZGVkNzdmMzY1MjYifQ==.J280VE7Ek94BWkSw1Pl3VFUC67IOMxSfseO33g+vKfI=
+                  formtype:
+                    type: string
+                    description: form type
+                    example: 06
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 37
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 495
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: l3_1002
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "37"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "495"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "l3_1002"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json: 
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: EPFO0000
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    payload:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        rs:
+                          type: string
+                          example: S
+                        rc:
+                          type: string
+                          example: EPFO2000
+                        rd:
+                          type: string
+                          example: Success
+                        error:
+                          type: string
+                          example: null
+                        output:
+                          type: string
+                          example: 0
+                        output_status:
+                          type: string
+                          example: null
+                        claimDetails:
+                          type: array
+                          items: 
+                            type: object
+                            properties:
+                                sample:
+                                  type: string
+                                  example: value
+          400:
+            description: Bad Request/Validation Error
+    /epfoApi/ws1/checkeli: 
+      post: 
+        tags: 
+          - "Check Eligibility API"
+        summary: "Check Eligibility API"
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  uan:
+                    type: string
+                    description: UAN
+                    example: xxxxxxxxxxxx
+                  token:
+                    type: string
+                    description: authentication token
+                    example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmF0aW9uIjoiMzAtMDgtMjAyMiAxMDoxNzo0MiIsInV1aWQiOiIxM2JkZDQ4OC0xODIxLTQyODgtOTFhZC1iZGVkNzdmMzY1MjYifQ==.J280VE7Ek94BWkSw1Pl3VFUC67IOMxSfseO33g+vKfI=
+                  form_type:
+                    type: string
+                    description: form tracker
+                    example: 06
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 37
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 495
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: l3_1002
+                  doj_epf:
+                    type: string
+                    description: date of joining epf
+                    example: 02-07-2018
+                  doj_eps:
+                    type: string
+                    description: date of joining eps
+                    example: 02-07-2018
+                  doe_epf:
+                    type: string
+                    description: date of employment epf
+                    example: null
+                  doe_eps:
+                    type: string
+                    description: date of employment eps
+                    example: null
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "37"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "495"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "l3_1002"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json: 
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: EPFO0000
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    payload:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        rs:
+                          type: string
+                          example: S
+                        rc:
+                          type: string
+                          example: EPFO2000
+                        rd:
+                          type: string
+                          example: Success
+                        error:
+                          type: string
+                          example: null
+                        out_ols:
+                          type: string
+                          example: 0
+                        out_status:
+                          type: string
+                          example: null
+                        total_service_in_mon:
+                          type: string
+                          example: 49
+                        output:
+                          type: string
+                          example: Eligible for advance
+          400:
+            description: Bad Request/Validation Error
+    /epfoVIDAadhaarApi/ws1/vidsendotp: 
+      post: 
+        tags: 
+          - "VID Send OTP API"
+        summary: "VID Send OTP API"
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  aadhar:
+                    type: string
+                    description: Aadhaar number
+                    example: xxxxxxxxxxxx
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 37
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: l3_1002
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "37"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "495"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "l3_1002"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json: 
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: EPFO0000
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    payload:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        rs:
+                          type: string
+                          example: SC
+                        rc:
+                          type: string
+                          example: EPFO0000
+                        ret:
+                          type: string
+                          example: y
+                        txn:
+                          type: string
+                          example: 44782432348420220830100908UMANG
+                        info:
+                          type: string
+                          example: null
+                        maskMobileNumber:
+                          type: string
+                          example: xxxxxx2244
+          400:
+            description: Bad Request/Validation Error
+    /epfoVIDAadhaarApi/ws1/vidvalotp: 
+      post: 
+        tags: 
+          - "VID Validate OTP API"
+        summary: "VID Validate OTP API"
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  aadhar:
+                    type: string
+                    description: Aadhaar number
+                    example: xxxxxxxxxxxx
+                  txn:
+                    type: string
+                    description: transaction id
+                    example: 44782432348420220830100908UMANG
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 37
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 495
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: l3_1002
+                  otp:
+                    type: string
+                    description: OTP received
+                    example: 333101
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "37"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "495"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "l3_1002"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json: 
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: EPFO0000
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    payload:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        rs:
+                          type: string
+                          example: SC
+                        rc:
+                          type: string
+                          example: EPFO0000
+                        ret:
+                          type: string
+                          example: y
+                        name:
+                          type: string
+                          example: Arindam Chatterjee
+                        gender:
+                          type: string
+                          example: M
+                        dob:
+                          type: string
+                          example: xx-xx-xxxx
+                        code:
+                          type: string
+                          example: 930761c818884c159b695dd29122c3b9
+                        uid:
+                          type: string
+                          example: xxxxxxxxxxxx
+                        address:
+                          type: string
+                          example: 22 camac street, Kolkata, West Bengal, India 700016
+          400:
+            description: Bad Request/Validation Error
+    /epfoApi/ws1/saveClaimAndCheque: 
+      post: 
+        tags: 
+          - "Save Claim And Cheque API"
+        summary: "Save Claim And Cheque API"
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: "object"
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  uan:
+                    type: string
+                    description: UAN
+                    example: xxxxxxxxxxxx
+                  token:
+                    type: string
+                    description: session token
+                    example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmF0aW9uIjoiMzAtMDgtMjAyMiAxMDoxNzo0MiIsInV1aWQiOiIxM2JkZDQ4OC0xODIxLTQyODgtOTFhZC1iZGVkNzdmMzY1MjYifQ==.J280VE7Ek94BWkSw1Pl3VFUC67IOMxSfseO33g+vKfI=
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 37
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 495
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: l3_1002
+                  subsid2:
+                    type: string
+                    description: sub service id 2
+                    example: 0
+                  usag:
+                    type: string
+                    description: usage details
+                    example: null
+                  apitrkr:
+                    type: string
+                    description: api tracker
+                    example: null
+                  doe_epf:
+                    type: string
+                    description: date of employment epf
+                    example: null
+                  doe_eps:
+                    type: string
+                    description: date of employment eps
+                    example: null
+                  claim_form_type:
+                    type: string
+                    description: claim form type
+                    example: 06
+                  reason_exit:
+                    type: string
+                    description: reason for exit
+                    example: null
+                  para_code:
+                    type: string
+                    description: para code
+                    example: 8
+                  sub_para_code:
+                    type: string
+                    description: sub para code
+                    example: 13
+                  sub_para_category:
+                    type: string
+                    description: sub para category
+                    example: 3
+                  claim_purpose:
+                    type: string
+                    description: claim purpose
+                    example: OUTBREAK OF PANDEMIC (COVID-19)
+                  adv_amount:
+                    type: string
+                    description: amount in advance
+                    example: 1000
+                  claim_source_flag:
+                    type: string
+                    description: claim source flag
+                    example: UE
+                  address1:
+                    type: string
+                    description: address 1
+                    example: test
+                  address2:
+                    type: string
+                    description: address 2
+                    example: test
+                  address_city:
+                    type: string
+                    description: address city
+                    example: test
+                  address_dist:
+                    type: string
+                    description: address district
+                    example: 433
+                  address_state:
+                    type: string
+                    description: address state
+                    example: 31
+                  state_name:
+                    type: string
+                    description: state name
+                    example: WEST BENGAL
+                  dist_name:
+                    type: string
+                    description: district name
+                    example: KOLKATA
+                  ip_address:
+                    type: string
+                    description: ip address details
+                    example: 10.123.21.254
+                  adv_enclosure:
+                    type: string
+                    description: advance enclosure
+                    example: null
+                  memberId:
+                    type: string
+                    description: member id
+                    example: MHBAN00436470000987654
+                  applicationType:
+                    type: string
+                    description: application type
+                    example: null
+                  cancelChequeBase64:
+                    type: string
+                    description: cancel cheque in base64 format
+                    example: /9j/4AAQSkZJRgABAQEAeAB4AAD/2wBDAAIBAQIBAQICAgICAgICAwUDAwMDAwYEBAMFBwYHBwcGBwcICQsJCAgKCAcHCg0KCgsMDAwMBwkODw0MDgsMDAz/2wBDAQICAgMDAwYDAwYMCAcIDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAz/wAARCADvAMwDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD9/KKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiue8SfFLQ/C25bi9jeZf+WUP7x/yHT8cV5Oc59luUYd4vNK8KNNfanJRX
+        parameters: 
+          - 
+            name: "Content-Type"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "Accept"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "application/json"
+          - 
+            name: "deptid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "37"
+          - 
+            name: "srvid"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "495"
+          - 
+            name: "subsid"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "l3_1002"
+          - 
+            name: "subsid2"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "formtrkr"
+            in: "header"
+            schema: 
+              type: "integer"
+            example: "0"
+          - 
+            name: "x-api-key"
+            in: "header"
+            schema: 
+              type: "string"
+            example: "xxxxxxxxxxxx"
+        responses: 
+          200: 
+            description: "Successful response"
+            content: 
+              application/json: 
+                schema: 
+                  type: "object"
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: EPFO0000
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        ofc_id:
+                          type: string
+                          example: 310
+                        form_type:
+                          type: string
+                          example: 06
+                        yymm:
+                          type: string
+                          example: 202208
+                        track_id:
+                          type: string
+                          example: 10008929350506005
+                        uan:
+                          type: string
+                          example: xxxxxxxxxxxx
+                        message:
+                          type: string
+                          example: Claim has been successfully submitted
+                        status:
+                          type: string
+                          example: 0
+          400:
+            description: Bad Request/Validation Error
+  components:
+    securitySchemes:
+      bearerAuth:
+        type: http
+        scheme: bearer
+        bearerFormat: text

@@ -1,0 +1,68 @@
+host: delhigw.napix.gov.in
+info:
+  title: Parivahan
+  version: 1.0.0
+  x-ibm-name: echallanws-additional-vehicle-details
+  description: This api is used to get all challan imposed on the vehicle
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/nic/parivahan
+paths:
+  /service/additional-Vehicle-Details:
+    post:
+      consumes: []
+      produces: []
+      responses:
+        "200":
+          schema:
+            type: string
+          description: success
+      tags:
+        - Echallanws additional vehicle details
+schemes:
+  - https
+swagger: "2.0"
+basePath: /nic/parivahan/echallanws
+security:
+  - Client ID Header: []
+  - Oauth2Token:
+      - napix
+securityDefinitions:
+  Oauth2Token:
+    flow: application
+    type: oauth2
+    scopes:
+      napix: Oauth scope napix
+    tokenUrl: //oauth2/token
+    description: Oauth2 Generate Token
+    x-ibm-oauth-provider: nic-oauth-provider-application-grant-type
+  Client ID Header:
+    in: header
+    name: X-Client-Id
+    type: apiKey
+    x-key-type: client_id
+  Client Secret Header:
+    in: header
+    name: X-Client-Secret
+    type: apiKey
+    x-key-type: client_secret
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  servers:
+    - url: https://delhigw.napix.gov.in/nic/parivahan/echallanws
+      type:
+        - production
+        - development
+  enforced: true
+  testable: true
+  oauth-servers:
+    Oauth2Token:
+      tokenUrls:
+        - https://degateway.napix.gov.in:443/nic/parivahan//oauth2/token
+      refreshUrls: []
+      authorizationUrls: []
+  application-authentication:
+    certificate: false

@@ -1,0 +1,2328 @@
+---
+openapi: 3.0.0
+info:
+  title: Ministry of New and Renewable Energy (MNRE) Programme
+  description: The Ministry of New and Renewable Energy (MNRE) is the nodal Ministry of the Government of India for all matters relating to new and renewable energy. The broad aim of the Ministry is to develop and deploy new and renewable energy to supplement the energy requirements of the country.The Ministry of New and Renewable Energy (MNRE) is responsible for R&D, intellectual property protection, international cooperation, promotion, and coordination in renewable energy sources such as Wind Power, Small Hydro, Biogas, and Solar power. The citizen can avail the services of Solar Rooftop Installation like Solar Rooftop Calculator, view List of Agencies, Installation Request, Notification etc.<i>[Updated on 11th July 2023]</i>
+  termsOfService: https://web.umang.gov.in/uaw/ts/v1/en/index.htm
+  contact:
+    name: Provided by - UMANG
+    url: https://web.umang.gov.in
+  version: 1.0.0
+servers:
+  - url: https://apigw.umangapp.in
+    description: Production Server
+
+security: 
+  - x-api-key: []
+
+paths:
+  /MNREApi/ws1/notificationlist:
+    post:
+      tags:
+        - Notification List
+      summary: Get the Notification List
+      description: This API is used to fetch the notification list.
+      operationId: MNREApi/ws1/notificationlist
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en  
+                lat:
+                  type: string
+                  description: latitude
+                  example: 21
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90       
+                usag:
+                  type: string
+                  description: usage
+                  example: 90                   
+                usrid:
+                  type: string
+                  description: user id
+                  example: 09
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1484
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: andorid
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                subsid:
+                  type: string
+                  description: subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0                
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "337"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1484"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:          
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    properties:
+                      status_code:
+                        type: string
+                        description: status code
+                        example: 200     
+                      payload:
+                        type: string
+                        description: payload
+                        example: MjqqrWG7UDd2RtxzpFW3zniG8I4Mo...           
+                      service_name:
+                        type: string
+                        description: service name
+                        example: Notification  
+                      service_code:
+                        type: integer
+                        description: service code
+                        example: 4834 
+                      status:
+                        type: string
+                        description: status
+                        example: Success                      
+        "400":
+          description: Bad Request/Validation Error
+  /MNREApi/ws1/subagencylist:
+    post:
+      tags:
+        - Sub Agency List
+      summary: Get the sub agency list
+      description: This API is used to get the sub agency list
+      operationId: MNREApi/ws1/subagencylist
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en  
+                lat:
+                  type: string
+                  description: latitude
+                  example: 21
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90       
+                usag:
+                  type: string
+                  description: usage
+                  example: 90                      
+                usrid:
+                  type: string
+                  description: user id
+                  example: 09
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1484
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: andorid
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                subsid:
+                  type: string
+                  description: subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0               
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "337"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1484"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    properties:
+                      status_code:
+                        type: string
+                        description: status code
+                        example: 200     
+                      payload:
+                        type: string
+                        description: payload
+                        example: MjqqrWG7UDd2RtxzpFW3zniG8I4Mo...           
+                      service_name:
+                        type: string
+                        description: service name
+                        example: Sub API of Interest Request 
+                      service_code:
+                        type: integer
+                        description: service code
+                        example: 1571 
+                      status:
+                        type: string
+                        description: status
+                        example: Success                      
+        "400":
+          description: Bad Request/Validation Error
+  /MNREApi/ws1/agencylist:
+    post:
+      tags:
+        - Agency List
+      summary: Get the agency list
+      description: This API is used to get the agency list
+      operationId: MNREApi/ws1/agencylist
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en  
+                lat:
+                  type: string
+                  description: latitude
+                  example: 21
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90       
+                usag:
+                  type: string
+                  description: usage
+                  example: 90                      
+                usrid:
+                  type: string
+                  description: user id
+                  example: 09
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1484
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: andorid
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                subsid:
+                  type: string
+                  description: subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0    
+                agency_type:
+                  type: string
+                  description: agency type
+                  example: 2
+                statecd:
+                  type: string
+                  description: statecd
+                  example: 6                 
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "337"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1484"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    properties:
+                      status_code:
+                        type: string
+                        description: status code
+                        example: 200     
+                      payload:
+                        type: string
+                        description: payload
+                        example: fxxvBV8nHwx5g7XdhxVJ0GPfwt5OabBwtBKZcWLpPT...           
+                      service_name:
+                        type: string
+                        description: service name
+                        example: Agency List 
+                      service_code:
+                        type: integer
+                        description: service code
+                        example: 2762 
+                      status:
+                        type: string
+                        description: status
+                        example: Success                      
+        "400":
+          description: Bad Request/Validation Error
+  /MNREApi/ws1/installsubinterest:
+    post:
+      tags:
+        - Installation of Sub Interest
+      summary: Get the sub interest installed.
+      description: This API is used to install the sub interest
+      operationId: MNREApi/ws1/installsubinterest
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en  
+                lat:
+                  type: string
+                  description: latitude
+                  example: 21
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90       
+                usag:
+                  type: string
+                  description: usage
+                  example: 90                      
+                usrid:
+                  type: string
+                  description: user id
+                  example: 09
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1484
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: andorid
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                subsid:
+                  type: string
+                  description: subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0               
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "337"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1484"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    properties:
+                      status_code:
+                        type: string
+                        description: status code
+                        example: 200     
+                      payload:
+                        type: string
+                        description: payload
+                        example: CsA09pwANLE5WwFEuCWRdqXqs1AHz7bqYO3ZPrDzlo1...           
+                      service_name:
+                        type: string
+                        description: service name
+                        example: Sub API of Interest Request 
+                      service_code:
+                        type: integer
+                        description: service code
+                        example: 7720 
+                      status:
+                        type: string
+                        description: status
+                        example: Success                      
+        "400":
+          description: Bad Request/Validation Error
+  /MNREApi/ws1/installcategory:
+    post:
+      tags:
+        - Fetch Installation Category
+      summary: Get the installation category
+      description: This API is used to get the installation category.
+      operationId: MNREApi/ws1/installcategory
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en  
+                lat:
+                  type: string
+                  description: latitude
+                  example: 21
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90       
+                usag:
+                  type: string
+                  description: usage
+                  example: 90                      
+                usrid:
+                  type: string
+                  description: user id
+                  example: 09
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1484
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: andorid
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                subsid:
+                  type: string
+                  description: subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0  
+                id_bene_catg:
+                  type: string
+                  description: id benefit category
+                  example: 2              
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "337"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1484"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    properties:
+                      status_code:
+                        type: string
+                        description: status code
+                        example: 200               
+                      service_name:
+                        type: string
+                        description: service name
+                        example: Sub API Catg Response of Interest Request
+                      service_code:
+                        type: integer
+                        description: service code
+                        example: 7721 
+                      message:
+                        type: string
+                        description: message
+                        example: abc                        
+                      status:
+                        type: string
+                        description: status
+                        example: Success                      
+        "400":
+          description: Bad Request/Validation Error
+  /MNREApi/ws1/installinterest:
+    post:
+      tags:
+        - Installation Interest
+      summary: Get the installation interest
+      description: This API is used to get the installation interest
+      operationId: MNREApi/ws1/installinterest
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en  
+                lat:
+                  type: string
+                  description: latitude
+                  example: 21
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90       
+                usag:
+                  type: string
+                  description: usage
+                  example: 90                      
+                usrid:
+                  type: string
+                  description: user id
+                  example: 09
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1486
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: andorid
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0                  
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                id_bene_catg:
+                  type: string
+                  description: id_bene_catg
+                  example: 2
+                statecd:
+                  type: string
+                  description: state code
+                  example: 12 
+                elec_distribution_name:
+                  type: string
+                  description: electricity distribution name
+                  example: 91
+                elect_consumer_acc:
+                  type: string
+                  description: electricity consumer account
+                  example: 244 
+                address:
+                  type: string
+                  description: address
+                  example: 124
+                pin:
+                  type: string
+                  description: pin
+                  example: 111124 
+                distcd:
+                  type: string
+                  description: distcd
+                  example: 685 
+                contact_name:
+                  type: string
+                  description: contact_name
+                  example: Testing  
+                email:
+                  type: string
+                  description: email
+                  example: abc@gmail.com
+                mobile:
+                  type: string
+                  description: mobile
+                  example: 9999999999 
+                landphone_std:
+                  type: string
+                  description: landphone_std
+                  example: 011  
+                landphone:
+                  type: string
+                  description: landphone
+                  example: 27386913 
+                know_size:
+                  type: string
+                  description: know_size
+                  example: 1
+                size:
+                  type: string
+                  description: size
+                  example: 24 
+                area:
+                  type: string
+                  description: area
+                  example: 24
+                annual_energy:
+                  type: string
+                  description: annual_energy
+                  example: 24
+                avg_tariff:
+                  type: string
+                  description: avg_tariff
+                  example: 24                    
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "337"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1484"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    properties:
+                      status_code:
+                        type: string
+                        description: status code
+                        example: 200              
+                      service_name:
+                        type: string
+                        description: service name
+                        example: Interest Request
+                      service_code:
+                        type: integer
+                        description: service code
+                        example: 7725
+                      message:
+                        type: string
+                        description: message
+                        example: Your request has been submitted successfully to the selected Electricity Distribution Company Agency. Your Reference code is I220201209154001K9                    
+                      status:
+                        type: string
+                        description: status
+                        example: Success                      
+        "400":
+          description: Bad Request/Validation Error
+  /MNREApi/ws1/state:
+    post:
+      tags:
+        - State List
+      summary: Get the state list
+      description: This API is used to fetch state list
+      operationId: MNREApi/ws1/state
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en  
+                lat:
+                  type: string
+                  description: latitude
+                  example: 21
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90       
+                usag:
+                  type: string
+                  description: usage
+                  example: 90                      
+                usrid:
+                  type: string
+                  description: user id
+                  example: 09
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1484
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: andorid
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                subsid:
+                  type: string
+                  description: subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0   
+                statecd:
+                  type: string
+                  description: statecd
+                  example: 6                 
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "337"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1484"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    properties:
+                      status_code:
+                        type: string
+                        description: status code
+                        example: 200     
+                      payload:
+                        type: string
+                        description: payload
+                        example: 30mQCADsKJX1AFBonabSE4QpdpZNzitGkgvw...           
+                      service_name:
+                        type: string
+                        description: service name
+                        example: Sub API State Response of Interest Request
+                      service_code:
+                        type: integer
+                        description: service code
+                        example: 7722
+                      status:
+                        type: string
+                        description: status
+                        example: Success                      
+        "400":
+          description: Bad Request/Validation Error
+  /MNREApi/ws1/discom:
+    post:
+      tags:
+        - Discom List
+      summary: Fetch discom list
+      description: This API is used to fetch discom list
+      operationId: MNREApi/ws1/discom
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en  
+                lat:
+                  type: string
+                  description: latitude
+                  example: 21
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90       
+                usag:
+                  type: string
+                  description: usage
+                  example: 90                      
+                usrid:
+                  type: string
+                  description: user id
+                  example: 09
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1486
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: andorid
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                subsid:
+                  type: string
+                  description: subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0    
+                elec_distribution_name:
+                  type: string
+                  description: elec_distribution_name
+                  example: 2               
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "337"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1484"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    properties:
+                      status_code:
+                        type: string
+                        description: status code
+                        example: 200           
+                      service_name:
+                        type: string
+                        description: service name
+                        example: Sub API Discom Response of Interest Request
+                      service_code:
+                        type: integer
+                        description: service code
+                        example: 7723
+                      message:
+                        type: integer
+                        description: message 
+                        example: null                      
+                      status:
+                        type: string
+                        description: status
+                        example: Success                      
+        "400":
+          description: Bad Request/Validation Error
+  /MNREApi/ws1/faq:
+    post:
+      tags:
+        - FAQ List
+      summary: Get the faq list
+      description: This API is used to get the faq list
+      operationId: MNREApi/ws1/faq
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en  
+                lat:
+                  type: string
+                  description: latitude
+                  example: 21
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90       
+                usag:
+                  type: string
+                  description: usage
+                  example: 90                      
+                usrid:
+                  type: string
+                  description: user id
+                  example: 09
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1484
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: andorid
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                subsid:
+                  type: string
+                  description: subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0               
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "337"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1484"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    properties:
+                      faq_url:
+                        type: string
+                        description: faq url
+                        example: https://solarrooftop.gov.in/pdf/faq.pdf     
+                      status_code:
+                        type: string
+                        description: status code
+                        example: 200          
+                      service_name:
+                        type: string
+                        description: service name
+                        example: FAQ
+                      service_code:
+                        type: integer
+                        description: service code
+                        example: 5763 
+                      status:
+                        type: string
+                        description: status
+                        example: Success                      
+        "400":
+          description: Bad Request/Validation Error
+  /MNREApi/ws1/subfeedback:
+    post:
+      tags:
+        - Sub Feedback List
+      summary: Get the sub feedback list
+      description: This API is used to get the sub feedback list
+      operationId: MNREApi/ws1/subfeedback
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en  
+                lat:
+                  type: string
+                  description: latitude
+                  example: 21
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90       
+                usag:
+                  type: string
+                  description: usage
+                  example: 90                      
+                usrid:
+                  type: string
+                  description: user id
+                  example: 09
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1484
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: andorid
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                subsid:
+                  type: string
+                  description: subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0               
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "337"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1484"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    properties:
+                      status_code:
+                        type: string
+                        description: status code
+                        example: 200     
+                      payload:
+                        type: string
+                        description: payload
+                        example: a8IZikdsu12DwUBhBziIxmC37jKlGAua6QHVM1h2q0SzXjk...           
+                      service_name:
+                        type: string
+                        description: service name
+                        example: Sub API of Feedback
+                      service_code:
+                        type: integer
+                        description: service code
+                        example: 6529 
+                      status:
+                        type: string
+                        description: status
+                        example: Success                      
+        "400":
+          description: Bad Request/Validation Error
+  /MNREApi/ws1/feedback:
+    post:
+      tags:
+        - Feedback
+      summary: Provide the feedback
+      description: This API is used to provide feedback
+      operationId: MNREApi/ws1/feedback
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en  
+                lat:
+                  type: string
+                  description: latitude
+                  example: 21
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90       
+                usag:
+                  type: string
+                  description: usage
+                  example: 90                      
+                usrid:
+                  type: string
+                  description: user id
+                  example: 09
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1488
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: andorid
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                subsid:
+                  type: string
+                  description: subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0  
+                contact_name:
+                  type: string
+                  description: contact name
+                  example: pooja
+                email:
+                  type: string
+                  description: email
+                  example: nandupuja@gmail.com 
+                confirm_email:
+                  type: string
+                  description: confirm email
+                  example: nandupuja@gmail.com
+                emailOTP:
+                  type: string
+                  description: emailOTP
+                  example: 512752 
+                mobile:
+                  type: string
+                  description: mobile
+                  example: 9309514024 
+                related_to:
+                  type: string
+                  description: related to
+                  example: 0 
+                subject:
+                  type: string
+                  description: subject
+                  example: 7
+                feed_back:
+                  type: string
+                  description: feedback
+                  example: Detail Add
+                attachment:
+                  type: string
+                  description: attachment
+                  example: JVBERi0xLjMNCiXi48/TDQoNCjEgMCBvYmoNCjw8DQovVHlwZ...                  
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "337"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1484"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    properties:
+                      status_code:
+                        type: string
+                        description: status code
+                        example: 200          
+                      service_name:
+                        type: string
+                        description: service name
+                        example: Feedback
+                      service_code:
+                        type: integer
+                        description: service code
+                        example: 6530 
+                      message:
+                        type: integer
+                        description: message
+                        example: Thankyou for submitting query. Note down your Reference Code is FQ202012101309FHBY                      
+                      status:
+                        type: string
+                        description: status
+                        example: Success                      
+        "400":
+          description: Bad Request/Validation Error
+  /MNREApi/ws1/subcalculator:
+    post:
+      tags:
+        - Sub Calculator
+      summary: Get the sub calculator
+      description: This API is used to fetch sub calculator
+      operationId: MNREApi/ws1/subcalculator
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en  
+                lat:
+                  type: string
+                  description: latitude
+                  example: 21
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90       
+                usag:
+                  type: string
+                  description: usage
+                  example: 90                      
+                usrid:
+                  type: string
+                  description: user id
+                  example: 09
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1489
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: andorid
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                subsid:
+                  type: string
+                  description: subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0               
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "337"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1489"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    properties:
+                      status_code:
+                        type: string
+                        description: status code
+                        example: 200     
+                      payload:
+                        type: string
+                        description: payload
+                        example: f6hRWSclTP9vDSli0tn3PXbQmOypGQ4x97GTK64Z05Jojkuo...           
+                      service_name:
+                        type: string
+                        description: service name
+                        example: Sub API of Calculator
+                      service_code:
+                        type: integer
+                        description: service code
+                        example: 9431 
+                      status:
+                        type: string
+                        description: status
+                        example: Success                      
+        "400":
+          description: Bad Request/Validation Error      
+  /MNREApi/ws1/calculator:
+    post:
+      tags:
+        - Calculator
+      summary: Get the calculator
+      description: This API is used to fetch calculator
+      operationId: MNREApi/ws1/calculator
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en  
+                lat:
+                  type: string
+                  description: latitude
+                  example: 21
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: lac
+                  example: 90       
+                usag:
+                  type: string
+                  description: usage
+                  example: 90                      
+                usrid:
+                  type: string
+                  description: user id
+                  example: 09
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1489
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: andorid
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                subsid:
+                  type: string
+                  description: subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0   
+                state:
+                  type: string
+                  description: state
+                  example: 6
+                customer_type:
+                  type: string
+                  description: customer_type
+                  example: 2
+                option:
+                  type: string
+                  description: option
+                  example: 2
+                electricity_tariff:
+                  type: string
+                  description: electricity_tariff
+                  example: 8
+                capacity:
+                  type: string
+                  description: capacity
+                  example: 3
+                area_unit:
+                  type: string
+                  description: area_unit
+                  example: 0
+                area:
+                  type: string
+                  description: area
+                  example: 0
+                area_percentage:
+                  type: string
+                  description: area_percentage
+                  example: 0
+                budget:
+                  type: string
+                  description: budget
+                  example: 0                  
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "337"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1489"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    properties:
+                      status_code:
+                        type: string
+                        description: status code
+                        example: 200     
+                      payload:
+                        type: string
+                        description: payload
+                        example: m21akaQRkdq1WVvqjEzhXhPjbjDiYlkRw8ali7nVOI3gWJNNE5iFTWiJYN...           
+                      service_name:
+                        type: string
+                        description: service name
+                        example: Calculator
+                      service_code:
+                        type: integer
+                        description: service code
+                        example: 9433
+                      status:
+                        type: string
+                        description: status
+                        example: Success                      
+        "400":
+          description: Bad Request/Validation Error 
+  /MNREApi/ws1/emailotp:
+    post:
+      tags:
+        - Email OTP
+      summary: Get the email otp
+      description: This API is used to fetch the email otp.
+      operationId: MNREApi/ws1/emailotp
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                lang:
+                  type: string
+                  description: language
+                  example: en  
+                language:
+                  type: string
+                  description: language
+                  example: en                      
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1488
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: windows
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                subsid:
+                  type: string
+                  description: subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0   
+                email:
+                  type: string
+                  description: email
+                  example: nandupuja@gmail.com                 
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "337"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1484"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    properties:
+                      status_code:
+                        type: string
+                        description: status code
+                        example: 200              
+                      service_name:
+                        type: string
+                        description: service name
+                        example: Feedback OTP
+                      service_code:
+                        type: integer
+                        description: service code
+                        example: 6531 
+                      message:
+                        type: integer
+                        description: message
+                        example: OTP has been resend. Please check the email                       
+                      status:
+                        type: string
+                        description: status
+                        example: Success                      
+        "400":
+          description: Bad Request/Validation Error           
+components:
+  securitySchemes:
+    x-api-key:
+      type: apiKey
+      name: x-api-key
+      in: header

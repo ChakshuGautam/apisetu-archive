@@ -1,0 +1,44 @@
+openapi: 3.0.0
+info:
+  title: SSP-Nsppms-Signin.
+  version: 1.0.0
+  description: This Api comes under the department of SSP. This API gives
+    NSPPMS-signin details.
+servers:
+  - url: https://api.nsp.gov.in/pms/v1/auth/signin
+  - url: https://api.nsp.gov.in/
+paths:
+  /pms/v1/auth/signin:
+    post:
+      responses:
+        "200":
+          description: Operation_successful
+          content:
+            application/json:
+              schema:
+                example:
+                  status: 200
+                  token: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI0MmUzODMzMy1iMzU5LTQxYTAtOWM3Yi1iYTg0ODg3MzJkYWYiLCJpYXQiOjE2NDAyMzQ4NDUsImV4cCI6MTY0MDIzNTE0NX0.VMEH_aZpOZcq7FBXn6S1lZyXlkdqgPVxx3pgF_ZsFdYroFdIxYoRLxcQzev6lc1NAmvsUz9P74qmsQx6NehaPA
+                  message: Success
+                  timestamp: 1640234845613
+      description: get NSPPMS signin Details.
+      operationId: POST_pms-v1-auth-signin
+      requestBody:
+        content:
+          application/json:
+            example:
+              username: pms.ka
+              userpassword: Kd4@daf8P3
+            schema:
+              type: string
+        required: true
+components:
+  schemas: {}
+  responses: {}
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}

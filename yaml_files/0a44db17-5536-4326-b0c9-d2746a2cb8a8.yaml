@@ -1,0 +1,115 @@
+host: delhigw.napix.gov.in
+info:
+  title: Dedupe
+  version: "1.0"
+  x-ibm-name: downloadstatusupload
+  description: Download Status Upload
+  contact:
+    name: Provided by - NAPIX
+    url: https://dev.napix.gov.in/nic/dedupe
+tags:
+  - name: transaction
+    description: transaction
+paths:
+  /api/transaction/DownloadStatusUpload:
+    post:
+      tags:
+        - Downloadstatusupload
+      summary: DownloadStatusUpload
+      consumes:
+        - application/json
+      produces:
+        - "*/*"
+      responses:
+        "200":
+          schema:
+            type: object
+            additionalProperties:
+              type: string
+          description: OK
+        "201":
+          description: Created
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+      parameters:
+        - in: body
+          name: downloadStatus
+          schema:
+            type: object
+            title: DownloadStatus
+            properties:
+              login_id:
+                type: integer
+                format: int32
+              download_ip:
+                type: string
+              downloaded_on:
+                type: string
+                format: date-time
+              current_version:
+                type: string
+              download_version:
+                type: string
+              download_mac_address:
+                type: string
+          required: true
+          description: downloadStatus
+      operationId: DownloadStatusUploadUsingPOST
+schemes:
+  - https
+swagger: "2.0"
+basePath: /nic/dedupe
+security:
+  - Oauth:
+      - napix
+definitions:
+  DownloadStatus:
+    type: object
+    title: DownloadStatus
+    properties:
+      login_id:
+        type: integer
+        format: int32
+      download_ip:
+        type: string
+      downloaded_on:
+        type: string
+        format: date-time
+      current_version:
+        type: string
+      download_version:
+        type: string
+      download_mac_address:
+        type: string
+securityDefinitions:
+  Oauth:
+    flow: application
+    type: oauth2
+    scopes:
+      napix: ""
+    tokenUrl: //oauth2/token
+    x-ibm-oauth-provider: nic-oauth-provider-application-grant-type
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  servers:
+    - url: https://delhigw.napix.gov.in/nic/dedupe
+      type:
+        - production
+        - development
+  enforced: true
+  testable: true
+  oauth-servers:
+    Oauth:
+      tokenUrls:
+        - https://degateway.napix.gov.in:443/nic/dedupe//oauth2/token
+      refreshUrls: []
+      authorizationUrls: []
+  application-authentication:
+    certificate: false

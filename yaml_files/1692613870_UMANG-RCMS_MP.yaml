@@ -1,0 +1,1366 @@
+---
+openapi: 3.0.0
+info:
+  title: Revenue Case Management System - Madhya Pradesh (RCMS MP)
+  description: Revenue Case Management System is a web based e-governance initiative of the Madhya Pradesh government through which information is provided to the citizens regarding their cases and helps in managing the functioning of different courts in a better and transparent manner.Petitioners can check the information of scheduled cases, can check status of case, can download the final copy of case.<i>[Updated on 21st August 2023]</i>
+  termsOfService: https://web.umang.gov.in/uaw/ts/v1/en/index.htm
+  contact:
+    name: Provided by - UMANG
+    url: https://web.umang.gov.in
+  version: 1.0.0
+servers:
+  - url: https://apigw.umangapp.in
+    description: Production Server
+    
+security:  
+  - x-api-key: [] 
+
+paths:
+  /RCMSMpApi/ws1/district:
+    post:
+      tags:
+        - District List Web Service
+      summary: Get the district list using this service
+      description: This api is used to get the district list
+      operationId: RCMSMpApi/ws1/district
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 97
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 718
+                did:
+                  type: integer
+                  description: did
+                  example: https://web.umang.gov.in/mpMobile/api/deptt/mpMobile/?redirectUrl=causeList?GLOBAL_SERVICE_ID=718
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "97"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "718"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: RCMS0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                    type: object
+                    properties:
+                      status:
+                        type: array
+                        description: district objects
+                        items:
+                          type: object
+                          properties:
+                            districtcode:
+                              type: string
+                              description: districtcode
+                              example: 44
+                            districtname:
+                              type: string
+                              description: districtname
+                              example: Agar Malwa (आगर मालवा)
+        "400":
+          description: Bad Request/Validation Error
+  /RCMSMpApi/ws1/courtlist:
+    post:
+      tags:
+        - Court List Web Service
+      summary: Get the court list using this service
+      description: This api is used to get the court list
+      operationId: RCMSMpApi/ws1/courtlist
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 97
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 718
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                did:
+                  type: string
+                  description: did
+                  example: https://web.umang.gov.in/mpMobile/api/deptt/mpMobile/?redirectUrl=causeList?GLOBAL_SERVICE_ID=718
+                districtid:
+                  type: string
+                  description: districtid
+                  example: 10
+                courttype:
+                  type: string
+                  description: courttype
+                  example: Collector
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "97"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "718"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: RCMS0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                    type: object
+                    description: court list object
+                    properties:
+                      status:
+                        type: array
+                        description: court list object item
+                        items:
+                          type: object
+                          properties:
+                            courtID:
+                              type: string
+                              description: courtID
+                              example: 0810C09
+                            courtname:
+                              type: string
+                              description: courtname
+                              example: अपर जिला दण्डाधिकारी सागर
+        "400":
+          description: Bad Request/Validation Error
+  /RCMSMpApi/ws1/causelistdate:
+    post:
+      tags:
+        - Court List Dates Web Service
+      summary: Fetch the court list dates using this service
+      description: This api is used to fetch the court list dates
+      operationId: RCMSMpApi/ws1/causelistdate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 97
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 718
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                did:
+                  type: string
+                  description: did
+                  example: https://web.umang.gov.in/mpMobile/api/deptt/mpMobile/?redirectUrl=causeList?GLOBAL_SERVICE_ID=718
+                courtid:
+                  type: string
+                  description: courtid
+                  example: 0810C09
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "97"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "718"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: RCMS0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                    type: object
+                    description: cause list object
+                    properties:
+                      status:
+                        type: array
+                        description: cause list date object item
+                        items:
+                          type: object
+                          properties:
+                            hearing_date:
+                              type: string
+                              description: hearing_date
+                              example: 04/08/2023
+                            countRID:
+                              type: string
+                              description: countRID
+                              example: "2"
+        "400":
+          description: Bad Request/Validation Error
+  /RCMSMpApi/ws1/causedetails:
+    post:
+      tags:
+        - Cause Details Web Service
+      summary: Get the cause details using this service
+      description: This api is used to get the cause details
+      operationId: RCMSMpApi/ws1/causedetails
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 97
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 718
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                did:
+                  type: string
+                  description: did
+                  example: https://web.umang.gov.in/mpMobile/api/deptt/mpMobile/?redirectUrl=causeList?GLOBAL_SERVICE_ID=718
+                courtid:
+                  type: string
+                  description: courtid
+                  example: 0810C09
+                date:
+                  type: string
+                  description: date
+                  example: 14/08/2023
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "97"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "718"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: RCMS0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                    type: object
+                    description: cause detail object
+                    properties:
+                      status:
+                        type: array
+                        description: cause detail object item
+                        items:
+                          type: object
+                          properties:
+                            applicationnumb:
+                              type: string
+                              description: applicationnumb
+                              example: 0810RD09-APP-18499826
+                            hearing_date:
+                              type: string
+                              description: hearing_date
+                              example: ""
+                            hearing_reason:
+                              type: string
+                              description: hearing_reason
+                              example: स्टेटस चुनें
+                            case_numb:
+                              type: string
+                              description: case_numb
+                              example: 0094/अपील/2023-24
+                            date:
+                              type: string
+                              description: date
+                              example: 20/07/2023
+                            subject:
+                              type: string
+                              description: subject
+                              example: "अन्य: आंगनबाडी अपील"
+                            case_type:
+                              type: string
+                              description: case_type
+                              example: अपील
+                            applicant:
+                              type: string
+                              description: applicant
+                              example: श्रीमति रामकुमारी अहिरवार पिता गनेश अहिरवार, पता- ग्राम मुहली तह0 व
+                                जिला सागर
+                            non_applicant:
+                              type: string
+                              description: non_applicant
+                              example: श्रीमति ईशा अहिरवार   पिता भूपेन्‍द्र अहिरवार, पता- ग्राम मुहली तह0 व
+                                जिला सागर
+                            case_hearing_reason:
+                              type: string
+                              description: case_hearing_reason
+                              example: पक्षकारों की तलबी हेतु,रिकॉर्ड बुलवाने हेतु
+                            courtID:
+                              type: string
+                              description: courtID
+                              example: 0810C09
+        "400":
+          description: Bad Request/Validation Error
+  /RCMSMpApi/ws1/caselist:
+    post:
+      tags:
+        - Fetch Case List Web Service
+      summary: Fetch the case list using this service
+      description: This api is used to get the case list
+      operationId: RCMSMpApi/ws1/caselist
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 97
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 719
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                did:
+                  type: string
+                  description: did
+                  example: https://web.umang.gov.in/mpMobile/api/deptt/mpMobile/?redirectUrl=caseStatus?GLOBAL_SERVICE_ID=719
+                courtid:
+                  type: string
+                  description: courtid
+                  example: 0810C09
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "97"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "719"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: RCMS0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                    type: object
+                    description: case detail object
+                    properties:
+                      status:
+                        type: array
+                        description: case detail object item
+                        items:
+                          type: object
+                          properties:
+                            casePart:
+                              type: string
+                              description: casePart
+                              example: अ-19(3)
+        "400":
+          description: Bad Request/Validation Error
+  /RCMSMpApi/ws1/yearlist:
+    post:
+      tags:
+        - Year List Web Service
+      summary: Get the year list using this service
+      description: This api is used to get the year list
+      operationId: RCMSMpApi/ws1/yearlist
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 97
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 719
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                did:
+                  type: string
+                  description: did
+                  example: https://web.umang.gov.in/mpMobile/api/deptt/mpMobile/?redirectUrl=caseStatus?GLOBAL_SERVICE_ID=719
+                courtid:
+                  type: string
+                  description: courtid
+                  example: 0810C09
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "97"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "719"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: RCMS0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                    type: object
+                    description: cause detail object
+                    properties:
+                      status:
+                        type: array
+                        description: cause detail object item
+                        items:
+                          type: object
+                          properties:
+                            finYear:
+                              type: string
+                              description: finYear
+                              example: 2016-17
+        "400":
+          description: Bad Request/Validation Error
+  /RCMSMpApi/ws1/courtcasedet:
+    post:
+      tags:
+        - Court Case Details Web Service
+      summary: Get the court case details using this service
+      description: This api is used to get the court case details
+      operationId: RCMSMpApi/ws1/courtcasedet
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1000000319
+                srvid:
+                  type: string
+                  description: service id
+                  example: 22
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME
+                apitrkr:
+                  type: integer
+                  description: apitrkr
+                  example: a1515134943121
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                did:
+                  type: string
+                  description: did
+                  example: https://stgweb.umang.gov.in/vahan/api/deptt/vahanHtml
+                courtid:
+                  type: string
+                  description: courtid
+                  example: 0810C09
+                caseno:
+                  type: string
+                  description: caseno
+                  example: 10
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "97"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "719"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: RCMS0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                    type: object
+                    description: cause detail object
+                    properties:
+                      status:
+                        type: array
+                        description: cause detail object item
+                        items:
+                          type: object
+                          properties:
+                            applicationnumb:
+                              type: string
+                              description: applicationnumb
+                              example: 0810RD09-APP-17211798
+                            hearing_date:
+                              type: string
+                              description: hearing_date
+                              example: 08/05/2023
+                            hearing_reason:
+                              type: string
+                              description: hearing_reason
+                              example: null
+                            case_numb:
+                              type: string
+                              description: case_numb
+                              example: 0010/अपील/2023-24
+                            date:
+                              type: string
+                              description: date
+                              example: 18/04/2023
+                            subject:
+                              type: string
+                              description: subject
+                              example: "अन्य: अपील जाति प्रमाण पत्र प्रदाय करने बाबत।"
+                            case_type:
+                              type: string
+                              description: case_type
+                              example: अपील
+                            applicant:
+                              type: string
+                              description: applicant
+                              example: दीपेश  पिता मुकेश सिंह लोधी, पता- ग्राम खडेराभान तहसील व जिला सागर
+                            non_applicant:
+                              type: string
+                              description: non_applicant
+                              example: मध्‍यप्रदेश शासन
+                            case_hearing_reason:
+                              type: string
+                              description: case_hearing_reason
+                              example: null
+                            courtID:
+                              type: string
+                              description: courtID
+                              example: 0810C09
+        "400":
+          description: Bad Request/Validation Error
+  /RCMSMpApi/ws1/finalorder:
+    post:
+      tags:
+        - Search Final Order Details Web Service
+      summary: Get the final search order details using this service
+      description: This api is used to get the final search order details
+      operationId: RCMSMpApi/ws1/finalorder
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 97
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 720
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                did:
+                  type: string
+                  description: did
+                  example: https://web.umang.gov.in/mpMobile/api/deptt/mpMobile/?redirectUrl=searchFinalOrder?GLOBAL_SERVICE_ID=720
+                courtid:
+                  type: string
+                  description: courtid
+                  example: 0810C09
+                caseno:
+                  type: string
+                  description: caseno
+                  example: 10
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "97"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "719"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: RCMS0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                    type: object
+                    description: final order detail object
+                    properties:
+                      status:
+                        type: array
+                        description: final order detail object item
+                        items:
+                          type: object
+                          properties:
+                            case_numb:
+                              type: string
+                              description: case_numb
+                              example: 0010/ब-121/2017-18
+                            courtID:
+                              type: string
+                              description: courtID
+                              example: 0810C09
+                            pdfStatus:
+                              type: string
+                              description: pdfStatus
+                              example: Y
+                            pdfPath:
+                              type: string
+                              description: pdfPath
+                              example: http://rcms.mp.gov.in/files/12-2017/0810RD09-APP-170720171227126250010
+                                b-121 2017-18.pdf
+        "400":
+          description: Bad Request/Validation Error
+components:
+  securitySchemes:
+    x-api-key:
+      type: apiKey
+      name: x-api-key
+      in: header
