@@ -1,4 +1,4 @@
-name: Download Specs
+name: Download Proxies
 
 on:
   schedule:
