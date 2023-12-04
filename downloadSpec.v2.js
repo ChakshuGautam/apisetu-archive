@@ -6,9 +6,26 @@ const resultsFilePath = 'results.json';
 const yamlDirectory = 'yaml_files';
 const progressFilePath = 'progress.json';
 
+const HttpsProxyAgent = require('https-proxy-agent').HttpsProxyAgent;
+
 // Ensure the directory for YAML files exists
 if (!fs.existsSync(yamlDirectory)) {
     fs.mkdirSync(yamlDirectory);
+}
+
+async function getProxy() {
+    const proxyUrl = 'https://gimmeproxy.com/api/getProxy?get=true&protocol=http&country=IN';
+    try {
+        const response = await fetch(proxyUrl);
+        if (!response.ok) {
+            throw new Error(`Error fetching proxy: ${response.status}`);
+        }
+        const data = await response.json();
+        return new HttpsProxyAgent(data.curl);
+    } catch (error) {
+        console.error(`Failed to get proxy: ${error}`);
+        return null;
+    }
 }
 
 // Initialize or read the progress file
@@ -46,7 +63,9 @@ async function fetchYamlFiles() {
 
 async function downloadWithExponentialBackoff(url, fileName, attempt, modifiedOn) {
     try {
-        const response = await fetch(url);
+        const agent = await getProxy();
+        console.log(`Using proxy: ${agent ? agent.proxy.href : 'none'}`);
+        const response = await fetch(url, { agent: agent });
         if (response.ok) {
             const yamlContent = await response.text();
             fs.writeFileSync(path.join(yamlDirectory, `${fileName}.yaml`), yamlContent);

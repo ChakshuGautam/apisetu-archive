@@ -12,7 +12,7 @@ if (!fs.existsSync(resultsFilePath)) {
 
 
 async function getProxy() {
-    const proxyUrl = 'https://gimmeproxy.com/api/getProxy?country=IN';
+    const proxyUrl = 'https://gimmeproxy.com/api/getProxy?get=true&protocol=http&country=IN';
     try {
         const response = await fetch(proxyUrl);
         if (!response.ok) {
@@ -119,6 +119,7 @@ async function fetchAllPages() {
 
             if (updated) {
                 // Write updated data back to the file only if there were updates
+                console.log(`Writing updated data to ${resultsFilePath}`);
                 fs.writeFileSync(resultsFilePath, JSON.stringify(existingData, null, 2));
             }
 
