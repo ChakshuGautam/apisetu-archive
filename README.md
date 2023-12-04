@@ -2,7 +2,7 @@
 
 Git based archive for all the API Setu specifications. This gets the latest version of the specification from the API Setu website and stores it in a git repository. This repository can be used to track changes in the specification.
 
-[GitHub Actions](./github/workflows/) are used to run the scripts every 24 hours.
+[GitHub Actions](./.github/workflows/) are used to run the scripts every 24 hours.
 
 ## Install
 
