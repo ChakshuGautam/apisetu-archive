@@ -1,0 +1,345 @@
+openapi: 3.0.3
+info:  
+  title: UTI ASSET MANAGMENT COMPANY LIMITED, Maharashtra
+  description:  >- 
+                Please find attach herewith your Statement of accounts, Capital Gain/Loss Statement and certificate of deduction of tax (TDS), containing details of your investment with UTI Mutual Fund, processed in your folio. The Summary has been provided based on your PAN. For security reasons, this statement is a password protected file. Password = Your Permanent Account Number (PAN - in Capital letters)
+  termsOfService: https://apisetu.gov.in/api-policy
+  version: 3.0.0
+servers:
+  - url: 'https://apisetu.gov.in/certificate/v3/utimf'
+paths:
+  
+  /astmt:
+    post:
+      tags:
+        - APIs
+      summary: Account Statement
+      description: API to verify Account Statement.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: astmt
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - Pan
+                    - FromDate
+                    - ToDate
+                    
+                    
+                    - UID
+                    
+                    - FullName
+                      
+                  properties:
+                    Pan:
+                      type: string
+                      description: Pan
+                      example: "ABCPE1234K"
+                       
+                    
+                    FromDate:
+                      type: string
+                      description: From Date
+                      example: "YYYY-MM-DD"
+                       
+                    
+                    ToDate:
+                      type: string
+                      description: To Date
+                      example: "YYYY-MM-DD"
+                       
+                    
+                                        
+                    
+                    UID:
+                      type: string
+                      description: Aadhaar number
+                      example: "123412341234"
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /cpgns:
+    post:
+      tags:
+        - APIs
+      summary: Capital Gains
+      description: API to verify Capital Gains.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: cpgns
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - Pan
+                    - FromDate
+                    - ToDate
+                    
+                    
+                    - UID
+                    
+                    - FullName
+                      
+                  properties:
+                    Pan:
+                      type: string
+                      description: Pan
+                      example: "ABCPE1234E"
+                       
+                    
+                    FromDate:
+                      type: string
+                      description: From Date
+                      example: "yyyy-mm-dd"
+                       
+                    
+                    ToDate:
+                      type: string
+                      description: To Date
+                      example: "yyyy-mm-dd"
+                       
+                    
+                                        
+                    
+                    UID:
+                      type: string
+                      description: Aadhaar number
+                      example: "123412341234"
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /tdcer:
+    post:
+      tags:
+        - APIs
+      summary: TDS Certificate
+      description: API to verify TDS Certificate.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: tdcer
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - Pan
+                    - Year
+                    - Quarter
+                    
+                    
+                    - UID
+                    
+                    - FullName
+                      
+                  properties:
+                    Pan:
+                      type: string
+                      description: Pan
+                      example: "ABCPE1234K"
+                       
+                    
+                    Year:
+                      type: string
+                      description: Assessment Year
+                      example: "YYYY"
+                       
+                    
+                    Quarter:
+                      type: string
+                      description: Quarter
+                      example: ""
+                       
+                    
+                                        
+                    
+                    UID:
+                      type: string
+                      description: Aadhaar number
+                      example: "123412341234"
+                    
+                    
+                    FullName:
+                      type: string
+                      description: Full name
+                      example: "Sunil Kumar"  
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+components:
+  schemas:
+    ConsentArtifactSchema:
+      $ref: './common/ConsentArtifactSchema.yaml#/ConsentArtifactSchema'
+    AcademicCertificateSchema:
+      $ref: './common/AcademicCertificateSchema.yaml#/AcademicCertificateSchema'
+          
+  responses:
+    400Error:
+      $ref: './common/ErrorResponse.yaml#/400Error'
+    401Error:
+      $ref: './common/ErrorResponse.yaml#/401Error'
+    404Error:
+      $ref: './common/ErrorResponse.yaml#/404Error'
+    500Error:
+      $ref: './common/ErrorResponse.yaml#/500Error'
+    502Error:
+      $ref: './common/ErrorResponse.yaml#/502Error'
+    503Error:
+      $ref: './common/ErrorResponse.yaml#/503Error'
+    504Error:
+      $ref: './common/ErrorResponse.yaml#/504Error'
+  securitySchemes:
+    clientId:
+      type: apiKey
+      in: header
+      name: X-APISETU-CLIENTID
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-APISETU-APIKEY

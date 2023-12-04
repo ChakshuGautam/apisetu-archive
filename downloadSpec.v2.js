@@ -13,19 +13,25 @@ if (!fs.existsSync(yamlDirectory)) {
     fs.mkdirSync(yamlDirectory);
 }
 
+// async function getProxy() {
+//     const proxyUrl = 'https://gimmeproxy.com/api/getProxy?get=true&protocol=http&country=IN';
+//     try {
+//         const response = await fetch(proxyUrl);
+//         if (!response.ok) {
+//             throw new Error(`Error fetching proxy: ${response.status}`);
+//         }
+//         const data = await response.json();
+//         return new HttpsProxyAgent(data.curl);
+//     } catch (error) {
+//         console.error(`Failed to get proxy: ${error}`);
+//         return null;
+//     }
+// }
+
 async function getProxy() {
-    const proxyUrl = 'https://gimmeproxy.com/api/getProxy?get=true&protocol=http&country=IN';
-    try {
-        const response = await fetch(proxyUrl);
-        if (!response.ok) {
-            throw new Error(`Error fetching proxy: ${response.status}`);
-        }
-        const data = await response.json();
-        return new HttpsProxyAgent(data.curl);
-    } catch (error) {
-        console.error(`Failed to get proxy: ${error}`);
-        return null;
-    }
+    const proxies = fs.readFileSync('./proxies/validProxies.txt', 'utf8').split('\n').filter(Boolean);
+    const proxy = proxies[Math.floor(Math.random() * proxies.length)];
+    return new HttpsProxyAgent(`http://${proxy}`);
 }
 
 // Initialize or read the progress file
@@ -64,8 +70,10 @@ async function fetchYamlFiles() {
 async function downloadWithExponentialBackoff(url, fileName, attempt, modifiedOn) {
     try {
         const agent = await getProxy();
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 2000)
         console.log(`Using proxy: ${agent ? agent.proxy.href : 'none'}`);
-        const response = await fetch(url, { agent: agent });
+        const response = await fetch(url, { agent: agent, signal: controller.signal });
         if (response.ok) {
             const yamlContent = await response.text();
             fs.writeFileSync(path.join(yamlDirectory, `${fileName}.yaml`), yamlContent);

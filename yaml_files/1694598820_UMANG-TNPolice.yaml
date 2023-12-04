@@ -1,0 +1,1537 @@
+---
+openapi: 3.0.0
+info:
+  title: Tamil Nadu Police
+  description: Tamil Nadu Police is the primary law enforcement agency of the state of Tamil Nadu, India. It is over 150 years old and is the fifth largest state police force in India.In Umang application,user can avail services of Tamil Nadu Police viz Complaint Status, FIR status, CSR Status and Vehicle Status of Police and Legal departments. <i>[Updated on 12th Septmeber 2023]</i>
+  termsOfService: https://web.umang.gov.in/uaw/ts/v1/en/index.htm
+  contact:
+    name: Provided by - UMANG
+    url: https://web.umang.gov.in
+  version: 1.0.0
+servers:
+  - url: https://apigw.umangapp.in
+    description: Production Server
+    
+security: 
+  - x-api-key: []
+    
+paths:
+  /TNApi/ws1/complaintStatus:
+    post:
+      tags:
+        - Complaint Status Web Service
+      summary: Check the complaint status using this service
+      description: This api is used to check the complaint status
+      operationId: TNApi/ws1/complaintStatus
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                latitude:
+                  type: string
+                  description: latitude
+                  example: 0.0
+                longitude:
+                  type: string
+                  description: longitude
+                  example: 0.0
+                usrid:
+                  type: string
+                  description: user id
+                  example: 09
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1117
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: andorid                 
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 185
+                did:
+                  type: string
+                  description: did
+                  example: 0
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0       
+                complaint_number:
+                  type: string
+                  description: complaint_number
+                  example: CUA19018361
+                active_status:
+                  type: string
+                  description: active_status
+                  example: COMPSTATUSA
+                imei_number:
+                  type: string
+                  description: imei_number
+                  example: 000000000000000
+                imsi_number:
+                  type: string
+                  description: imsi_number
+                  example: 000000000000000 
+                mob_ip_address:
+                  type: string
+                  description: mob_ip_address
+                  example: 10.163.2.201
+                updatedon:
+                  type: string
+                  description: updatedon
+                  example: 23-05-2019               
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "185"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1117"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: complaint status objects
+                    properties:
+                      tnpolice:
+                        type: object
+                        description: complaint status object items
+                        properties:     
+                          response:
+                            type: array
+                            description: complaint status object item
+                            items:
+                              type: object
+                              properties:
+                                name:
+                                  type: string
+                                  description: name
+                                  example: ComplaintId 
+                                value:
+                                  type: string
+                                  description: value
+                                  example: CUA19018361
+        "400":
+          description: Bad Request/Validation Error
+  /TNApi/ws1/vehicleStatus:
+    post:
+      tags:
+        - Vehicle Status Web Service
+      summary: Check the vehicle status using this service
+      description: This api is used to check the vehicle status
+      operationId: TNApi/ws1/vehicleStatus
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                latitude:
+                  type: string
+                  description: latitude
+                  example: 0.0
+                longitude:
+                  type: string
+                  description: longitude
+                  example: 0.0
+                usrid:
+                  type: string
+                  description: user id
+                  example: 09
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1120
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: andorid                 
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 185
+                did:
+                  type: string
+                  description: did
+                  example: 0
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0       
+                vehicleRegNo:
+                  type: string
+                  description: vehicleRegNo
+                  example: TN02BD2057
+                vehicleChasisNo:
+                  type: string
+                  description: vehicleChasisNo
+                  example: MAKGM859KF4106583
+                vehicleEngineNo:
+                  type: string
+                  description: vehicleEngineNo
+                  example: N15A12420738
+                active_status:
+                  type: string
+                  description: active_status
+                  example: CSRA 
+                imei_number:
+                  type: string
+                  description: imei_number
+                  example: 000000000000000
+                imsi_number:
+                  type: string
+                  description: imsi_number
+                  example: 000000000000000  
+                mob_ip_address:
+                  type: string
+                  description: mob_ip_address
+                  example: 10.163.2.201 
+                updatedon:
+                  type: string
+                  description: updatedon
+                  example: 23-05-2019                   
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "185"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1120"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: vehicle status objects
+                    properties:
+                      tnpolice:
+                        type: object
+                        description: vehicle status object items
+                        properties:     
+                          response:
+                            type: array
+                            description: vehicle status object item
+                            items:
+                              type: object
+                              properties:
+                                name:
+                                  type: string
+                                  description: name
+                                  example: Title
+                                value:
+                                  type: string
+                                  description: value
+                                  example: Vehicle Status INVOLVED IN ACCIDENT 
+        "400":
+          description: Bad Request/Validation Error
+  /TNApi/ws1/csrStatus:
+    post:
+      tags:
+        - CSR Status Web Service
+      summary: Check the CSR status using this service
+      description: This api is used to check the CSR status
+      operationId: TNApi/ws1/csrStatus
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                latitude:
+                  type: string
+                  description: latitude
+                  example: 0.0
+                longitude:
+                  type: string
+                  description: longitude
+                  example: 0.0
+                usrid:
+                  type: string
+                  description: user id
+                  example: 09
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1119
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: andorid                 
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 185
+                did:
+                  type: string
+                  description: did
+                  example: 0
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0       
+                district_code:
+                  type: string
+                  description: district_code
+                  example: 583
+                ps_code:
+                  type: string
+                  description: ps_code
+                  example: 93
+                reg_date:
+                  type: string
+                  description: reg_date
+                  example: 24/03/2017
+                reg_time:
+                  type: string
+                  description: reg_time
+                  example: 09:00 
+                active_status:
+                  type: string
+                  description: active_status
+                  example: CSRA
+                imei_number:
+                  type: string
+                  description: imei_number
+                  example: 000000000000000         
+                imsi_number:
+                  type: string
+                  description: imsi_number
+                  example: 000000000000000   
+                mob_ip_address:
+                  type: string
+                  description: mob_ip_address
+                  example: 10.163.2.201 
+                updatedon:
+                  type: string
+                  description: updatedon
+                  example: 23-05-2019   
+                csr_no:
+                  type: string
+                  description: csr_no
+                  example: 43/2017                   
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "185"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1119"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: CSR status objects
+                    properties:
+                      tnpolice:
+                        type: object
+                        description: CSR status object items
+                        properties:     
+                          response:
+                            type: array
+                            description: CSR status object item
+                            items:
+                              type: object
+                              properties:
+                                name:
+                                  type: string
+                                  description: name
+                                  example: Petition Number 
+                                value:
+                                  type: string
+                                  description: value
+                                  example: 43/2017 
+        "400":
+          description: Bad Request/Validation Error
+  /TNApi/ws1/firStatus:
+    post:
+      tags:
+        - FIR Status Web Service
+      summary: Check the FIR status using this service
+      description: This api is used to check the FIR status
+      operationId: TNApi/ws1/firStatus
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                latitude:
+                  type: string
+                  description: latitude
+                  example: 0.0
+                longitude:
+                  type: string
+                  description: longitude
+                  example: 0.0
+                usrid:
+                  type: string
+                  description: user id
+                  example: 09
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1119
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: andorid                 
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 185
+                did:
+                  type: string
+                  description: did
+                  example: 0
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0       
+                fir_no:
+                  type: string
+                  description: fir_no
+                  example: 1/2017
+                reg_date:
+                  type: string
+                  description: reg_date
+                  example: 01/01/2017
+                reg_time:
+                  type: string
+                  description: reg_time
+                  example: 01:00
+                active_status:
+                  type: string
+                  description: active_status
+                  example: FIRA 
+                imsi_number:
+                  type: string
+                  description: imsi_number
+                  example: 000000000000000
+                mob_ip_address:
+                  type: string
+                  description: mob_ip_address
+                  example: 10.163.2.201 
+                updatedon:
+                  type: string
+                  description: updatedon
+                  example: 23-05-2019
+                imei_number:
+                  type: string
+                  description: imei_number
+                  example: 000000000000000                  
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "185"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1119"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: FIR status objects
+                    properties:
+                      tnpolice:
+                        type: object
+                        description: FIR status object items
+                        properties:     
+                          response:
+                            type: array
+                            description: FIR status object item
+                            items:
+                              type: object
+                              properties:
+                                name:
+                                  type: string
+                                  description: name
+                                  example: Police Station 
+                                value:
+                                  type: string
+                                  description: value
+                                  example: RAJAPALAYAM NORTH [ VIRUDHUNAGAR ]
+        "400":
+          description: Bad Request/Validation Error
+  /TNApi/ws1/policeStation:
+    post:
+      tags:
+        - Police Station Web Service
+      summary: Get the police station details using this service
+      description: This api is used to get the police station details
+      operationId: TNApi/ws1/policeStation
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                usrid:
+                  type: string
+                  description: user id
+                  example: 09
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1118
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: andorid                 
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 185
+                did:
+                  type: string
+                  description: did
+                  example: 0
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0       
+                district_code:
+                  type: string
+                  description: district_code
+                  example: 583               
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "185"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1118"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: police station objects
+                    properties:
+                      tnpolice:
+                        type: object
+                        description: police station object items
+                        properties:     
+                          response:
+                            type: array
+                            description: police station object item
+                            items:
+                              type: object
+                              properties:
+                                name:
+                                  type: string
+                                  description: name
+                                  example: 01 
+                                value:
+                                  type: string
+                                  description: value
+                                  example: ACHIRAPAKKAM
+        "400":
+          description: Bad Request/Validation Error
+  /TNApi/ws1/district:
+    post:
+      tags:
+        - District List Web Service
+      summary: Get the district list using this service
+      description: This api is used to get the district list
+      operationId: TNApi/ws1/district
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                usrid:
+                  type: string
+                  description: user id
+                  example: 09
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1118
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: andorid                 
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 185
+                did:
+                  type: string
+                  description: did
+                  example: 0
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0               
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "185"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1118"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: district list objects
+                    properties:
+                      tnpolice:
+                        type: object
+                        description: district list object items
+                        properties:     
+                          response:
+                            type: array
+                            description: district list object item
+                            items:
+                              type: object
+                              properties:
+                                name:
+                                  type: integer
+                                  description: name
+                                  example: 936 
+                                value:
+                                  type: string
+                                  description: value
+                                  example: ARIYALUR
+        "400":
+          description: Bad Request/Validation Error
+  /TNApi/ws1/subject:
+    post:
+      tags:
+        - Subject Details Web Service
+      summary: Get the subject details using this service
+      description: This api is used to get the subject details
+      operationId: TNApi/ws1/subject
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                usrid:
+                  type: string
+                  description: user id
+                  example: 09
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1118
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: andorid                 
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 185
+                did:
+                  type: string
+                  description: did
+                  example: 0
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0            
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "185"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1118"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: subject list objects
+                    properties:
+                      tnpolice:
+                        type: object
+                        description: subject list object items
+                        properties:     
+                          response:
+                            type: array
+                            description: subject list object item
+                            items:
+                              type: object
+                              properties:
+                                name:
+                                  type: integer
+                                  description: name
+                                  example: 39 
+                                value:
+                                  type: string
+                                  description: value
+                                  example: Others (பிற குற்றங்கள்)
+        "400":
+          description: Bad Request/Validation Error
+  /TNApi/ws1/gender:
+    post:
+      tags:
+        - Gender Details Web Service
+      summary: Get the gender details using this service
+      description: This api is used to get the gender details
+      operationId: TNApi/ws1/gender
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                usrid:
+                  type: string
+                  description: user id
+                  example: 09
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1118
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: andorid                 
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 185
+                did:
+                  type: string
+                  description: did
+                  example: 0
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0             
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "185"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1118"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: gender objects
+                    properties:
+                      tnpolice:
+                        type: object
+                        description: gender object items
+                        properties:     
+                          response:
+                            type: array
+                            description: gender object item
+                            items:
+                              type: object
+                              properties:
+                                name:
+                                  type: string
+                                  description: name
+                                  example: M 
+                                value:
+                                  type: string
+                                  description: value
+                                  example: Male
+        "400":
+          description: Bad Request/Validation Error
+  /TNApi/ws1/registration:
+    post:
+      tags:
+        - Registration Web Service
+      summary: Complete the registration using this service
+      description: This api is used to complete the registration
+      operationId: TNApi/ws1/registration
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                latitude:
+                  type: string
+                  description: latitude
+                  example: 0.0
+                longitude:
+                  type: string
+                  description: longitude
+                  example: 0.0
+                usrid:
+                  type: string
+                  description: user id
+                  example: 09
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1118
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: andorid                 
+                deptid:
+                  type: integer
+                  description: deptid
+                  example: 185
+                did:
+                  type: string
+                  description: did
+                  example: 0
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0       
+                district_code:
+                  type: string
+                  description: district_code
+                  example: 583
+                compl_name:
+                  type: string
+                  description: compl_name
+                  example: someone
+                compl_dob:
+                  type: string
+                  description: compl_dob
+                  example: 20/05/1993
+                gender:
+                  type: string
+                  description: gender
+                  example: M 
+                address:
+                  type: string
+                  description: address
+                  example: UMANG Test
+                contact_number:
+                  type: string
+                  description: contact_number
+                  example: 6767676767    
+                email_address:
+                  type: string
+                  description: email_address
+                  example: sample@gmail.com   
+                subject_code:
+                  type: string
+                  description: subject_code
+                  example: 01
+                compl_description:
+                  type: string
+                  description: compl_description
+                  example: UMANG TESTING      
+                occurrence_date:
+                  type: string
+                  description: occurrence_date
+                  example: 03/06/2019
+                occurrence_place:
+                  type: string
+                  description: occurrence_place
+                  example: Busstop
+                image:
+                  type: string
+                  description: image
+                  example: hfrhrthrthrrr
+                image_code:
+                  type: string
+                  description: image_code
+                  example: sdgsdgffhtht
+                active_status:
+                  type: string
+                  description: active_status
+                  example: COMPREGA
+                imei_number:
+                  type: string
+                  description: imei_number
+                  example: 000000000000000
+                imsi_number:
+                  type: string
+                  description: imsi_number
+                  example: 000000000000000
+                mob_ip_address:
+                  type: string
+                  description: mob_ip_address
+                  example: 10.163.2.201 
+                updatedon:
+                  type: string
+                  description: updatedon
+                  example: 19-03-2020                 
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "185"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1118"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: registration objects
+                    properties:
+                      tnpolice:
+                        type: object
+                        description: registration object items
+                        properties:     
+                          response:
+                            type: array
+                            description: registration object item
+                            items:
+                              type: object
+                              properties:
+                                name:
+                                  type: string
+                                  description: name
+                                  example: Title 
+                                value:
+                                  type: string
+                                  description: value
+                                  example: Contact Administrator
+        "400":
+          description: Bad Request/Validation Error          
+components:
+  securitySchemes:
+    x-api-key:
+      type: apiKey
+      name: x-api-key
+      in: header

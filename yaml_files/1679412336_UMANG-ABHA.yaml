@@ -1,0 +1,883 @@
+---
+openapi: 3.0.0
+info:
+  title: ABHA (Ayushman Bharat Health Account)
+  description: ABHA (Ayushman Bharat Health Account) is a randomly generated 14 digit number used for the purposes of uniquely identifying persons, authenticating them, and threading their health records (only with their informed consent) across multiple systems and stakeholders. <i>[Updated on 13th March 2023]</i>"
+  termsOfService: https://web.umang.gov.in/uaw/ts/v1/en/index.htm
+  contact:
+    name: Provided by - UMANG
+    url: https://web.umang.gov.in
+  version: 1.0.0
+servers:
+  - url: https://apigw.umangapp.in
+    description: Production Server
+    
+security: 
+ - bearerAuth: []
+    
+paths:
+  /abhaApi/ws1/getSessions:
+    post:
+      tags:
+        - Get Sessions Detail API
+      summary: Get Sessions detail API
+      description: This API is used to get all the sessions details
+      operationId: abhaApi/ws1/getSessions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: Location
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 191
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1310
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                subsid:
+                  type: string
+                  description: subscriber id
+                  example: null
+                subsid2:
+                  type: string
+                  description: subscriber id
+                  example: null
+                formtrkr:
+                  type: integer
+                  description: form tracker
+                  example: null
+                clientId:
+                  type: string
+                  description: client Id
+                  example: IOS_PROD
+                clientSecret:
+                  type: string
+                  description: client secret
+                  example: 75d58288-a071-43d6-8858-93df2983878e
+                grantType:
+                  type: string
+                  description: grant type
+                  example: client_credentials
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid
+          in: header
+          schema:
+            type: string
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: x-api-key
+          in: header
+          schema:
+            type: string
+          example: xxxxxxxxxxxx
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:
+                      expiresIn:
+                        type: integer
+                        description: time expiry
+                        example: 300
+                      accessToken:
+                        type: string
+                        description: access token
+                        example: eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI0d
+                      tokenType:
+                        type: string
+                        description: token type
+                        example: bearer
+                      refreshExpiresIn:
+                        type: integer
+                        description: refresh expiry time duration
+                        example: 1800
+                      refreshToken:
+                        type: string
+                        description: refresh token
+                        example: eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2
+        "400":
+          description: Bad Request/Validation Error
+  /abhaApi/ws1/searchByHealthId:
+    post:
+      tags:
+        - Search By Health ID API
+      summary: Search by Health ID API
+      description: This API is used to search by health Id for ABHA workflow
+      operationId: abhaApi/ws1/searchByHealthId
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: Location
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                subsid:
+                  type: string
+                  description: subscriber id
+                  example: null
+                subsid2:
+                  type: string
+                  description: subscriber id
+                  example: null
+                formtrkr:
+                  type: integer
+                  description: form tracker
+                  example: null
+                healthId:
+                  type: string
+                  description: health Id
+                  example: 91-6728-7423-4723
+                token:
+                  type: string
+                  description: client secret
+                  example: eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "317"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1519"
+        - name: subsid
+          in: header
+          schema:
+            type: string
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: x-api-key
+          in: header
+          schema:
+            type: string
+          example: xxxxxxxxxxxx
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:
+                      name:
+                        type: string
+                        description: name
+                        example: Arindam Chatterjee
+                      healthId:
+                        type: string
+                        description: health Id
+                        example: 5666
+                      authMethods:
+                        type: array
+                        description: auth methods
+                        items:
+                          type: string
+                          description: auth method name
+                          example: AADHAAR_BIO
+                      healthIdNumber:
+                        type: string
+                        description: health Id Number
+                        example: 91-6728-7423-4723
+                      status:
+                        type: string
+                        description: health Id status
+                        example: ACTIVE
+                      tags:
+                        type: string
+                        description: tags
+                        example: abc
+        "400":
+          description: Bad Request/Validation Error
+  /abhaApi/ws1/initAuth:
+    post:
+      tags:
+        - Initiate Authentication API
+      summary: Initiate Authentication API
+      description: This API is used to initiate authentication for ABHA workflow
+      operationId: abhaApi/ws1/initAuth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: Location
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                subsid:
+                  type: string
+                  description: subscriber id
+                  example: null
+                subsid2:
+                  type: string
+                  description: subscriber id
+                  example: null
+                formtrkr:
+                  type: integer
+                  description: form tracker
+                  example: null
+                authMethod:
+                  type: string
+                  description: authentication method
+                  example: AADHAAR_OTP
+                healthId:
+                  type: string
+                  description: health Id
+                  example: 91-6728-7423-4723
+                token:
+                  type: string
+                  description: token
+                  example: eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1519"
+        - name: subsid
+          in: header
+          schema:
+            type: string
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: x-api-key
+          in: header
+          schema:
+            type: string
+          example: xxxxxxxxxxxx
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:
+                      txnId:
+                        type: string
+                        description: txn Id
+                        example: 9e35dc97-4329-4276-a2ec-08af4f5ece04
+        "400":
+          description: Bad Request/Validation Error
+  /abhaApi/ws1/confirmWithAadhaarOtp:
+    post:
+      tags:
+        - Confirm With Aadhaar OTP API
+      summary: Confirm with Aadhaar OTP API
+      description: This API is used to confirm with Aadhaar OTP for ABHA workflow
+      operationId: abhaApi/ws1/confirmWithAadhaarOtp
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: Location
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                subsid:
+                  type: string
+                  description: subscriber id
+                  example: null
+                subsid2:
+                  type: string
+                  description: subscriber id
+                  example: null
+                formtrkr:
+                  type: integer
+                  description: form tracker
+                  example: null
+                otp:
+                  type: string
+                  description: otp
+                  example: 184244
+                txnId:
+                  type: string
+                  description: txn id
+                  example: 9e35dc97-4329-4276-a2ec-08af4f5ece04
+                token:
+                  type: string
+                  description: token
+                  example: eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid
+          in: header
+          schema:
+            type: string
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: x-api-key
+          in: header
+          schema:
+            type: string
+          example: xxxxxxxxxxxx
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:
+                      expiresIn:
+                        type: string
+                        description: expires in
+                        example: 1800
+                      token:
+                        type: string
+                        description: token
+                        example: eyJhbGciOiJSUzUxMiJ9.eyJzdWIiOiI5M
+                      refreshToken:
+                        type: string
+                        description: refresh token
+                        example: eyJhbGciOiJSUzUxMiJ9.eyJ
+                      refreshExpiresIn:
+                        type: string
+                        description: refresh expires in
+                        example: 1296000
+        "400":
+          description: Bad Request/Validation Error
+  /abhaApi/ws1/getPngCard:
+    post:
+      tags:
+        - Get PNG Card API
+      summary: Get PNG Card API
+      description: This API is used to get PNG Card for ABHA workflow
+      operationId: abhaApi/ws1/getPngCard
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: Location
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                subsid:
+                  type: string
+                  description: subscriber id
+                  example: null
+                subsid2:
+                  type: string
+                  description: subscriber id
+                  example: null
+                formtrkr:
+                  type: integer
+                  description: form tracker
+                  example: null
+                token:
+                  type: string
+                  description: token
+                  example: eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6
+                xtoken:
+                  type: string
+                  description: xtoken
+                  example: eyJhbGciOiJSUzUxMiJ9.eyJzdWIiOiI5MS02NzI4
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1519"
+        - name: subsid
+          in: header
+          schema:
+            type: string
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: x-api-key
+          in: header
+          schema:
+            type: string
+          example: xxxxxxxxxxxx
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: string
+                    description: Response Payload
+                    example: iVBORw0KGgoAAAANSUhEUgAABXgAAAMgCAYAAACZ
+        "400":
+          description: Bad Request/Validation Error
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: text

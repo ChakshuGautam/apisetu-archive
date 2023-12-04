@@ -1,0 +1,374 @@
+openapi: 3.0.3
+info:
+  title: GSTN Tax Payer API 
+  description: Goods and Services Tax Network API to fetch the details of a tax payer using GST identication number. <i>[Updated on 10th May 2023]</i>
+  termsOfService: https://apisetu.gov.in/terms.php
+  contact:
+    name: Goods and Services Tax Network (GSTN)
+    url: https://gstn.org.in
+  version: 1.0.0
+servers:
+  - url: https://apisetu.gov.in
+
+paths:
+  /gstn/v2/taxpayers/{gstin}:
+    get:
+      tags:
+        - Tax Payer Details API V-2
+      summary: Tax Payer Details API V-2
+      description: API to fetch the details of a tax payer using GST identiication number
+      operationId: taxpayerdetailsv2
+      
+      security:
+        - clientId: []
+          apiKey: []
+        
+      parameters:
+        - in: path
+          name: gstin
+          description: GST identification number
+          required: true
+          schema:
+            type: string    
+    
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  stateJurisdictionCode:
+                    type: string
+                    minLength: 15
+                    example: UP333
+
+                  stateJurisdiction:
+                    type: string
+                    minLength: 1
+                    example: Corporate Circle, Noida
+                  
+                  taxpayerType:
+                    type: string
+                    minLength: 1
+                    example: Regular
+                   
+                  legalNameOfBusiness:
+                    type: string
+                    minLength: 1
+                    example: ONE97 COMMUNICATIONS LIMITED
+                    
+                  additionalPlaceOfBusinessFields:
+                    type: array
+                    items:
+                      type: object 
+                      properties:
+                        additionalPlaceOfBusinessAddress:
+                          type: object 
+                          properties:
+                            buildingName:
+                              type : string
+                              example: CGO Complex
+                            location:
+                              type : string
+                              example: Noida
+                            streetName:
+                              type : string
+                              example: Sector -3
+                            buildingNumber:
+                              type : string
+                              example: D-7
+                            stateName: 
+                              type : string
+                              example: Uttar Pradesh
+                            districtName: 
+                              type : string
+                              example: Gautam Buddha Nagar
+                            city: 
+                              type : string
+                              example: Delhi
+                            floorNumber:
+                              type : string
+                              example: Ground Floor
+                            lattitude:
+                              type : string
+                              example: 26.850000
+                            pincode:
+                              type : string
+                              example: 201301
+                            longitude:
+                              type : string
+                              example: 80.949997
+                            locality:
+                              type : string
+                              example: ""
+                              
+                        natureOfAdditionalPlaceOfBusiness:
+                          type: string
+                          minLength: 1
+                          example: Office / Sale Office
+                            
+                  dateOfCancellation:
+                    type: string
+                    minLength: 1
+                    example: ""
+                  natureOfBusinessActivity:
+                    type: array
+                    items:
+                      example:
+                        - "Office / Sale Office"
+                        - "Supplier of Services"
+                        - "Warehouse / Depot"
+                  gstIdentificationNumber:      
+                    type: string
+                    minLength: 1
+                    example: 09AAACO4007A1Z3
+                  lastUpdatedDate:
+                    type: string
+                    minLength: 1
+                    example: 06/07/2021
+                  dateOfRegistration:
+                    type: string
+                    minLength: 1
+                    example: 01/07/2017
+                  constitutionOfBusiness:
+                    type: string
+                    minLength: 1
+                    example: Public Limited Company
+                  principalPlaceOfBusinessFields:
+                    type: object
+                    properties: 
+                      principalPlaceOfBusinessAddress:
+                        type: object
+                        properties:
+                          buildingName:
+                            type: string
+                            minLength: 1
+                            example: Gaur Green
+                          location:
+                              type : string
+                              example: NOIDA
+                          streetName:
+                            type : string
+                            example: SECTOR-5
+                          buildingNumber:
+                            type : string
+                            example: B-121
+                          stateName: 
+                            type : string
+                            example: Uttar Pradesh
+                          districtName: 
+                            type : string
+                            example: Gautam Buddha Nagar
+                          city: 
+                            type : string
+                            example: GZB
+                          floorNumber:
+                            type : string
+                            example: G-7
+                          lattitude:
+                            type : string
+                            example: 26.850000
+                          pincode:
+                            type : string
+                            example: 201301
+                          longitude:
+                            type : string
+                            example: 80.949997
+                            
+                          locality:
+                            type : string
+                            example: ""
+                            
+                      natureOfPrincipalPlaceOfBusiness:
+                        type: string
+                        minLength: 1
+                        example: Office / Sale Office
+                  gstnStatus: 
+                    type: string
+                    minLength: 1
+                    example: Active
+                  centerJurisdictionCode: 
+                    type: string
+                    minLength: 1
+                    example: YC0401  
+                  tradeName: 
+                    type: string
+                    minLength: 1
+                    example: M/S ONE 97 COMMUNICATION LTD
+                  centerJurisdiction:
+                    type: string
+                    minLength: 1
+                    example: RANGE - 16 
+                  
+                required:
+                  - stateJurisdictionCode
+                  - taxpayerType
+                  - legalNameOfBusiness
+                  - dateOfCancellation
+                  - taxPayerType
+                  - centerJurisdiction
+                  - natureOfBusinessActivity
+                  - stateJurisdiction
+                  - gstIdentificationNumber
+                  - lastUpdatedDate
+                  - dateOfRegistration
+                  - constitutionOfBusiness
+                  - principalPlaceOfBusinessFields
+                  - gstnStatus
+                  - centerJurisdictionCode
+                  - tradeName
+                  
+                  
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    enum:
+                      - invalid parameter
+                      - missing parameter
+                      
+                  error_description:
+                    type: string
+                    enum:
+                      - Bad request
+                      - Please provide all mandatory parameters.
+                      
+        '401':
+          description: Authentication failed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    enum:
+                      - invalid_authentication
+                      - invalid_authorization
+                  errorDescription:
+                    type: string
+                    enum:
+                      - Authentication failed
+                      - You are not authorized to use this API 
+            
+        '403':
+          description: Invalid Authorization
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: invalid_authorization
+                    
+                  error_description:
+                    type: string
+                    example: You are not authorized to use this API
+        
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    enum:
+                      - record_not_found
+                      - Url not found
+                  error_description:
+                    type: string
+                    enum:
+                      - No record found
+                      - Your API url or path is incorrect.
+                    
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    enum:
+                      - internal_server_error
+                  error_description:
+                    type: string
+                    enum:
+                      - Internal server error
+                
+        '502':
+          description: Bad Gateway
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    enum:
+                      - bad gateway
+                  error_description:
+                    type: string
+                    enum:
+                      - Publisher service returned an invalid response.
+                
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    enum:
+                      - service_unavailable
+                  error_description:
+                    type: string
+                    enum:
+                      - Publisher service is temporarily unavailable 
+                         
+        '504':
+          description: Gateway Timeout
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    enum:
+                      - gateway_timeout
+                  error_description:
+                    type: string
+                    enum:
+                      - Publisher service did not respond in time
+                      
+          
+components:
+  
+  securitySchemes: 
+    clientId:
+      type: apiKey
+      in: header
+      name: X-APISETU-CLIENTID
+    apiKey:
+      type: apiKey
+      name: X-APISETU-APIKEY
+      in: header           
+          
+  
+    
+
+ 

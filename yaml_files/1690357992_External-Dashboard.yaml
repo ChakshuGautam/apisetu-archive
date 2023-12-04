@@ -1,0 +1,268 @@
+openapi: 3.0.1
+info:
+  title: External Dashboard 
+  description: |-
+      The ‘Poshan Tracker’ is a mobile based application rolled out by the Ministry of Women and Child Development, Government of India on 1st March 2021 through National e-Governance Division (NeGD), Poshan Tracker is an important governance tool. Technology under Poshan Tracker is being leveraged for dynamic identification of stunting, wasting, under-weight prevalence among children and last mile tracking of nutrition service delivery <i>[Updated on 26th July 2023]</i>.
+  termsOfService: "https://www.poshantracker.in/termsofservice"
+  contact: 
+    name: "Provided by - MWCD"
+    url: "https://www.poshantracker.in/"
+  version: 1.0.0
+servers:
+- url: https://apisetu.gov.in
+  description: Production Server 
+  
+paths:
+  /pt/dashboard/srv/v1/get-dashboard-count:
+    post:
+      tags:
+      - Dashboard Count API
+      summary: This API is used to get dashboard count
+      operationId: get-dashboard-count
+      security:
+        - clientId: []
+        - apiKey: []
+      parameters:
+        - in: header
+          name: Accept-Language
+          schema:
+            type: string
+            example: "en"
+        - in: header
+          name: Content-Type
+          schema:
+            type: string
+            example: "application/json"
+        - in: header
+          name: ts
+          schema:
+            type: string
+            example: "1631017330"
+
+      requestBody:
+        content:
+          application/json:
+            schema:
+
+              properties:
+                  year:
+                    type: string
+                    example: "2023"
+                  month:
+                    type: string
+                    example: "3"
+                  state_id:
+                    type: string
+                    example: ""
+                  district_id:
+                    type: string
+                    example: ""
+      
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  RegistrationPTdata:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        count:
+                          type: integer
+                        title:
+                          type: string
+                    example:
+                      -  count: 36
+                         title: "States/UTs"
+                      -  count: 740
+                         title: "Districts"
+                      -  count: 7209
+                         title: "Project"
+                      -  count: 52523
+                         title: "Sector"
+                      -  count: 1397143
+                         title: "Angwanwadi Centers"
+                      -  count: 1356265
+                         title: "Anganwadi Workers"
+                      -  count: 100129469
+                         title: "Eligible Beneficiaries"
+                  General Information:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        count1:
+                          type: integer
+                        title1:
+                          type: string
+                    example:
+                      -  count1: 633657
+                         title1: "AWC Infrastructure Own Building"
+                      -  count2: 1101843
+                         title2: "AWC Infrastructure Functional Toilets"
+                      -  count3: 1223578
+                         title3: "AWC Infrastructure Drinking Water Source"
+                  Anganwadi Center Details:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        count1:
+                          type: integer
+                        title1:
+                          type: string
+                    example:
+                      -  count1: 1397143
+                         title1: "Angwanwadi Centers Total"
+                      -  count2: 799658
+                         title2: "Anganwadi Centers Open For Atleast 21 Days"
+                  Eligible Beneficiaries:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        count1:
+                          type: integer
+                        title1:
+                          type: string
+                    example:
+                      -  count1: 100129469
+                         title1: "Eligible Beneficiaries"
+                      -  count2: 6371365
+                         title2: "Pregnant Women"
+                      -  count3: 5062184
+                         title3: "Lactating Mothers"
+                      -  count4: 4368654
+                         title4: "Children(0-6 Months)"
+                      -  count5: 41252870
+                         title5: "Children(6 Months - 3 Years)"
+                      -  count6: 43074396
+                         title6: "Children(3 - 6 Years)"
+                      -  count7: 92300305
+                         title7: "Aadhaar verified Beneficiaries"
+                      -  count8: 1915632
+                         title8: "Health ID Created"
+                  Key Services:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        count1:
+                          type: integer
+                        title1:
+                          type: string
+                    example:
+                      -  count1: 13334235
+                         title1: "Hot Cooked Meal (HCM) Given For Atleast 15 Days"
+                      -  count2: 8820322
+                         title2: "Hot Cooked Meal (HCM) Given For Atleast 21 Days"
+                      -  count3: 21392950
+                         title3: "Take Home Ration (THR) Given For Atleast 21 Days"
+
+   
+        422:
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  message:
+                    type: string
+                    example: "Invalid data entered"
+                  errors:
+                    type: object
+                    properties:
+                      year: 
+                        type: object                        
+                        properties:
+                          code: 
+                            type: string
+                            example: 35104
+                          message: 
+                            type: string
+                            example: "The year field is required."
+                      month: 
+                        type: object                        
+                        properties:
+                          code: 
+                            type: string
+                            example: 35101
+                          message: 
+                            type: string
+                            example: "The month field is required."
+                  code:
+                    type: integer
+                    example: 30009
+                  status_code:
+                    type: integer
+                    example: 422
+
+   
+        404:
+          description: No record found
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  message:
+                    type: string
+                    example: "Data Not found."
+                  code:
+                    type: integer
+                    example: 40032
+                  status_code:
+                    type: integer
+                    example: 404
+
+        401:
+          description: Unauthorized access
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  message:
+                    type: string
+                    example: "Failed to authenticate because of bad credentials or an invalid authorization header."
+                  code:
+                    type: integer
+                    example: 30040
+                  status_code:
+                    type: integer
+                    example: 401
+        403:
+          description: Unauthorized access
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  message:
+                    type: string
+                    example: "Failed to authenticate because of bad credentials or an invalid authorization header."
+                  code:
+                    type: integer
+                    example: 30039
+                  status_code:
+                    type: integer
+                    example: 403
+
+   
+components:
+  securitySchemes:
+    clientId:
+      type: apiKey
+      in: header
+      name: X-APISETU-CLIENTID
+    apiKey:
+      type: apiKey
+      name: X-APISETU-APIKEY
+      in: header    
+
+

@@ -1,0 +1,2923 @@
+---
+openapi: 3.0.0
+info:
+  title: Passport Seva (Government of India)
+  description: UMANG (Unified Mobile Application for New-age Governance) app allows individuals to access Passport Seva Kendra (PSK) services with ease. The application will educate users about the list of documents required to apply for a passport, locate the nearest passport seva centre, appointment availability, and their passport application status <i>[Updated on 7th August 2023]</i>. 
+  termsOfService: https://web.umang.gov.in/uaw/ts/v1/en/index.htm
+  contact:
+    name: Provided by - UMANG
+    url: https://web.umang.gov.in
+  version: 1.0.0
+servers:
+  - url: https://apigw.umangapp.in
+    description: Production Server
+    
+security:
+ - x-api-key: [] 
+
+
+paths:
+  /PassportSevaApi/ws1/locatec:
+    post:
+      tags:
+        - Passport Seva Kendra For Passport Office
+      summary: Get the dropdown values pass port seva Kendra using this service
+      description: This api is used to get the dropdown values pass port seva Kendra
+      operationId: PassportSevaApi/ws1/locatec
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 500
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: windows               
+                deptid:
+                  type: string
+                  description: deptid
+                  example: 41
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "41"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "500"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: response object
+                    properties:
+                      passportOfc:
+                        type: array
+                        description: passport office objects
+                        items:
+                          type: object
+                          properties:
+                            22:
+                              type: string
+                              description: passport office code
+                              example: Jammu
+                      error:
+                        type: string
+                        description: error
+                        example: null
+        "400":
+          description: Bad Request/Validation Error
+  /PassportSevaApi/ws1/locpin:
+    post:
+      tags:
+        - Locate Passport By Pin Code
+      summary: Locate passport seva kendra by pin code using this service
+      description: This api is used to locate passport seva kendra by pin code
+      operationId: PassportSevaApi/ws1/locpin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 500
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: windows               
+                deptid:
+                  type: string
+                  description: deptid
+                  example: 41
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                pin:
+                  type: string
+                  description: pin
+                  example: 136027                                    
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "41"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "500"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: response object
+                    properties:
+                      passportOfc:
+                        type: array
+                        description: passport ofc object item
+                        items:
+                          type: object
+                          properties:
+                            PFC_SHORT_NAME:
+                              type: string
+                              description: PFC_SHORT_NAME
+                              example: Ambala
+                            ATM_STATUS:
+                              type: string
+                              description: ATM_STATUS
+                              example: Planned
+                            PFC_CITY_NAME:
+                              type: string
+                              description: PFC_CITY_NAME
+                              example: Ambala
+                            PFC_LONGITUDE:
+                              type: string
+                              description: PFC_LONGITUDE
+                              example: 76.78702400
+                            PFC_LATITUDE:
+                              type: string
+                              description: PFC_LATITUDE
+                              example: 30.39725300
+                            PFC_ADDRESS:
+                              type: string
+                              description: PFC_ADDRESS
+                              example: Plot No. 2014 A, Chandigarh Road, Ambala City    
+                            PFC_NAME:
+                              type: string
+                              description: PFC_NAME
+                              example: PSK Ambala
+                            PFC_PH_NO_1:
+                              type: string
+                              description: PFC_PH_NO_1
+                              example: 912353453453                             
+        "400":
+          description: Bad Request/Validation Error  
+  /PassportSevaApi/ws1/state:
+    post:
+      tags:
+        - State List For Passport Cell
+      summary: Get dropdown values for State list for passport cell using this service
+      description: This api is used to get dropdown values for State list for passport cell
+      operationId: PassportSevaApi/ws1/state
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 500
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: windows               
+                deptid:
+                  type: string
+                  description: deptid
+                  example: 41
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0                                   
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "41"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "500"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: response object
+                    properties:
+                      statelist:
+                        type: array
+                        description: state object item
+                        items:
+                          type: object
+                          properties:
+                            22:
+                              type: string
+                              description: state code
+                              example: Maharashtra   
+                      error:
+                        type: string
+                        description: error 
+                        example: null                       
+        "400":
+          description: Bad Request/Validation Error 
+  /PassportSevaApi/ws1/district:
+    post:
+      tags:
+        - District List For Locating Passport Cell
+      summary: Get list of district for passport cell using this service
+      description: This api is used to get list of district for passport cell
+      operationId: PassportSevaApi/ws1/district
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 500
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: windows               
+                deptid:
+                  type: string
+                  description: deptid
+                  example: 41
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                state:
+                  type: string
+                  description: state
+                  example: 6                                   
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "41"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "500"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PS0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: response object
+                    example: null
+                  payload:     
+                        type: array
+                        description: district object item
+                        items:
+                          type: object
+                          properties:
+                            DISTRICT_ID_PK:
+                              type: string
+                              description: DISTRICT_ID_PK
+                              example: 27
+                            DISTRICT_NAME:
+                              type: string
+                              description: DISTRICT_NAME
+                              example: Araria                          
+        "400":
+          description: Bad Request/Validation Error 
+  /PassportSevaApi/ws1/passcell:
+    post:
+      tags:
+        - Locate Passport Cell By Pin Code
+      summary: Get values for passport cell by pin code using this service
+      description: This api is used to get values for passport cell by Pin Code
+      operationId: PassportSevaApi/ws1/passcell
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 500
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: windows               
+                deptid:
+                  type: string
+                  description: deptid
+                  example: 41
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                pin:
+                  type: string
+                  description: pin
+                  example: 577001                                    
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "41"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "500"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: response object
+                    properties:
+                      dpcList:
+                        type: array
+                        description: dpc list object item
+                        items:
+                          type: object
+                          properties:
+                            COLLECTION_CENTER_NAME:
+                              type: string
+                              description: COLLECTION_CENTER_NAME
+                              example: Davanagere (SOP's Office)
+                            COLLECTION_CENTER_ADDRESS:
+                              type: string
+                              description: COLLECTION_CENTER_ADDRESS
+                              example: Superintendent of Police, Kondaggi road Devaraj Urs Badavane Davangere-577006
+                            COLLECTION_CENTER_PH_NO_1:
+                              type: string
+                              description: COLLECTION_CENTER_PH_NO_1
+                              example: 080-25706100
+                            COLLECTION_CENTER_CITY:
+                              type: string
+                              description: COLLECTION_CENTER_CITY
+                              example: Hubli      
+                      error:    
+                        type: string
+                        description: error
+                        example: null                          
+        "400":
+          description: Bad Request/Validation Error 
+  /PassportSevaApi/ws1/locateps:
+    post:
+      tags:
+        - Locate Police Station By State and District
+      summary: Locate passport seva kendra by pin code using this service
+      description: This api is used to locate passport seva kendra by pin code
+      operationId: PassportSevaApi/ws1/locateps
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 500
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: windows               
+                deptid:
+                  type: string
+                  description: deptid
+                  example: 41
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                state:
+                  type: string
+                  description: state
+                  example: 18      
+                district:
+                  type: string
+                  description: district
+                  example: 8             
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "41"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "500"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  payload:
+                    type: object
+                    description: response object
+                    properties:
+                      psList:
+                        type: array
+                        description: police station object item
+                        items:
+                          type: object
+                          properties:
+                            POLICE_STATION_NAME:
+                              type: string
+                              description: POLICE_STATION_NAME
+                              example: AKOT CITY
+                            SPHQ_DPHQ_SHORT_NAME:
+                              type: string
+                              description: SPHQ_DPHQ_SHORT_NAME
+                              example: Akola
+                      error:    
+                        type: string
+                        description: error
+                        example: null                                           
+        "400":
+          description: Bad Request/Validation Error 
+  /PassportSevaApi/ws1/getcon:
+    post:
+      tags:
+        - Mission/Post Abroad Country List
+      summary: Get list of Mission/Post Abroad country list using this service
+      description: This api is used to get list of Mission/Post Abroad country list
+      operationId: PassportSevaApi/ws1/getcon
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 500
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: windows               
+                deptid:
+                  type: string
+                  description: deptid
+                  example: 41
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0                                  
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "41"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "500"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PS0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: response object
+                    properties:
+                      country:
+                        type: array
+                        description: country object item
+                        items:
+                          type: object
+                          properties:
+                            110:
+                              type: string
+                              description: country code
+                              example: Jordan
+                      error:
+                        type: string
+                        description: error
+                        example: null                             
+        "400":
+          description: Bad Request/Validation Error 
+  /PassportSevaApi/ws1/missabl:
+    post:
+      tags:
+        - Mission Post Abroad List
+      summary: Get mission post abroad list using this service
+      description: This api is used to get mission post abroad list
+      operationId: PassportSevaApi/ws1/missabl
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 500
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: windows               
+                deptid:
+                  type: string
+                  description: deptid
+                  example: 41
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                country:
+                  type: string
+                  description: country
+                  example: 1                                  
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "41"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "500"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PS0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: response object
+                    properties:
+                      pboList:
+                        type: array
+                        description: passport ofc object item
+                        items:
+                          type: object
+                          properties:
+                            PBO_SHORT_NAME:
+                              type: string
+                              description: PBO_SHORT_NAME
+                              example: Afghanistan - Herat
+                            PBO_ADDRESS:
+                              type: string
+                              description: PBO_ADDRESS
+                              example: Ameriat Cross Road, Near Ab Baksh Badmerghan, Herat, Afghanistan
+                            PBO_NAME:
+                              type: string
+                              description: PBO_NAME
+                              example: Consulate General of India
+                            PBO_EMAIL_ID:
+                              type: string
+                              description: PBO_EMAIL_ID
+                              example: hoc.herat@mea.gov.in
+                            WEBSITE:
+                              type: string
+                              description: WEBSITE
+                              example: "http://eoi.gov.in/kabul/"
+                      error: 
+                        type: string
+                        description: error
+                        example: ""                      
+                         
+        "400":
+          description: Bad Request/Validation Error 
+  /PassportSevaApi/ws1/locpasscl:
+    post:
+      tags:
+        - Locate Passport City List
+      summary: Locate city list for passport office using this service
+      description: This api is used to locate city list for passport office
+      operationId: PassportSevaApi/ws1/locpasscl
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 500
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: windows               
+                deptid:
+                  type: string
+                  description: deptid
+                  example: 41
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0                                  
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "41"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "500"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: response object
+                    properties:
+                      country:
+                        type: array
+                        description: country object item
+                        items:
+                          type: object
+                          properties:
+                            22:
+                              type: string
+                              description: city code
+                              example: Jammu
+                      error:
+                        type: string
+                        description: error
+                        example: null                             
+        "400":
+          description: Bad Request/Validation Error 
+  /PassportSevaApi/ws1/locpassbc:
+    post:
+      tags:
+        - Locate Passport Office By City Center
+      summary: Locate passport office by city center using this service
+      description: This api will be used to locate passport office by city center
+      operationId: PassportSevaApi/ws1/locpassbc
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 500
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: windows               
+                deptid:
+                  type: string
+                  description: deptid
+                  example: 41
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                city:
+                  type: string
+                  description: city
+                  example: 1                                   
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "41"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "500"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PS0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: response object
+                    properties:
+                      contactDetails:
+                          type: object
+                          properties:
+                            E-mail:
+                              type: string
+                              description: E-mail
+                              example: rpo.ahmedabad@mea.gov.in
+                            Fax:
+                              type: string
+                              description: Fax
+                              example: 079-26309118
+                            Voice:
+                              type: string
+                              description: Voice
+                              example: 079-26309103, 26300603
+                      passportAddress:
+                           type: string
+                           description: passport address
+                           example: Opp. L.D. Engg. College Hostel, University Road, Gulbai Tekra, Ahmedabad, Gujarat-380006     
+                      error:
+                           type: string
+                           description: error
+                           example: null
+                      jurisdiction:
+                           type: string
+                           description: jurisdiction
+                           example: "Ahmedabad, Ahmedabad Rural, Amreli, Anand, Banaskantha, Bharuch, Bhavnagar, Dahod, Diu, Gandhinagar, Jamnagar, Junagadh, Kheda, Kutch, Mehsana, Panchmahals, Patan, Porbandar, Rajkot, Rajkot Rural, Sabarkantha, Surendranagar, Vadodara, Vadodara Rural. ####Note : Applicants should visit the Passport Seva Kendra(PSK) in accordance with the district of present address as per details given below:"                          
+                      jurisdictionTable:
+                           type: string
+                           description: jurisdictionTable
+                           example: "Ahmedabad-1        (Mithakali)::::Banaskantha, Gandhinagar, Kheda, Mehsana, Patan, Ahmedabad, Sabarkantha @@@@Ahmedabad-2        (Vijay Char Rasta)::::Banaskantha, Gandhinagar, Kheda, Mehsana, Patan, Ahmedabad, Sabarkantha @@@@Rajkot::::Amreli, Bhavnagar, Jamnagar, Rajkot, Surendranagar, Porbandar, Kutch, Junagadh, Diu @@@@Vadodra::::Vadodara, Anand, Panchmahals, Dahod"                          
+        "400":
+          description: Bad Request/Validation Error 
+  /PassportSevaApi/ws1/cal:
+    post:
+      tags:
+        - Get Data To Calculate Fee
+      summary: Get data to calculate fee using this service
+      description: This api is used to get data to calculate fee
+      operationId: PassportSevaApi/ws1/cal
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 500
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: windows               
+                deptid:
+                  type: string
+                  description: deptid
+                  example: 41
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0                                  
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "41"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "500"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PS0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: response object
+                    properties:
+                      mode:
+                          type: object
+                          properties:
+                            127:
+                              type: string
+                              description: code
+                              example: Online
+                            128:
+                              type: string
+                              description: code
+                              example: Walk-in        
+                      type:
+                          type: object
+                          properties:
+                            6:
+                              type: string
+                              description: type code
+                              example: Fresh
+                            7:
+                              type: string
+                              description: type code
+                              example: Reissue    
+                            8:
+                              type: string
+                              description: type code
+                              example: PCC 
+                            46:
+                              type: string
+                              description: type code
+                              example: Background Verification for GEP   
+                      reason:
+                          type: object
+                          properties:
+                            886:
+                              type: string
+                              description: reason code
+                              example: Validity Expired/Due To Expire
+                            887:
+                              type: string
+                              description: reason code
+                              example: Delete Ecr / Change In Personal Particular 
+                            888:
+                              type: string
+                              description: reason code
+                              example: Exhaustion Of Pages
+                            889:
+                              type: string
+                              description: reason code
+                              example: Lost / Damaged Passport   
+                      age:
+                          type: object
+                          properties:
+                            5060:
+                              type: string
+                              description: age code
+                              example: Less Than 15 Years
+                            5061:
+                              type: string
+                              description: age code
+                              example: Between 15-18 Years
+                            5062:
+                              type: string
+                              description: age code
+                              example: 18 Years  And Above     
+                      pages:
+                          type: object
+                          properties:
+                            816:
+                              type: string
+                              description: pages code
+                              example: 36 Pages
+                            817:
+                              type: string
+                              description: pages code
+                              example: 60 Pages    
+                      scheme:
+                          type: object
+                          properties:
+                            5:
+                              type: string
+                              description: scheme code
+                              example: Tatkaal
+                            342:
+                              type: string
+                              description: scheme code
+                              example: Normal
+                      validity:
+                          type: object
+                          properties:
+                            807:
+                              type: string
+                              description: validity code
+                              example: "5 years/Till the age of 18 years"
+                            808:
+                              type: string
+                              description: validity code
+                              example: 10 years
+                      error:
+                          type: string
+                          description: pages code
+                          example: null                           
+        "400":
+          description: Bad Request/Validation Error 
+  /PassportSevaApi/ws1/calfee:
+    post:
+      tags:
+        - Calculate Fee
+      summary: Calculate fee using this service
+      description: This api is used to calculate fee
+      operationId: PassportSevaApi/ws1/calfee
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 500
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: windows               
+                deptid:
+                  type: string
+                  description: deptid
+                  example: 41
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                mod:
+                  type: string
+                  description: mod
+                  example: 127 
+                type:
+                  type: string
+                  description: type
+                  example: 7
+                reason:
+                  type: string
+                  description: reason
+                  example: null
+                age:
+                  type: string
+                  description: age
+                  example: null 
+                pages:
+                  type: string
+                  description: pages
+                  example: null 
+                scheme:
+                  type: string
+                  description: scheme
+                  example: 342 
+                validity:
+                  type: string
+                  description: validity
+                  example: 808  
+                expired:
+                  type: string
+                  description: expired
+                  example: N                   
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "41"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "500"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: response object
+                    properties:
+                      result:
+                        type: string
+                        description: result
+                        example: 3000.00
+                      error:
+                        type: string
+                        description: error
+                        example: null                                                   
+        "400":
+          description: Bad Request/Validation Error 
+  /PassportSevaApi/ws1/trackapp:
+    post:
+      tags:
+        - Track Application Status
+      summary: Track application status using this service
+      description: This api is used to track application status
+      operationId: PassportSevaApi/ws1/trackapp
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 500
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: windows               
+                deptid:
+                  type: string
+                  description: deptid
+                  example: 41
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                fileNo:
+                  type: string
+                  description: fileNo
+                  example: DL4060391649212   
+                dob:
+                  type: string
+                  description: dob
+                  example: 09-12-1979                  
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "41"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "500"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PS0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: response object
+                    properties:
+                            name:
+                              type: string
+                              description: name
+                              example: RASHMI VARDHAN
+                            status:
+                              type: string
+                              description: status
+                              example: Passport K7297914 has been dispatched on 19/10/2012 via  Speed Post Tracking Number ED770579166IN
+                            submissionDate:
+                              type: string
+                              description: submissionDate
+                              example: 2012-07-19
+                            type:
+                              type: string
+                              description: type
+                              example: Normal
+                            error:
+                              type: string
+                              description: error
+                              example: null                           
+        "400":
+          description: Bad Request/Validation Error 
+  /PassportSevaApi/ws1/trackrti:
+    post:
+      tags:
+        - Track RTI Status
+      summary: Track RTI status using this service
+      description: This api is used to track RTI status
+      operationId: PassportSevaApi/ws1/trackrti
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 500
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: windows               
+                deptid:
+                  type: string
+                  description: deptid
+                  example: 41
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                rtirefno:
+                  type: string
+                  description: rtirefno
+                  example: RTIREFNO201210000505                                    
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "41"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "500"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PS0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: response object
+                    properties:
+                            date:
+                              type: string
+                              description: date
+                              example: 16/08/2012
+                            description:
+                              type: string
+                              description: description
+                              example: PASSPORT STATUS
+                            status:
+                              type: string
+                              description: status
+                              example: RTI Request has been closed by RPO Hyderabad
+                            error:
+                              type: string
+                              description: error
+                              example: null                            
+        "400":
+          description: Bad Request/Validation Error 
+  /PassportSevaApi/ws1/locstat:
+    post:
+      tags:
+        - Locate Passport Seva Kendra Based On Passport Office
+      summary: Locate passport seva kendra based on passport office using this service
+      description: This api is used to locate passport seva kendra based on passport office
+      operationId: PassportSevaApi/ws1/locstat
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 500
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: windows               
+                deptid:
+                  type: string
+                  description: deptid
+                  example: 41
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                ofcno:
+                  type: string
+                  description: ofcno
+                  example: 1                                
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "41"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "500"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PS0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: response object
+                    properties:
+                      passportOfc:
+                        type: array
+                        description: passport ofc object item
+                        items:
+                          type: object
+                          properties:
+                            PFC_SHORT_NAME:
+                              type: string
+                              description: PFC_SHORT_NAME
+                              example: Mithakali Ahmedabad
+                            ATM_STATUS:
+                              type: string
+                              description: ATM_STATUS
+                              example: Operational
+                            PFC_CITY_NAME:
+                              type: string
+                              description: PFC_CITY_NAME
+                              example: Ahmedabad
+                            PFC_LONGITUDE:
+                              type: string
+                              description: PFC_LONGITUDE
+                              example: 72.56519300
+                            PFC_LATITUDE:
+                              type: string
+                              description: PFC_LATITUDE
+                              example: 23.03262100
+                            PFC_ADDRESS:
+                              type: string
+                              description: PFC_ADDRESS
+                              example: Mithakali Ahmedabad, Arya Arcade, Ground and First Floor, Nr Cross Word, Mithakali Six Road, Navrangpura, Ahmedabad, Gujarat
+                            PFC_NAME:
+                              type: string
+                              description: PFC_NAME
+                              example: PSK Mithakali Ahmedabad
+                            PFC_PH_NO_1:
+                              type: string
+                              description: PFC_PH_NO_1
+                              example: rpo.ahmedabad@mea.gov.in  
+                      error:
+                        type: string
+                        description: error
+                        example: null                      
+        "400":
+          description: Bad Request/Validation Error 
+  /PassportSevaApi/ws1/passcellbyd:
+    post:
+      tags:
+        - Get Passport Cell By District
+      summary: Get passport cell by district using this service
+      description: This api is used to get passport cell by district
+      operationId: PassportSevaApi/ws1/passcellbyd
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 500
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: windows               
+                deptid:
+                  type: string
+                  description: deptid
+                  example: 41
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                district:
+                  type: string
+                  description: district
+                  example: 113                                    
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "41"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "500"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PS0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: response object
+                    properties:
+                      dpcList:
+                        type: array
+                        description: passport ofc object item
+                        items:
+                          type: object
+                          properties:
+                            COLLECTION_CENTER_NAME:
+                              type: string
+                              description: COLLECTION_CENTER_NAME
+                              example: DPC Chandigarh
+                            COLLECTION_CENTER_ADDRESS:
+                              type: string
+                              description: COLLECTION_CENTER_ADDRESS
+                              example: Sampark Centre, Sector 10, Chandigarh
+                            COLLECTION_CENTER_PH_NO_1:
+                              type: string
+                              description: COLLECTION_CENTER_PH_NO_1
+                              example: "-"
+                            COLLECTION_CENTER_CITY:
+                              type: string
+                              description: COLLECTION_CENTER_CITY
+                              example: "-"   
+                      error:
+                        type: string
+                        description: error
+                        example: null                               
+        "400":
+          description: Bad Request/Validation Error           
+  /PassportSevaApi/ws1/appavail:
+    post:
+      tags:
+        - Get Application Availability
+      summary: Get Application Availability using this service
+      description: This api is used to get application availability
+      operationId: PassportSevaApi/ws1/appavail
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-cK20220823124313
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 0
+                lon:
+                  type: string
+                  description: longitude
+                  example: 0
+                lac:
+                  type: string
+                  description: lac
+                  example: 0
+                usag:
+                  type: string
+                  description: usage
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 500
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: windows               
+                deptid:
+                  type: string
+                  description: deptid
+                  example: 41
+                did:
+                  type: string
+                  description: Device Id
+                  example: null
+                subsid:
+                  type: string
+                  description: Subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: Subscriber Id2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                pboid:
+                  type: string
+                  description: pboid
+                  example: 5 
+                capcha:
+                  type: string
+                  description: capcha
+                  example: 81AJAK                  
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "41"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "500"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: F
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: PS0102
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Error from department.
+                  pd:
+                    type: object
+                    description: response object
+                    properties:
+                            captcha:
+                              type: string
+                              description: captcha
+                              example: 81AJAK
+                            errorString:
+                              type: string
+                              description: errorString
+                              example: Please correctly enter the characters displayed in the picture
+                            pboId:
+                              type: string
+                              description: pboId
+                              example: 5
+                            responseString:
+                              type: string
+                              description: responseString
+                              example: FAIL   
+                            listOfEarliestApptDateAndCapacity:
+                              type: string
+                              description: listOfEarliestApptDateAndCapacity
+                              example: null                               
+        "400":
+          description: Bad Request/Validation Error           
+components:
+  securitySchemes:
+    x-api-key:
+      type: apiKey
+      name: x-api-key
+      in: header

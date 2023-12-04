@@ -1,0 +1,1456 @@
+openapi: 3.0.3
+info:  
+  title: Single Window System - Jammu and Kashmir, Jammu & Kashmir
+  description:  >- 
+                J&K SICOP is the implementing agency of BRAP in J&K and has developed Single Window Portal as one stop solution for the prospective investors, who can apply online for various NOC of different departments, track the application, download final certificate etc from this portal. At present we have more than 150 services offered through this portal which are either integrated or developed on Single Window Portal. We want the investor to get the NOC from Digilocker also.
+  termsOfService: https://apisetu.gov.in/api-policy
+  version: 3.0.0
+servers:
+  - url: 'https://apisetu.gov.in/certificate/v3/singlewindow'
+paths:
+  
+  /armtw:
+    post:
+      tags:
+        - APIs
+      summary: Application for Registration of Motor Transport Worker Registration
+      description: API to verify Application for Registration of Motor Transport Worker Registration.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: armtw
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - f_name
+                    - t_id
+                    - d_o_b
+                    - y_o_r
+                      
+                  properties:
+                    f_name:
+                      type: string
+                      description: Full Name
+                      example: "uday sharma"
+                       
+                    
+                    t_id:
+                      type: string
+                      description: Tracking ID
+                      example: "XX-XXXXX"
+                       
+                    
+                    d_o_b:
+                      type: string
+                      description: Date Of Birth
+                      example: "dd-mm-yyyy"
+                       
+                    
+                    y_o_r:
+                      type: string
+                      description: Year Of Registration
+                      example: "2023,2022,2021,2020,2019,2018"
+                       
+                    
+                      
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /aemtw:
+    post:
+      tags:
+        - APIs
+      summary: Application for Renewal of Motor Transport Worker Registration
+      description: API to verify Application for Renewal of Motor Transport Worker Registration.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: aemtw
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - f_name
+                    - t_id
+                    - d_o_b
+                    - y_o_r
+                      
+                  properties:
+                    f_name:
+                      type: string
+                      description: Full Name
+                      example: "uday sharma"
+                       
+                    
+                    t_id:
+                      type: string
+                      description: Tracking ID
+                      example: "XX-XXXXX"
+                       
+                    
+                    d_o_b:
+                      type: string
+                      description: Date Of Birth
+                      example: "dd-mm-yyyy"
+                       
+                    
+                    y_o_r:
+                      type: string
+                      description: Year Of Registration
+                      example: "2023,2022,2021,2020,2019,2018"
+                       
+                    
+                      
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /arcrd:
+    post:
+      tags:
+        - APIs
+      summary: Artisan Registration Card
+      description: API to verify Artisan Registration Card.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: arcrd
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - f_name
+                    - t_id
+                    - d_o_b
+                    - y_o_r
+                      
+                  properties:
+                    f_name:
+                      type: string
+                      description: Full Name
+                      example: "uday sharma"
+                       
+                    
+                    t_id:
+                      type: string
+                      description: Tracking ID
+                      example: "XX-XXXXX"
+                       
+                    
+                    d_o_b:
+                      type: string
+                      description: Date Of Birth
+                      example: "dd-mm-yyyy"
+                       
+                    
+                    y_o_r:
+                      type: string
+                      description: Year Of Registration
+                      example: "2023,2022,2021,2020,2019,2018"
+                       
+                    
+                      
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /nfcer:
+    post:
+      tags:
+        - APIs
+      summary: Certificate of Non-Forest land
+      description: API to verify Certificate of Non-Forest land.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: nfcer
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - f_name
+                    - t_id
+                    - d_o_b
+                    - y_o_r
+                      
+                  properties:
+                    f_name:
+                      type: string
+                      description: Full Name
+                      example: "uday sharma"
+                       
+                    
+                    t_id:
+                      type: string
+                      description: Tracking ID
+                      example: "XX-XXXXX"
+                       
+                    
+                    d_o_b:
+                      type: string
+                      description: Date Of Birth
+                      example: "dd-mm-yyyy"
+                       
+                    
+                    y_o_r:
+                      type: string
+                      description: Year Of Registration
+                      example: "2023,2022,2021,2020,2019,2018"
+                       
+                    
+                      
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /frrpt:
+    post:
+      tags:
+        - APIs
+      summary: Fire Report
+      description: API to verify Fire Report.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: frrpt
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - service_type
+                    - f_name
+                    - y_o_r
+                    - t_id
+                    - d_o_b
+                      
+                  properties:
+                    service_type:
+                      type: string
+                      description: Service Type
+                      example: "Application for Provisional Registration, Application for Final Registration"
+                       
+                    
+                    f_name:
+                      type: string
+                      description: Full Name
+                      example: "uday sharma"
+                       
+                    
+                    y_o_r:
+                      type: string
+                      description: Year Of Registration
+                      example: "2022,2021,2020,2019,2018"
+                       
+                    
+                    t_id:
+                      type: string
+                      description: Tracking ID
+                      example: "XX-XXXXX"
+                       
+                    
+                    d_o_b:
+                      type: string
+                      description: Date Of Birth
+                      example: "dd-mm-yyyy"
+                       
+                    
+                      
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /wilcs:
+    post:
+      tags:
+        - APIs
+      summary: License for Wood Based Industry
+      description: API to verify License for Wood Based Industry.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: wilcs
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - service_type
+                    - f_name
+                    - y_o_r
+                    - t_id
+                    - d_o_b
+                      
+                  properties:
+                    service_type:
+                      type: string
+                      description: Service Type
+                      example: "License for Wood Based Industry, Renewal License for Wood Based Industry"
+                       
+                    
+                    f_name:
+                      type: string
+                      description: Full Name
+                      example: "uday sharma"
+                       
+                    
+                    y_o_r:
+                      type: string
+                      description: Year Of Registration
+                      example: "2022,2021,2020,2019,2018"
+                       
+                    
+                    t_id:
+                      type: string
+                      description: Tracking ID
+                      example: "XX-XXXXX"
+                       
+                    
+                    d_o_b:
+                      type: string
+                      description: Date Of Birth
+                      example: "dd-mm-yyyy"
+                       
+                    
+                      
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /vrwmi:
+    post:
+      tags:
+        - APIs
+      summary: License/ Verification/Reverification of Weights, Measures and Instruments
+      description: API to verify License/ Verification/Reverification of Weights, Measures and Instruments.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: vrwmi
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - f_name
+                    - t_id
+                    - d_o_b
+                    - y_o_r
+                      
+                  properties:
+                    f_name:
+                      type: string
+                      description: Full Name
+                      example: "uday sharma"
+                       
+                    
+                    t_id:
+                      type: string
+                      description: Tracking ID
+                      example: "XX-XXXXX"
+                       
+                    
+                    d_o_b:
+                      type: string
+                      description: Date Of Birth
+                      example: "dd-mm-yyyy"
+                       
+                    
+                    y_o_r:
+                      type: string
+                      description: Year Of Registration
+                      example: "2023,2022,2021,2020,2019,2018"
+                       
+                    
+                      
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /esnoc:
+    post:
+      tags:
+        - APIs
+      summary: NOC for Employment Purpose
+      description: API to verify NOC for Employment Purpose.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: esnoc
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - f_name
+                    - t_id
+                    - d_o_b
+                    - y_o_r
+                      
+                  properties:
+                    f_name:
+                      type: string
+                      description: Full Name
+                      example: "uday sharma"
+                       
+                    
+                    t_id:
+                      type: string
+                      description: Tracking ID
+                      example: "XX-XXXXX"
+                       
+                    
+                    d_o_b:
+                      type: string
+                      description: Date Of Birth
+                      example: "dd-mm-yyyy"
+                       
+                    
+                    y_o_r:
+                      type: string
+                      description: Year Of Registration
+                      example: "2023,2022,2021,2020,2019,2018"
+                       
+                    
+                      
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /iscer:
+    post:
+      tags:
+        - APIs
+      summary: Registration Certificate for Industries
+      description: API to verify Registration Certificate for Industries.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: iscer
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - f_name
+                    - y_o_r
+                    - t_id
+                    - d_o_b
+                    - e_m_r
+                      
+                  properties:
+                    f_name:
+                      type: string
+                      description: Full Name
+                      example: "uday sharma"
+                       
+                    
+                    y_o_r:
+                      type: string
+                      description: Year Of Registration
+                      example: "2022, 2021, 2020, 2019, 2018"
+                       
+                    
+                    t_id:
+                      type: string
+                      description: Tracking ID
+                      example: "XX-XXXXX"
+                       
+                    
+                    d_o_b:
+                      type: string
+                      description: Date of Birth
+                      example: "dd-mm-yyyy"
+                       
+                    
+                    e_m_r:
+                      type: string
+                      description: EM Registration
+                      example: "EM-1 Registration, EM-2 Registration"
+                       
+                    
+                      
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /rfcer:
+    post:
+      tags:
+        - APIs
+      summary: Registration Certificate of Firm/ Company
+      description: API to verify Registration Certificate of Firm/ Company.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: rfcer
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - f_name
+                    - t_id
+                    - d_o_b
+                    - y_o_r
+                      
+                  properties:
+                    f_name:
+                      type: string
+                      description: Full Name
+                      example: "uday sharma"
+                       
+                    
+                    t_id:
+                      type: string
+                      description: Tracking ID
+                      example: "XX-XXXXX"
+                       
+                    
+                    d_o_b:
+                      type: string
+                      description: Date Of Birth
+                      example: "dd-mm-yyyy"
+                       
+                    
+                    y_o_r:
+                      type: string
+                      description: Year Of Registration
+                      example: "2023,2022,2021,2020,2019,2018"
+                       
+                    
+                      
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /rycer:
+    post:
+      tags:
+        - APIs
+      summary: Registration Certificate of Society
+      description: API to verify Registration Certificate of Society.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: rycer
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - f_name
+                    - t_id
+                    - d_o_b
+                    - y_o_r
+                      
+                  properties:
+                    f_name:
+                      type: string
+                      description: Full Name
+                      example: "uday sharma"
+                       
+                    
+                    t_id:
+                      type: string
+                      description: Tracking ID
+                      example: "XX-XXXXX"
+                       
+                    
+                    d_o_b:
+                      type: string
+                      description: Date Of Birth
+                      example: "dd-mm-yyyy"
+                       
+                    
+                    y_o_r:
+                      type: string
+                      description: Year Of Registration
+                      example: "2023,2022,2021,2020,2019,2018"
+                       
+                    
+                      
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /srosh:
+    post:
+      tags:
+        - APIs
+      summary: Subsidy/ Rebate/ Schemes
+      description: API to verify Subsidy/ Rebate/ Schemes.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: srosh
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - service_type
+                    - f_name
+                    - y_o_r
+                    - t_id
+                    - d_o_b
+                      
+                  properties:
+                    service_type:
+                      type: string
+                      description: Service Type
+                      example: "Subsidy on Turnover for Industrial Policy (2021-30),"
+                       
+                    
+                    f_name:
+                      type: string
+                      description: Full Name
+                      example: "uday sharma"
+                       
+                    
+                    y_o_r:
+                      type: string
+                      description: Year Of Registration
+                      example: "2022,2021,2020,2019,2018"
+                       
+                    
+                    t_id:
+                      type: string
+                      description: Tracking ID
+                      example: "XX-XXXXX"
+                       
+                    
+                    d_o_b:
+                      type: string
+                      description: Date Of Birth
+                      example: "dd-mm-yyyy"
+                       
+                    
+                      
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /timdp:
+    post:
+      tags:
+        - APIs
+      summary: Timber Depot
+      description: API to verify Timber Depot.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: timdp
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - f_name
+                    - t_id
+                    - d_o_b
+                    - y_o_r
+                      
+                  properties:
+                    f_name:
+                      type: string
+                      description: Full Name
+                      example: "uday sharma"
+                       
+                    
+                    t_id:
+                      type: string
+                      description: Tracking ID
+                      example: "XX-XXXXX"
+                       
+                    
+                    d_o_b:
+                      type: string
+                      description: Date Of Birth
+                      example: "dd-mm-yyyy"
+                       
+                    
+                    y_o_r:
+                      type: string
+                      description: Year Of Registration
+                      example: "2023,2022,2021,2020,2019,2018"
+                       
+                    
+                      
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+  /wrcrd:
+    post:
+      tags:
+        - APIs
+      summary: Weaver Registration Card
+      description: API to verify Weaver Registration Card.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: wrcrd
+      requestBody:
+        description: Request format
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - format
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                format:
+                  type: string
+                  description: The format of the certificate in response.
+                  enum:
+                    - xml
+                    
+                    - pdf
+                    
+                    
+                certificateParameters:
+                  type: object
+                  required:
+                    - f_name
+                    - t_id
+                    - d_o_b
+                    - y_o_r
+                      
+                  properties:
+                    f_name:
+                      type: string
+                      description: Full Name
+                      example: "uday sharma"
+                       
+                    
+                    t_id:
+                      type: string
+                      description: Tracking ID
+                      example: "XX-XXXXX"
+                       
+                    
+                    d_o_b:
+                      type: string
+                      description: Date Of Birth
+                      example: "dd-mm-yyyy"
+                       
+                    
+                    y_o_r:
+                      type: string
+                      description: Year Of Registration
+                      example: "2023,2022,2021,2020,2019,2018"
+                       
+                    
+                      
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: The certificate data in response body in PDF, XML or JSON format as requested in format parameter.
+          content:
+            application/xml:
+              schema:  
+                $ref: '#/components/schemas/AcademicCertificateSchema'  
+            
+            
+            application/pdf:
+              example: Response body contains contents of the certificate in PDF format.
+            
+            
+            
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  
+components:
+  schemas:
+    ConsentArtifactSchema:
+      $ref: './common/ConsentArtifactSchema.yaml#/ConsentArtifactSchema'
+    AcademicCertificateSchema:
+      $ref: './common/AcademicCertificateSchema.yaml#/AcademicCertificateSchema'
+          
+  responses:
+    400Error:
+      $ref: './common/ErrorResponse.yaml#/400Error'
+    401Error:
+      $ref: './common/ErrorResponse.yaml#/401Error'
+    404Error:
+      $ref: './common/ErrorResponse.yaml#/404Error'
+    500Error:
+      $ref: './common/ErrorResponse.yaml#/500Error'
+    502Error:
+      $ref: './common/ErrorResponse.yaml#/502Error'
+    503Error:
+      $ref: './common/ErrorResponse.yaml#/503Error'
+    504Error:
+      $ref: './common/ErrorResponse.yaml#/504Error'
+  securitySchemes:
+    clientId:
+      type: apiKey
+      in: header
+      name: X-APISETU-CLIENTID
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-APISETU-APIKEY

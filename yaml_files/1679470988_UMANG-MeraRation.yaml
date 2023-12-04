@@ -1,0 +1,686 @@
+---
+openapi: 3.0.0
+info:
+  title: Mera Ration
+  description: One Nation One Ration Card plan ensures distribution of subsidised foodgrains to ration card holders under NFSA to lift the entitled foodgrains from any Fair Price Shop (FPS) anywhere in the country by using their same/existing NFSA ration card after biometric/Aadhaar authentication on an electronic Point of Sale (ePoS) device. Under this scheme, beneficiaries will continue to get Rice, Wheat and Coarse Grain at the rate of Rs. 3, Rs. 2 and Rs. 1 per Kg respectively in other States as well. <i>[Updated on 9th March 2023]</i>
+  termsOfService: https://web.umang.gov.in/uaw/ts/v1/en/index.htm
+  contact:
+    name: Provided by - UMANG
+    url: https://web.umang.gov.in
+  version: 1.0.0
+servers:
+  - url: https://apigw.umangapp.in
+    description: Production Server
+security:
+  - bearerAuth: []
+paths:
+  /onorcApi/ws1/getRcSaleDataTrans6MDetail:
+    post:
+      tags:
+        - Get RC Sale Data Trans 6M Detail API
+      summary: RC Sale Data Trans 6M Detail API
+      description: This API is used to get RC sale data trans 6M detail
+      operationId: onorcApi/ws1/getRcSaleDataTrans6MDetail
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: Location
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 191
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1310
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                subsid:
+                  type: string
+                  description: subscriber id
+                  example: null
+                subsid2:
+                  type: string
+                  description: subscriber id
+                  example: null
+                formtrkr:
+                  type: integer
+                  description: form tracker
+                  example: null
+                userAuthentication:
+                  type: string
+                  description: userAuthentication
+                  example: umang,Um@93259@
+                rationcardid:
+                  type: string
+                  description: ration card id
+                  example: 55000162270
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "317"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1519"
+        - name: subsid
+          in: header
+          schema:
+            type: string
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: x-api-key
+          in: header
+          schema:
+            type: string
+          example: xxxxxxxxxxxx
+        - name: tenantId
+          in: header
+          schema:
+            type: string
+          example: "34567890"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: RC0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: सफल
+                  pd:
+                    type: array
+                    description: Response Payload
+                    items:
+                      type: object
+                      properties:
+                        updated_on:
+                          type: string
+                          description: updated date
+                          example: ddmmyyyy
+                        home_state_name:
+                          type: string
+                          description: home state name
+                          example: UTTARAKHAND
+                        home_fps_id:
+                          type: string
+                          description: home fps id
+                          example: 105700100043
+                        receipt_id:
+                          type: string
+                          description: receipt Id
+                          example: 1.05700100043055e+37
+                        home_state_short_name:
+                          type: string
+                          description: home state short name
+                          example: UK
+                        sale_fps_id:
+                          type: string
+                          description: sale fps id
+                          example: 105700100043
+                        member_name:
+                          type: string
+                          description: member name
+                          example: MATHURI DEVI
+                        rice:
+                          type: number
+                          description: rice amount
+                          example: 0
+                        sale_state_short_namee:
+                          type: string
+                          description: sale state short name
+                          example: UK
+                        scheme_name:
+                          type: string
+                          description: scheme name
+                          example: AAY
+                        sale_state_name:
+                          type: string
+                          description: sale state name
+                          example: UTTARAKHAND
+                        wheat:
+                          type: number
+                          description: wheat amount
+                          example: 2
+                        ration_card_no:
+                          type: string
+                          description: ration card no
+                          example: 55000162270
+        "400":
+          description: Bad Request/Validation Error
+  /onorcApi/ws1/getrationcard:
+    post:
+      tags:
+        - Get Ration Card API
+      summary: Ration Card API
+      description: This API is used to get ration card detail
+      operationId: onorcApi/ws1/getrationcard
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: Location
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                subsid:
+                  type: string
+                  description: subscriber id
+                  example: null
+                subsid2:
+                  type: string
+                  description: subscriber id
+                  example: null
+                formtrkr:
+                  type: integer
+                  description: form tracker
+                  example: null
+                id:
+                  type: string
+                  description: id
+                  example: 55000162270
+                idType:
+                  type: string
+                  description: id Type
+                  example: R
+                userName:
+                  type: string
+                  description: userName
+                  example: IMPDS
+                token:
+                  type: string
+                  description: id Type
+                  example: 91f01a0a96c526d28e4d0c1189e80459
+                sessionId:
+                  type: string
+                  description: session id
+                  example: 2820190812185006
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "317"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1519"
+        - name: subsid
+          in: header
+          schema:
+            type: string
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: x-api-key
+          in: header
+          schema:
+            type: string
+          example: xxxxxxxxxxxx
+        - name: tenantId
+          in: header
+          schema:
+            type: string
+          example: "34567890"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: RC0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: सफल
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:
+                      homeStateCode:
+                        type: string
+                        description: home state code
+                        example: 5
+                      districtCode:
+                        type: string
+                        description: district code
+                        example: 57
+                      rcId:
+                        type: string
+                        description: resource id
+                        example: 55000162270
+                      homeStateName:
+                        type: string
+                        description: home state name
+                        example: UTTARAKHAND
+                      homeDistName:
+                        type: string
+                        description: home district name
+                        example: CHAMOLI
+                      fpsId:
+                        type: string
+                        description: fps id
+                        example: 105700100043
+                      schemeId:
+                        type: string
+                        description: schemeId
+                        example: AAY
+                      schemeName:
+                        type: string
+                        description: schemeName
+                        example: AAY
+                      dup_uid_status:
+                        type: string
+                        description: dup uid status
+                        example: No
+                      allowed_onorc:
+                        type: string
+                        description: allowed onorc
+                        example: Yes
+                      address:
+                        type: string
+                        description: address
+                        example: 13CHAMOLI GAIRSAIN SARING GAON UTTARAKHAND 246486
+                      memberDetailsList:
+                        type: object
+                        description: Response Payload
+                        properties:
+                          memberId:
+                            type: string
+                            description: member Id
+                            example: 5500016227001
+                          memberName:
+                            type: string
+                            description: member name
+                            example: MATHURI DEVI
+                          uid:
+                            type: string
+                            description: uid
+                            example: Yes
+                          relationship_code:
+                            type: string
+                            description: relationship code
+                            example: 1
+                          releationship_name:
+                            type: string
+                            description: relationship name
+                            example: SELF
+        "400":
+          description: Bad Request/Validation Error
+  /onorcApi/ws1/getrcdetail:
+    post:
+      tags:
+        - Get Ration Card Details API
+      summary: Ration Card Details API
+      description: This API is used to get ration card details for the given month and year
+      operationId: onorcApi/ws1/getrcdetail
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: 90
+                lon:
+                  type: string
+                  description: longitude
+                  example: 90
+                lac:
+                  type: string
+                  description: Location
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 12
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                subsid:
+                  type: string
+                  description: subscriber id
+                  example: null
+                subsid2:
+                  type: string
+                  description: subscriber id
+                  example: null
+                formtrkr:
+                  type: integer
+                  description: form tracker
+                  example: null
+                id:
+                  type: string
+                  description: id
+                  example: 55000162270
+                idType:
+                  type: string
+                  description: id Type
+                  example: R
+                userName:
+                  type: string
+                  description: userName
+                  example: IMPDS
+                token:
+                  type: string
+                  description: id Type
+                  example: 91f01a0a96c526d28e4d0c1189e80459
+                sessionId:
+                  type: string
+                  description: session id
+                  example: 2820190812185006
+                month:
+                  type: integer
+                  description: month number
+                  example: 8
+                year:
+                  type: integer
+                  description: year
+                  example: 2020
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "317"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1519"
+        - name: subsid
+          in: header
+          schema:
+            type: string
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: x-api-key
+          in: header
+          schema:
+            type: string
+          example: xxxxxxxxxxxx
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: RC0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: सफल
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:
+                      respCode:
+                        type: string
+                        description: response code
+                        example: 222
+                      respMessage:
+                        type: string
+                        description: response message
+                        example: Try Again
+                      homeStateCode:
+                        type: string
+                        description: home state code
+                        example: 6
+                      districtCode:
+                        type: string
+                        description: district Code
+                        example: 75
+                      rcId:
+                        type: string
+                        description: rcId
+                        example: 66001015521
+                      homeStateName:
+                        type: string
+                        description: home state name
+                        example: HARYANA
+                      homeDistName:
+                        type: string
+                        description: home district name
+                        example: PANIPAT
+                      fpsId:
+                        type: string
+                        description: fpsId
+                        example: 107500100054
+                      dup_uid_status:
+                        type: string
+                        description: dup uid status
+                        example: No
+                      allowed_onorc:
+                        type: string
+                        description: allowed onorc
+                        example: Yes
+                      memberDetailsList:
+                        type: object
+                        description: Response Payload
+                        properties:
+                          memberId:
+                            type: string
+                            description: member Id
+                            example: 5500016227001
+                          memberName:
+                            type: string
+                            description: member name
+                            example: MATHURI DEVI
+                          uid:
+                            type: string
+                            description: uid
+                            example: Yes
+        "400":
+          description: Bad Request/Validation Error
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: text

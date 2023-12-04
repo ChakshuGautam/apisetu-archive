@@ -1,0 +1,1667 @@
+---
+  openapi: 3.0.0
+  info: 
+    title: e-RaktKosh - IRCS
+    description: e-RaktKosh enforces Drug & Cosmetic Act, National blood policy standards and guidelines ensuring proper collection & donation, effective management and monitoring the quality and quantity of the donated blood. Considering the national roll out, e-Rakt Kosh has been developed with modular and scalable approach with configurable rule based architecture allowing customization to easily incorporate specific requirements from nationwide stakeholders. e-RaktKosh was Inaugurated on 7th April 2016 by Hon'ble Minister of Health and Family Welfare, Sh. J P Nadda.
+      
+      
+      <i>[Updated on 29th November 2023]</i>
+      
+    termsOfService: https://web.umang.gov.in/uaw/ts/v1/en/index.htm
+    contact: 
+      name: Provided by - UMANG
+      url: https://web.umang.gov.in
+    version: 1.0.0
+  servers: 
+    - 
+      url: https://apigw.umangapp.in
+      description: Production Server
+  
+  security:
+  - x-api-key: []
+      
+  paths: 
+    /eraktkoshApi/ws1/ircs/getBGlist: 
+      post: 
+        tags: 
+          - Get Blood Group List API
+        summary: Get blood group list API for e-RaktKosh
+        description: This API is used to get blood group list for e-RaktKosh
+        operationId: eraktkoshApi/ws1/ircs/getBGlist
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: object
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 1721
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 98
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: 0
+                  subsid2:
+                    type: string
+                    description: sub service id 2
+                    example: 0
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+        parameters: 
+          - 
+            name: Content-Type
+            in: header
+            schema: 
+              type: string
+            example: application/json
+          - 
+            name: Accept
+            in: header
+            schema: 
+              type: string
+            example: application/json
+          - 
+            name: deptid
+            in: header
+            schema: 
+              type: integer
+            example: 98
+          - 
+            name: srvid
+            in: header
+            schema: 
+              type: integer
+            example: 1721
+          - 
+            name: subsid
+            in: header
+            schema: 
+              type: string
+            example: 0
+          - 
+            name: subsid2
+            in: header
+            schema: 
+              type: integer
+            example: 0
+          - 
+            name: formtrkr
+            in: header
+            schema: 
+              type: integer
+            example: 0
+          - 
+            name: x-api-key
+            in: header
+            schema: 
+              type: string
+            example: xxxxxxxxxxxx
+        responses: 
+          200: 
+            description: Successful response
+            content: 
+              application/json:
+                schema: 
+                  type: object
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: array
+                      description: Response Payload
+                      items: 
+                        type: object
+                        properties:
+                          ID:
+                            type: string
+                            example: -1
+                          NAME:
+                            type: string
+                            example: All
+          400:
+            description: Bad Request/Validation Error
+    /eraktkoshApi/ws1/ircs/getBClist: 
+      post: 
+        tags: 
+          - Get Blood Category List API
+        summary: Get blood category list API for e-RaktKosh
+        description: This API is used to get blood category list for e-RaktKosh
+        operationId: eraktkoshApi/ws1/ircs/getBClist
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: object
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 1721
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 98
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: 0
+                  subsid2:
+                    type: string
+                    description: sub service id 2
+                    example: 0
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+        parameters: 
+          - 
+            name: Content-Type
+            in: header
+            schema: 
+              type: string
+            example: application/json
+          - 
+            name: Accept
+            in: header
+            schema: 
+              type: string
+            example: application/json
+          - 
+            name: deptid
+            in: header
+            schema: 
+              type: integer
+            example: 98
+          - 
+            name: srvid
+            in: header
+            schema: 
+              type: integer
+            example: 1721
+          - 
+            name: subsid
+            in: header
+            schema: 
+              type: string
+            example: 0
+          - 
+            name: subsid2
+            in: header
+            schema: 
+              type: integer
+            example: 0
+          - 
+            name: formtrkr
+            in: header
+            schema: 
+              type: integer
+            example: 0
+          - 
+            name: x-api-key
+            in: header
+            schema: 
+              type: string
+            example: xxxxxxxxxxxx
+        responses: 
+          200: 
+            description: Successful response
+            content: 
+              application/json:
+                schema: 
+                  type: object
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: array
+                      description: Response Payload
+                      items: 
+                        type: object
+                        properties:
+                          ID:
+                            type: string
+                            example: 11
+                          NAME:
+                            type: string
+                            example: Whole Blood
+          400:
+            description: Bad Request/Validation Error
+    /eraktkoshApi/ws1/ircs/getIrcsnhqBClist: 
+      post: 
+        tags: 
+          - Get IRCS National HeadQuaters Blood Category List API
+        summary: Get IRCS National headQuaters blood category list API for e-RaktKosh
+        description: This API is used to get IRCS National headQuaters blood category list for e-RaktKosh
+        operationId: eraktkoshApi/ws1/ircs/getIrcsnhqBClist
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: object
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 1721
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 98
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: 0
+                  subsid2:
+                    type: string
+                    description: sub service id 2
+                    example: 0
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+        parameters: 
+          - 
+            name: Content-Type
+            in: header
+            schema: 
+              type: string
+            example: application/json
+          - 
+            name: Accept
+            in: header
+            schema: 
+              type: string
+            example: application/json
+          - 
+            name: deptid
+            in: header
+            schema: 
+              type: integer
+            example: 98
+          - 
+            name: srvid
+            in: header
+            schema: 
+              type: integer
+            example: 1721
+          - 
+            name: subsid
+            in: header
+            schema: 
+              type: string
+            example: 0
+          - 
+            name: subsid2
+            in: header
+            schema: 
+              type: integer
+            example: 0
+          - 
+            name: formtrkr
+            in: header
+            schema: 
+              type: integer
+            example: 0
+          - 
+            name: x-api-key
+            in: header
+            schema: 
+              type: string
+            example: xxxxxxxxxxxx
+        responses: 
+          200: 
+            description: Successful response
+            content: 
+              application/json:
+                schema: 
+                  type: object
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: array
+                      description: Response Payload
+                      items: 
+                        type: object
+                        properties:
+                          ID:
+                            type: string
+                            example: 17
+                          NAME:
+                            type: string
+                            example: Cryoprecipitate
+          400:
+            description: Bad Request/Validation Error
+    /eraktkoshApi/ws1/ircs/getStatelist: 
+      post: 
+        tags: 
+          - Get State List API
+        summary: Get state list API for e-RaktKosh
+        description: This API is used to get blood category list for e-RaktKosh
+        operationId: eraktkoshApi/ws1/ircs/getStatelist
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: object
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 1721
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 98
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: 0
+                  subsid2:
+                    type: string
+                    description: sub service id 2
+                    example: 0
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+        parameters: 
+          - 
+            name: Content-Type
+            in: header
+            schema: 
+              type: string
+            example: application/json
+          - 
+            name: Accept
+            in: header
+            schema: 
+              type: string
+            example: application/json
+          - 
+            name: deptid
+            in: header
+            schema: 
+              type: integer
+            example: 98
+          - 
+            name: srvid
+            in: header
+            schema: 
+              type: integer
+            example: 1721
+          - 
+            name: subsid
+            in: header
+            schema: 
+              type: string
+            example: 0
+          - 
+            name: subsid2
+            in: header
+            schema: 
+              type: integer
+            example: 0
+          - 
+            name: formtrkr
+            in: header
+            schema: 
+              type: integer
+            example: 0
+          - 
+            name: x-api-key
+            in: header
+            schema: 
+              type: string
+            example: xxxxxxxxxxxx
+        responses: 
+          200: 
+            description: Successful response
+            content: 
+              application/json:
+                schema: 
+                  type: object
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: array
+                      description: Response Payload
+                      items: 
+                        type: object
+                        properties:
+                          ID:
+                            type: string
+                            example: 35
+                          NAME:
+                            type: string
+                            example: Andaman & Nicobar Islands
+          400:
+            description: Bad Request/Validation Error
+    /eraktkoshApi/ws1/ircs/getDistrictlist: 
+      post: 
+        tags: 
+          - Get District List API
+        summary: Get district list API for e-RaktKosh
+        description: This API is used to get district list for e-RaktKosh
+        operationId: eraktkoshApi/ws1/ircs/getDistrictlist
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: object
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 1721
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 98
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: 0
+                  subsid2:
+                    type: string
+                    description: sub service id 2
+                    example: 0
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  state:
+                    type: string
+                    description: state id
+                    example: 97
+        parameters: 
+          - 
+            name: Content-Type
+            in: header
+            schema: 
+              type: string
+            example: application/json
+          - 
+            name: Accept
+            in: header
+            schema: 
+              type: string
+            example: application/json
+          - 
+            name: deptid
+            in: header
+            schema: 
+              type: integer
+            example: 98
+          - 
+            name: srvid
+            in: header
+            schema: 
+              type: integer
+            example: 1721
+          - 
+            name: subsid
+            in: header
+            schema: 
+              type: string
+            example: 0
+          - 
+            name: subsid2
+            in: header
+            schema: 
+              type: integer
+            example: 0
+          - 
+            name: formtrkr
+            in: header
+            schema: 
+              type: integer
+            example: 0
+          - 
+            name: x-api-key
+            in: header
+            schema: 
+              type: string
+            example: xxxxxxxxxxxx
+        responses: 
+          200: 
+            description: Successful response
+            content: 
+              application/json:
+                schema: 
+                  type: object
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: array
+                      description: Response Payload
+                      items: 
+                        type: object
+                        properties:
+                          ID:
+                            type: string
+                            example: 95
+                          NAME:
+                            type: string
+                            example: Central
+          400:
+            description: Bad Request/Validation Error
+    /eraktkoshApi/ws1/ircs/getNearbyIRCSNHQ: 
+      post: 
+        tags: 
+          - Get NearBy IRCS HeadQuaters API
+        summary: Get nearby IRCS headQuaters API for e-RaktKosh
+        description: This API is used to get blood category list for e-RaktKosh
+        operationId: eraktkoshApi/ws1/ircs/getNearbyIRCSNHQ
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: object
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 1721
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 98
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: 0
+                  subsid2:
+                    type: string
+                    description: sub service id 2
+                    example: 0
+                  bg:
+                    type: string
+                    description: blood group api
+                    example: 15
+                  bc:
+                    type: string
+                    description: blood category api
+                    example: 32
+                  bbtype:
+                    type: string
+                    description: BB Type
+                    example: 2
+        parameters: 
+          - 
+            name: Content-Type
+            in: header
+            schema: 
+              type: string
+            example: application/json
+          - 
+            name: Accept
+            in: header
+            schema: 
+              type: string
+            example: application/json
+          - 
+            name: deptid
+            in: header
+            schema: 
+              type: integer
+            example: 98
+          - 
+            name: srvid
+            in: header
+            schema: 
+              type: integer
+            example: 1721
+          - 
+            name: subsid
+            in: header
+            schema: 
+              type: string
+            example: 0
+          - 
+            name: subsid2
+            in: header
+            schema: 
+              type: integer
+            example: 0
+          - 
+            name: formtrkr
+            in: header
+            schema: 
+              type: integer
+            example: 0
+          - 
+            name: x-api-key
+            in: header
+            schema: 
+              type: string
+            example: xxxxxxxxxxxx
+        responses: 
+          200: 
+            description: Successful response
+            content: 
+              application/json:
+                schema: 
+                  type: object
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        add:
+                          type: string
+                          example: 1, Red Cross Road, New Delhi, New Delhi, Delhi
+                        h_code:
+                          type: string
+                          example: 97101
+                        currentStatus:
+                          type: string
+                          example: 1
+                        available:
+                          type: string
+                          example: ''
+                        not_available:
+                          type: string
+                          example: AB-Ve, AB+Ve, A-Ve, A+Ve, B-Ve, B+Ve, O-Ve, O+Ve
+                        type:
+                          type: string
+                          example: Red Cross 
+                        long:
+                          type: string
+                          example: 77.211600
+                        lat:
+                          type: string
+                          example: 28.623600
+                        not_available_WithQty:
+                          type: string
+                          example: 'AB-Ve : 0, AB+Ve : 0, A-Ve : 0, A+Ve : 0, B-Ve : 0, B+Ve : 0, O-Ve : 0, O+Ve : 0'
+                        lastUpdate:
+                          type: string
+                          example: 2020-06-08 12:01:40
+                        name:
+                          type: string
+                          example: Indian Red Cross Society NHQ Blood Bank
+                        ph:
+                          type: string
+                          example: 01123711551
+                        available_WithQty:
+                          type: string
+                          example: ''
+                        email:
+                          type: string
+                          example: drvanshree2002@yahoo.co.in
+                        moderate:
+                          type: string
+                          example: ''
+          400:
+            description: Bad Request/Validation Error
+    /eraktkoshApi/ws1/ircs/checkMobileBloodRequestStatus: 
+      post: 
+        tags: 
+          - Check Mobile Blood Request Status API
+        summary: Check mobile blood request status API for e-RaktKosh
+        description: This API is used to check mobile blood request status for e-RaktKosh
+        operationId: eraktkoshApi/ws1/ircs/checkMobileBloodRequestStatus
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: object
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 1721
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 98
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: 0
+                  subsid2:
+                    type: string
+                    description: sub service id 2
+                    example: 0
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  mobileNumber:
+                    type: string
+                    description: mobile number
+                    example: 7018988036
+        parameters: 
+          - 
+            name: Content-Type
+            in: header
+            schema: 
+              type: string
+            example: application/json
+          - 
+            name: Accept
+            in: header
+            schema: 
+              type: string
+            example: application/json
+          - 
+            name: deptid
+            in: header
+            schema: 
+              type: integer
+            example: 98
+          - 
+            name: srvid
+            in: header
+            schema: 
+              type: integer
+            example: 1721
+          - 
+            name: subsid
+            in: header
+            schema: 
+              type: string
+            example: 0
+          - 
+            name: subsid2
+            in: header
+            schema: 
+              type: integer
+            example: 0
+          - 
+            name: formtrkr
+            in: header
+            schema: 
+              type: integer
+            example: 0
+          - 
+            name: x-api-key
+            in: header
+            schema: 
+              type: string
+            example: xxxxxxxxxxxx
+        responses: 
+          200: 
+            description: Successful response
+            content: 
+              application/json:
+                schema: 
+                  type: object
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        quantity:
+                          type: string
+                          example: 0
+                        status:
+                          type: string
+                          example: 1
+          400:
+            description: Bad Request/Validation Error
+    /eraktkoshApi/ws1/ircs/validateBloodRequestQuantity: 
+      post: 
+        tags: 
+          - Validate Blood Request Quantity API
+        summary: Validate blood request quantity API for e-RaktKosh
+        description: This API is used to validate blood request quantity for e-RaktKosh
+        operationId: eraktkoshApi/ws1/ircs/validateBloodRequestQuantity
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: object
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 1721
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 98
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: 0
+                  subsid2:
+                    type: string
+                    description: sub service id 2
+                    example: 0
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  bloodGrpCode:
+                    type: string
+                    description: blood group code
+                    example: 15
+                  bloodCompCode:
+                    type: string
+                    description: blood comp code
+                    example: 11
+                  quantity:
+                    type: string
+                    description: quantity
+                    example: 1
+                  patientName:
+                    type: string
+                    description: patient name
+                    example: testp
+                  fathersName:
+                    type: string
+                    description: fathers name
+                    example: testf
+        parameters: 
+          - 
+            name: Content-Type
+            in: header
+            schema: 
+              type: string
+            example: application/json
+          - 
+            name: Accept
+            in: header
+            schema: 
+              type: string
+            example: application/json
+          - 
+            name: deptid
+            in: header
+            schema: 
+              type: integer
+            example: 98
+          - 
+            name: srvid
+            in: header
+            schema: 
+              type: integer
+            example: 1721
+          - 
+            name: subsid
+            in: header
+            schema: 
+              type: string
+            example: 0
+          - 
+            name: subsid2
+            in: header
+            schema: 
+              type: integer
+            example: 0
+          - 
+            name: formtrkr
+            in: header
+            schema: 
+              type: integer
+            example: 0
+          - 
+            name: x-api-key
+            in: header
+            schema: 
+              type: string
+            example: xxxxxxxxxxxx
+        responses: 
+          200: 
+            description: Successful response
+            content: 
+              application/json:
+                schema: 
+                  type: object
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        hospitalcode:
+                          type: string
+                          example: 49435
+                        bloodgrpcode:
+                          type: string
+                          example: O-Ve
+                        bbhelpline:
+                          type: string
+                          example: 18009547463
+                        bloodgrp:
+                          type: string
+                          example: O-Ve
+                        quantity:
+                          type: string
+                          example: 1
+                        bloodcomp:
+                          type: string
+                          example: 83
+                        hospitalname:
+                          type: string
+                          example: sFJ Hospital
+                        bbaddress:
+                          type: string
+                          example: new delhi
+                        bloodcompcode:
+                          type: string
+                          example: 734
+                        status:
+                          type: string
+                          example: 1
+                        availablequantity:
+                          type: string
+                          example: 450
+          400:
+            description: Bad Request/Validation Error
+    /eraktkoshApi/ws1/ircs/confirmBloodRequestQuantity: 
+      post: 
+        tags: 
+          - Confirm Blood Request Quantity API
+        summary: Confirm blood request quantity API for e-RaktKosh
+        description: This API is used to confirm blood request quantity for e-RaktKosh
+        operationId: eraktkoshApi/ws1/ircs/confirmBloodRequestQuantity
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: object
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 1721
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 98
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: 0
+                  subsid2:
+                    type: string
+                    description: sub service id 2
+                    example: 0
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  mobileNumber:
+                    type: string
+                    description: mobile number
+                    example: 7018988036
+                  patientName:
+                    type: string
+                    description: patient name
+                    example: testp
+                  fathersName:
+                    type: string
+                    description: fathers name
+                    example: testf
+                  bloodgroup:
+                    type: string
+                    description: blood group
+                    example: A+Ve
+                  bloodcomponent:
+                    type: string
+                    description: blood component
+                    example: Packed Red Blood Cells
+                  quantity:
+                    type: string
+                    description: quantity
+                    example: 1
+                  hospitalname:
+                    type: string
+                    description: hospital name
+                    example: Fortis Hospital Noida
+                  hospitaladdress:
+                    type: string
+                    description: hospital address
+                    example: Sector 62 Near Metro station
+                  hospitalcode:
+                    type: string
+                    description: hospital code
+                    example: 94101
+                  bloodGrpCode:
+                    type: string
+                    description: blood group code
+                    example: 13
+                  bloodCompCode:
+                    type: string
+                    description: blood Component code
+                    example: 11
+                  formImage:
+                    type: string
+                    description: form image
+                    example: /9j/4AAQSkZJRgABAQEAeAB4AAD/2wBDAAIBAQIBAQICAgICAgICAwUDAwMDAwYEBAMFBwYHBwcGBwcICQsJCAgKCAcHCg0KCgsMDAwMBwkODw0MDgsMDAz/2wBDAQICAgMDAwYDAwYMCAcIDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAz/wAARCADpBFMDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcY==
+                  availableQuantity:
+                    type: string
+                    description: available quantity
+                    example: 1
+        parameters: 
+          - 
+            name: Content-Type
+            in: header
+            schema: 
+              type: string
+            example: application/json
+          - 
+            name: Accept
+            in: header
+            schema: 
+              type: string
+            example: application/json
+          - 
+            name: deptid
+            in: header
+            schema: 
+              type: integer
+            example: 98
+          - 
+            name: srvid
+            in: header
+            schema: 
+              type: integer
+            example: 1721
+          - 
+            name: subsid
+            in: header
+            schema: 
+              type: string
+            example: 0
+          - 
+            name: subsid2
+            in: header
+            schema: 
+              type: integer
+            example: 0
+          - 
+            name: formtrkr
+            in: header
+            schema: 
+              type: integer
+            example: 0
+          - 
+            name: x-api-key
+            in: header
+            schema: 
+              type: string
+            example: xxxxxxxxxxxx
+        responses: 
+          200: 
+            description: Successful response
+            content: 
+              application/json:
+                schema: 
+                  type: object
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        bbAddress:
+                          type: string
+                          example: SECTOR 1001 Hospital Premises
+                        confirmNo:
+                          type: string
+                          example: 94101210825450
+                        status_code:
+                          type: string
+                          example: 1
+                        bbHelpline:
+                          type: string
+                          example: 8010224902
+                        requestexpirydate:
+                          type: string
+                          example: 25-Aug-2021 12:46:40
+                        message:
+                          type: string
+                          example: success
+          400:
+            description: Bad Request/Validation Error
+    /eraktkoshApi/ws1/ircs/getBloodRequestList: 
+      post: 
+        tags: 
+          - Get Blood Request List API
+        summary: Get blood request list API for e-RaktKosh
+        description: This API is used to get blood request list for e-RaktKosh
+        operationId: eraktkoshApi/ws1/ircs/getBloodRequestList
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: object
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: null
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 1721
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 98
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: 0
+                  subsid2:
+                    type: string
+                    description: sub service id 2
+                    example: 0
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  mobileNumber:
+                    type: string
+                    description: mobile number
+                    example: 7018988036
+        parameters: 
+          - 
+            name: Content-Type
+            in: header
+            schema: 
+              type: string
+            example: application/json
+          - 
+            name: Accept
+            in: header
+            schema: 
+              type: string
+            example: application/json
+          - 
+            name: deptid
+            in: header
+            schema: 
+              type: integer
+            example: 98
+          - 
+            name: srvid
+            in: header
+            schema: 
+              type: integer
+            example: 1721
+          - 
+            name: subsid
+            in: header
+            schema: 
+              type: string
+            example: 0
+          - 
+            name: subsid2
+            in: header
+            schema: 
+              type: integer
+            example: 0
+          - 
+            name: formtrkr
+            in: header
+            schema: 
+              type: integer
+            example: 0
+          - 
+            name: x-api-key
+            in: header
+            schema: 
+              type: string
+            example: xxxxxxxxxxxx
+        responses: 
+          200: 
+            description: Successful response
+            content: 
+              application/json:
+                schema: 
+                  type: object
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: array
+                      description: Response Payload
+                      items: 
+                        type: object
+                        properties:
+                          requestedunits:
+                            type: string
+                            example: 1
+                          bloodgroupname:
+                            type: string
+                            example: A+Ve
+                          componentname:
+                            type: string
+                            example: Whole Blood
+                          bbaddress:
+                            type: string
+                            example: 1 Red Cross Road
+                          requesteddate:
+                            type: string
+                            example: 27-Jul-2021 15:34:07
+                          approvedunits:
+                            type: string
+                            example: 1
+                          patientname:
+                            type: string
+                            example: Test P
+                          reqconfirmno:
+                            type: string
+                            example: 97101210727437
+                          bloodbankname:
+                            type: string
+                            example: Indian Red Cross Society NHQ Blood Center
+                          bbhelpline:
+                            type: string
+                            example: 1123711551
+                          requestexpirydate:
+                            type: string
+                            example: 28-Jul-2021 03:34
+                          hospitalname:
+                            type: string
+                            example: Test H
+                          autocanceldate:
+                            type: string
+                            example: 28-Jul-2021 03:43:39
+                          status:
+                            type: string
+                            example: Request Auto-Cancelled
+          400:
+            description: Bad Request/Validation Error
+  components:
+    securitySchemes:
+      x-api-key:
+        type: apiKey
+        name: x-api-key
+        in: header          

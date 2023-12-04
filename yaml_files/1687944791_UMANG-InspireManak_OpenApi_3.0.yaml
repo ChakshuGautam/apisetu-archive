@@ -1,0 +1,1618 @@
+---
+openapi: 3.0.0
+info:
+  title: INSPIRE Awards-MANAK
+  description: Innovation in Science Pursuit for Inspired Research' (INSPIRE) scheme is one of the flagship programmes of Department of Science & Technology (DST), Government of India. The INSPIRE Awards - MANAK (Million Minds Augmenting National Aspirations and Knowledge), being executed by DST with National Innovation Foundation – India (NIF), an autonomous body of DST, aims to motivate students in the age group of 10-15 years and studying in classes 6 to 10. The objective of the scheme is to target one million original ideas/innovations rooted in science and societal applications to foster a culture of creativity and innovative thinking among school children. Under this scheme, schools can nominate 5 best original ideas/innovations of students through this website till 28th June, 2023.
+  termsOfService: https://web.umang.gov.in/uaw/ts/v1/en/index.htm
+  contact:
+    name: Provided by - UMANG
+    url: https://web.umang.gov.in
+  version: 1.0.0
+servers:
+  - url: https://apigw.umangapp.in
+    description: Production Server
+  
+security:
+  - x-api-key: []
+
+paths:
+  /INSPIREManakApi/ws1/year:
+    post:
+      tags:
+        - Year API
+      summary: Get the year list using this api
+      description: This API is used to get the year list and the respective tbl year
+      operationId: INSPIREManakApi/ws1/year
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                usrid:
+                  type: string
+                  description: user id
+                  example: 2003966454
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1158
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: windows
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                deptid:
+                  type: string
+                  description: department id
+                  example: 191
+                subsid:
+                  type: string
+                  description: subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "191"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1158"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: Year data response object
+                    properties:
+                      data:
+                        type: array
+                        description: year data object
+                        items:
+                          type: object
+                          properties:
+                            year:
+                              type: string
+                              description: year
+                              example: 2013-2014
+                            tbl_year:
+                              type: string
+                              description: tbl_year
+                              example: 1
+                      message:
+                        type: string
+                        description: message
+                        example: record found sucessfully
+                      status:
+                        type: string
+                        description: status code
+                        example: 200
+        "400":
+          description: Bad Request/Validation Error
+  /INSPIREManakApi/ws1/state:
+    post:
+      tags:
+        - State List
+      summary: Get the details of all the state names with respective state ids
+      description: This API is used to get the details of all the state names with respective state ids
+      operationId: INSPIREManakApi/ws1/state
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                usrid:
+                  type: string
+                  description: user id
+                  example: 2003966454
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1158
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: windows
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                deptid:
+                  type: string
+                  description: department id
+                  example: 191
+                subsid:
+                  type: string
+                  description: subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "191"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1158"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: State data response object
+                    properties:
+                      data:
+                        type: array
+                        description: state data object
+                        items:
+                          type: object
+                          properties:
+                            state_name:
+                              type: string
+                              description: state name
+                              example: Andaman and Nicobar
+                            state_id:
+                              type: string
+                              description: state id
+                              example: 1
+                      message:
+                        type: string
+                        description: message
+                        example: record found sucessfully
+                      status:
+                        type: string
+                        description: status code
+                        example: 200
+        "400":
+          description: Bad Request/Validation Error
+  /INSPIREManakApi/ws1/district:
+    post:
+      tags:
+        - District List
+      summary: Get the details of all the district names with respective district ids
+      description: This API is used to get the details of all the district names with respective district ids
+      operationId: INSPIREManakApi/ws1/district
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                usrid:
+                  type: string
+                  description: user id
+                  example: 2003966454
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1158
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: windows
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                deptid:
+                  type: string
+                  description: department id
+                  example: 191
+                subsid:
+                  type: string
+                  description: subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                state_id:
+                  type: string
+                  description: state_id
+                  example: 10                  
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "191"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1158"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: district data response object
+                    properties:
+                      data:
+                        type: array
+                        description: district data object
+                        items:
+                          type: object
+                          properties:
+                            district_name:
+                              type: string
+                              description: district name
+                              example: East
+                            district_id:
+                              type: string
+                              description: district id
+                              example: 1139
+                      message:
+                        type: string
+                        description: message
+                        example: record found sucessfully
+                      status:
+                        type: string
+                        description: status code
+                        example: 200
+        "400":
+          description: Bad Request/Validation Error
+  /INSPIREManakApi/ws1/sub_district:
+    post:
+      tags:
+        - Sub District List
+      summary: Get the details of all the sub district names with respective sub district ids
+      description: This API is used to get the details of all the sub district names with respective sub district ids
+      operationId: INSPIREManakApi/ws1/sub_district
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                usrid:
+                  type: string
+                  description: user id
+                  example: 2003966454
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1158
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: windows
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                deptid:
+                  type: string
+                  description: department id
+                  example: 191
+                subsid:
+                  type: string
+                  description: subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                district_id:
+                  type: string
+                  description: district_id
+                  example: 1139               
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "191"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1158"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: sub district data response object
+                    properties:
+                      data:
+                        type: array
+                        description: sub district data object
+                        items:
+                          type: object
+                          properties:
+                            sub_district_name:
+                              type: string
+                              description: sub district name
+                              example: Gandhi Nagar
+                            sub_district_id:
+                              type: string
+                              description: sub district id
+                              example: 6380
+                      message:
+                        type: string
+                        description: message
+                        example: record found sucessfully
+                      status:
+                        type: string
+                        description: status code
+                        example: 200
+        "400":
+          description: Bad Request/Validation Error
+  /INSPIREManakApi/ws1/count:
+    post:
+      tags:
+        - Award Sanction by DST
+      summary: Get the total number of award provided by department of Science & technology – Inspire
+      description: This API is used to get the total number of award provided by department of Science & technology – Inspire
+      operationId: INSPIREManakApi/ws1/count
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                usrid:
+                  type: string
+                  description: user id
+                  example: 2003966454
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1158
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: windows
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                deptid:
+                  type: string
+                  description: department id
+                  example: 191
+                subsid:
+                  type: string
+                  description: subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                year_id:
+                  type: string
+                  description: year Id
+                  example: 6
+                state_id:
+                  type: string
+                  description: state Id
+                  example: 10
+                district_id:
+                  type: string
+                  description: district Id
+                  example: 1139
+                sub_district_id:
+                  type: string
+                  description: sub district Id
+                  example: 6382
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "191"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1158"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: count data response object
+                    properties:
+                      data:
+                        type: array
+                        description: count data object
+                        items:
+                          type: object
+                          properties:
+                            total_innovation:
+                              type: string
+                              description: total innovation count
+                              example: 18
+                            name:
+                              type: string
+                              description: name
+                              example: Preet Vihar
+                      title:
+                        type: string
+                        description: title
+                        example: Count by sub district
+                      message:
+                        type: string
+                        description: message
+                        example: record found sucessfully
+                      status:
+                        type: string
+                        description: status code
+                        example: 200
+        "400":
+          description: Bad Request/Validation Error
+  /INSPIREManakApi/ws1/authority:
+    post:
+      tags:
+        - Authority Contact Details
+      summary: Get the list of state and district authority participating in INSPIRE award scheme
+      description: This API is used to get the list of state and district authority participating in INSPIRE award scheme
+      operationId: INSPIREManakApi/ws1/authority
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                usrid:
+                  type: string
+                  description: user id
+                  example: 2003966454
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1158
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: windows
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                deptid:
+                  type: string
+                  description: department id
+                  example: 191
+                subsid:
+                  type: string
+                  description: subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                state_id:
+                  type: string
+                  description: state Id
+                  example: 10
+                district_id:
+                  type: string
+                  description: district Id
+                  example: 1139
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "191"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1158"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: authority response object
+                    properties:
+                      data:
+                        type: array
+                        description: authority data object
+                        items:
+                          type: object
+                          properties:
+                            area:
+                              type: string
+                              description: area
+                              example: Nicobars
+                            address:
+                              type: string
+                              description: address
+                              example: EDUCATION OFFICE CAR NICOBAR\\x0D\\x0AOPPOSITE POLICE STATION HEADQUARTER\\x0D\\x0ACAR NICOBAR
+                            dist_moblie:
+                              type: string
+                              description: dist_moblie
+                              example: 9434282009                              
+                            app_number:
+                              type: string
+                              description: app number
+                              example: DA576
+                            pin_code:
+                              type: string
+                              description: pincode
+                              example: Nicobars
+                            dist_authority:
+                              type: string
+                              description: dist_authority
+                              example: SHRI.H.NATHANIEL
+                            district_department:
+                              type: string
+                              description: district department
+                              example: EDUCATION
+                            email:
+                              type: string
+                              description: email
+                              example: r.mohan86raj@gmail.com
+                            district_post:
+                              type: string
+                              description: district post
+                              example: EDUCATION OFFICER
+                      title:
+                        type: string
+                        description: title
+                        example: district authority
+                      message:
+                        type: string
+                        description: message
+                        example: record found sucessfully
+                      status:
+                        type: string
+                        description: status code
+                        example: 200
+        "400":
+          description: Bad Request/Validation Error
+  /INSPIREManakApi/ws1/school_wise_awardee:
+    post:
+      tags:
+        - School Wise Awardee
+      summary: Get the selected schools who are nominated in INSPIRE MANAK scheme
+      description: This API is used to get the selected schools who are nominated in INSPIRE MANAK scheme
+      operationId: INSPIREManakApi/ws1/school_wise_awardee
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                usrid:
+                  type: string
+                  description: user id
+                  example: 2003966454
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1158
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: windows
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                deptid:
+                  type: string
+                  description: department id
+                  example: 191
+                subsid:
+                  type: string
+                  description: subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                year_id:
+                  type: string
+                  description: year Id
+                  example: 5
+                keywords:
+                  type: string
+                  description: keywords
+                  example: Mandawali-SBV (Veer Udham Singh)
+                state_id:
+                  type: string
+                  description: state Id
+                  example: 10
+                district_id:
+                  type: string
+                  description: district Id
+                  example: 1139
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "191"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1158"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: school wise awardee data response object
+                    properties:
+                      data:
+                        type: array
+                        description: school wise awardee data object
+                        items:
+                          type: object
+                          properties:
+                            parent_name:
+                              type: string
+                              description: parent name
+                              example: KISHOR KUMAR
+                            district_name:
+                              type: string
+                              description: district_name
+                              example: East
+                            student_name:
+                              type: string
+                              description: student_name
+                              example: AMAN KANDARI
+                            ref_number:
+                              type: string
+                              description: ref_number
+                              example: 18DL1428258
+                            state_name:
+                              type: string
+                              description: state_name
+                              example: Delhi
+                            school_name:
+                              type: string
+                              description: school_name
+                              example: Mandawali-SBV (Veer Udham Singh)
+                            title:
+                              type: string
+                              description: title
+                              example: ELECTRICITY GENERATOR FROM RAIN WATER
+                            app_code:
+                              type: string
+                              description: app_code
+                              example: APP101139638193
+                            sub_district_name:
+                              type: string
+                              description: sub_district_name
+                              example: East
+                      message:
+                        type: string
+                        description: message
+                        example: record found sucessfully
+                      status:
+                        type: string
+                        description: status code
+                        example: 200
+        "400":
+          description: Bad Request/Validation Error
+  /INSPIREManakApi/ws1/videos:
+    post:
+      tags:
+        - Inspire Videos
+      summary: Get the list of INSPIRE MANAK videos
+      description: This API is used to get the list of INSPIRE MANAK videos
+      operationId: INSPIREManakApi/ws1/videos
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                usrid:
+                  type: string
+                  description: user id
+                  example: 2003966454
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1158
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: windows
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                deptid:
+                  type: string
+                  description: department id
+                  example: 191
+                subsid:
+                  type: string
+                  description: subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "191"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1158"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: video data response object
+                    properties:
+                      data:
+                        type: array
+                        description: video data object
+                        items:
+                          type: object
+                          properties:
+                            video_link:
+                              type: string
+                              description: video link
+                              example: https://www.youtube.com/watch?v=1FC0yfsR7j4&t=60s
+                            language:
+                              type: string
+                              description: language
+                              example: English
+                            id:
+                              type: string
+                              description: id
+                              example: 1
+                            status:
+                              type: string
+                              description: status
+                              example: 1
+                      message:
+                        type: string
+                        description: message
+                        example: record found sucessfully
+                      status:
+                        type: string
+                        description: status code
+                        example: 200
+        "400":
+          description: Bad Request/Validation Error
+  /INSPIREManakApi/ws1/faq:
+    post:
+      tags:
+        - FAQ
+      summary: Get the list of frequently asked questions in INSPIRE MANAK award scheme
+      description: This API is used to get the list of the frequently asked questions in INSPIRE MANAK award scheme
+      operationId: INSPIREManakApi/ws1/faq
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                usrid:
+                  type: string
+                  description: user id
+                  example: 2003966454
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1158
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: windows
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                deptid:
+                  type: string
+                  description: department id
+                  example: 191
+                subsid:
+                  type: string
+                  description: subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "191"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1158"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: faq data response object
+                    properties:
+                      data:
+                        type: array
+                        description: faq data object
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: id
+                              example: 1
+                            detail:
+                              type: string
+                              description: detail
+                              example: <p>INSPIRE AWARDS is one of the flagship programs
+                            title:
+                              type: string
+                              description: title
+                              example: What is INSPIRE AWARDS?
+                            status:
+                              type: string
+                              description: status
+                              example: 1
+                      message:
+                        type: string
+                        description: message
+                        example: record found sucessfully
+                      status:
+                        type: string
+                        description: status code
+                        example: 200
+        "400":
+          description: Bad Request/Validation Error
+  /INSPIREManakApi/ws1/aboutUs:
+    post:
+      tags:
+        - About Us
+      summary: Get the information about INSPIRE MANAK award scheme
+      description: This API is used to get the information about INSPIRE MANAK award scheme
+      operationId: INSPIREManakApi/ws1/aboutUs
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                usrid:
+                  type: string
+                  description: user id
+                  example: 2003966454
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1158
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: windows
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                deptid:
+                  type: string
+                  description: department id
+                  example: 191
+                subsid:
+                  type: string
+                  description: subscriber Id
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                page_url:
+                  type: string
+                  description: page url
+                  example: about_us
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "191"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "1158"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: about info data response object
+                    properties:
+                      data:
+                        type: array
+                        description: about info data object
+                        items:
+                          type: object
+                          properties:
+                            page_url:
+                              type: string
+                              description: page url
+                              example: about_us
+                            page_title:
+                              type: string
+                              description: page title
+                              example: About INSPIRE Awards-MANAK
+                            page_detail:
+                              type: string
+                              description: page detail
+                              example: <p class=\"textJustify\">\r\n        Innovation in Science Pursuit
+                            id:
+                              type: string
+                              description: id
+                              example: 1
+                            status:
+                              type: string
+                              description: status
+                              example: 1
+                      message:
+                        type: string
+                        description: message
+                        example: record found sucessfully
+                      status:
+                        type: string
+                        description: status code
+                        example: 200
+        "400":
+          description: Bad Request/Validation Error
+components:
+  securitySchemes:
+    x-api-key:
+      type: apiKey
+      name: x-api-key
+      in: header

@@ -1,0 +1,1320 @@
+---
+openapi: 3.0.0
+info:
+  title: Department of Science & Technology (DST Inspire)
+  description: “"Innovation in Science Pursuit for Inspired Research (INSPIRE)" is an innovative programme sponsored and managed by the Department of Science & Technology for attraction of talent to Science. The basic objective of INSPIRE is to communicate to the youth of the country the excitements of creative pursuit of science, attract talent to the study of science at an early age and thus build the required critical human resource pool for strengthening and expanding the Science & Technology system and R & D base. A striking feature of the programme is that it does not believe in conducting competitive exams for identification of talent at any level. It believes in and relies on the efficacy of the existing educational structure for identification of talent.<i>[Updated on 20th June 2023]</i>
+  termsOfService: https://web.umang.gov.in/uaw/ts/v1/en/index.htm
+  contact:
+    name: Provided by - UMANG
+    url: https://web.umang.gov.in
+  version: 1.0.0
+servers:
+  - url: https://apigw.umangapp.in
+    description: Production Server
+
+security: 
+  - x-api-key: []
+    
+paths:
+  /DSTInspireApi/ws1/aboutUs:
+    post:
+      tags:
+        - AboutUs Page 
+      summary: Get the info about department of science & technology inspire scheme
+      description: This API is used to get the about us page
+      operationId: DSTInspireApi/ws1/aboutUs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: en
+                lon:
+                  type: string
+                  description: longitude
+                  example: en
+                lac:
+                  type: string
+                  description: lac
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 1
+                usrid:
+                  type: string
+                  description: user id
+                  example: 191
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1310
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                did:
+                  type: string
+                  description: Device Id
+                  example: 122
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 420
+                subsid:
+                  type: string
+                  description: subsid
+                  example: subscriber Id
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: subscriber Id2
+                ip:
+                  type: string
+                  description: ip address
+                  example: 164.100.161.142
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    properties:
+                      rs:
+                        type: string
+                        description: Response Status
+                        example: S
+                      rc:
+                        type: string
+                        description: Response Code
+                        example: 200
+                      rd:
+                        type: string
+                        description: Response Description
+                        example: Success.
+                      payload:
+                        type: object
+                        properties:                    
+                          ApplicationUrl:
+                            type: string
+                            description: application url
+                            example: http://www.dst.gov.in/
+                          AboutUsPara1:
+                            type: string
+                            description: about us paragraph 1
+                            example: India is one of the top-ranking countries in the field of basic research...
+                          AboutUsPara2:
+                            type: string
+                            description: about us paragraph 2
+                            example: To know more about the DST, kindly visit                       
+        "400":
+          description: Bad Request/Validation Error
+  /DSTInspireApi/ws1/contactUs:
+    post:
+      tags:
+        - ContactUs Page 
+      summary: Get the info about contact department of science & technology inspire scheme
+      description: This API is used to get the contact us page
+      operationId: DSTInspireApi/ws1/contactUs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: en
+                lon:
+                  type: string
+                  description: longitude
+                  example: en
+                lac:
+                  type: string
+                  description: lac
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 1
+                usrid:
+                  type: string
+                  description: user id
+                  example: 191
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1310
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                did:
+                  type: string
+                  description: Device Id
+                  example: 122
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 420
+                subsid:
+                  type: string
+                  description: subsid
+                  example: subscriber Id
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: subscriber Id2
+                ip:
+                  type: string
+                  description: ip address
+                  example: 164.100.161.142
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    properties:
+                      rs:
+                        type: string
+                        description: Response Status
+                        example: S
+                      rc:
+                        type: string
+                        description: Response Code
+                        example: 200
+                      rd:
+                        type: string
+                        description: Response Description
+                        example: Success.
+                      payload:
+                        type: object
+                        properties:                    
+                          Department:
+                            type: string
+                            description: department name
+                            example: INSPIRE Programme Division
+                          Email:
+                            type: string
+                            description: emailId
+                            example: inspire.prog-dst@nic.in
+                          MobileNo1:
+                            type: string
+                            description: mobile number1
+                            example: +91-9643339670
+                          MobileNo2:
+                            type: string
+                            description: mobile number2
+                            example: +91-7290045884
+                          Note:
+                            type: string
+                            description: note
+                            example: All your query related emails MUST include the Program Name as a prefix in the email Subject
+                          Address2:
+                            type: string
+                            description: address2
+                            example: Technology Bhavan, New Mehrauli Road
+                          Address3:
+                            type: string
+                            description: address3
+                            example: New Mehrauli Road, New Delhi - 110 016    
+                          Address1:
+                            type: string
+                            description: address1
+                            example: INSPIRE Programme Division Department of Science and Technology 
+                          TelephoneNo2:
+                            type: string
+                            description: telephone number2
+                            example: 0120-4619406
+                          TelephoneNo1:
+                            type: string
+                            description: telephone number1
+                            example: 0120-4619405, 0120-4619406                        
+        "400":
+          description: Bad Request/Validation Error          
+  /DSTInspireApi/ws1/faq:
+    post:
+      tags:
+        - FAQ Page 
+      summary: Get the details of the faq in department of science & technology inspire scheme
+      description: This API is used to get the faq page
+      operationId: DSTInspireApi/ws1/faq
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: en
+                lon:
+                  type: string
+                  description: longitude
+                  example: en
+                lac:
+                  type: string
+                  description: lac
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 1
+                usrid:
+                  type: string
+                  description: user id
+                  example: 191
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1310
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                did:
+                  type: string
+                  description: Device Id
+                  example: 122
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 420
+                subsid:
+                  type: string
+                  description: subsid
+                  example: subscriber Id
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: subscriber Id2
+                ip:
+                  type: string
+                  description: ip address
+                  example: 164.100.161.142
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    properties:
+                      rs:
+                        type: string
+                        description: Response Status
+                        example: S
+                      rc:
+                        type: string
+                        description: Response Code
+                        example: 200
+                      rd:
+                        type: string
+                        description: Response Description
+                        example: Success.
+                      payload:
+                        type: object
+                        properties:                    
+                          FAQLegacy:
+                            type: object
+                            properties: 
+                              QuesAns:                            
+                                type: array
+                                description: Faq Leagacy page
+                                items:
+                                  type: object
+                                  properties:
+                                    Question:
+                                      type: string
+                                      description: question
+                                      example: How to register as a legacy user?
+                                    Answer:
+                                      type: string
+                                      description: answer
+                                      example: Register at the place for legacy user http://online-inspire.gov.in/Account/RegisterLegacyUsers?Length=7, only. Please do not register as new user
+                              Scheme:
+                                type: string
+                                description: scheme
+                                example: INSPIRE Fellowship Legacy Users                                    
+                          FAQFellowship:
+                            type: object
+                            properties:                                      
+                              QuesAns:                            
+                                type: array
+                                description: Faq fellowship page
+                                items:
+                                  type: object
+                                  properties:
+                                    Question:
+                                      type: string
+                                      description: question
+                                      example: What is INSPIRE Fellowship?
+                                    Answer:
+                                      type: string
+                                      description: answer
+                                      example: It is the fourth Component of INSPIRE Program launched by the Government of India to strengthen the national science and technology base. It is being implemented by the Department of Science and Technology (DST). This Component is focused on attraction of student to pursue doctoral degree in basic and applied sciences including engineering, medicine, agriculture, veterinary, pharmacy etc. after either masters’ degree in science or bachelor/ masters’ degree in engineering/ applied sciences
+                              Scheme:
+                                type: string
+                                description: scheme
+                                example: INSPIRE Fellowship Scheme                                   
+                          FAQFaculty:
+                            type: object
+                            properties:                                      
+                              QuesAns:                            
+                                type: array
+                                description: Faq Faculty page
+                                items:
+                                  type: object
+                                  properties:
+                                    Question:
+                                      type: string
+                                      description: question
+                                      example: INSPIRE Faculty Fellowship Scheme
+                                    Answer:
+                                      type: string
+                                      description: answer
+                                      example: INSPIRE Faculty Fellowship Scheme is a component under Innovation in Science Pursuit for Inspired Research (INSPIRE), which is a flagship programme of the Department of Science and Technology (DST), under the Ministry of Science and Technology, Government of India. It offers a Research Fellowships to young achievers and opportunity for independent research in the near term and emerge as a leader in future science & technology. The guideline of this component is available at http://www.inspire-dst.gov.in
+                              Scheme:
+                                type: string
+                                description: scheme
+                                example: INSPIRE Faculty Fellowship Scheme                                   
+                          FAQSHE:
+                            type: object
+                            properties:                                      
+                              QuesAns:                            
+                                type: array
+                                description: Faq Scholarship higher education
+                                items:
+                                  type: object
+                                  properties:
+                                    Question:
+                                      type: string
+                                      description: question
+                                      example: Scholarship for Higher Education
+                                    Answer:
+                                      type: string
+                                      description: answer
+                                      example: Scholarship for Higher Education (SHE) is a component scheme under Innovation in Science Pursuit for Inspired Research (INSPIRE), which is a flagship programme of the Department of Science..
+                              Scheme:
+                                type: string
+                                description: scheme
+                                example: Scholarship for Higher Education                                    
+                          FAQInternship:
+                            type: object
+                            properties:                                      
+                              QuesAns:                            
+                                type: array
+                                description: Faq Internship page
+                                items:
+                                  type: object
+                                  properties:
+                                    Question:
+                                      type: string
+                                      description: question
+                                      example: What is the objective of organizing INSPIRE Internship camp?
+                                    Answer:
+                                      type: string
+                                      description: answer
+                                      example: The objective of organizing the INSPIRE Internship camp is to reveal the joys of innovation to the talented youth of the nation to pursue study in science and career in Research and Development
+                              Scheme:
+                                type: string
+                                description: scheme
+                                example: INSPIRE Internship                                     
+        "400":
+          description: Bad Request/Validation Error
+  /DSTInspireApi/ws1/trackStatusByEmail:
+    post:
+      tags:
+        - Track Status By Email
+      summary: Get the info about track status by email
+      description: This API is used to track status by email
+      operationId: DSTInspireApi/ws1/trackStatusByEmail
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: en
+                lon:
+                  type: string
+                  description: longitude
+                  example: en
+                lac:
+                  type: string
+                  description: lac
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 1
+                usrid:
+                  type: string
+                  description: user id
+                  example: 191
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1310
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                did:
+                  type: string
+                  description: Device Id
+                  example: 122
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 420
+                subsid:
+                  type: string
+                  description: subsid
+                  example: subscriber Id
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: subscriber Id2
+                ip:
+                  type: string
+                  description: ip address
+                  example: 164.100.161.142
+                email:
+                  type: string
+                  description: email address
+                  example: applicant01@mailinator.com                
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    properties:
+                      rs:
+                        type: string
+                        description: Response Status
+                        example: S
+                      rc:
+                        type: string
+                        description: Response Code
+                        example: 200
+                      rd:
+                        type: string
+                        description: Response Description
+                        example: Success.
+                      payload:
+                        type: object
+                        properties:                    
+                          ApplicationStatus:
+                            type: string
+                            description: application status
+                            example: Sorry! System did not find status with the given details                      
+        "400":
+          description: Bad Request/Validation Error
+  /DSTInspireApi/ws1/trackStatusByApplNo:
+    post:
+      tags:
+        - Track Status By Application Number 
+      summary: Get the info about track status by application number
+      description: This API is used to track status by application number
+      operationId: DSTInspireApi/ws1/trackStatusByApplNo
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: en
+                lon:
+                  type: string
+                  description: longitude
+                  example: en
+                lac:
+                  type: string
+                  description: lac
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 1
+                usrid:
+                  type: string
+                  description: user id
+                  example: 191
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1310
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                did:
+                  type: string
+                  description: Device Id
+                  example: 122
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 420
+                subsid:
+                  type: string
+                  description: subsid
+                  example: subscriber Id
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: subscriber Id2
+                registrationNo:
+                  type: string
+                  description: registration number
+                  example: DST/INSPIRE/01/2020/000006
+                ip:
+                  type: string
+                  description: ip address
+                  example: 164.100.161.142                  
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    properties:
+                      rs:
+                        type: string
+                        description: Response Status
+                        example: S
+                      rc:
+                        type: string
+                        description: Response Code
+                        example: 200
+                      rd:
+                        type: string
+                        description: Response Description
+                        example: Success.
+                      payload:
+                        type: object
+                        properties:                    
+                          ApplicationStatus:
+                            type: string
+                            description: application status
+                            example: Completed                       
+        "400":
+          description: Bad Request/Validation Error
+  /DSTInspireApi/ws1/trackStatusByIVRNo:
+    post:
+      tags:
+        - Track Status By IVR Number 
+      summary: Get the info about track status by IVR number
+      description: This API is used to to track Status by IVR number
+      operationId: DSTInspireApi/ws1/trackStatusByIVRNo
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: en
+                lon:
+                  type: string
+                  description: longitude
+                  example: en
+                lac:
+                  type: string
+                  description: lac
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 1
+                usrid:
+                  type: string
+                  description: user id
+                  example: 191
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1310
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                did:
+                  type: string
+                  description: Device Id
+                  example: 122
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 420
+                subsid:
+                  type: string
+                  description: subsid
+                  example: subscriber Id
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: subscriber Id2
+                ip:
+                  type: string
+                  description: ip address
+                  example: 164.100.161.142
+                ivrNo:
+                  type: string
+                  description: ivr number
+                  example: 202000000075                
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    properties:
+                      rs:
+                        type: string
+                        description: Response Status
+                        example: S
+                      rc:
+                        type: string
+                        description: Response Code
+                        example: 200
+                      rd:
+                        type: string
+                        description: Response Description
+                        example: Success.
+                      payload:
+                        type: object
+                        properties:                    
+                          ApplicationStatus:
+                            type: string
+                            description: application status
+                            example: Completed                      
+        "400":
+          description: Bad Request/Validation Error
+  /DSTInspireApi/ws1/sendQuery:
+    post:
+      tags:
+        - Send Query Page 
+      summary: Send the query to department of science & technology inspire scheme
+      description: This API is used to send the query to department of science & technology inspire scheme
+      operationId: DSTInspireApi/ws1/sendQuery
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: en
+                lon:
+                  type: string
+                  description: longitude
+                  example: en
+                lac:
+                  type: string
+                  description: lac
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 1
+                usrid:
+                  type: string
+                  description: user id
+                  example: 191
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1310
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                did:
+                  type: string
+                  description: Device Id
+                  example: 122
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 420
+                subsid:
+                  type: string
+                  description: subsid
+                  example: subscriber Id
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: subscriber Id2
+                ip:
+                  type: string
+                  description: ip address
+                  example: 164.100.161.142
+                reqBody:
+                  type: object
+                  description: request body
+                  properties:
+                    Subject:
+                      type: string
+                      description: subject
+                      example: Just for Testing Purpose
+                    Query:
+                      type: string
+                      description: query
+                      example: Message Body just for Testing Purpose                               
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    properties:
+                      rs:
+                        type: string
+                        description: Response Status
+                        example: S
+                      rc:
+                        type: string
+                        description: Response Code
+                        example: 200
+                      rd:
+                        type: string
+                        description: Response Description
+                        example: Success.
+                      payload:
+                        type: object
+                        properties:                    
+                          MailMessage:
+                            type: string
+                            description: mail message
+                            example: Your Query has been submitted successfully                     
+        "400":
+          description: Bad Request/Validation Error
+components:
+  securitySchemes:
+    x-api-key:
+      type: apiKey
+      name: x-api-key
+      in: header

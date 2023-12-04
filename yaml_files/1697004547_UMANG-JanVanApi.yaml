@@ -1,0 +1,1126 @@
+---
+openapi: 3.0.0
+info:
+  title: CM Jan Van Yojana
+  description: Forest is the subject of concurrent list according to Indian constitution and Jharkhand have forest cover area of 33.81%. The state government of Jharkhand has created an ambitious welfare plantation scheme for expansion of the forest area under social forestry known as Jan Van Yojana in the year 2016. The objective of the scheme is to increase the green cover, maintain the environmental balance, conservation of the underground water, to reduce the pressure on notified forest, to increase the farmer’s income as well as to increase forest cover in the state by people’s participation.Under the scheme, there is a provision of planting timber as well as fruit crop plant species in block plantation or linear afforestation on the ridge of the field. The limit of plantation area is 0.5 acres and the maximum limit is 50 acres and 75% of the expenditure has been reimbursed to the beneficiary by the State Government/Forest Department for the maintenance of plantation. Hence,Jan Van Yojana is implemented to maintain environmental balance by increasing the green cover of the state.This also aims at increasing farmers source of income by encouraging them for plantation on private land for green area growth. <i>Updated on 9<sup>th</sup>  October  2023 <i/>
+  termsOfService: https://web.umang.gov.in/uaw/ts/v1/en/index.htm
+  contact:
+    name: Provided by - UMANG
+    url: https://web.umang.gov.in
+  version: 1.0.0
+servers:
+  - url: https://apigw.umangapp.in
+    description: Production Server
+    
+security:
+  - x-api-key: []
+
+    
+paths:
+  /janVanApi/ws1/GetDistricts:
+    post:
+      tags:
+        - District List Web Service
+      summary: Get the district list using this service
+      description: This api is used to get the list of districts
+      operationId: janVanApi/ws1/GetDistricts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: null
+                lon:
+                  type: string
+                  description: longitude
+                  example: null
+                lac:
+                  type: string
+                  description: lac
+                  example: null
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 306
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: andorid
+                deptid:
+                  type: string
+                  description: Dept Id
+                  example: 1322
+                subsid:
+                  type: string
+                  description: subsid
+                  example: null
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: null
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: null
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "388"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "2025"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: JV0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                    type: array
+                    description: district object items
+                    items:
+                      type: object
+                      properties:
+                        Id:
+                          type: integer
+                          description: Id
+                          example: 1.0
+                        Name:
+                          type: string
+                          description: name
+                          example: BOKARO
+                  errorPD:
+                    type: string
+                    description: error Description
+                    example: null
+        "400":
+          description: Bad Request/Validation Error
+  /janVanApi/ws1/GetDivisions:
+    post:
+      tags:
+        - Divisions List Web Service
+      summary: Get the divisions list using this service
+      description: This api is used to get the list of divisions
+      operationId: janVanApi/ws1/GetDivisions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: null
+                lon:
+                  type: string
+                  description: longitude
+                  example: null
+                lac:
+                  type: string
+                  description: lac
+                  example: null
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 388
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: andorid
+                deptid:
+                  type: string
+                  description: Dept Id
+                  example: 2025
+                subsid:
+                  type: string
+                  description: subsid
+                  example: null
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: null
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: null
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "388"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "2025"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: JV0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                    type: array
+                    description: district object items
+                    items:
+                      type: object
+                      properties:
+                        DivisionID:
+                          type: integer
+                          description: Id
+                          example: 1.0
+                        DivisionName:
+                          type: string
+                          description: DivisionName
+                          example: Forest Department Officer, Social Forestry Division, Ranchi
+                  errorPD:
+                    type: string
+                    description: error Description
+                    example: null
+        "400":
+          description: Bad Request/Validation Error
+  /janVanApi/ws1/GetBlocksbydistrictid:
+    post:
+      tags:
+        - Blocks By DistrictId Web Service
+      summary: Get the blocks list by districtId using this service
+      description: This api is used to get the list of blocks by districtId
+      operationId: janVanApi/ws1/GetBlocksbydistrictid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: null
+                lon:
+                  type: string
+                  description: longitude
+                  example: null
+                lac:
+                  type: string
+                  description: lac
+                  example: null
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 388
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: andorid
+                deptid:
+                  type: string
+                  description: Dept Id
+                  example: 2025
+                subsid:
+                  type: string
+                  description: subsid
+                  example: null
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: null
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: null
+                districtid:
+                  type: string
+                  description: districtid
+                  example: 5
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "388"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "2025"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: JV0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                    type: array
+                    description: district object items
+                    items:
+                      type: object
+                      properties:
+                        Id:
+                          type: integer
+                          description: Id
+                          example: 35.0
+                        Name:
+                          type: string
+                          description: name
+                          example: DUMKA
+                  errorPD:
+                    type: string
+                    description: error Description
+                    example: null
+        "400":
+          description: Bad Request/Validation Error
+  /janVanApi/ws1/applicationstatus:
+    post:
+      tags:
+        - Application Status Web Service
+      summary: Get the application status using this service
+      description: This api is used to get the application status
+      operationId: janVanApi/ws1/applicationstatus
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: null
+                lon:
+                  type: string
+                  description: longitude
+                  example: null
+                lac:
+                  type: string
+                  description: lac
+                  example: null
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 388
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: andorid
+                deptid:
+                  type: string
+                  description: Dept Id
+                  example: 2026
+                subsid:
+                  type: string
+                  description: subsid
+                  example: null
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: null
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: null
+                applicantid:
+                  type: string
+                  description: applicantid
+                  example: JH162105862
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "388"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "2026"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: JV0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                    type: object
+                    properties:
+                      ApplicantID:
+                        type: string
+                        description: ApplicantID
+                        example: JH162105862
+                      Name:
+                        type: string
+                        description: name
+                        example: PRAMJIT SINGH
+                      ApplyDate:
+                        type: string
+                        description: applyDate
+                        example: 27/07/2016
+                      FatherName:
+                        type: string
+                        description: fatherName
+                        example: LATE SARDAR RAJENDRA SINGH
+                      PostOffice:
+                        type: string
+                        description: PostOffice
+                        example: HUNTERGANJ - 75
+                      District:
+                        type: string
+                        description: district
+                        example: CHATRA  NORTH
+                      Block:
+                        type: string
+                        description: block
+                        example: HUNTERGANJ
+                      KhataNo:
+                        type: string
+                        description: khatanumber
+                        example: 13
+                      KhesraNo:
+                        type: string
+                        description: KhesraNo
+                        example: 560
+                      Rakba:
+                        type: string
+                        description: khatanumber
+                        example: 1
+                      Status:
+                        type: string
+                        description: status
+                        example: Approved by Office
+                      RStatus:
+                        type: string
+                        description: RStatus
+                        example: null
+                      RejectionDate:
+                        type: string
+                        description: rejectionDate
+                        example: Approved by Office
+                      Reason:
+                        type: string
+                        description: reason
+                        example: null
+                      Date:
+                        type: string
+                        description: date
+                        example: 30/07/2016
+                  errorPD:
+                    type: string
+                    description: error Description
+                    example: null
+        "400":
+          description: Bad Request/Validation Error
+  /janVanApi/ws1/SaveApplication:
+    post:
+      tags:
+        - Save Application Web Service
+      summary: Save the application using this service
+      description: This api is used to save the application
+      operationId: janVanApi/ws1/SaveApplication
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: xd5b051031-78a4-49c0-b6e4-34611b3a7976/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: null
+                lon:
+                  type: string
+                  description: longitude
+                  example: null
+                lac:
+                  type: string
+                  description: lac
+                  example: null
+                usag:
+                  type: string
+                  description: usage
+                  example: null
+                usrid:
+                  type: string
+                  description: user id
+                  example: 4006891151
+                srvid:
+                  type: string
+                  description: service id
+                  example: 2025
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: andorid
+                deptid:
+                  type: string
+                  description: Dept Id
+                  example: 388
+                subsid:
+                  type: string
+                  description: subsid
+                  example: null
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: null
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: null
+                apitrkr:
+                  type: string
+                  description: apitrkr
+                  example: 21
+                did:
+                  type: string
+                  description: did
+                  example: 122                  
+                reqBody:
+                  type: array
+                  description: district object items
+                  items:
+                    type: object
+                    properties:
+                      Name:
+                        type: string
+                        description: name
+                        example: test
+                      Father_Name:
+                        type: string
+                        description: father name
+                        example: test
+                      Mobile:
+                        type: string
+                        description: mobile
+                        example: 9309514024
+                      Address:
+                        type: string
+                        description: address
+                        example: bengaluru
+                      Caste:
+                        type: string
+                        description: caste
+                        example: General
+                      Village:
+                        type: string
+                        description: village
+                        example: bengaluru
+                      PS:
+                        type: string
+                        description: ps
+                        example: 67
+                      District:
+                        type: string
+                        description: district
+                        example: 5
+                      Block:
+                        type: string
+                        description: block
+                        example: 36
+                      Halka:
+                        type: string
+                        description: halka
+                        example: abc
+                      Mauja:
+                        type: string
+                        description: mauja
+                        example: abc
+                      KhataNo:
+                        type: string
+                        description: KhataNo
+                        example: 2677778899
+                      KhesraNo:
+                        type: string
+                        description: KhesraNo
+                        example: 12
+                      Rakba:
+                        type: string
+                        description: Rakba
+                        example: 5
+                      DivID:
+                        type: string
+                        description: DivID
+                        example: 26
+                      PlantationType:
+                        type: string
+                        description: PlantationType
+                        example: Block Plantation
+                      AreaLengthLand:
+                        type: string
+                        description: AreaLengthLand
+                        example: 7
+                      NoPlantTimber:
+                        type: string
+                        description: NoPlantTimber
+                        example: 7
+                      NoPlantFruits:
+                        type: string
+                        description: NoPlantFruits
+                        example: 8
+                      BlockNOCAttach:
+                        type: string
+                        description: BlockNOCAttach
+                        example: JVBERi0xLjMN..
+                      AddharAttach:
+                        type: string
+                        description: AddharAttach
+                        example: JVBERi0xLjMNC..
+                      AgreenmentAttach:
+                        type: string
+                        description: AgreenmentAttach
+                        example: JVBERi0xLjM..
+                      PassbookAttach:
+                        type: string
+                        description: PassbookAttach
+                        example: JVBERi0xLjMNC...
+                      CancelChequeAttach:
+                        type: string
+                        description: CancelChequeAttach
+                        example: JVBERi0xLjMNC...
+                      Photo:
+                        type: string
+                        description: Photo
+                        example: JVBERi0xLjMNCiX...
+                      BankName:
+                        type: string
+                        description: BankName
+                        example: abc
+                      BranchName:
+                        type: string
+                        description: BranchName
+                        example: abc
+                      AccountNo:
+                        type: string
+                        description: AccountNo
+                        example: 889999999999
+                      IFSC:
+                        type: string
+                        description: IFSC
+                        example: SBIN0005943
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "388"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "2025"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: JV0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                    type: object
+                    properties:
+                      Message:
+                        type: string
+                        description: message
+                        example: Application Submitted Successfully
+                      ID:
+                        type: string
+                        description: ID
+                        example: 48429
+                      ApplicantID:
+                        type: string
+                        description: applicantID
+                        example: JH235641595
+                      Name:
+                        type: string
+                        description: name
+                        example: test
+                      Aadhar:
+                        type: string
+                        description: aadhar
+                        example: null
+                      Father_Name:
+                        type: string
+                        description: Father_Name
+                        example: test
+                      Mobile:
+                        type: string
+                        description: Mobile
+                        example: 9309514024
+                      Address:
+                        type: string
+                        description: address
+                        example: bengaluru
+                      Caste:
+                        type: string
+                        description: caste
+                        example: General
+                      Village:
+                        type: string
+                        description: village
+                        example: bengaluru
+                      PS:
+                        type: string
+                        description: ps
+                        example: 67
+                      District:
+                        type: string
+                        description: district
+                        example: 5
+                      DivID:
+                        type: string
+                        description: DivID
+                        example: 26
+                      KhataNo:
+                        type: string
+                        description: KhataNo
+                        example: 2677778899
+                      KhesraNo:
+                        type: string
+                        description: KhesraNo
+                        example: 12
+                      Rakba:
+                        type: string
+                        description: Rakba
+                        example: 5
+                      PlantationType:
+                        type: string
+                        description: PlantationType
+                        example: Block Plantation
+                      AreaLengthLand:
+                        type: string
+                        description: AreaLengthLand
+                        example: 7
+                      NoPlantTimber:
+                        type: string
+                        description: NoPlantTimber
+                        example: 7
+                      NoPlantFruits:
+                        type: string
+                        description: NoPlantFruits
+                        example: 8
+                      PlotLongitude:
+                        type: string
+                        description: PlotLongitude
+                        example: null
+                      PlotLatitude:
+                        type: string
+                        description: PlotLatitude
+                        example: null
+                      AccountNo:
+                        type: string
+                        description: AccountNo
+                        example: 889999999999
+                      BankName:
+                        type: string
+                        description: BankName
+                        example: abc
+                      BranchName:
+                        type: string
+                        description: BranchName
+                        example: abc
+                      IFSC:
+                        type: string
+                        description: IFSC
+                        example: SBIN0005943
+                      Status:
+                        type: string
+                        description: Status
+                        example: null
+                      StatusDate:
+                        type: string
+                        description: StatusDate
+                        example: null
+                      DOE:
+                        type: string
+                        description: DOE
+                        example: null
+                      BlockNOCAttach:
+                        type: string
+                        description: BlockNOCAttach
+                        example: ~/ApplicantDocument/Co_Letter/JH235641595.pdf
+                      AddharAttach:
+                        type: string
+                        description: AddharAttach
+                        example: ~/ApplicantDocument/aadhar_proof/JH235641595.pdf
+                      AgreenmentAttach:
+                        type: string
+                        description: AgreenmentAttach
+                        example: ~/ApplicantDocument/AnubhandhanLetter_proof/JH235641595.pdf
+                      PassbookAttach:
+                        type: string
+                        description: PassbookAttach
+                        example: ~/ApplicantDocument/Passbook_proof/JH235641595.pdf
+                      CancelChequeAttach:
+                        type: string
+                        description: CancelChequeAttach
+                        example: ~/ApplicantDocument/cancel_cheque_proof/JH235641595.pdf
+                      RStatus:
+                        type: string
+                        description: RStatus
+                        example: null
+                      RStatusDate:
+                        type: string
+                        description: RStatusDate
+                        example: null
+                      Reason:
+                        type: string
+                        description: Reason
+                        example: null
+                      SchemeYear:
+                        type: string
+                        description: SchemeYear
+                        example: null
+                      Photo:
+                        type: string
+                        description: Photo
+                        example: ~/ApplicantDocument/Photo/JH235641595.pdf
+                      TransSchemeYear:
+                        type: string
+                        description: TransSchemeYear
+                        example: null
+                      TransDate:
+                        type: string
+                        description: TransDate
+                        example: null
+                      TransferStatus:
+                        type: string
+                        description: TransferStatus
+                        example: null
+                      Halka:
+                        type: string
+                        description: Halka
+                        example: abc
+                      Mauja:
+                        type: string
+                        description: Mauja
+                        example: abc
+                      IsValid:
+                        type: string
+                        description: IsValid
+                        example: null
+                  errorPD:
+                    type: string
+                    description: error Description
+                    example: null
+        "400":
+          description: Bad Request/Validation Error
+components:
+  securitySchemes:
+    x-api-key:
+      type: apiKey
+      name: x-api-key
+      in: header

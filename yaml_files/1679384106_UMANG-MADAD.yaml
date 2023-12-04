@@ -1,0 +1,993 @@
+---
+  openapi: 3.0.0
+  info: 
+    title: Consular Services Management System (MADAD)
+    description: Consular Services Management System (MADAD) comes under Ministry of External Affairs, Government of India, which helps Indian Citizens to track Grievances pertaining to the Consular Services offered by the Indian Embassies and locate (Missions/Posts) abroad. <i>[Updated on 21st March 2023]</i>
+    termsOfService: https://web.umang.gov.in/uaw/ts/v1/en/index.htm
+    contact: 
+      name: Provided by - UMANG
+      url: https://web.umang.gov.in
+    version: 1.0.0
+  servers: 
+    - 
+      url: https://apigw.umangapp.in
+      description: Production Server
+  paths: 
+    /madadApi/ws1/getcon: 
+      post: 
+        tags: 
+          - Get Country List API
+        summary: Get Country List API for MADAD
+        description: This API is Used to Get Country List for MADAD
+        operationId: madadApi/ws1/getcon
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: object
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: asas
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 568
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 65
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: 0
+                  subsid2:
+                    type: string
+                    description: sub service id 2
+                    example: 0
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+        parameters: 
+          - 
+            name: Content-Type
+            in: header
+            schema: 
+              type: string
+            example: application/json
+          - 
+            name: Accept
+            in: header
+            schema: 
+              type: string
+            example: application/json
+          - 
+            name: deptid
+            in: header
+            schema: 
+              type: integer
+            example: 65
+          - 
+            name: srvid
+            in: header
+            schema: 
+              type: integer
+            example: 568
+          - 
+            name: subsid
+            in: header
+            schema: 
+              type: string
+            example: 0
+          - 
+            name: subsid2
+            in: header
+            schema: 
+              type: integer
+            example: 0
+          - 
+            name: formtrkr
+            in: header
+            schema: 
+              type: integer
+            example: 0
+          - 
+            name: x-api-key
+            in: header
+            schema: 
+              type: string
+            example: xxxxxxxxxxxx
+        responses: 
+          200: 
+            description: Successful response
+            content: 
+              application/json:
+                schema: 
+                  type: object
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        error:
+                          type: string
+                          example: null
+                        country:
+                          type: object
+                          properties:
+                            1:
+                              type: string
+                              example: Afghanistan
+                            2:
+                              type: string
+                              example: Albania
+                            50252:
+                              type: string
+                              example: Curacao
+                            50296:
+                              type: string
+                              example: Sint Maarten
+                            246:
+                              type: string
+                              example: Zimbabwe
+          400:
+            description: Bad Request/Validation Error
+    /madadApi/ws1/missabl: 
+      post: 
+        tags: 
+          - Mission Abroad Details API
+        summary: Mission Abroad Details API for MADAD
+        description: This API is Used to Get Mission Abroad Details for MADAD
+        operationId: madadApi/ws1/missabl
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: object
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: asas
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 568
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 65
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: 0
+                  subsid2:
+                    type: string
+                    description: sub service id 2
+                    example: 0
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  country:
+                    type: string
+                    description: country
+                    example: 232
+        parameters: 
+          - 
+            name: Content-Type
+            in: header
+            schema: 
+              type: string
+            example: application/json
+          - 
+            name: Accept
+            in: header
+            schema: 
+              type: string
+            example: application/json
+          - 
+            name: deptid
+            in: header
+            schema: 
+              type: integer
+            example: 65
+          - 
+            name: srvid
+            in: header
+            schema: 
+              type: integer
+            example: 568
+          - 
+            name: subsid
+            in: header
+            schema: 
+              type: string
+            example: 0
+          - 
+            name: subsid2
+            in: header
+            schema: 
+              type: integer
+            example: 0
+          - 
+            name: formtrkr
+            in: header
+            schema: 
+              type: integer
+            example: 0
+          - 
+            name: x-api-key
+            in: header
+            schema: 
+              type: string
+            example: xxxxxxxxxxxx
+        responses: 
+          200: 
+            description: Successful response
+            content: 
+              application/json:
+                schema: 
+                  type: object
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        error:
+                          type: string
+                          example: null
+                        pboList:
+                          type: array
+                          description: Response Payload
+                          items: 
+                            type: object
+                            properties:
+                              PBO_SHORT_NAME:
+                                type: string
+                                example: United Kingdom - Belfast
+                              PBO_ADDRESS:
+                                type: string
+                                example: United Kingdom - Belfast
+                              PBO_NAME:
+                                type: string
+                                example: United Kingdom - Belfast
+                              PBO_EMAIL_ID:
+                                type: string
+                                example: NA
+                              WEBSITE:
+                                type: string
+                                example: NA
+          400:
+            description: Bad Request/Validation Error
+    /madadApi/ws1/captcha: 
+      post: 
+        tags: 
+          - Captcha Details API
+        summary: Captcha Details API for MADAD
+        description: This API is Used to Get Captcha Details for MADAD
+        operationId: madadApi/ws1/captcha
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: object
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: asas
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 568
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 65
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: 0
+                  subsid2:
+                    type: string
+                    description: sub service id 2
+                    example: 0
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+        parameters: 
+          - 
+            name: Content-Type
+            in: header
+            schema: 
+              type: string
+            example: application/json
+          - 
+            name: Accept
+            in: header
+            schema: 
+              type: string
+            example: application/json
+          - 
+            name: deptid
+            in: header
+            schema: 
+              type: integer
+            example: 65
+          - 
+            name: srvid
+            in: header
+            schema: 
+              type: integer
+            example: 568
+          - 
+            name: subsid
+            in: header
+            schema: 
+              type: string
+            example: 0
+          - 
+            name: subsid2
+            in: header
+            schema: 
+              type: integer
+            example: 0
+          - 
+            name: formtrkr
+            in: header
+            schema: 
+              type: integer
+            example: 0
+          - 
+            name: x-api-key
+            in: header
+            schema: 
+              type: string
+            example: xxxxxxxxxxxx
+        responses: 
+          200: 
+            description: Successful response
+            content: 
+              application/json:
+                schema: 
+                  type: object
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        captcha:
+                          type: string
+                          example: /9j/4AAQSkZJRgABAgAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABQALkDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD2z8P8/wCf8+qf5/z/AJ/+uH/P+f8AP+KH6f5/z/n10OQD/n/P+f8AE9eP8/5/z6nrx/n/AD/n1Tr2/wA/5/z6g
+                        jsessionid:
+                          type: string
+                          example: JSESSIONID=0001TwPvghNcu8a21MC1-KO_eAh:CCMem01
+          400:
+            description: Bad Request/Validation Error
+    /madadApi/ws1/viewcomp: 
+      post: 
+        tags: 
+          - View Grievance Details API
+        summary: View Grievance Details API for MADAD
+        description: This API is Used to View Grievance Details for MADAD
+        operationId: madadApi/ws1/viewcomp
+        requestBody: 
+          content: 
+            application/json: 
+              schema: 
+                type: object
+                properties:
+                  tkn: 
+                    type: string
+                    description: session token
+                    example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                  trkr:
+                    type: string
+                    description: tracker for current transaction
+                    example: UW-nP20210518091722
+                  lang:
+                    type: string
+                    description: language
+                    example: en
+                  usrid:
+                    type: string
+                    description: user id
+                    example: 2010205769
+                  mode:
+                    type: string
+                    description: mode of the txn
+                    example: web
+                  pltfrm:
+                    type: string
+                    description: platform on which the txn happened
+                    example: windows
+                  did:
+                    type: string
+                    description: device id
+                    example: asas
+                  srvid:
+                    type: string
+                    description: service id
+                    example: 568
+                  deptid:
+                    type: string
+                    description: department id
+                    example: 65
+                  subsid:
+                    type: string
+                    description: sub service id
+                    example: 0
+                  subsid2:
+                    type: string
+                    description: sub service id 2
+                    example: 0
+                  formtrkr:
+                    type: string
+                    description: form tracker
+                    example: 0
+                  jsessionid:
+                    type: string
+                    description: jsession id
+                    example: JSESSIONID=0001zv1bc1zD7RT9Y6kcOEIXr3x:CCMem01
+                  capcha:
+                    type: string
+                    description: capcha
+                    example: 59AC94
+                  dtrack:
+                    type: string
+                    description: dtrack
+                    example: true
+                  compid:
+                    type: string
+                    description: comp id
+                    example: QT0BRT101275816
+        parameters: 
+          - 
+            name: Content-Type
+            in: header
+            schema: 
+              type: string
+            example: application/json
+          - 
+            name: Accept
+            in: header
+            schema: 
+              type: string
+            example: application/json
+          - 
+            name: deptid
+            in: header
+            schema: 
+              type: integer
+            example: 65
+          - 
+            name: srvid
+            in: header
+            schema: 
+              type: integer
+            example: 568
+          - 
+            name: subsid
+            in: header
+            schema: 
+              type: string
+            example: 0
+          - 
+            name: subsid2
+            in: header
+            schema: 
+              type: integer
+            example: 0
+          - 
+            name: formtrkr
+            in: header
+            schema: 
+              type: integer
+            example: 0
+          - 
+            name: x-api-key
+            in: header
+            schema: 
+              type: string
+            example: xxxxxxxxxxxx
+        responses: 
+          200: 
+            description: Successful response
+            content: 
+              application/json:
+                schema: 
+                  type: object
+                  properties:
+                    rs:
+                      type: string
+                      description: Response Status
+                      example: S
+                    rc:          
+                      type: string
+                      description: Response Code
+                      example: 200
+                    rd:
+                      type: string
+                      description: Response Description
+                      example: Success.
+                    pd:
+                      type: object
+                      description: Response Payload
+                      properties:
+                        conComplaintId:
+                          type: string
+                          example: QT0BRT101275816
+                        conComplaintPk:
+                          type: string
+                          example: 12718
+                        directTrack:
+                          type: string
+                          example: true
+                        dmsServiceInterface:
+                          type: string
+                          example: ''
+                        enteredCaptcha:
+                          type: string
+                          example: ''
+                        errorString:
+                          type: string
+                          example: ''
+                        extension:
+                          type: string
+                          example: null
+                        reopenStatus:
+                          type: string
+                          example: null
+                        responseString:
+                          type: string
+                          example: PASS
+                        complaintSearchResults:
+                          type: array
+                          description: complaint search results
+                          items: 
+                            type: object
+                            properties:
+                              claimed_BY:
+                                type: string
+                                example: null
+                              cons_SER_COMPLAINT_PK:
+                                type: string
+                                example: 12718
+                              con_SERV_ASST_CAT_FK:
+                                type: string
+                                example: 13
+                              worklist_PENDING_AT_LEVEL:
+                                type: string
+                                example: Level1
+                              third_PARTY_PENDENCY_FLAG:
+                                type: string
+                                example: N
+                              complaint_DESCRIPTION:
+                                type: string
+                                example: Having issue in getting Birth Certificate.
+                              complaint_STATUS_FK:
+                                type: string
+                                example: 40
+                              complaint_PRIORITY_FK:
+                                type: string
+                                example: 62
+                              con_MISSION_FK:
+                                type: string
+                                example: 159
+                              complaint_DATE:
+                                type: string
+                                example: 04/11/2016
+                              complaint_STATUS:
+                                type: string
+                                example: Closed by Grievant
+                              group_COUNT:
+                                type: string
+                                example: null
+                              complaint_ID:
+                                type: string
+                                example: QT0BRT101275816
+                              con_NAME:
+                                type: string
+                                example: AMIT VASHISHT
+                              con_PSP_NO:
+                                type: string
+                                example: B1111111
+                              vip_REF_FK:
+                                type: string
+                                example: 441
+                              other_REF:
+                                type: string
+                                example: null
+                              claimed_FLAG:
+                                type: string
+                                example: N
+                              colorcode:
+                                type: string
+                                example: RED
+                              mission:
+                                type: string
+                                example: Qatar - Doha
+                              user_ROLE:
+                                type: string
+                                example: Citizen
+                              asst_CATEGORY:
+                                type: string
+                                example: Birth Certificate
+                        conCommentsResult:
+                          type: array
+                          description: Con Comments Result
+                          items: 
+                            type: object
+                            properties:
+                              claimed_BY:
+                                type: string
+                                example: null
+                              worklist_PENDING_AT_LEVEL:
+                                type: string
+                                example: Level1
+                              complaint_STATUS_FK:
+                                type: string
+                                example: 30
+                              complaint_PRIORITY_FK:
+                                type: string
+                                example: 62
+                              complaint_STATUS:
+                                type: string
+                                example: Pending
+                              is_PUBLIC_COMMENT:
+                                type: string
+                                example: Y
+                              escalation_EMAIL_COUNT:
+                                type: string
+                                example: null
+                              complaint_PRIORITY:
+                                type: string
+                                example: Normal
+                              notif_ATTACHMENT_FK:
+                                type: string
+                                example: null
+                              is_PUBLIC_DOCUMENT:
+                                type: string
+                                example: Y
+                              status_CHANGE_FLAG:
+                                type: string
+                                example: N
+                              last_MODIFIED_DATE:
+                                type: string
+                                example: 04/11/2016 23.32.58
+                              file_EXTENSION:
+                                type: string
+                                example: null
+                              priority_CHANGE_COMMENT:
+                                type: string
+                                example: null
+                              claimed_FLAG:
+                                type: string
+                                example: N
+                              info_RECEIVED:
+                                type: string
+                                example: null
+                              user_ID:
+                                type: string
+                                example: XXX@456
+                              comments:
+                                type: string
+                                example: Grievance Registered
+                              modified_BY:
+                                type: string
+                                example: Citizen
+                              created_BY:
+                                type: string
+                                example: Grievant (XXX@456)
+                              created_DATE:
+                                type: string
+                                example: 04/11/2016 23.32.58
+                              user_ROLE:
+                                type: string
+                                example: Citizen
+                        conComplaintDetails:
+                          type: array
+                          description: Con Complaint Details
+                          items: 
+                            type: object
+                            properties:
+                              claimed_BY:
+                                type: string
+                                example: null
+                              worklist_PENDING_AT_LEVEL:
+                                type: string
+                                example: Level1
+                              complaint_DESCRIPTION:
+                                type: string
+                                example: Having issue in getting Birth Certificate.
+                              complaint_STATUS_FK:
+                                type: string
+                                example: 40
+                              complaint_PRIORITY_FK:
+                                type: string
+                                example: 62
+                              con_MISSION_FK:
+                                type: string
+                                example: 159
+                              complaint_DATE:
+                                type: string
+                                example: 2016-11-04T00:00:00
+                              complaint_PRIORITY:
+                                type: string
+                                example: '-'
+                              ra_DISTRICT_FK:
+                                type: string
+                                example: null
+                              old_MISSION_FK:
+                                type: string
+                                example: null
+                              twitter_TICKET_ID:
+                                type: string
+                                example: null
+                              con_MISSION_NAME:
+                                type: string
+                                example: Qatar - Doha
+                              other_RELATION:
+                                type: string
+                                example: null
+                              con_CURRENT_ADDRESS:
+                                type: string
+                                example: H NO. 271/A, SURESH SHARMA NAGAR, BAREILLY
+                              req_CUR_ADDRESS:
+                                type: string
+                                example: H NO. 271/A, SURESH SHARMA NAGAR, BAREILLY
+                              con_EMIGRANT_NO:
+                                type: string
+                                example: null
+                              req_EMIGRANT_NO:
+                                type: string
+                                example: null
+                              recruiting_AGENT:
+                                type: string
+                                example: Not Available
+                              complaint_CATEGORY:
+                                type: string
+                                example: Birth Certificate
+                              psp_SHARED_FLAG:
+                                type: string
+                                example: null
+                              overseas_AGENT:
+                                type: string
+                                example: null
+                              third_PARTY_PENDENCY:
+                                type: string
+                                example: No
+                              req_MISSION_FK:
+                                type: string
+                                example: 159
+                              compl_RELATION_FK:
+                                type: string
+                                example: null
+                              emigrate_SERVICE_USED:
+                                type: string
+                                example: Don't Know
+                              reopen_COMMENTS:
+                                type: string
+                                example: null
+                              grievance_SHARED_FLAG:
+                                type: string
+                                example: null
+                              req_MISSION_NAME:
+                                type: string
+                                example: Qatar - Doha
+                              group_COUNT:
+                                type: string
+                                example: null
+                              complaint_ID:
+                                type: string
+                                example: QT0BRT101275816
+                              con_NAME:
+                                type: string
+                                example: AMIT VASHISHT
+                              con_PSP_NO:
+                                type: string
+                                example: B1111111
+                              vip_REF_FK:
+                                type: string
+                                example: 441
+                              other_REF:
+                                type: string
+                                example: null
+                              claimed_FLAG:
+                                type: string
+                                example: N
+                              user_ROLE:
+                                type: string
+                                example: Citizen
+                              pending_LEVEL:
+                                type: string
+                                example: Level1
+                              con_DOB:
+                                type: string
+                                example: 1993-08-26T00:00:00
+                              con_PHONE_NO:
+                                type: string
+                                example: ''
+                              req_NAME:
+                                type: string
+                                example: AMIT VASHISHT
+                              req_DOB:
+                                type: string
+                                example: 1993-08-26T00:00:00
+                              req_PHONE_NO:
+                                type: string
+                                example: null
+                              con_EMAIL_ID:
+                                type: string
+                                example: AMITCHAUHAN757@GMAIL.COM
+                              con_MOBILE_NO:
+                                type: string
+                                example: 7065324606
+                              req_MOB_NO:
+                                type: string
+                                example: 7065324606
+                              req_EMAIL_ID:
+                                type: string
+                                example: AMITCHAUHAN757@GMAIL.COM
+                              dist_NAME:
+                                type: string
+                                example: ''
+                              con_GENDER_FK:
+                                type: string
+                                example: 33
+                              ra_CONTACT_NO:
+                                type: string
+                                example: null
+                              ra_STATE_FK:
+                                type: string
+                                example: null
+                              ra_ADDRESS:
+                                type: string
+                                example: null
+                              req_ADHAR_NO:
+                                type: string
+                                example: Not Available
+                              req_GENDER_FK:
+                                type: string
+                                example: 33
+                              req_GENDER:
+                                type: string
+                                example: MALE
+                              con_GENDER:
+                                type: string
+                                example: MALE
+                              state_NAME:
+                                type: string
+                                example: ''
+                              ra_EMAIL_ID:
+                                type: string
+                                example: null
+                              vip_REFERENCE:
+                                type: string
+                                example: None
+                              pending_AT:
+                                type: string
+                                example: WELFARE OFFICER
+                              status:
+                                type: string
+                                example: Closed by Grievant
+                              con_ADHAR_NO:
+                                type: string
+                                example: Not Available
+                              con_RELATION:
+                                type: string
+                                example: ''
+          400:
+            description: Bad Request/Validation Error

@@ -1,0 +1,1414 @@
+openapi: 3.0.0
+info:
+  title: Poshan Tracker (PT) State APIs
+  version: 1.0.0
+  description: The ‘Poshan Tracker’ is a mobile based application rolled out by the Ministry of Women and Child Development, Government of India on 1st March 2021 through National e-Governance Division (NeGD), Poshan Tracker is an important governance tool. Technology under Poshan Tracker is being leveraged for dynamic identification of stunting, wasting, under-weight prevalence among children and last mile tracking of nutrition service delivery <i>[Updated on 15th December 2022]</i>.
+  termsOfService: "https://www.poshantracker.in/termsofservice"
+  contact: 
+    name: "Provided by - MWCD"
+    url: "https://www.poshantracker.in/"
+    
+servers:
+  - url: https://apisetu.gov.in
+    description: Production Server
+security:
+  - clientId: []
+  - apiKey: []
+  
+paths:
+  /pt/{LGDStateCode}/srv/v1/thr:
+    post:
+      tags:
+        - Take Home Ration API 
+      summary: Monthly Take Home Ration (THR) Data
+      description: >-
+        API to provide the list of beneficiaries who received Take Home Ration(THR) in a month
+      
+        
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                project_id: 4013
+                month: '10'
+                year: '2022'
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: LGDStateCode
+          in: path
+          schema:
+            type: integer
+          required: true
+          description: | 
+                     State LGD as per <a href="https://lgdirectory.gov.in" target="_blank">https://lgdirectory.gov.in</a>
+        
+                      **The below table defines the State codes as per LGD**
+                      
+                      | State Code       | State Name  |
+                      | ---------------- | ------------|
+                      | 35              | ANDAMAN AND NICOBAR ISLANDS     |
+                      | 28              | ANDHRA PRADESH |
+                      | 12              | ARUNACHAL PRADESH|
+                      | 18              | ASSAM|
+                      | 10              | BIHAR|
+                      | 4               | CHANDIGARH|
+                      | 22              | CHHATTISGARH|
+                      | 7               | DELHI |
+                      | 30              | GOA|
+                      | 24              | GUJARAT|
+                      | 6               | HARYANA|
+                      | 2               | HIMACHAL PRADESH|
+                      | 1               | JAMMU AND KASHMIR|
+                      | 20              | JHARKHAND |
+                      | 29              | KARNATAKA |
+                      | 32              | KERALA|
+                      | 37              | LADAKH|
+                      | 31              | LAKSHADWEEP|
+                      | 23              | MADHYA PRADESH|
+                      | 27              | MAHARASHTRA |
+                      | 14              | MANIPUR|
+                      | 17              | MEGHALAYA|
+                      | 15              | MIZORAM|
+                      | 13              | NAGALAND|
+                      | 21              | ODISHA|
+                      | 34              | PUDUCHERRY |
+                      | 3               | PUNJAB |
+                      | 8               | RAJASTHAN|
+                      | 11              | SIKKIM|
+                      | 33              | TAMIL NADU|
+                      | 36              | TELANGANA|
+                      | 38              | THE DADRA AND NAGAR HAVELI AND DAMAN AND DIU |
+                      | 16              | TRIPURA|
+                      | 5               | UTTARAKHAND|
+                      | 9               | UTTAR PRADESH|
+                      | 19              | WEST BENGAL|
+          
+                      
+                      
+                      
+                      
+          example: '27'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                data:
+                  - awc_id: 123456
+                    beneficiary_id: 111222333
+                    beneficiary_type: lactating_mother
+                    district_id: 400
+                    dob: '2001-06-07'
+                    month: '10'
+                    name: Arch govind
+                    project_id: 1234
+                    provided_thr: 44
+                    sector_id: 12345
+                    state_id: 12
+                    year: '2022'
+                district_id: 400
+                month: '10'
+                project_id: '1234'
+                response: success
+                state_id: 12
+                status: 1
+                year: '2022'
+                
+        '401':
+          description: Unauthorized access
+          content:
+            application/json:
+              schema:
+                type: object
+                
+              examples:
+                When ts is missing in header:
+                  $ref: '#/components/examples/when_ts_is_missing_in_header'  
+                When clientid is missing in header:
+                  $ref: '#/components/examples/when_clientid_is_missing_in_header'  
+                Authorization token invalid:
+                  $ref: '#/components/examples/Authorization_token_invalid' 
+                Authorization token expired:
+                  $ref: '#/components/examples/Authorization_token_expired'  
+        '404':
+          description: No record found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: record_not_found
+                      
+                  errorDescription:
+                    type: string
+                    example:  no record found       
+        '500':
+          description: No record found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: internal_server_error
+                      
+                  errorDescription:
+                    type: string
+                    example:  Internal server error     
+  /pt/{LGDStateCode}/srv/v1/hcm:
+    post:
+      tags:
+        - Hot Cooked Meal API
+      summary: Monthly Hot Cooked Meal (HCM) Data
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                project_id: 4013
+                month: '10'
+                year: '2022'
+      parameters:
+        - name: LGDStateCode
+          in: path
+          schema:
+            type: integer
+          required: true
+          description: | 
+                     State LGD as per <a href="https://lgdirectory.gov.in" target="_blank">https://lgdirectory.gov.in</a>
+        
+                      **The below table defines the State codes as per LGD**
+                      
+                      | State Code       | State Name  |
+                      | ---------------- | ------------|
+                      | 35              | ANDAMAN AND NICOBAR ISLANDS     |
+                      | 28              | ANDHRA PRADESH |
+                      | 12              | ARUNACHAL PRADESH|
+                      | 18              | ASSAM|
+                      | 10              | BIHAR|
+                      | 4               | CHANDIGARH|
+                      | 22              | CHHATTISGARH|
+                      | 7               | DELHI |
+                      | 30              | GOA|
+                      | 24              | GUJARAT|
+                      | 6               | HARYANA|
+                      | 2               | HIMACHAL PRADESH|
+                      | 1               | JAMMU AND KASHMIR|
+                      | 20              | JHARKHAND |
+                      | 29              | KARNATAKA |
+                      | 32              | KERALA|
+                      | 37              | LADAKH|
+                      | 31              | LAKSHADWEEP|
+                      | 23              | MADHYA PRADESH|
+                      | 27              | MAHARASHTRA |
+                      | 14              | MANIPUR|
+                      | 17              | MEGHALAYA|
+                      | 15              | MIZORAM|
+                      | 13              | NAGALAND|
+                      | 21              | ODISHA|
+                      | 34              | PUDUCHERRY |
+                      | 3               | PUNJAB |
+                      | 8               | RAJASTHAN|
+                      | 11              | SIKKIM|
+                      | 33              | TAMIL NADU|
+                      | 36              | TELANGANA|
+                      | 38              | THE DADRA AND NAGAR HAVELI AND DAMAN AND DIU |
+                      | 16              | TRIPURA|
+                      | 5               | UTTARAKHAND|
+                      | 9               | UTTAR PRADESH|
+                      | 19              | WEST BENGAL|
+          example: '27'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                data:
+                  - awc_id: 718012
+                    beneficiary_id: 152738906
+                    beneficiary_type: children_3y_6y
+                    district_id: 392
+                    dob: '2019-07-29'
+                    month: '10'
+                    name: Aarushi ganesh salve
+                    project_id: '4013'
+                    provided_hcm: 1
+                    sector_id: 26342
+                    state_id: 1
+                    year: '2022'
+                district_id: 392
+                month: '10'
+                project_id: '4013'
+                response: success
+                state_id: 1
+                status: 1
+                year: '2022'
+        '401':
+          description: Unauthorized access
+          content:
+            application/json:
+              schema:
+                type: object
+                
+              examples:
+                When ts is missing in header:
+                  $ref: '#/components/examples/when_ts_is_missing_in_header'  
+                When clientid is missing in header:
+                  $ref: '#/components/examples/when_clientid_is_missing_in_header'  
+                Authorization token invalid:
+                  $ref: '#/components/examples/Authorization_token_invalid' 
+                Authorization token expired:
+                  $ref: '#/components/examples/Authorization_token_expired'  
+        '404':
+          description: No record found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: record_not_found
+                      
+                  errorDescription:
+                    type: string
+                    example:  no record found       
+        '500':
+          description: No record found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: internal_server_error
+                      
+                  errorDescription:
+                    type: string
+                    example:  Internal server error             
+  /pt/{LGDStateCode}/srv/v1/gm:
+    post:
+      tags:
+        - Growth Monitoring API
+      summary: Monthly Growth Monitoring Data
+      description: >-
+        API to provide the list of beneficiaries whose Growth was monitored in a
+        month
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                project_id: 4013
+                month: '10'
+                year: '2022'
+      parameters:
+        - name: LGDStateCode
+          in: path
+          schema:
+            type: integer
+          required: true
+          description: | 
+                     State LGD as per <a href="https://lgdirectory.gov.in" target="_blank">https://lgdirectory.gov.in</a>
+        
+                      **The below table defines the State codes as per LGD**
+                      
+                      | State Code       | State Name  |
+                      | ---------------- | ------------|
+                      | 35              | ANDAMAN AND NICOBAR ISLANDS     |
+                      | 28              | ANDHRA PRADESH |
+                      | 12              | ARUNACHAL PRADESH|
+                      | 18              | ASSAM|
+                      | 10              | BIHAR|
+                      | 4               | CHANDIGARH|
+                      | 22              | CHHATTISGARH|
+                      | 7               | DELHI |
+                      | 30              | GOA|
+                      | 24              | GUJARAT|
+                      | 6               | HARYANA|
+                      | 2               | HIMACHAL PRADESH|
+                      | 1               | JAMMU AND KASHMIR|
+                      | 20              | JHARKHAND |
+                      | 29              | KARNATAKA |
+                      | 32              | KERALA|
+                      | 37              | LADAKH|
+                      | 31              | LAKSHADWEEP|
+                      | 23              | MADHYA PRADESH|
+                      | 27              | MAHARASHTRA |
+                      | 14              | MANIPUR|
+                      | 17              | MEGHALAYA|
+                      | 15              | MIZORAM|
+                      | 13              | NAGALAND|
+                      | 21              | ODISHA|
+                      | 34              | PUDUCHERRY |
+                      | 3               | PUNJAB |
+                      | 8               | RAJASTHAN|
+                      | 11              | SIKKIM|
+                      | 33              | TAMIL NADU|
+                      | 36              | TELANGANA|
+                      | 38              | THE DADRA AND NAGAR HAVELI AND DAMAN AND DIU |
+                      | 16              | TRIPURA|
+                      | 5               | UTTARAKHAND|
+                      | 9               | UTTAR PRADESH|
+                      | 19              | WEST BENGAL|
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+          example: '27'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                data:
+                  - awc_id: 717983
+                    beneficiary_id: 25665144
+                    beneficiary_type: children_3y_6y
+                    district_id: 392
+                    dob: '2017-04-24'
+                    height: 104
+                    height_capture_date: '2022-10-28'
+                    height_unit: cm
+                    month: '10'
+                    name: Aayat
+                    project_id: '4013'
+                    sector_id: 26340
+                    state_id: 1
+                    stunted: normal
+                    underweight: normal
+                    wasting: None
+                    weight: 16
+                    weight_capture_date: '2022-10-28'
+                    weight_unit: kg
+                    year: '2022'
+                district_id: 392
+                month: '10'
+                project_id: '4013'
+                response: success
+                state_id: 1
+                status: 1
+                year: '2022'
+        '401':
+          description: Unauthorized access
+          content:
+            application/json:
+              schema:
+                type: object
+                
+              examples:
+                When ts is missing in header:
+                  $ref: '#/components/examples/when_ts_is_missing_in_header'  
+                When clientid is missing in header:
+                  $ref: '#/components/examples/when_clientid_is_missing_in_header'  
+                Authorization token invalid:
+                  $ref: '#/components/examples/Authorization_token_invalid' 
+                Authorization token expired:
+                  $ref: '#/components/examples/Authorization_token_expired'  
+        '404':
+          description: No record found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: record_not_found
+                      
+                  errorDescription:
+                    type: string
+                    example:  no record found       
+        '500':
+          description: No record found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: internal_server_error
+                      
+                  errorDescription:
+                    type: string
+                    example:  Internal server error             
+  /pt/{LGDStateCode}/srv/v1/pregnant_women:
+    post:
+      tags:
+        - Pregnant Women Listing API
+      summary: Pregnant Women List
+      description: API to provide the list of Pregnant Women as on date
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                project_id: 4013
+                date: 14
+                month: 11
+                year: 2022
+      
+      parameters:
+        - name: LGDStateCode
+          in: path
+          schema:
+            type: integer
+          required: true
+          description: | 
+                     State LGD as per <a href="https://lgdirectory.gov.in" target="_blank">https://lgdirectory.gov.in</a>
+        
+                      **The below table defines the State codes as per LGD**
+                      
+                      | State Code       | State Name  |
+                      | ---------------- | ------------|
+                      | 35              | ANDAMAN AND NICOBAR ISLANDS     |
+                      | 28              | ANDHRA PRADESH |
+                      | 12              | ARUNACHAL PRADESH|
+                      | 18              | ASSAM|
+                      | 10              | BIHAR|
+                      | 4               | CHANDIGARH|
+                      | 22              | CHHATTISGARH|
+                      | 7               | DELHI |
+                      | 30              | GOA|
+                      | 24              | GUJARAT|
+                      | 6               | HARYANA|
+                      | 2               | HIMACHAL PRADESH|
+                      | 1               | JAMMU AND KASHMIR|
+                      | 20              | JHARKHAND |
+                      | 29              | KARNATAKA |
+                      | 32              | KERALA|
+                      | 37              | LADAKH|
+                      | 31              | LAKSHADWEEP|
+                      | 23              | MADHYA PRADESH|
+                      | 27              | MAHARASHTRA |
+                      | 14              | MANIPUR|
+                      | 17              | MEGHALAYA|
+                      | 15              | MIZORAM|
+                      | 13              | NAGALAND|
+                      | 21              | ODISHA|
+                      | 34              | PUDUCHERRY |
+                      | 3               | PUNJAB |
+                      | 8               | RAJASTHAN|
+                      | 11              | SIKKIM|
+                      | 33              | TAMIL NADU|
+                      | 36              | TELANGANA|
+                      | 38              | THE DADRA AND NAGAR HAVELI AND DAMAN AND DIU |
+                      | 16              | TRIPURA|
+                      | 5               | UTTARAKHAND|
+                      | 9               | UTTAR PRADESH|
+                      | 19              | WEST BENGAL| 
+          example: '27'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                data:
+                  - aadhar_flag: S
+                    aadhar_number: null
+                    aadhar_verified: not_verified
+                    awc_id: 717964
+                    beneficiary_type: pregnant_woman
+                    category: Minority
+                    district_id: null
+                    dob: '1998-06-17'
+                    father_name: ''
+                    first_pregnancy: ''
+                    husband_name: Humer rahman  bagwan
+                    id: 224423220
+                    lmp: '2022-07-19'
+                    miscarried_before: ''
+                    mobile_verified: not_verified
+                    mother_name: ''
+                    name: Najama humer bagwan
+                    project_id: 4013
+                    sector_id: null
+                    state_id: null
+                    updated_at: '2022-10-27 21:43:22'
+                date: '2022-11-14'
+                district_id: null
+                month: '11'
+                project_id: 4013
+                response: success
+                state_id: null
+                status: 1
+                year: '2022'
+        '401':
+          description: Unauthorized access
+          content:
+            application/json:
+              schema:
+                type: object
+                
+              examples:
+                When ts is missing in header:
+                  $ref: '#/components/examples/when_ts_is_missing_in_header'  
+                When clientid is missing in header:
+                  $ref: '#/components/examples/when_clientid_is_missing_in_header'  
+                Authorization token invalid:
+                  $ref: '#/components/examples/Authorization_token_invalid' 
+                Authorization token expired:
+                  $ref: '#/components/examples/Authorization_token_expired'  
+        '404':
+          description: No record found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: record_not_found
+                      
+                  errorDescription:
+                    type: string
+                    example:  no record found       
+        '500':
+          description: No record found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: internal_server_error
+                      
+                  errorDescription:
+                    type: string
+                    example:  Internal server error             
+  /pt/{LGDStateCode}/srv/v1/lactating_mother:
+    post:
+      tags:
+        - Lactating Mothers Listing API
+      summary: Lactating Mothers List
+      description: API to provide the list of Lactating Mothers as on date
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                project_id: 4013
+                date: 14
+                month: 11
+                year: 2022
+
+        
+      parameters:
+        - name: LGDStateCode
+          in: path
+          schema:
+            type: integer
+          required: true
+          description: | 
+                     State LGD as per <a href="https://lgdirectory.gov.in" target="_blank">https://lgdirectory.gov.in</a>
+        
+                      **The below table defines the State codes as per LGD**
+                      
+                      | State Code       | State Name  |
+                      | ---------------- | ------------|
+                      | 35              | ANDAMAN AND NICOBAR ISLANDS     |
+                      | 28              | ANDHRA PRADESH |
+                      | 12              | ARUNACHAL PRADESH|
+                      | 18              | ASSAM|
+                      | 10              | BIHAR|
+                      | 4               | CHANDIGARH|
+                      | 22              | CHHATTISGARH|
+                      | 7               | DELHI |
+                      | 30              | GOA|
+                      | 24              | GUJARAT|
+                      | 6               | HARYANA|
+                      | 2               | HIMACHAL PRADESH|
+                      | 1               | JAMMU AND KASHMIR|
+                      | 20              | JHARKHAND |
+                      | 29              | KARNATAKA |
+                      | 32              | KERALA|
+                      | 37              | LADAKH|
+                      | 31              | LAKSHADWEEP|
+                      | 23              | MADHYA PRADESH|
+                      | 27              | MAHARASHTRA |
+                      | 14              | MANIPUR|
+                      | 17              | MEGHALAYA|
+                      | 15              | MIZORAM|
+                      | 13              | NAGALAND|
+                      | 21              | ODISHA|
+                      | 34              | PUDUCHERRY |
+                      | 3               | PUNJAB |
+                      | 8               | RAJASTHAN|
+                      | 11              | SIKKIM|
+                      | 33              | TAMIL NADU|
+                      | 36              | TELANGANA|
+                      | 38              | THE DADRA AND NAGAR HAVELI AND DAMAN AND DIU |
+                      | 16              | TRIPURA|
+                      | 5               | UTTARAKHAND|
+                      | 9               | UTTAR PRADESH|
+                      | 19              | WEST BENGAL| 
+          example: '27'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                data:
+                  - aadhar_flag: S
+                    aadhar_number: null
+                    aadhar_verified: verified_success
+                    awc_id: 717964
+                    beneficiary_type: lactating_mother
+                    category: Minority
+                    delivery_date: '2022-09-05'
+                    district_id: null
+                    dob: '2002-07-13'
+                    father_name: ''
+                    husband_name: Sameer Nasir Shaha
+                    id: 224269550
+                    mobile_verified: verified
+                    mother_name: ''
+                    name: Sumaiyya Sameer Shaha
+                    project_id: 4013
+                    sector_id: null
+                    state_id: null
+                    updated_at: '2022-11-01 17:16:26'
+                date: '2022-11-14'
+                district_id: null
+                month: '11'
+                project_id: 4013
+                response: success
+                state_id: null
+                status: 1
+                year: '2022'
+        '401':
+          description: Unauthorized access
+          content:
+            application/json:
+              schema:
+                type: object
+                
+              examples:
+                When ts is missing in header:
+                  $ref: '#/components/examples/when_ts_is_missing_in_header'  
+                When clientid is missing in header:
+                  $ref: '#/components/examples/when_clientid_is_missing_in_header'  
+                Authorization token invalid:
+                  $ref: '#/components/examples/Authorization_token_invalid' 
+                Authorization token expired:
+                  $ref: '#/components/examples/Authorization_token_expired'  
+        '404':
+          description: No record found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: record_not_found
+                      
+                  errorDescription:
+                    type: string
+                    example:  no record found       
+        '500':
+          description: No record found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: internal_server_error
+                      
+                  errorDescription:
+                    type: string
+                    example:  Internal server error             
+  /pt/{LGDStateCode}/srv/v1/children_0m_6m:
+    post:
+      tags:
+        - 0-6 Months Children Listing API
+      summary: Beneficiaries List of age 0 - 6 months
+      description: API to provide the list of beneficiaries between 0 - 6 months age
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                project_id: 4013
+                date: 14
+                month: 11
+                year: 2022
+      parameters:
+        - name: LGDStateCode
+          in: path
+          schema:
+            type: integer
+          required: true
+          description: | 
+                     State LGD as per <a href="https://lgdirectory.gov.in" target="_blank">https://lgdirectory.gov.in</a>
+        
+                      **The below table defines the State codes as per LGD**
+                      
+                      | State Code       | State Name  |
+                      | ---------------- | ------------|
+                      | 35              | ANDAMAN AND NICOBAR ISLANDS     |
+                      | 28              | ANDHRA PRADESH |
+                      | 12              | ARUNACHAL PRADESH|
+                      | 18              | ASSAM|
+                      | 10              | BIHAR|
+                      | 4               | CHANDIGARH|
+                      | 22              | CHHATTISGARH|
+                      | 7               | DELHI |
+                      | 30              | GOA|
+                      | 24              | GUJARAT|
+                      | 6               | HARYANA|
+                      | 2               | HIMACHAL PRADESH|
+                      | 1               | JAMMU AND KASHMIR|
+                      | 20              | JHARKHAND |
+                      | 29              | KARNATAKA |
+                      | 32              | KERALA|
+                      | 37              | LADAKH|
+                      | 31              | LAKSHADWEEP|
+                      | 23              | MADHYA PRADESH|
+                      | 27              | MAHARASHTRA |
+                      | 14              | MANIPUR|
+                      | 17              | MEGHALAYA|
+                      | 15              | MIZORAM|
+                      | 13              | NAGALAND|
+                      | 21              | ODISHA|
+                      | 34              | PUDUCHERRY |
+                      | 3               | PUNJAB |
+                      | 8               | RAJASTHAN|
+                      | 11              | SIKKIM|
+                      | 33              | TAMIL NADU|
+                      | 36              | TELANGANA|
+                      | 38              | THE DADRA AND NAGAR HAVELI AND DAMAN AND DIU |
+                      | 16              | TRIPURA|
+                      | 5               | UTTARAKHAND|
+                      | 9               | UTTAR PRADESH|
+                      | 19              | WEST BENGAL|
+          example: '27'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                data:
+                  - aadhar_flag: ''
+                    aadhar_number: null
+                    aadhar_verified: not_verified
+                    awc_id: 717964
+                    beneficiary_type: children_0m_6m
+                    category: SC
+                    district_id: null
+                    dob: '2022-07-27'
+                    father_name: Milind babasaheb  jadhav
+                    gender: F
+                    id: 224671460
+                    mobile_verified: not_verified
+                    mother_name: Kajal milind jadhav
+                    name: Vedika milind jadhv
+                    project_id: 4013
+                    sector_id: null
+                    state_id: null
+                    updated_at: '2022-10-29 22:28:24'
+                date: '2022-11-14'
+                district_id: null
+                month: '11'
+                project_id: 4013
+                response: success
+                state_id: null
+                status: 1
+                year: '2022'
+        '401':
+          description: Unauthorized access
+          content:
+            application/json:
+              schema:
+                type: object
+                
+              examples:
+                When ts is missing in header:
+                  $ref: '#/components/examples/when_ts_is_missing_in_header'  
+                When clientid is missing in header:
+                  $ref: '#/components/examples/when_clientid_is_missing_in_header'  
+                Authorization token invalid:
+                  $ref: '#/components/examples/Authorization_token_invalid' 
+                Authorization token expired:
+                  $ref: '#/components/examples/Authorization_token_expired'  
+        '404':
+          description: No record found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: record_not_found
+                      
+                  errorDescription:
+                    type: string
+                    example:  no record found       
+        '500':
+          description: No record found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: internal_server_error
+                      
+                  errorDescription:
+                    type: string
+                    example:  Internal server error             
+  /pt/{LGDStateCode}/srv/v1/children_6m_3y:
+    post:
+      tags:
+        - 6 Months-3 Years Children Listing API  
+      summary: Beneficiaries List of age 6 months - 3 years
+      description: API to provide the list of beneficiaries between 6 months - 3 years age
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                project_id: 4013
+                date: 14
+                month: 11
+                year: 2022
+      parameters:
+        - name: LGDStateCode
+          in: path
+          schema:
+            type: integer
+          required: true
+          description: | 
+                     State LGD as per <a href="https://lgdirectory.gov.in" target="_blank">https://lgdirectory.gov.in</a>
+        
+                      **The below table defines the State codes as per LGD**
+                      
+                      | State Code       | State Name  |
+                      | ---------------- | ------------|
+                      | 35              | ANDAMAN AND NICOBAR ISLANDS     |
+                      | 28              | ANDHRA PRADESH |
+                      | 12              | ARUNACHAL PRADESH|
+                      | 18              | ASSAM|
+                      | 10              | BIHAR|
+                      | 4               | CHANDIGARH|
+                      | 22              | CHHATTISGARH|
+                      | 7               | DELHI |
+                      | 30              | GOA|
+                      | 24              | GUJARAT|
+                      | 6               | HARYANA|
+                      | 2               | HIMACHAL PRADESH|
+                      | 1               | JAMMU AND KASHMIR|
+                      | 20              | JHARKHAND |
+                      | 29              | KARNATAKA |
+                      | 32              | KERALA|
+                      | 37              | LADAKH|
+                      | 31              | LAKSHADWEEP|
+                      | 23              | MADHYA PRADESH|
+                      | 27              | MAHARASHTRA |
+                      | 14              | MANIPUR|
+                      | 17              | MEGHALAYA|
+                      | 15              | MIZORAM|
+                      | 13              | NAGALAND|
+                      | 21              | ODISHA|
+                      | 34              | PUDUCHERRY |
+                      | 3               | PUNJAB |
+                      | 8               | RAJASTHAN|
+                      | 11              | SIKKIM|
+                      | 33              | TAMIL NADU|
+                      | 36              | TELANGANA|
+                      | 38              | THE DADRA AND NAGAR HAVELI AND DAMAN AND DIU |
+                      | 16              | TRIPURA|
+                      | 5               | UTTARAKHAND|
+                      | 9               | UTTAR PRADESH|
+                      | 19              | WEST BENGAL|
+          example: '27'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                data:
+                  - aadhar_flag: S
+                    aadhar_number: null
+                    aadhar_verified: verified_error
+                    awc_id: 717949
+                    beneficiary_type: children_6m_3y
+                    category: SC
+                    district_id: null
+                    dob: '2020-08-31'
+                    father_name: Sadanand
+                    gender: F
+                    id: 223196687
+                    mobile_verified: not_verified
+                    mother_name: Vidya
+                    name: Trisha sadanand engale
+                    project_id: 4013
+                    sector_id: null
+                    state_id: null
+                    updated_at: '2022-10-31 12:06:40'
+                date: '2022-11-14'
+                district_id: null
+                month: '11'
+                project_id: 4013
+                response: success
+                state_id: null
+                status: 1
+                year: '2022'
+        '401':
+          description: Unauthorized access
+          content:
+            application/json:
+              schema:
+                type: object
+                
+              examples:
+                When ts is missing in header:
+                  $ref: '#/components/examples/when_ts_is_missing_in_header'  
+                When clientid is missing in header:
+                  $ref: '#/components/examples/when_clientid_is_missing_in_header'  
+                Authorization token invalid:
+                  $ref: '#/components/examples/Authorization_token_invalid' 
+                Authorization token expired:
+                  $ref: '#/components/examples/Authorization_token_expired'  
+        '404':
+          description: No record found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: record_not_found
+                      
+                  errorDescription:
+                    type: string
+                    example:  no record found       
+        '500':
+          description: No record found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: internal_server_error
+                      
+                  errorDescription:
+                    type: string
+                    example:  Internal server error             
+  /pt/{LGDStateCode}/srv/v1/children_3y_6y:
+    post:
+      tags:
+        - 3-6 Years Children Listing API 
+      summary: Beneficiaries List of age 3 years - 6 years
+      description: API to provide the list of beneficiaries between 3 years - 6 years age
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                project_id: 4013
+                date: 14
+                month: 11
+                year: 2022
+      parameters:
+        
+        - name: LGDStateCode
+          in: path
+          schema:
+            type: integer
+          required: true
+          description: | 
+                     State LGD as per <a href="https://lgdirectory.gov.in" target="_blank">https://lgdirectory.gov.in</a>
+        
+                      **The below table defines the State codes as per LGD**
+                      
+                      | State Code       | State Name  |
+                      | ---------------- | ------------|
+                      | 35              | ANDAMAN AND NICOBAR ISLANDS     |
+                      | 28              | ANDHRA PRADESH |
+                      | 12              | ARUNACHAL PRADESH|
+                      | 18              | ASSAM|
+                      | 10              | BIHAR|
+                      | 4               | CHANDIGARH|
+                      | 22              | CHHATTISGARH|
+                      | 7               | DELHI |
+                      | 30              | GOA|
+                      | 24              | GUJARAT|
+                      | 6               | HARYANA|
+                      | 2               | HIMACHAL PRADESH|
+                      | 1               | JAMMU AND KASHMIR|
+                      | 20              | JHARKHAND |
+                      | 29              | KARNATAKA |
+                      | 32              | KERALA|
+                      | 37              | LADAKH|
+                      | 31              | LAKSHADWEEP|
+                      | 23              | MADHYA PRADESH|
+                      | 27              | MAHARASHTRA |
+                      | 14              | MANIPUR|
+                      | 17              | MEGHALAYA|
+                      | 15              | MIZORAM|
+                      | 13              | NAGALAND|
+                      | 21              | ODISHA|
+                      | 34              | PUDUCHERRY |
+                      | 3               | PUNJAB |
+                      | 8               | RAJASTHAN|
+                      | 11              | SIKKIM|
+                      | 33              | TAMIL NADU|
+                      | 36              | TELANGANA|
+                      | 38              | THE DADRA AND NAGAR HAVELI AND DAMAN AND DIU |
+                      | 16              | TRIPURA|
+                      | 5               | UTTARAKHAND|
+                      | 9               | UTTAR PRADESH|
+                      | 19              | WEST BENGAL|
+          example: '27'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                data:
+                  - aadhar_flag: S
+                    aadhar_number: null
+                    aadhar_verified: verified_error
+                    awc_id: 123456
+                    beneficiary_type: children_3y_6y
+                    category: ''
+                    district_id: null
+                    dob: '2018-04-20'
+                    father_name: Yogesh pandurang
+                    gender: M
+                    id: 12345678
+                    mobile_verified: not_verified
+                    mother_name: Sonali
+                    name: Swaraj yogesh birari
+                    project_id: 4013
+                    sector_id: null
+                    state_id: null
+                    updated_at: '2022-10-30 15:07:07'
+                date: '2022-11-14'
+                district_id: null
+                month: '11'
+                project_id: 4013
+                response: success
+                state_id: null
+                status: 1
+                year: '2022'
+        '401':
+          description: Unauthorized access
+          content:
+            application/json:
+              schema:
+                type: object
+                
+              examples:
+                When ts is missing in header:
+                  $ref: '#/components/examples/when_ts_is_missing_in_header'  
+                When clientid is missing in header:
+                  $ref: '#/components/examples/when_clientid_is_missing_in_header'  
+                Authorization token invalid:
+                  $ref: '#/components/examples/Authorization_token_invalid' 
+                Authorization token expired:
+                  $ref: '#/components/examples/Authorization_token_expired'  
+        '404':
+          description: No record found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: record_not_found
+                      
+                  errorDescription:
+                    type: string
+                    example:  no record found       
+        '500':
+          description: No record found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: internal_server_error
+                      
+                  errorDescription:
+                    type: string
+                    example:  Internal server error             
+  /pt/{LGDStateCode}/srv/v1/adolescent_girl:
+    post:
+      tags:
+        - Adolescent Girls Listing 
+      summary: Adolescent Girls List
+      description: API to provide the list of Adolescent girls as on date
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                project_id: 4013
+                date: 14
+                month: 11
+                year: 2022
+      parameters:
+        
+        - name: LGDStateCode
+          in: path
+          schema:
+            type: integer
+          required: true
+          description: | 
+                     State LGD as per <a href="https://lgdirectory.gov.in" target="_blank">https://lgdirectory.gov.in</a>
+        
+                      **The below table defines the State codes as per LGD**
+                      
+                      | State Code       | State Name  |
+                      | ---------------- | ------------|
+                      | 35              | ANDAMAN AND NICOBAR ISLANDS     |
+                      | 28              | ANDHRA PRADESH |
+                      | 12              | ARUNACHAL PRADESH|
+                      | 18              | ASSAM|
+                      | 10              | BIHAR|
+                      | 4               | CHANDIGARH|
+                      | 22              | CHHATTISGARH|
+                      | 7               | DELHI |
+                      | 30              | GOA|
+                      | 24              | GUJARAT|
+                      | 6               | HARYANA|
+                      | 2               | HIMACHAL PRADESH|
+                      | 1               | JAMMU AND KASHMIR|
+                      | 20              | JHARKHAND |
+                      | 29              | KARNATAKA |
+                      | 32              | KERALA|
+                      | 37              | LADAKH|
+                      | 31              | LAKSHADWEEP|
+                      | 23              | MADHYA PRADESH|
+                      | 27              | MAHARASHTRA |
+                      | 14              | MANIPUR|
+                      | 17              | MEGHALAYA|
+                      | 15              | MIZORAM|
+                      | 13              | NAGALAND|
+                      | 21              | ODISHA|
+                      | 34              | PUDUCHERRY |
+                      | 3               | PUNJAB |
+                      | 8               | RAJASTHAN|
+                      | 11              | SIKKIM|
+                      | 33              | TAMIL NADU|
+                      | 36              | TELANGANA|
+                      | 38              | THE DADRA AND NAGAR HAVELI AND DAMAN AND DIU |
+                      | 16              | TRIPURA|
+                      | 5               | UTTARAKHAND|
+                      | 9               | UTTAR PRADESH|
+                      | 19              | WEST BENGAL| 
+          example: '27'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                data:
+                  - aadhar_flag: S
+                    aadhar_number: null
+                    aadhar_verified: verified_error
+                    awc_id: 123456
+                    beneficiary_type: adolescent_girl
+                    category: ''
+                    district_id: null
+                    dob: '2007-07-02'
+                    father_name: Laxmani pal
+                    id: 1234567
+                    mobile_verified: not_verified
+                    mother_name: Kalpa pal
+                    name: Niki pal
+                    project_id: 1234
+                    sector_id: null
+                    state_id: null
+                    updated_at: '2021-09-01 16:27:50'
+                date: '2022-11-14'
+                district_id: null
+                month: '11'
+                project_id: 1234
+                response: success
+                state_id: null
+                status: 1
+                year: '2022'
+        '401':
+          description: Unauthorized access
+          content:
+            application/json:
+              schema:
+                type: object
+                
+              examples:
+                When ts is missing in header:
+                  $ref: '#/components/examples/when_ts_is_missing_in_header'  
+                When clientid is missing in header:
+                  $ref: '#/components/examples/when_clientid_is_missing_in_header'  
+                Authorization token invalid:
+                  $ref: '#/components/examples/Authorization_token_invalid' 
+                Authorization token expired:
+                  $ref: '#/components/examples/Authorization_token_expired'  
+        '404':
+          description: No record found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: record_not_found
+                      
+                  errorDescription:
+                    type: string
+                    example:  no record found       
+        '500':
+          description: No record found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: internal_server_error
+                      
+                  errorDescription:
+                    type: string
+                    example:  Internal server error     
+components:
+  securitySchemes:
+    clientId:
+      type: apiKey
+      in: header
+      name: X-APISETU-CLIENTID
+    apiKey:
+      type: apiKey
+      name: X-APISETU-APIKEY
+      in: header           
+  
+  examples:
+    when_ts_is_missing_in_header:
+      value:
+        errorCode: ts_missing
+        error: timestamp is missing!  
+        
+    when_clientid_is_missing_in_header:
+      value:
+        errorCode: clientid_missing
+        error: clientid is missing!   
+    Authorization_token_invalid:
+      value:
+        errorCode: invalid_authentication
+        error: Authentication failed!  
+    Authorization_token_expired:
+      value:
+        errorCode: token_expired
+        error: Authentication failed!    
+        
+        
+        

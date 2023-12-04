@@ -1,0 +1,765 @@
+---
+openapi: 3.0.0
+info:
+  title: Online Job Application System Government of Gujarat(OJAS)
+  description: Online Job Application System Government of Gujarat(OJAS); is an initiative by the Gujarat government to facilitate Exam details,Job seeking process. It allows candidates to register and apply for jobs online.It tracks notices,important information and easily downloads forms for various recruitment exams conducted by Government of Gujarat. <i>[Updated on 21st September 2023]</i>
+  termsOfService: https://web.umang.gov.in/uaw/ts/v1/en/index.htm
+  contact:
+    name: Provided by - UMANG
+    url: https://web.umang.gov.in
+  version: 1.0.0
+servers:
+  - url: https://apigw.umangapp.in
+    description: Production Server
+    
+security:
+  - x-api-key: []
+    
+paths:
+  /ojasApi/ws1/ojasService:
+    post:
+      tags:
+        - OJAS Web Service
+      summary: Get the ojas service details using this service
+      description: This api is used to get the ojas service details
+      operationId: ojasApi/ws1/ojasService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: W-23456789
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: null
+                lon:
+                  type: string
+                  description: longitude
+                  example: null
+                lac:
+                  type: string
+                  description: lac
+                  example: null
+                usag:
+                  type: string
+                  description: usag
+                  example: null               
+                usrid:
+                  type: string
+                  description: user id
+                  example: 10001201
+                srvid:
+                  type: string
+                  description: service id
+                  example: 77
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME                       
+                did:
+                  type: string
+                  description: did
+                  example: "https://web.umang.gov.in/ojas/api/deptt/ojas/?redirectUrl=noticeBoard?GLOBAL_SERVICE_ID=619"
+                deptid:
+                  type: string
+                  description: deptid
+                  example: 619               
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "77"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "619"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: OJAS0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                    type: object
+                    description: ojas services list
+                    properties:
+                      ojasServices:
+                        type: array
+                        description: ojas service list item
+                        items:
+                          type: object
+                          properties:
+                            displaytext:
+                              type: string
+                              description: displaytext
+                              example: "ટેકનીકલ ભરતી બોર્ડની જાહેરાત ક્રમાંકઃ TRB/202122/1- પોલીસ સબ ઇન્સ્પેકટર (વાયરલેસ) વર્ગ-૩ સંવર્ગની સીધી ભરતીની જગ્યા માટે પ્રતિક્ષાયાદી સંદર્ભે અગત્યની જાહેરાત."  
+                            pdfname:
+                              type: string
+                              description: pdfname
+                              example: "https://ojas.gujarat.gov.in/AdvtDetailFiles/107974257_PWSI WAITING LIST.pdf"
+  /ojasApi/ws1/upexam:
+    post:
+      tags:
+        - Upcoming Exam Details Web Service
+      summary: Get the upcoming exam details using this service
+      description: This api is used to get the upcoming exam details
+      operationId: ojasApi/ws1/upexam
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: W-23456789
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: null
+                lon:
+                  type: string
+                  description: longitude
+                  example: null
+                lac:
+                  type: string
+                  description: lac
+                  example: null 
+                usag:
+                  type: string
+                  description: usag
+                  example: null               
+                usrid:
+                  type: string
+                  description: user id
+                  example: 10001201
+                srvid:
+                  type: string
+                  description: service id
+                  example: 77
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME                       
+                did:
+                  type: string
+                  description: did
+                  example: "https://web.umang.gov.in/ojas/api/deptt/ojas/?redirectUrl=examinationCallLetter?GLOBAL_SERVICE_ID=620"
+                deptid:
+                  type: string
+                  description: deptid
+                  example: 620               
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "77"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "620"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: OJAS0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                    type: object
+                    description: upcoming exam list
+                    properties:
+                      error:
+                        type: string
+                        description: error description
+                        example: null                    
+                      liveAddList:
+                        type: array
+                        description: upcoming exam list item
+                        items:
+                          type: object
+                          properties:
+                            path:
+                              type: string
+                              description: path
+                              example: "https://ojas.gujarat.gov.in/AdvtDetailFiles/GPSC_Exam_Calendar.pdf"  
+                            jobTitle:
+                              type: string
+                              description: jobTitle
+                              example: "Exam Schedule"  
+                            examDt:
+                              type: string
+                              description: examDt
+                              example: "9/1/2023 5:37:47 PM"                                
+  /ojasApi/ws1/liveadd:
+    post:
+      tags:
+        - Live Advertisement Web Service
+      summary: Get the live advertisement details using this service
+      description: This api is used to get the live advertisement details
+      operationId: ojasApi/ws1/liveadd
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: W-23456789
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: null
+                lon:
+                  type: string
+                  description: longitude
+                  example: null
+                lac:
+                  type: string
+                  description: lac
+                  example: null
+                usag:
+                  type: string
+                  description: usag
+                  example: null               
+                usrid:
+                  type: string
+                  description: user id
+                  example: null
+                srvid:
+                  type: string
+                  description: service id
+                  example: null
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME                       
+                did:
+                  type: string
+                  description: did
+                  example: "https://web.umang.gov.in/ojas/api/deptt/ojas/?redirectUrl=currentAdvertisement?GLOBAL_SERVICE_ID=621"
+                deptid:
+                  type: string
+                  description: deptid
+                  example: 621             
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "77"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "621"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: OJAS0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                    type: object
+                    description: live add list
+                    properties:
+                      liveAddList:
+                        type: array
+                        description: live add list item
+                        items:
+                          type: object
+                          properties:
+                                pdfpath:
+                                  type: string
+                                  description: pdfpath
+                                  example: "https://ojas.gujarat.gov.in/AdvtDetailFiles/GPSC_Advt_Calendar.pdf"  
+                                startsFrom:
+                                  type: string
+                                  description: startsFrom
+                                  example: "9/1/2023 5:51:07 PM" 
+                                endsOn:
+                                  type: string
+                                  description: endsOn
+                                  example: "9/1/2023 5:51:07 PM"  
+                                jobTitle:
+                                  type: string
+                                  description: jobTitle
+                                  example: "Advertisement Schedule"   
+  /ojasApi/ws1/upcadd:
+    post:
+      tags:
+        - Upcoming Advertisement Web Service
+      summary: Get the upcoming advertisement details using this service
+      description: This api is used to get the upcoming advertisement details
+      operationId: ojasApi/ws1/upcadd
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: W-23456789
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: null
+                lon:
+                  type: string
+                  description: longitude
+                  example: null
+                lac:
+                  type: string
+                  description: lac
+                  example: null
+                usag:
+                  type: string
+                  description: usag
+                  example: null              
+                usrid:
+                  type: string
+                  description: user id
+                  example: 10001201
+                srvid:
+                  type: string
+                  description: service id
+                  example: 77
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME                       
+                did:
+                  type: string
+                  description: did
+                  example: "https://web.umang.gov.in/ojas/api/deptt/ojas/?redirectUrl=upcomingAdvertisement?GLOBAL_SERVICE_ID=621"
+                deptid:
+                  type: string
+                  description: deptid
+                  example: 621             
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "77"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "621"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: OJAS0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success
+                  pd:
+                    type: object
+                    description: upcoming add list
+                    properties:
+                      liveAddList:
+                        type: array
+                        description: upcoming add list item
+                        items:
+                          type: object
+                          properties:
+                                pdfpath:
+                                  type: string
+                                  description: pdfpath
+                                  example: "https://ojas.gujarat.gov.in/AdvtDetailFiles/GPSC_Advt_Calendar.pdf"  
+                                startsFrom:
+                                  type: string
+                                  description: startsFrom
+                                  example: "9/1/2023 5:58:35 PM" 
+                                endsOn:
+                                  type: string
+                                  description: endsOn
+                                  example: "9/1/2023 5:58:35 PM"  
+                                jobTitle:
+                                  type: string
+                                  description: jobTitle
+                                  example: "Advertisement Schedule"                                   
+  /ojasApi/ws1/getpdf:
+    post:
+      tags:
+        - GET PDF Web Service
+      summary: Get the pdf using this service
+      description: This api is used to get the pdf
+      operationId: ojasApi/ws1/getpdf
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: dk6a24423c-ef39-4c94-804c-6b3e415c9917/1
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: W-23456789
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: null
+                lon:
+                  type: string
+                  description: longitude
+                  example: null
+                lac:
+                  type: string
+                  description: lac
+                  example: null 
+                usag:
+                  type: string
+                  description: usag
+                  example: null                
+                usrid:
+                  type: string
+                  description: user id
+                  example: 10001201
+                srvid:
+                  type: string
+                  description: service id
+                  example: 77
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: CHROME                       
+                did:
+                  type: string
+                  description: did
+                  example: "https://web.umang.gov.in/ojas/api/deptt/ojas/?redirectUrl=printApplicationForm?GLOBAL_SERVICE_ID=622"
+                deptid:
+                  type: string
+                  description: deptid
+                  example: 622    
+                advtyear:
+                  type: string
+                  description: advtyear
+                  example: 202223  
+                advtno:
+                  type: string
+                  description: advtno
+                  example: 32  
+                dob:
+                  type: string
+                  description: dob
+                  example: 10-27-1955 
+                confno:
+                  type: string
+                  description: confno
+                  example: 56325543   
+                jsname:
+                  type: string
+                  description: jsname
+                  example: GSRTC                   
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "77"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "622"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: 0
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: F
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: OJAS0105
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: No Record Found
+                  pd:
+                    type: object
+                    description: pdf list
+                    properties:
+                      error:
+                        type: object
+                        description: error details
+                        properties:
+                         status_desc:
+                           type: string
+                           description: status_desc
+                           example: No Record Found 
+                         status_code:
+                           type: string
+                           description: status_code
+                           example: 01                                               
+                      getPDFList:
+                        type: object
+                        description: pdf list item
+                        example: null
+components:
+  securitySchemes:
+    x-api-key:
+      type: apiKey
+      name: x-api-key
+      in: header

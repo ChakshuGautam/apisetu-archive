@@ -1,0 +1,236 @@
+openapi: 3.0.0
+info:
+  title: Income Tax Department, All States
+  version: "1.0"
+  description: Income Tax Department, Govt of India has provided Organization PAN  Verification Records  via APISetu. Organization can verify the correctness of your Organization PAN data in real-time using this facility. <i>[Updated on 22nd December 2022]</i>
+  
+servers:
+  - url: "https://apisetu.gov.in"
+    description : Prodcution Server
+
+security:
+  - clientId: []
+    apikey: []
+
+paths:
+  /verify/v1/pan/org:
+    post:
+      tags:
+        - Organization PAN API 
+      summary: Organization PAN Verifiction API
+      operationId: post-PanIndiaVerification
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  txnId:
+                    type: string
+                    description: Transaction ID 
+                  orgPan:
+                    type: string
+                    description: Organization PAN
+                  verificationResult:
+                    type: object
+                    properties:
+                      orgName:
+                        type: string
+                        enum:
+                            - Y
+                            - N
+                        description: Organization name matched or not matched
+                      doi:
+                        type: string
+                        enum:
+                            - Y
+                            - N
+                        description: Date of Incorporation matched or not matched
+                        
+                        
+                x-examples:
+                  example-1:
+                    txnId: c9bf9e57-1685-4c89-bafb-ff5af830be8a
+                    orgPan: Organization PAN Number
+                    verificationResult:
+                      orgName: Y
+                      doi: N
+        "400":
+          description: invalid parameter
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                  errorDescription:
+                    type: string
+                x-examples:
+                  example-1:
+                    error: invalid parameter
+                    errorDescription: Invalid request parameter
+        "404":
+          description: record_not_found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                  errorDescription:
+                    type: string
+                x-examples:
+                  example-1:
+                    error: record_not_found
+                    errorDescription: No record found
+        "500":
+          description: internal_server_error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                  errorDescription:
+                    type: string
+                x-examples:
+                  example-1:
+                    error: internal_server_error
+                    errorDescription: Internal server error
+        "503":
+          description: service_unavailable
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                  errorDescription:
+                    type: string
+                x-examples:
+                  example-1:
+                    error: service_unavailable
+                    errorDescription: Publisher service is temporarily unavailable
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                txnId:
+                    type: string
+                    description: Transaction ID 
+                    example: c9bf9e57-1685-4c89-bafb-ff5af830be8a
+                orgPan:
+                    type: string
+                    description: Organization PAN
+                    example: Organization PAN Number
+                verificationResult:
+                    type: object
+                    properties:
+                      orgName:
+                        type: string
+                        description: Transaction ID 
+                        example: Organization Name
+                      doi:
+                        type: string
+                        description: Date of Incorporation ID
+                        example: dd-mm-yyyy
+                consentArtifact:
+                  type: object
+                  properties:
+                    consent:
+                      type: object
+                      properties:
+                        consentId:
+                          type: string
+                          example: 499a5a4a-7dda-4f20-9b67-e24589627061
+                        timestamp:
+                          type: string
+                          example: 2020-12-17T12:49:06.711Z
+                        dataConsumer:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                        dataProvider:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                        purpose:
+                          type: object
+                          properties:
+                            description:
+                              type: string
+                        user:
+                          type: object
+                          properties:
+                            idType:
+                              type: string
+                              example: AADHAAR
+                            idNumber:
+                              type: string
+                              example: string
+                            mobile:
+                              type: string
+                              example: "9999999999"
+                            email:
+                              type: string
+                              example: abc@gmail.com
+                        data:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                        permission:
+                          type: object
+                          properties:
+                            access:
+                              type: string
+                              example: VIEWSTORE
+                            dateRange:
+                              type: object
+                              properties:
+                                from:
+                                  type: string
+                                  example: 2020-11-19T07:34:06.711Z
+                                to:
+                                  type: string
+                                  example: 2020-12-19T07:34:06.711Z
+                            frequency:
+                              type: object
+                              properties:
+                                unit:
+                                  type: string
+                                value:
+                                  type: integer
+                                  example: 0
+                                repeats:
+                                  type: integer
+                                  example: 0
+                    signature:
+                      type: object
+                      properties:
+                        signature:
+                          type: string
+              
+                      
+components:
+  
+  securitySchemes: 
+    clientId:
+      type: apiKey
+      in: header
+      name: X-APISETU-CLIENTID
+    apikey:
+      type: apiKey
+      name: X-APISETU-APIKEY
+      in: header   
+     

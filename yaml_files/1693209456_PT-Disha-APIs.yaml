@@ -1,0 +1,1434 @@
+openapi: 3.0.1
+info:
+  title: Poshan Tracker (PT) Disha APIs 
+  description: |-
+      The ‘Poshan Tracker’ is a mobile based application rolled out by the Ministry of Women and Child Development, Government of India on 1st March 2021 through National e-Governance Division (NeGD), Poshan Tracker is an important governance tool. Technology under Poshan Tracker is being leveraged for dynamic identification of stunting, wasting, under-weight prevalence among children and last mile tracking of nutrition service delivery
+      
+      # Authentication
+        The API comply to  API Setu authentication. <a href="https://partners.apisetu.gov.in/directory/api/apisetu/1692012237_API-Authentication">Click here</a> for more details.  
+     
+         <i>[Updated on 25th August 2023]</i>
+
+  termsOfService: "https://www.poshantracker.in/termsofservice"
+  contact: 
+    name: "Provided by - MWCD"
+    url: "https://www.poshantracker.in/"
+  version: 1.0.0
+servers:
+- url: https://apisetu.gov.in/pt/data-apis
+  description: Production Server 
+
+security:
+        - clientId: [] 
+        - apiKey: []
+  
+paths:
+  /srv/v1/disha/0to6years/enrolled:
+    post:
+      tags:
+      - Children Enrolled in Aanganwadis
+      summary:  API for Children enrolled in aanganwadis
+      description: API to provide block wise data for children enrolled in anganwadi 
+      operationId: 0to6years enrrolled
+      
+        
+      parameters:
+        - in: header
+          name: Content-Type
+          schema:
+            type: string 
+            example: application/json
+        
+            
+        
+        
+
+      requestBody:
+        content:
+          application/json:
+            schema:
+
+              properties:
+                  year:
+                    type: string
+                    example: "2023"
+                  month:
+                    type: string
+                    example: "05"
+                  
+      
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                  response:
+                    type: string
+                    example: success
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      
+                    example:
+                      - project_name: Chouparan,
+                        state_name: Jharkhand,
+                        state_lgd_code: 20,
+                        children_enrolled_in_anganwadi: 13835
+                        project_lgd_code: 3166
+                        district_name: Hazaribag,
+                        district_lgd_code: 332,
+                        
+                 
+                      - project_name: Hukumpeta,
+                        state_name: Andhra Pradesh,
+                        state_lgd_code: 28,
+                        children_enrolled_in_anganwadi: 6133
+                        project_lgd_code: 5597
+                        district_name: Visakhapatnam,
+                        district_lgd_code: 520,
+                          
+          
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                
+              examples:
+                When Month is Missing:
+                  $ref: '#/components/examples/When_month_is_missing'  
+                
+                When year is missing:
+                  $ref: '#/components/examples/When_year_is_missing'
+                  
+                When year and month both are missing:
+                  $ref: '#/components/examples/When_year_and_month_both_are_missing'
+        '401':
+          description: Unauthorized Access
+          content:
+            application/json:
+              schema:
+                type: object
+                
+              examples:
+                When ts is missing in header:
+                  $ref: '#/components/examples/when_ts_is_missing_in_header'  
+                
+                When clientid is missing in header:
+                  $ref: '#/components/examples/when_clientid_is_missing_in_header'
+                  
+                Authorization token invalid:
+                  $ref: '#/components/examples/Authorization_token_invalid'
+                  
+                When Authorization token is missing:
+                  $ref: '#/components/examples/When_Authorization_token_is_missing'
+        '404':
+          description: No record found
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  status:
+                    type: integer
+                    example: 0
+                  response:
+                    type: string
+                    example: fail
+                  error:
+                    type: string
+                    example: record_not_found
+                  errorDescription:
+                    type: string
+                    example: no record found
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  status:
+                    type: integer
+                    example: 0
+                  response:
+                    type: string
+                    example: fail
+                  error:
+                    type: string
+                    example: internal_server_error
+                  errorDescription:
+                    type: string
+                    example: Internal server error  
+  
+  /srv/v1/disha/0to5y/unweighed:
+    post:
+      tags:
+      - Number of Un-Weighted Children (0-5 Years).
+      summary:  API  for Number of Un-Weighted Children (0-5 Years). 
+      description: API to provide block wise data for number of Un-Weighted Children (0-5 Years).
+      operationId: 0to5y unweighed
+   
+        
+      parameters:
+        - in: header
+          name: Content-Type
+          schema:
+            type: string 
+            example: application/json
+        
+            
+         
+        
+        
+
+      requestBody:
+        content:
+          application/json:
+            schema:
+
+              properties:
+                  year:
+                    type: string
+                    example: "2023"
+                  month:
+                    type: string
+                    example: "05"
+                  
+      
+      responses:
+        200:
+          description: Success 
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                  response:
+                    type: string
+                    example: success
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      
+                    example:
+                      - project_name: Katra,
+                        state_name: Bihar,
+                        state_lgd_code: 10,
+                        project_lgd_code: 1883
+                        district_name: Muzaffarpur,
+                        district_lgd_code: 208,
+                        children_un_weighed_0m_5y: 2499
+                 
+                      - project_name: Arnas,
+                        state_name: J&K,
+                        state_lgd_code: 1,
+                        project_lgd_code: 123
+                        district_name: Reasi,
+                        district_lgd_code: 627,
+                        children_un_weighed_0m_5y: 516
+                          
+          
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                
+              examples:
+                When Month is Missing:
+                  $ref: '#/components/examples/When_month_is_missing'  
+                
+                When year is missing:
+                  $ref: '#/components/examples/When_year_is_missing'
+                  
+                When year and month both are missing:
+                  $ref: '#/components/examples/When_year_and_month_both_are_missing'
+        '401':
+          description: Unauthorized Access
+          content:
+            application/json:
+              schema:
+                type: object
+                
+              examples:
+                When ts is missing in header:
+                  $ref: '#/components/examples/when_ts_is_missing_in_header'  
+                
+                When clientid is missing in header:
+                  $ref: '#/components/examples/when_clientid_is_missing_in_header'
+                  
+                Authorization token invalid:
+                  $ref: '#/components/examples/Authorization_token_invalid'
+                  
+                When Authorization token is missing:
+                  $ref: '#/components/examples/When_Authorization_token_is_missing'
+        '404':
+          description: No record found
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  status:
+                    type: integer
+                    example: 0
+                  response:
+                    type: string
+                    example: fail
+                  error:
+                    type: string
+                    example: record_not_found
+                  errorDescription:
+                    type: string
+                    example: no record found
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  status:
+                    type: integer
+                    example: 0
+                  response:
+                    type: string
+                    example: fail
+                  error:
+                    type: string
+                    example: internal_server_error
+                  errorDescription:
+                    type: string
+                    example: Internal server error      
+                     
+  
+  /srv/v1/disha/0to60m/underweight:
+    post:
+      tags:
+      - Percentage Under Weight Status Children <6 Years 
+      summary: API to % Under-Weight Status Children <6 Years 
+      description: API to provide block wise data for % Under-weight status Children <6 Years.
+      operationId: 0to60m underweight
+      
+        
+      parameters:
+        - in: header
+          name: Content-Type
+          schema:
+            type: string 
+            example: application/json
+        
+            
+        
+        
+
+      requestBody:
+        content:
+          application/json:
+            schema:
+
+              properties:
+                  year:
+                    type: string
+                    example: "2023"
+                  month:
+                    type: string
+                    example: "05"
+                  
+      
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                  response:
+                    type: string
+                    example: success
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      
+                    example:
+                      - project_name: Noorsarai,
+                        state_name: Bihar,
+                        children_underweight_0m_60m: 1488
+                        state_lgd_code: 10,
+                        project_lgd_code: 1907
+                        district_name: Nalanda,
+                        district_lgd_code: 209,
+                        
+                 
+                      - project_name: Puredalai,
+                        state_name: Uttar Pradesh,
+                        children_underweight_0m_60m: 1196
+                        state_lgd_code: 9,
+                        project_lgd_code: 952
+                        district_name: Barabanki,
+                        district_lgd_code: 129,
+                          
+          
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                
+              examples:
+                When Month is Missing:
+                  $ref: '#/components/examples/When_month_is_missing'  
+                
+                When year is missing:
+                  $ref: '#/components/examples/When_year_is_missing'
+                  
+                When year and month both are missing:
+                  $ref: '#/components/examples/When_year_and_month_both_are_missing'
+        '401':
+          description: Unauthorized Access
+          content:
+            application/json:
+              schema:
+                type: object
+                
+              examples:
+                When ts is missing in header:
+                  $ref: '#/components/examples/when_ts_is_missing_in_header'  
+                
+                When clientid is missing in header:
+                  $ref: '#/components/examples/when_clientid_is_missing_in_header'
+                  
+                Authorization token invalid:
+                  $ref: '#/components/examples/Authorization_token_invalid'
+                  
+                When Authorization token is missing:
+                  $ref: '#/components/examples/When_Authorization_token_is_missing'
+        '404':
+          description: No record found
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  status:
+                    type: integer
+                    example: 0
+                  response:
+                    type: string
+                    example: fail
+                  error:
+                    type: string
+                    example: record_not_found
+                  errorDescription:
+                    type: string
+                    example: no record found
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  status:
+                    type: integer
+                    example: 0
+                  response:
+                    type: string
+                    example: fail
+                  error:
+                    type: string
+                    example: internal_server_error
+                  errorDescription:
+                    type: string
+                    example: Internal server error      
+  
+  /srv/v1/disha/6mto60m/sam:
+    post:
+      tags:
+      - Children from 6-60 Months with Severe Actute Malnutrition (weight-for-height).
+      summary: API for Children from 6-60 months with severe actute malnutrition.
+      description: API to provide block wise data for children from 6-60 months with severe actute malnutrition (weight-for-height).
+      operationId: 6mto60m sam
+
+        
+      parameters:
+        - in: header
+          name: Content-Type
+          schema:
+            type: string 
+            example: application/json
+        
+         
+        
+        
+
+      requestBody:
+        content:
+          application/json:
+            schema:
+
+              properties:
+                  year:
+                    type: string
+                    example: "2023"
+                  month:
+                    type: string
+                    example: "05"
+                  
+      
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                  response:
+                    type: string
+                    example: success
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      
+                    example:
+                      - project_name: G.MADUGULA,
+                        state_name: Andhra Pradesh,
+                        state_lgd_code: 28,
+                        total_6m_60m_children_sam: 51,
+                        project_lgd_code: 5593
+                        district_name: Visakhapatnam,
+                        district_lgd_code: 520,
+                        
+                 
+                      - project_name: Mandla,
+                        state_name: Madhya Pradesh,
+                        state_lgd_code: 23,
+                        total_6m_60m_children_sam: 290,
+                        project_lgd_code: 4045
+                        district_name: VIDISHA,
+                        district_lgd_code: 437,
+                          
+          
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                
+              examples:
+                When Month is Missing:
+                  $ref: '#/components/examples/When_month_is_missing'  
+                
+                When year is missing:
+                  $ref: '#/components/examples/When_year_is_missing'
+                  
+                When year and month both are missing:
+                  $ref: '#/components/examples/When_year_and_month_both_are_missing'
+        '401':
+          description: Unauthorized Access
+          content:
+            application/json:
+              schema:
+                type: object
+                
+              examples:
+                When ts is missing in header:
+                  $ref: '#/components/examples/when_ts_is_missing_in_header'  
+                
+                When clientid is missing in header:
+                  $ref: '#/components/examples/when_clientid_is_missing_in_header'
+                  
+                Authorization token invalid:
+                  $ref: '#/components/examples/Authorization_token_invalid'
+                  
+                When Authorization token is missing:
+                  $ref: '#/components/examples/When_Authorization_token_is_missing'
+        '404':
+          description: No record found
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  status:
+                    type: integer
+                    example: 0
+                  response:
+                    type: string
+                    example: fail
+                  error:
+                    type: string
+                    example: record_not_found
+                  errorDescription:
+                    type: string
+                    example: no record found
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  status:
+                    type: integer
+                    example: 0
+                  response:
+                    type: string
+                    example: fail
+                  error:
+                    type: string
+                    example: internal_server_error
+                  errorDescription:
+                    type: string
+                    example: Internal server error            
+        
+  /srv/v1/disha/heightmeasured/percentage:
+    post:
+      tags:
+      -  Percentage of Children Whose Height has been Measured.
+      summary:  API for % of Children Whose Height has been Measured
+      description: API to provide block wise data for % of children whose height has been measured.
+      operationId: heightmeasured percentage
+
+        
+      parameters:
+        - in: header
+          name: Content-Type
+          schema:
+            type: string 
+            example: application/json
+        
+            
+        
+        
+        
+
+      requestBody:
+        content:
+          application/json:
+            schema:
+
+              properties:
+                  year:
+                    type: string
+                    example: "2023"
+                  month:
+                    type: string
+                    example: "05"
+                  
+      
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                  response:
+                    type: string
+                    example: success
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      
+                    example:
+                      - project_lgd_code: 1883
+                        project_name: Katra,
+                        state_name: Bihar,
+                        total_children: 24207,
+                        total_height_children_measured: 21360,
+                        percentage_height_children_measured: 88.24,
+                        district_name: Muzaffarpur,
+                        district_lgd_code: 208,
+                        state_lgd_code: 10,
+                     
+                        
+                 
+                      - project_lgd_code: 123
+                        project_name: Arnas,
+                        state_name: J&K,
+                        total_children: 3897,
+                        total_height_children_measured: 3275,
+                        percentage_height_children_measured: 84.04,
+                        district_name: Reasi,
+                        district_lgd_code: 627,
+                        state_lgd_code: 1
+                          
+          
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                
+              examples:
+                When Month is Missing:
+                  $ref: '#/components/examples/When_month_is_missing'  
+                
+                When year is missing:
+                  $ref: '#/components/examples/When_year_is_missing'
+                  
+                When year and month both are missing:
+                  $ref: '#/components/examples/When_year_and_month_both_are_missing'
+        '401':
+          description: Unauthorized Access
+          content:
+            application/json:
+              schema:
+                type: object
+                
+              examples:
+                When ts is missing in header:
+                  $ref: '#/components/examples/when_ts_is_missing_in_header'  
+                
+                When clientid is missing in header:
+                  $ref: '#/components/examples/when_clientid_is_missing_in_header'
+                  
+                Authorization token invalid:
+                  $ref: '#/components/examples/Authorization_token_invalid'
+                  
+                When Authorization token is missing:
+                  $ref: '#/components/examples/When_Authorization_token_is_missing'
+        '404':
+          description: No record found
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  status:
+                    type: integer
+                    example: 0
+                  response:
+                    type: string
+                    example: fail
+                  error:
+                    type: string
+                    example: record_not_found
+                  errorDescription:
+                    type: string
+                    example: no record found
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  status:
+                    type: integer
+                    example: 0
+                  response:
+                    type: string
+                    example: fail
+                  error:
+                    type: string
+                    example: internal_server_error
+                  errorDescription:
+                    type: string
+                    example: Internal server error              
+  
+  /srv/v1/disha/weighedmeasured/percentage:
+    post:
+      tags:
+      -  Percentage of children who were weighted (<6 Years).
+      summary:  API for % of children who were weighted (<6 Years)
+      description: API to provide block wise data for % of children who were weighted (<6 Years).
+      operationId: weighedmeasured percentage
+      
+        
+      parameters:
+        - in: header
+          name: Content-Type
+          schema:
+            type: string 
+            example: application/json
+        
+            
+            
+        
+        
+
+      requestBody:
+        content:
+          application/json:
+            schema:
+
+              properties:
+                  year:
+                    type: string
+                    example: "2023"
+                  month:
+                    type: string
+                    example: "05"
+                  
+      
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                  response:
+                    type: string
+                    example: success
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      
+                    example:
+                      - project_lgd_code: 1883
+                        total_weighed_children_measured: 21360,
+                        project_name: Katra,
+                        state_name: Bihar,
+                        total_children: 24207,
+                        district_name: Muzaffarpur,
+                        district_lgd_code: 208,
+                        percentage_weighed_children_measured: 88.24,
+                        state_lgd_code: 10
+                     
+                        
+                 
+                      - project_lgd_code: 123
+                        total_weighed_children_measured: 3275,
+                        project_name: Arnas,
+                        state_name: J&K,
+                        total_children: 3897,
+                        district_name: Reasi,
+                        district_lgd_code: 627,
+                        percentage_weighed_children_measured: 84.04,
+                        state_lgd_code: 1
+                          
+          
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                
+              examples:
+                When Month is Missing:
+                  $ref: '#/components/examples/When_month_is_missing'  
+                
+                When year is missing:
+                  $ref: '#/components/examples/When_year_is_missing'
+                  
+                When year and month both are missing:
+                  $ref: '#/components/examples/When_year_and_month_both_are_missing'
+        '401':
+          description: Unauthorized Access
+          content:
+            application/json:
+              schema:
+                type: object
+                
+              examples:
+                When ts is missing in header:
+                  $ref: '#/components/examples/when_ts_is_missing_in_header'  
+                
+                When clientid is missing in header:
+                  $ref: '#/components/examples/when_clientid_is_missing_in_header'
+                  
+                Authorization token invalid:
+                  $ref: '#/components/examples/Authorization_token_invalid'
+                  
+                When Authorization token is missing:
+                  $ref: '#/components/examples/When_Authorization_token_is_missing'
+        '404':
+          description: No record found
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  status:
+                    type: integer
+                    example: 0
+                  response:
+                    type: string
+                    example: fail
+                  error:
+                    type: string
+                    example: record_not_found
+                  errorDescription:
+                    type: string
+                    example: no record found
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  status:
+                    type: integer
+                    example: 0
+                  response:
+                    type: string
+                    example: fail
+                  error:
+                    type: string
+                    example: internal_server_error
+                  errorDescription:
+                    type: string
+                    example: Internal server error                                
+        
+  /srv/v1/disha/6mto60m/severestunted:
+    post:
+      tags:
+      - Children from 6-60 Months with Severe Stuning (height-for-age).     
+      summary:  API for Children from 6-60 Months with Severe Stuning.
+      description: API to provide block wise data for children from 6-60 months with severe stuning (height-for-age).
+      operationId: 6mto60m severestunted
+  
+        
+        
+      parameters:
+        - in: header
+          name: Content-Type
+          schema:
+            type: string 
+            example: application/json
+       
+            
+            
+        
+        
+
+      requestBody:
+        content:
+          application/json:
+            schema:
+
+              properties:
+                  year:
+                    type: string
+                    example: "2023"
+                  month:
+                    type: string
+                    example: "05"
+                  
+      
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                  response:
+                    type: string
+                    example: success
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      
+                    example:
+                      - project_name: Phulwarisharif,
+                        state_name: Bihar,
+                        state_lgd_code: 10,
+                        project_lgd_code: 1966
+                        total_6m_60m_children_severe_stunted: 4202
+                        district_name: Patna,
+                        district_lgd_code: 212,
+                        
+                 
+                      - project_name: Jamshedpur Sadar,
+                        state_name: Jharkhand,
+                        state_lgd_code: 20,
+                        project_lgd_code: 0
+                        total_6m_60m_children_severe_stunted: 1880
+                        district_name: East Singhbhum,
+                        district_lgd_code: 327,
+                          
+          
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                
+              examples:
+                When Month is Missing:
+                  $ref: '#/components/examples/When_month_is_missing'  
+                
+                When year is missing:
+                  $ref: '#/components/examples/When_year_is_missing'
+                  
+                When year and month both are missing:
+                  $ref: '#/components/examples/When_year_and_month_both_are_missing'
+        '401':
+          description: Unauthorized Access
+          content:
+            application/json:
+              schema:
+                type: object
+                
+              examples:
+                When ts is missing in header:
+                  $ref: '#/components/examples/when_ts_is_missing_in_header'  
+                
+                When clientid is missing in header:
+                  $ref: '#/components/examples/when_clientid_is_missing_in_header'
+                  
+                Authorization token invalid:
+                  $ref: '#/components/examples/Authorization_token_invalid'
+                  
+                When Authorization token is missing:
+                  $ref: '#/components/examples/When_Authorization_token_is_missing'
+        '404':
+          description: No record found
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  status:
+                    type: integer
+                    example: 0
+                  response:
+                    type: string
+                    example: fail
+                  error:
+                    type: string
+                    example: record_not_found
+                  errorDescription:
+                    type: string
+                    example: no record found
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  status:
+                    type: integer
+                    example: 0
+                  response:
+                    type: string
+                    example: fail
+                  error:
+                    type: string
+                    example: internal_server_error
+                  errorDescription:
+                    type: string
+                    example: Internal server error           
+  
+  /srv/v1/disha/total/registered:
+    post:
+      tags:
+      - Number of People Registered for Anganwadi Services.
+      summary: API for Number of people registered for anganwadi services.
+      description: API to provide block wise data for number of people registered for anganwadi services.
+      operationId: total registered
+      
+        
+      parameters:
+        - in: header
+          name: Content-Type
+          schema:
+            type: string 
+            example: application/json
+        
+            
+         
+        
+        
+
+      requestBody:
+        content:
+          application/json:
+            schema:
+
+              properties:
+                  year:
+                    type: string
+                    example: "2023"
+                  month:
+                    type: string
+                    example: "05"
+                  
+      
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                  response:
+                    type: string
+                    example: success
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      
+                    example:
+                      - project_name: Katra,
+                        state_name: Bihar,
+                        state_lgd_code: 10,
+                        project_lgd_code: 1883
+                        district_name: Muzaffarpur,
+                        district_lgd_code: 208,
+                        children_un_weighed_0m_5y: 2499
+                 
+                      - project_name: Arnas,
+                        state_name: J&K,
+                        state_lgd_code: 1,
+                        project_lgd_code: 123
+                        district_name: Reasi,
+                        district_lgd_code: 627,
+                        children_un_weighed_0m_5y: 516
+                          
+          
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                
+              examples:
+                When Month is Missing:
+                  $ref: '#/components/examples/When_month_is_missing'  
+                
+                When year is missing:
+                  $ref: '#/components/examples/When_year_is_missing'
+                  
+                When year and month both are missing:
+                  $ref: '#/components/examples/When_year_and_month_both_are_missing'
+        '401':
+          description: Unauthorized Access
+          content:
+            application/json:
+              schema:
+                type: object
+                
+              examples:
+                When ts is missing in header:
+                  $ref: '#/components/examples/when_ts_is_missing_in_header'  
+                
+                When clientid is missing in header:
+                  $ref: '#/components/examples/when_clientid_is_missing_in_header'
+                  
+                Authorization token invalid:
+                  $ref: '#/components/examples/Authorization_token_invalid'
+                  
+                When Authorization token is missing:
+                  $ref: '#/components/examples/When_Authorization_token_is_missing'
+        '404':
+          description: No record found
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  status:
+                    type: integer
+                    example: 0
+                  response:
+                    type: string
+                    example: fail
+                  error:
+                    type: string
+                    example: record_not_found
+                  errorDescription:
+                    type: string
+                    example: no record found
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  status:
+                    type: integer
+                    example: 0
+                  response:
+                    type: string
+                    example: fail
+                  error:
+                    type: string
+                    example: internal_server_error
+                  errorDescription:
+                    type: string
+                    example: Internal server error      
+                
+             
+                
+                         
+                  
+  /srv/v1/disha/women/registered:
+    post:
+      tags:
+      - Total Women Registered for Anganwadi Services.
+      summary:  API for Total Women Registered for Anganwadi Services.
+      description: API to provide block wise data for total Women registered for anganwadi services.
+      operationId: women registered
+      
+        
+      parameters:
+        - in: header
+          name: Content-Type
+          schema:
+            type: string 
+            example: application/json
+        
+            
+          
+        
+        
+
+      requestBody:
+        content:
+          application/json:
+            schema:
+
+              properties:
+                  year:
+                    type: string
+                    example: "2023"
+                  month:
+                    type: string
+                    example: "05"
+                  
+      
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                  response:
+                    type: string
+                    example: success
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      
+                    example:
+                      - project_name: Dumaria,
+                        state_name: Bihar,
+                        state_lgd_code: 20,
+                        project_lgd_code: 3474
+                        total_women_registered: 690,
+                        district_name: East Singhbhum,
+                        district_lgd_code: 327
+                        
+                 
+                      - project_name: Odisha,
+                        state_name: Odisha,
+                        state_lgd_code: 21,
+                        project_lgd_code: 3385
+                        total_women_registered: 2320,
+                        district_name: Ganjam,
+                        district_lgd_code: 354
+                          
+          
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                
+              examples:
+                When Month is Missing:
+                  $ref: '#/components/examples/When_month_is_missing'  
+                
+                When year is missing:
+                  $ref: '#/components/examples/When_year_is_missing'
+                  
+                When year and month both are missing:
+                  $ref: '#/components/examples/When_year_and_month_both_are_missing'
+        '401':
+          description: Unauthorized Access
+          content:
+            application/json:
+              schema:
+                type: object
+                
+              examples:
+                When ts is missing in header:
+                  $ref: '#/components/examples/when_ts_is_missing_in_header'  
+                
+                When clientid is missing in header:
+                  $ref: '#/components/examples/when_clientid_is_missing_in_header'
+                  
+                Authorization token invalid:
+                  $ref: '#/components/examples/Authorization_token_invalid'
+                  
+                When Authorization token is missing:
+                  $ref: '#/components/examples/When_Authorization_token_is_missing'
+        '404':
+          description: No record found
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  status:
+                    type: integer
+                    example: 0
+                  response:
+                    type: string
+                    example: fail
+                  error:
+                    type: string
+                    example: record_not_found
+                  errorDescription:
+                    type: string
+                    example: no record found
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  status:
+                    type: integer
+                    example: 0
+                  response:
+                    type: string
+                    example: fail
+                  error:
+                    type: string
+                    example: internal_server_error
+                  errorDescription:
+                    type: string
+                    example: Internal server error                      
+          
+                          
+          
+   
+components:
+  securitySchemes:
+    clientId:
+      type: apiKey
+      in: header
+      name: X-APISETU-CLIENTID
+    apiKey:
+      type: apiKey
+      name: X-APISETU-APIKEY
+      in: header
+     
+  examples:
+    When_month_is_missing:
+      value:
+        status: 0
+        response: fail
+        error: invalid_request
+        errorDescription: {
+          month: [
+            The month field is required]
+        }
+          
+    When_year_is_missing:
+      value:
+        status: 0
+        response: fail
+        error: invalid_request
+        errorDescription: {
+          year: [
+            The year field is required]
+        }      
+      
+    When_year_and_month_both_are_missing:
+      value:
+        status: 0
+        response: fail
+        error: invalid_request
+        errorDescription: {
+          month: [
+            The month field is required],
+          year: [
+            The year field is required]
+            
+        }
+    
+    when_ts_is_missing_in_header:
+      value:
+        status: 0
+        response: fail
+        error: ts_missing
+        errorDescription: timestamp is missing
+    
+    when_clientid_is_missing_in_header:
+      value:
+        status: 0
+        response: fail
+        error: clientid_missing
+        errorDescription: clientid is missing         
+        
+    Authorization_token_invalid:
+      value:
+        status: 0
+        response: fail
+        error: invalid_authentication
+        errorDescription: Authentication failed         
+        
+    When_Authorization_token_is_missing:
+      value:
+        status: 0
+        response: fail
+        error: token_missing
+        errorDescription: authorization token is missing            

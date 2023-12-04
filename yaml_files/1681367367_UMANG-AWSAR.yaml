@@ -1,0 +1,2279 @@
+---
+openapi: 3.0.0
+info:
+  title: Augmenting Writing Skills for Articulating Research (AWSAR)
+  description: “Augmenting Writing Skills for Articulating Research (AWSAR)” is an initiative that aims to disseminate Indian research stories among the masses in an easy to understand and interesting format to a common man. Under this initiative, PhD Scholars and Post-Doctoral Fellows (PDFs) in Science and Technology (S&T) streams would be encouraged to write at least one popular science article during the tenancy of their fellowship, and to participate in a national competition.<i>[Updated on 13th April 2023]</i>
+  termsOfService: https://web.umang.gov.in/uaw/ts/v1/en/index.htm
+  contact:
+    name: Provided by - UMANG
+    url: https://web.umang.gov.in
+  version: 1.0.0
+servers:
+  - url: https://apigw.umangapp.in
+    description: Production Server
+security:
+  - x-api-key: []    
+    
+paths:
+  /AWSARApi/ws1/signup:
+    post:
+      tags:
+        - User Signup Registration API
+      summary: User Signup Registration API
+      description: This api is used for user registration and signing up to AWSAR
+      operationId: AWSARApi/ws1/signup
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                usrid:
+                  type: string
+                  description: user id
+                  example: 191
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1310
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                did:
+                  type: string
+                  description: Device Id
+                  example: 122
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 420
+                subsid:
+                  type: string
+                  description: subsid
+                  example: subscriber Id
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: subscriber Id2
+                EmailId:
+                  type: string
+                  description: email Id
+                  example: roushankumar0102@gmail.com
+                FirstName:
+                  type: string
+                  description: first name
+                  example: Roushan
+                LastName:
+                  type: string
+                  description: last name
+                  example: Kumar
+                Password:
+                  type: string
+                  description: password
+                  example: Admin@123#
+                CPassword:
+                  type: string
+                  description: cpassword
+                  example: Admin@123#
+                Mobile:
+                  type: string
+                  description: mobileno
+                  example: 9504303105
+                Dateofbirth:
+                  type: string
+                  description: date of birth
+                  example: 1990-05-16
+                Gender:
+                  type: string
+                  description: gender
+                  example: Male
+                Telephone:
+                  type: string
+                  description: telephone
+                  example: 9504303105
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer 686548e3-d08b-3a82-9f81-2ef2f5efb95c
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:
+                      success:
+                        type: boolean
+                        description: message
+                        example: true
+                      text:
+                        type: string
+                        description: text description
+                        example: Data save successfully
+        "400":
+          description: Bad Request/Validation Error
+  /AWSARApi/ws1/login:
+    post:
+      tags:
+        - Login API
+      summary: Login API to Login into AWSAR App
+      description: This API is used to login into awsar app
+      operationId: AWSARApi/ws1/login
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: web
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                Emailid:
+                  type: string
+                  description: emailId
+                  example: roushankumar0102@gmail.com
+                Password:
+                  type: string
+                  description: password
+                  example: Admin@123#
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: bearer 686548e3-d08b-3a82-9f81-2ef2f5efb95c
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: MP0000
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:
+                      success:
+                        type: boolean
+                        description: message
+                        example: true
+                      text:
+                        type: string
+                        description: text description
+                        example: Login Success!
+        "400":
+          description: Bad Request/Validation Error
+  /AWSARApi/ws1/forgotPassword:
+    post:
+      tags:
+        - Forgot Password API
+      summary: Forgot Password API To Reset Password
+      description: This API is used to reset the forgotten password
+      operationId: AWSARApi/ws1/forgotPassword
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                ForgotEmail:
+                  type: string
+                  description: forgot email id
+                  example: roushankumarsharma123@gmail.com
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: bearer 686548e3-d08b-3a82-9f81-2ef2f5efb95c
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    description: Response Payload
+                    properties:
+                      success:
+                        type: boolean
+                        description: message
+                        example: true
+                      text:
+                        type: string
+                        description: text description
+                        example: Please check your inbox and reset your Password.!
+  /AWSARApi/ws1/faq:
+    post:
+      tags:
+        - Get All FAQ List
+      summary: Get all FAQ Questions List
+      description: This API is used to get all faq questions list
+      operationId: AWSARApi/ws1/faq
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: array
+                    description: Response Payload
+                    items:
+                      type: object
+                      properties:
+                        question:
+                          type: string
+                          description: faq question
+                          example: What are the eligibility criteria for applying for AWSAR?
+                        answer:
+                          type: string
+                          description: faq answer
+                          example: Indian citizen pursuing PhD or PDF in any stream of Science and
+                            Technology (S&T), within the tenancy of respective
+                            fellowship can apply.
+        "400":
+          description: Bad Request/Validation Error
+  /AWSARApi/ws1/workshopVideo:
+    post:
+      tags:
+        - Workshop Video LINK API
+      summary: Workshop Details Link API
+      description: This API is used to get workshop video url
+      operationId: AWSARApi/ws1/workshopVideo
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: array
+                    description: Response Payload
+                    items:
+                      type: object
+                      properties:
+                        url:
+                          type: string
+                          description: url link
+                          example: https://www.youtube.com/embed/imxYNDuME_Y
+        "400":
+          description: Bad Request/Validation Error
+  /AWSARApi/ws1/sampleResearchStories:
+    post:
+      tags:
+        - Sample Research Stories
+      summary: Sample Research Stories List Api
+      description: This API provides the list different Researches stories listed in
+        pdf view by the AWSAR
+      operationId: AWSARApi/ws1/sampleResearchStories
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: array
+                    description: Response Payload
+                    items:
+                      type: object
+                      properties:
+                        text:
+                          type: string
+                          description: text description
+                          example: An isabgol based wound material to treat diabetic wounds.
+                        url:
+                          type: string
+                          description: url link
+                          example: http://awsar-dst.in/assets/images/docs/an-isabgol-based-wound-material-to-treat-diabetic-wounds.pdf
+        "400":
+          description: Bad Request/Validation Error
+  /AWSARApi/ws1/scienceWritingReferences:
+    post:
+      tags:
+        - Science Writing References API
+      summary: Science writing references list api
+      description: This api is used to get different writing reference listed will be
+        displayed by clicking the link provided by AWSAR
+      operationId: AWSARApi/ws1/scienceWritingReferences
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: array
+                    description: Response Payload
+                    items:
+                      type: object
+                      properties:
+                        text:
+                          type: string
+                          description: text description
+                          example: Ten simple rules for writing a popular science book
+                        url:
+                          type: string
+                          description: url link
+                          example: https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005808
+        "400":
+          description: Bad Request/Validation Error
+  /AWSARApi/ws1/expertsPresentation:
+    post:
+      tags:
+        - Get Experts Presentation List
+      summary: Experts presentation list api
+      description: This API is used to get different Expert Presentation listed in pdf
+        view by the AWSAR which will be displayed under UMANG
+      operationId: AWSARApi/ws1/expertsPresentation
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: array
+                    description: Response Payload
+                    items:
+                      type: object
+                      properties:
+                        text:
+                          type: string
+                          description: text description
+                          example: About AWSAR
+                        url:
+                          type: string
+                          description: url link
+                          example: https://www.awsar-dst.in/assets/uploads/resource_material/About_AWSAR.pdf
+        "400":
+          description: Bad Request/Validation Error
+  /AWSARApi/ws1/awsarAwards:
+    post:
+      tags:
+        - AWSAR Awards List API
+      summary: enlists AWSAR awards
+      description: This API is used to get all the AWSAR Awards
+      operationId: AWSARApi/ws1/awsarAwards
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: array
+                    description: Response Payload
+                    items:
+                      type: object
+                      properties:
+                        keym:
+                          type: string
+                          description: key message
+                          example: Selection of best 100 entries of popular science stories and prizes
+                        keys:
+                          type: string
+                          description: key message
+                          example: For PhD researchers The initial screening of the entry will be done by
+                            expert panel. 100 entries will be selected and each
+                            will be awarded with cash prize of 10,000/- along
+                            with Certificate of Appreciation.
+                        keyss:
+                          type: string
+                          description: key message
+                          example: For Post doc fellows Twenty entries would be selected from articles
+                            submitted by PDFs relating to their line of
+                            research. Each will be awarded with cash prize of
+                            10,000/- along with Certificate of Appreciation.
+        "400":
+          description: Bad Request/Validation Error
+  /AWSARApi/ws1/awsarMedia:
+    post:
+      tags:
+        - AWSAR Media URL List
+      summary: Different AWSAR Media List API
+      description: This API is used to get list of different media urls
+      operationId: AWSARApi/ws1/awsarMedia
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: array
+                    description: Response Payload
+                    items:
+                      type: object
+                      properties:
+                        text:
+                          type: string
+                          description: text description
+                          example: भारत सरकार के 'अवसर' में पीएचडी शोधार्थियों को मिलेगा 1 लाख का इनाम
+                        url:
+                          type: string
+                          description: url link
+                          example: https://hindi.news18.com/news/career/government-of-india-promote-science-writing-initiative-by-starting-awsar-2410642.html?utm_source=social_share_article
+                        image:
+                          type: string
+                          description: image name
+                          example: https://www.awsar-dst.in/assets/images/blog/news18.jpg
+        "400":
+          description: Bad Request/Validation Error
+  /AWSARApi/ws1/awsarVideo:
+    post:
+      tags:
+        - AWSAR Video Link
+      summary: Get AWSAR Video Link API
+      description: This API is used to get AWSAR video link
+      operationId: AWSARApi/ws1/awsarVideo
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: array
+                    description: Response Payload
+                    items:
+                      type: object
+                      properties:
+                        url:
+                          type: string
+                          description: url link
+                          example: https://www.youtube.com/embed/wJeYby3fvHA
+        "400":
+          description: Bad Request/Validation Error
+  /AWSARApi/ws1/contact:
+    post:
+      tags:
+        - Contact And Submit Feedback API
+      summary: Contact and submit user feedback api
+      description: This API is used for feedback submission
+      operationId: AWSARApi/ws1/contact
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+                FirstName:
+                  type: string
+                  description: first name
+                  example: Pooja
+                LastName:
+                  type: string
+                  description: last name
+                  example: Nandgaonkar
+                EmailId:
+                  type: string
+                  description: emailId
+                  example: nandupuja@gmail.com
+                Phone:
+                  type: string
+                  description: phonenumber
+                  example: 9309514024
+                Subject:
+                  type: string
+                  description: subject
+                  example: abc
+                Message:
+                  type: string
+                  description: message
+                  example: abc
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: object
+                    properties:
+                      success:
+                        type: boolean
+                        description: success description
+                        example: true
+                      text:
+                        type: string
+                        description: text message
+                        example: Thanks for your feedback. Your comment has been submitted successfully.
+        "400":
+          description: Bad Request/Validation Error
+  /AWSARApi/ws1/features:
+    post:
+      tags:
+        - Get Features List Of AWSAR
+      summary: features List API
+      description: This API is used to list all the features of AWSAR
+      operationId: AWSARApi/ws1/features
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: array
+                    description: Response Payload
+                    items:
+                      type: object
+                      properties:
+                        key:
+                          type: string
+                          description: key description
+                          example: Basic rules of style, the flow of words and sentences, Grammar and
+                            punctuation
+                        feature:
+                          type: string
+                          description: feature
+                          example: Under the initiative of Augmenting Writing Skills for Articulating
+                            Research (AWSAR), workshops will be organized at
+                            different locations in the country for handholding
+                            and developing requisite skills to researchers. The
+                            workshops will be conducted by experts who will pool
+                            their ideas to suggest tips for good writing and
+                            good popular science writing. The tentative theme
+                            will cover
+        "400":
+          description: Bad Request/Validation Error
+  /AWSARApi/ws1/testimonials:
+    post:
+      tags:
+        - Get Testimonials List API
+      summary: Testimonials List API
+      description: This API enlists the testimonials by different officials for the
+        AWSAR platform
+      operationId: AWSARApi/ws1/testimonials
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: array
+                    description: Response Payload
+                    items:
+                      type: object
+                      properties:
+                        text:
+                          type: string
+                          description: text description
+                          example: About AWSAR
+                        name:
+                          type: string
+                          description: name
+                          example: Himanshi Kapoor
+                        pos:
+                          type: string
+                          description: pos
+                          example: (PDF, CSIR-IGIB)
+                        images:
+                          type: string
+                          description: image name
+                          example: https://www.awsar-dst.in/assets/images/2020/himanshi_kapoor.jpg
+        "400":
+          description: Bad Request/Validation Error
+  /AWSARApi/ws1/resultPdf2019:
+    post:
+      tags:
+        - Get Candidate Details In 2019 List
+      summary: Candidate Details in 2019 List API
+      description: This API is used to get candidate details in 2019
+      operationId: AWSARApi/ws1/resultPdf2019
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: array
+                    description: Response Payload
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: id
+                          example: 1
+                        Refference_No:
+                          type: string
+                          description: reference number
+                          example: AW/2021/4959
+                        Name:
+                          type: string
+                          description: name
+                          example: Dr Pragyan Parimita Rath
+                        Award_Category:
+                          type: string
+                          description: award category
+                          example: OUTSTANDING
+                        Institute:
+                          type: string
+                          description: institute name
+                          example: Jawaharlal Nehru University, Delhi
+        "400":
+          description: Bad Request/Validation Error
+  /AWSARApi/ws1/resultPhd2019:
+    post:
+      tags:
+        - List Of Candidate Details Of Phd In 2019
+      summary: Get List of Candidate Details of Phd in 2019
+      description: This API is used to get list of candidate details of Phd in 2019
+      operationId: AWSARApi/ws1/resultPhd2019
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: UW-b1597045262568
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                usrid:
+                  type: string
+                  description: user id
+                  example: 1008602142
+                srvid:
+                  type: string
+                  description: service id
+                  example: 317
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                deptid:
+                  type: string
+                  description: department id
+                  example: 1519
+                did:
+                  type: string
+                  description: Device Id
+                  example: 1
+                subsid:
+                  type: string
+                  description: subsid
+                  example: 0
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: 0
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 0
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: array
+                    description: Response Payload
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: id
+                          example: 1
+                        Refference_No:
+                          type: string
+                          description: reference number
+                          example: AW/2021/798
+                        Author_name:
+                          type: string
+                          description: author name
+                          example: Mr. Ajay Lagashetti
+                        Award_Category:
+                          type: string
+                          description: award category
+                          example: FIRST
+                        Institute:
+                          type: string
+                          description: institute name
+                          example: Agharkar Research Institute, Pune
+        "400":
+          description: Bad Request/Validation Error
+components:
+  securitySchemes:
+    x-api-key:
+      type: apiKey
+      name: x-api-key
+      in: header

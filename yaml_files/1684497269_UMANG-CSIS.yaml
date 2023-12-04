@@ -1,0 +1,386 @@
+---
+openapi: 3.0.0
+info:
+  title: Central Sector Interest Subsidy Scheme (CSIS)
+  description: Central Sector Interest Subsidy Scheme (CSIS) to provide Interest Subsidy for the period of moratorium of education loams taken by students from economically weaker sections(EWS) under educational loan scheme of Indian Banks Association(IBA),to pursue Technical/Professional education studies in India.Government of India,Ministry of Education,Department of higher education, New Delhi has launched a scheme under the name "Central Scheme to provide Interest Subsidy(CSIS)" for the moratorium period of education loan availed by students from EWS under IBA education loan scheme, to pursue Technical/Professional courses in India. This scheme is effective from academic year 2009-10.<i>[Updated on 12th May 2023]</i>
+  termsOfService: https://web.umang.gov.in/uaw/ts/v1/en/index.htm
+  contact:
+    name: Provided by - UMANG
+    url: https://web.umang.gov.in
+  version: 1.0.0
+servers:
+  - url: https://apigw.umangapp.in
+    description: Production Server
+
+security:
+  - x-api-key: []
+
+paths:
+  /CSISApi/ws1/CSIS_BANK_NAME:
+    post:
+      tags:
+        - CSIS Bank Names API
+      summary: CSIS Bank Names List API
+      description: This API is Used to Get the List of CSIS Bank Names
+      operationId: CSISApi/ws1/CSIS_BANK_NAME
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: en
+                lon:
+                  type: string
+                  description: longitude
+                  example: en
+                lac:
+                  type: string
+                  description: lac
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 1                  
+                usrid:
+                  type: string
+                  description: user id
+                  example: 191
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1310
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                apitrkr:
+                  type: string
+                  description: api tracker
+                  example: 1                  
+                did:
+                  type: string
+                  description: Device Id
+                  example: 122
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 420
+                subsid:
+                  type: string
+                  description: subsid
+                  example: subscriber Id
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: subscriber Id2
+                username:
+                  type: string
+                  description: username
+                  example: CB_Public_user
+                password:
+                  type: string
+                  description: password
+                  example: $P@s*0!d(b^2o!9
+                VENDOR_ID:
+                  type: string
+                  description: vendorId
+                  example: UMANG
+                METHOD_ID:
+                  type: string
+                  description: methodId
+                  example: 077
+                REQUEST_ENC:
+                  type: string
+                  description: REQUEST_ENC
+                  example: p8rxmvQq6VIr8VBUhIYK3XSPmA8=
+                REQUEST_DIGEST:
+                  type: string
+                  description: request digest
+                  example: E5D46A1077F0F4C811784AB459966E3478A827159616388E41A9501446647F10
+                REQUEST_DATE_TIME:
+                  type: string
+                  description: request date time
+                  example: 2020-07-28T12:01:41.1105068+05:30
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer 5fe9e884-14e1-3294-943b-b6daab40b04e
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: array
+                    description: Response Payload
+                    items:
+                      type: object
+                      properties:
+                        BK_CODE:
+                          type: integer
+                          description: bk code
+                          example: 856
+                        BK_NAME:
+                          type: string
+                          description: bank name
+                          example: ABHYUDAYA CO-OP BANK LTD
+        "400":
+          description: Bad Request/Validation Error
+  /CSISApi/ws1/CSIS_CLAIM_DETAILS:
+    post:
+      tags:
+        - CSIS Claim Details API
+      summary: CSIS Claim Details API
+      description: This API is Used to Get The List of CSIS Claim Details
+      operationId: CSISApi/ws1/CSIS_CLAIM_DETAILS
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tkn:
+                  type: string
+                  description: session token
+                  example: os1a0bf692-b293-4e83-a5ff-44c91e599e18/2
+                trkr:
+                  type: string
+                  description: tracker for current transaction
+                  example: 213132
+                lang:
+                  type: string
+                  description: language
+                  example: en
+                lat:
+                  type: string
+                  description: latitude
+                  example: en
+                lon:
+                  type: string
+                  description: longitude
+                  example: en
+                lac:
+                  type: string
+                  description: lac
+                  example: 90
+                usag:
+                  type: string
+                  description: usag
+                  example: 1                  
+                usrid:
+                  type: string
+                  description: user id
+                  example: 191
+                srvid:
+                  type: string
+                  description: service id
+                  example: 1310
+                mode:
+                  type: string
+                  description: mode of access
+                  example: app
+                pltfrm:
+                  type: string
+                  description: platform of access
+                  example: Android 9
+                apitrkr:
+                  type: string
+                  description: api tracker
+                  example: 1                  
+                did:
+                  type: string
+                  description: Device Id
+                  example: 122
+                formtrkr:
+                  type: string
+                  description: formtrkr
+                  example: 1
+                deptid:
+                  type: string
+                  description: department id
+                  example: 420
+                subsid:
+                  type: string
+                  description: subsid
+                  example: subscriber Id
+                subsid2:
+                  type: string
+                  description: subsid2
+                  example: subscriber Id2
+                username:
+                  type: string
+                  description: username
+                  example: CB_Public_user
+                password:
+                  type: string
+                  description: password
+                  example: $P@s*0!d(b^2o!9
+                VENDOR_ID:
+                  type: string
+                  description: vendorId
+                  example: UMANG
+                METHOD_ID:
+                  type: string
+                  description: methodId
+                  example: 077
+                REQUEST_ENC:
+                  type: string
+                  description: REQUEST_ENC
+                  example: p8rxmvQq6VIr8VBUhIYK3XSPmA8=
+                REQUEST_DIGEST:
+                  type: string
+                  description: request digest
+                  example: E5D46A1077F0F4C811784AB459966E3478A827159616388E41A9501446647F10
+                REQUEST_DATE_TIME:
+                  type: string
+                  description: request date time
+                  example: 2020-07-28T12:01:41.1105068+05:30
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer 5fe9e884-14e1-3294-943b-b6daab40b04e
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: "20"
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: "0"
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: "0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rs:
+                    type: string
+                    description: Response Status
+                    example: S
+                  rc:
+                    type: string
+                    description: Response Code
+                    example: 200
+                  rd:
+                    type: string
+                    description: Response Description
+                    example: Success.
+                  pd:
+                    type: string
+                    description: claim details
+                    example: \"VENDOR_ID\":\"UMANG\",\"METHOD_ID\":\"078\",\"RESPONSE_CODE\":\"1\",\"RESPONSE_ENC\":\"sp3OguQAn5Gi2A08IT7wUNZ7KmvsKpDeVgeb3R
+        "400":
+          description: Bad Request/Validation Error
+components:
+  securitySchemes:
+    x-api-key:
+      type: apiKey
+      name: x-api-key
+      in: header

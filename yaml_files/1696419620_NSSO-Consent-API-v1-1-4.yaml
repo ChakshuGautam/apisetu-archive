@@ -1,0 +1,2142 @@
+openapi: 3.0.0
+info:
+  title: Consent API
+  description: >-
+    MeriPehchaan – National Single Sign-On (NSSO) is a user authentication service in which a single set of credentials provide access to multiple online applications or services. This offers major benefits for both users and application administrators.
+
+    Consent is the process of a user granting authorization to an application to access protected resources on their behalf. An admin or user can be asked for consent to allow access to their organization/individual data.
+
+    The actual user experience of granting consent will differ depending on policies set on the user's tenant, the user's scope of authority (or role), and the type of permissions being requested by the client application. This means that application developers and tenant admins have some control over the consent experience. Admins have the flexibility of setting and disabling policies on a tenant or app to control the consent experience in their tenant. Application developers can dictate what types of permissions are being requested and if they want to guide users through the user consent flow or the admin consent flow. <i>[Updated on 4th October 2023]</i>
+  
+  termsOfService: https://meripehchaan.gov.in/welcome/terms
+  contact: 
+     name: Provided by - Consent Management DigiLocker 
+     url: https://digilocker.gov.in
+  version: 1.1.4
+servers:
+  - url: https://beta-consent.dl6.in/
+    description: Beta Server 
+  - url: https://{client_domain}
+    variables:
+      client_domain:
+        "default": "digilocker.meripehchaan.gov.in"
+    description: Consent Client Domain
+
+paths:
+  /1/temp:
+    post:
+      tags:
+      - Request for Consent API
+      summary: Request for Consent
+      description: >1
+        The request header requires two parameters: 
+          - <b>x-consent-appid</b>: <i> Provide the app id/client id that was created during the application registration process. For example, <code>x-consent-appid: AA00BB1C0</code></i>
+          - <b>Authorization</b>: <i>The Authorization header parameter uses the bearer token scheme and the token is a JWT token that contains a JSON object with the following </i>
+            - <b>app_id</b>: <i> Provide the app id/client id that was created during the application registration process
+            - <b>sub</b>: <i>A string that represents the subject of the JWT, which is the principal that the token refers to. It can be a unique identifier of the user like userId, or a globally unique value like an email address. For example, “ecfe297d-32cf-4e6a-9e2e-6cce704809af” or “jane.doe@example.com”.</i>.
+            - <b>iat</b>: <i>A number that represents the issued at time of the consent auth in seconds since epoch. For example, 1670000011.</i>
+            - <b>nbf</b>: <i>A number that represents the not before time of the consent auth in seconds since epoch. For example, 1670000011.</i>
+            - <b>exp</b>: <i>A number that represents the expiration time of the consent auth in seconds since epoch. exp should not more than1 hour ( 3600 second ) from iat time  For example, 1670003611.</i>
+            
+             # <h4>For example</h4>
+                Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjI2MTg2MmY0NDg2NGQ5NWJmODk4NjhiYjcxNjI3MjY2In0.eyJzdWIiOiI5MzdlNzQ5MC02NjJmLTU2ZDktOWRjZC0xZTUxNTE5NWRlNTQiLCJhcHBfaWQiOiJERjA4RjFCOCIsImlhdCI6MTY4NjcyMTA3OCwibmJmIjoxNjg2NzIxMDc4LCJleHAiOjE2ODY3MjQ2Nzh9.fKU9Rke9vtN-Ck5r-8gf_1l3Mb3P6KuYu7hU8qidJOUSW00NWU8SVXC_jB6dA0pzU7OT6JAUnzgw6njNXSEEy0NgTeQiMoT_qDnSNVq1wau6HwUbY20jIdOZHDOUT3_9nEtzZeRguIZSS_oiMA1SA_QageugkuFfbQhJWl2-eRmfrZBZmFmlxg5HoGfuUbED9t6JZu8pIxHzFgU4G2B7-WaP3m9fCZ0d7CQDh9MitgJoSkvM12zh6SxsNQFSbGKG4Q7SLHevEKlZRf0DEq-z4dSQADX5ueY3O4vT6NVhm5_bOCYOKbOwtc_0vUinipGaS01Gci1umPtZHCw_zin9wA
+          
+      operationId: 1/temp
+      security:
+       - bearerAuth: []
+       - appId: []
+        
+      requestBody:
+        content:
+          application/json:
+            schema:
+
+              properties:
+                  txnId:
+                    type: string
+                    example: "63c8fc92d077aoauth21674116255"
+                  appId:
+                    type: string
+                    example: "D2B22132"
+                  sub:
+                    type: string
+                    example: "a732de37-5d92-21e9-a95e-8797a5645068"
+                  subName:
+                    type: string
+                    example: "Digital Locker"
+                  subPhone:
+                    type: string
+                    example: "1111111112"
+                  subEmail:
+                    type: string
+                    example: "demo@dic.gov.in"
+                  aud:
+                    type: string
+                    example: "AA2BBCC2"
+                  audName:
+                    type: string
+                    example: "Digital Seva"
+                  audParentName:
+                    type: string
+                    example: "Digital India Corporation"
+                  expireFrom:
+                    type: integer
+                    example: 1674121889
+                  expireTo:
+                    type: integer
+                    example: 1676713889
+                  ActivePermission:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        l:
+                          type: string
+                        s:
+                          type: string
+                        c:
+                          type: boolean
+                        i:
+                          type: string
+                        iss:
+                          type: boolean
+                        ss:
+                          type: object
+                    example:
+                      -  l: "Profile information (Name, Date of Birth, Gender)."
+                         s: "userdetails"
+                         c: False
+                         i: "https://img1.digitallocker.gov.in/nsso/consent/profile.svg"
+                         iss: False
+                         ss: []
+                      -  l: "DigiLocker Drive"
+                         s: "files.uploadeddocs"
+                         c: True
+                         i: "https://img1.digitallocker.gov.in/nsso/consent/doc.svg"
+                         iss: False
+                         ss: []
+                      -  l: "Issued documents."
+                         s: "files.issueddocs"
+                         c: True
+                         i: "https://img1.digitallocker.gov.in/nsso/consent/doc.svg"
+                         iss: True
+                         ss: [{'l': 'Aadhaar Card ( XXb483a9 )', 's': 'issued/in.gov.uidai-ADHAR-4d3daeeb3ea3d90d4d6e7a20a5b483a9', 'c': True, 'iss': False}, {'l': 'PAN Verification Record ', 's': 'file.partners/PANCR', 'c': True, 'iss': False}]
+                  providerType:
+                    type: string
+                    example: "other"
+                  providerId:
+                    type: string
+                    example: "DL"
+                  providerName:
+                    type: string
+                    example: "DigiLocker"
+                  providerParentName:
+                    type: string
+                    example: "DigiLocker"
+                  audLogo:
+                    type: string
+                    example: "https://cf-media.api-setu.in/logo/auth_partner/1678191549_digitalseva.png"
+                  purposeId: 
+                    type: string
+                    example: "kyc/verification/compliance/availing_services/educational"
+                  authentication :
+                    type: object
+                    
+                    properties:
+                      mode:
+                        type: string
+                        example: DL_MOBILE_OTP/DL_MOBILE_PIN
+                      txn:
+                        type: string
+                        example: c674b3ae-c3b6-518e-9175-b419b5dd6c9b
+                         
+      
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  ack_id:
+                    type: string
+                    example: "ecfe297d-32cf-4e6a-9e2e-6cce704809af"
+
+   
+        401:
+          description: Unauthorize
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  error:
+                    type: string
+                    example: "invalid_authorization"
+                  errorDescription:
+                    type: string
+                    example: "The authorization does not exist or invalid for the given payload"
+
+   
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  error:
+                    type: string
+                    example: "invalid_request"
+                  errorDescription:
+                    type: object
+                    properties:
+                      audLogo: 
+                        type: array                        
+                        items:
+                          type: object
+                        example: ['Missing data for required field.']
+                      audName: 
+                        type: array                        
+                        items:
+                          type: object
+                        example: ['Missing data for required field.']
+
+   
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  error:
+                    type: string
+                    example: "unexpeted _error"
+                  errorDescription:
+                    type: string
+                    example: "Internal Server Error "
+
+  /1:
+    post:
+      tags:
+      - Request for Consent API
+      summary: Logger Consent
+      description: >1
+        The request header requires two parameters: 
+          - <b>x-consent-appid</b>: <i> Provide the app id/client id that was created during the application registration process. For example, <code>x-consent-appid: AA00BB1C0</code></i>
+          - <b>Authorization</b>: <i>The Authorization header parameter uses the bearer token scheme and the token is a JWT token that contains a JSON object with the following </i>
+            - <b>app_id</b>: <i> Provide the app id/client id that was created during the application registration process
+            - <b>sub</b>: <i>A string that represents the subject of the JWT, which is the principal that the token refers to. It can be a unique identifier of the user like userId, or a globally unique value like an email address. For example, “ecfe297d-32cf-4e6a-9e2e-6cce704809af” or “jane.doe@example.com”.</i>.
+            - <b>iat</b>: <i>A number that represents the issued at time of the consent auth in seconds since epoch. For example, 1670000011.</i>
+            - <b>nbf</b>: <i>A number that represents the not before time of the consent auth in seconds since epoch. For example, 1670000011.</i>
+            - <b>exp</b>: <i>A number that represents the expiration time of the consent auth in seconds since epoch. exp should not more than1 hour ( 3600 second ) from iat time  For example, 1670003611.</i>
+            
+             # <h4>For example</h4>
+                Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjI2MTg2MmY0NDg2NGQ5NWJmODk4NjhiYjcxNjI3MjY2In0.eyJzdWIiOiI5MzdlNzQ5MC02NjJmLTU2ZDktOWRjZC0xZTUxNTE5NWRlNTQiLCJhcHBfaWQiOiJERjA4RjFCOCIsImlhdCI6MTY4NjcyMTA3OCwibmJmIjoxNjg2NzIxMDc4LCJleHAiOjE2ODY3MjQ2Nzh9.fKU9Rke9vtN-Ck5r-8gf_1l3Mb3P6KuYu7hU8qidJOUSW00NWU8SVXC_jB6dA0pzU7OT6JAUnzgw6njNXSEEy0NgTeQiMoT_qDnSNVq1wau6HwUbY20jIdOZHDOUT3_9nEtzZeRguIZSS_oiMA1SA_QageugkuFfbQhJWl2-eRmfrZBZmFmlxg5HoGfuUbED9t6JZu8pIxHzFgU4G2B7-WaP3m9fCZ0d7CQDh9MitgJoSkvM12zh6SxsNQFSbGKG4Q7SLHevEKlZRf0DEq-z4dSQADX5ueY3O4vT6NVhm5_bOCYOKbOwtc_0vUinipGaS01Gci1umPtZHCw_zin9wA</code>
+      
+      operationId: abc
+      security:
+       - bearerAuth: []
+       - appId: []
+       
+      parameters:
+        - in: header
+          name: x-consent-appid
+          schema:
+            type: string
+            example: "AA00BB1C0"
+          example: "AA00BB1C0"
+
+      requestBody:
+        content:
+          application/json:
+            schema:
+
+              properties:
+                  txnId:
+                    type: string
+                    example: "63c8fc92d077aoauth21674116255"
+                  appId:
+                    type: string
+                    example: "D2B22132"
+                  sub:
+                    type: string
+                    example: "d732de37-6d92-11e9-a85e-9457a5645068"
+                  subName:
+                    type: string
+                    example: "Digital Locker"
+                  subPhone:
+                    type: string
+                    example: "1111111112"
+                  subEmail:
+                    type: string
+                    example: "abc@gmail.com"
+                  aud:
+                    type: string
+                    example: "AA2BBCC2"
+                  audName:
+                    type: string
+                    example: "Local Demo apps"
+                  audParentName:
+                    type: string
+                    example: "DR. VISHWANATH KARAD MIT WORLD PEACE  UNIVERSITY"
+                  expireFrom:
+                    type: integer
+                    example: 1674121889
+                  expireTo:
+                    type: integer
+                    example: 1676713889
+                  ActivePermission:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        l:
+                          type: string
+                        s:
+                          type: string
+                        c:
+                          type: boolean
+                        i:
+                          type: string
+                        iss:
+                          type: boolean
+                        ss:
+                          type: object
+                    example:
+                      -  l: "Profile information (Name, Date of Birth, Gender)."
+                         s: "https://dgilocker.gov.in/auth/userdetails"
+                         c: False
+                         i: "https://img1.digitallocker.gov.in/nsso/consent/profile.svg"
+                         iss: False
+                         ss: []
+                      -  l: "Terms & Condition"
+                         s: "terms"
+                         c: True
+                         i: "https://img1.digitallocker.gov.in/nsso/consent/doc.svg"
+                         iss: False
+                         ss: []
+                  callbackUrl:
+                    type: string
+                    example: "http%3A%2F%2Flocalhost%3A8002%2Fpublic%2Foauth2%2Fconsent_callback"
+                  providerType:
+                    type: string
+                    example: "other"
+                  providerId:
+                    type: string
+                    example: "DL"
+                  providerName:
+                    type: string
+                    example: "DigiLocker"
+                  providerParentName:
+                    type: string
+                    example: "DigiLocker"
+                  audLogo:
+                    type: string
+                    example: ""
+                  authentication :
+                    type: object
+                    
+                    properties:
+                      mode:
+                        type: string
+                        example: DL_MOBILE_OTP/DL_MOBILE_PIN
+                      txn:
+                        type: string
+                        example: c674b3ae-c3b6-518e-9175-b419b5dd6c9b  
+                    
+      
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  ack_id:
+                    type: string
+                    example: "ecfe297d-32cf-4e6a-9e2e-6cce704809af"
+
+   
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  error:
+                    type: string
+                    example: "invalid_request"
+                  errorDescription:
+                    type: string
+                    example: "The AUD Logo field is missing or Invalid "
+
+   
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  error:
+                    type: string
+                    example: "invalid_authorization"
+                  errorDescription:
+                    type: string
+                    example: "The authorization does not exist or invalid for the given payload"
+
+   
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  error:
+                    type: string
+                    example: "unexpeted _error"
+                  errorDescription:
+                    type: string
+                    example: "Internal Server Error "
+
+   
+
+  /consent-form:
+    get:
+      tags:
+      - Capture User Consent Using Browser Interface
+      summary: Capture User Consent Using Browser Interface
+      operationId: consent-form
+      
+      parameters:
+        - in: query
+          name: app_id
+          schema:
+            type: string
+            example: "AA00BB1C0"
+          example: "AA00BB1C0"
+        - in: query
+          name: jwt
+          schema:
+            type: string
+          example: >-1
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiJBQTAwQkIxQzAiLCJhY2tfaWQiOiI3YzcwNWM0NS0xMWMzLTRjODQtYjhkYS01ZDc3ZjVjMzk3MGUiLCJpYXQiOjE2NzAwMDAwMTEsIm5iZiI6MTY3MDAwMDAxMSwiZXhwIjoxNjcwMDAzNjExLCJjYWxsYmFja191cmwiOiJodHRwczovL2RvbWFpbi9hcHAxL2NvbnNlbnRfY2FsbGJhY2sifQ.rjBz-3UY7kTauVgTzqE3M5CJE_UMmV_9lP5M6MwVLTs
+            
+             The jwt parameter contains a JSON object with the following 
+              - <b>app_id</b>: <i> Provide the app id/client id that was created during the application registration process. FOr example, <code> AA00BB1C0</code>
+              - <b>ack_id</b>: <i>A string that represents the unique identifier of the consent  which one received on the operation of store  temp/ Logger consent API. For example, <code>7c705c45-11c3-4c84-b8da-5d77f5c3970e</code></i>.
+              - <b>iat</b>: <i>A number that represents the issued at time of the consent auth in seconds since epoch. For example, <code>1670000011</code>.</i>
+              - <b>nbf</b>: <i>A number that represents the not before time of the consent auth in seconds since epoch. For example, <code>1670000011</code>.</i>
+              - <b>exp</b>: <i>A number that represents the expiration time of the consent auth in seconds since epoch. exp should not more than1 hour ( 3600 second ) from iat time  For example, <code>1670003611</code>.</i>
+              - <b>callback_url</b>(optional): <i>The callback_url is the URL to redirect the user after consent has completed. This must be the exact URI registered in the Partner Portal consent client configuration. A callback_url is required for the multiple redirect option, but optional for the single one. For example, <code>https://domain/app1/consent_callback</code></i>
+      
+      responses:
+        302:
+          description: >-2
+            After the user gives their consent through a consent capture form, the system will redirect them to the client's registered redirect URL. The redirect URL will have a payload parameter that is encrypted with the AES-CBC-256 algorithm using the redirect/callback URL key as the key. The payload parameter contains a JSON object with the following fields: 
+              - <b>txnId</b>: <i>A string that represents the unique identifier of the consent capture client transaction. For example, "edgf308e-43dg-4e6a-8f3f-7ddf704809bg"</i>.
+              - <b>ackId</b>: <i>A string that represents the unique identifier of the consent capture transaction. For example, "ecfe297d-32cf-4e6a-9e2e-6cce704809af"</i>.
+              - <b>gs</b>: <i>A string that represents the list of granted scopes that the user has consented to. For example, "scope1 scope2 scope3".</i>
+              - <b>ca</b>: <i>A string that represents the operation performed by the user. For example, "Y" for allowed and "N" for denied.</i>
+              
+
+              # <h3>An example of a redirect URL with a payload parameter is</h3>
+              <i>https://domain/app1/consent_callback?payload=Z0FBQUFBQmRyZnFtT0p5cWlqYk9vZGJjTjJxMm5wQkZyV3h0cGxwVWlqYk9vZGJjTjJxMm5wQkZyV3h0cGxwVWlqYk9vZGJjTjJxMm5wQkZyV3h0cGxwVWlqYk9vZGJjTjJxMm5wQkZyV3h0cGxwVWlqYk9vZGJjTjJxMm5wQkZyV3h0cGxwVWlqYk9vZGJjTjJxMm5wQkZyV3h0cGxwVWlqYk9vZGJjTjJxMm5wQkZyV3h0cGxwVWlqYk9vZGJjTjJxMm5wQkZyV3h0cGxwVWlqYk9vZGJjTjJxMm5wQkZyV3h0cGxwVWlqYk9vZGJjTjJxMm5wQkZyV3h0cGxwVWlqYk9vZGJjTjJxMm5wQkZyV3h0cGxw</i>
+              
+              # <h3>The general steps to decrypt the payload parameter are:</h3>
+              - Convert the payload parameter from base64 to bytes.
+              Split the bytes into the IV and the encrypted data.
+              - Create a cipher object with the key and the IV using the AES-CBC-256 algorithm.
+              - Decrypt the encrypted data using the cipher object.
+               -Convert the decrypted data from bytes to string.
+               -Here is an example of how to decrypt the payload parameter in Python using the Crypto module:
+              # <h3>Sample Code</h3>
+
+                from Crypto.Cipher import AES
+                from Crypto.Util.Padding import pad, unpad
+                import json
+                import base64
+                
+                #The encrypted data
+                encrypted_data ="a8xQYjJYOUFIC3yF5bv4ZWOTVU0miwOeKqB/kuNmJAyb0Nu9FR/BjBWYh9ym4IQwKE4t8bc4Ef45hR4JDAh---/JA3Tg6InHw1YuWxkYC4AYZHWKbtng---o66LvBpXMgYExXdntMA5hDvZ0eMHS32adrVSzK6724iaTZfK/5/H0ysY="
+                
+                # callback key from Partner portal consent client configuration 
+                key = b"poKLnmURWppBbNanUPpPRBxXuDFgYJ6c"
+                iv = bytes(16 * '\x00', 'utf-8')
+                
+                # Create an AES cipher object with the key, IV and mode (CBC)
+                cipher = AES.new(key, AES.MODE_CBC, iv)
+                
+                
+                data_to_decrypt = base64.b64decode(encrypted_data.replace('---', '+'))
+                
+                # Create a new cipher object for decryption with the same key and IV
+                decipher = AES.new(key, AES.MODE_CBC, iv)
+                
+                # Decrypt the ciphertext
+                decrypted_padded_plaintext = decipher.decrypt(data_to_decrypt)
+                decrypted_json_string = unpad(decrypted_padded_plaintext, AES.block_size)
+                
+                # Convert the decrypted JSON string back to a JSON object
+                decrypted_data = json.loads(decrypted_json_string)
+                
+                # Print the decrypted value
+                print(decrypted_data)
+
+
+              
+             
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  error:
+                    type: string
+                    example: "invalid_request"
+                  errorDescription:
+                    type: string
+                    example: "The authorization does not exist or invalid for the given payload"
+          
+   
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  error:
+                    type: string
+                    example: "invalid_authorization"
+                  errorDescription:
+                    type: string
+                    example: "The authorization token has expired"
+
+   
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  error:
+                    type: string
+                    example: "invalid_request"
+                  errorDescription:
+                    type: string
+                    example: "Something went wrong, Please try again after 5 minute. If problem persist please see FAQ section"
+
+   
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  error:
+                    type: string
+                    example: "unexpeted _error"
+                  errorDescription:
+                    type: string
+                    example: "Internal Server Error "
+
+   
+
+  /postback:
+    patch:
+      tags:
+      - Notification postback of Update/Revoke consent API
+      summary: Notification of change consent
+      description:  >-1
+        When the user modifies and then withdraws their consent for data processing or communication, inform the client.
+        
+        ```Note : Before trying this API, please change the server endpoint mentioned at the top of the document and replace the “client domain” with your domain URL.*```
+        
+      operationId: postback/Revoke
+
+      requestBody:
+        description: >-1
+          After the user update or revoke their consent through a consent application, the system will send postback request to the client's registered postback URL. The postaback URL will have a payload parameter that is encrypted with the AES-CBC-256 algorithm using the postback URL key as the key. The payload parameter contains a JSON object with the following fields: 
+          # <h3>Update Operatrion</h3>
+            - <b>ackId</b>: <i>A string that represents the unique identifier of the consent capture transaction. For example, "ecfe297d-32cf-4e6a-9e2e-6cce704809af"</i>.
+            - <b>grantedScope</b>: <i>A string that represents the list of granted scopes that the user has consented to. For example, "scope1 scope2 scope3".</i>
+            - <b>opr</b>: <i>A string that represents the operation performed by the user. For example, "U" for update .</i>
+            - <b>expireTo</b>: <i>A number that represents the expiration time of the consent in seconds since epoch. For example, 1670000011.</i>
+          # <h3>Revoke Operatrion</h3>
+            - <b>ackId</b>: <i>A string that represents the unique identifier of the consent capture transaction. For example, "ecfe297d-32cf-4e6a-9e2e-6cce704809af"</i>.
+            - <b>opr</b>: <i>A string that represents the operation performed by the user. For example, "R" for revoke .</i>
+        content:
+          application/json:
+            schema:
+              properties:
+                payload:
+                  type: string
+                  example: "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjI2MTg2MmY0NDg2NGQ5NWJmODk4NjhiYjcxNjI3MjY2In0.eyJhY2tJZCI6ImVjZmUyOTdkLTMyY2YtNGU2YS05ZTJlLTZjY2U3MDQ4MDlhZiIsImdyYW50ZWRTY29wZSI6ImZpbGVzLmlzc3VlZGRvY3MgZmlsZXMudXBsb2FkZWRkb2NzIiwib3ByIjoiVSIsImV4cGlyZVRvIjoxNjg1NDM3MTAyLCJpYXQiOjE2ODU0MzYxMDIsIm5iZiI6MTY4NTQzNjEwMiwiZXhwIjoxNjg1NDM3MTAyfQ.Fs1Dvj7AgKjgmhpx1Hvh1QbBd2PRWdMzPje_ncXtAKzD_j-BuhfJLM1jYdhXBeZwvcG04E2mvCdffXcZ1QNvwi2cpVgeDteM8d9kqHL27ut61RFAXv7nNlLj_5JZzdfp2nRxITT8PNUc-EsKr9XunwnaDjHLbdNGHPjB3LprMMHpxirwJqOFs5pyqTSLRXRBuaBuCRlX09OQ48Pu9HuMrxIggbvctnkFVjE8svm5pKjepdU8L2hOyOhRH8B5eE-e5sAoPTdW4Myck_viPBjo5suu5oilWcKlFAznyW0heu63qLl8L9cFI7UiaMY36pZrqbe9Ir-0cQFCDsSeLLKVYA"
+      
+      responses:
+        204:
+          description: Success
+
+  /1/find_by_ack_id/{ackId}:
+    get:
+      tags:
+      - Search Consent API
+      summary: Find by ackId
+      description: >1
+        The request header requires two parameters: 
+          - <b>x-consent-appid</b>: <i> Provide the app id/client id that was created during the application registration process. For example, <code>x-consent-appid: AA00BB1C0</code></i>
+          - <b>Authorization</b>: <i>The Authorization header parameter uses the bearer token scheme and the token is a JWT token that contains a JSON object with the following </i>
+            - <b>app_id</b>: <i> Provide the app id/client id that was created during the application registration process
+            - <b>ack_id</b>: <i>A string that represents the unique identifier of the consent which one received on the decryption operation of Capture User Consent Using Browser Interface. For example, 0fe75b01-2a5b-4050-afc6-de362357b968</i>.
+            - <b>iat</b>: <i>A number that represents the issued at time of the consent auth in seconds since epoch. For example, 1670000011.</i>
+            - <b>nbf</b>: <i>A number that represents the not before time of the consent auth in seconds since epoch. For example, 1670000011.</i>
+            - <b>exp</b>: <i>A number that represents the expiration time of the consent auth in seconds since epoch. exp should not more than1 hour ( 3600 second ) from iat time  For example, 1670003611.</i>
+            
+            # <h4>For example</h4>
+                Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjI2MTg2MmY0NDg2NGQ5NWJmODk4NjhiYjcxNjI3MjY2In0.eyJhcHBfaWQiOiJERjA4RjFCOCIsImFja19pZCI6IjBmZTc1YjAxLTJhNWItNDA1MC1hZmM2LWRlMzYyMzU3Yjk2OCIsImlhdCI6MTY4NjcyNzAwMCwibmJmIjoxNjg2NzI3MDAwLCJleHAiOjE2ODY3MzAwMDB9.X-rkNl0zgGvOB99ayP7THim5BHjCq2GwsAsBkWwmi8vLjeD78OB1n_jmm5nHdIuoj5yiJGKNXfLoKMMYKKk_77z15RQR4On7ETvOWGHIqVu6EsVEXcNxPcUPjuLWt-CXiqBhaid68MwI5S99DocngM2WuTOa3pXm5zIZFZAs3ZV2QRrx5Dz5cB-ZmP6MoxFx_FbDM05aT2uCB-pQ2IqvqOTlgJjfhYd3s1IZgZaf8leD7KG7BlKTq2i7LEWDxywxI7PZuWaWvQ5y9aItC1IfQJpY1bzqkJ0-9BTHrenE3jSbeWdggXehJ8YmC3ainLyYewjjD2xW-kXPyIxHH3JZVQA
+          
+      
+      operationId: 1/find_by_ack_id/{ackId}
+
+      security:
+       - bearerAuth: []
+       - appId: []
+       
+      parameters:
+        - in: path
+          name: ackId
+          schema:
+            type: string
+            example: "ecfe297d-32cf-4e6a-9e2e-6cce704809af"
+          example: "ecfe297d-32cf-4e6a-9e2e-6cce704809af"
+          required: true
+
+      
+      responses:
+        200:
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  ack_id:
+                    type: string
+                    example: "a254508bd2b14865a866e5e056954298"
+                  ActivePermission:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        l:
+                          type: string
+                        s:
+                          type: string
+                        c:
+                          type: boolean
+                        i:
+                          type: string
+                        iss:
+                          type: boolean
+                        ss:
+                          type: object
+                    example:
+                      -  l: "Profile information (Name, Date of Birth, Gender)."
+                         s: "userdetails"
+                         c: False
+                         i: "https://img1.digitallocker.gov.in/nsso/consent/profile.svg"
+                         iss: False
+                         ss: []
+                      -  l: "DigiLocker Drive"
+                         s: "files.uploadeddocs"
+                         c: True
+                         i: "https://img1.digitallocker.gov.in/nsso/consent/doc.svg"
+                         iss: False
+                         ss: []
+                      -  l: "Issued documents."
+                         s: "files.issueddocs"
+                         c: True
+                         i: "https://img1.digitallocker.gov.in/nsso/consent/doc.svg"
+                         iss: True
+                         ss: [{'l': 'Aadhaar Card ( XXb483a9 )', 's': 'issued/in.gov.uidai-ADHAR-4d3daeeb3ea3d90d4d6e7a20a5b483a9', 'c': True, 'iss': False}, {'l': 'PAN Verification Record ', 's': 'file.partners/PANCR', 'c': True, 'iss': False}]
+                  app_id:
+                    type: string
+                    example: "APPID001"
+                  aud:
+                    type: string
+                    example: "AA1BBCC2"
+                  aud_name:
+                    type: string
+                    example: "Digital Seva"
+                  aud_parent_name:
+                    type: string
+                    example: "Digital India Corporation"
+                  authentication :
+                    type: object
+                    
+                    properties:
+                      mode:
+                        type: string
+                        example: "DL_MOBILE_OTP"
+                      txn:
+                        type: string
+                        example: "c674b3ae-c3b6-518e-9175-b419b5dd6c9b"
+                  aud_type:
+                    type: string
+                    example: "other"
+                  changed_permission:
+                    type: string
+                    example: "NA"
+                  consent_action:
+                    type: string
+                    example: "Y"
+                  created_date:
+                    type: string
+                    example: "2023-01-11T17:46:20.000Z"
+                  expire_from:
+                    type: integer
+                    example: 1672730996
+                  expire_to:
+                    type: integer
+                    example: 1675322996
+                  granted_scope:
+                    type: string
+                    example: "userdetails files.uploadeddocs files.issueddocs "
+                  modified_date:
+                    type: string
+                    example: "2023-01-28T11:06:44.000Z"
+                  provider_id:
+                    type: string
+                    example: "DL"
+                  provider_name:
+                    type: string
+                    example: "DigiLocker"
+                  provider_parent_name:
+                    type: string
+                    example: "DigiLocker"
+                  provider_type:
+                    type: string
+                    example: "other"
+                  purpose:
+                    type: string
+                    example: "other"
+                  purpose_id:
+                    type: string
+                    example: "OTHER"
+                  revoke_date:
+                    type: string
+                    example: "2023-01-28T11:06:44.000Z"
+                  revoked:
+                    type: string
+                    example: "Y"
+                  sub:
+                    type: string
+                    example: "demolocker"
+                  sub_email:
+                    type: string
+                    example: "demo@gmail.com"
+                  sub_mobile:
+                    type: string
+                    example: "1111111112"
+                  sub_name:
+                    type: string
+                    example: "Digital Locker"
+                  txn_id:
+                    type: string
+                    example: "63b3d1001eb01oauth21672728847"
+                  
+
+   
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  error:
+                    type: string
+                    example: "invalid_authorization"
+                  errorDescription:
+                    type: string
+                    example: "The authorization does not exist or invalid for the given payload"
+
+   
+
+  /2/find_by_sub/{subId}:
+    get:
+      tags:
+      - Search Consent API
+      summary: Find by subId
+      description: >1
+        The request header requires two parameters: 
+          - <b>x-consent-appid</b>: <i> Provide the app id/client id that was created during the application registration process. For example, <code>x-consent-appid: AA00BB1C0</code></i>
+          - <b>Authorization</b>: <i>The Authorization header parameter uses the bearer token scheme and the token is a JWT token that contains a JSON object with the following </i>
+            - <b>app_id</b>: <i> Provide the app id/client id that was created during the application registration process
+            - <b>sub</b>: <i>A string that represents the subject of the JWT, which is the principal that the token refers to. It can be a unique identifier of the user like userId, or a globally unique value like an email address. For example, “ecfe297d-32cf-4e6a-9e2e-6cce704809af” or “jane.doe@example.com”.</i>.
+            - <b>iat</b>: <i>A number that represents the issued at time of the consent auth in seconds since epoch. For example, 1670000011.</i>
+            - <b>nbf</b>: <i>A number that represents the not before time of the consent auth in seconds since epoch. For example, 1670000011.</i>
+            - <b>exp</b>: <i>A number that represents the expiration time of the consent auth in seconds since epoch. exp should not more than1 hour ( 3600 second ) from iat time  For example, 1670003611.</i>
+            
+            # <h4>For example</h4>
+                Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjI2MTg2MmY0NDg2NGQ5NWJmODk4NjhiYjcxNjI3MjY2In0.eyJhcHBfaWQiOiJERjA4RjFCOCIsInN1YiI6ImE3MzJkZTM3LTVkOTItMjFlOS1hOTVlLTg3OTdhNTY0NTA2OCIsImlhdCI6MTY4NjcyNzAwMCwibmJmIjoxNjg2NzI3MDAwLCJleHAiOjE2ODY3MzAwMDB9.JWwjjwdbmOym1B6an-uai9jEoe7HPj-_njSVCHT2R1_nTfvZkdwkLEy0VpE6HWHz0rkOvpDoYbF1KYzjCDWAB5WMFag3W4vnmKx8Cr7KWNnYeUAHpWBhcN4lrR-9FinvL5UsN-4V5eiNe-Xvq2KPwKhxKhvtNd-2IQkJX9W4G03__J-HZkzlNO0-POuT0Rdq7btfXymA9WN2iIKKzO-_GzMyzto-_L0i-j3_3JhgR_YbQajvz5qkadVeOOR9uRl_DsmKBeJvH9V5Ohs1cevt8s02Rg0kL_Ajx-wkW3iIsiOGahOD8W-iy4JFkcdW01tqav19RL5D5ygK2eBLFBLkEA
+          
+      
+      operationId: 2/find_by_sub/{subId}
+      security:
+        - bearerAuth: []
+        - appId: []
+        
+      parameters:
+        - in: path
+          name: subId
+          schema:
+            type: string
+            example: "a732de37-5d92-21e9-a95e-8797a5645068"
+          example: "a732de37-5d92-21e9-a95e-8797a5645068"
+          required: true
+
+      
+      responses:
+        200:
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  _items:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        ack_id:
+                          type: string
+                        active_permission:
+                          type: object
+                        app_id:
+                          type: string
+                        app_logo:
+                          type: string
+                        app_name:
+                          type: string
+                        aud:
+                          type: string
+                        aud_logo:
+                          type: string
+                        aud_name:
+                          type: string
+                        aud_parent_name:
+                          type: string
+                        authentication :
+                          type: object
+                        can_revoke:
+                          type: string
+                        can_update:
+                          type: string
+                        created_date:
+                          type: string
+                        expiry_date:
+                          type: string
+                        granted_scope:
+                          type: string
+                        modified_date:
+                          type: string
+                        provider_id:
+                          type: string
+                        provider_name:
+                          type: string
+                        provider_parent_name:
+                          type: string
+                        provider_type:
+                          type: string
+                        purpose:
+                          type: string
+                        purpose_id:
+                          type: string
+                        revoke_date:
+                          type: string
+                        status:
+                          type: string
+                    example:
+                      -  ack_id: "38d5dbbd-d3d4-432c-adc2-f49491cf7d98"
+                         active_permission: [{'c': True, 'dc': True, 'i': 'https://img1.digitallocker.gov.in/nsso/consent/doc.svg', 'iss': True, 'l': 'Issued Documents', 's': 'files.issueddocs', 'ss': [{'c': True, 'dc': True, 'iss': False, 'l': 'Aadhaar Card ( XX9513 )', 's': 'issued/in.gov.uidai-ADHAR-4d3daeeb3ea3d90d4d6e7a20a5b483a9'}, {'l': 'PAN Verification Record ', 's': 'file.partners/PANCR', 'c': True, 'iss': False}]}, {'c': True, 'dc': False, 'i': 'https://img1.digitallocker.gov.in/nsso/consent/doc.svg', 'iss': False, 'l': 'DigiLocker Drive', 's': 'files.uploadeddocs', 'ss': []}, {'c': False, 'dc': True, 'i': 'https://img1.digitallocker.gov.in/nsso/consent/profile.svg', 'iss': False, 'l': 'Profile information (Name, Date of Birth, Gender)', 's': 'userdetails', 'ss': []}]
+                         app_id: "DF08F1B8"
+                         app_logo: "https://cf-media.api-setu.in/logo/consent/1678191679_meipehchaan-logo-blue.png"
+                         app_name: "Meri Pehchaan Beta"
+                         aud: "61618031"
+                         aud_logo: "https://cf-media.api-setu.in/logo/auth_partner/1678191549_digitalseva.png"
+                         aud_name: "Digital Seva Application"
+                         aud_parent_name: "National e-Governance Division"
+                         authentication: {'mode':'DL_MOBILE_OTP','txn':'c674b3ae-c3b6-518e-9175-b419b5dd6c9b'}
+                         can_revoke: "Y"
+                         can_update: "Y"
+                         created_date: "13 Mar 2023 13:15:00"
+                         expiry_date: "12 Apr 2023 13:14:53"
+                         granted_scope: "files.issueddocs issued/in.gov.uidai-ADHAR-4d3daeeb3ea3d90d4d6e7a20a5b483a9 partners.PANCR userdetails "
+                         modified_date: "13 Mar 2023 13:15:00"
+                         provider_id: "DL"
+                         provider_name: "DigiLocker"
+                         provider_parent_name: "DigiLocker"
+                         provider_type: "other"
+                         purpose: "other"
+                         purpose_id: "OTHER"
+                         revoke_date: ""
+                         status: "A"
+                      -  ack_id: "dcbdb96a-701d-4102-86de-0fc21199d7ee"
+                         active_permission: [{'c': True, 'dc': True, 'i': 'https://img1.digitallocker.gov.in/nsso/consent/doc.svg', 'iss': True, 'l': 'Issued Documents', 's': 'files.issueddocs', 'ss': [{'c': True, 'dc': True, 'iss': False, 'l': 'Aadhaar Card ( XX9513 )', 's': 'issued/in.gov.uidai-ADHAR-4d3daeeb3ea3d90d4d6e7a20a5b483a9'}, {'c': True, 'dc': False, 'iss': False, 'l': 'Driving License ( XX003900 )', 's': 'issued/in.gov.transport-DRVLC-JH0220190003900'}, {'c': True, 'dc': False, 'iss': False, 'l': 'PAN Verification Record ( XXK2397G )', 's': 'issued/in.gov.pan-PANCR-BYVPK2397G'}]}, {'c': True, 'dc': False, 'i': 'https://img1.digitallocker.gov.in/nsso/consent/doc.svg', 'iss': False, 'l': 'DigiLocker Drive', 's': 'files.uploadeddocs', 'ss': []}, {'c': False, 'dc': True, 'i': 'https://img1.digitallocker.gov.in/nsso/consent/profile.svg', 'iss': False, 'l': 'Profile information (Name, Date of Birth, Gender)', 's': 'userdetails', 'ss': []}]
+                         app_id: "D2B22132"
+                         app_logo: "https://cf-media.api-setu.in/logo/consent/1678191679_meipehchaan-logo-blue.png"
+                         app_name: "Meri Pehchaan Beta"
+                         aud: "61618031"
+                         aud_logo: "https://cf-media.api-setu.in/logo/auth_partner/1678191549_digitalseva.png"
+                         aud_name: "Digital Seva Application"
+                         aud_parent_name: "National e-Governance Division"
+                         authentication: {'mode':'DL_MOBILE_OTP','txn':'a674b3ae-c3b6-518e-9175-b419b5dd6c9a'}
+                         can_revoke: "Y"
+                         can_update: "Y"
+                         created_date: "10 Mar 2023 11:54:21"
+                         expiry_date: "09 Apr 2023 11:54:18"
+                         granted_scope: "files.issueddocs issued/in.gov.uidai-ADHAR-4d3daeeb3ea3d90d4d6e7a20a5b483a9 userdetails"
+                         modified_date: "10 Mar 2023 11:54:21"
+                         provider_id: "DL"
+                         provider_name: "DigiLocker"
+                         provider_parent_name: "DigiLocker"
+                         provider_type: "other"
+                         purpose: "other"
+                         purpose_id: "OTHER"
+                         revoke_date: ""
+                         status: "A"
+                  _meta:
+                    type: object
+                    properties:
+                      max_results: 
+                        type: integer                        
+                        example: 25
+                      page: 
+                        type: integer                        
+                        example: 1
+                      total: 
+                        type: integer                        
+                        example: 2
+                  
+   
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  error:
+                    type: string
+                    example: "invalid_authorization"
+                  errorDescription:
+                    type: string
+                    example: "The app id does not exist or invalid for the given authorization"
+
+   
+
+  /2/{ackId}:
+    patch:
+      tags:
+      - Update Consent API
+      summary: Update by ackId
+      description: >1
+        The request header requires two parameters: 
+          - <b>x-consent-appid</b>: <i> Provide the app id/client id that was created during the application registration process. For example, <code>x-consent-appid: AA00BB1C0</code></i>
+          - <b>Authorization</b>: <i>The Authorization header parameter uses the bearer token scheme and the token is a JWT token that contains a JSON object with the following </i>
+            - <b>app_id</b>: <i> Provide the app id/client id that was created during the application registration process
+            - <b>ack_id</b>: <i>A string that represents the unique identifier of the consent  which one received on the operation of store  temp/ Logger consent API. For example, 0fe75b01-2a5b-4050-afc6-de362357b968</i>.
+            - <b>iat</b>: <i>A number that represents the issued at time of the consent auth in seconds since epoch. For example, 1670000011.</i>
+            - <b>nbf</b>: <i>A number that represents the not before time of the consent auth in seconds since epoch. For example, 1670000011.</i>
+            - <b>exp</b>: <i>A number that represents the expiration time of the consent auth in seconds since epoch. exp should not more than1 hour ( 3600 second ) from iat time  For example, 1670003611.</i>
+            
+            # <h4>For example</h4>
+                Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjI2MTg2MmY0NDg2NGQ5NWJmODk4NjhiYjcxNjI3MjY2In0.eyJhcHBfaWQiOiJERjA4RjFCOCIsImFja19pZCI6IjBmZTc1YjAxLTJhNWItNDA1MC1hZmM2LWRlMzYyMzU3Yjk2OCIsImlhdCI6MTY4NjcyNzAwMCwibmJmIjoxNjg2NzI3MDAwLCJleHAiOjE2ODY3MzAwMDB9.X-rkNl0zgGvOB99ayP7THim5BHjCq2GwsAsBkWwmi8vLjeD78OB1n_jmm5nHdIuoj5yiJGKNXfLoKMMYKKk_77z15RQR4On7ETvOWGHIqVu6EsVEXcNxPcUPjuLWt-CXiqBhaid68MwI5S99DocngM2WuTOa3pXm5zIZFZAs3ZV2QRrx5Dz5cB-ZmP6MoxFx_FbDM05aT2uCB-pQ2IqvqOTlgJjfhYd3s1IZgZaf8leD7KG7BlKTq2i7LEWDxywxI7PZuWaWvQ5y9aItC1IfQJpY1bzqkJ0-9BTHrenE3jSbeWdggXehJ8YmC3ainLyYewjjD2xW-kXPyIxHH3JZVQA
+      operationId: 2/{ackId}
+
+      security:
+        - bearerAuth: []
+        - appId: []
+      parameters:
+        - in: path
+          name: ackId
+          schema:
+            type: string
+            example: "ecfe297d-32cf-4e6a-9e2e-6cce704809af"
+          required: true
+          example: "ecfe297d-32cf-4e6a-9e2e-6cce704809af"
+          
+
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                  scope:
+                    type: string
+                    example: "userdetails files.issueddocs issued/in.gov.uidai-ADHAR-4d3daeeb3ea3d90d4d6e7a20a5b483a9 partners.PANCR"
+                  expireTo :
+                    type: integer
+                    example: 9874646
+      
+      responses:
+        204:
+          description: Success
+          
+
+   
+        401:
+          description: Unauthorize
+          content:
+            application/json:
+              schema:
+                properties:
+                    error:
+                      type: string
+                      example: "invalid_authorization"
+                    errorDescription :
+                      type: string
+                      example: The app id does not exist or invalid for the given authorization
+   
+        400:
+          description: Bad Request
+          content:
+             application/json:
+              schema:
+                properties:
+                    error:
+                      type: string
+                      example: "invalid_request"
+                    errorDescription :
+                      type: string
+                      example: Bad Request
+                    validation:
+                        properties:
+                            scope:
+                              type: string
+                              example: []
+                            expireTo:
+                              type: string
+                              example: [Should be greater than current time]  
+   
+
+  /2/revoke/{ackId}:
+    patch:
+      tags:
+      - Revoke Consent API
+      summary: Revoke by ackId
+      description: >1
+        The request header requires two parameters: 
+          - <b>x-consent-appid</b>: <i> Provide the app id/client id that was created during the application registration process. For example, <code>x-consent-appid: AA00BB1C0</code></i>
+          - <b>Authorization</b>: <i>The Authorization header parameter uses the bearer token scheme and the token is a JWT token that contains a JSON object with the following </i>
+            - <b>app_id</b>: <i> Provide the app id/client id that was created during the application registration process
+            - <b>ack_id</b>: <i>A string that represents the unique identifier of the consent  which one received on the operation of store  temp/ Logger consent API. For example, 0fe75b01-2a5b-4050-afc6-de362357b968</i>.
+            - <b>iat</b>: <i>A number that represents the issued at time of the consent auth in seconds since epoch. For example, 1670000011.</i>
+            - <b>nbf</b>: <i>A number that represents the not before time of the consent auth in seconds since epoch. For example, 1670000011.</i>
+            - <b>exp</b>: <i>A number that represents the expiration time of the consent auth in seconds since epoch. exp should not more than1 hour ( 3600 second ) from iat time  For example, 1670003611.</i>
+            
+            # <h4>For example</h4>
+                Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjI2MTg2MmY0NDg2NGQ5NWJmODk4NjhiYjcxNjI3MjY2In0.eyJhcHBfaWQiOiJERjA4RjFCOCIsImFja19pZCI6IjBmZTc1YjAxLTJhNWItNDA1MC1hZmM2LWRlMzYyMzU3Yjk2OCIsImlhdCI6MTY4NjcyNzAwMCwibmJmIjoxNjg2NzI3MDAwLCJleHAiOjE2ODY3MzAwMDB9.X-rkNl0zgGvOB99ayP7THim5BHjCq2GwsAsBkWwmi8vLjeD78OB1n_jmm5nHdIuoj5yiJGKNXfLoKMMYKKk_77z15RQR4On7ETvOWGHIqVu6EsVEXcNxPcUPjuLWt-CXiqBhaid68MwI5S99DocngM2WuTOa3pXm5zIZFZAs3ZV2QRrx5Dz5cB-ZmP6MoxFx_FbDM05aT2uCB-pQ2IqvqOTlgJjfhYd3s1IZgZaf8leD7KG7BlKTq2i7LEWDxywxI7PZuWaWvQ5y9aItC1IfQJpY1bzqkJ0-9BTHrenE3jSbeWdggXehJ8YmC3ainLyYewjjD2xW-kXPyIxHH3JZVQA
+      operationId: 2/revoke/{ackId}
+      security:
+        - bearerAuth: []
+        - appId: []
+     
+      parameters:
+        - in: path
+          name: ackId
+          schema:
+            type: string
+            example: "ecfe297d-32cf-4e6a-9e2e-6cce704809af"  
+          example: "ecfe297d-32cf-4e6a-9e2e-6cce704809af"
+          required: true
+
+      
+      responses:
+        204:
+          description: Success
+         
+
+   
+        400:
+          description: Bad Request
+          content:
+             application/json:
+              schema:
+                properties:
+                    error:
+                      type: string
+                      example: "invalid_request"
+                    errorDescription :
+                      type: string
+                      example: The ack id provided is invalid or revoked
+          
+
+   
+        401:
+          description: Unauthorize
+          content:
+            application/json:
+              schema:
+                properties:
+                    error:
+                      type: string
+                      example: "invalid_authorization"
+                    errorDescription :
+                      type: string
+                      example: The app id does not exist or invalid for the given authorization
+         
+
+   
+
+  /1/find_by_sub/{subId}/action/pending:
+    get:
+      tags:
+      - Search Consent API
+      summary: Get List of Pending
+      description: >1
+        The request header requires two parameters: 
+          - <b>x-consent-appid</b>: <i> Provide the app id/client id that was created during the application registration process. For example, <code>x-consent-appid: AA00BB1C0</code></i>
+          - <b>Authorization</b>: <i>The Authorization header parameter uses the bearer token scheme and the token is a JWT token that contains a JSON object with the following </i>
+            - <b>app_id</b>: <i> Provide the app id/client id that was created during the application registration process
+            - <b>sub</b>: <i>A string that represents the subject of the JWT, which is the principal that the token refers to. It can be a unique identifier of the user like userId, or a globally unique value like an email address. For example, “ecfe297d-32cf-4e6a-9e2e-6cce704809af” or “jane.doe@example.com”.</i>.
+            - <b>iat</b>: <i>A number that represents the issued at time of the consent auth in seconds since epoch. For example, 1670000011.</i>
+            - <b>nbf</b>: <i>A number that represents the not before time of the consent auth in seconds since epoch. For example, 1670000011.</i>
+            - <b>exp</b>: <i>A number that represents the expiration time of the consent auth in seconds since epoch. exp should not more than1 hour ( 3600 second ) from iat time  For example, 1670003611.</i>
+            
+            # <h4>For example</h4>
+                Authorization: Bearer
+                eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjI2MTg2MmY0NDg2NGQ5NWJmODk4NjhiYjcxNjI3MjY2In0.eyJhcHBfaWQiOiJERjA4RjFCOCIsInN1YiI6ImE3MzJkZTM3LTVkOTItMjFlOS1hOTVlLTg3OTdhNTY0NTA2OCIsImlhdCI6MTY4NjcyNzAwMCwibmJmIjoxNjg2NzI3MDAwLCJleHAiOjE2ODY3MzAwMDB9.JWwjjwdbmOym1B6an-uai9jEoe7HPj-_njSVCHT2R1_nTfvZkdwkLEy0VpE6HWHz0rkOvpDoYbF1KYzjCDWAB5WMFag3W4vnmKx8Cr7KWNnYeUAHpWBhcN4lrR-9FinvL5UsN-4V5eiNe-Xvq2KPwKhxKhvtNd-2IQkJX9W4G03__J-HZkzlNO0-POuT0Rdq7btfXymA9WN2iIKKzO-_GzMyzto-_L0i-j3_3JhgR_YbQajvz5qkadVeOOR9uRl_DsmKBeJvH9V5Ohs1cevt8s02Rg0kL_Ajx-wkW3iIsiOGahOD8W-iy4JFkcdW01tqav19RL5D5ygK2eBLFBLkEA
+      
+      operationId: 1/find_by_sub/{subId}/action/pending
+      security:
+        - bearerAuth: []
+        - appId: []
+      parameters:
+        - in: path
+          name: subId
+          schema:
+            type: string
+            example: "a732de37-5d92-21e9-a95e-8797a5645068"
+          example: "a732de37-5d92-21e9-a95e-8797a5645068"
+          required: true
+
+
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  _items:
+                    type: array
+                    example: []
+                  _meta:
+                    type: object
+                    properties:
+                      max_results: 
+                        type: integer                        
+                        example: 25
+                      page: 
+                        type: integer                        
+                        example: 1
+                      total: 
+                        type: integer                        
+                        example: 0
+
+   
+        400:
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  error:
+                    type: string
+                    example: "invalid_request"
+                  errorDescription:
+                    type: string
+                    example: "The app id does not exist or invalid for the given authorization"
+
+   
+        401:
+          description: Unauthorize
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  error:
+                    type: string
+                    example: "invalid_authorization"
+                  errorDescription:
+                    type: string
+                    example: "The sub of authorization do not match the given payload"
+
+   
+
+  /1/find_by_app_id/{appId}:
+    get:
+      tags:
+      - Search Consent API
+      summary: Find by appId
+      description: >1
+        The request header requires two parameters: 
+          - <b>x-consent-appid</b>: <i> Provide the app id/client id that was created during the application registration process. For example, <code>x-consent-appid: AA00BB1C0</code></i>
+          
+          - <b>Authorization</b>: <i>The Authorization header parameter uses the bearer token scheme and the token is a JWT token that contains a JSON object with the following </i>
+            - <b>app_id</b>: <i> Provide the app id/client id that was created during the application registration process
+            - <b>iat</b>: <i>A number that represents the issued at time of the consent auth in seconds since epoch. For example, 1670000011.</i>
+            - <b>nbf</b>: <i>A number that represents the not before time of the consent auth in seconds since epoch. For example, 1670000011.</i>
+            - <b>exp</b>: <i>A number that represents the expiration time of the consent auth in seconds since epoch. exp should not more than1 hour ( 3600 second ) from iat time  For example, 1670003611.</i>
+            
+            # <h4>For example</h4>
+                Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjI2MTg2MmY0NDg2NGQ5NWJmODk4NjhiYjcxNjI3MjY2In0.eyJhcHBfaWQiOiJERjA4RjFCOCIsInN1YiI6ImE3MzJkZTM3LTVkOTItMjFlOS1hOTVlLTg3OTdhNTY0NTA2OCIsImlhdCI6MTY4NjcyNzAwMCwibmJmIjoxNjg2NzI3MDAwLCJleHAiOjE2ODY3MzAwMDB9.JWwjjwdbmOym1B6an-uai9jEoe7HPj-_njSVCHT2R1_nTfvZkdwkLEy0VpE6HWHz0rkOvpDoYbF1KYzjCDWAB5WMFag3W4vnmKx8Cr7KWNnYeUAHpWBhcN4lrR-9FinvL5UsN-4V5eiNe-Xvq2KPwKhxKhvtNd-2IQkJX9W4G03__J-HZkzlNO0-POuT0Rdq7btfXymA9WN2iIKKzO-_GzMyzto-_L0i-j3_3JhgR_YbQajvz5qkadVeOOR9uRl_DsmKBeJvH9V5Ohs1cevt8s02Rg0kL_Ajx-wkW3iIsiOGahOD8W-iy4JFkcdW01tqav19RL5D5ygK2eBLFBLkEA
+      
+      operationId: 1/find_by_app_id/{appId}
+      security:
+        - bearerAuth: []
+        - appId: []
+      parameters:
+        - in: path
+          name: appId
+          schema:
+            type: string
+            example: "AA00BB1C0"
+          example: "AA00BB1C0"
+          required: true
+
+      
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  _items:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        ack_id:
+                          type: string
+                        active_permission:
+                          type: object
+                        app_id:
+                          type: string
+                        app_logo:
+                          type: string
+                        app_name:
+                          type: string
+                        aud:
+                          type: string
+                        aud_logo:
+                          type: string
+                        aud_name:
+                          type: string
+                        aud_parent_name:
+                          type: string
+                        authentication:
+                          type: object 
+                        can_revoke:
+                          type: string
+                        can_update:
+                          type: string
+                        created_date:
+                          type: string
+                        expiry_date:
+                          type: string
+                        granted_scope:
+                          type: string
+                        modified_date:
+                          type: string
+                        provider_id:
+                          type: string
+                        provider_name:
+                          type: string
+                        provider_parent_name:
+                          type: string
+                        provider_type:
+                          type: string
+                        purpose:
+                          type: string
+                        purpose_id:
+                          type: string
+                        revoke_date:
+                          type: string
+                        status:
+                          type: string
+                    example:
+                      -  ack_id: "edef39cf-7d67-48de-9149-ef6016169426"
+                         active_permission: [{'c': False, 'dc': False, 'i': 'https://img1.digitallocker.gov.in/nsso/consent/doc.svg', 'iss': False, 'l': 'Issued documents.', 's': 'https://dgilocker.gov.in/auth/files.issueddocs', 'ss': []}, {'c': False, 'dc': False, 'i': 'https://img1.digitallocker.gov.in/nsso/consent/profile.svg', 'iss': False, 'l': 'Profile information (Name, Date of Birth, Gender).', 's': 'https://dgilocker.gov.in/auth/userdetails', 'ss': []}, {'c': False, 'dc': False, 'i': '', 'iss': False, 'l': 'Get your address', 's': 'address', 'ss': []}, {'c': False, 'dc': False, 'i': '', 'iss': False, 'l': '', 's': 'father_name', 'ss': []}, {'c': False, 'dc': False, 'i': '', 'iss': False, 'l': 'Get your profile picture', 's': 'picture', 'ss': []}, {'c': False, 'dc': False, 'i': '', 'iss': False, 'l': 'Get Refresh Token', 's': 'offline_access', 'ss': []}]
+                         app_id: "C959F691"
+                         app_logo: ""
+                         app_name: "consent apps"
+                         aud: "D2B22132"
+                         aud_logo: ""
+                         aud_name: "Local Demo Apps"
+                         aud_parent_name: ""
+                         authentication: {'mode':'DL_MOBILE_OTP','txn':'a674b3ae-c3b6-518e-9175-b419b5dd6c9a'}
+                         can_revoke: "Y"
+                         can_update: "Y"
+                         created_date: "28 Feb 2023 15:43:40"
+                         expiry_date: "30 Mar 2023 15:43:36"
+                         granted_scope: "https://dgilocker.gov.in/auth/files.issueddocs https://dgilocker.gov.in/auth/userdetails address father_name picture offline_access"
+                         modified_date: "28 Feb 2023 15:43:40"
+                         provider_id: "DL"
+                         provider_name: "DigiLocker"
+                         provider_parent_name: "DigiLocker"
+                         provider_type: "other"
+                         purpose: "other"
+                         purpose_id: "OTHER"
+                         revoke_date: ""
+                         status: "A"
+                  _meta:
+                    type: object
+                    properties:
+                      max_results: 
+                        type: integer                        
+                        example: 25
+                      page: 
+                        type: integer                        
+                        example: 1
+                      total: 
+                        type: integer                        
+                        example: 1
+
+   
+        400:
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  error:
+                    type: string
+                    example: "invalid_request"
+                  errorDescription:
+                    type: string
+                    example: "The app id does not exist or invalid for the given authorization"
+
+   
+        401:
+          description: Unauthorize
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  error:
+                    type: string
+                    example: "invalid_authorization"
+                  errorDescription:
+                    type: string
+                    example: "The app id does not exist or invalid for the given authorization"
+
+   
+
+  /1/find_by_user_mobile/{mobile}:
+    get:
+      tags:
+      - Search Consent API
+      summary: Find by mobile
+      description: >1
+        The request header requires two parameters: 
+          - <b>x-consent-appid</b>: <i> Provide the app id/client id that was created during the application registration process. For example, <code>x-consent-appid: AA00BB1C0</code></i>
+          
+          - <b>Authorization</b>: <i>The Authorization header parameter uses the bearer token scheme and the token is a JWT token that contains a JSON object with the following </i>
+            - <b>app_id</b>: <i> Provide the app id/client id that was created during the application registration process
+            - <b>mobile</b>: <i>A string that represents the mobile number of the subject. For example, 9876543210.</i>.
+            - <b>iat</b>: <i>A number that represents the issued at time of the consent auth in seconds since epoch. For example, 1670000011.</i>
+            - <b>nbf</b>: <i>A number that represents the not before time of the consent auth in seconds since epoch. For example, 1670000011.</i>
+            - <b>exp</b>: <i>A number that represents the expiration time of the consent auth in seconds since epoch. exp should not more than1 hour ( 3600 second ) from iat time  For example, 1670003611.</i>
+            
+            # <h4>For example</h4>
+                Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjI2MTg2MmY0NDg2NGQ5NWJmODk4NjhiYjcxNjI3MjY2In0.eyJhcHBfaWQiOiJERjA4RjFCOCIsIm1vYmlsZSI6IjExMTExMTExMTIiLCJpYXQiOjE2ODY4MDQ1MzYsIm5iZiI6MTY4NjgwNDUzNiwiZXhwIjoxNjg2ODA4MDM2fQ.O0lc2SHc7kh_WRwgmQS8trVUc-K4tMNT8MW7tB52iRHBM_C_d19yBwwvd9CAe7a9icXHwSGuaeheqkLW_dPKGB81Sg-YIfDlwG8cG9NMAzRkHcU9brvrLIzm2IJ3LmZLIjmnTHDQTBQZfVQwtG3a1AKkeMQ2dtqFnmo45lzo91je53XAzvV5O4E2GC31b07HbBXfoCI873eWjz8FFCPZF_EHJ-gV9EZJP8Pc_iLC3iilv_J4guhiM3wVT_YIffn3f7SDNjcZVefM0caMC5mjJ_AIhzQ4PAAuni--FUJjt8IfXz9V0vOZwgBzLseE5HE4Cl1FA3VkrzET5_JQM278gw
+      
+      operationId: 1/find_by_user_mobile/{mobile}
+      security:
+        - bearerAuth: []
+        - appId: []
+      parameters:
+        - in: path
+          name: mobile
+          schema:
+            type: string
+            example: "9876543210"
+          example: "9876543210"
+          required: true
+
+      
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  _items:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        ack_id:
+                          type: string
+                        active_permission:
+                          type: object
+                        app_id:
+                          type: string
+                        app_logo:
+                          type: string
+                        app_name:
+                          type: string
+                        aud:
+                          type: string
+                        aud_logo:
+                          type: string
+                        aud_name:
+                          type: string
+                        aud_parent_name:
+                          type: string
+                        authentication:
+                          type: object 
+                        can_revoke:
+                          type: string
+                        can_update:
+                          type: string
+                        created_date:
+                          type: string
+                        expiry_date:
+                          type: string
+                        granted_scope:
+                          type: string
+                        modified_date:
+                          type: string
+                        provider_id:
+                          type: string
+                        provider_name:
+                          type: string
+                        provider_parent_name:
+                          type: string
+                        provider_type:
+                          type: string
+                        purpose:
+                          type: string
+                        purpose_id:
+                          type: string
+                        revoke_date:
+                          type: string
+                        status:
+                          type: string
+                    example:
+                      -  ack_id: "edef39cf-7d67-48de-9149-ef6016169426"
+                         active_permission: [{'c': False, 'dc': False, 'i': 'https://img1.digitallocker.gov.in/nsso/consent/doc.svg', 'iss': False, 'l': 'Issued documents.', 's': 'https://dgilocker.gov.in/auth/files.issueddocs', 'ss': []}, {'c': False, 'dc': False, 'i': 'https://img1.digitallocker.gov.in/nsso/consent/profile.svg', 'iss': False, 'l': 'Profile information (Name, Date of Birth, Gender).', 's': 'https://dgilocker.gov.in/auth/userdetails', 'ss': []}, {'c': False, 'dc': False, 'i': '', 'iss': False, 'l': 'Get your address', 's': 'address', 'ss': []}, {'c': False, 'dc': False, 'i': '', 'iss': False, 'l': '', 's': 'father_name', 'ss': []}, {'c': False, 'dc': False, 'i': '', 'iss': False, 'l': 'Get your profile picture', 's': 'picture', 'ss': []}, {'c': False, 'dc': False, 'i': '', 'iss': False, 'l': 'Get Refresh Token', 's': 'offline_access', 'ss': []}]
+                         app_id: "C959F691"
+                         app_logo: ""
+                         app_name: "consent apps"
+                         aud: "D2B22132"
+                         aud_logo: ""
+                         aud_name: "Local Demo Apps"
+                         aud_parent_name: ""
+                         authentication: {'mode':'DL_MOBILE_OTP','txn':'a674b3ae-c3b6-518e-9175-b419b5dd6c9a'}
+                         can_revoke: "Y"
+                         can_update: "Y"
+                         created_date: "28 Feb 2023 15:43:40"
+                         expiry_date: "30 Mar 2023 15:43:36"
+                         granted_scope: "https://dgilocker.gov.in/auth/files.issueddocs https://dgilocker.gov.in/auth/userdetails address father_name picture offline_access"
+                         modified_date: "28 Feb 2023 15:43:40"
+                         provider_id: "DL"
+                         provider_name: "DigiLocker"
+                         provider_parent_name: "DigiLocker"
+                         provider_type: "other"
+                         purpose: "other"
+                         purpose_id: "OTHER"
+                         revoke_date: ""
+                         status: "A"
+                  _meta:
+                    type: object
+                    properties:
+                      max_results: 
+                        type: integer                        
+                        example: 25
+                      page: 
+                        type: integer                        
+                        example: 1
+                      total: 
+                        type: integer                        
+                        example: 1
+
+   
+        400:
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  error:
+                    type: string
+                    example: "invalid_request"
+                  errorDescription:
+                    type: string
+                    example: "The app id does not exist or invalid for the given authorization"
+
+   
+        401:
+          description: Unauthorize
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  error:
+                    type: string
+                    example: "invalid_authorization"
+                  errorDescription:
+                    type: string
+                    example: "The app id does not exist or invalid for the given authorization"
+
+   
+
+  /1/find_by_user_email/{email}:
+    get:
+      tags:
+      - Search Consent API
+      summary: Find by email
+      description: >1
+        The request header requires two parameters: 
+          - <b>x-consent-appid</b>: <i> Provide the app id/client id that was created during the application registration process. For example, <code>x-consent-appid: AA00BB1C0</code></i>
+          
+          - <b>Authorization</b>: <i>The Authorization header parameter uses the bearer token scheme and the token is a JWT token that contains a JSON object with the following </i>
+            - <b>app_id</b>: <i> Provide the app id/client id that was created during the application registration process
+            - <b>email</b>: <i>A string that represents the email address of the subject. For example, "demo@dic.gov.in".</i>.
+            - <b>iat</b>: <i>A number that represents the issued at time of the consent auth in seconds since epoch. For example, 1670000011.</i>
+            - <b>nbf</b>: <i>A number that represents the not before time of the consent auth in seconds since epoch. For example, 1670000011.</i>
+            - <b>exp</b>: <i>A number that represents the expiration time of the consent auth in seconds since epoch. exp should not more than1 hour ( 3600 second ) from iat time  For example, 1670003611.</i>
+            
+            # <h4>For example</h4>
+                Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjI2MTg2MmY0NDg2NGQ5NWJmODk4NjhiYjcxNjI3MjY2In0.eyJhcHBfaWQiOiJERjA4RjFCOCIsImVtYWlsIjoiZGVtb0BkaWMuZ292LmluIiwiaWF0IjoxNjg2ODA0NTM2LCJuYmYiOjE2ODY4MDQ1MzYsImV4cCI6MTY4NjgwODAzNn0.HZ4iZaGUa6EucXrpNr4Fd5Qm_OO21SdEfgd6mhQ3DfBm5JcIdN1hZHOSQeft__808nFTwzWbrSJNSMdq9uc5dIL6fzYAfBD29B7jkuZm6a_H4AilHfWruTAXT54S9VbVNKZXr80JH-qfqbRFi5KJ9bsWGlikrJAFlD_t1GozPEbWfFkuSWL7mxewZ-awm-Tsci83Q-YX2HSNvINqHwEDYcKbQZvYt7hOCNQbH3_0CjHs4jgd0frcc0lwYnXQKflnVlWYZtafmqVR9TA5qTVrnsoELZ-lzv9YushRvpKXhAr87db8hz7VjZAu_yMCStkrpLzTklZK97dcVjj8QeOKNg
+                
+      operationId: 1/find_by_user_email/{email}
+      security:
+        - bearerAuth: []
+        - appId: []
+      parameters:
+        - in: path
+          name: email
+          schema:
+            type: string
+            example: "demo@maildomain.in"
+          example: "demo@maildomain.in"
+          required: true
+
+      
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  _items:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        ack_id:
+                          type: string
+                        active_permission:
+                          type: object
+                        app_id:
+                          type: string
+                        app_logo:
+                          type: string
+                        app_name:
+                          type: string
+                        aud:
+                          type: string
+                        aud_logo:
+                          type: string
+                        aud_name:
+                          type: string
+                        aud_parent_name:
+                          type: string
+                        authentication: 
+                          type: object
+                        can_revoke:
+                          type: string
+                        can_update:
+                          type: string
+                        created_date:
+                          type: string
+                        expiry_date:
+                          type: string
+                        granted_scope:
+                          type: string
+                        modified_date:
+                          type: string
+                        provider_id:
+                          type: string
+                        provider_name:
+                          type: string
+                        provider_parent_name:
+                          type: string
+                        provider_type:
+                          type: string
+                        purpose:
+                          type: string
+                        purpose_id:
+                          type: string
+                        revoke_date:
+                          type: string
+                        status:
+                          type: string
+                    example:
+                      -  ack_id: "edef39cf-7d67-48de-9149-ef6016169426"
+                         active_permission: [{'c': False, 'dc': False, 'i': 'https://img1.digitallocker.gov.in/nsso/consent/doc.svg', 'iss': False, 'l': 'Issued documents.', 's': 'https://dgilocker.gov.in/auth/files.issueddocs', 'ss': []}, {'c': False, 'dc': False, 'i': 'https://img1.digitallocker.gov.in/nsso/consent/profile.svg', 'iss': False, 'l': 'Profile information (Name, Date of Birth, Gender).', 's': 'https://dgilocker.gov.in/auth/userdetails', 'ss': []}, {'c': False, 'dc': False, 'i': '', 'iss': False, 'l': 'Get your address', 's': 'address', 'ss': []}, {'c': False, 'dc': False, 'i': '', 'iss': False, 'l': '', 's': 'father_name', 'ss': []}, {'c': False, 'dc': False, 'i': '', 'iss': False, 'l': 'Get your profile picture', 's': 'picture', 'ss': []}, {'c': False, 'dc': False, 'i': '', 'iss': False, 'l': 'Get Refresh Token', 's': 'offline_access', 'ss': []}]
+                         app_id: "C959F691"
+                         app_logo: ""
+                         app_name: "consent apps"
+                         aud: "D2B22132"
+                         aud_logo: ""
+                         aud_name: "Local Demo Apps"
+                         aud_parent_name: ""
+                         authentication: {'mode':'DL_MOBILE_OTP','txn':'a674b3ae-c3b6-518e-9175-b419b5dd6c9a'}
+                         can_revoke: "Y"
+                         can_update: "Y"
+                         created_date: "28 Feb 2023 15:43:40"
+                         expiry_date: "30 Mar 2023 15:43:36"
+                         granted_scope: "https://dgilocker.gov.in/auth/files.issueddocs https://dgilocker.gov.in/auth/userdetails address father_name picture offline_access"
+                         modified_date: "28 Feb 2023 15:43:40"
+                         provider_id: "DL"
+                         provider_name: "DigiLocker"
+                         provider_parent_name: "DigiLocker"
+                         provider_type: "other"
+                         purpose: "other"
+                         purpose_id: "OTHER"
+                         revoke_date: ""
+                         status: "A"
+                  _meta:
+                    type: object
+                    properties:
+                      max_results: 
+                        type: integer                        
+                        example: 25
+                      page: 
+                        type: integer                        
+                        example: 1
+                      total: 
+                        type: integer                        
+                        example: 1
+
+   
+        400:
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  error:
+                    type: string
+                    example: "invalid_request"
+                  errorDescription:
+                    type: string
+                    example: "The app id does not exist or invalid for the given authorization"
+
+   
+        401:
+          description: Unauthorize
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  error:
+                    type: string
+                    example: "invalid_authorization"
+                  errorDescription:
+                    type: string
+                    example: "The app id does not exist or invalid for the given authorization"
+
+   
+
+  /1/find_by_sub_app/{subId}:
+    get:
+      tags:
+      - Search Consent API
+      summary: Find by sub app
+      description: >1
+        The request header requires two parameters: 
+          - <b>x-consent-appid</b>: <i> Provide the app id/client id that was created during the application registration process. For example, <code>x-consent-appid: AA00BB1C0</code></i>
+          
+          - <b>Authorization</b>: <i>The Authorization header parameter uses the bearer token scheme and the token is a JWT token that contains a JSON object with the following </i>
+            - <b>app_id</b>: <i> Provide the app id/client id that was created during the application registration process
+            - <b>sub</b>: <i>A string that represents the subject of the JWT, which is the principal that the token refers to. It can be a unique identifier of the user like userId, or a globally unique value like an email address. For example, “ecfe297d-32cf-4e6a-9e2e-6cce704809af” or “jane.doe@example.com”.</i>.
+            - <b>iat</b>: <i>A number that represents the issued at time of the consent auth in seconds since epoch. For example, 1670000011.</i>
+            - <b>nbf</b>: <i>A number that represents the not before time of the consent auth in seconds since epoch. For example, 1670000011.</i>
+            - <b>exp</b>: <i>A number that represents the expiration time of the consent auth in seconds since epoch. exp should not more than1 hour ( 3600 second ) from iat time  For example, 1670003611.</i>
+            
+            # <h4>For example</h4>
+                Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjI2MTg2MmY0NDg2NGQ5NWJmODk4NjhiYjcxNjI3MjY2In0.eyJhcHBfaWQiOiJERjA4RjFCOCIsInN1YiI6ImE3MzJkZTM3LTVkOTItMjFlOS1hOTVlLTg3OTdhNTY0NTA2OCIsImlhdCI6MTY4NjgwNDUzNiwibmJmIjoxNjg2ODA0NTM2LCJleHAiOjE2ODY4MDgwMzZ9.RHjKh8LdTTiNY8GcFvBEs38LJe_nPdYU6nqIp5UEFBBsPEnLhKuDZaCMTKs2UyN3e5veRf4E_F1rvOHLP80l7N4KSOlIbRa56lXSTUbno01RG30zrYC8dmPGiyDMBxzySSSlIgec9WKBqg6jIzID_p_lJ0UEzPFLixVJlbP9UCuHjAUdrmd5AjnFNKmjNbRkwDPoxgTowCE_ZO7JPM9dhld1DFEDs7OAoZ8UgrrI_JR6hd8Q1Uril92cDA9NWWH-suFME_Ou9xagRcIIhPhtvK0dGGWnSvEdy7wWXMcoRRQHBVgMSQFHTJnx_TXmPNUGiN03ePisbgT65iwfZ3fW_w
+                
+      operationId: 1/find_by_sub_app/{subId}
+      security:
+        - bearerAuth: []
+        - appId: []
+      parameters:
+        - in: path
+          name: subId
+          schema:
+            type: string
+            example: "a732de37-5d92-21e9-a95e-8797a5645068"
+          example: "a732de37-5d92-21e9-a95e-8797a5645068"
+          required: true
+
+      
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  _items:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        ack_id:
+                          type: string
+                        active_permission:
+                          type: object
+                        app_id:
+                          type: string
+                        app_logo:
+                          type: string
+                        app_name:
+                          type: string
+                        aud:
+                          type: string
+                        aud_logo:
+                          type: string
+                        aud_name:
+                          type: string
+                        aud_parent_name:
+                          type: string
+                        authentication: 
+                          type: object
+                        can_revoke:
+                          type: string
+                        can_update:
+                          type: string
+                        created_date:
+                          type: string
+                        expiry_date:
+                          type: string
+                        granted_scope:
+                          type: string
+                        modified_date:
+                          type: string
+                        provider_id:
+                          type: string
+                        provider_name:
+                          type: string
+                        provider_parent_name:
+                          type: string
+                        provider_type:
+                          type: string
+                        purpose:
+                          type: string
+                        purpose_id:
+                          type: string
+                        revoke_date:
+                          type: string
+                        status:
+                          type: string
+                    example:
+                      -  ack_id: "68143d54-c0e0-4ac3-a62d-8ee32776242c"
+                         active_permission: [{'c': True, 'dc': True, 'i': 'https://img1.digitallocker.gov.in/nsso/consent/doc.svg', 'iss': True, 'l': 'Issued documents.', 's': 'files.issueddocs', 'ss': [{'c': True, 'dc': False, 'iss': False, 'l': 'Birth Certificate', 's': 'file.partners/BTCER'}, {'c': True, 'dc': True, 'iss': False, 'l': 'Aadhaar Card ( XX6004 )', 's': 'issued/in.gov.uidai-ADHAR-4d3daeeb3ea3d90d4d6e7a20a5b483a9'}, {'c': True, 'dc': False, 'iss': False, 'l': 'PAN Verification Record ( XXK1234P )', 's': 'issued/in.gov.pan-PANCR-ABCDK1234P'}, {'c': True, 'dc': False, 'iss': False, 'l': 'Registration of Vehicles ( XXAA1234 )', 's': 'issued/in.gov.transport-RVCER-BR01AA1234'}, {'c': True, 'dc': False, 'iss': False, 'l': 'Registration of Vehicles ( XXAA7890 )', 's': 'issued/in.gov.transport-RVCER-BR01AA7890'}, {'c': True, 'dc': False, 'iss': False, 'l': 'Driving License ( XX000001 )', 's': 'issued/in.gov.transport-DRVLC-BR012022000000001'}]}, {'c': False, 'dc': True, 'i': 'https://img1.digitallocker.gov.in/nsso/consent/profile.svg', 'iss': False, 'l': 'Profile information (Name, Date of Birth, Gender).', 's': 'userdetails', 'ss': []}, {'c': False, 'dc': True, 'i': '', 'iss': False, 'l': 'Get your address', 's': 'address', 'ss': []}, {'c': False, 'dc': True, 'i': '', 'iss': False, 'l': '', 's': 'father_name', 'ss': []}, {'c': False, 'dc': True, 'i': '', 'iss': False, 'l': 'Get your profile picture', 's': 'picture', 'ss': []}, {'c': False, 'dc': True, 'i': '', 'iss': False, 'l': 'Get Refresh Token', 's': 'offline_access', 'ss': []}]
+                         app_id: "C959F691"
+                         app_logo: "http://localhost:8002/logo/test"
+                         app_name: "consent apps"
+                         aud: "D2B22132"
+                         aud_logo: ""
+                         aud_name: "Local Demo Apps"
+                         aud_parent_name: ""
+                         authentication: {'mode':'DL_MOBILE_OTP','txn':'a674b3ae-c3b6-518e-9175-b419b5dd6c9a'}
+                         can_revoke: "Y"
+                         can_update: "Y"
+                         created_date: "02 May 2023 15:23:14"
+                         expiry_date: "01 Jun 2023 15:23:11"
+                         granted_scope: "userdetails picture files.issueddocs offline_access address father_name issued/in.gov.pan-PANCR-ABCDK1234P issued/in.gov.uidai-ADHAR-4d3daeeb3ea3d90d4d6e7a20a5b483a9"
+                         modified_date: "02 May 2023 15:23:14"
+                         provider_id: "d732de37-6d92-11e9-a85e-9457a5641234"
+                         provider_name: "Digital India Corporation"
+                         provider_parent_name: "DigiLocker"
+                         provider_type: "ENTITY"
+                         purpose: "other"
+                         purpose_id: "OTHER"
+                         revoke_date: ""
+                         status: "A"
+                  _meta:
+                    type: object
+                    properties:
+                      max_results: 
+                        type: integer                        
+                        example: 25
+                      page: 
+                        type: integer                        
+                        example: 1
+                      total: 
+                        type: integer                        
+                        example: 1
+
+   
+        400:
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  error:
+                    type: string
+                    example: "invalid_request"
+                  errorDescription:
+                    type: string
+                    example: "The app id does not exist or invalid for the given authorization"
+
+   
+        401:
+          description: Unauthorize
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  error:
+                    type: string
+                    example: "invalid_authorization"
+                  errorDescription:
+                    type: string
+                    example: "The app id does not exist or invalid for the given authorization"
+
+   
+
+  /1/find_by_entity/{entityId}:
+    get:
+      tags:
+      - Search Consent API
+      summary: Find by entity
+      description: >1
+        The request header requires two parameters: 
+          - <b>x-consent-appid</b>: <i> Provide the app id/client id that was created during the application registration process. For example, <code>x-consent-appid: AA00BB1C0</code></i>
+          
+          - <b>Authorization</b>: <i>The Authorization header parameter uses the bearer token scheme and the token is a JWT token that contains a JSON object with the following </i>
+            - <b>app_id</b>: <i> Provide the app id/client id that was created during the application registration process
+            - <b>entity</b>: <i>A string that represents the entity provider id. It can be a unique identifier of the user like userId, or a globally unique value like an email address. For example, “ecfe297d-32cf-4e6a-9e2e-6cce704809af” or “jane.doe@example.com”.</i>.
+            - <b>iat</b>: <i>A number that represents the issued at time of the consent auth in seconds since epoch. For example, 1670000011.</i>
+            - <b>nbf</b>: <i>A number that represents the not before time of the consent auth in seconds since epoch. For example, 1670000011.</i>
+            - <b>exp</b>: <i>A number that represents the expiration time of the consent auth in seconds since epoch. exp should not more than1 hour ( 3600 second ) from iat time  For example, 1670003611.</i>
+            
+            # <h4>For example</h4>
+                Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjI2MTg2MmY0NDg2NGQ5NWJmODk4NjhiYjcxNjI3MjY2In0.eyJhcHBfaWQiOiJERjA4RjFCOCIsImVudGl0eSI6ImVudGl0eTkwLTY2MmYtNTZkOS05ZGNkLTFlNTE1MTk1ZGU1NCIsImlhdCI6MTY4NjgwNDUzNiwibmJmIjoxNjg2ODA0NTM2LCJleHAiOjE2ODY4MDgwMzZ9.K9SD4i05wRYaYsQOVdX37aB_QDpfEBnRQfOuEdyD2ALphtiqT-5YzRGSx89gw9E-S89OvnIktrkDUBIgmY41njYRgJa38qwYV7rpuKIFi96ud5ndq1UNEgyqTJey0LABUOix_8Jq6sgH2uFEHDnXBZ1ZDcXDH7t39PURYNeH663l_0g21_QODrGXsJ95P5LAShY0kjmLTsMKZONKsAU-BSdUtynNXIVmjREw7uM5AiHq3FKJSxWNMuUpSNnxkfnHEgMvE5UgIAQxSmtieSma2G09WbN8CArQ4aMZ_gWYvv8R_UyMpTMN3WRBt6bmDgajJFzpiiZ49VpCL8jNkJvj-w
+      
+      operationId: 1/find_by_entity/{entityId}
+      security:
+        - bearerAuth: []
+        - appId: []
+      parameters:
+        - in: path
+          name: entityId
+          schema:
+            type: string
+            example: "e123ab12-xy92-12a9-b06z-9808b6656179"
+          example: "e123ab12-xy92-12a9-b06z-9808b6656179"
+          required: true
+
+      
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  _items:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        ack_id:
+                          type: string
+                        active_permission:
+                          type: object
+                        app_id:
+                          type: string
+                        app_logo:
+                          type: string
+                        app_name:
+                          type: string
+                        aud:
+                          type: string
+                        aud_logo:
+                          type: string
+                        aud_name:
+                          type: string
+                        aud_parent_name:
+                          type: string
+                        authentication:
+                          type: object
+                        can_revoke:
+                          type: string
+                        can_update:
+                          type: string
+                        created_date:
+                          type: string
+                        expiry_date:
+                          type: string
+                        granted_scope:
+                          type: string
+                        modified_date:
+                          type: string
+                        provider_id:
+                          type: string
+                        provider_name:
+                          type: string
+                        provider_parent_name:
+                          type: string
+                        provider_type:
+                          type: string
+                        purpose:
+                          type: string
+                        purpose_id:
+                          type: string
+                        revoke_date:
+                          type: string
+                        status:
+                          type: string
+                    example:
+                      -  ack_id: "307405e5-1133-48f5-b7f7-153bef92f375"
+                         active_permission: [{'c': True, 'dc': True, 'i': 'https://img1.digitallocker.gov.in/nsso/consent/doc.svg', 'iss': True, 'l': 'Issued documents.', 's': 'files.issueddocs', 'ss': [{'c': True, 'dc': False, 'iss': False, 'l': 'Birth Certificate', 's': 'file.partners/BTCER'}, {'c': True, 'dc': True, 'iss': False, 'l': 'Aadhaar Card ( XX1234 )', 's': 'issued/in.gov.uidai-ADHAR-4d3daeeb3ea3d90d4d6e7a20a5b483a9'}, {'c': True, 'dc': False, 'iss': False, 'l': 'PAN Verification Record ( XXK1234P )', 's': 'issued/in.gov.pan-PANCR-ABCDK1234P'}, {'c': True, 'dc': False, 'iss': False, 'l': 'Registration of Vehicles ( XXAA1234 )', 's': 'issued/in.gov.transport-RVCER-BR01AA1234'}, {'c': True, 'dc': False, 'iss': False, 'l': 'Registration of Vehicles ( XXAA7890 )', 's': 'issued/in.gov.transport-RVCER-BR01AA7890'}, {'c': True, 'dc': False, 'iss': False, 'l': 'Driving License ( XX000001 )', 's': 'issued/in.gov.transport-DRVLC-BR012022000000001'}]}, {'c': False, 'dc': True, 'i': 'https://img1.digitallocker.gov.in/nsso/consent/profile.svg', 'iss': False, 'l': 'Profile information (Name, Date of Birth, Gender).', 's': 'userdetails', 'ss': []}, {'c': False, 'dc': True, 'i': '', 'iss': False, 'l': 'Get your address', 's': 'address', 'ss': []}, {'c': False, 'dc': True, 'i': '', 'iss': False, 'l': '', 's': 'father_name', 'ss': []}, {'c': False, 'dc': True, 'i': '', 'iss': False, 'l': 'Get your profile picture', 's': 'picture', 'ss': []}, {'c': False, 'dc': True, 'i': '', 'iss': False, 'l': 'Get Refresh Token', 's': 'offline_access', 'ss': []}]
+                         app_id: "C959F691"
+                         app_logo: "http://localhost:8002/logo/test"
+                         app_name: "consent apps"
+                         aud: "D2B22132"
+                         aud_logo: ""
+                         aud_name: "Local Demo Apps"
+                         aud_parent_name: ""
+                         authentication: {'mode':'DL_MOBILE_OTP','txn':'a674b3ae-c3b6-518e-9175-b419b5dd6c9a'}
+                         can_revoke: "N"
+                         can_update: "N"
+                         created_date: "10 May 2023 16:26:18"
+                         expiry_date: "10 May 2023 17:47:54"
+                         granted_scope: "files.issueddocs userdetails offline_access father_name picture issued/in.gov.uidai-ADHAR-4d3daeeb3ea3d90d4d6e7a20a5b483a9 address"
+                         modified_date: "10 May 2023 17:47:54"
+                         provider_id: "d732de37-6d92-11e9-a85e-9457a5641234"
+                         provider_name: "DL"
+                         provider_parent_name: "DigiLocker"
+                         provider_type: "ENTITY"
+                         purpose: "other"
+                         purpose_id: "OTHER"
+                         revoke_date: "10 May 2023 17:47:54"
+                         status: "R"
+                      -  ack_id: "dc0f82fc-773d-4bd8-916e-90a7be0b44dd"
+                         active_permission: [{'c': True, 'dc': True, 'i': 'https://img1.digitallocker.gov.in/nsso/consent/doc.svg', 'iss': True, 'l': 'Issued documents.', 's': 'files.issueddocs', 'ss': [{'c': True, 'dc': False, 'iss': False, 'l': 'Birth Certificate', 's': 'file.partners/BTCER'}, {'c': True, 'dc': True, 'iss': False, 'l': 'Aadhaar Card ( XX6004 )', 's': 'issued/in.gov.uidai-ADHAR-4d3daeeb3ea3d90d4d6e7a20a5b483a9'}, {'c': True, 'dc': False, 'iss': False, 'l': 'PAN Verification Record ( XXK1234P )', 's': 'issued/in.gov.pan-PANCR-ABCDK1234P'}, {'c': True, 'dc': False, 'iss': False, 'l': 'Registration of Vehicles ( XXAA1234 )', 's': 'issued/in.gov.transport-RVCER-BR01AA1234'}, {'c': True, 'dc': False, 'iss': False, 'l': 'Registration of Vehicles ( XXAA7890 )', 's': 'issued/in.gov.transport-RVCER-BR01AA7890'}, {'c': True, 'dc': False, 'iss': False, 'l': 'Driving License ( XX000001 )', 's': 'issued/in.gov.transport-DRVLC-BR012022000000001'}]}, {'c': False, 'dc': True, 'i': 'https://img1.digitallocker.gov.in/nsso/consent/profile.svg', 'iss': False, 'l': 'Profile information (Name, Date of Birth, Gender).', 's': 'userdetails', 'ss': []}, {'c': False, 'dc': True, 'i': '', 'iss': False, 'l': 'Get your address', 's': 'address', 'ss': []}, {'c': False, 'dc': True, 'i': '', 'iss': False, 'l': '', 's': 'father_name', 'ss': []}, {'c': False, 'dc': True, 'i': '', 'iss': False, 'l': 'Get your profile picture', 's': 'picture', 'ss': []}, {'c': False, 'dc': True, 'i': '', 'iss': False, 'l': 'Get Refresh Token', 's': 'offline_access', 'ss': []}]
+                         app_id: "C959F691"
+                         app_logo: "http://localhost:8002/logo/test"
+                         app_name: "consent apps"
+                         aud: "D2B22132"
+                         aud_logo: ""
+                         aud_name: "Local Demo Apps"
+                         aud_parent_name: ""
+                         authentication: {'mode':'DL_MOBILE_OTP','txn':'a674b3ae-c3b6-518e-9175-b419b5dd6c9a'}
+                         can_revoke: "Y"
+                         can_update: "Y"
+                         created_date: "03 May 2023 14:57:00"
+                         expiry_date: "02 Jun 2023 14:56:45"
+                         granted_scope: "picture userdetails offline_access address father_name issued/in.gov.uidai-ADHAR-4d3daeeb3ea3d90d4d6e7a20a5b483a9 files.issueddocs"
+                         modified_date: "03 May 2023 14:57:00"
+                         provider_id: "d732de37-6d92-11e9-a85e-9457a5641234"
+                         provider_name: "Digital India Corporation"
+                         provider_parent_name: "DigiLocker"
+                         provider_type: "ENTITY"
+                         purpose: "other"
+                         purpose_id: "OTHER"
+                         revoke_date: ""
+                         status: "A"
+                  _meta:
+                    type: object
+                    properties:
+                      max_results: 
+                        type: integer                        
+                        example: 25
+                      page: 
+                        type: integer                        
+                        example: 1
+                      total: 
+                        type: integer                        
+                        example: 2
+
+   
+        400:
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  error:
+                    type: string
+                    example: "invalid_request"
+                  errorDescription:
+                    type: string
+                    example: "The app id does not exist or invalid for the given authorization"
+
+   
+        401:
+          description: Unauthorize
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  error:
+                    type: string
+                    example: "invalid_authorization"
+                  errorDescription:
+                    type: string
+                    example: "The app id does not exist or invalid for the given authorization"
+
+   
+
+  /1/revoke/entity/{ackId}:
+    patch:
+      tags:
+      - Revoke Consent API
+      summary: Revoke by entity
+      description: >1
+        The request header requires two parameters: 
+          - <b>x-consent-appid</b>: <i> Provide the app id/client id that was created during the application registration process. For example, <code>x-consent-appid: AA00BB1C0</code></i>
+          
+          - <b>Authorization</b>: <i>The Authorization header parameter uses the bearer token scheme and the token is a JWT token that contains a JSON object with the following </i>
+            - <b>app_id</b>: <i> Provide the app id/client id that was created during the application registration process
+            - <b>entity</b>: <i>A string that represents the entity provider id. It can be a unique identifier of the user like userId, or a globally unique value like an email address. For example, “ecfe297d-32cf-4e6a-9e2e-6cce704809af” or “jane.doe@example.com”.</i>.
+            - <b>sub</b>: <i>A string that represents the subject of the JWT, which is the person id who has given the consent on behalf of the entity/resource provider. It can be a unique identifier of the user, such as userId, or a globally unique value, such as an email address. which one received on the operation of Find by entity API. For example, “ecfe297d-32cf-4e6a-9e2e-6cce704809af” or “jane.doe@example.com”.</i>.
+            - <b>ack_id</b>: <i>A string that represents the unique identifier of the consent  which one received on the operation of Find by entity API. For example, <code>7c705c45-11c3-4c84-b8da-5d77f5c3970e</code></i>.
+            - <b>iat</b>: <i>A number that represents the issued at time of the consent auth in seconds since epoch. For example, 1670000011.</i>
+            - <b>nbf</b>: <i>A number that represents the not before time of the consent auth in seconds since epoch. For example, 1670000011.</i>
+            - <b>exp</b>: <i>A number that represents the expiration time of the consent auth in seconds since epoch. exp should not more than1 hour ( 3600 second ) from iat time  For example, 1670003611.</i>
+            
+            # <h4>For example</h4>
+                Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjI2MTg2MmY0NDg2NGQ5NWJmODk4NjhiYjcxNjI3MjY2In0.eyJhcHBfaWQiOiJERjA4RjFCOCIsImVudGl0eSI6ImVudGl0eTkwLTY2MmYtNTZkOS05ZGNkLTFlNTE1MTk1ZGU1NCIsImlhdCI6MTY4NjgwNDUzNiwibmJmIjoxNjg2ODA0NTM2LCJleHAiOjE2ODY4MDgwMzZ9.K9SD4i05wRYaYsQOVdX37aB_QDpfEBnRQfOuEdyD2ALphtiqT-5YzRGSx89gw9E-S89OvnIktrkDUBIgmY41njYRgJa38qwYV7rpuKIFi96ud5ndq1UNEgyqTJey0LABUOix_8Jq6sgH2uFEHDnXBZ1ZDcXDH7t39PURYNeH663l_0g21_QODrGXsJ95P5LAShY0kjmLTsMKZONKsAU-BSdUtynNXIVmjREw7uM5AiHq3FKJSxWNMuUpSNnxkfnHEgMvE5UgIAQxSmtieSma2G09WbN8CArQ4aMZ_gWYvv8R_UyMpTMN3WRBt6bmDgajJFzpiiZ49VpCL8jNkJvj-w
+      
+      operationId: 1/revoke/entity/{ackId}
+      security:
+        - bearerAuth: []
+        - appId: []
+      parameters:
+        - in: path
+          name: ackId
+          schema:
+            type: string
+            example: "ecfe297d-32cf-4e6a-9e2e-6cce704809af"
+          example: "ecfe297d-32cf-4e6a-9e2e-6cce704809af"
+          required: true
+
+      
+      responses:
+        204:
+          description: Success
+
+   
+        400:
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  error:
+                    type: string
+                    example: "invalid_request"
+                  errorDescription:
+                    type: string
+                    example: "The ack id provided is invalid or revoked"
+
+   
+        401:
+          description: Unauthorize
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  error:
+                    type: string
+                    example: "invalid_authorization"
+                  errorDescription:
+                    type: string
+                    example: "The app id does not exist or invalid for the given authorization"
+
+   
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+    appId:
+      type: apiKey
+      in: header
+      name: x-consent-appid  
+   
+
+  examples:
+
+
+
+
+#RequestBody Examples#
+    req_postback_req1:
+      value:
+        payload: xxxx
+    req_postback_req2:
+      value:
+        ackId: ecfe297d-32cf-4e6a-9e2e-6cce704809af
+        grantedScope: scope1 scope2 scope3 
+        opr: U
+        expireTo: 1670000011
+    req_postback_req3:
+      value:
+        ackId: ecfe297d-32cf-4e6a-9e2e-6cce704809af
+        opr: R
+#End of RequestBody Examples#
+
+
+

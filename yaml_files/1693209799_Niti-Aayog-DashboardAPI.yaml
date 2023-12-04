@@ -1,0 +1,279 @@
+openapi: 3.0.1
+info:
+  title: Niti Aayog Dashboard API
+  description: |-
+      The ‘Poshan Tracker’ is a mobile based application rolled out by the Ministry of Women and Child Development, Government of India on 1st March 2021 through National e-Governance Division (NeGD), Poshan Tracker is an important governance tool. Technology under Poshan Tracker is being leveraged for dynamic identification of stunting, wasting, under-weight prevalence among children and last mile tracking of nutrition service delivery 
+      # Authentication
+         The API comply to  API Setu authentication. <a href="https://partners.apisetu.gov.in/directory/api/apisetu/1692012237_API-Authentication">Click here</a> for more details.  
+     
+         <i>[Updated on 25th August 2023]</i>
+
+  termsOfService: "https://www.poshantracker.in/termsofservice"
+  contact: 
+    name: "Provided by - MWCD"
+    url: "https://www.poshantracker.in/"
+  version: 1.0.0
+servers:
+- url: https://apisetu.gov.in/pt/data-apis
+  description: Production Server 
+  
+paths:
+  /srv/v1/nitiaayog/abp/kpi:
+    post:
+      tags:
+      - API to Provide Data for Niti Aayog Dashboard.
+      summary: API for Niti Aayog Dashboard.
+      description: This API provides block wise accumulated data for Niti Aayog Dashboard.
+      operationId: nitiaayog
+      security:
+        - clientId: []
+        - apiKey: []
+        
+      parameters:
+        - in: header
+          name: Content-Type
+          schema:
+            type: string 
+            example: application/json
+        
+            
+        
+        
+
+      requestBody:
+        content:
+          application/json:
+            schema:
+
+              properties:
+                  year:
+                    type: string
+                    example: "2023"
+                  month:
+                    type: string
+                    example: "05"
+                  
+      
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                  response:
+                    type: string
+                    example: success
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      
+                    example:
+                      - state_lgd_code: 28,
+                        state_name: Andhra Pradesh,
+                        district_lgd_code: 503,
+                        district_name: Chittoor
+                        project_lgd_code: 4769,
+                        project_name: THAMBALLAPALLI,
+                        preganat_woman_thr_21_days_numerator: 44,
+                        pregnant_woman_eligible_for_snp_denominator: 229,
+                        pregnant_woman_thr_21_days_percentage: "19.21%,"
+                        children_6m_6y_snp_21_days_numerator: 1776,
+                        children_6m_6y_eligible_for_snp_denominator: 7248,
+                        snp_6m_6y_percentage: "24.5%"
+                        total_measured_children_numerator: 7472,
+                        total_children_enrolled_denominator: 7571,
+                        total_measured_percentage: "98.69 %"
+                        total_SAM_0m_5y_numerator: 43,      
+                        total_children_under_5_yr_enrolled_awc_denominator: 6777,
+                        total_SAM_percentage: "0.63 %"
+                        total_MAM_0m_5y_numerator: 200
+                        total_MAM_percentage: "2.95 %"
+                        awc_with_functional_toilets_numerator: 18
+                        total_awc_denominator: 273,
+                        awc_with_toilet_percentage: "6.59 %"
+                        awc_with_drinking_water_numerator: 23,
+                        awc_with_drinking_water_percentage: 3385
+                        
+                        
+                      - state_lgd_code: 28,
+                        state_name: Andhra Pradesh,
+                        district_lgd_code: 505,
+                        district_name: East Godavari
+                        project_lgd_code: 4876,
+                        project_name: Gangavaram,
+                        preganat_woman_thr_21_days_numerator: 0,
+                        pregnant_woman_eligible_for_snp_denominator: 33,
+                        pregnant_woman_thr_21_days_percentage: "0%,"
+                        children_6m_6y_snp_21_days_numerator: 180,
+                        children_6m_6y_eligible_for_snp_denominator: 1680,
+                        snp_6m_6y_percentage: "10.71%"
+                        total_measured_children_numerator: 1561,
+                        total_children_enrolled_denominator: 1749,
+                        total_measured_percentage: "89.25 %"
+                        total_SAM_0m_5y_numerator: 43,      
+                        total_children_under_5_yr_enrolled_awc_denominator: 1538,
+                        total_SAM_percentage: "2.8%"
+                        total_MAM_0m_5y_numerator: 136
+                        total_MAM_percentage: "8.84 %"
+                        awc_with_functional_toilets_numerator: 13
+                        total_awc_denominator: 53,
+                        awc_with_toilet_percentage: "24.53%"
+                        awc_with_drinking_water_numerator: 5,
+                        awc_with_drinking_water_percentage: 9.43
+                        
+                        
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                
+              examples:
+                When Month is Missing:
+                  $ref: '#/components/examples/When_month_is_missing'  
+                
+                When year is missing:
+                  $ref: '#/components/examples/When_year_is_missing'
+                  
+                When year and month both are missing:
+                  $ref: '#/components/examples/When_year_and_month_both_are_missing'
+        '401':
+          description: Unauthorized Access
+          content:
+            application/json:
+              schema:
+                type: object
+                
+              examples:
+                When ts is missing in header:
+                  $ref: '#/components/examples/when_ts_is_missing_in_header'  
+                
+                When clientid is missing in header:
+                  $ref: '#/components/examples/when_clientid_is_missing_in_header'
+                  
+                Authorization token invalid:
+                  $ref: '#/components/examples/Authorization_token_invalid'
+                  
+                When Authorization token is missing:
+                  $ref: '#/components/examples/When_Authorization_token_is_missing'
+        '404':
+          description: No record found
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  status:
+                    type: integer
+                    example: 0
+                  response:
+                    type: string
+                    example: fail
+                  error:
+                    type: string
+                    example: record_not_found
+                  errorDescription:
+                    type: string
+                    example: no record found
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  status:
+                    type: integer
+                    example: 0
+                  response:
+                    type: string
+                    example: fail
+                  error:
+                    type: string
+                    example: internal_server_error
+                  errorDescription:
+                    type: string
+                    example: Internal server error                      
+          
+                          
+          
+   
+components:
+  securitySchemes:
+    clientId:
+      type: apiKey
+      in: header
+      name: X-APISETU-CLIENTID
+    apiKey:
+      type: apiKey
+      name: X-APISETU-APIKEY
+      in: header
+     
+  examples:
+    When_month_is_missing:
+      value:
+        status: 0
+        response: fail
+        error: invalid_request
+        errorDescription: {
+          month: [
+            The month field is required]
+        }
+          
+    When_year_is_missing:
+      value:
+        status: 0
+        response: fail
+        error: invalid_request
+        errorDescription: {
+          year: [
+            The year field is required]
+        }      
+      
+    When_year_and_month_both_are_missing:
+      value:
+        status: 0
+        response: fail
+        error: invalid_request
+        errorDescription: {
+          month: [
+            The month field is required],
+          year: [
+            The year field is required]
+            
+        }
+    
+    when_ts_is_missing_in_header:
+      value:
+        status: 0
+        response: fail
+        error: ts_missing
+        errorDescription: timestamp is missing
+    
+    when_clientid_is_missing_in_header:
+      value:
+        status: 0
+        response: fail
+        error: clientid_missing
+        errorDescription: clientid is missing         
+        
+    Authorization_token_invalid:
+      value:
+        status: 0
+        response: fail
+        error: invalid_authentication
+        errorDescription: Authentication failed         
+        
+    When_Authorization_token_is_missing:
+      value:
+        status: 0
+        response: fail
+        error: token_missing
+        errorDescription: authorization token is missing            

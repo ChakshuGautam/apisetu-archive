@@ -1,0 +1,1659 @@
+openapi: 3.0.1
+info:
+  title: Federation APIs
+  description: |-
+      LokOS application stands for Smart Account Keeping & Helpful Initiative App. The application tends to capture end-to-end digitization of Self Help Group network in the country namely- Self Help Group (SHG) and Members Profile, Village Organisation (VO) profile known as primary level federation, Cluster Level Federation (CLF) profile known as secondary level federation and Financial Transactions of SHG and Federations. 
+      
+      <i>[Updated on 23rd November 2023]</i>
+  contact:
+    name: Provide by LokOS
+    url: https://nrlm.gov.in/
+  version: 1.0.0
+servers:
+- url: https://prod.lokos.nrlm.gov.in
+paths:
+  /downloadStatus:
+    get:
+      tags:
+      - Download Status API
+      summary: Federation download status
+      description: This api’s is used to get the federationProfileWithMandatoryList by passing the  cbo_type and user_id.
+      
+      operationId: downloadStatus
+      security:
+      - bearerAuth: []
+      parameters:
+        - in: query
+          name: cbo_type
+          schema:
+            type: integer
+            example: 1
+        - in: header
+          name: User
+          schema:
+            type: string
+            example: "HA_SHG1"
+        - in: header
+          name: X-Tenant-Identifier
+          schema:
+            type: string
+            example: "dynamic_lokos_ha"
+        - in: header
+          name: role
+          schema:
+            type: integer
+            example: 410
+
+      
+      responses:
+        200:
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  responseCode:
+                    type: string
+                    example: "200"
+                  responseMsg:
+                    type: string
+                    example: "Data retrieve successfully."
+                  status:
+                    type: string
+                    example: "SUCCESS"
+                  timestamp:
+                    type: string
+                    example: "2023-09-15T09:16:58.860"
+                  responseData:
+                    type: object
+                    properties:
+                      federation: 
+                        type: array                        
+                        items:
+                          type: object
+                          properties:
+                            federation_id:
+                              type: integer
+                            state_id:
+                              type: integer
+                            district_id:
+                              type: integer
+                            block_id:
+                              type: integer
+                            panchayat_id:
+                              type: integer
+                            village_id:
+                              type: string
+                            guid:
+                              type: string
+                            federation_name:
+                              type: string
+                            federation_formation_date:
+                              type: integer
+                            federation_code:
+                              type: string
+                        example:
+                        -  federation_id: 333
+                           state_id: 10
+                           district_id: 170
+                           block_id: 1639
+                           panchayat_id: 246946
+                           village_id: null
+                           guid: "d7960666-fde1-4c16-8196-ba32e1e8f5f5"
+                           federation_name: "kamran VO 2023"
+                           federation_formation_date: 1670544000
+                           federation_code: null
+                        -  federation_id: 350
+                           state_id: 10
+                           district_id: 170
+                           block_id: 1639
+                           panchayat_id: 246946
+                           village_id: null
+                           guid: "d7960666-fde1-4c16-8196-ba32e1e8f5f59"
+                           federation_name: "kamran TEST 2024"
+                           federation_formation_date: 1670544000
+                           federation_code: null
+                        -  federation_id: 351
+                           state_id: 10
+                           district_id: 170
+                           block_id: 1639
+                           panchayat_id: 246946
+                           village_id: null
+                           guid: ""
+                           federation_name: "kamran TEST 2024"
+                           federation_formation_date: 1670544000
+                           federation_code: null
+                        -  federation_id: 401
+                           state_id: 10
+                           district_id: 170
+                           block_id: 1639
+                           panchayat_id: 246946
+                           village_id: null
+                           guid: "d7960666-fde1-4c16-8196-ba32e1e8f5f99"
+                           federation_name: "kamran TEST 2024"
+                           federation_formation_date: 1670544000
+                           federation_code: null
+                        -  federation_id: 302
+                           state_id: 10
+                           district_id: 170
+                           block_id: 1639
+                           panchayat_id: 246937
+                           village_id: null
+                           guid: "wMaudxp4spbRc43yqBdJPbXEy3Ri1b2021121517005848"
+                           federation_name: "Vinod"
+                           federation_formation_date: 1639526400
+                           federation_code: null
+                        -  federation_id: 322
+                           state_id: 10
+                           district_id: 170
+                           block_id: 1639
+                           panchayat_id: 246943
+                           village_id: null
+                           guid: "kM7K8YtyFUi1IicaTjnCocUAQ3gzQP2021022609352011"
+                           federation_name: "kamran VO 2022"
+                           federation_formation_date: 1670457600
+                           federation_code: null
+                        -  federation_id: 321
+                           state_id: 10
+                           district_id: 170
+                           block_id: 1639
+                           panchayat_id: 246943
+                           village_id: null
+                           guid: "kM7K8YtyFUi1IicaTjnCocUAQ3gzQP2021022609352011"
+                           federation_name: "kamran VO 2022"
+                           federation_formation_date: 1670457600
+                           federation_code: null
+                        -  federation_id: 499
+                           state_id: 10
+                           district_id: 170
+                           block_id: 1639
+                           panchayat_id: 246946
+                           village_id: null
+                           guid: "d7960666-fde1-4c16-8196-ba32e1e8f5f55"
+                           federation_name: "kamran TEST 2024"
+                           federation_formation_date: 1670544000
+                           federation_code: null
+                        -  federation_id: 231
+                           state_id: 10
+                           district_id: 170
+                           block_id: 1639
+                           panchayat_id: 246937
+                           village_id: null
+                           guid: "a67df60d4c325d9d7836f1fef48570bf"
+                           federation_name: "EKTA MAHILA GRAM SANGTHAN"
+                           federation_formation_date: 1450828800
+                           federation_code: "12000002316"
+                        -  federation_id: 299
+                           state_id: 10
+                           district_id: 170
+                           block_id: 1639
+                           panchayat_id: 246937
+                           village_id: null
+                           guid: "ejH37kC5zAHKiSUmUWRqcxAeXVPOO52021112515132584"
+                           federation_name: "MONIKA"
+                           federation_formation_date: 1502668800
+                           federation_code: "12000002858"
+
+   
+        400:
+          description: Bad Request/Validation Error
+
+  /getFederationById:
+    get:
+      tags:
+      - Get Fedaration By Id API
+      summary: Get Fedaration By Id
+      description: This api’s is used to get the federation profile by passing the federation_id and user_id..
+      operationId: getFederationById
+      security:
+      - bearerAuth: []
+      parameters:
+        - in: query
+          name: federationId
+          schema:
+            type: integer
+            example: 231
+        - in: header
+          name: User
+          schema:
+            type: string
+            example: "HA_SHG1"
+        - in: header
+          name: X-Tenant-Identifier
+          schema:
+            type: string
+            example: "dynamic_lokos_ha"
+        - in: header
+          name: role
+          schema:
+            type: integer
+            example: 410
+
+      
+      responses:
+        200:
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  responseCode:
+                    type: string
+                    example: "200"
+                  responseMsg:
+                    type: string
+                    example: "Data retrieve successfully."
+                  status:
+                    type: string
+                    example: "SUCCESS"
+                  timestamp:
+                    type: string
+                    example: "2023-09-21T11:32:48.767"
+                  responseData:
+                    type: object
+                    properties:
+                      singleFederation: 
+                        type: object                        
+                        properties:
+                          federation_id: 
+                            type: string
+                            example: 231
+                          federation_code: 
+                            type: string
+                            example: "12000002316"
+                          temp_code: 
+                            type: string
+                            example: null
+                          state_id: 
+                            type: string
+                            example: 10
+                          district_id: 
+                            type: string
+                            example: 170
+                          block_id: 
+                            type: string
+                            example: 1639
+                          panchayat_id: 
+                            type: string
+                            example: 246937
+                          village_id: 
+                            type: string
+                            example: null
+                          cbo_type: 
+                            type: string
+                            example: 1
+                          guid: 
+                            type: string
+                            example: "a67df60d4c325d9d7836f1fef48570bf"
+                          federation_type_code: 
+                            type: string
+                            example: null
+                          federation_name: 
+                            type: string
+                            example: "EKTA MAHILA GRAM SANGTHAN"
+                          cbo_level: 
+                            type: string
+                            example: 1
+                          child_level: 
+                            type: string
+                            example: 0
+                          geographic_level: 
+                            type: string
+                            example: null
+                          federation_name_short_en: 
+                            type: string
+                            example: null
+                          federation_name_local: 
+                            type: string
+                            example: ""
+                          federation_name_short_local: 
+                            type: string
+                            example: null
+                          federation_formation_date: 
+                            type: string
+                            example: 1450828800
+                          federation_revival_date: 
+                            type: string
+                            example: null
+                          meeting_frequency: 
+                            type: string
+                            example: 2
+                          meeting_frequency_value: 
+                            type: string
+                            example: 27
+                          meeting_on: 
+                            type: string
+                            example: 12
+                          mode: 
+                            type: string
+                            example: 0
+                          month_comp_saving: 
+                            type: string
+                            example: 0
+                          is_bankaccount: 
+                            type: string
+                            example: 0
+                          parent_cbo_code: 
+                            type: string
+                            example: 312
+                          parent_cbo_type: 
+                            type: string
+                            example: 0
+                          is_active: 
+                            type: string
+                            example: 1
+                          dedupl_status: 
+                            type: string
+                            example: 5
+                          activation_status: 
+                            type: string
+                            example: 2
+                          status: 
+                            type: string
+                            example: 1
+                          settlement_status: 
+                            type: string
+                            example: null
+                          checker_remark: 
+                            type: string
+                            example: ""
+                          bookkeeper_name: 
+                            type: string
+                            example: ""
+                          bookkeeper_mobile: 
+                            type: string
+                            example: ""
+                          election_tenure: 
+                            type: string
+                            example: 25
+                          is_voluntary_saving: 
+                            type: string
+                            example: null
+                          saving_frequency: 
+                            type: string
+                            example: 0
+                          promoted_by: 
+                            type: string
+                            example: 1
+                          primary_activity: 
+                            type: string
+                            example: 0
+                          secondary_activity: 
+                            type: string
+                            example: 0
+                          tertiary_activity: 
+                            type: string
+                            example: 0
+                          bookkeeper_identified: 
+                            type: string
+                            example: 1
+                          user_id: 
+                            type: string
+                            example: "HA_SHG1"
+                          entry_source: 
+                            type: string
+                            example: 1
+                          is_edited: 
+                            type: string
+                            example: 0
+                          last_uploaded_date: 
+                            type: string
+                            example: 1687435573
+                          uploaded_by: 
+                            type: string
+                            example: "HR_QABKHR"
+                          created_date: 
+                            type: string
+                            example: 1451394000
+                          created_by: 
+                            type: string
+                            example: "HRKRGARTGP"
+                          updated_date: 
+                            type: string
+                            example: 1637384223
+                          updated_by: 
+                            type: string
+                            example: "HR_QABKHR"
+                          promoter_code: 
+                            type: string
+                            example: "0"
+                          is_complete: 
+                            type: string
+                            example: null
+                          cboAddressesList: 
+                            type: string
+                            example: [{'cbo_address_id': 4855, 'cbo_id': 231, 'cbo_type': 1, 'address_guid': 'QjaNDiCayNU7FtFcQ9azuhb7Hu7GFm2023042013075134', 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'address_type': 0, 'urban_rural': None, 'address_line1': 'fhjfi', 'address_line2': '', 'city_town': '0', 'postal_code': '866535', 'landmark': '', 'state_id': 10, 'district_id': 170, 'block_id': 1639, 'panchayat_id': 246920, 'village_id': 0, 'status': 1, 'deduplication_status': None, 'activation_status': None, 'entry_source': 0, 'is_edited': 1, 'last_uploaded_date': 1684403101, 'uploaded_by': '0', 'created_date': 1681996071, 'created_by': 'HRKRGARTGP', 'updated_date': None, 'updated_by': 'HR_HARISH', 'is_active': 1, 'is_verified': 0, 'is_complete': 1}]
+                          cboPhoneNoDetailsList: 
+                            type: string
+                            example: [{'cbo_phone_id': 985, 'phone_guid': 'eXmaOKYxsl82V1DlIdhVYLOOTKwhxH2023042013074249', 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'cbo_id': 231, 'mobile_no': 8529722731, 'phone_ownership': 0, 'phone_ownership_details': '', 'valid_from': 1681948800, 'valid_till': None, 'cbo_type': 1, 'status': None, 'deduplication_status': 4, 'activation_status': 1, 'is_default': 1, 'entry_source': 0, 'is_edited': 1, 'is_active': 1, 'last_uploaded_date': 1684403101, 'uploaded_by': '', 'created_date': 1681996062, 'created_by': 'HRKRGARTGP', 'updated_date': None, 'updated_by': 'HR_HARISH', 'member_guid': '9739fa3d1e9aa02e894538e5d63a0e0b', 'member_name': 'SHILA DEVI', 'identified_duplicates': None, 'is_verified': 0, 'is_complete': 1}, {'cbo_phone_id': 986, 'phone_guid': 'GIr6JXCsgaleXROS48ikAamqv8hM9l2023042013074253', 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'cbo_id': 231, 'mobile_no': 9991648942, 'phone_ownership': 0, 'phone_ownership_details': '', 'valid_from': 1681948800, 'valid_till': None, 'cbo_type': 1, 'status': None, 'deduplication_status': 4, 'activation_status': 1, 'is_default': 1, 'entry_source': 0, 'is_edited': 1, 'is_active': 1, 'last_uploaded_date': 1684403101, 'uploaded_by': '', 'created_date': 1681996062, 'created_by': 'HRKRGARTGP', 'updated_date': None, 'updated_by': 'HR_HARISH', 'member_guid': '9cd9d01576abfb409d35eecefc58b0d8', 'member_name': 'USHA DEVI', 'identified_duplicates': None, 'is_verified': 0, 'is_complete': 1}]
+                          cboBankDetailsList: 
+                            type: string
+                            example: [{'cbo_bank_id': 4502, 'bank_guid': 'cfc661654349ca8b36c0e1bca6276d65', 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'cbo_id': 231, 'account_no': '82121300000044', 'account_opening_date': 1450828800, 'account_linkage_date': None, 'bank_id': 403, 'bank_code': '1062', 'bank_branch': 'HGB MUNAK', 'bank_branch_id': 63989, 'ifsc_code': 'PUNB0HGB001', 'account_type': '0', 'is_default': 1, 'cbo_type': 1, 'sequence_no': 1, 'verification': 0, 'closure_date': None, 'bankpassbook_name': 'EKTA MAHILA GRAM SANGTHAN', 'passbook_firstpage': 'cfc661654349ca8b36c0e1bca6276d65,301.jpg', 'status': 1, 'deduplication_status': 5, 'activation_status': 2, 'entry_source': 40, 'is_edited': 1, 'last_uploaded_date': 1684403578, 'uploaded_by': 'HRKRGARTGP', 'created_date': 1451394000, 'created_by': 'HRKRGARTGP', 'updated_date': None, 'updated_by': 'HR_HARISH', 'is_active': 1, 'bank_document': 'uploadFiles/301/301_2023-05-18 10:43:05.246.jpg', 'identified_duplicates': None, 'npci_status': None, 'is_verified': 1, 'is_complete': 1, 'inactive_date': None}, {'cbo_bank_id': 4774, 'bank_guid': 'rBKuI0dm8fxbcBfHfMdLRDAZFl9VeW2023042811401642', 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'cbo_id': 231, 'account_no': '2', 'account_opening_date': 1450828800, 'account_linkage_date': None, 'bank_id': 89, 'bank_code': '', 'bank_branch': '3034', 'bank_branch_id': 3034, 'ifsc_code': 'UTIB0FCCB01', 'account_type': '0', 'is_default': 0, 'cbo_type': 1, 'sequence_no': 0, 'verification': 0, 'closure_date': None, 'bankpassbook_name': 'EKTA MAHILA GRAM SANGTHAN', 'passbook_firstpage': 'rBKuI0dm8fxbcBfHfMdLRDAZFl9VeW2023042811401642,301.jpg', 'status': 1, 'deduplication_status': 6, 'activation_status': 3, 'entry_source': 40, 'is_edited': 1, 'last_uploaded_date': 1684403578, 'uploaded_by': '', 'created_date': 1682682016, 'created_by': 'HRKRGARTGP', 'updated_date': None, 'updated_by': 'HR_HARISH', 'is_active': 1, 'bank_document': 'uploadFiles/301/301_2023-05-18 10:43:05.069.jpg', 'identified_duplicates': None, 'npci_status': None, 'is_verified': 0, 'is_complete': 1, 'inactive_date': None}]
+                          cboKYCDetailsList: 
+                            type: string
+                            example: [{'cbo_kyc_details_id': 1568, 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'kyc_guid': 'BHi89BJr9PgMffljOhajIi2uvcXKXt2023051522593070', 'cbo_id': 231, 'kyc_type': 3, 'kyc_number': 'ASSFG4555K', 'document_id': 14866, 'kyc_valid_from': 1684132170, 'kyc_valid_to': None, 'documentDetails': None, 'status': 1, 'deduplication_status': None, 'activation_status': 1, 'entry_source': 1, 'is_edited': 1, 'last_uploaded_date': 1684403101, 'uploaded_by': 'HR_HARISH', 'created_date': 1684191570, 'created_by': 'HRKRGARTGP', 'updated_date': 1684406207, 'updated_by': 'HR_HARISH', 'is_active': 1, 'cbo_type': 1, 'kyc_document': 'uploadFiles/8005/8005_2023-05-18 10:43:05.226.jpg', 'is_verified': 0, 'is_complete': 1, 'kyc_front_doc_orig_name': 'IMG_20230518_103639,8005.jpg'}]
+                          ecMembersList: 
+                            type: string
+                            example: [{'executive_member_id': 5845, 'cbo_id': 231, 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'guid': 'GlVgNyqOZmxxBhF9DCxSj1sj0jAnp52023042013015321', 'cbo_level': 1, 'ec_cbo_level': 0, 'ec_cbo_code': '3477', 'ec_cbo_id': 3477, 'ec_member_code': 8811, 'designation': 6, 'joining_date': 1681948800, 'leaving_date': 1682726400, 'status': 2, 'is_active': 1, 'entry_source': 0, 'is_edited': 1, 'uploaded_by': 'HR_HARISH', 'created_by': 'HR_HARISH', 'updated_by': 'HR_HARISH', 'last_uploaded_date': 1682694243, 'created_date': 1681995713, 'updated_date': 1682714043, 'vo_name': 'EKTA MAHILA GRAM SANGTHAN', 'shg_name': 'AKTA MAHILA SHG', 'member_name': 'SEEMA RANI', 'is_signatory': 0, 'signatory_joining_date': None, 'signatory_leaving_date': None, 'phone_no': 9991686038}, {'executive_member_id': 5848, 'cbo_id': 231, 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'guid': 'ljk4Z41IJ11xgtlKxoj1h2nFJjmPN62023042013025318', 'cbo_level': 1, 'ec_cbo_level': 0, 'ec_cbo_code': '3773', 'ec_cbo_id': 3773, 'ec_member_code': 54160, 'designation': 6, 'joining_date': 1677628800, 'leaving_date': None, 'status': 1, 'is_active': 1, 'entry_source': 0, 'is_edited': 1, 'uploaded_by': 'HR_HARISH', 'created_by': 'HR_HARISH', 'updated_by': '', 'last_uploaded_date': 1681975973, 'created_date': 1681995773, 'updated_date': None, 'vo_name': 'EKTA MAHILA GRAM SANGTHAN', 'shg_name': 'GANESH MAHILA SHG', 'member_name': 'PARMESHWARI DEVI', 'is_signatory': 0, 'signatory_joining_date': None, 'signatory_leaving_date': None, 'phone_no': None}, {'executive_member_id': 5849, 'cbo_id': 231, 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'guid': 'MW8u2JtlMit2yFAJUV8HfrotuFMJMm2023042013031522', 'cbo_level': 1, 'ec_cbo_level': 0, 'ec_cbo_code': '3492', 'ec_cbo_id': 3492, 'ec_member_code': 41835, 'designation': 6, 'joining_date': 1681948800, 'leaving_date': None, 'status': 1, 'is_active': 1, 'entry_source': 0, 'is_edited': 1, 'uploaded_by': 'HR_HARISH', 'created_by': 'HR_HARISH', 'updated_by': '', 'last_uploaded_date': 1681975995, 'created_date': 1681995795, 'updated_date': None, 'vo_name': 'EKTA MAHILA GRAM SANGTHAN', 'shg_name': 'GURU MAHILA SHG', 'member_name': 'RANI', 'is_signatory': 0, 'signatory_joining_date': None, 'signatory_leaving_date': None, 'phone_no': 9728102243}, {'executive_member_id': 5854, 'cbo_id': 231, 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'guid': 'i13uw7xuTXVKB2qc16FJZ3MOiE9Oq52023042013051983', 'cbo_level': 1, 'ec_cbo_level': 0, 'ec_cbo_code': '3777', 'ec_cbo_id': 3777, 'ec_member_code': 12876, 'designation': 6, 'joining_date': 1681948800, 'leaving_date': None, 'status': 1, 'is_active': 1, 'entry_source': 0, 'is_edited': 1, 'uploaded_by': 'HR_HARISH', 'created_by': 'HR_HARISH', 'updated_by': '', 'last_uploaded_date': 1681976120, 'created_date': 1681995919, 'updated_date': None, 'vo_name': 'EKTA MAHILA GRAM SANGTHAN', 'shg_name': 'SUBH MAHILA SHG', 'member_name': 'SANTOSH RANI', 'is_signatory': 0, 'signatory_joining_date': None, 'signatory_leaving_date': None, 'phone_no': None}, {'executive_member_id': 5856, 'cbo_id': 231, 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'guid': 'A5SgSlrAd0G9SaQgKecIbH82N53rJy2023042013060444', 'cbo_level': 1, 'ec_cbo_level': 0, 'ec_cbo_code': '3476', 'ec_cbo_id': 3476, 'ec_member_code': 8990, 'designation': 6, 'joining_date': 1681948800, 'leaving_date': None, 'status': 1, 'is_active': 1, 'entry_source': 0, 'is_edited': 1, 'uploaded_by': 'HR_HARISH', 'created_by': 'HR_HARISH', 'updated_by': '', 'last_uploaded_date': 1681976165, 'created_date': 1681995964, 'updated_date': None, 'vo_name': 'EKTA MAHILA GRAM SANGTHAN', 'shg_name': 'RADHA MAHILA SHG', 'member_name': 'LAJWANTI DEVI', 'is_signatory': 0, 'signatory_joining_date': 1681948800, 'signatory_leaving_date': None, 'phone_no': 9729564103}, {'executive_member_id': 5850, 'cbo_id': 231, 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'guid': 'dporIxm1aKGlYGaM9whZP6BLUSmdEx2023042013041542', 'cbo_level': 1, 'ec_cbo_level': 0, 'ec_cbo_code': '4500', 'ec_cbo_id': 4500, 'ec_member_code': 54764, 'designation': 6, 'joining_date': 1681948800, 'leaving_date': None, 'status': 1, 'is_active': 1, 'entry_source': 0, 'is_edited': 1, 'uploaded_by': 'HR_HARISH', 'created_by': 'HR_HARISH', 'updated_by': '', 'last_uploaded_date': 1681976056, 'created_date': 1681995855, 'updated_date': None, 'vo_name': 'EKTA MAHILA GRAM SANGTHAN', 'shg_name': 'HARYANA B1', 'member_name': 'Rahul', 'is_signatory': 0, 'signatory_joining_date': None, 'signatory_leaving_date': None, 'phone_no': 9455624160}, {'executive_member_id': 5851, 'cbo_id': 231, 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'guid': 'LNsVAjphseiMi1Ci82bpucTIjjBp7L2023042013043365', 'cbo_level': 1, 'ec_cbo_level': 0, 'ec_cbo_code': '3781', 'ec_cbo_id': 3781, 'ec_member_code': 29126, 'designation': 6, 'joining_date': 1681948800, 'leaving_date': None, 'status': 1, 'is_active': 1, 'entry_source': 0, 'is_edited': 1, 'uploaded_by': 'HR_HARISH', 'created_by': 'HR_HARISH', 'updated_by': '', 'last_uploaded_date': 1681976074, 'created_date': 1681995873, 'updated_date': None, 'vo_name': 'EKTA MAHILA GRAM SANGTHAN', 'shg_name': 'JAI KALI MAHILA SHG', 'member_name': 'SAVITRI DEVI', 'is_signatory': 0, 'signatory_joining_date': None, 'signatory_leaving_date': None, 'phone_no': None}, {'executive_member_id': 3308, 'cbo_id': 231, 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'guid': '5b4ea71b72d505d995243213d4cbb7c3', 'cbo_level': 1, 'ec_cbo_level': 0, 'ec_cbo_code': '3727', 'ec_cbo_id': 3727, 'ec_member_code': 20194, 'designation': 6, 'joining_date': 1450828800, 'leaving_date': None, 'status': 1, 'is_active': 1, 'entry_source': 0, 'is_edited': 1, 'uploaded_by': None, 'created_by': 'NRLM', 'updated_by': None, 'last_uploaded_date': 1637205344, 'created_date': 1451413800, 'updated_date': None, 'vo_name': 'EKTA MAHILA GRAM SANGTHAN', 'shg_name': 'GURUNANAK MAHILA  SHG', 'member_name': 'GURJEET KAUR', 'is_signatory': 0, 'signatory_joining_date': None, 'signatory_leaving_date': None, 'phone_no': None}, {'executive_member_id': 3310, 'cbo_id': 231, 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'guid': 'b1d81f1889b2eeb8c46b88f49824196d', 'cbo_level': 1, 'ec_cbo_level': 0, 'ec_cbo_code': '3733', 'ec_cbo_id': 3733, 'ec_member_code': 25171, 'designation': 6, 'joining_date': 1450828800, 'leaving_date': None, 'status': 1, 'is_active': 1, 'entry_source': 0, 'is_edited': 1, 'uploaded_by': None, 'created_by': 'NRLM', 'updated_by': None, 'last_uploaded_date': 1637205344, 'created_date': 1451413800, 'updated_date': None, 'vo_name': 'EKTA MAHILA GRAM SANGTHAN', 'shg_name': 'KAISHERMAN MAHILA SHG', 'member_name': 'KUSUM SHARMA', 'is_signatory': 0, 'signatory_joining_date': None, 'signatory_leaving_date': None, 'phone_no': None}, {'executive_member_id': 3311, 'cbo_id': 231, 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'guid': '83dda1a9244a3ab0240858a7d654ae9b', 'cbo_level': 1, 'ec_cbo_level': 0, 'ec_cbo_code': '3756', 'ec_cbo_id': 3756, 'ec_member_code': 25208, 'designation': 6, 'joining_date': 1450828800, 'leaving_date': None, 'status': 1, 'is_active': 1, 'entry_source': 0, 'is_edited': 1, 'uploaded_by': None, 'created_by': 'NRLM', 'updated_by': None, 'last_uploaded_date': 1637205344, 'created_date': 1451413800, 'updated_date': None, 'vo_name': 'EKTA MAHILA GRAM SANGTHAN', 'shg_name': 'KRISHANA MAHILA  SHG', 'member_name': 'NIRMALA ', 'is_signatory': 0, 'signatory_joining_date': None, 'signatory_leaving_date': None, 'phone_no': 8930140994}, {'executive_member_id': 3312, 'cbo_id': 231, 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'guid': '5f62efacb582c6421446a9eebc40b59f', 'cbo_level': 1, 'ec_cbo_level': 0, 'ec_cbo_code': '3763', 'ec_cbo_id': 3763, 'ec_member_code': 24327, 'designation': 6, 'joining_date': 1450828800, 'leaving_date': None, 'status': 1, 'is_active': 1, 'entry_source': 0, 'is_edited': 1, 'uploaded_by': None, 'created_by': 'NRLM', 'updated_by': None, 'last_uploaded_date': 1637205344, 'created_date': 1451413800, 'updated_date': None, 'vo_name': 'EKTA MAHILA GRAM SANGTHAN', 'shg_name': 'MANSA DAVI MAHILA SHG', 'member_name': 'SONIA DEVI', 'is_signatory': 0, 'signatory_joining_date': None, 'signatory_leaving_date': None, 'phone_no': None}, {'executive_member_id': 3314, 'cbo_id': 231, 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'guid': 'd3c629de3a9bd222350324e97dbc82df', 'cbo_level': 1, 'ec_cbo_level': 0, 'ec_cbo_code': '3760', 'ec_cbo_id': 3760, 'ec_member_code': 25229, 'designation': 6, 'joining_date': 1450828800, 'leaving_date': None, 'status': 1, 'is_active': 1, 'entry_source': 0, 'is_edited': 1, 'uploaded_by': None, 'created_by': 'NRLM', 'updated_by': None, 'last_uploaded_date': 1637205344, 'created_date': 1451413800, 'updated_date': None, 'vo_name': 'EKTA MAHILA GRAM SANGTHAN', 'shg_name': 'MEERA  MAHILA SHG', 'member_name': 'KOSHALYA', 'is_signatory': 0, 'signatory_joining_date': None, 'signatory_leaving_date': None, 'phone_no': 9813137420}, {'executive_member_id': 3315, 'cbo_id': 231, 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'guid': '9d1ad7a041397dbd85a57610b25c13d8', 'cbo_level': 1, 'ec_cbo_level': 0, 'ec_cbo_code': '3737', 'ec_cbo_id': 3737, 'ec_member_code': 33812, 'designation': 6, 'joining_date': 1450828800, 'leaving_date': None, 'status': 1, 'is_active': 1, 'entry_source': 0, 'is_edited': 1, 'uploaded_by': None, 'created_by': 'NRLM', 'updated_by': None, 'last_uploaded_date': 1637205344, 'created_date': 1451413800, 'updated_date': None, 'vo_name': 'EKTA MAHILA GRAM SANGTHAN', 'shg_name': 'OM SHANTI MAHILA  SHG', 'member_name': 'MAMTA DEVI', 'is_signatory': 0, 'signatory_joining_date': None, 'signatory_leaving_date': None, 'phone_no': 7079497997}, {'executive_member_id': 3316, 'cbo_id': 231, 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'guid': '8a8070e7ea97d00816c74d41fffb0564', 'cbo_level': 1, 'ec_cbo_level': 0, 'ec_cbo_code': '3737', 'ec_cbo_id': 3737, 'ec_member_code': 33814, 'designation': 6, 'joining_date': 1450828800, 'leaving_date': None, 'status': 1, 'is_active': 1, 'entry_source': 0, 'is_edited': 1, 'uploaded_by': None, 'created_by': 'NRLM', 'updated_by': None, 'last_uploaded_date': 1637205344, 'created_date': 1451413800, 'updated_date': None, 'vo_name': 'EKTA MAHILA GRAM SANGTHAN', 'shg_name': 'OM SHANTI MAHILA  SHG', 'member_name': 'KAVITA', 'is_signatory': 0, 'signatory_joining_date': None, 'signatory_leaving_date': None, 'phone_no': None}, {'executive_member_id': 3318, 'cbo_id': 231, 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'guid': 'e8ed8be40e23f0cf0828c25981a5f761', 'cbo_level': 1, 'ec_cbo_level': 0, 'ec_cbo_code': '3723', 'ec_cbo_id': 3723, 'ec_member_code': 25175, 'designation': 6, 'joining_date': 1450828800, 'leaving_date': None, 'status': 1, 'is_active': 1, 'entry_source': 0, 'is_edited': 1, 'uploaded_by': None, 'created_by': 'NRLM', 'updated_by': None, 'last_uploaded_date': 1637205344, 'created_date': 1451413800, 'updated_date': None, 'vo_name': 'EKTA MAHILA GRAM SANGTHAN', 'shg_name': 'SHAKTI  MAHILA SHG', 'member_name': 'KAMLESH RANI', 'is_signatory': 0, 'signatory_joining_date': None, 'signatory_leaving_date': None, 'phone_no': None}, {'executive_member_id': 3319, 'cbo_id': 231, 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'guid': '9f9b82feabd7b1bd6d2af6d109700be3', 'cbo_level': 1, 'ec_cbo_level': 0, 'ec_cbo_code': '3749', 'ec_cbo_id': 3749, 'ec_member_code': 25239, 'designation': 6, 'joining_date': 1450828800, 'leaving_date': None, 'status': 1, 'is_active': 1, 'entry_source': 0, 'is_edited': 1, 'uploaded_by': None, 'created_by': 'NRLM', 'updated_by': None, 'last_uploaded_date': 1637205344, 'created_date': 1451413800, 'updated_date': None, 'vo_name': 'EKTA MAHILA GRAM SANGTHAN', 'shg_name': 'SHARDA MAIYA  MAHILA SHG', 'member_name': 'JYOTI RANI', 'is_signatory': 0, 'signatory_joining_date': None, 'signatory_leaving_date': None, 'phone_no': None}, {'executive_member_id': 3320, 'cbo_id': 231, 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'guid': '05598aba05720a2ce0c689b522e9f020', 'cbo_level': 1, 'ec_cbo_level': 0, 'ec_cbo_code': '3730', 'ec_cbo_id': 3730, 'ec_member_code': 22496, 'designation': 6, 'joining_date': 1450828800, 'leaving_date': None, 'status': 1, 'is_active': 1, 'entry_source': 0, 'is_edited': 1, 'uploaded_by': None, 'created_by': 'NRLM', 'updated_by': None, 'last_uploaded_date': 1637205344, 'created_date': 1451413800, 'updated_date': None, 'vo_name': 'EKTA MAHILA GRAM SANGTHAN', 'shg_name': 'SHIV  MAHILA SHG', 'member_name': 'USHA DEVI', 'is_signatory': 0, 'signatory_joining_date': None, 'signatory_leaving_date': None, 'phone_no': None}, {'executive_member_id': 3321, 'cbo_id': 231, 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'guid': 'bc7474459be048ea5c83282908d64412', 'cbo_level': 1, 'ec_cbo_level': 0, 'ec_cbo_code': '3727', 'ec_cbo_id': 3727, 'ec_member_code': 25140, 'designation': 2, 'joining_date': 1450828800, 'leaving_date': None, 'status': 1, 'is_active': 1, 'entry_source': 0, 'is_edited': 1, 'uploaded_by': None, 'created_by': 'NRLM', 'updated_by': None, 'last_uploaded_date': 1637205344, 'created_date': 1451413800, 'updated_date': None, 'vo_name': 'EKTA MAHILA GRAM SANGTHAN', 'shg_name': 'GURUNANAK MAHILA  SHG', 'member_name': 'GURJINDER KAUR', 'is_signatory': 0, 'signatory_joining_date': None, 'signatory_leaving_date': None, 'phone_no': None}, {'executive_member_id': 3322, 'cbo_id': 231, 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'guid': '2264d4527f0efd77b69a866befe9ef21', 'cbo_level': 1, 'ec_cbo_level': 0, 'ec_cbo_code': '3733', 'ec_cbo_id': 3733, 'ec_member_code': 25170, 'designation': 1, 'joining_date': 1450828800, 'leaving_date': None, 'status': 1, 'is_active': 1, 'entry_source': 0, 'is_edited': 1, 'uploaded_by': 'HR_HARISH', 'created_by': 'NRLM', 'updated_by': 'HR_HARISH', 'last_uploaded_date': 1681976236, 'created_date': 1451413800, 'updated_date': 1681996035, 'vo_name': 'EKTA MAHILA GRAM SANGTHAN', 'shg_name': 'KAISHERMAN MAHILA SHG', 'member_name': 'SHILA DEVI', 'is_signatory': 1, 'signatory_joining_date': 1681948800, 'signatory_leaving_date': None, 'phone_no': 8529722731}, {'executive_member_id': 3323, 'cbo_id': 231, 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'guid': 'cdca2943bc4e393335d5682ff5ed7bae', 'cbo_level': 1, 'ec_cbo_level': 0, 'ec_cbo_code': '3756', 'ec_cbo_id': 3756, 'ec_member_code': 25124, 'designation': 5, 'joining_date': 1450828800, 'leaving_date': None, 'status': 1, 'is_active': 1, 'entry_source': 0, 'is_edited': 1, 'uploaded_by': 'HR_HARISH', 'created_by': 'NRLM', 'updated_by': 'HR_HARISH', 'last_uploaded_date': 1681976259, 'created_date': 1451413800, 'updated_date': 1681996058, 'vo_name': 'EKTA MAHILA GRAM SANGTHAN', 'shg_name': 'KRISHANA MAHILA  SHG', 'member_name': 'USHA DEVI', 'is_signatory': 1, 'signatory_joining_date': 1681948800, 'signatory_leaving_date': None, 'phone_no': 9991648942}, {'executive_member_id': 3324, 'cbo_id': 231, 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'guid': '21911f81c99858bbd9d6b58dea68de75', 'cbo_level': 1, 'ec_cbo_level': 0, 'ec_cbo_code': '3763', 'ec_cbo_id': 3763, 'ec_member_code': 25249, 'designation': 3, 'joining_date': 1450828800, 'leaving_date': None, 'status': 1, 'is_active': 1, 'entry_source': 0, 'is_edited': 1, 'uploaded_by': None, 'created_by': 'NRLM', 'updated_by': None, 'last_uploaded_date': 1637205344, 'created_date': 1451413800, 'updated_date': None, 'vo_name': 'EKTA MAHILA GRAM SANGTHAN', 'shg_name': 'MANSA DAVI MAHILA SHG', 'member_name': 'REENA DEVI', 'is_signatory': 0, 'signatory_joining_date': None, 'signatory_leaving_date': None, 'phone_no': None}, {'executive_member_id': 3325, 'cbo_id': 231, 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'guid': 'd67cc150818945605f42f503eede1bef', 'cbo_level': 1, 'ec_cbo_level': 0, 'ec_cbo_code': '3760', 'ec_cbo_id': 3760, 'ec_member_code': 25230, 'designation': 6, 'joining_date': 1450828800, 'leaving_date': None, 'status': 1, 'is_active': 1, 'entry_source': 0, 'is_edited': 1, 'uploaded_by': None, 'created_by': 'NRLM', 'updated_by': None, 'last_uploaded_date': 1637205344, 'created_date': 1451413800, 'updated_date': None, 'vo_name': 'EKTA MAHILA GRAM SANGTHAN', 'shg_name': 'MEERA  MAHILA SHG', 'member_name': 'POOJA RANI', 'is_signatory': 0, 'signatory_joining_date': None, 'signatory_leaving_date': None, 'phone_no': 8950180848}, {'executive_member_id': 3326, 'cbo_id': 231, 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'guid': 'afe4f18476a5daf14bb32dc4c12bf13d', 'cbo_level': 1, 'ec_cbo_level': 0, 'ec_cbo_code': '3770', 'ec_cbo_id': 3770, 'ec_member_code': 25196, 'designation': 6, 'joining_date': 1450828800, 'leaving_date': None, 'status': 1, 'is_active': 1, 'entry_source': 0, 'is_edited': 1, 'uploaded_by': None, 'created_by': 'NRLM', 'updated_by': None, 'last_uploaded_date': 1637205344, 'created_date': 1451413800, 'updated_date': None, 'vo_name': 'EKTA MAHILA GRAM SANGTHAN', 'shg_name': 'PUJA  MAHILA SHG', 'member_name': 'GEETA RANI', 'is_signatory': 0, 'signatory_joining_date': None, 'signatory_leaving_date': None, 'phone_no': None}, {'executive_member_id': 3327, 'cbo_id': 231, 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'guid': '80ffaf1fba2e04d594b5e2ca5882c538', 'cbo_level': 1, 'ec_cbo_level': 0, 'ec_cbo_code': '3770', 'ec_cbo_id': 3770, 'ec_member_code': 33918, 'designation': 6, 'joining_date': 1450828800, 'leaving_date': None, 'status': 1, 'is_active': 1, 'entry_source': 0, 'is_edited': 1, 'uploaded_by': None, 'created_by': 'NRLM', 'updated_by': None, 'last_uploaded_date': 1637205344, 'created_date': 1451413800, 'updated_date': None, 'vo_name': 'EKTA MAHILA GRAM SANGTHAN', 'shg_name': 'PUJA  MAHILA SHG', 'member_name': 'POOJA', 'is_signatory': 0, 'signatory_joining_date': None, 'signatory_leaving_date': None, 'phone_no': None}, {'executive_member_id': 3328, 'cbo_id': 231, 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'guid': 'e041857018c4368d8865c85c980b8f70', 'cbo_level': 1, 'ec_cbo_level': 0, 'ec_cbo_code': '3749', 'ec_cbo_id': 3749, 'ec_member_code': 25162, 'designation': 6, 'joining_date': 1450828800, 'leaving_date': None, 'status': 1, 'is_active': 1, 'entry_source': 0, 'is_edited': 1, 'uploaded_by': None, 'created_by': 'NRLM', 'updated_by': None, 'last_uploaded_date': 1637205344, 'created_date': 1451413800, 'updated_date': None, 'vo_name': 'EKTA MAHILA GRAM SANGTHAN', 'shg_name': 'SHARDA MAIYA  MAHILA SHG', 'member_name': 'NISHA', 'is_signatory': 0, 'signatory_joining_date': None, 'signatory_leaving_date': None, 'phone_no': 9991005997}, {'executive_member_id': 3330, 'cbo_id': 231, 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'guid': '15d153a0ea63ef7f75d1ad766a7f886a', 'cbo_level': 1, 'ec_cbo_level': 0, 'ec_cbo_code': '3753', 'ec_cbo_id': 3753, 'ec_member_code': 25217, 'designation': 6, 'joining_date': 1450828800, 'leaving_date': None, 'status': 1, 'is_active': 1, 'entry_source': 0, 'is_edited': 1, 'uploaded_by': None, 'created_by': 'NRLM', 'updated_by': None, 'last_uploaded_date': 1637205344, 'created_date': 1474396200, 'updated_date': None, 'vo_name': 'EKTA MAHILA GRAM SANGTHAN', 'shg_name': 'VINAYKA MAHILA SHG', 'member_name': 'SUNITA RANI', 'is_signatory': 0, 'signatory_joining_date': None, 'signatory_leaving_date': None, 'phone_no': None}, {'executive_member_id': 3331, 'cbo_id': 231, 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'guid': '6227d176c0f43f43ae45736629f637a1', 'cbo_level': 1, 'ec_cbo_level': 0, 'ec_cbo_code': '3755', 'ec_cbo_id': 3755, 'ec_member_code': 25207, 'designation': 6, 'joining_date': 1450828800, 'leaving_date': None, 'status': 1, 'is_active': 1, 'entry_source': 0, 'is_edited': 1, 'uploaded_by': None, 'created_by': 'NRLM', 'updated_by': None, 'last_uploaded_date': 1637205344, 'created_date': 1531938600, 'updated_date': None, 'vo_name': 'EKTA MAHILA GRAM SANGTHAN', 'shg_name': 'KHUSHI MAHILA SHG', 'member_name': 'PINKI ', 'is_signatory': 0, 'signatory_joining_date': None, 'signatory_leaving_date': None, 'phone_no': 8752635241}, {'executive_member_id': 3332, 'cbo_id': 231, 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'guid': '307aceed05fb2b21bd679a6edd0a9888', 'cbo_level': 1, 'ec_cbo_level': 0, 'ec_cbo_code': '3755', 'ec_cbo_id': 3755, 'ec_member_code': 25134, 'designation': 6, 'joining_date': 1450828800, 'leaving_date': None, 'status': 1, 'is_active': 1, 'entry_source': 0, 'is_edited': 1, 'uploaded_by': None, 'created_by': 'NRLM', 'updated_by': None, 'last_uploaded_date': 1637205344, 'created_date': 1531938600, 'updated_date': None, 'vo_name': 'EKTA MAHILA GRAM SANGTHAN', 'shg_name': 'KHUSHI MAHILA SHG', 'member_name': 'PUNAM DEVI', 'is_signatory': 0, 'signatory_joining_date': None, 'signatory_leaving_date': None, 'phone_no': 8752653885}, {'executive_member_id': 3333, 'cbo_id': 231, 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'guid': '7464f75f9f0da7872c6144b14d8ac701', 'cbo_level': 1, 'ec_cbo_level': 0, 'ec_cbo_code': '3779', 'ec_cbo_id': 3779, 'ec_member_code': 25246, 'designation': 6, 'joining_date': 1450828800, 'leaving_date': None, 'status': 1, 'is_active': 1, 'entry_source': 0, 'is_edited': 1, 'uploaded_by': None, 'created_by': 'NRLM', 'updated_by': None, 'last_uploaded_date': 1637205344, 'created_date': 1531938600, 'updated_date': None, 'vo_name': 'EKTA MAHILA GRAM SANGTHAN', 'shg_name': 'LAXAY MAHILA SHG', 'member_name': 'JYAVANTI', 'is_signatory': 0, 'signatory_joining_date': None, 'signatory_leaving_date': None, 'phone_no': None}, {'executive_member_id': 3334, 'cbo_id': 231, 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'guid': 'aee7329285b6777a95824897a305396e', 'cbo_level': 1, 'ec_cbo_level': 0, 'ec_cbo_code': '3779', 'ec_cbo_id': 3779, 'ec_member_code': 25183, 'designation': 6, 'joining_date': 1450828800, 'leaving_date': None, 'status': 1, 'is_active': 1, 'entry_source': 0, 'is_edited': 1, 'uploaded_by': None, 'created_by': 'NRLM', 'updated_by': None, 'last_uploaded_date': 1637205344, 'created_date': 1531938600, 'updated_date': None, 'vo_name': 'EKTA MAHILA GRAM SANGTHAN', 'shg_name': 'LAXAY MAHILA SHG', 'member_name': 'MEVA DEVI', 'is_signatory': 0, 'signatory_joining_date': None, 'signatory_leaving_date': None, 'phone_no': 9991457521}, {'executive_member_id': 3335, 'cbo_id': 231, 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'guid': '5efea7072cf51b17b02a144c579cf613', 'cbo_level': 1, 'ec_cbo_level': 0, 'ec_cbo_code': '3740', 'ec_cbo_id': 3740, 'ec_member_code': 25212, 'designation': 6, 'joining_date': 1450828800, 'leaving_date': None, 'status': 1, 'is_active': 1, 'entry_source': 0, 'is_edited': 1, 'uploaded_by': None, 'created_by': 'NRLM', 'updated_by': None, 'last_uploaded_date': 1637205344, 'created_date': 1531938600, 'updated_date': None, 'vo_name': 'EKTA MAHILA GRAM SANGTHAN', 'shg_name': 'SARASWATI MAHILA SHG', 'member_name': 'GEETA DEVI', 'is_signatory': 0, 'signatory_joining_date': None, 'signatory_leaving_date': None, 'phone_no': None}, {'executive_member_id': 3336, 'cbo_id': 231, 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'guid': 'deac1aadcc33256950961e26693c7e86', 'cbo_level': 1, 'ec_cbo_level': 0, 'ec_cbo_code': '3740', 'ec_cbo_id': 3740, 'ec_member_code': 25213, 'designation': 6, 'joining_date': 1450828800, 'leaving_date': None, 'status': 1, 'is_active': 1, 'entry_source': 0, 'is_edited': 1, 'uploaded_by': None, 'created_by': 'NRLM', 'updated_by': None, 'last_uploaded_date': 1637205344, 'created_date': 1531938600, 'updated_date': None, 'vo_name': 'EKTA MAHILA GRAM SANGTHAN', 'shg_name': 'SARASWATI MAHILA SHG', 'member_name': 'SANTOSH', 'is_signatory': 0, 'signatory_joining_date': None, 'signatory_leaving_date': None, 'phone_no': None}, {'executive_member_id': 5852, 'cbo_id': 231, 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'guid': '9STtNdUOCtsZiUb0GnqpHSsjSlsdzN2023042013044709', 'cbo_level': 1, 'ec_cbo_level': 0, 'ec_cbo_code': '3503', 'ec_cbo_id': 3503, 'ec_member_code': 40724, 'designation': 6, 'joining_date': 1681948800, 'leaving_date': None, 'status': 1, 'is_active': 1, 'entry_source': 0, 'is_edited': 1, 'uploaded_by': 'HR_HARISH', 'created_by': 'HR_HARISH', 'updated_by': '', 'last_uploaded_date': 1681976087, 'created_date': 1681995887, 'updated_date': None, 'vo_name': 'EKTA MAHILA GRAM SANGTHAN', 'shg_name': 'KHUSHI MAHILA SHG', 'member_name': 'RAMRATI', 'is_signatory': 0, 'signatory_joining_date': None, 'signatory_leaving_date': None, 'phone_no': None}, {'executive_member_id': 3339, 'cbo_id': 231, 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'guid': '77521f7b6a5558aadbe0509a989a5871', 'cbo_level': 1, 'ec_cbo_level': 0, 'ec_cbo_code': '3753', 'ec_cbo_id': 3753, 'ec_member_code': 33970, 'designation': 6, 'joining_date': 1450828800, 'leaving_date': None, 'status': 1, 'is_active': 1, 'entry_source': 0, 'is_edited': 1, 'uploaded_by': None, 'created_by': 'NRLM', 'updated_by': None, 'last_uploaded_date': 1637205344, 'created_date': 1474396200, 'updated_date': None, 'vo_name': 'EKTA MAHILA GRAM SANGTHAN', 'shg_name': 'VINAYKA MAHILA SHG', 'member_name': 'SUDESH RANI', 'is_signatory': 0, 'signatory_joining_date': None, 'signatory_leaving_date': None, 'phone_no': None}, {'executive_member_id': 5855, 'cbo_id': 231, 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'guid': 'r3WaxKNNsZ42peLWqpWEwhCExpPApc2023042013053349', 'cbo_level': 1, 'ec_cbo_level': 0, 'ec_cbo_code': '3480', 'ec_cbo_id': 3480, 'ec_member_code': 36332, 'designation': 6, 'joining_date': 1681948800, 'leaving_date': None, 'status': 1, 'is_active': 1, 'entry_source': 0, 'is_edited': 1, 'uploaded_by': 'HR_HARISH', 'created_by': 'HR_HARISH', 'updated_by': '', 'last_uploaded_date': 1681976134, 'created_date': 1681995933, 'updated_date': None, 'vo_name': 'EKTA MAHILA GRAM SANGTHAN', 'shg_name': 'SARASWATI MAHILA', 'member_name': 'MANISHA', 'is_signatory': 0, 'signatory_joining_date': None, 'signatory_leaving_date': None, 'phone_no': None}, {'executive_member_id': 5673, 'cbo_id': 231, 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'guid': '3XRDceUOaHIbWXzsj6QJLpcSeWB5fI2022061417084932', 'cbo_level': 1, 'ec_cbo_level': 0, 'ec_cbo_code': '3518', 'ec_cbo_id': 3518, 'ec_member_code': 37324, 'designation': 6, 'joining_date': 1655164800, 'leaving_date': None, 'status': 1, 'is_active': 1, 'entry_source': 0, 'is_edited': 1, 'uploaded_by': 'HA_SHG1', 'created_by': 'HA_SHG1', 'updated_by': '', 'last_uploaded_date': 1655206727, 'created_date': 1655226529, 'updated_date': None, 'vo_name': 'EKTA MAHILA GRAM SANGTHAN', 'shg_name': 'DISHA MAHILA SELF HELP GROUP', 'member_name': 'MANESHA', 'is_signatory': 0, 'signatory_joining_date': None, 'signatory_leaving_date': None, 'phone_no': 9817205287}, {'executive_member_id': 5846, 'cbo_id': 231, 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'guid': 'Givnrw7VatJsf8G9BZcshIkt1nnTGR2023042013021976', 'cbo_level': 1, 'ec_cbo_level': 0, 'ec_cbo_code': '3504', 'ec_cbo_id': 3504, 'ec_member_code': 41884, 'designation': 6, 'joining_date': 1681948800, 'leaving_date': None, 'status': 1, 'is_active': 1, 'entry_source': 0, 'is_edited': 1, 'uploaded_by': 'HR_HARISH', 'created_by': 'HR_HARISH', 'updated_by': '', 'last_uploaded_date': 1681975940, 'created_date': 1681995739, 'updated_date': None, 'vo_name': 'EKTA MAHILA GRAM SANGTHAN', 'shg_name': 'CHANDNI MAHILA SELF HELP GROUP', 'member_name': 'MEENU', 'is_signatory': 0, 'signatory_joining_date': None, 'signatory_leaving_date': None, 'phone_no': 7988502470}, {'executive_member_id': 5847, 'cbo_id': 231, 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'guid': 'gKU3PDLmoOregOGYl0NSJQaDKNBu752023042013023476', 'cbo_level': 1, 'ec_cbo_level': 0, 'ec_cbo_code': '3491', 'ec_cbo_id': 3491, 'ec_member_code': 42134, 'designation': 6, 'joining_date': 1680307200, 'leaving_date': None, 'status': 1, 'is_active': 1, 'entry_source': 0, 'is_edited': 1, 'uploaded_by': 'HR_HARISH', 'created_by': 'HR_HARISH', 'updated_by': '', 'last_uploaded_date': 1681975955, 'created_date': 1681995754, 'updated_date': None, 'vo_name': 'EKTA MAHILA GRAM SANGTHAN', 'shg_name': 'DEEP GROUP', 'member_name': 'RACHNA', 'is_signatory': 0, 'signatory_joining_date': None, 'signatory_leaving_date': None, 'phone_no': 7056589227}, {'executive_member_id': 5853, 'cbo_id': 231, 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'guid': 'vkAM2nZnpgJyvWiMAQR05jt1hp21C12023042013050801', 'cbo_level': 1, 'ec_cbo_level': 0, 'ec_cbo_code': '3483', 'ec_cbo_id': 3483, 'ec_member_code': 20795, 'designation': 6, 'joining_date': 1681948800, 'leaving_date': 1682726400, 'status': 2, 'is_active': 1, 'entry_source': 0, 'is_edited': 1, 'uploaded_by': 'HR_HARISH', 'created_by': 'HR_HARISH', 'updated_by': 'HR_HARISH', 'last_uploaded_date': 1682694654, 'created_date': 1681995908, 'updated_date': 1682714453, 'vo_name': 'EKTA MAHILA GRAM SANGTHAN', 'shg_name': 'VISWAS MAHILA SHG', 'member_name': 'KAMLESH', 'is_signatory': 0, 'signatory_joining_date': None, 'signatory_leaving_date': None, 'phone_no': None}, {'executive_member_id': 5858, 'cbo_id': 231, 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'guid': '7yszKf4LNDMWIAEp6trJt3KsJKpm4v2023042013063572', 'cbo_level': 1, 'ec_cbo_level': 0, 'ec_cbo_code': '3734', 'ec_cbo_id': 3734, 'ec_member_code': 55054, 'designation': 6, 'joining_date': 1681948800, 'leaving_date': None, 'status': 1, 'is_active': 1, 'entry_source': 0, 'is_edited': 1, 'uploaded_by': 'HR_HARISH', 'created_by': 'HR_HARISH', 'updated_by': '', 'last_uploaded_date': 1681976196, 'created_date': 1681995995, 'updated_date': None, 'vo_name': 'EKTA MAHILA GRAM SANGTHAN', 'shg_name': 'MA VASHNO MAHILA  SHG', 'member_name': 'jdjf', 'is_signatory': 0, 'signatory_joining_date': None, 'signatory_leaving_date': None, 'phone_no': 9898989656}, {'executive_member_id': 5866, 'cbo_id': 231, 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'guid': 'EEwKtDISfzE2nDZdv3BVGs059ynoYm2023042811052661', 'cbo_level': 1, 'ec_cbo_level': 0, 'ec_cbo_code': '3727', 'ec_cbo_id': 3727, 'ec_member_code': 33863, 'designation': 6, 'joining_date': 1682640000, 'leaving_date': None, 'status': 1, 'is_active': 1, 'entry_source': 0, 'is_edited': 1, 'uploaded_by': 'HR_HARISH', 'created_by': 'HR_HARISH', 'updated_by': '', 'last_uploaded_date': 1682660126, 'created_date': 1682679926, 'updated_date': None, 'vo_name': 'EKTA MAHILA GRAM SANGTHAN', 'shg_name': 'GURUNANAK MAHILA  SHG', 'member_name': 'KULJIT ', 'is_signatory': 0, 'signatory_joining_date': None, 'signatory_leaving_date': None, 'phone_no': None}, {'executive_member_id': 5857, 'cbo_id': 231, 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'guid': 'kSa2sHeWdwV4jYmuBKieQETGEPAzzb2023042013062094', 'cbo_level': 1, 'ec_cbo_level': 0, 'ec_cbo_code': '3481', 'ec_cbo_id': 3481, 'ec_member_code': 12250, 'designation': 6, 'joining_date': 1681948800, 'leaving_date': None, 'status': 1, 'is_active': 1, 'entry_source': 0, 'is_edited': 1, 'uploaded_by': 'HR_HARISH', 'created_by': 'HR_HARISH', 'updated_by': '', 'last_uploaded_date': 1681976181, 'created_date': 1681995980, 'updated_date': None, 'vo_name': 'EKTA MAHILA GRAM SANGTHAN', 'shg_name': 'MEERA MAHILA SHG', 'member_name': 'PARVEENA', 'is_signatory': 0, 'signatory_joining_date': None, 'signatory_leaving_date': None, 'phone_no': 9053280613}, {'executive_member_id': 5859, 'cbo_id': 231, 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'guid': 'VH2MSAPDE0u5RVRoj0WuxGK96ZT7H82023042013064880', 'cbo_level': 1, 'ec_cbo_level': 0, 'ec_cbo_code': '3488', 'ec_cbo_id': 3488, 'ec_member_code': 42376, 'designation': 6, 'joining_date': 1681948800, 'leaving_date': None, 'status': 1, 'is_active': 1, 'entry_source': 0, 'is_edited': 1, 'uploaded_by': 'HR_HARISH', 'created_by': 'HR_HARISH', 'updated_by': '', 'last_uploaded_date': 1681976209, 'created_date': 1681996008, 'updated_date': None, 'vo_name': 'EKTA MAHILA GRAM SANGTHAN', 'shg_name': 'LUXMI MAHILA SHG', 'member_name': 'TILKO DEVI', 'is_signatory': 0, 'signatory_joining_date': None, 'signatory_leaving_date': None, 'phone_no': None}]
+                          subCommitteeList: 
+                            type: string
+                            example: [{'subcommitee_id': 186, 'cbo_id': 231, 'cbo_code': 0, 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'subcommitee_guid': 'X6tqM30MhHDs3BPqlIoogXdzwPm9mA2023051522593879', 'subcommitee_code': 0, 'subcommitee_type_id': 1, 'fromdate': 1680652800, 'todate': None, 'status': 1, 'is_active': 1, 'entry_source': 1, 'is_edited': 1, 'uploaded_by': 'HR_HARISH', 'created_by': 'HR_HARISH', 'updated_by': '', 'last_uploaded_date': 1684171803, 'created_date': 1684191578, 'updated_date': 1684191601, 'subCommitteeMemberList': [{'subcommitee_member_id': 314, 'subcommitee_id': 186, 'subcommitee_guid': 'X6tqM30MhHDs3BPqlIoogXdzwPm9mA2023051522593879', 'subcommitee_code': 0, 'ec_member_id': 25249, 'ec_member_code': 25249, 'ec_member_guid': 'e621409e167b829bea1ccd1919a83848', 'fromdate': 1684108800, 'todate': None, 'status': 1, 'is_active': 1, 'entry_source': 1, 'is_edited': 1, 'uploaded_by': 'HR_HARISH', 'created_by': 'HR_HARISH', 'updated_by': '', 'last_uploaded_date': 1684171794, 'created_date': 1684191591, 'updated_date': None, 'member_name': 'REENA DEVI', 'is_complete': 1}, {'subcommitee_member_id': 315, 'subcommitee_id': 186, 'subcommitee_guid': 'X6tqM30MhHDs3BPqlIoogXdzwPm9mA2023051522593879', 'subcommitee_code': 0, 'ec_member_id': 25124, 'ec_member_code': 25124, 'ec_member_guid': '9cd9d01576abfb409d35eecefc58b0d8', 'fromdate': 1680652800, 'todate': None, 'status': 1, 'is_active': 1, 'entry_source': 1, 'is_edited': 1, 'uploaded_by': 'HR_HARISH', 'created_by': 'HR_HARISH', 'updated_by': '', 'last_uploaded_date': 1684171803, 'created_date': 1684191601, 'updated_date': None, 'member_name': 'USHA DEVI', 'is_complete': 1}], 'subcommitee_name': 'Asset Verification Sub- committee', 'is_complete': 1}, {'subcommitee_id': 190, 'cbo_id': 231, 'cbo_code': 0, 'cbo_guid': 'a67df60d4c325d9d7836f1fef48570bf', 'subcommitee_guid': 'EYuKQ4R684TLWF1Ftf5FFHrpIkfvgw2023051810365803', 'subcommitee_code': 0, 'subcommitee_type_id': 6, 'fromdate': 1672704000, 'todate': None, 'status': 1, 'is_active': 1, 'entry_source': 1, 'is_edited': 1, 'uploaded_by': 'HR_HARISH', 'created_by': 'HR_HARISH', 'updated_by': '', 'last_uploaded_date': 1684386466, 'created_date': 1684406218, 'updated_date': 1684406245, 'subCommitteeMemberList': [{'subcommitee_member_id': 323, 'subcommitee_id': 190, 'subcommitee_guid': 'EYuKQ4R684TLWF1Ftf5FFHrpIkfvgw2023051810365803', 'subcommitee_code': 0, 'ec_member_id': 25170, 'ec_member_code': 25170, 'ec_member_guid': '9739fa3d1e9aa02e894538e5d63a0e0b', 'fromdate': 1672704000, 'todate': None, 'status': 1, 'is_active': 1, 'entry_source': 1, 'is_edited': 1, 'uploaded_by': 'HR_HARISH', 'created_by': 'HR_HARISH', 'updated_by': '', 'last_uploaded_date': 1684386435, 'created_date': 1684406231, 'updated_date': None, 'member_name': 'SHILA DEVI', 'is_complete': 1}, {'subcommitee_member_id': 324, 'subcommitee_id': 190, 'subcommitee_guid': 'EYuKQ4R684TLWF1Ftf5FFHrpIkfvgw2023051810365803', 'subcommitee_code': 0, 'ec_member_id': 41835, 'ec_member_code': 41835, 'ec_member_guid': '459e5c02f26e828390cd4d1a71c5de5e', 'fromdate': 1681948800, 'todate': None, 'status': 1, 'is_active': 1, 'entry_source': 1, 'is_edited': 1, 'uploaded_by': 'HR_HARISH', 'created_by': 'HR_HARISH', 'updated_by': '', 'last_uploaded_date': 1684386467, 'created_date': 1684406244, 'updated_date': None, 'member_name': 'RANI', 'is_complete': 1}], 'subcommitee_name': 'Special Sub-committee', 'is_complete': 1}]
+                          cooption_date: 
+                            type: string
+                            example: null
+                          federation_name_hindi: 
+                            type: string
+                            example: ""
+                          federation_name_short: 
+                            type: string
+                            example: ""
+                          is_financial_intermediation: 
+                            type: string
+                            example: 0
+                          is_volutary_saving: 
+                            type: string
+                            example: 1
+                          meber_cbo_count: 
+                            type: string
+                            example: 0
+                          savings_interest: 
+                            type: string
+                            example: 0
+                          voluntary_savings_interest: 
+                            type: string
+                            example: 0
+                          approve_status: 
+                            type: string
+                            example: 2
+                          ec_member_count: 
+                            type: string
+                            example: null
+                          sc_count: 
+                            type: string
+                            example: null
+                          promoter_name: 
+                            type: string
+                            example: ""
+                          federation_resolution: 
+                            type: string
+                            example: ""
+                          view_status: 
+                            type: string
+                            example: "Activated"
+                          federation_resolution_document: 
+                            type: string
+                            example: null
+                          registration_resolution_document: 
+                            type: string
+                            example: null
+                          transaction_id: 
+                            type: string
+                            example: null
+                          parent_cbo_name: 
+                            type: string
+                            example: "TEST CLF"
+                          cbo_mapping_count: 
+                            type: string
+                            example: null
+                          accountant: 
+                            type: string
+                            example: null
+                          approver: 
+                            type: string
+                            example: null
+                          user_number: 
+                            type: string
+                            example: "9334291276"
+                          maxMtgNo: 
+                            type: string
+                            example: 1
+                          txnCount: 
+                            type: string
+                            example: null
+                          inactiveReason: 
+                            type: string
+                            example: null
+                          membership_flag: 
+                            type: string
+                            example: null
+                          registration_act: 
+                            type: string
+                            example: null
+                          is_registered: 
+                            type: string
+                            example: null
+                          registration_no: 
+                            type: string
+                            example: null
+                          registration_image: 
+                            type: string
+                            example: null
+                          registration_date: 
+                            type: string
+                            example: null
+                          mapped_date: 
+                            type: string
+                            example: null
+                          unmapped_date: 
+                            type: string
+                            example: null
+                          federation_joining_date: 
+                            type: string
+                            example: null
+                          inactive_date: 
+                            type: string
+                            example: null
+                          registration_doc_id: 
+                            type: string
+                            example: null
+
+   
+        400:
+          description: Bad Request/Validation Error
+
+  /createOrUpdateECMember:
+    post:
+      tags:
+      - Create Or Update EC member API
+      summary: Create Or Update EC member
+      description: This api’s is used to create the new ecmember or it’s already exist then update the same with updated value.
+      operationId: createOrUpdateECMember
+      security:
+      - bearerAuth: []
+      parameters:
+        - in: header
+          name: X-Tenant-Identifier
+          schema:
+            type: string
+            example: "dynamic_lokos_ha"
+        - in: header
+          name: User
+          schema:
+            type: string
+            example: "HA_SHG1"
+        - in: header
+          name: role
+          schema:
+            type: integer
+            example: 410
+        - in: header
+          name: Content-Type
+          schema:
+            type: string
+            example: "application/json"
+
+      requestBody:
+        content:
+          application/json:
+            schema:
+
+              properties:
+                  cbo_guid:
+                    type: string
+                    example: "I3HPdnTUoJp2dq9R2utIJbHlTR2acY2021092817320119"
+                  guid:
+                    type: string
+                    example: "ppzJrr4xQjXg8kJb8Z1nng1RpT2tBz202109241043212345"
+                  cbo_id:
+                    type: integer
+                    example: 249
+                  cbo_level:
+                    type: integer
+                    example: 2
+                  ec_cbo_id:
+                    type: integer
+                    example: 245
+                  ec_cbo_level:
+                    type: integer
+                    example: 1
+                  ec_cbo_code:
+                    type: string
+                    example: "245"
+                  ec_member_code:
+                    type: integer
+                    example: 9332
+                  designation:
+                    type: integer
+                    example: 1
+                  joining_date:
+                    type: integer
+                    example: 1610994600
+                  signatory_joining_date:
+                    type: integer
+                    example: 1610994600
+                  signatory_leaving_date:
+                    type: integer
+                    example: 1632899959
+                  status:
+                    type: integer
+                    example: 1
+                  is_active:
+                    type: integer
+                    example: 1
+                  entry_source:
+                    type: integer
+                    example: 1
+                  is_edited:
+                    type: integer
+                    example: 0
+                  created_by:
+                    type: string
+                    example: "HA_SHG1"
+                  updated_by:
+                    type: string
+                    example: "HA_SHG1"
+                  created_date:
+                    type: integer
+                    example: 1694510595
+      
+      responses:
+        200:
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  responseCode:
+                    type: string
+                    example: "200"
+                  responseMsg:
+                    type: string
+                    example: "Data saved successfully."
+                  status:
+                    type: string
+                    example: "SUCCESS"
+                  timestamp:
+                    type: string
+                    example: "2023-09-15T09:28:35.041"
+                  responseData:
+                    type: object
+                    properties:
+                      9332: 
+                        type: string                        
+                        example: "Record add successfully!"
+
+   
+        400:
+          description: Bad Request/Validation Error
+
+  /createOrUpdateSubCommittee:
+    post:
+      tags:
+      - Create Or Update Sub Commitee API
+      summary: Create Or Update Sub Commitee
+      description: This api’sisused to crete the new sub-committee or update the existing subcommittee with updated value.
+      operationId: createOrUpdateSubCommittee
+      security:
+      - bearerAuth: []
+      parameters:
+        - in: header
+          name: X-Tenant-Identifier
+          schema:
+            type: string
+            example: "dynamic_lokos_ha"
+        - in: header
+          name: User
+          schema:
+            type: string
+            example: "HA_SHG1"
+        - in: header
+          name: role
+          schema:
+            type: integer
+            example: 410
+
+      requestBody:
+        content:
+          application/json:
+            schema:
+
+              properties:
+                  cbo_code:
+                    type: integer
+                    example: 14
+                  cbo_guid:
+                    type: string
+                    example: "ZO3Bk9qexPi4zcdBmOSjjnuChvNXGv2021021817503518"
+                  cbo_id:
+                    type: integer
+                    example: 14
+                  created_by:
+                    type: string
+                    example: "voBookkeeper"
+                  created_date:
+                    type: integer
+                    example: 1613742597
+                  entry_source:
+                    type: integer
+                    example: 1
+                  fromdate:
+                    type: integer
+                    example: 1613520000
+                  is_active:
+                    type: integer
+                    example: 1
+                  is_edited:
+                    type: integer
+                    example: 1
+                  is_upload:
+                    type: integer
+                    example: 0
+                  last_uploaded_date:
+                    type: integer
+                    example: 0
+                  status:
+                    type: integer
+                    example: 1
+                  subCommitteeMemberList:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        created_by:
+                          type: string
+                        created_date:
+                          type: integer
+                        ec_member_code:
+                          type: integer
+                        ec_member_guid:
+                          type: string
+                        ec_member_id:
+                          type: integer
+                        entry_source:
+                          type: integer
+                        fromdate:
+                          type: integer
+                        is_active:
+                          type: integer
+                        is_edited:
+                          type: integer
+                        is_upload:
+                          type: integer
+                        last_uploaded_date:
+                          type: integer
+                        status:
+                          type: integer
+                        subcommitee_code:
+                          type: integer
+                        subcommitee_guid:
+                          type: string
+                        todate:
+                          type: integer
+                        updated_by:
+                          type: string
+                        updated_date:
+                          type: integer
+                        uploaded_by:
+                          type: string
+                    example:
+                      -  created_by: "voBookkeeper"
+                         created_date: 1613742615
+                         ec_member_code: 2352
+                         ec_member_guid: "9f9aa0ac-49b9-44cc-8a60-9eabadfbdb8a"
+                         ec_member_id: 2352
+                         entry_source: 1
+                         fromdate: 1613520000
+                         is_active: 1
+                         is_edited: 1
+                         is_upload: 0
+                         last_uploaded_date: 0
+                         status: 1
+                         subcommitee_code: 0
+                         subcommitee_guid: "silpPFeNTSZzLOzZECtb74d4iwPXZO2021021913495758"
+                         todate: 0
+                         updated_by: ""
+                         updated_date: 0
+                         uploaded_by: ""
+                      -  created_by: "voBookkeeperz"
+                         created_date: 1613742629
+                         ec_member_code: 2356
+                         ec_member_guid: "f75bfbfd-1892-4ac8-ba26-a637fc8ebd1a"
+                         ec_member_id: 2356
+                         entry_source: 1
+                         fromdate: 1613520000
+                         is_active: 1
+                         is_edited: 1
+                         is_upload: 0
+                         last_uploaded_date: 0
+                         status: 1
+                         subcommitee_code: 0
+                         subcommitee_guid: "silpPFeNTSZzLOzZECtb74d4iwPXZO2021021913495758"
+                         todate: 0
+                         updated_by: ""
+                         updated_date: 0
+                         uploaded_by: ""
+                      -  created_by: "voBookkeeper"
+                         created_date: 1613742638
+                         ec_member_code: 2364
+                         ec_member_guid: "6f55ea11-ddbf-4c44-a3e1-8eead6890510"
+                         ec_member_id: 2364
+                         entry_source: 1
+                         fromdate: 1613433600
+                         is_active: 1
+                         is_edited: 1
+                         is_upload: 0
+                         last_uploaded_date: 0
+                         status: 1
+                         subcommitee_code: 0
+                         subcommitee_guid: "silpPFeNTSZzLOzZECtb74d4iwPXZO2021021913495758"
+                         todate: 0
+                         updated_by: ""
+                         updated_date: 0
+                         uploaded_by: ""
+                      -  created_by: "voBookkeeper"
+                         created_date: 1613742649
+                         ec_member_code: 2367
+                         ec_member_guid: "64bbbb29-9411-4abb-a8f9-dd33b8726412"
+                         ec_member_id: 2367
+                         entry_source: 1
+                         fromdate: 1613520000
+                         is_active: 1
+                         is_edited: 1
+                         is_upload: 0
+                         last_uploaded_date: 0
+                         status: 1
+                         subcommitee_code: 0
+                         subcommitee_guid: "silpPFeNTSZzLOzZECtb74d4iwPXZO2021021913495758"
+                         todate: 0
+                         updated_by: ""
+                         updated_date: 0
+                         uploaded_by: ""
+                      -  created_by: "voBookkeeper"
+                         created_date: 1613742658
+                         ec_member_code: 2371
+                         ec_member_guid: "ab6fe985-46ec-4c46-85b2-1f32d9a46bf2"
+                         ec_member_id: 2371
+                         entry_source: 1
+                         fromdate: 1613347200
+                         is_active: 1
+                         is_edited: 1
+                         is_upload: 0
+                         last_uploaded_date: 0
+                         status: 1
+                         subcommitee_code: 0
+                         subcommitee_guid: "silpPFeNTSZzLOzZECtb74d4iwPXZO2021021913495758"
+                         todate: 0
+                         updated_by: ""
+                         updated_date: 0
+                         uploaded_by: ""
+                  subcommitee_code:
+                    type: integer
+                    example: 0
+                  subcommitee_guid:
+                    type: string
+                    example: "silpPFeNTSZzLOzZECtb74d4iwPXZO2021021913495758"
+                  subcommitee_type_id:
+                    type: integer
+                    example: 1
+                  todate:
+                    type: integer
+                    example: 0
+                  updated_by:
+                    type: string
+                    example: "si_Mutliadi"
+                  updated_date:
+                    type: integer
+                    example: 0
+                  uploaded_by:
+                    type: string
+                    example: ""
+      
+      responses:
+        200:
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  responseCode:
+                    type: string
+                    example: "200"
+                  responseMsg:
+                    type: string
+                    example: "Data saved successfully."
+                  status:
+                    type: string
+                    example: "SUCCESS"
+                  timestamp:
+                    type: string
+                    example: "2023-09-15T09:35:43.526"
+                  responseData:
+                    type: object
+                    properties:
+                      msg: 
+                        type: string                        
+                        example: "Record Added To Queue"
+
+   
+        400:
+          description: Bad Request/Validation Error
+
+  /search_federation:
+    get:
+      tags:
+      - Search Federation API
+      summary: Search Federation
+      description: This api’s is used to search the federation based on the state_iddistrict_id.. etc(geolocation details ) and federation details.
+      operationId: search_federation
+      security:
+      - bearerAuth: []
+      parameters:
+        - in: query
+          name: state_id
+          schema:
+            type: integer
+            example: 10
+        - in: query
+          name: district_id
+          schema:
+            type: integer
+            example: 170
+        - in: query
+          name: panchayat_id
+          schema:
+            type: string
+            example: ""
+        - in: query
+          name: page
+          schema:
+            type: integer
+            example: 0
+        - in: query
+          name: sort_direction
+          schema:
+            type: string
+            example: "ASC"
+        - in: query
+          name: block_id
+          schema:
+            type: integer
+            example: 1639
+        - in: query
+          name: cbo_type
+          schema:
+            type: integer
+            example: 1
+        - in: query
+          name: flag
+          schema:
+            type: string
+            example: "MAPPING_DATA"
+        - in: query
+          name: cbo_id
+          schema:
+            type: integer
+            example: 218
+        - in: query
+          name: size
+          schema:
+            type: integer
+            example: 1
+        - in: query
+          name: sort_column
+          schema:
+            type: string
+            example: "federation_id"
+        - in: query
+          name: federation_name
+          schema:
+            type: string
+            example: "DEV MAHILA GRAM SANGTHAN"
+        - in: header
+          name: User
+          schema:
+            type: string
+            example: "HA_SHG1"
+        - in: header
+          name: X-Tenant-Identifier
+          schema:
+            type: string
+            example: "dynamic_lokos_ha"
+        - in: header
+          name: role
+          schema:
+            type: integer
+            example: 410
+
+      
+      responses:
+        200:
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  responseCode:
+                    type: string
+                    example: "200"
+                  responseMsg:
+                    type: string
+                    example: "Data retrieve successfully."
+                  status:
+                    type: string
+                    example: "SUCCESS"
+                  timestamp:
+                    type: string
+                    example: "2023-09-15T09:56:24.238"
+                  responseData:
+                    type: object
+                    properties:
+                      totalRecord: 
+                        type: integer                        
+                        example: 1
+                      recordsList: 
+                        type: array                        
+                        items:
+                          type: object
+                          properties:
+                            federation_id:
+                              type: integer
+                            federation_code:
+                              type: string
+                            temp_code:
+                              type: string
+                            state_id:
+                              type: integer
+                            district_id:
+                              type: integer
+                            block_id:
+                              type: integer
+                            panchayat_id:
+                              type: integer
+                            village_id:
+                              type: string
+                            cbo_type:
+                              type: integer
+                            guid:
+                              type: string
+                            federation_type_code:
+                              type: string
+                            federation_name:
+                              type: string
+                            cbo_level:
+                              type: integer
+                            child_level:
+                              type: integer
+                            geographic_level:
+                              type: string
+                            federation_name_short_en:
+                              type: string
+                            federation_name_local:
+                              type: string
+                            federation_name_short_local:
+                              type: string
+                            federation_formation_date:
+                              type: integer
+                            federation_revival_date:
+                              type: string
+                            meeting_frequency:
+                              type: integer
+                            meeting_frequency_value:
+                              type: integer
+                            meeting_on:
+                              type: integer
+                            mode:
+                              type: integer
+                            month_comp_saving:
+                              type: integer
+                            is_bankaccount:
+                              type: integer
+                            parent_cbo_code:
+                              type: string
+                            parent_cbo_type:
+                              type: string
+                            is_active:
+                              type: integer
+                            dedupl_status:
+                              type: integer
+                            activation_status:
+                              type: integer
+                            status:
+                              type: integer
+                            settlement_status:
+                              type: string
+                            checker_remark:
+                              type: string
+                            bookkeeper_name:
+                              type: string
+                            bookkeeper_mobile:
+                              type: string
+                            election_tenure:
+                              type: string
+                            is_voluntary_saving:
+                              type: integer
+                            saving_frequency:
+                              type: string
+                            promoted_by:
+                              type: string
+                            primary_activity:
+                              type: string
+                            secondary_activity:
+                              type: string
+                            tertiary_activity:
+                              type: string
+                            bookkeeper_identified:
+                              type: integer
+                            user_id:
+                              type: string
+                            entry_source:
+                              type: integer
+                            is_edited:
+                              type: string
+                            last_uploaded_date:
+                              type: integer
+                            uploaded_by:
+                              type: string
+                            created_date:
+                              type: integer
+                            created_by:
+                              type: string
+                            updated_date:
+                              type: integer
+                            updated_by:
+                              type: string
+                            promoter_code:
+                              type: string
+                            is_complete:
+                              type: string
+                            cboAddressesList:
+                              type: string
+                            cboPhoneNoDetailsList:
+                              type: string
+                            cboBankDetailsList:
+                              type: string
+                            cboKYCDetailsList:
+                              type: string
+                            ecMembersList:
+                              type: string
+                            subCommitteeList:
+                              type: string
+                            cooption_date:
+                              type: string
+                            federation_name_hindi:
+                              type: string
+                            federation_name_short:
+                              type: string
+                            is_financial_intermediation:
+                              type: integer
+                            is_volutary_saving:
+                              type: string
+                            meber_cbo_count:
+                              type: string
+                            savings_interest:
+                              type: string
+                            voluntary_savings_interest:
+                              type: string
+                            approve_status:
+                              type: integer
+                            ec_member_count:
+                              type: integer
+                            sc_count:
+                              type: integer
+                            promoter_name:
+                              type: string
+                            federation_resolution:
+                              type: string
+                            view_status:
+                              type: string
+                            federation_resolution_document:
+                              type: string
+                            registration_resolution_document:
+                              type: string
+                            transaction_id:
+                              type: string
+                            parent_cbo_name:
+                              type: string
+                            cbo_mapping_count:
+                              type: integer
+                            accountant:
+                              type: string
+                            approver:
+                              type: string
+                            user_number:
+                              type: string
+                            maxMtgNo:
+                              type: string
+                            txnCount:
+                              type: integer
+                            inactiveReason:
+                              type: string
+                            membership_flag:
+                              type: string
+                            registration_act:
+                              type: string
+                            is_registered:
+                              type: string
+                            registration_no:
+                              type: string
+                            registration_image:
+                              type: string
+                            registration_date:
+                              type: string
+                            mapped_date:
+                              type: string
+                            unmapped_date:
+                              type: string
+                            federation_joining_date:
+                              type: string
+                            inactive_date:
+                              type: string
+                            registration_doc_id:
+                              type: string
+                        example:
+                        -  federation_id: 218
+                           federation_code: "12000002183"
+                           temp_code: null
+                           state_id: 10
+                           district_id: 170
+                           block_id: 1639
+                           panchayat_id: 246928
+                           village_id: null
+                           cbo_type: 1
+                           guid: "b721b3c0407fa7a58082ace19be54f72"
+                           federation_type_code: null
+                           federation_name: "DEV MAHILA GRAM SANGTHAN"
+                           cbo_level: 1
+                           child_level: 0
+                           geographic_level: null
+                           federation_name_short_en: null
+                           federation_name_local: null
+                           federation_name_short_local: null
+                           federation_formation_date: 1530383400
+                           federation_revival_date: null
+                           meeting_frequency: 2
+                           meeting_frequency_value: 20
+                           meeting_on: 5
+                           mode: 0
+                           month_comp_saving: 100
+                           is_bankaccount: 1
+                           parent_cbo_code: null
+                           parent_cbo_type: null
+                           is_active: 1
+                           dedupl_status: 4
+                           activation_status: 2
+                           status: 2
+                           settlement_status: null
+                           checker_remark: null
+                           bookkeeper_name: "PRAVEEN"
+                           bookkeeper_mobile: ""
+                           election_tenure: null
+                           is_voluntary_saving: 1
+                           saving_frequency: null
+                           promoted_by: null
+                           primary_activity: null
+                           secondary_activity: null
+                           tertiary_activity: null
+                           bookkeeper_identified: 1
+                           user_id: "HR_MEENABK"
+                           entry_source: 4
+                           is_edited: null
+                           last_uploaded_date: 1685579235
+                           uploaded_by: null
+                           created_date: 1531765800
+                           created_by: "HRKRGARTGP"
+                           updated_date: 1636521614
+                           updated_by: "NRLM"
+                           promoter_code: null
+                           is_complete: null
+                           cboAddressesList: null
+                           cboPhoneNoDetailsList: null
+                           cboBankDetailsList: null
+                           cboKYCDetailsList: null
+                           ecMembersList: null
+                           subCommitteeList: null
+                           cooption_date: null
+                           federation_name_hindi: null
+                           federation_name_short: null
+                           is_financial_intermediation: 1
+                           is_volutary_saving: null
+                           meber_cbo_count: null
+                           savings_interest: null
+                           voluntary_savings_interest: null
+                           approve_status: 2
+                           ec_member_count: 0
+                           sc_count: 0
+                           promoter_name: null
+                           federation_resolution: null
+                           view_status: "Activated"
+                           federation_resolution_document: null
+                           registration_resolution_document: null
+                           transaction_id: null
+                           parent_cbo_name: null
+                           cbo_mapping_count: 0
+                           accountant: null
+                           approver: null
+                           user_number: null
+                           maxMtgNo: null
+                           txnCount: 0
+                           inactiveReason: null
+                           membership_flag: null
+                           registration_act: null
+                           is_registered: null
+                           registration_no: null
+                           registration_image: null
+                           registration_date: null
+                           mapped_date: null
+                           unmapped_date: null
+                           federation_joining_date: null
+                           inactive_date: null
+                           registration_doc_id: null
+
+   
+        400:
+          description: Bad Request/Validation Error
+
+  /cboMappingByGUID:
+    get:
+      tags:
+      - Cbo Mapping By GUID API
+      summary: Cbo Mapping By GUID
+      description: this api’sis used to get all the  mappedShgList based on Cbo_id’s.
+      operationId: cboMappingByGUID
+      security:
+      - bearerAuth: []
+      parameters:
+        - in: query
+          name: cbo_guid
+          schema:
+            type: string
+            example: "HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990"
+        - in: query
+          name: cbo_type
+          schema:
+            type: integer
+            example: 1
+        - in: header
+          name: User
+          schema:
+            type: string
+            example: "HA_SHG1"
+        - in: header
+          name: X-Tenant-Identifier
+          schema:
+            type: string
+            example: "dynamic_lokos_ha"
+        - in: header
+          name: role
+          schema:
+            type: integer
+            example: 510
+        - in: header
+          name: Pragma
+          schema:
+            type: string
+            example: "no-cache"
+        - in: header
+          name: Referer
+          schema:
+            type: string
+            example: "http://103.248.60.224:9090/login?loginType=state"
+        - in: header
+          name: User-Agent
+          schema:
+            type: string
+            example: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
+        - in: header
+          name: observe
+          schema:
+            type: string
+            example: "response"    
+            
+      
+      responses:
+        200:
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  responseCode:
+                    type: string
+                    example: "200"
+                  responseMsg:
+                    type: string
+                    example: "Data retrieve successfully."
+                  status:
+                    type: string
+                    example: "SUCCESS"
+                  timestamp:
+                    type: string
+                    example: "2023-09-19T07:56:52.570"
+                  responseData:
+                    type: object
+                    properties:
+                      mappedShgList: 
+                        type: object                        
+                        properties:
+                          shgDetailsForMappingList: 
+                            type: string
+                            example: [{'vo_code': 451, 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990', 'joining_date': 1690416000, 'leaving_date': None, 'shg_id': 3699, 'shg_code': '12000036996', 'guid': '91deee02713b4a7e2d2472bb6d9231de', 'shg_name': 'RAM MAHILA SHG', 'shg_name_local': '', 'shg_formation_date': 1599609600, 'settlement_status': 0, 'leaving_reason': None, 'status': 1}, {'vo_code': 451, 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990', 'joining_date': 1690416000, 'leaving_date': None, 'shg_id': 3708, 'shg_code': '12000037083', 'guid': 'fdd35f4ce0742ab7fdeff648653b9e8f', 'shg_name': 'SITA MAHILA SHG', 'shg_name_local': None, 'shg_formation_date': 1599868800, 'settlement_status': 0, 'leaving_reason': None, 'status': 1}, {'vo_code': 451, 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990', 'joining_date': 1690416000, 'leaving_date': None, 'shg_id': 3650, 'shg_code': '12000036500', 'guid': 'fd4fcf76e4fbb78ff2a40bb3d26b4a91', 'shg_name': 'ASHA MAHILA SHG', 'shg_name_local': None, 'shg_formation_date': 1481932800, 'settlement_status': 0, 'leaving_reason': None, 'status': 1}, {'vo_code': 451, 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990', 'joining_date': 1690416000, 'leaving_date': None, 'shg_id': 3712, 'shg_code': '12000037123', 'guid': '40c587c2e185bfa894b9814de4250751', 'shg_name': 'SHANKAR MAHILA SHG', 'shg_name_local': None, 'shg_formation_date': 1599004800, 'settlement_status': 0, 'leaving_reason': None, 'status': 1}, {'vo_code': 451, 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990', 'joining_date': 1690416000, 'leaving_date': None, 'shg_id': 4802, 'shg_code': '12000045618', 'guid': 'HRIBKPNimQS4fDEKIwZCREhktxkkRT2023072015022925', 'shg_name': 'NEW THIRD BALLAH', 'shg_name_local': '', 'shg_formation_date': 1689811200, 'settlement_status': 0, 'leaving_reason': None, 'status': 1}]
+                          memberDetailsForMappingList: 
+                            type: string
+                            example: [{'shg_id': 3699, 'shg_code': '12000036996', 'member_id': 13098, 'member_guid': '623b3f56f2d1d105339f7f76c5ac5773', 'member_name': 'PARKASHI DEVI', 'member_name_local': '', 'relation': '3', 'relation_name': 'SURESH KUMAR', 'relation_name_local': '', 'joining_date': 1599609600, 'designation': 2, 'cbo_guid': '91deee02713b4a7e2d2472bb6d9231de', 'shg_name': 'RAM MAHILA SHG', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 3699, 'shg_code': '12000036996', 'member_id': 13096, 'member_guid': '7ac814d40c702b785b6e78b435af8504', 'member_name': 'REENA', 'member_name_local': '', 'relation': '3', 'relation_name': 'KRISHAN', 'relation_name_local': '', 'joining_date': 1599609600, 'designation': 1, 'cbo_guid': '91deee02713b4a7e2d2472bb6d9231de', 'shg_name': 'RAM MAHILA SHG', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 3699, 'shg_code': '12000036996', 'member_id': 13169, 'member_guid': '71a002d3436d7580f6bed0388d4bdc6d', 'member_name': 'REENA DEVI', 'member_name_local': '', 'relation': '3', 'relation_name': 'SURENDER', 'relation_name_local': '', 'joining_date': 1599609600, 'designation': 4, 'cbo_guid': '91deee02713b4a7e2d2472bb6d9231de', 'shg_name': 'RAM MAHILA SHG', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 3699, 'shg_code': '12000036996', 'member_id': 13275, 'member_guid': '9b1789071f4ee98381fffa54b9ac63ff', 'member_name': 'SUDESH', 'member_name_local': '', 'relation': '3', 'relation_name': 'ROTASH', 'relation_name_local': '', 'joining_date': 1599609600, 'designation': 4, 'cbo_guid': '91deee02713b4a7e2d2472bb6d9231de', 'shg_name': 'RAM MAHILA SHG', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 3699, 'shg_code': '12000036996', 'member_id': 13145, 'member_guid': '9527f4aac60004810f6bc4bb06dd0d37', 'member_name': 'KAVITA', 'member_name_local': '', 'relation': '3', 'relation_name': 'BALRAJ', 'relation_name_local': '', 'joining_date': 1599609600, 'designation': 4, 'cbo_guid': '91deee02713b4a7e2d2472bb6d9231de', 'shg_name': 'RAM MAHILA SHG', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 3699, 'shg_code': '12000036996', 'member_id': 13160, 'member_guid': '1ef9d127253306bb2c4f0ae8a278fb61', 'member_name': 'SUNITA', 'member_name_local': '', 'relation': '3', 'relation_name': 'RAJBEER', 'relation_name_local': '', 'joining_date': 1599609600, 'designation': 4, 'cbo_guid': '91deee02713b4a7e2d2472bb6d9231de', 'shg_name': 'RAM MAHILA SHG', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 3699, 'shg_code': '12000036996', 'member_id': 13102, 'member_guid': '3a33204c7a71313093b3d0f49129b127', 'member_name': 'BHAGTI', 'member_name_local': '', 'relation': '3', 'relation_name': 'SURESH', 'relation_name_local': '', 'joining_date': 1599609600, 'designation': 3, 'cbo_guid': '91deee02713b4a7e2d2472bb6d9231de', 'shg_name': 'RAM MAHILA SHG', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 3699, 'shg_code': '12000036996', 'member_id': 14426, 'member_guid': 'e9effc9fd5eccccdbb88fc361c456cf6', 'member_name': 'SUMAN', 'member_name_local': '', 'relation': '3', 'relation_name': 'KASHMIR SINGH', 'relation_name_local': '', 'joining_date': 1599609600, 'designation': 4, 'cbo_guid': '91deee02713b4a7e2d2472bb6d9231de', 'shg_name': 'RAM MAHILA SHG', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 3699, 'shg_code': '12000036996', 'member_id': 14418, 'member_guid': '40372b03eb712e5a27e0f447cd157776', 'member_name': 'CHOTI', 'member_name_local': '', 'relation': '3', 'relation_name': 'ANIL', 'relation_name_local': '', 'joining_date': 1599609600, 'designation': 4, 'cbo_guid': '91deee02713b4a7e2d2472bb6d9231de', 'shg_name': 'RAM MAHILA SHG', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 3699, 'shg_code': '12000036996', 'member_id': 13105, 'member_guid': '440d07a48428259802de4cf60617ef07', 'member_name': 'SHEELA', 'member_name_local': '', 'relation': '3', 'relation_name': 'SONU', 'relation_name_local': '', 'joining_date': 1599609600, 'designation': 4, 'cbo_guid': '91deee02713b4a7e2d2472bb6d9231de', 'shg_name': 'RAM MAHILA SHG', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 3699, 'shg_code': '12000036996', 'member_id': 13103, 'member_guid': '991069d26974022b7d18cbc740c0923d', 'member_name': 'SUMAN RANI', 'member_name_local': '', 'relation': '3', 'relation_name': 'GULAB SINGH', 'relation_name_local': '', 'joining_date': 1599609600, 'designation': 4, 'cbo_guid': '91deee02713b4a7e2d2472bb6d9231de', 'shg_name': 'RAM MAHILA SHG', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 3708, 'shg_code': '12000037083', 'member_id': 38003, 'member_guid': '3977e00e8603ad0ba051e3c644f4191f', 'member_name': 'POOJA', 'member_name_local': None, 'relation': '0', 'relation_name': 'SINDER', 'relation_name_local': None, 'joining_date': 1599868800, 'designation': 4, 'cbo_guid': 'fdd35f4ce0742ab7fdeff648653b9e8f', 'shg_name': 'SITA MAHILA SHG', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 3708, 'shg_code': '12000037083', 'member_id': 41607, 'member_guid': '3c12c8f2d982bdcb222d49983a3ea7cf', 'member_name': 'SUDESH', 'member_name_local': None, 'relation': '0', 'relation_name': 'RAJINDER', 'relation_name_local': None, 'joining_date': 1599868800, 'designation': 2, 'cbo_guid': 'fdd35f4ce0742ab7fdeff648653b9e8f', 'shg_name': 'SITA MAHILA SHG', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 3708, 'shg_code': '12000037083', 'member_id': 41606, 'member_guid': '937d703d539418d969ed7e5f24faafd7', 'member_name': 'RAJNI', 'member_name_local': None, 'relation': '0', 'relation_name': 'SURENDER', 'relation_name_local': None, 'joining_date': 1599868800, 'designation': 1, 'cbo_guid': 'fdd35f4ce0742ab7fdeff648653b9e8f', 'shg_name': 'SITA MAHILA SHG', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 3708, 'shg_code': '12000037083', 'member_id': 38355, 'member_guid': '0fa5357e32b9b1b972183fc6cc57b075', 'member_name': 'SANTRO DEVI', 'member_name_local': None, 'relation': '0', 'relation_name': 'RAJINDER', 'relation_name_local': None, 'joining_date': 1599868800, 'designation': 4, 'cbo_guid': 'fdd35f4ce0742ab7fdeff648653b9e8f', 'shg_name': 'SITA MAHILA SHG', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 3708, 'shg_code': '12000037083', 'member_id': 38251, 'member_guid': '2a1e63bd0141e49f932ea82df58cd72d', 'member_name': 'SUMAN', 'member_name_local': None, 'relation': '0', 'relation_name': 'BALVINDER', 'relation_name_local': None, 'joining_date': 1599868800, 'designation': 4, 'cbo_guid': 'fdd35f4ce0742ab7fdeff648653b9e8f', 'shg_name': 'SITA MAHILA SHG', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 3708, 'shg_code': '12000037083', 'member_id': 39010, 'member_guid': 'fdbb70f60a7b47381078b7259002d61a', 'member_name': 'PAYAL DEVI', 'member_name_local': None, 'relation': '0', 'relation_name': 'SANDEEP', 'relation_name_local': None, 'joining_date': 1599868800, 'designation': 4, 'cbo_guid': 'fdd35f4ce0742ab7fdeff648653b9e8f', 'shg_name': 'SITA MAHILA SHG', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 3708, 'shg_code': '12000037083', 'member_id': 41569, 'member_guid': '3f1302bc67f01f225df751971923c83f', 'member_name': 'ANJU DEVI', 'member_name_local': None, 'relation': '0', 'relation_name': 'JASBIR', 'relation_name_local': None, 'joining_date': 1599868800, 'designation': 4, 'cbo_guid': 'fdd35f4ce0742ab7fdeff648653b9e8f', 'shg_name': 'SITA MAHILA SHG', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 3708, 'shg_code': '12000037083', 'member_id': 41356, 'member_guid': 'af7aaa080fae01c97e45e4d190747934', 'member_name': 'SAVITRA DEVI', 'member_name_local': None, 'relation': '0', 'relation_name': 'BEER SINGH', 'relation_name_local': None, 'joining_date': 1599868800, 'designation': 4, 'cbo_guid': 'fdd35f4ce0742ab7fdeff648653b9e8f', 'shg_name': 'SITA MAHILA SHG', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 3708, 'shg_code': '12000037083', 'member_id': 38379, 'member_guid': '4c6f4d8db3b444cb0eda47d5f7bb98e0', 'member_name': 'SANTOSH', 'member_name_local': None, 'relation': '0', 'relation_name': 'KASMIR', 'relation_name_local': None, 'joining_date': 1599868800, 'designation': 4, 'cbo_guid': 'fdd35f4ce0742ab7fdeff648653b9e8f', 'shg_name': 'SITA MAHILA SHG', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 3708, 'shg_code': '12000037083', 'member_id': 39201, 'member_guid': '52b1232502fdb16b7ea5b8b1f615b322', 'member_name': 'SOMI', 'member_name_local': None, 'relation': '0', 'relation_name': 'KRISHAN', 'relation_name_local': None, 'joining_date': 1599868800, 'designation': 4, 'cbo_guid': 'fdd35f4ce0742ab7fdeff648653b9e8f', 'shg_name': 'SITA MAHILA SHG', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 3708, 'shg_code': '12000037083', 'member_id': 41608, 'member_guid': '1e2817d8dd96137334c96bdff7e917d8', 'member_name': 'RANI', 'member_name_local': None, 'relation': '0', 'relation_name': 'RAMESH', 'relation_name_local': None, 'joining_date': 1599868800, 'designation': 3, 'cbo_guid': 'fdd35f4ce0742ab7fdeff648653b9e8f', 'shg_name': 'SITA MAHILA SHG', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 3650, 'shg_code': '12000036500', 'member_id': 34765, 'member_guid': '357095012b83fbe88adfbff8d1a62360', 'member_name': 'SUMAN', 'member_name_local': None, 'relation': '0', 'relation_name': 'RANJEET', 'relation_name_local': None, 'joining_date': 1482192000, 'designation': 4, 'cbo_guid': 'fd4fcf76e4fbb78ff2a40bb3d26b4a91', 'shg_name': 'ASHA MAHILA SHG', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 3650, 'shg_code': '12000036500', 'member_id': 47985, 'member_guid': 'f14602334df49cb63fd4bf0c8a816a69', 'member_name': 'RAJNI', 'member_name_local': None, 'relation': '0', 'relation_name': 'PANKAJ', 'relation_name_local': None, 'joining_date': 1497398400, 'designation': 4, 'cbo_guid': 'fd4fcf76e4fbb78ff2a40bb3d26b4a91', 'shg_name': 'ASHA MAHILA SHG', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 3650, 'shg_code': '12000036500', 'member_id': 47984, 'member_guid': 'c88c4bc34c2a56396737c12dc15e80ff', 'member_name': 'ANJU', 'member_name_local': None, 'relation': '0', 'relation_name': 'PAWAN', 'relation_name_local': None, 'joining_date': 1482192000, 'designation': 4, 'cbo_guid': 'fd4fcf76e4fbb78ff2a40bb3d26b4a91', 'shg_name': 'ASHA MAHILA SHG', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 3650, 'shg_code': '12000036500', 'member_id': 12780, 'member_guid': 'd319983671e05970cde5c5e8395a3d9c', 'member_name': 'NEELAM', 'member_name_local': None, 'relation': '0', 'relation_name': 'SATISH', 'relation_name_local': None, 'joining_date': 1482192000, 'designation': 1, 'cbo_guid': 'fd4fcf76e4fbb78ff2a40bb3d26b4a91', 'shg_name': 'ASHA MAHILA SHG', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 3650, 'shg_code': '12000036500', 'member_id': 17065, 'member_guid': '3a69b3675494f33bf8eca49f98daa301', 'member_name': 'SUDESH KUMARI', 'member_name_local': None, 'relation': '0', 'relation_name': 'RUP BSANT', 'relation_name_local': None, 'joining_date': 1486425600, 'designation': 4, 'cbo_guid': 'fd4fcf76e4fbb78ff2a40bb3d26b4a91', 'shg_name': 'ASHA MAHILA SHG', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 3650, 'shg_code': '12000036500', 'member_id': 14242, 'member_guid': 'a1afe7a46dd223ea704476ac8cee9927', 'member_name': 'SONIA', 'member_name_local': None, 'relation': '0', 'relation_name': 'RAVINDER', 'relation_name_local': None, 'joining_date': 1482192000, 'designation': 4, 'cbo_guid': 'fd4fcf76e4fbb78ff2a40bb3d26b4a91', 'shg_name': 'ASHA MAHILA SHG', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 3650, 'shg_code': '12000036500', 'member_id': 14239, 'member_guid': '073c1b7fd8e2b97d6563f6fe984918d4', 'member_name': 'OMWATI', 'member_name_local': None, 'relation': '0', 'relation_name': 'JARNAL SINGH', 'relation_name_local': None, 'joining_date': 1482192000, 'designation': 4, 'cbo_guid': 'fd4fcf76e4fbb78ff2a40bb3d26b4a91', 'shg_name': 'ASHA MAHILA SHG', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 3650, 'shg_code': '12000036500', 'member_id': 34764, 'member_guid': 'ab0b4dd9f6788bbb3484132298b23309', 'member_name': 'PINKI', 'member_name_local': None, 'relation': '0', 'relation_name': 'KAVAL SINGH', 'relation_name_local': None, 'joining_date': 1482192000, 'designation': 4, 'cbo_guid': 'fd4fcf76e4fbb78ff2a40bb3d26b4a91', 'shg_name': 'ASHA MAHILA SHG', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 3650, 'shg_code': '12000036500', 'member_id': 25716, 'member_guid': '56c24550b2c70979008c12c310bdbd6c', 'member_name': 'PRAVEETA', 'member_name_local': None, 'relation': '0', 'relation_name': 'SURENDER KUMAR', 'relation_name_local': None, 'joining_date': 1482192000, 'designation': 2, 'cbo_guid': 'fd4fcf76e4fbb78ff2a40bb3d26b4a91', 'shg_name': 'ASHA MAHILA SHG', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 3650, 'shg_code': '12000036500', 'member_id': 12781, 'member_guid': 'de8c3f8ba281c20b0bf0a38dd9f705f6', 'member_name': 'SONIA', 'member_name_local': None, 'relation': '0', 'relation_name': 'VIJAY', 'relation_name_local': None, 'joining_date': 1482192000, 'designation': 3, 'cbo_guid': 'fd4fcf76e4fbb78ff2a40bb3d26b4a91', 'shg_name': 'ASHA MAHILA SHG', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 3650, 'shg_code': '12000036500', 'member_id': 14241, 'member_guid': '574051f9cab02972ac8d89d710a21df6', 'member_name': 'SUNITA', 'member_name_local': None, 'relation': '0', 'relation_name': 'KARNAIL', 'relation_name_local': None, 'joining_date': 1482192000, 'designation': 4, 'cbo_guid': 'fd4fcf76e4fbb78ff2a40bb3d26b4a91', 'shg_name': 'ASHA MAHILA SHG', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 3650, 'shg_code': '12000036500', 'member_id': 34763, 'member_guid': '88c6e8cd56dde08da2551be3438e7cb9', 'member_name': 'SHEELA DEVI', 'member_name_local': None, 'relation': '0', 'relation_name': 'BEERBHAN', 'relation_name_local': None, 'joining_date': 1482192000, 'designation': 4, 'cbo_guid': 'fd4fcf76e4fbb78ff2a40bb3d26b4a91', 'shg_name': 'ASHA MAHILA SHG', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 3650, 'shg_code': '12000036500', 'member_id': 14240, 'member_guid': '8a85e6aba2a47298deb8b73aae628679', 'member_name': 'MONIKA', 'member_name_local': None, 'relation': '0', 'relation_name': 'RISHIPAL', 'relation_name_local': None, 'joining_date': 1482192000, 'designation': 4, 'cbo_guid': 'fd4fcf76e4fbb78ff2a40bb3d26b4a91', 'shg_name': 'ASHA MAHILA SHG', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 3650, 'shg_code': '12000036500', 'member_id': 12618, 'member_guid': '1493d12bec27f11a05112cb7a12c9486', 'member_name': 'MEENU DEVI', 'member_name_local': None, 'relation': '0', 'relation_name': 'HUSAN PAL', 'relation_name_local': None, 'joining_date': 1482192000, 'designation': 4, 'cbo_guid': 'fd4fcf76e4fbb78ff2a40bb3d26b4a91', 'shg_name': 'ASHA MAHILA SHG', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 3712, 'shg_code': '12000037123', 'member_id': 11431, 'member_guid': 'be77a80509f0a3178e132f7de1f23f0e', 'member_name': 'SANTOSH', 'member_name_local': None, 'relation': '0', 'relation_name': 'RAJESH', 'relation_name_local': None, 'joining_date': 1599004800, 'designation': 2, 'cbo_guid': '40c587c2e185bfa894b9814de4250751', 'shg_name': 'SHANKAR MAHILA SHG', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 3712, 'shg_code': '12000037123', 'member_id': 12917, 'member_guid': 'afae39cc89140e30be37ff409f2c74be', 'member_name': 'BATERI DEVI', 'member_name_local': None, 'relation': '0', 'relation_name': 'BEERA', 'relation_name_local': None, 'joining_date': 1599004800, 'designation': 4, 'cbo_guid': '40c587c2e185bfa894b9814de4250751', 'shg_name': 'SHANKAR MAHILA SHG', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 3712, 'shg_code': '12000037123', 'member_id': 12302, 'member_guid': '5575a215b444721aa48decb9b4843509', 'member_name': 'SHEELA DEVI', 'member_name_local': None, 'relation': '0', 'relation_name': 'RAJPAL', 'relation_name_local': None, 'joining_date': 1599004800, 'designation': 4, 'cbo_guid': '40c587c2e185bfa894b9814de4250751', 'shg_name': 'SHANKAR MAHILA SHG', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 3712, 'shg_code': '12000037123', 'member_id': 49490, 'member_guid': '995c0e28f286a1e639a911aee323a10b', 'member_name': 'GEETA DEVI', 'member_name_local': None, 'relation': '0', 'relation_name': 'SUBASH', 'relation_name_local': None, 'joining_date': 1599004800, 'designation': 4, 'cbo_guid': '40c587c2e185bfa894b9814de4250751', 'shg_name': 'SHANKAR MAHILA SHG', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 3712, 'shg_code': '12000037123', 'member_id': 12879, 'member_guid': '3bd1e801282ec83eec0aaedab40c2fe0', 'member_name': 'MEENA  DEVI', 'member_name_local': None, 'relation': '0', 'relation_name': 'ISHWER', 'relation_name_local': None, 'joining_date': 1599004800, 'designation': 4, 'cbo_guid': '40c587c2e185bfa894b9814de4250751', 'shg_name': 'SHANKAR MAHILA SHG', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 3712, 'shg_code': '12000037123', 'member_id': 12912, 'member_guid': 'dbe92e00ad73dfa64caaa9d348264617', 'member_name': 'SHAKUNTLA', 'member_name_local': None, 'relation': '0', 'relation_name': 'RAMPHAL', 'relation_name_local': None, 'joining_date': 1599004800, 'designation': 4, 'cbo_guid': '40c587c2e185bfa894b9814de4250751', 'shg_name': 'SHANKAR MAHILA SHG', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 3712, 'shg_code': '12000037123', 'member_id': 12902, 'member_guid': 'ef149497fe2785376bf433c05eb13600', 'member_name': 'RAMAN JEET KAUR', 'member_name_local': None, 'relation': '0', 'relation_name': 'AMANPREET SINGH', 'relation_name_local': None, 'joining_date': 1599004800, 'designation': 4, 'cbo_guid': '40c587c2e185bfa894b9814de4250751', 'shg_name': 'SHANKAR MAHILA SHG', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 3712, 'shg_code': '12000037123', 'member_id': 11306, 'member_guid': 'e1bc68f8b9f2bb04859dc6bc76262e74', 'member_name': 'KIRAN', 'member_name_local': None, 'relation': '0', 'relation_name': 'NAWAB SINGH', 'relation_name_local': None, 'joining_date': 1599004800, 'designation': 1, 'cbo_guid': '40c587c2e185bfa894b9814de4250751', 'shg_name': 'SHANKAR MAHILA SHG', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 3712, 'shg_code': '12000037123', 'member_id': 12292, 'member_guid': '653343b557352c636f99ba90bf6ec537', 'member_name': 'JOGINDRO DEVI', 'member_name_local': None, 'relation': '0', 'relation_name': 'SURENDER', 'relation_name_local': None, 'joining_date': 1599004800, 'designation': 4, 'cbo_guid': '40c587c2e185bfa894b9814de4250751', 'shg_name': 'SHANKAR MAHILA SHG', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 3712, 'shg_code': '12000037123', 'member_id': 12492, 'member_guid': 'a015fe67826f06c8b343201970746139', 'member_name': 'PARAMJEET KAUR', 'member_name_local': None, 'relation': '0', 'relation_name': 'RAJBIR', 'relation_name_local': None, 'joining_date': 1599004800, 'designation': 4, 'cbo_guid': '40c587c2e185bfa894b9814de4250751', 'shg_name': 'SHANKAR MAHILA SHG', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 3712, 'shg_code': '12000037123', 'member_id': 12926, 'member_guid': '9291025368c3503e412bf019c2af536a', 'member_name': 'SANTOSH', 'member_name_local': None, 'relation': '0', 'relation_name': 'DILBAGH SING', 'relation_name_local': None, 'joining_date': 1599004800, 'designation': 4, 'cbo_guid': '40c587c2e185bfa894b9814de4250751', 'shg_name': 'SHANKAR MAHILA SHG', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 3712, 'shg_code': '12000037123', 'member_id': 12010, 'member_guid': 'cd5efe7cb0523d6c523d3d7aa0348a29', 'member_name': 'RAJNI', 'member_name_local': None, 'relation': '0', 'relation_name': 'KRISHAN KUMAR', 'relation_name_local': None, 'joining_date': 1599004800, 'designation': 4, 'cbo_guid': '40c587c2e185bfa894b9814de4250751', 'shg_name': 'SHANKAR MAHILA SHG', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 3712, 'shg_code': '12000037123', 'member_id': 11526, 'member_guid': '48cca276c505a99ab751f32e4932bd8c', 'member_name': 'RAJNI DEVI', 'member_name_local': None, 'relation': '0', 'relation_name': 'RAJKUMAR', 'relation_name_local': None, 'joining_date': 1599004800, 'designation': 3, 'cbo_guid': '40c587c2e185bfa894b9814de4250751', 'shg_name': 'SHANKAR MAHILA SHG', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 4802, 'shg_code': '12000045618', 'member_id': 55945, 'member_guid': 'HRIBKPTNAYdaCjsNekOw2vCgA557ZO2023072016164548', 'member_name': 'Laxmi', 'member_name_local': '', 'relation': '3', 'relation_name': 'Kamlesh', 'relation_name_local': '', 'joining_date': 1689811200, 'designation': 4, 'cbo_guid': 'HRIBKPNimQS4fDEKIwZCREhktxkkRT2023072015022925', 'shg_name': 'NEW THIRD BALLAH', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 4802, 'shg_code': '12000045618', 'member_id': 55944, 'member_guid': 'HRIBKPYeYC4iAgnvBYMHaAyujcAXCn2023072016283420', 'member_name': 'Manju', 'member_name_local': '', 'relation': '3', 'relation_name': 'Sohan', 'relation_name_local': '', 'joining_date': 1689811200, 'designation': 2, 'cbo_guid': 'HRIBKPNimQS4fDEKIwZCREhktxkkRT2023072015022925', 'shg_name': 'NEW THIRD BALLAH', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 4802, 'shg_code': '12000045618', 'member_id': 55947, 'member_guid': 'HRIBKPxQHsVX2IMt44zbeVY3Mxylwg2023072016012584', 'member_name': 'Asadi ', 'member_name_local': '', 'relation': '3', 'relation_name': 'Rohit', 'relation_name_local': '', 'joining_date': 1689811200, 'designation': 1, 'cbo_guid': 'HRIBKPNimQS4fDEKIwZCREhktxkkRT2023072015022925', 'shg_name': 'NEW THIRD BALLAH', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 4802, 'shg_code': '12000045618', 'member_id': 55946, 'member_guid': 'HRIBKPNYdPRyMGSjJi30vAdMliACbU2023072016071709', 'member_name': 'Usha ', 'member_name_local': '', 'relation': '3', 'relation_name': 'Sohit', 'relation_name_local': '', 'joining_date': 1689811200, 'designation': 4, 'cbo_guid': 'HRIBKPNimQS4fDEKIwZCREhktxkkRT2023072015022925', 'shg_name': 'NEW THIRD BALLAH', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 4802, 'shg_code': '12000045618', 'member_id': 55943, 'member_guid': 'HRIBKPZcSaGHIvaMaMoOSt33NUUGW22023072016350293', 'member_name': 'Seema', 'member_name_local': '', 'relation': '3', 'relation_name': 'Rohan', 'relation_name_local': '', 'joining_date': 1689811200, 'designation': 4, 'cbo_guid': 'HRIBKPNimQS4fDEKIwZCREhktxkkRT2023072015022925', 'shg_name': 'NEW THIRD BALLAH', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}, {'shg_id': 4802, 'shg_code': '12000045618', 'member_id': 55942, 'member_guid': 'HRIBKPcpzy35bgefXor69sepBrASdY2023072016404270', 'member_name': 'Maneesha', 'member_name_local': '', 'relation': '3', 'relation_name': 'Gyanchand', 'relation_name_local': '', 'joining_date': 1689811200, 'designation': 4, 'cbo_guid': 'HRIBKPNimQS4fDEKIwZCREhktxkkRT2023072015022925', 'shg_name': 'NEW THIRD BALLAH', 'vo_guid': 'HRIBKPoVzTtnk5MIt423yefEq4mSZG2023072715261990'}]
+                          memberPhoneDetailsList: 
+                            type: string
+                            example: [{'member_id': 13098, 'member_guid': '623b3f56f2d1d105339f7f76c5ac5773', 'phone_guid': 'ce6733038e6fd0543bcb6bb72efb3164', 'phone_no': 9728974692}, {'member_id': 13096, 'member_guid': '7ac814d40c702b785b6e78b435af8504', 'phone_guid': 'e41b78aa0ccdbd216c763dfba7d810e6', 'phone_no': 8708795609}, {'member_id': 13169, 'member_guid': '71a002d3436d7580f6bed0388d4bdc6d', 'phone_guid': 'HRIBKPijhGMScKmAsdEQHxSOolaIAu2023073110390487', 'phone_no': 8542526353}, {'member_id': 13275, 'member_guid': '9b1789071f4ee98381fffa54b9ac63ff', 'phone_guid': 'HRIBKP6DZoHUbR60fg1BBsv2RslfhH2023073110451505', 'phone_no': 8652452142}, {'member_id': 13145, 'member_guid': '9527f4aac60004810f6bc4bb06dd0d37', 'phone_guid': 'HRIBKPRdGc9VUPzZPE30BhAHOm1TTX2023073110283769', 'phone_no': 9865245752}, {'member_id': 13160, 'member_guid': '1ef9d127253306bb2c4f0ae8a278fb61', 'phone_guid': 'HRIBKPTGpHNSleSHgIfEXxNQxCG18F2023073110514363', 'phone_no': 8652533526}, {'member_id': 13102, 'member_guid': '3a33204c7a71313093b3d0f49129b127', 'phone_guid': '124f321d840ecb0e41349513cc1c00f8', 'phone_no': 8199030524}, {'member_id': 14426, 'member_guid': 'e9effc9fd5eccccdbb88fc361c456cf6', 'phone_guid': 'HRIBKPsntTQLMAbWM22khivHhqfXVm2023073110471623', 'phone_no': 7854653152}, {'member_id': 14418, 'member_guid': '40372b03eb712e5a27e0f447cd157776', 'phone_guid': 'HRIBKPmIXdymJ8KaPSghNDRUAgUlVf2023073110260885', 'phone_no': 8754253253}, {'member_id': 13105, 'member_guid': '440d07a48428259802de4cf60617ef07', 'phone_guid': 'HRIBKPwQdFONgzOcD5AdQJlpEhARiP2023073110413982', 'phone_no': 7854215242}, {'member_id': 13103, 'member_guid': '991069d26974022b7d18cbc740c0923d', 'phone_guid': 'HRIBKPjJDRqUVxoyjN2TpCebzrAHbk2023073110493202', 'phone_no': 8965421384}, {'member_id': 11431, 'member_guid': 'be77a80509f0a3178e132f7de1f23f0e', 'phone_guid': '421c7103524c84c593f6ffcc1eb8bbcb', 'phone_no': 8607448665}, {'member_id': 11526, 'member_guid': '48cca276c505a99ab751f32e4932bd8c', 'phone_guid': 'ae46999d1da89e01f97f58463445d285', 'phone_no': 9812412106}, {'member_id': 55945, 'member_guid': 'HRIBKPTNAYdaCjsNekOw2vCgA557ZO2023072016164548', 'phone_guid': 'HRIBKP9QHqMXQuF7T7oIKyQEMMB91m2023072016165827', 'phone_no': 8754235691}, {'member_id': 55944, 'member_guid': 'HRIBKPYeYC4iAgnvBYMHaAyujcAXCn2023072016283420', 'phone_guid': 'HRIBKPPMytdvmA054D9LLMn90nRPnK2023072016290192', 'phone_no': 7895624538}, {'member_id': 55947, 'member_guid': 'HRIBKPxQHsVX2IMt44zbeVY3Mxylwg2023072016012584', 'phone_guid': 'HRIBKP3OkMwbcSyw6EfimP1HnV9EQT2023072016015249', 'phone_no': 7845123696}, {'member_id': 55943, 'member_guid': 'HRIBKPZcSaGHIvaMaMoOSt33NUUGW22023072016350293', 'phone_guid': 'HRIBKPzyeHou6chuLJ2ioXzEhje8yH2023072016351429', 'phone_no': 7854215356}, {'member_id': 55942, 'member_guid': 'HRIBKPcpzy35bgefXor69sepBrASdY2023072016404270', 'phone_guid': 'HRIBKPrxh3zuCgbZQofCSEGXdl1VNR2023072016412171', 'phone_no': 9865245375}]
+
+   
+        400:
+          description: Bad Request/Validation Error
+
+  /getFederationByStatus:
+    get:
+      tags:
+      - Get Federation By Status API
+      summary: Get Federation By Status
+      description: This api’s is used to get the list of federation details, and can filter by status property
+      operationId: getFederationByStatus
+      security:
+      - bearerAuth: []
+      parameters:
+        - in: header
+          name: X-Tenant-Identifier
+          schema:
+            type: string
+            example: "dynamic_lokos_ha"
+        - in: header
+          name: role
+          schema:
+            type: integer
+            example: 410
+        - in: header
+          name: User
+          schema:
+            type: string
+            example: "HA_SHG1"
+        - in: query
+          name: cbo_id
+          schema:
+            type: integer
+            example: 300
+        - in: query
+          name: approve_status
+          schema:
+            type: integer
+            example: 2
+        - in: query
+          name: cbo_type
+          schema:
+            type: integer
+            example: 2
+
+      
+      responses:
+        200:
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  responseCode:
+                    type: string
+                    example: "200"
+                  responseMsg:
+                    type: string
+                    example: "Data retrieve successfully"
+                  status:
+                    type: string
+                    example: "SUCCESS"
+                  timestamp:
+                    type: string
+                    example: "2023-09-19T08:08:34.276"
+                  responseData:
+                    type: object
+                    properties:
+                      totalRecord: 
+                        type: integer                        
+                        example: 0
+                      recordsList: 
+                        type: object
+                        example: []
+   
+        400:
+          description: Bad Request/Validation Error
+
+  /createOrUpdateCboMapping:
+    post:
+      tags:
+      - Create Or Update Cbo Mapping API
+      summary: Create Or Update Cbo Mapping
+      description: This api’s is used to create the new cbomapping ,or if it’s alreadycreated then update the existing one with new property.
+      operationId: createOrUpdateCboMapping
+      security:
+      - bearerAuth: []
+      parameters:
+        - in: header
+          name: X-Tenant-Identifier
+          schema:
+            type: string
+            example: "dynamic_lokos_ha"
+        - in: header
+          name: User
+          schema:
+            type: string
+            example: "HA_SHG1"
+        - in: header
+          name: role
+          schema:
+            type: integer
+            example: 410
+
+      requestBody:
+        content:
+          application/json:
+            schema:
+
+              properties:
+                  cbo_child_code:
+                    type: integer
+                    example: 12000045768
+                  cbo_child_guid:
+                    type: string
+                    example: "HRETBKBwCZFkb1XCxFY6KuUioWA8Ak2023071112263420"
+                  cbo_child_id:
+                    type: integer
+                    example: 4759326
+                  cbo_child_level:
+                    type: integer
+                    example: 0
+                  cbo_child_name:
+                    type: string
+                    example: ""
+                  cbo_child_village_id:
+                    type: string
+                    example: ""
+                  cbo_guid:
+                    type: string
+                    example: "HRREJAx4jWXw1wPD3bSHTXVGpAZEb22023080313214536"
+                  cbo_id:
+                    type: integer
+                    example: 458
+                  cbo_level:
+                    type: integer
+                    example: 1
+                  created_by:
+                    type: string
+                    example: "HA_SHG1"
+                  created_date:
+                    type: integer
+                    example: 1691768210
+                  entry_source:
+                    type: integer
+                    example: 1
+                  is_active:
+                    type: integer
+                    example: 1
+                  is_edited:
+                    type: integer
+                    example: 1
+                  joining_date:
+                    type: integer
+                    example: 1691712000
+                  leaving_date:
+                    type: integer
+                    example: 0
+                  leaving_reason:
+                    type: integer
+                    example: 0
+                  settlement_status:
+                    type: integer
+                    example: 0
+                  status:
+                    type: integer
+                    example: 1
+                  updated_by:
+                    type: string
+                    example: "HA_SHG1"
+      
+      responses:
+        200:
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  responseCode:
+                    type: string
+                    example: "200"
+                  responseMsg:
+                    type: string
+                    example: "Data Retrieve successfully."
+                  status:
+                    type: string
+                    example: "SUCCESS"
+                  timestamp:
+                    type: string
+                    example: "2023-09-19T08:04:55.245"
+                  responseData:
+                    type: object
+                    properties:
+                      4759326: 
+                        type: string                        
+                        example: "Record Found Deduplicate!"
+
+   
+        400:
+          description: Bad Request/Validation Error
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Text
+
+
+
+
+
+
+
+
+

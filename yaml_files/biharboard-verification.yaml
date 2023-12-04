@@ -1,0 +1,351 @@
+openapi: 3.0.0
+info:  
+  title: Bihar State Board of School Examination, Bihar Verification APIs
+  description: Bihar School Examination Board, Patna (http://biharboardonline.bihar.gov.in) has made available Class X (2018) marksheets and provisional certificates, which can be pulled by students into their accounts. 
+  termsOfService: https://apisetu.gov.in/home/api_policy
+  version: 3.0.0
+servers:
+  - url: 'https://apisetu.gov.in/'
+paths:
+  /verify-demographic/v1/biharboard/sscer:
+    post:
+      tags:
+        - APIs
+      summary: API for demographic verification of result data in Class X Marksheet.
+      description: API for demographic verification of result data in Class X Marksheet.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: sscer-verify-demographic
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - verificationData
+                - consentArtifact
+                - schCode
+                - year
+                - rollno
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                schCode:
+                  type: string
+                  description: School Code
+                  example: "1,2"
+                year:
+                  type: string
+                  description: Year
+                  example: "2016"
+                rollno:
+                  type: string
+                  description: Roll No
+                  example: "1100042"
+                verificationData:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      description: Name as in mark sheet
+                      example: "Sunil Kumar"
+                    result:
+                      type: string
+                      description: Result
+                      example: "PASS/FAIL/COMPTT/QUAL"
+                    dob:
+                      type: string
+                      description: Date of birth as in mark sheet
+                      example: "dd-mm-yyyy"
+                  required:
+                    - name
+                    - result
+                    - dob
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  txnId:
+                    type: string
+                    format: uuid
+                    description: A unique transaction id that was sent in the request.
+                    example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                  schCode:
+                    type: string
+                    description: School Code
+                    example: "1,2"
+                  year:
+                    type: string
+                    description: Year
+                    example: "2016"
+                  rollno:
+                    type: string
+                    description: Roll No
+                    example: "1100042"
+                  verificationResult:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        description: Y or N value indicating whether the value in the request matched with the value on record. 
+                        minLength: 1
+                        example: Y
+                      result:
+                        type: string
+                        description: Y or N value indicating whether the value in the request matched with the value on record. 
+                        minLength: 1
+                        example: Y
+                      dob:
+                        type: string
+                        description: Y or N value indicating whether the value in the request matched with the value on record. 
+                        minLength: 1
+                        example: Y
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  /verify-dob/v1/biharboard/sscer:
+    post:
+      tags:
+        - APIs
+      summary: API for date of birth verification in Class X Marksheet.
+      description: API for date of birth verification in Class X Marksheet.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: sscer-verify-dob
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - verificationData
+                - consentArtifact
+                - schCode
+                - year
+                - rollno
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                schCode:
+                  type: string
+                  description: School Code
+                  example: "1,2"
+                year:
+                  type: string
+                  description: Year
+                  example: "2016"
+                rollno:
+                  type: string
+                  description: Roll No
+                  example: "1100042"
+                verificationData:
+                  type: object
+                  properties:
+                    dob:
+                      type: string
+                      description: Date of birth as in mark sheet
+                      example: "dd-mm-yyyy"
+                  required:
+                    - dob
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  txnId:
+                    type: string
+                    format: uuid
+                    description: A unique transaction id that was sent in the request.
+                    example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                  schCode:
+                    type: string
+                    description: School Code
+                    example: "1,2"
+                  year:
+                    type: string
+                    description: Year
+                    example: "2016"
+                  rollno:
+                    type: string
+                    description: Roll No
+                    example: "1100042"
+                  verificationResult:
+                    type: object
+                    properties:
+                      dob:
+                        type: string
+                        description: Y or N value indicating whether the value in the request matched with the value on record. 
+                        minLength: 1
+                        example: Y
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+  /verify-result/v1/biharboard/sscer:
+    post:
+      tags:
+        - APIs
+      summary: API for verification of aggregated result in Class X Marksheet.
+      description: API for verification of aggregated result in Class X Marksheet.
+      security:
+        - clientId: []
+          apiKey: []
+      operationId: sscer-verify-result
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - txnId
+                - verificationData
+                - consentArtifact
+                - schCode
+                - year
+                - rollno
+              properties:
+                txnId:
+                  type: string
+                  format: uuid
+                  description: A unique transaction id for this request in UUID format. It is used for tracking the request.
+                  example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                schCode:
+                  type: string
+                  description: School Code
+                  example: "1,2"
+                year:
+                  type: string
+                  description: Year
+                  example: "2016"
+                rollno:
+                  type: string
+                  description: Roll No
+                  example: "1100042"
+                verificationData:
+                  type: object
+                  properties:
+                    result:
+                      type: string
+                      description: Result
+                      example: "PASS/FAIL/COMPTT/QUAL"
+                  required:
+                    - result
+                consentArtifact:
+                  $ref: '#/components/schemas/ConsentArtifactSchema'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  txnId:
+                    type: string
+                    format: uuid
+                    description: A unique transaction id that was sent in the request.
+                    example: "f7f1469c-29b0-4325-9dfc-c567200a70f7"
+                  schCode:
+                    type: string
+                    description: School Code
+                    example: "1,2"
+                  year:
+                    type: string
+                    description: Year
+                    example: "2016"
+                  rollno:
+                    type: string
+                    description: Roll No
+                    example: "1100042"
+                  verificationResult:
+                    type: object
+                    properties:
+                      result:
+                        type: string
+                        description: Y or N value indicating whether the value in the request matched with the value on record. 
+                        minLength: 1
+                        example: Y
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '500':
+          $ref: '#/components/responses/500Error'
+        '502':
+          $ref: '#/components/responses/502Error'
+        '503':
+          $ref: '#/components/responses/503Error'
+        '504':
+          $ref: '#/components/responses/504Error'
+components:
+  schemas:
+    ConsentArtifactSchema:
+      $ref: './common/ConsentArtifactSchema.yaml#/ConsentArtifactSchema'
+  responses:
+    400Error:
+      $ref: './common/ErrorResponse.yaml#/400Error'
+    401Error:
+      $ref: './common/ErrorResponse.yaml#/401Error'
+    404Error:
+      $ref: './common/ErrorResponse.yaml#/404Error'
+    500Error:
+      $ref: './common/ErrorResponse.yaml#/500Error'
+    502Error:
+      $ref: './common/ErrorResponse.yaml#/502Error'
+    503Error:
+      $ref: './common/ErrorResponse.yaml#/503Error'
+    504Error:
+      $ref: './common/ErrorResponse.yaml#/504Error'
+  securitySchemes:
+    clientId:
+      type: apiKey
+      in: header
+      name: X-APISETU-CLIENTID
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-APISETU-APIKEY
