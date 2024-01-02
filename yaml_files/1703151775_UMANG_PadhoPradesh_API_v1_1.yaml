@@ -1,0 +1,317 @@
+openapi: 3.0.0
+info:
+  title: Padho Pradesh APIs
+  description: 
+    PadhoPardesh scheme introduced by the Government of India to make overseas education affordable for eligible students. Under this scheme, individuals from the minority community can avail interest subsidy on education loan to study abroad.The eligibility criteria is to have annual income with certificate within 6 lakhs & caste certificate belonging to minority community. Users can view their bank & claim details.
+    
+        
+         <i>[Updated on 21st December 2023]</i>
+  termsOfService: https://web.umang.gov.in/uaw/ts/v1/en/index.htm
+  contact:
+    name: Provided by - UMANG
+    url: https://web.umang.gov.in  
+  version: 1.0.0
+servers:
+  - url: https://cache.umang.gov.in
+
+security:
+ - x-api-key: [] 
+
+paths:
+  /externalapi/ws1/padhoPradeshApi/PADHOPARDESH_BANK_NAME:
+    post:
+      tags:
+        - Bank Name Web Service API
+      summary: Get the bank name details using this service.
+      description: This api is used to get the bank details for respective credentials as per the request payload
+      parameters:
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: '323'
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: '1407'
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: '0'
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: '0'
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: '0'
+        - name: x-api-key
+          in: header
+          schema:
+            type: string
+          example: SspWjQ4u148XXXXXXXXXXXxxx6WDjIMSxvosi
+            
+            
+      requestBody:
+        content:
+          application/json:
+            schema:
+
+              properties:
+                  tkn:
+                    type: string
+                    example: "tp5f01ff6a-b392-4619-a349-60c82dbfed59/1"
+                  trkr:
+                    type: string
+                    example: "W-23456789"
+                  lang:
+                    type: string
+                    example: "en"
+                  lat:
+                    type: string
+                    example: "90"
+                  lon:
+                    type: string
+                    example: "90"
+                  lac:
+                    type: string
+                    example: "90"
+                  usag:
+                    type: string
+                    example: "1"
+                  usrid:
+                    type: string
+                    example: "10001201"
+                  srvid:
+                    type: string
+                    example: "1407"
+                  mode:
+                    type: string
+                    example: "web"
+                  pltfrm:
+                    type: string
+                    example: "andorid"
+                  apitrkr:
+                    type: string
+                    example: "1"
+                  deptid:
+                    type: string
+                    example: "323"
+                  did:
+                    type: string
+                    example: "1"
+                  subsid:
+                    type: string
+                    example: "0"
+                  subsid2:
+                    type: string
+                    example: "0"
+                  formtrkr:
+                    type: string
+                    example: "0"
+                  username:
+                    type: string
+                    example: "CB_Public_user"
+                  password:
+                    type: string
+                    example: "$P@s*0!d(b^2o!9"
+                  VENDOR_ID:
+                    type: string
+                    example: "UMANG"
+                  REQUEST_ENC:
+                    type: string
+                    example: "p8rxmvQq6VIr8VBUhIYK3XSPmA8="  
+                  REQUEST_DIGEST:
+                    type: string
+                    example: "E5D46A1077F0F4C811784AB459966E3478A827159616388E41A9501446647F10"    
+                  REQUEST_DATE_TIME:
+                    type: string
+                    example: "2020-10-03T11:13:21.0193218+05:30"     
+                    
+
+      responses:
+        200:
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  rs:
+                    type: string
+                    example: "S"
+                  rc:
+                    type: string
+                    example: "200"
+                  rd:
+                    type: string
+                    example: "Success"
+                  pd:
+                    type: object
+                    example: "{\"VENDOR_ID\":\"UMANG\",\"METHOD_ID\":\"081\",\"RESPONSE_CODE\":\"1\",\"RESPONSE_ENC\":\"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\",\"RESPONSE_DIGEST\":\"698B3ABE830C4BD0A24260C86A493CA4548B3E3C70D4F0DFE809188D015F6C81\",\"RESPONSE_DATE_TIME\":\"2020-10-08T18:53:14.1028943+05:30\"}"
+        400:
+            description: Bad Request/Validation Error
+
+
+            
+  /externalapi/ws1/padhoPradeshApi/PADHOPARDESH_CLAIM_DETAILS:
+    post:
+      tags:
+        - Claim Details Web Service
+      summary: Get the claim details using this service
+      description: This api is used to get the claim details with respective credentials as per the request   payload
+      
+      parameters:
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: '323'
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: '1407'
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: '0'
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: '0'
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: '0'
+        - name: x-api-key
+          in: header
+          schema:
+            type: string
+          example: SspWjQ4u1483XXXXXXXXDjIMSxvosi
+      requestBody:
+        content:
+          application/json:
+            schema:
+
+              properties:
+                  tkn:
+                    type: string
+                    example: "tp5f01ff6a-b392-4619-a349-60c82dbfed59/1"
+                  trkr:
+                    type: string
+                    example: "W-23456789"
+                  lang:
+                    type: string
+                    example: "en"
+                  lat:
+                    type: string
+                    example: "90"
+                  lon:
+                    type: string
+                    example: "90"
+                  lac:
+                    type: string
+                    example: "90"
+                  usag:
+                    type: string
+                    example: "1"
+                  usrid:
+                    type: string
+                    example: "10001201"
+                  srvid:
+                    type: string
+                    example: "1407"
+                  mode:
+                    type: string
+                    example: "web"
+                  pltfrm:
+                    type: string
+                    example: "1"
+                  apitrkr:
+                    type: string
+                    example: "1"
+                  deptid:
+                    type: string
+                    example: "323"
+                  did:
+                    type: string
+                    example: "1"
+                  subsid:
+                    type: string
+                    example: "0"
+                  subsid2:
+                    type: string
+                    example: "0"
+                  formtrkr:
+                    type: string
+                    example: "0"
+                  username:
+                    type: string
+                    example: "CB_Public_user"
+                  password:
+                    type: string
+                    example: "$P@s*0!d(b^2o!9"
+                  VENDOR_ID:
+                    type: string
+                    example: "UMANG"
+                  METHOD_ID:
+                    type: string
+                    example: "082"  
+                  REQUEST_ENC:
+                    type: string
+                    example: "sp3fl/8PpZy58glzfj77QKISTXjOJavlPHTrqGsdemWwZ+9mYWPjBi40k7gyaUwaFC3LMBGOcFNoMI4="    
+                  REQUEST_DIGEST:
+                    type: string
+                    example: "375D40ADD7E216AB779F5AB114CE2B1CF7F13198C4349BEE7AE570391EAD56F3"  
+                  REQUEST_DATE_TIME:
+                    type: string
+                    example: "2020-10-03T11:20:47.3877166+05:30"    
+                  
+      
+      responses:
+        200:
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  rs:
+                    type: string
+                    example: "S"
+                  rc:
+                    type: string
+                    example: "200"
+                  rd:
+                    type: string
+                    example: "Success"
+                  pd:
+                    type: object
+                    example: "{\"VENDOR_ID\":\"UMANG\",\"METHOD_ID\":\"082\",\"RESPONSE_CODE\":\"1\",\"RESPONSE_ENC\":\"sp3OguQAn5Gi2A08IT7wUMJ7LmzhO+XBPg/pvHwPa3Wmd/92cXTzETo2zuUzOug+KPU3aET9BjTjMUGRnYOnXJzH58KqKgB893ZqDNX7i5bbmUfvR9k/GTiRHnzKLKtjDzN0zjKmtqyW1+VjxUtCR2Cc4dp/2rP+IRXLoE5HTZP4Xcr5VJg/ctal9hGAdUy6gWVjE8DTgmm6vKaSrBO4lTrzzkQCegrxIo8KIIRu9SfxWoB4GwkBYw3+e8AYw+DEWZzHYINWAs7ug9cMWRTXHVYqpR7/3qDBhk60Z3ch5+u422oDFb2burXWEzIIDK28ht4TpQdzv2/PQuraronLHS6yi5oooHbUlaxnjQHwSbxqd86i2clYqMrNK2mmB/z3wLveZWwsCAT9BQ52zZbsZRSfsV+mVZnIwAPwNqahzaiOMu3QeyXp728u7YWdlYwOXORh7NsRV/XtsnSLrIx2gZn5wIB/DVuSd3Swg1m5e7oDY9WSGtiWQ/H91xNxxrokWrx47Ik7hUbs2YWE1LQWraS6z62chIl1SBSfYDP+5zaZZUFKu8DosLV+BhffNbf3UshqFNdz0Ko3QpTLokRbmYZ1MUQXs0ESl+A6RFcSquyFz7FrOit40Tuwuq/HgtCts0jpUXNTel3oMuz4h1+hiQfXDGLzE61Ek/MzCBU1SHyMpt+4Io4uarNpYpkoc/xbds+C9aVlXYxDg/z2DhsrrobJLtwvhhUcM3wOPTkFjHeCr7BOkgtHBRxYuGOl6YPAu9AfAeK5oWikUok9mhILwn3MxlleizVZfAqpy4VtLug3uZof+a33YmgpntTUGKA9VixUqt6pc4VZrkOydWcqjGQA5GZBU6KpSsttZ9y/+TmVen8fbvRxM/hrYzckMRAj9xcQtcShyYOHNbhf1lydnClnqbde4jxI14Pb7g8+Ymh6YmlmwpNOk3Zpi8Xm57+toFbA7xLZcWBGuOLiie/cGYGP5U+ZkAa0ssZNawmonXdaly2Dhq3dDwO27CvnvJ+IME4e8y6XEJIRhOcBd5peP4cM8GpUo7ZwBg5nveWP\",\"RESPONSE_DIGEST\":\"32F947BD1AB8E4B98FEEFB4B983DBDDF192068011E608061ED6B16D2807FF551\",\"RESPONSE_DATE_TIME\":\"2020-10-08T18:59:49.7926131+05:30\"}"
+        400:
+            description: Bad Request/Validation Error
+components:
+  securitySchemes:
+    x-api-key:
+      type: apiKey
+      name: x-api-key
+      in: header
