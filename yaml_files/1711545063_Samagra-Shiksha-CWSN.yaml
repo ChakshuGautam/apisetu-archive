@@ -1,0 +1,1204 @@
+openapi: 3.0.1
+info:
+  title: Samagra Shiksha (CWSN)
+  description: |-
+      Samagra Shiksha is an overarching program for school education by the Government of India. It is an integrated scheme for school education extending from pre-school to class 12 across the country. The scheme aims to ensure inclusive and equitable quality education at all levels of school education.Samagra Shiksha subsumes the existing centrally sponsored schemes of Sarva Shiksha Abhiyan (SSA), Rashtriya Madhyamik Shiksha Abhiyan (RMSA), and Teacher Education (TE). By integrating these schemes, Samagra Shiksha seeks to provide holistic support to the school education system, including aspects such as infrastructure development, learning outcomes, teacher training, and education for children with special needs.Overall, Samagra Shiksha represents the Government of India's commitment to transforming the school education system and ensuring that every child receives a quality education, irrespective of their socio-economic background. 
+      
+          <i>[Updated on 27 March 2024]</i>
+  contact:
+    name: Provide by - Umang
+    url: https://web.umang.gov.in
+  version: 1.0.0
+servers:
+- url: https://apigw.umangapp.in
+
+security:
+ - x-api-key: []
+
+paths:
+  /umang/apisetu/dept/cwsnapi/ws1/umangbenefit:
+    post:
+      tags:
+      - Umang Benefit Web API
+      summary: Get the umang beneficiary details using this api
+      description: This api is used to get the benefit details
+      operationId: umang/apisetu/dept/cwsnapi/ws1/umangbenefit
+      parameters:
+        - in: header
+          name: deptid
+          schema:
+            type: integer
+            example: 389
+        - in: header
+          name: srvid
+          schema:
+            type: integer
+            example: 2256
+        - in: header
+          name: Content-Type
+          schema:
+            type: string
+            example: "application/json"
+        - in: header
+          name: subsid
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: subsid2
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: formtrkr
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: x-api-key
+          schema:
+            type: string
+            example: "qkNR1lrrtAar7k1rzNTFk2VE0JilvnDf2tHMU9wh"
+
+      requestBody:
+        content:
+          application/json:
+            schema:
+
+              properties:
+                  tkn:
+                    type: string
+                    example: "hpc6bdf765-a320-4918-bdfd-3bea7347d173/3"
+                  trkr:
+                    type: string
+                    example: "W-23456789"
+                  lang:
+                    type: string
+                    example: "en"
+                  lat:
+                    type: string
+                    example: "90"
+                  lon:
+                    type: string
+                    example: "90"
+                  lac:
+                    type: string
+                    example: "90"
+                  usag:
+                    type: string
+                    example: "1"
+                  usrid:
+                    type: string
+                    example: "10001201"
+                  srvid:
+                    type: string
+                    example: "2256"
+                  mode:
+                    type: string
+                    example: "web"
+                  pltfrm:
+                    type: string
+                    example: "apisetu"
+                  apitrkr:
+                    type: string
+                    example: "1"
+                  deptid:
+                    type: string
+                    example: "389"
+                  did:
+                    type: string
+                    example: "1"
+                  subsid:
+                    type: string
+                    example: "0"
+                  subsid2:
+                    type: string
+                    example: "0"
+                  formtrkr:
+                    type: string
+                    example: "0"
+                  stcd:
+                    type: string
+                    example: "04"
+                  stid:
+                    type: string
+                    example: "ROHITKUMARSURESHKUMAR24/07/2006"
+      
+      responses:
+        200:
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  rs:
+                    type: string
+                    example: "S"
+                  rc:
+                    type: string
+                    example: "200"
+                  rd:
+                    type: string
+                    example: "Success."
+                  pd:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        stcd:
+                          type: string
+                        fath_name:
+                          type: string
+                        year:
+                          type: string
+                        dob:
+                          type: string
+                        stu_name:
+                          type: string
+                        schname:
+                          type: string
+                        benifnm:
+                          type: string
+                        udise_cd:
+                          type: string
+                    example:
+                      -  stcd: "04"
+                         fath_name: "SURESH KUMAR"
+                         year: "2018-2019"
+                         dob: "24/07/2006"
+                         stu_name: "ROHIT KUMAR"
+                         schname: "G.M.S.S.S. SECTOR 8 B"
+                         benifnm: "THEREPATIC SERVICE ,"
+                         udise_cd: "04010101003"
+                      -  stcd: "04"
+                         fath_name: "SURESH KUMAR"
+                         year: "2019-2020"
+                         dob: "24/07/2006"
+                         stu_name: "ROHIT KUMAR"
+                         schname: "G.M.S.S.S. SECTOR 8 B"
+                         benifnm: "THEREPATIC SERVICE /"
+                         udise_cd: "04010101003"
+                      -  stcd: "04"
+                         fath_name: "SURESH KUMAR"
+                         year: "2020-2021"
+                         dob: "24/07/2006"
+                         stu_name: "ROHIT KUMAR"
+                         schname: "G.M.S.S.S. SECTOR 8 B"
+                         benifnm: "THEREPATIC SERVICE /"
+                         udise_cd: "04010101003"
+                      -  stcd: "04"
+                         fath_name: "SURESH KUMAR"
+                         year: "2021-2022"
+                         dob: "24/07/2006"
+                         stu_name: "ROHIT KUMAR"
+                         schname: "G.M.S.S.S. SECTOR 8 B"
+                         benifnm: "BOOKS AND STATIONARY /THEREPATIC SERVICE /UNIFORM"
+                         udise_cd: "04010101003"
+
+   
+        400:
+          description: Bad Request/Validation Error
+
+  /umang/apisetu/dept/cwsnapi/ws1/umangstat:
+    post:
+      tags:
+      - State List Web API
+      summary: Get the state list using this api
+      description: This api is used to get the umang state list
+      operationId: umang/apisetu/dept/cwsnapi/ws1/umangstat
+      parameters:
+        - in: header
+          name: deptid
+          schema:
+            type: integer
+            example: 389
+        - in: header
+          name: srvid
+          schema:
+            type: integer
+            example: 2256
+        - in: header
+          name: Content-Type
+          schema:
+            type: string
+            example: "application/json"
+        - in: header
+          name: subsid
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: subsid2
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: formtrkr
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: x-api-key
+          schema:
+            type: string
+            example: "qkNR1lrrtAar7k1rzNTFk2VE0JilvnDf2tHMU9wh"
+
+      requestBody:
+        content:
+          application/json:
+            schema:
+
+              properties:
+                  tkn:
+                    type: string
+                    example: "hpc6bdf765-a320-4918-bdfd-3bea7347d173/3"
+                  trkr:
+                    type: string
+                    example: "W-23456789"
+                  lang:
+                    type: string
+                    example: "en"
+                  lat:
+                    type: string
+                    example: "90"
+                  lon:
+                    type: string
+                    example: "90"
+                  lac:
+                    type: string
+                    example: "90"
+                  usag:
+                    type: string
+                    example: "1"
+                  usrid:
+                    type: string
+                    example: "10001201"
+                  srvid:
+                    type: string
+                    example: "2256"
+                  mode:
+                    type: string
+                    example: "web"
+                  pltfrm:
+                    type: string
+                    example: "apisetu"
+                  apitrkr:
+                    type: string
+                    example: "1"
+                  deptid:
+                    type: string
+                    example: "389"
+                  did:
+                    type: string
+                    example: "1"
+                  subsid:
+                    type: string
+                    example: "0"
+                  subsid2:
+                    type: string
+                    example: "0"
+                  formtrkr:
+                    type: string
+                    example: "0"
+      
+      responses:
+        200:
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  rs:
+                    type: string
+                    example: "S"
+                  rc:
+                    type: string
+                    example: "200"
+                  rd:
+                    type: string
+                    example: "Success."
+                  pd:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        statecd:
+                          type: string
+                        statename:
+                          type: string
+                    example:
+                      -  statecd: "35"
+                         statename: "ANDAMAN AND NICOBAR ISLANDS"
+                      -  statecd: "28"
+                         statename: "ANDHRA PRADESH"
+                      -  statecd: "12"
+                         statename: "ARUNACHAL PRADESH"
+                      -  statecd: "18"
+                         statename: "ASSAM"
+                      -  statecd: "10"
+                         statename: "BIHAR"
+                      -  statecd: "04"
+                         statename: "CHANDIGARH"
+                      -  statecd: "22"
+                         statename: "CHHATTISGARH"
+                      -  statecd: "26"
+                         statename: "DADRA AND NAGAR HAVELI"
+                      -  statecd: "07"
+                         statename: "DELHI"
+                      -  statecd: "25"
+                         statename: "DND - DNH"
+                      -  statecd: "30"
+                         statename: "GOA"
+                      -  statecd: "24"
+                         statename: "GUJARAT"
+                      -  statecd: "06"
+                         statename: "HARYANA"
+                      -  statecd: "02"
+                         statename: "HIMACHAL PRADESH"
+                      -  statecd: "01"
+                         statename: "JAMMU AND KASHMIR"
+                      -  statecd: "20"
+                         statename: "JHARKHAND"
+                      -  statecd: "29"
+                         statename: "KARNATAKA"
+                      -  statecd: "32"
+                         statename: "KERALA"
+                      -  statecd: "37"
+                         statename: "LADAKH"
+                      -  statecd: "31"
+                         statename: "LAKSHADWEEP"
+                      -  statecd: "23"
+                         statename: "MADHYA PRADESH"
+                      -  statecd: "27"
+                         statename: "MAHARASHTRA"
+                      -  statecd: "14"
+                         statename: "MANIPUR"
+                      -  statecd: "17"
+                         statename: "MEGHALAYA"
+                      -  statecd: "15"
+                         statename: "MIZORAM"
+                      -  statecd: "13"
+                         statename: "NAGALAND"
+                      -  statecd: "21"
+                         statename: "ODISHA"
+                      -  statecd: "34"
+                         statename: "PUDUCHERRY"
+                      -  statecd: "03"
+                         statename: "PUNJAB"
+                      -  statecd: "08"
+                         statename: "RAJASTHAN"
+                      -  statecd: "11"
+                         statename: "SIKKIM"
+                      -  statecd: "33"
+                         statename: "TAMIL NADU"
+                      -  statecd: "36"
+                         statename: "TELANGANA"
+                      -  statecd: "16"
+                         statename: "TRIPURA"
+                      -  statecd: "09"
+                         statename: "UTTAR PRADESH"
+                      -  statecd: "05"
+                         statename: "UTTARAKHAND"
+                      -  statecd: "19"
+                         statename: "WEST BENGAL"
+
+   
+        400:
+          description: Bad Request/Validation Error
+
+  /umang/apisetu/dept/cwsnapi/ws1/umangdistrict:
+    post:
+      tags:
+      - District List Web API
+      summary: Get the district list using this api
+      description: This api is used to get the district list
+      operationId: umang/apisetu/dept/cwsnapi/ws1/umangdistrict
+      parameters:
+        - in: header
+          name: deptid
+          schema:
+            type: integer
+            example: 389
+        - in: header
+          name: srvid
+          schema:
+            type: integer
+            example: 2027
+        - in: header
+          name: Content-Type
+          schema:
+            type: string
+            example: "application/json"
+        - in: header
+          name: subsid
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: subsid2
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: formtrkr
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: x-api-key
+          schema:
+            type: string
+            example: "qkNR1lrrtAar7k1rzNTFk2VE0JilvnDf2tHMU9wh"
+
+      requestBody:
+        content:
+          application/json:
+            schema:
+
+              properties:
+                  tkn:
+                    type: string
+                    example: "hpc6bdf765-a320-4918-bdfd-3bea7347d173/3"
+                  trkr:
+                    type: string
+                    example: "W-23456789"
+                  lang:
+                    type: string
+                    example: "en"
+                  lat:
+                    type: string
+                    example: "90"
+                  lon:
+                    type: string
+                    example: "90"
+                  lac:
+                    type: string
+                    example: "90"
+                  usag:
+                    type: string
+                    example: "1"
+                  usrid:
+                    type: string
+                    example: "10001201"
+                  srvid:
+                    type: string
+                    example: "2027"
+                  mode:
+                    type: string
+                    example: "web"
+                  pltfrm:
+                    type: string
+                    example: "apisetu"
+                  apitrkr:
+                    type: string
+                    example: "1"
+                  deptid:
+                    type: string
+                    example: "389"
+                  did:
+                    type: string
+                    example: "1"
+                  subsid:
+                    type: string
+                    example: "0"
+                  subsid2:
+                    type: string
+                    example: "0"
+                  formtrkr:
+                    type: string
+                    example: "0"
+                  stcd:
+                    type: string
+                    example: "11"
+      
+      responses:
+        200:
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  rs:
+                    type: string
+                    example: "S"
+                  rc:
+                    type: string
+                    example: "200"
+                  rd:
+                    type: string
+                    example: "Success."
+                  pd:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        districtcd:
+                          type: string
+                        Districtname:
+                          type: string
+                    example:
+                      -  districtcd: "1104"
+                         Districtname: "EAST SIKKIM"
+                      -  districtcd: "1101"
+                         Districtname: "NORTH SIKKIM"
+                      -  districtcd: "1103"
+                         Districtname: "SOUTH SIKKIM"
+                      -  districtcd: "1102"
+                         Districtname: "WEST SIKKIM"
+
+   
+        400:
+          description: Bad Request/Validation Error
+
+  /umang/apisetu/dept/cwsnapi/ws1/umangblock:
+    post:
+      tags:
+      - Block List Web API
+      summary: Get the block details with block name and respective block codeusing this api
+      description: This api is used to get the block details with block name and respective block code
+      operationId: umang/apisetu/dept/cwsnapi/ws1/umangblock
+      parameters:
+        - in: header
+          name: deptid
+          schema:
+            type: integer
+            example: 389
+        - in: header
+          name: srvid
+          schema:
+            type: integer
+            example: 2256
+        - in: header
+          name: Content-Type
+          schema:
+            type: string
+            example: "application/json"
+        - in: header
+          name: subsid
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: subsid2
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: formtrkr
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: x-api-key
+          schema:
+            type: string
+            example: "qkNR1lrrtAar7k1rzNTFk2VE0JilvnDf2tHMU9wh"
+
+      requestBody:
+        content:
+          application/json:
+            schema:
+
+              properties:
+                  tkn:
+                    type: string
+                    example: "hpc6bdf765-a320-4918-bdfd-3bea7347d173/3"
+                  trkr:
+                    type: string
+                    example: "W-23456789"
+                  lang:
+                    type: string
+                    example: "en"
+                  lat:
+                    type: string
+                    example: "90"
+                  lon:
+                    type: string
+                    example: "90"
+                  lac:
+                    type: string
+                    example: "90"
+                  usag:
+                    type: string
+                    example: "1"
+                  usrid:
+                    type: string
+                    example: "10001201"
+                  srvid:
+                    type: string
+                    example: "2256"
+                  mode:
+                    type: string
+                    example: "web"
+                  pltfrm:
+                    type: string
+                    example: "1"
+                  apitrkr:
+                    type: string
+                    example: "apisetu"
+                  deptid:
+                    type: string
+                    example: "389"
+                  did:
+                    type: string
+                    example: "1"
+                  subsid:
+                    type: string
+                    example: "0"
+                  subsid2:
+                    type: string
+                    example: "0"
+                  formtrkr:
+                    type: string
+                    example: "0"
+                  dstcd:
+                    type: string
+                    example: "1102"
+      
+      responses:
+        200:
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  rs:
+                    type: string
+                    example: "S"
+                  rc:
+                    type: string
+                    example: "200"
+                  rd:
+                    type: string
+                    example: "Success."
+                  pd:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        blkcd:
+                          type: string
+                        blkname:
+                          type: string
+                    example:
+                      -  blkcd: "110207"
+                         blkname: "BERMIOK MARTAM"
+                      -  blkcd: "110208"
+                         blkname: "CHONGRANG"
+                      -  blkcd: "110209"
+                         blkname: "CHUMBONG"
+                      -  blkcd: "110205"
+                         blkname: "DARAMDIN"
+                      -  blkcd: "110204"
+                         blkname: "DENTAM"
+                      -  blkcd: "110201"
+                         blkname: "GYALSHING"
+                      -  blkcd: "110203"
+                         blkname: "KALUK"
+                      -  blkcd: "110210"
+                         blkname: "MANGALBARIA"
+                      -  blkcd: "110202"
+                         blkname: "SORENG"
+                      -  blkcd: "110206"
+                         blkname: "YUKSAM"
+
+   
+        400:
+          description: Bad Request/Validation Error
+
+  /umang/apisetu/dept/cwsnapi/ws1/umangdisable:
+    post:
+      tags:
+      - Umang Disability Web API
+      summary: Get the thedisability details with disability name and respective code using this api
+      description: This api is used to get the disability details with disability name and respective code
+      operationId: umang/apisetu/dept/cwsnapi/ws1/umangdisable
+      parameters:
+        - in: header
+          name: deptid
+          schema:
+            type: integer
+            example: 389
+        - in: header
+          name: srvid
+          schema:
+            type: integer
+            example: 2256
+        - in: header
+          name: Content-Type
+          schema:
+            type: string
+            example: "application/json"
+        - in: header
+          name: subsid
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: subsid2
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: formtrkr
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: x-api-key
+          schema:
+            type: string
+            example: "qkNR1lrrtAar7k1rzNTFk2VE0JilvnDf2tHMU9wh"
+
+      requestBody:
+        content:
+          application/json:
+            schema:
+
+              properties:
+                  tkn:
+                    type: string
+                    example: "hpc6bdf765-a320-4918-bdfd-3bea7347d173/3"
+                  trkr:
+                    type: string
+                    example: "W-23456789"
+                  lang:
+                    type: string
+                    example: "en"
+                  lat:
+                    type: string
+                    example: "90"
+                  lon:
+                    type: string
+                    example: "90"
+                  lac:
+                    type: string
+                    example: "90"
+                  usag:
+                    type: string
+                    example: "1"
+                  usrid:
+                    type: string
+                    example: "10001201"
+                  srvid:
+                    type: string
+                    example: "2256"
+                  mode:
+                    type: string
+                    example: "web"
+                  pltfrm:
+                    type: string
+                    example: "apisetu"
+                  apitrkr:
+                    type: string
+                    example: "1"
+                  deptid:
+                    type: string
+                    example: "389"
+                  did:
+                    type: string
+                    example: "1"
+                  subsid:
+                    type: string
+                    example: "0"
+                  subsid2:
+                    type: string
+                    example: "0"
+                  formtrkr:
+                    type: string
+                    example: "0"
+      
+      responses:
+        200:
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  rs:
+                    type: string
+                    example: "S"
+                  rc:
+                    type: string
+                    example: "200"
+                  rd:
+                    type: string
+                    example: "Success."
+                  pd:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        dtyp:
+                          type: string
+                        dname:
+                          type: string
+                    example:
+                      -  dtyp: "22"
+                         dname: "Acid Attack Victim"
+                      -  dtyp: "10"
+                         dname: "Autism Spectrum Disorder"
+                      -  dtyp: "1"
+                         dname: "Blindness"
+                      -  dtyp: "9"
+                         dname: "Cerebal Palsy"
+                      -  dtyp: "17"
+                         dname: "Chronic Neurological condition"
+                      -  dtyp: "14"
+                         dname: "Dwarfism"
+                      -  dtyp: "3"
+                         dname: "Hearing Impaired (deaf & HOH)"
+                      -  dtyp: "20"
+                         dname: "Hemophilia"
+                      -  dtyp: "15"
+                         dname: "Intellectual Disability"
+                      -  dtyp: "12"
+                         dname: "Leprosy Cured Person"
+                      -  dtyp: "5"
+                         dname: "Locomotor Disability"
+                      -  dtyp: "2"
+                         dname: "Low Vision"
+                      -  dtyp: "7"
+                         dname: "Mental Retardation"
+                      -  dtyp: "8"
+                         dname: "Mental illness"
+                      -  dtyp: "11"
+                         dname: "Multiple Disability incl. DB"
+                      -  dtyp: "18"
+                         dname: "Multiple Sclerosis"
+                      -  dtyp: "16"
+                         dname: "Muscular Dystrophy"
+                      -  dtyp: "6"
+                         dname: "Orthopedic"
+                      -  dtyp: "23"
+                         dname: "Parkinson's disease"
+                      -  dtyp: "21"
+                         dname: "Sickle Cell disease"
+                      -  dtyp: "13"
+                         dname: "Specific Learning Disability"
+                      -  dtyp: "4"
+                         dname: "Speech and Language"
+                      -  dtyp: "19"
+                         dname: "Thalassemia"
+
+   
+        400:
+          description: Bad Request/Validation Error
+
+  /umang/apisetu/dept/cwsnapi/ws1/Insert:
+    post:
+      tags:
+      - Insert Web API
+      summary: Submit the grievance using this insert web api
+      description: This api is used to submit the grievance
+      operationId: umang/apisetu/dept/cwsnapi/ws1/Insert
+      parameters:
+        - in: header
+          name: deptid
+          schema:
+            type: integer
+            example: 389
+        - in: header
+          name: srvid
+          schema:
+            type: integer
+            example: 2257
+        - in: header
+          name: Content-Type
+          schema:
+            type: string
+            example: "application/json"
+        - in: header
+          name: subsid
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: subsid2
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: formtrkr
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: x-api-key
+          schema:
+            type: string
+            example: "qkNR1lrrtAar7k1rzNTFk2VE0JilvnDf2tHMU9wh"
+
+      requestBody:
+        content:
+          application/json:
+            schema:
+
+              properties:
+                  tkn:
+                    type: string
+                    example: "hpc6bdf765-a320-4918-bdfd-3bea7347d173/3"
+                  trkr:
+                    type: string
+                    example: "W-23456789"
+                  lang:
+                    type: string
+                    example: "en"
+                  lat:
+                    type: string
+                    example: "90"
+                  lon:
+                    type: string
+                    example: "90"
+                  lac:
+                    type: string
+                    example: "90"
+                  usag:
+                    type: string
+                    example: "1"
+                  usrid:
+                    type: string
+                    example: "10001201"
+                  srvid:
+                    type: string
+                    example: "2257"
+                  mode:
+                    type: string
+                    example: "web"
+                  pltfrm:
+                    type: string
+                    example: "apisetu"
+                  apitrkr:
+                    type: string
+                    example: "1"
+                  deptid:
+                    type: string
+                    example: "389"
+                  did:
+                    type: string
+                    example: "1"
+                  subsid:
+                    type: string
+                    example: "0"
+                  subsid2:
+                    type: string
+                    example: "0"
+                  formtrkr:
+                    type: string
+                    example: "0"
+                  slno:
+                    type: string
+                    example: "1"
+                  dt_of_griev:
+                    type: string
+                    example: "20/12/2022"
+                  stcd:
+                    type: string
+                    example: "11"
+                  dstcd:
+                    type: string
+                    example: "1102"
+                  blkcd:
+                    type: string
+                    example: "110201"
+                  vil_nm:
+                    type: string
+                    example: "kurasti kalan"
+                  sch_nm:
+                    type: string
+                    example: "kurasti kal ps"
+                  sch_typ:
+                    type: string
+                    example: "4"
+                  stud_nm:
+                    type: string
+                    example: "mohit"
+                  father_nm:
+                    type: string
+                    example: "ved prakash"
+                  cls:
+                    type: string
+                    example: "3"
+                  disab_typ:
+                    type: string
+                    example: "4"
+                  grievances:
+                    type: string
+                    example: "gggggggg"
+      
+      responses:
+        200:
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  rs:
+                    type: string
+                    example: "S"
+                  rc:
+                    type: string
+                    example: "200"
+                  rd:
+                    type: string
+                    example: "Success."
+                  pd:
+                    type: object
+                    properties:
+                      message: 
+                        type: string                        
+                        example: "The Grievance is submitted successfully!"
+
+   
+        400:
+          description: Bad Request/Validation Error
+
+  /umang/apisetu/dept/cwsnapi/ws1/trackStatus:
+    post:
+      tags:
+      - Track Status Web API
+      summary: Track status with usingstudent details using this api
+      description: This api is used to track status using student details
+      operationId: umang/apisetu/dept/cwsnapi/ws1/trackStatus
+      parameters:
+        - in: header
+          name: Content-Type
+          schema:
+            type: string
+            example: "application/json"
+        - in: header
+          name: deptid
+          schema:
+            type: integer
+            example: 389
+        - in: header
+          name: srvid
+          schema:
+            type: integer
+            example: 2027
+        - in: header
+          name: subsid
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: subsid2
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: formtrkr
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: x-api-key
+          schema:
+            type: string
+            example: "qkNR1lrrtAar7k1rzNTFk2VE0JilvnDf2tHMU9wh"
+
+      requestBody:
+        content:
+          application/json:
+            schema:
+
+              properties:
+                  tkn:
+                    type: string
+                    example: "baff617eab-13f5-4145-97fb-79b87fdbea81/1"
+                  trkr:
+                    type: string
+                    example: "W-23456789"
+                  lang:
+                    type: string
+                    example: "en"
+                  lat:
+                    type: string
+                    example: "27.138700"
+                  lon:
+                    type: string
+                    example: "77.783897"
+                  lac:
+                    type: string
+                    example: "90"
+                  usag:
+                    type: string
+                    example: "90"
+                  usrid:
+                    type: string
+                    example: "4006891151"
+                  mode:
+                    type: string
+                    example: "web"
+                  pltfrm:
+                    type: string
+                    example: "apisetu"
+                  did:
+                    type: string
+                    example: null
+                  deptid:
+                    type: string
+                    example: "389"
+                  formtrkr:
+                    type: string
+                    example: "0"
+                  srvid:
+                    type: string
+                    example: "2027"
+                  subsid:
+                    type: string
+                    example: "0"
+                  subsid2:
+                    type: string
+                    example: "0"
+                  stcd:
+                    type: string
+                    example: "04"
+                  stid:
+                    type: string
+                    example: "ROHITKUMARSURESHKUMAR24/07/2006"
+      
+      responses:
+        200:
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  rs:
+                    type: string
+                    example: "S"
+                  rc:
+                    type: string
+                    example: "200"
+                  rd:
+                    type: string
+                    example: "Success."
+                  pd:
+                    type: array
+                    example: []
+
+   
+        400:
+          description: Bad Request/Validation Error
+components:
+  securitySchemes:
+    x-api-key:
+      type: apiKey
+      name: x-api-key
+      in: header
+
+
+
+
+
+
+
+
