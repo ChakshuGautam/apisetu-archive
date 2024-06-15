@@ -1,0 +1,3030 @@
+openapi: 3.0.1
+info:
+  title: Swachh Bharat Mission
+  description: |-
+      Swachh Bharat Mission, the world’s largest sanitation initiative was launched by the Prime Minister of India in 2014 to achieve an Open Defecation Free India by October 2, 2019, as a tribute to Mahatma Gandhi. The programme led to the construction of over 10 crore individual household toilets, taking sanitation coverage from 39% in 2014 to 100% in 2019 when around 6 lakh villages declared themselves Open Defecation Free (ODF). While studies indicate that the SBM-G campaign led to significant economic, environmental and health impacts, contributing to the empowerment of women in particular, it also led to the achievement of SDG 6.2 (Sanitation and Hygiene), 11 years ahead of the stipulated timeline. The Government of India in February 2020, approved Phase-II of the SBM-G with a total outlay of Rs. 1,40,881 crores to focus on the sustainability of the ODF status and to cover the villages with Solid and Liquid Waste Management (SLWM) that would transform villages from ODF to ODF Plus by 2024-25. To achieve the goal of ODF Plus villages, focus is given to providing access to IHHLs to left-out and newly emerging households; Biodegradable Waste Management through composting and setting up of Biogas plants; collection, segregation, and storage facilities for plastic waste management; construction of soak pits, waste stabilization ponds, DEWATS, etc. for Greywater Management; and Faecal Sludge Management through co-treatment in existing Sewage Treatment Plants/Faecal Sludge Treatment Plants (STPs/ FSTPs) in peri-urban areas and setting up of FSTPs under the programme. There are 3 progressive stages of ODF Plus villages. While a village that sustains its ODF status and has arrangements for Solid Waste Management or Liquid Waste Management is considered an ODF Plus Aspiring village; a village that sustains its ODF status and has arrangements both Solid Waste Management or Liquid Waste Management is an ODF Plus Rising village. On the other hand, an ODF Plus Model village is one that sustains its ODF status and has arrangements for both Solid Waste Management and Liquid Waste Management; observes visual cleanliness, i.e., minimal litter, minimal stagnant wastewater, no plastic waste dump in public places; and displays ODF Plus Information, Education and Communication (IEC) messages. As per the IMIS of DDWS in October 2023, over 78 per cent of the villages have declared themselves ODF Plus. DDWS has been implementing various innovative campaigns to accelerate momentum, that while achieving ODF Plus goals would lead to a cleaner, greener and healthier nation. As always, community participation has been integral to the success of the campaign. In the Swachhata Hi Seva 2023, more than 109 crore individuals and 71 Ministries and Departments of GOI participated in the nationwide campaign over an 18-day period, averaging around 6 crore people participation per day across the country. 
+      
+          
+          
+            <i>[Updated on 21st March 2024]</i>
+  contact:
+    name: Provided by - UMANG
+    url: https://apigw.umangapp.in
+  version: 1.0.0
+servers:
+- url: https://apigw.umangapp.in
+
+security: 
+  - x-api-key: []
+
+paths:
+  /umang/apisetu/dept/sbmapi/ws1/Version:
+    post:
+      tags:
+      - Version Information Web API
+      summary: Get the version information using this api
+      description: This api is used to get the version information
+      operationId: umang/apisetu/dept/sbmapi/ws1/Version
+      
+      parameters:
+        - in: header
+          name: Content-Type
+          schema:
+            type: string
+            example: "application/x-www-form-urlencoded"
+        - in: header
+          name: x-api-key
+          schema:
+            type: string
+            example: "qkNR1lrrtAaxxxxxlvnDf2tHMU9wh"
+        - in: header
+          name: deptid
+          schema:
+            type: integer
+            example: 188
+        - in: header
+          name: srvid
+          schema:
+            type: integer
+            example: 1173
+        - in: header
+          name: subsid
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: subsid2
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: formtrkr
+          schema:
+            type: integer
+            example: 0
+
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+
+              properties:
+                  tkn:
+                    type: string
+                    example: "xkd8aeb0d8-b0c1-49f3-9bd3-d49a3aaf6d63/1"
+                  trkr:
+                    type: string
+                    example: "213132"
+                  lang:
+                    type: string
+                    example: "en"
+                  usrid:
+                    type: string
+                    example: "09"
+                  srvid:
+                    type: string
+                    example: "1173"
+                  mode:
+                    type: string
+                    example: "web"
+                  pltfrm:
+                    type: string
+                    example: "apisetu"
+                  did:
+                    type: string
+                    example: ""
+                  deptid:
+                    type: string
+                    example: "188"
+                  subsid:
+                    type: string
+                    example: "0"
+                  subsid2:
+                    type: string
+                    example: "0"
+                  formtrkr:
+                    type: string
+                    example: "0"
+      
+      responses:
+        200:
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  rs:
+                    type: string
+                    example: "S"
+                  rc:
+                    type: string
+                    example: "200"
+                  rd:
+                    type: string
+                    example: "Success."
+                  pd:
+                    type: object
+                    properties:
+                      VersionNo: 
+                        type: string                        
+                        example: "1.0.0.1"
+
+   
+        400:
+          description: Bad Request/Validation Error
+
+  /umang/apisetu/dept/sbmapi/ws1/State:
+    post:
+      tags:
+      - State List Web API
+      summary: Get the state list using this api
+      description: This api is used to get the state list
+      operationId: umang/apisetu/dept/sbmapi/ws1/State
+      
+      parameters:
+        - in: header
+          name: Content-Type
+          schema:
+            type: string
+            example: "application/x-www-form-urlencoded"
+        - in: header
+          name: x-api-key
+          schema:
+            type: string
+            example: "qkNR1lrrxxxxDf2tHMU9wh"
+        - in: header
+          name: deptid
+          schema:
+            type: integer
+            example: 188
+        - in: header
+          name: srvid
+          schema:
+            type: integer
+            example: 1173
+        - in: header
+          name: subsid
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: subsid2
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: formtrkr
+          schema:
+            type: integer
+            example: 0
+
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+
+              properties:
+                  tkn:
+                    type: string
+                    example: "xkd8aeb0d8-b0c1-49f3-9bd3-d49a3aaf6d63/1"
+                  trkr:
+                    type: string
+                    example: "213132"
+                  lang:
+                    type: string
+                    example: "en"
+                  usrid:
+                    type: string
+                    example: "09"
+                  srvid:
+                    type: string
+                    example: "1173"
+                  mode:
+                    type: string
+                    example: "web"
+                  pltfrm:
+                    type: string
+                    example: "apisetu"
+                  did:
+                    type: string
+                    example: ""
+                  deptid:
+                    type: string
+                    example: "188"
+                  subsid:
+                    type: string
+                    example: "0"
+                  subsid2:
+                    type: string
+                    example: "0"
+                  formtrkr:
+                    type: string
+                    example: "0"
+      
+      responses:
+        200:
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  rs:
+                    type: string
+                    example: "S"
+                  rc:
+                    type: string
+                    example: "200"
+                  rd:
+                    type: string
+                    example: "Success."
+                  pd:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        StateCode:
+                          type: string
+                        StateName:
+                          type: string
+                    example:
+                      -  StateCode: "35"
+                         StateName: "Andaman & Nicobar Islands"
+                      -  StateCode: "28"
+                         StateName: "Andhra Pradesh"
+                      -  StateCode: "12"
+                         StateName: "Arunachal Pradesh"
+                      -  StateCode: "18"
+                         StateName: "Assam"
+                      -  StateCode: "10"
+                         StateName: "Bihar"
+                      -  StateCode: "4"
+                         StateName: "Chandigarh"
+                      -  StateCode: "22"
+                         StateName: "Chhattisgarh"
+                      -  StateCode: "26"
+                         StateName: "Dadra & Nagar Haveli"
+                      -  StateCode: "25"
+                         StateName: "Daman & Diu"
+                      -  StateCode: "7"
+                         StateName: "Delhi"
+                      -  StateCode: "99"
+                         StateName: "Demo State"
+                      -  StateCode: "30"
+                         StateName: "Goa"
+                      -  StateCode: "24"
+                         StateName: "Gujarat"
+                      -  StateCode: "6"
+                         StateName: "Haryana"
+                      -  StateCode: "2"
+                         StateName: "Himachal Pradesh"
+                      -  StateCode: "1"
+                         StateName: "Jammu & Kashmir"
+                      -  StateCode: "20"
+                         StateName: "Jharkhand"
+                      -  StateCode: "29"
+                         StateName: "Karnataka"
+                      -  StateCode: "32"
+                         StateName: "Kerala"
+                      -  StateCode: "31"
+                         StateName: "Lakshadweep"
+                      -  StateCode: "23"
+                         StateName: "Madhya Pradesh"
+                      -  StateCode: "27"
+                         StateName: "Maharashtra"
+                      -  StateCode: "14"
+                         StateName: "Manipur "
+                      -  StateCode: "17"
+                         StateName: "Meghalaya"
+                      -  StateCode: "15"
+                         StateName: "Mizoram"
+                      -  StateCode: "13"
+                         StateName: "Nagaland"
+                      -  StateCode: "21"
+                         StateName: "Odisha"
+                      -  StateCode: "34"
+                         StateName: "Puducherry "
+                      -  StateCode: "3"
+                         StateName: "Punjab"
+                      -  StateCode: "8"
+                         StateName: "Rajasthan"
+                      -  StateCode: "11"
+                         StateName: "Sikkim"
+                      -  StateCode: "33"
+                         StateName: "Tamil Nadu"
+                      -  StateCode: "36"
+                         StateName: "Telangana"
+                      -  StateCode: "16"
+                         StateName: "Tripura"
+                      -  StateCode: "9"
+                         StateName: "Uttar Pradesh"
+                      -  StateCode: "5"
+                         StateName: "Uttarakhand"
+                      -  StateCode: "19"
+                         StateName: "West Bengal"
+
+   
+        400:
+          description: Bad Request/Validation Error
+
+  /umang/apisetu/dept/sbmapi/ws1/CheckAppId:
+    post:
+      tags:
+      - Application ID Web API
+      summary: Check the application id using this api
+      description: This api is used to check the application id
+      operationId: umang/apisetu/dept/sbmapi/ws1/CheckAppId
+     
+      parameters:
+        - in: header
+          name: Content-Type
+          schema:
+            type: string
+            example: "application/x-www-form-urlencoded"
+        - in: header
+          name: x-api-key
+          schema:
+            type: string
+            example: "qkNR1lrrxxxxDf2tHMU9wh"
+        - in: header
+          name: deptid
+          schema:
+            type: integer
+            example: 188
+        - in: header
+          name: srvid
+          schema:
+            type: integer
+            example: 1133
+        - in: header
+          name: subsid
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: subsid2
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: formtrkr
+          schema:
+            type: integer
+            example: 0
+
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+
+              properties:
+                  tkn:
+                    type: string
+                    example: "xkd8aeb0d8-b0c1-49f3-9bd3-d49a3aaf6d63/1"
+                  trkr:
+                    type: string
+                    example: "213132"
+                  lang:
+                    type: string
+                    example: "en"
+                  usrid:
+                    type: string
+                    example: "09"
+                  srvid:
+                    type: string
+                    example: "1133"
+                  mode:
+                    type: string
+                    example: "web"
+                  pltfrm:
+                    type: string
+                    example: "apisetu"
+                  did:
+                    type: string
+                    example: ""
+                  deptid:
+                    type: string
+                    example: "188"
+                  subsid:
+                    type: string
+                    example: "0"
+                  subsid2:
+                    type: string
+                    example: "0"
+                  formtrkr:
+                    type: string
+                    example: "0"
+                  StateCode:
+                    type: string
+                    example: "9"
+                  ApplicationID:
+                    type: string
+                    example: "UP1500000002"
+      
+      responses:
+        200:
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  rs:
+                    type: string
+                    example: "S"
+                  rc:
+                    type: string
+                    example: "200"
+                  rd:
+                    type: string
+                    example: "Success."
+                  pd:
+                    type: object
+                    properties:
+                      Status: 
+                        type: string                        
+                        example: "TRUE"
+                      Message: 
+                        type: string                        
+                        example: "Application ID: UP1500000002"
+
+   
+        400:
+          description: Bad Request/Validation Error
+
+  /umang/apisetu/dept/sbmapi/ws1/ProfileInfo:
+    post:
+      tags:
+      - Application Id Profile Details Web API
+      summary: Get the application id details and profile information using this api
+      description: This api is used to get the application id details as profile information
+      operationId: umang/apisetu/dept/sbmapi/ws1/ProfileInfo
+      
+      parameters:
+        - in: header
+          name: Content-Type
+          schema:
+            type: string
+            example: "application/x-www-form-urlencoded"
+        - in: header
+          name: x-api-key
+          schema:
+            type: string
+            example: "qkNR1lrrxxxxDf2tHMU9wh"
+        - in: header
+          name: deptid
+          schema:
+            type: integer
+            example: 188
+        - in: header
+          name: srvid
+          schema:
+            type: integer
+            example: 1133
+        - in: header
+          name: subsid
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: subsid2
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: formtrkr
+          schema:
+            type: integer
+            example: 0
+
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+
+              properties:
+                  StateCode:
+                    type: string
+                    example: "9"
+                  ApplicationID:
+                    type: string
+                    example: "UP1500000002"
+                  tkn:
+                    type: string
+                    example: "xkd8aeb0d8-b0c1-49f3-9bd3-d49a3aaf6d63/1"
+                  trkr:
+                    type: string
+                    example: "213132"
+                  lang:
+                    type: string
+                    example: "en"
+                  usrid:
+                    type: string
+                    example: "09"
+                  srvid:
+                    type: string
+                    example: "1133"
+                  mode:
+                    type: string
+                    example: "web"
+                  pltfrm:
+                    type: string
+                    example: "apisetu"
+                  did:
+                    type: string
+                    example: ""
+                  deptid:
+                    type: string
+                    example: "188"
+                  subsid:
+                    type: string
+                    example: "0"
+                  subsid2:
+                    type: string
+                    example: "0"
+                  formtrkr:
+                    type: string
+                    example: "0"
+      
+      responses:
+        200:
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  rs:
+                    type: string
+                    example: "S"
+                  rc:
+                    type: string
+                    example: "200"
+                  rd:
+                    type: string
+                    example: "Success."
+                  pd:
+                    type: object
+                    properties:
+                      ApplicationID: 
+                        type: string                        
+                        example: "UP1500000002"
+                      StateCode: 
+                        type: string                        
+                        example: "9"
+                      DistrictCode: 
+                        type: string                        
+                        example: "653"
+                      ULBCode: 
+                        type: string                        
+                        example: "800645"
+                      WardNo: 
+                        type: string                        
+                        example: "22"
+                      ApplicantName: 
+                        type: string                        
+                        example: "deepaksharma"
+                      ResidentialAdd: 
+                        type: string                        
+                        example: "vpolilon near shamlidisstshamli"
+                      IsCommencedPhoto: 
+                        type: string                        
+                        example: "0"
+                      IsConstructedPhoto: 
+                        type: string                        
+                        example: "0"
+                      ApplicationCurrStat: 
+                        type: string                        
+                        example: "3"
+                      ApplicationCurrStatDesc: 
+                        type: string                        
+                        example: "REJECTED"
+                      ToiletCurrStat: 
+                        type: string                        
+                        example: ""
+                      ToiletCurrStatDesc: 
+                        type: string                        
+                        example: ""
+                      PaymentPh1Done: 
+                        type: string                        
+                        example: ""
+                      PaymentPh2Done: 
+                        type: string                        
+                        example: ""
+                      PaymentPh1DoneDesc: 
+                        type: string                        
+                        example: "Not Available"
+                      PaymentPh2DoneDesc: 
+                        type: string                        
+                        example: "Not Available"
+
+   
+        400:
+          description: Bad Request/Validation Error
+
+  /umang/apisetu/dept/sbmapi/ws1/VersionNew:
+    post:
+      tags:
+      - New Version Information Web API
+      summary: Get the new version information using this api
+      description: This api is used to get the new version information
+      operationId: umang/apisetu/dept/sbmapi/ws1/VersionNew
+      
+      parameters:
+        - in: header
+          name: Content-Type
+          schema:
+            type: string
+            example: "application/x-www-form-urlencoded"
+        - in: header
+          name: x-api-key
+          schema:
+            type: string
+            example: "qkNR1lrrxxxxDf2tHMU9wh"
+        - in: header
+          name: deptid
+          schema:
+            type: integer
+            example: 188
+        - in: header
+          name: srvid
+          schema:
+            type: integer
+            example: 1173
+        - in: header
+          name: subsid
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: subsid2
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: formtrkr
+          schema:
+            type: integer
+            example: 0
+
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+
+              properties:
+                  tkn:
+                    type: string
+                    example: "ce9e51df71-49ac-4109-b354-960a9f4bbbd6/1"
+                  trkr:
+                    type: string
+                    example: "213132"
+                  lang:
+                    type: string
+                    example: "en"
+                  usrid:
+                    type: string
+                    example: "09"
+                  srvid:
+                    type: string
+                    example: "1173"
+                  mode:
+                    type: string
+                    example: "web"
+                  pltfrm:
+                    type: string
+                    example: "apisetu"
+                  did:
+                    type: string
+                    example: ""
+                  deptid:
+                    type: string
+                    example: "188"
+                  subsid:
+                    type: string
+                    example: "0"
+                  subsid2:
+                    type: string
+                    example: "0"
+                  formtrkr:
+                    type: string
+                    example: "0"
+                  InputEnData:
+                    type: string
+                    example: "Encypted string of Deptartment parameter"
+      
+      responses:
+        200:
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  rs:
+                    type: string
+                    example: "S"
+                  rc:
+                    type: string
+                    example: "200"
+                  rd:
+                    type: string
+                    example: "Success."
+                  pd:
+                    type: object
+                    properties:
+                      OutEnData: 
+                        type: string                        
+                        example: ""
+                      ErrorMessage: 
+                        type: string                        
+                        example: "Success"
+                      IsValid: 
+                        type: integer                        
+                        example: 0
+
+   
+        400:
+          description: Bad Request/Validation Error
+
+  /umang/apisetu/dept/sbmapi/ws1/RegStateList:
+    post:
+      tags:
+      - Registered State List Web API
+      summary: Get the registered state list information using this api
+      description: This api is used to get theregistered state list information
+      operationId: umang/apisetu/dept/sbmapi/ws1/RegStateList
+  
+      parameters:
+        - in: header
+          name: Content-Type
+          schema:
+            type: string
+            example: "application/x-www-form-urlencoded"
+        - in: header
+          name: x-api-key
+          schema:
+            type: string
+            example: "qkNR1lrrxxxxDf2tHMU9wh"
+        - in: header
+          name: deptid
+          schema:
+            type: integer
+            example: 188
+        - in: header
+          name: srvid
+          schema:
+            type: integer
+            example: 1173
+        - in: header
+          name: subsid
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: subsid2
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: formtrkr
+          schema:
+            type: integer
+            example: 0
+
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+
+              properties:
+                  tkn:
+                    type: string
+                    example: "ce9e51df71-49ac-4109-b354-960a9f4bbbd6/1"
+                  trkr:
+                    type: string
+                    example: "213132"
+                  lang:
+                    type: string
+                    example: "en"
+                  usrid:
+                    type: string
+                    example: "09"
+                  srvid:
+                    type: string
+                    example: "1173"
+                  mode:
+                    type: string
+                    example: "web"
+                  pltfrm:
+                    type: string
+                    example: "apisetu"
+                  did:
+                    type: string
+                    example: ""
+                  deptid:
+                    type: string
+                    example: "188"
+                  subsid:
+                    type: string
+                    example: "0"
+                  subsid2:
+                    type: string
+                    example: "0"
+                  formtrkr:
+                    type: string
+                    example: "0"
+                  InputEnData:
+                    type: string
+                    example: "Encypted string of Deptartment parameter"
+      
+      responses:
+        200:
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  rs:
+                    type: string
+                    example: "S"
+                  rc:
+                    type: string
+                    example: "200"
+                  rd:
+                    type: string
+                    example: "Success."
+                  pd:
+                    type: object
+                    properties:
+                      OutEnData: 
+                        type: string                        
+                        example: ""
+                      ErrorMessage: 
+                        type: string                        
+                        example: "Success"
+                      IsValid: 
+                        type: string                        
+                        example: "0"
+
+   
+        400:
+          description: Bad Request/Validation Error
+
+  /umang/apisetu/dept/sbmapi/ws1/RegIDTypeList:
+    post:
+      tags:
+      - Registered ID Type List Web API
+      summary: Get the registered id type list information using this api
+      description: This api is used to get the registered id type list information
+      operationId: umang/apisetu/dept/sbmapi/ws1/RegIDTypeList
+
+      parameters:
+        - in: header
+          name: x-api-key
+          schema:
+            type: string
+            example: "qkNR1lrrxxxxDf2tHMU9wh"
+        - in: header
+          name: deptid
+          schema:
+            type: integer
+            example: 188
+        - in: header
+          name: srvid
+          schema:
+            type: integer
+            example: 1173
+        - in: header
+          name: subsid
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: subsid2
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: formtrkr
+          schema:
+            type: integer
+            example: 0
+
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+
+              properties:
+                  tkn:
+                    type: string
+                    example: "ce9e51df71-49ac-4109-b354-960a9f4bbbd6/1"
+                  trkr:
+                    type: string
+                    example: "213132"
+                  lang:
+                    type: string
+                    example: "en"
+                  usrid:
+                    type: string
+                    example: "09"
+                  srvid:
+                    type: string
+                    example: "1173"
+                  mode:
+                    type: string
+                    example: "web"
+                  pltfrm:
+                    type: string
+                    example: "apisetu"
+                  did:
+                    type: string
+                    example: ""
+                  deptid:
+                    type: string
+                    example: "188"
+                  subsid:
+                    type: string
+                    example: "0"
+                  subsid2:
+                    type: string
+                    example: "0"
+                  formtrkr:
+                    type: string
+                    example: "0"
+                  InputEnData:
+                    type: string
+                    example: "Encypted string of Deptartment parameter"
+      
+      responses:
+        200:
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  rs:
+                    type: string
+                    example: "S"
+                  rc:
+                    type: string
+                    example: "200"
+                  rd:
+                    type: string
+                    example: "Success."
+                  pd:
+                    type: object
+                    properties:
+                      OutEnData: 
+                        type: string                        
+                        example: ""
+                      ErrorMessage: 
+                        type: string                        
+                        example: "Success"
+                      IsValid: 
+                        type: integer                        
+                        example: 0
+
+   
+        400:
+          description: Bad Request/Validation Error
+
+  /umang/apisetu/dept/sbmapi/ws1/Registration:
+    post:
+      tags:
+      - Registration Web API
+      summary: Register to the swachhbharat mission using this api
+      description: This api is used to register to swachhbharatmission
+      operationId: umang/apisetu/dept/sbmapi/ws1/Registration
+
+      parameters:
+        - in: header
+          name: Content-Type
+          schema:
+            type: string
+            example: "application/x-www-form-urlencoded"
+        - in: header
+          name: x-api-key
+          schema:
+            type: string
+            example: "qkNR1lrrxxxxDf2tHMU9wh"
+        - in: header
+          name: deptid
+          schema:
+            type: integer
+            example: 188
+        - in: header
+          name: srvid
+          schema:
+            type: integer
+            example: 1173
+        - in: header
+          name: subsid
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: subsid2
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: formtrkr
+          schema:
+            type: integer
+            example: 0
+
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+
+              properties:
+                  tkn:
+                    type: string
+                    example: "ce9e51df71-49ac-4109-b354-960a9f4bbbd6/1"
+                  trkr:
+                    type: string
+                    example: "213132"
+                  lang:
+                    type: string
+                    example: "en"
+                  usrid:
+                    type: string
+                    example: "09"
+                  srvid:
+                    type: string
+                    example: "1173"
+                  mode:
+                    type: string
+                    example: "web"
+                  pltfrm:
+                    type: string
+                    example: "apisetu"
+                  did:
+                    type: string
+                    example: ""
+                  deptid:
+                    type: string
+                    example: "188"
+                  subsid:
+                    type: string
+                    example: "0"
+                  subsid2:
+                    type: string
+                    example: "0"
+                  formtrkr:
+                    type: string
+                    example: "0"
+                  InputEnData:
+                    type: string
+                    example: "Encypted string of Deptartment parameter"
+      
+      responses:
+        200:
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  rs:
+                    type: string
+                    example: "S"
+                  rc:
+                    type: string
+                    example: "200"
+                  rd:
+                    type: string
+                    example: "Success."
+                  pd:
+                    type: object
+                    properties:
+                      OutEnData: 
+                        type: string                        
+                        example: ""
+                      ErrorMessage: 
+                        type: string                        
+                        example: "Success"
+                      IsValid: 
+                        type: integer                        
+                        example: 0
+
+  /umang/apisetu/dept/sbmapi/ws1/otp:
+    post:
+      tags:
+      - OTP Web API
+      summary: Get the otp to registered mobile number using this api
+      description: This api is used to get the otp to registered mobile number
+      operationId: umang/apisetu/dept/sbmapi/ws1/otp
+
+      parameters:
+        - in: header
+          name: Content-Type
+          schema:
+            type: string
+            example: "application/x-www-form-urlencoded"
+        - in: header
+          name: x-api-key
+          schema:
+            type: string
+            example: "qkNR1lrrxxxxDf2tHMU9wh"
+        - in: header
+          name: deptid
+          schema:
+            type: integer
+            example: 188
+        - in: header
+          name: srvid
+          schema:
+            type: integer
+            example: 1173
+        - in: header
+          name: subsid
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: subsid2
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: formtrkr
+          schema:
+            type: integer
+            example: 0
+
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+
+              properties:
+                  tkn:
+                    type: string
+                    example: "ce9e51df71-49ac-4109-b354-960a9f4bbbd6/1"
+                  trkr:
+                    type: string
+                    example: "213132"
+                  lang:
+                    type: string
+                    example: "en"
+                  usrid:
+                    type: string
+                    example: "09"
+                  srvid:
+                    type: string
+                    example: "1173"
+                  mode:
+                    type: string
+                    example: "web"
+                  pltfrm:
+                    type: string
+                    example: "apisetu"
+                  did:
+                    type: string
+                    example: ""
+                  deptid:
+                    type: string
+                    example: "188"
+                  subsid:
+                    type: string
+                    example: "0"
+                  subsid2:
+                    type: string
+                    example: "0"
+                  formtrkr:
+                    type: string
+                    example: "0"
+                  InputEnData:
+                    type: string
+                    example: "Encypted string of Deptartment parameter"
+      
+      responses:
+        200:
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  rs:
+                    type: string
+                    example: "S"
+                  rc:
+                    type: string
+                    example: "200"
+                  rd:
+                    type: string
+                    example: "Success."
+                  pd:
+                    type: object
+                    properties:
+                      Token: 
+                        type: string                        
+                        example: null
+                      ErrorMessage: 
+                        type: string                        
+                        example: "Invalid Input!!!"
+                      IsValid: 
+                        type: string                        
+                        example: "1"
+
+   
+        400:
+          description: Bad Request/Validation Error
+
+  /umang/apisetu/dept/sbmapi/ws1/OTPVerify:
+    post:
+      tags:
+      - OTP Verify Web API
+      summary: Verify the otpusing this api
+      description: This api is used to verify the otp
+      operationId: umang/apisetu/dept/sbmapi/ws1/OTPVerify
+
+      parameters:
+        - in: header
+          name: Content-Type
+          schema:
+            type: string
+            example: "application/x-www-form-urlencoded"
+        - in: header
+          name: x-api-key
+          schema:
+            type: string
+            example: "qkNR1lrrxxxxDf2tHMU9wh"
+        - in: header
+          name: deptid
+          schema:
+            type: integer
+            example: 188
+        - in: header
+          name: srvid
+          schema:
+            type: integer
+            example: 1173
+        - in: header
+          name: subsid
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: subsid2
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: formtrkr
+          schema:
+            type: integer
+            example: 0
+
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+
+              properties:
+                  tkn:
+                    type: string
+                    example: "ce9e51df71-49ac-4109-b354-960a9f4bbbd6/1"
+                  trkr:
+                    type: string
+                    example: "213132"
+                  lang:
+                    type: string
+                    example: "en"
+                  usrid:
+                    type: string
+                    example: "09"
+                  srvid:
+                    type: string
+                    example: "1173"
+                  mode:
+                    type: string
+                    example: "web"
+                  pltfrm:
+                    type: string
+                    example: "apisetu"
+                  did:
+                    type: string
+                    example: ""
+                  deptid:
+                    type: string
+                    example: "188"
+                  subsid:
+                    type: string
+                    example: "0"
+                  subsid2:
+                    type: string
+                    example: "0"
+                  formtrkr:
+                    type: string
+                    example: "0"
+                  InputEnData:
+                    type: string
+                    example: "Encypted string of Deptartment parameter"
+      
+      responses:
+        200:
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  rs:
+                    type: string
+                    example: "S"
+                  rc:
+                    type: string
+                    example: "200"
+                  rd:
+                    type: string
+                    example: "Success."
+                  pd:
+                    type: object
+                    properties:
+                      Token: 
+                        type: string                        
+                        example: null
+                      ErrorMessage: 
+                        type: string                        
+                        example: "Invalid OTP No."
+                      IsValid: 
+                        type: string                        
+                        example: "1"
+
+   
+        400:
+          description: Bad Request/Validation Error
+
+  /umang/apisetu/dept/sbmapi/ws1/UserProfileInfo:
+    post:
+      tags:
+      - User Profile Information Web API
+      summary: Get the user profile information using this api
+      description: This api is used to get the user profile information
+      
+      operationId: umang/apisetu/dept/sbmapi/ws1/UserProfileInfo
+
+      parameters:
+        - in: header
+          name: Content-Type
+          schema:
+            type: string
+            example: "application/x-www-form-urlencoded"
+        - in: header
+          name: x-api-key
+          schema:
+            type: string
+            example: "qkNR1lrrxxxxDf2tHMU9wh"
+        - in: header
+          name: deptid
+          schema:
+            type: integer
+            example: 188
+        - in: header
+          name: srvid
+          schema:
+            type: integer
+            example: 1178
+        - in: header
+          name: subsid
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: subsid2
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: formtrkr
+          schema:
+            type: integer
+            example: 0
+
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+
+              properties:
+                  tkn:
+                    type: string
+                    example: "ce9e51df71-49ac-4109-b354-960a9f4bbbd6/1"
+                  trkr:
+                    type: string
+                    example: "213132"
+                  lang:
+                    type: string
+                    example: "en"
+                  usrid:
+                    type: string
+                    example: "09"
+                  srvid:
+                    type: string
+                    example: "1178"
+                  mode:
+                    type: string
+                    example: "web"
+                  pltfrm:
+                    type: string
+                    example: "apisetu"
+                  did:
+                    type: string
+                    example: ""
+                  deptid:
+                    type: string
+                    example: "188"
+                  subsid:
+                    type: string
+                    example: "0"
+                  subsid2:
+                    type: string
+                    example: "0"
+                  formtrkr:
+                    type: string
+                    example: "0"
+                  InputEnData:
+                    type: string
+                    example: "Encypted string of Deptartment parameter"
+      
+      responses:
+        200:
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  rs:
+                    type: string
+                    example: "S"
+                  rc:
+                    type: string
+                    example: "200"
+                  rd:
+                    type: string
+                    example: "Success."
+                  pd:
+                    type: object
+                    properties:
+                      OutEnData: 
+                        type: string                        
+                        example: ""
+                      ErrorMessage: 
+                        type: string                        
+                        example: "Success"
+                      IsValid: 
+                        type: integer                        
+                        example: 0
+
+   
+        400:
+          description: Bad Request/Validation Error
+
+  /umang/apisetu/dept/sbmapi/ws1/UserProfileCommonListInfo:
+    post:
+      tags:
+      - User Profile Common List Information Web API
+      summary: Get the user profile common list information using this api
+      description: This api is used to get the user profile common list information using this api
+      operationId: umang/apisetu/dept/sbmapi/ws1/UserProfileCommonListInfo
+      
+      parameters:
+        - in: header
+          name: Content-Type
+          schema:
+            type: string
+            example: "application/x-www-form-urlencoded"
+        - in: header
+          name: x-api-key
+          schema:
+            type: string
+            example: "qkNR1lrrxxxxDf2tHMU9wh"
+        - in: header
+          name: deptid
+          schema:
+            type: integer
+            example: 188
+        - in: header
+          name: srvid
+          schema:
+            type: integer
+            example: 1178
+        - in: header
+          name: subsid
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: subsid2
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: formtrkr
+          schema:
+            type: integer
+            example: 0
+
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+
+              properties:
+                  tkn:
+                    type: string
+                    example: "ce9e51df71-49ac-4109-b354-960a9f4bbbd6/1"
+                  trkr:
+                    type: string
+                    example: "213132"
+                  lang:
+                    type: string
+                    example: "en"
+                  usrid:
+                    type: string
+                    example: "09"
+                  srvid:
+                    type: string
+                    example: "1178"
+                  mode:
+                    type: string
+                    example: "web"
+                  pltfrm:
+                    type: string
+                    example: "apisetu"
+                  did:
+                    type: string
+                    example: ""
+                  deptid:
+                    type: string
+                    example: "188"
+                  subsid:
+                    type: string
+                    example: "0"
+                  subsid2:
+                    type: string
+                    example: "0"
+                  formtrkr:
+                    type: string
+                    example: "0"
+                  InputEnData:
+                    type: string
+                    example: "Encypted string of Deptartment parameter"
+      
+      responses:
+        200:
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  rs:
+                    type: string
+                    example: "S"
+                  rc:
+                    type: string
+                    example: "200"
+                  rd:
+                    type: string
+                    example: "Success."
+                  pd:
+                    type: object
+                    properties:
+                      OutEnData: 
+                        type: string                        
+                        example: ""
+                      ErrorMessage: 
+                        type: string                        
+                        example: "Success"
+                      IsValid: 
+                        type: integer                        
+                        example: 0
+
+   
+        400:
+          description: Bad Request/Validation Error
+
+  /umang/apisetu/dept/sbmapi/ws1/UserProfileStateDistInfo:
+    post:
+      tags:
+      - User Profile District Information Web API
+      summary: Get the user profile district information using this api
+      description: This api is used to get the user profile district information
+      operationId: umang/apisetu/dept/sbmapi/ws1/UserProfileStateDistInfo
+      
+      parameters:
+        - in: header
+          name: Content-Type
+          schema:
+            type: string
+            example: "application/x-www-form-urlencoded"
+        - in: header
+          name: x-api-key
+          schema:
+            type: string
+            example: "qkNR1lrrxxxxDf2tHMU9wh"
+        - in: header
+          name: deptid
+          schema:
+            type: integer
+            example: 188
+        - in: header
+          name: srvid
+          schema:
+            type: integer
+            example: 1178
+        - in: header
+          name: subsid
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: subsid2
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: formtrkr
+          schema:
+            type: integer
+            example: 0
+
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+
+              properties:
+                  tkn:
+                    type: string
+                    example: "ce9e51df71-49ac-4109-b354-960a9f4bbbd6/1"
+                  trkr:
+                    type: string
+                    example: "213132"
+                  lang:
+                    type: string
+                    example: "en"
+                  usrid:
+                    type: string
+                    example: "09"
+                  srvid:
+                    type: string
+                    example: "1178"
+                  mode:
+                    type: string
+                    example: "web"
+                  pltfrm:
+                    type: string
+                    example: "apisetu"
+                  did:
+                    type: string
+                    example: ""
+                  deptid:
+                    type: string
+                    example: "188"
+                  subsid:
+                    type: string
+                    example: "0"
+                  subsid2:
+                    type: string
+                    example: "0"
+                  formtrkr:
+                    type: string
+                    example: "0"
+                  InputEnData:
+                    type: string
+                    example: "Encypted string of Deptartment parameter"
+      
+      responses:
+        200:
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  rs:
+                    type: string
+                    example: "S"
+                  rc:
+                    type: string
+                    example: "200"
+                  rd:
+                    type: string
+                    example: "Success."
+                  pd:
+                    type: object
+                    properties:
+                      OutEnData: 
+                        type: string                        
+                        example: ""
+                      ErrorMessage: 
+                        type: string                        
+                        example: "Success"
+                      IsValid: 
+                        type: integer                        
+                        example: 0
+
+   
+        400:
+          description: Bad Request/Validation Error
+
+  /umang/apisetu/dept/sbmapi/ws1/UserProfileStateDistULBInfo:
+    post:
+      tags:
+      - User Profile ULB Information Web API
+      summary: Get the user profile ulb information using this api
+      description: This api is used to get the user profile ulbinformation
+      operationId: umang/apisetu/dept/sbmapi/ws1/UserProfileStateDistULBInfo
+      
+      parameters:
+        - in: header
+          name: Content-Type
+          schema:
+            type: string
+            example: "application/x-www-form-urlencoded"
+        - in: header
+          name: x-api-key
+          schema:
+            type: string
+            example: "qkNR1lrrxxxxDf2tHMU9wh"
+        - in: header
+          name: deptid
+          schema:
+            type: integer
+            example: 188
+        - in: header
+          name: srvid
+          schema:
+            type: integer
+            example: 1178
+        - in: header
+          name: subsid
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: subsid2
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: formtrkr
+          schema:
+            type: integer
+            example: 0
+
+      requestBody:
+        content:
+          application/json:
+            schema:
+
+              properties:
+                  tkn:
+                    type: string
+                    example: "ce9e51df71-49ac-4109-b354-960a9f4bbbd6/1"
+                  trkr:
+                    type: string
+                    example: "213132"
+                  lang:
+                    type: string
+                    example: "en"
+                  usrid:
+                    type: string
+                    example: "09"
+                  srvid:
+                    type: string
+                    example: "1178"
+                  mode:
+                    type: string
+                    example: "web"
+                  pltfrm:
+                    type: string
+                    example: "apisetu"
+                  did:
+                    type: string
+                    example: ""
+                  deptid:
+                    type: string
+                    example: "188"
+                  subsid:
+                    type: string
+                    example: "0"
+                  subsid2:
+                    type: string
+                    example: "0"
+                  formtrkr:
+                    type: string
+                    example: "0"
+                  InputEnData:
+                    type: string
+                    example: "Encypted string of Deptartment parameter"
+      
+      responses:
+        200:
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  rs:
+                    type: string
+                    example: "S"
+                  rc:
+                    type: string
+                    example: "200"
+                  rd:
+                    type: string
+                    example: "Success."
+                  pd:
+                    type: object
+                    properties:
+                      OutEnData: 
+                        type: string                        
+                        example: ""
+                      ErrorMessage: 
+                        type: string                        
+                        example: "Success"
+                      IsValid: 
+                        type: integer                        
+                        example: 0
+
+   
+        400:
+          description: Bad Request/Validation Error
+
+  /umang/apisetu/dept/sbmapi/ws1/UserProfileStateDistULBWardI:
+    post:
+      tags:
+      - User Profile Ward ListInformation Web API
+      summary: Get the user profile ward listinformation using this api
+      description: This api is used to get the user profile ward listinformation
+      operationId: umang/apisetu/dept/sbmapi/ws1/UserProfileStateDistULBWardI
+      
+      parameters:
+        - in: header
+          name: Content-Type
+          schema:
+            type: string
+            example: "application/x-www-form-urlencoded"
+        - in: header
+          name: x-api-key
+          schema:
+            type: string
+            example: "qkNR1lrrxxxxDf2tHMU9wh"
+        - in: header
+          name: deptid
+          schema:
+            type: integer
+            example: 188
+        - in: header
+          name: srvid
+          schema:
+            type: integer
+            example: 1178
+        - in: header
+          name: subsid
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: subsid2
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: formtrkr
+          schema:
+            type: integer
+            example: 0
+
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+
+              properties:
+                  tkn:
+                    type: string
+                    example: "ce9e51df71-49ac-4109-b354-960a9f4bbbd6/1"
+                  trkr:
+                    type: string
+                    example: "213132"
+                  lang:
+                    type: string
+                    example: "en"
+                  usrid:
+                    type: string
+                    example: "09"
+                  srvid:
+                    type: string
+                    example: "1178"
+                  mode:
+                    type: string
+                    example: "web"
+                  pltfrm:
+                    type: string
+                    example: "apisetu"
+                  did:
+                    type: string
+                    example: ""
+                  deptid:
+                    type: string
+                    example: "188"
+                  subsid:
+                    type: string
+                    example: "0"
+                  subsid2:
+                    type: string
+                    example: "0"
+                  formtrkr:
+                    type: string
+                    example: "0"
+                  InputEnData:
+                    type: string
+                    example: "Encypted string of Deptartment parameter"
+      
+      responses:
+        200:
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  rs:
+                    type: string
+                    example: "S"
+                  rc:
+                    type: string
+                    example: "200"
+                  rd:
+                    type: string
+                    example: "Success."
+                  pd:
+                    type: object
+                    properties:
+                      OutEnData: 
+                        type: string                        
+                        example: ""
+                      ErrorMessage: 
+                        type: string                        
+                        example: "Success"
+                      IsValid: 
+                        type: integer                        
+                        example: 0
+
+   
+        400:
+          description: Bad Request/Validation Error
+
+  /umang/apisetu/dept/sbmapi/ws1/UserProfileBankBranchInfo:
+    post:
+      tags:
+      - User Profile Bank Branch Information Web API
+      summary: Get the user profile bank branch information using this api
+      description: This api is used to get the user profile bank branch information
+      operationId: umang/apisetu/dept/sbmapi/ws1/UserProfileBankBranchInfo
+      
+      parameters:
+        - in: header
+          name: Content-Type
+          schema:
+            type: string
+            example: "application/x-www-form-urlencoded"
+        - in: header
+          name: x-api-key
+          schema:
+            type: string
+            example: "qkNR1lrrxxxxDf2tHMU9wh"
+        - in: header
+          name: deptid
+          schema:
+            type: integer
+            example: 188
+        - in: header
+          name: srvid
+          schema:
+            type: integer
+            example: 1178
+        - in: header
+          name: subsid
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: subsid2
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: formtrkr
+          schema:
+            type: integer
+            example: 0
+
+      requestBody:
+        content:
+          application/json:
+            schema:
+
+              properties:
+                  tkn:
+                    type: string
+                    example: "ce9e51df71-49ac-4109-b354-960a9f4bbbd6/1"
+                  trkr:
+                    type: string
+                    example: "213132"
+                  lang:
+                    type: string
+                    example: "en"
+                  usrid:
+                    type: string
+                    example: "09"
+                  srvid:
+                    type: string
+                    example: "1178"
+                  mode:
+                    type: string
+                    example: "web"
+                  pltfrm:
+                    type: string
+                    example: "apisetu"
+                  did:
+                    type: string
+                    example: ""
+                  deptid:
+                    type: string
+                    example: "188"
+                  subsid:
+                    type: string
+                    example: "0"
+                  subsid2:
+                    type: string
+                    example: "0"
+                  formtrkr:
+                    type: string
+                    example: "0"
+                  InputEnData:
+                    type: string
+                    example: "Encypted string of Deptartment parameter"
+      
+      responses:
+        200:
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  rs:
+                    type: string
+                    example: "S"
+                  rc:
+                    type: string
+                    example: "200"
+                  rd:
+                    type: string
+                    example: "Success."
+                  pd:
+                    type: object
+                    properties:
+                      OutEnData: 
+                        type: string                        
+                        example: ""
+                      ErrorMessage: 
+                        type: string                        
+                        example: "Success"
+                      IsValid: 
+                        type: integer                        
+                        example: 0
+
+   
+        400:
+          description: Bad Request/Validation Error
+
+  /umang/apisetu/dept/sbmapi/ws1/UserProfileApplicationSubmit:
+    post:
+      tags:
+      - User Profile Application Submit Web API
+      summary: Submit the user profile application using this api
+      description: This api is used to submit the user profile application submit
+      operationId: umang/apisetu/dept/sbmapi/ws1/UserProfileApplicationSubmit
+      
+      parameters:
+        - in: header
+          name: Content-Type
+          schema:
+            type: string
+            example: "application/x-www-form-urlencoded"
+        - in: header
+          name: x-api-key
+          schema:
+            type: string
+            example: "qkNR1lrrxxxxDf2tHMU9wh"
+        - in: header
+          name: deptid
+          schema:
+            type: integer
+            example: 188
+        - in: header
+          name: srvid
+          schema:
+            type: integer
+            example: 1174
+        - in: header
+          name: subsid
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: subsid2
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: formtrkr
+          schema:
+            type: integer
+            example: 0
+
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+
+              properties:
+                  tkn:
+                    type: string
+                    example: "ce9e51df71-49ac-4109-b354-960a9f4bbbd6/1"
+                  trkr:
+                    type: string
+                    example: "213132"
+                  lang:
+                    type: string
+                    example: "en"
+                  usrid:
+                    type: string
+                    example: "09"
+                  srvid:
+                    type: string
+                    example: "1174"
+                  mode:
+                    type: string
+                    example: "web"
+                  pltfrm:
+                    type: string
+                    example: "apisetu"
+                  did:
+                    type: string
+                    example: ""
+                  deptid:
+                    type: string
+                    example: "188"
+                  subsid:
+                    type: string
+                    example: "l3_1380"
+                  subsid2:
+                    type: string
+                    example: "0"
+                  formtrkr:
+                    type: string
+                    example: "0"
+                  InputEnData:
+                    type: string
+                    example: "Encypted string of Deptartment parameter"
+      
+      responses:
+        200:
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  rs:
+                    type: string
+                    example: "S"
+                  rc:
+                    type: string
+                    example: "200"
+                  rd:
+                    type: string
+                    example: "Success."
+                  pd:
+                    type: object
+                    properties:
+                      Token: 
+                        type: string                        
+                        example: null
+                      ErrorMessage: 
+                        type: string                        
+                        example: "\n Please Enter Name of Applicant in Toilet Owner's Particulars"
+                      ApplicationID: 
+                        type: string                        
+                        example: null
+                      IsValid: 
+                        type: string                        
+                        example: "1"
+
+   
+        400:
+          description: Bad Request/Validation Error
+
+  /umang/apisetu/dept/sbmapi/ws1/UserProfileAppAcknowledgementSlip:
+    post:
+      tags:
+      - User Profile Application Acknowledgement Slip Web API
+      summary: Get the user profile application acknowledgement slip using this api
+      description: This api is used to get the user profile application acknowledgement slip
+      operationId: umang/apisetu/dept/sbmapi/ws1/UserProfileAppAcknowledgementSlip
+      
+      parameters:
+        - in: header
+          name: Content-Type
+          schema:
+            type: string
+            example: "application/x-www-form-urlencoded"
+        - in: header
+          name: x-api-key
+          schema:
+            type: string
+            example: "qkNR1lrrxxxxDf2tHMU9wh"
+        - in: header
+          name: deptid
+          schema:
+            type: integer
+            example: 188
+        - in: header
+          name: srvid
+          schema:
+            type: integer
+            example: 1175
+        - in: header
+          name: subsid
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: subsid2
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: formtrkr
+          schema:
+            type: integer
+            example: 0
+
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+
+              properties:
+                  tkn:
+                    type: string
+                    example: "ce9e51df71-49ac-4109-b354-960a9f4bbbd6/1"
+                  trkr:
+                    type: string
+                    example: "213132"
+                  lang:
+                    type: string
+                    example: "en"
+                  usrid:
+                    type: string
+                    example: "09"
+                  srvid:
+                    type: string
+                    example: "1175"
+                  mode:
+                    type: string
+                    example: "web"
+                  pltfrm:
+                    type: string
+                    example: "apisetu"
+                  did:
+                    type: string
+                    example: ""
+                  deptid:
+                    type: string
+                    example: "188"
+                  subsid:
+                    type: string
+                    example: "0"
+                  subsid2:
+                    type: string
+                    example: "0"
+                  formtrkr:
+                    type: string
+                    example: "0"
+                  InputEnData:
+                    type: string
+                    example: "Encypted string of Deptartment parameter"
+      
+      responses:
+        200:
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  rs:
+                    type: string
+                    example: "S"
+                  rc:
+                    type: string
+                    example: "200"
+                  rd:
+                    type: string
+                    example: "Success."
+                  pd:
+                    type: object
+                    properties:
+                      AcknowledgementSlip: 
+                        type: string                        
+                        example: null
+                      Token: 
+                        type: string                        
+                        example: null
+                      ErrorMessage: 
+                        type: string                        
+                        example: "Invalid Input!!"
+                      AcknowledgementSlipHindi: 
+                        type: string                        
+                        example: null
+                      IsValid: 
+                        type: string                        
+                        example: "1"
+
+   
+        400:
+          description: Bad Request/Validation Error
+
+  /umang/apisetu/dept/sbmapi/ws1/UserProfileAppPullbackInfo:
+    post:
+      tags:
+      - User Profile Application Pullback Information Web API
+      summary: Get the user profile application pullback information using this api
+      description: This api is used to get the user profile application acknowledgement slip
+      operationId: umang/apisetu/dept/sbmapi/ws1/UserProfileAppPullbackInfo
+      
+      parameters:
+        - in: header
+          name: Content-Type
+          schema:
+            type: string
+            example: "application/x-www-form-urlencoded"
+        - in: header
+          name: x-api-key
+          schema:
+            type: string
+            example: "qkNR1lrrxxxxDf2tHMU9wh"
+        - in: header
+          name: deptid
+          schema:
+            type: integer
+            example: 188
+        - in: header
+          name: srvid
+          schema:
+            type: integer
+            example: 1176
+        - in: header
+          name: subsid
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: subsid2
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: formtrkr
+          schema:
+            type: integer
+            example: 0
+
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+
+              properties:
+                  tkn:
+                    type: string
+                    example: "ce9e51df71-49ac-4109-b354-960a9f4bbbd6/1"
+                  trkr:
+                    type: string
+                    example: "213132"
+                  lang:
+                    type: string
+                    example: "en"
+                  usrid:
+                    type: string
+                    example: "09"
+                  srvid:
+                    type: string
+                    example: "1176"
+                  mode:
+                    type: string
+                    example: "web"
+                  pltfrm:
+                    type: string
+                    example: "apisetu"
+                  did:
+                    type: string
+                    example: ""
+                  deptid:
+                    type: string
+                    example: "188"
+                  subsid:
+                    type: string
+                    example: "0"
+                  subsid2:
+                    type: string
+                    example: "0"
+                  formtrkr:
+                    type: string
+                    example: "0"
+                  InputEnData:
+                    type: string
+                    example: "Encypted string of Deptartment parameter"
+      
+      responses:
+        200:
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  rs:
+                    type: string
+                    example: "S"
+                  rc:
+                    type: string
+                    example: "200"
+                  rd:
+                    type: string
+                    example: "Success."
+                  pd:
+                    type: object
+                    properties:
+                      OutEnData: 
+                        type: string                        
+                        example: ""
+                      ErrorMessage: 
+                        type: string                        
+                        example: "Success"
+                      IsValid: 
+                        type: integer                        
+                        example: 0
+
+   
+        400:
+          description: Bad Request/Validation Error
+
+  /umang/apisetu/dept/sbmapi/ws1/UserProfileAppPullbackSubmit:
+    post:
+      tags:
+      - User Profile Application Pullback Submit Web API
+      summary: Submit the user profile application pullback using this api
+      description: This api is used to submit the user profile application pullback
+      operationId: umang/apisetu/dept/sbmapi/ws1/UserProfileAppPullbackSubmit
+      
+      parameters:
+        - in: header
+          name: Content-Type
+          schema:
+            type: string
+            example: "application/x-www-form-urlencoded"
+        - in: header
+          name: x-api-key
+          schema:
+            type: string
+            example: "qkNR1lrrxxxxDf2tHMU9wh"
+        - in: header
+          name: deptid
+          schema:
+            type: integer
+            example: 188
+        - in: header
+          name: srvid
+          schema:
+            type: integer
+            example: 1176
+        - in: header
+          name: subsid
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: subsid2
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: formtrkr
+          schema:
+            type: integer
+            example: 0
+
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+
+              properties:
+                  tkn:
+                    type: string
+                    example: "ce9e51df71-49ac-4109-b354-960a9f4bbbd6/1"
+                  trkr:
+                    type: string
+                    example: "213132"
+                  lang:
+                    type: string
+                    example: "en"
+                  usrid:
+                    type: string
+                    example: "09"
+                  srvid:
+                    type: string
+                    example: "1176"
+                  mode:
+                    type: string
+                    example: "web"
+                  pltfrm:
+                    type: string
+                    example: "apisetu"
+                  did:
+                    type: string
+                    example: ""
+                  deptid:
+                    type: string
+                    example: "188"
+                  subsid:
+                    type: string
+                    example: "0"
+                  subsid2:
+                    type: string
+                    example: "0"
+                  formtrkr:
+                    type: string
+                    example: "0"
+                  InputEnData:
+                    type: string
+                    example: "Encypted string of Deptartment parameter"
+      
+      responses:
+        200:
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  rs:
+                    type: string
+                    example: "S"
+                  rc:
+                    type: string
+                    example: "200"
+                  rd:
+                    type: string
+                    example: "Success."
+                  pd:
+                    type: object
+                    properties:
+                      OutEnData: 
+                        type: string                        
+                        example: ""
+                      ErrorMessage: 
+                        type: string                        
+                        example: "Success"
+                      IsValid: 
+                        type: integer                        
+                        example: 0
+
+   
+        400:
+          description: Bad Request/Validation Error
+
+  /umang/apisetu/dept/sbmapi/ws1/UserProfileApplicationReSubmit:
+    post:
+      tags:
+      - User Profile Application Re-Submit Web API
+      summary: Get the user profile application re-submitted using this api
+      description: This api is used to resubmit the user profile application
+      operationId: umang/apisetu/dept/sbmapi/ws1/UserProfileApplicationReSubmit
+      
+      parameters:
+        - in: header
+          name: Content-Type
+          schema:
+            type: string
+            example: "application/x-www-form-urlencoded"
+        - in: header
+          name: x-api-key
+          schema:
+            type: string
+            example: "qkNR1lrrxxxxDf2tHMU9wh"
+        - in: header
+          name: deptid
+          schema:
+            type: integer
+            example: 188
+        - in: header
+          name: srvid
+          schema:
+            type: integer
+            example: 1176
+        - in: header
+          name: subsid
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: subsid2
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: formtrkr
+          schema:
+            type: integer
+            example: 0
+
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+
+              properties:
+                  tkn:
+                    type: string
+                    example: "ce9e51df71-49ac-4109-b354-960a9f4bbbd6/1"
+                  trkr:
+                    type: string
+                    example: "213132"
+                  lang:
+                    type: string
+                    example: "en"
+                  usrid:
+                    type: string
+                    example: "09"
+                  srvid:
+                    type: string
+                    example: "1176"
+                  mode:
+                    type: string
+                    example: "web"
+                  pltfrm:
+                    type: string
+                    example: "apisetu"
+                  did:
+                    type: string
+                    example: ""
+                  deptid:
+                    type: string
+                    example: "188"
+                  subsid:
+                    type: string
+                    example: "0"
+                  subsid2:
+                    type: string
+                    example: "0"
+                  formtrkr:
+                    type: string
+                    example: "0"
+                  InputEnData:
+                    type: string
+                    example: "Encypted string of Deptartment parameter"
+      
+      responses:
+        200:
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  rs:
+                    type: string
+                    example: "S"
+                  rc:
+                    type: string
+                    example: "200"
+                  rd:
+                    type: string
+                    example: "Success."
+                  pd:
+                    type: object
+                    properties:
+                      ReAppyResp: 
+                        type: string                        
+                        example: null
+                      Token: 
+                        type: string                        
+                        example: null
+                      ErrorMessage: 
+                        type: string                        
+                        example: "\n Please Select State in Geographical Particulars!!"
+                      IsValid: 
+                        type: string                        
+                        example: "1"
+
+   
+        400:
+          description: Bad Request/Validation Error
+
+  /umang/apisetu/dept/sbmapi/ws1/UserProfileAppStatus:
+    post:
+      tags:
+      - User Profile Application Status Web API
+      summary: Get the user profile application status using this api
+      description: This api is used to get the user profile application status
+      operationId: umang/apisetu/dept/sbmapi/ws1/UserProfileAppStatus
+      
+      parameters:
+        - in: header
+          name: Content-Type
+          schema:
+            type: string
+            example: "application/x-www-form-urlencoded"
+        - in: header
+          name: x-api-key
+          schema:
+            type: string
+            example: "qkNR1lrrxxxxDf2tHMU9wh"
+        - in: header
+          name: deptid
+          schema:
+            type: integer
+            example: 188
+        - in: header
+          name: srvid
+          schema:
+            type: integer
+            example: 1177
+        - in: header
+          name: subsid
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: subsid2
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: formtrkr
+          schema:
+            type: integer
+            example: 0
+
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+
+              properties:
+                  trkr:
+                    type: string
+                    example: "213132"
+                  lang:
+                    type: string
+                    example: "en"
+                  usrid:
+                    type: string
+                    example: "09"
+                  srvid:
+                    type: string
+                    example: "1177"
+                  mode:
+                    type: string
+                    example: "web"
+                  pltfrm:
+                    type: string
+                    example: "apisetu"
+                  did:
+                    type: string
+                    example: ""
+                  deptid:
+                    type: string
+                    example: "188"
+                  subsid:
+                    type: string
+                    example: "0"
+                  subsid2:
+                    type: string
+                    example: "0"
+                  formtrkr:
+                    type: string
+                    example: "0"
+                  InputEnData:
+                    type: string
+                    example: "Encypted string of Deptartment parameter"
+      
+      responses:
+        200:
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  rs:
+                    type: string
+                    example: "S"
+                  rc:
+                    type: string
+                    example: "200"
+                  rd:
+                    type: string
+                    example: "Success."
+                  pd:
+                    type: object
+                    properties:
+                      OutEnData: 
+                        type: string                        
+                        example: ""
+                      ErrorMessage: 
+                        type: string                        
+                        example: "Success"
+                      IsValid: 
+                        type: integer                        
+                        example: 0
+
+   
+        400:
+          description: Bad Request/Validation Error
+
+  /umang/apisetu/dept/sbmapi/ws1/UserProfileApplicationDetail:
+    post:
+      tags:
+      - User Profile Application Detail Web API
+      summary: Get the user profile application detail using this api
+      description: This api is used to get theuser profile application detail
+      operationId: umang/apisetu/dept/sbmapi/ws1/UserProfileApplicationDetail
+      
+      parameters:
+        - in: header
+          name: Content-Type
+          schema:
+            type: string
+            example: "application/x-www-form-urlencoded"
+        - in: header
+          name: x-api-key
+          schema:
+            type: string
+            example: "qkNR1lrrxxxxDf2tHMU9wh"
+        - in: header
+          name: deptid
+          schema:
+            type: integer
+            example: 188
+        - in: header
+          name: srvid
+          schema:
+            type: integer
+            example: 1177
+        - in: header
+          name: subsid
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: subsid2
+          schema:
+            type: integer
+            example: 0
+        - in: header
+          name: formtrkr
+          schema:
+            type: integer
+            example: 0
+
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+
+              properties:
+                  tkn:
+                    type: string
+                    example: "ce9e51df71-49ac-4109-b354-960a9f4bbbd6/1"
+                  trkr:
+                    type: string
+                    example: "213132"
+                  lang:
+                    type: string
+                    example: "en"
+                  usrid:
+                    type: string
+                    example: "09"
+                  srvid:
+                    type: string
+                    example: "1177"
+                  mode:
+                    type: string
+                    example: "web"
+                  pltfrm:
+                    type: string
+                    example: "apisetu"
+                  did:
+                    type: string
+                    example: ""
+                  deptid:
+                    type: string
+                    example: "188"
+                  subsid:
+                    type: string
+                    example: "0"
+                  subsid2:
+                    type: string
+                    example: "0"
+                  formtrkr:
+                    type: string
+                    example: "0"
+                  InputEnData:
+                    type: string
+                    example: "Encypted string of Deptartment parameter"
+      
+      responses:
+        200:
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                
+                properties:
+                  rs:
+                    type: string
+                    example: "S"
+                  rc:
+                    type: string
+                    example: "200"
+                  rd:
+                    type: string
+                    example: "Success."
+                  pd:
+                    type: object
+                    properties:
+                      OutEnData: 
+                        type: string                        
+                        example: ""
+                      ErrorMessage: 
+                        type: string                        
+                        example: "Success"
+                      IsValid: 
+                        type: integer                        
+                        example: 0
+
+   
+        400:
+          description: Bad Request/Validation Error
+components:
+  securitySchemes:
+    x-api-key:
+      type: apiKey
+      name: x-api-key
+      in: header
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
