@@ -1,0 +1,597 @@
+openapi: 3.0.0
+info:
+  title: National Institute of Pharmaceutical Education and Research (NIPER) 
+  description: >-
+  
+    NIPER, or the National Institute of Pharmaceutical Education and Research, is an autonomous institution under the Department of Pharmaceuticals, Ministry of Chemicals and Fertilizers, Government of India. It was established in 1998 and is dedicated to advanced research and education in pharmaceutical sciences.
+
+
+    NIPER's primary goals include: Research and Development,Education and
+    Training,Collaboration. NIPER institutes are located in various cities across India, with each one focusing on different aspects of pharmaceutical education and research. 
+    
+  contact:
+    name: Provided by - UMANG
+    url: https://web.umang.gov.in
+  version: 1.0.0
+servers:
+  - url: https://apigw.umangapp.in
+    description: Production Server
+security:
+  - x-api-key: []
+    
+
+paths:
+  /umang/apisetu/dept/niperapi/ws1/getIndex:
+    post:
+      tags:
+        - Get Index API
+      summary: Get the total index details 
+      description: 
+        This web api is used to get the index details
+
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                tkn: lq0b571a99-0ecb-4b29-9c5a-7257d6697491/1
+                trkr: W-23456789
+                lang: en
+                lat: '90'
+                lon: '90'
+                lac: '90'
+                usag: '1'
+                usrid: '10001201'
+                srvid: '1570'
+                mode: web
+                pltfrm: apisetu
+                apitrkr: '1'
+                deptid: '347'
+                did: '1'
+                subsid: '0'
+                subsid2: '0'
+                formtrkr: '0'
+      parameters:
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: '347'
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: '1570'
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: '0'
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: '0'
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: '0'
+
+      responses:
+        '200':
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Mon, 29 Jul 2024 10:07:01 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '147'
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            x-amzn-RequestId:
+              schema:
+                type: string
+                example: 06ef3e0e-686a-4382-bf5f-eaa4947b92cf
+            access-control-allow-origin:
+              schema:
+                type: string
+                example: '*'
+            x-amz-apigw-id:
+              schema:
+                type: string
+                example: bq120GqTBcwFvbA=
+            X-Amzn-Trace-Id:
+              schema:
+                type: string
+                example: Root=1-66a769c4-4f1d109c2ff3988d384abf3d
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                rs: S
+                rc: '200'
+                rd: Success.
+                pd:
+                  - TotalStudents: 4451
+                    SumStudentSttipentAmount: 1335835669
+                    DateAsonToday: 7/29/2024 3:37:01 PM
+  /umang/apisetu/dept/niperapi/ws1/StateWiseDetails:
+    post:
+      tags:
+        - State Wise Details API  
+      summary: Get the state wise niper student and stipend details 
+      description: >- 
+        This web api is used to get the state wise niper student and stipend details
+        
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                tkn: lq0b571a99-0ecb-4b29-9c5a-7257d6697491/1
+                lang: en
+                language: en
+                usrid: '4006891151'
+                mode: web
+                pltfrm: apisetu
+                did: null
+                deptid: '347'
+                formtrkr: '0'
+                srvid: '1570'
+                subsid: '0'
+                subsid2: '0'
+                usag: '1'
+                id: '878'
+      parameters:
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: '347'
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: '1570'
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: '0'
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: '0'
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: '0'
+
+      responses:
+        '200':
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Mon, 29 Jul 2024 10:08:07 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '910'
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            x-amzn-RequestId:
+              schema:
+                type: string
+                example: 574d7b8e-acd1-4fbe-a571-42a519738da7
+            access-control-allow-origin:
+              schema:
+                type: string
+                example: '*'
+            x-amz-apigw-id:
+              schema:
+                type: string
+                example: bq2BNESEhcwFTnw=
+            X-Amzn-Trace-Id:
+              schema:
+                type: string
+                example: Root=1-66a76a07-7c86b0992e0220e432f52dfd
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                rs: S
+                rc: '200'
+                rd: Success.
+                pd:
+                  - NiperName: Ahmedabad
+                    TotalStudents: 698
+                    SumStudentSttipentAmount: 213899301
+                    DateAsonToday: 7/29/2024 3:38:07 PM
+                  - NiperName: Mohali
+                    TotalStudents: 1417
+                    SumStudentSttipentAmount: 399555260
+                    DateAsonToday: 7/29/2024 3:38:07 PM
+                  - NiperName: Raebareli
+                    TotalStudents: 386
+                    SumStudentSttipentAmount: 111623159
+                    DateAsonToday: 7/29/2024 3:38:07 PM
+                  - NiperName: Guwahati
+                    TotalStudents: 479
+                    SumStudentSttipentAmount: 118575997
+                    DateAsonToday: 7/29/2024 3:38:07 PM
+                  - NiperName: Kolkata
+                    TotalStudents: 325
+                    SumStudentSttipentAmount: 102486624
+                    DateAsonToday: 7/29/2024 3:38:07 PM
+                  - NiperName: Hyderabad
+                    TotalStudents: 828
+                    SumStudentSttipentAmount: 300955473
+                    DateAsonToday: 7/29/2024 3:38:07 PM
+                  - NiperName: Hajipur
+                    TotalStudents: 318
+                    SumStudentSttipentAmount: 88739855
+                    DateAsonToday: 7/29/2024 3:38:07 PM
+  /umang/apisetu/dept/niperapi/ws1/StudentDetailsById:
+    post:
+      tags:
+        - Student Details By Id API  
+      summary: Get the student details by id 
+      description: |- 
+        This web api is used to get the student details by id
+
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                tkn: lq0b571a99-0ecb-4b29-9c5a-7257d6697491/1
+                lang: en
+                language: en
+                usrid: '4006891151'
+                mode: web
+                pltfrm: apisetu
+                did: null
+                deptid: '347'
+                formtrkr: '0'
+                srvid: '1571'
+                subsid: '0'
+                subsid2: '0'
+                usag: '1'
+                id: 100
+      parameters:
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: '347'
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: '1571'
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: '0'
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: '0'
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: '0'
+
+      responses:
+        '200':
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Mon, 29 Jul 2024 10:09:32 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '538'
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            x-amzn-RequestId:
+              schema:
+                type: string
+                example: 6946f4fe-0f2c-4651-bad8-7632c5ce4554
+            access-control-allow-origin:
+              schema:
+                type: string
+                example: '*'
+            x-amz-apigw-id:
+              schema:
+                type: string
+                example: bq2OcEOnBcwFRsA=
+            X-Amzn-Trace-Id:
+              schema:
+                type: string
+                example: Root=1-66a76a5c-54787e8f7ccdc63160b7849e
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                rs: S
+                rc: '200'
+                rd: Success.
+                pd:
+                  - NIPERStudentDetailsid: 100
+                    StudentName: PATEL MONICAKUMARI ANILBHAI
+                    EmailId: patelmonica71@gmail.com
+                    FatherName: ANILBHAI ARJUNBHAI PATEL
+                    MotherName: SUSHILABEN ANILBHAI PATEL
+                    DOB: 9/3/1997 12:00:00 AM
+                    Gender: Female
+                    SocialCategory: ST
+                    MobileNo: '9974266049'
+                    HomeAddres: >-
+                      Plot no. 67/A, Near Budh Temple, Behind, RPF ground,
+                      Nanakwada
+                    StateName: GUJARAT
+                    DistrictName: VALSAD
+                    NIPERJEERank: '1364'
+                    CourseName: MS Pharma
+                    departmentName: Medicinal Chemistry
+  /umang/apisetu/dept/niperapi/ws1/StudentStipendDetailsById:
+    post:
+      tags:
+        - Student Stipend Details by Id API 
+      summary: Get the student stipend details by id   
+      description: >- 
+        This web api is used to get the student stipend details
+        by id
+        
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                tkn: lq0b571a99-0ecb-4b29-9c5a-7257d6697491/1
+                lang: en
+                language: en
+                usrid: '4006891151'
+                mode: web
+                pltfrm: apisetu
+                did: null
+                deptid: '347'
+                formtrkr: '0'
+                srvid: '1571'
+                subsid: '0'
+                subsid2: '0'
+                usag: '1'
+                id: 100
+      parameters:
+        - name: deptid
+          in: header
+          schema:
+            type: integer
+          example: '347'
+        - name: srvid
+          in: header
+          schema:
+            type: integer
+          example: '1571'
+        - name: subsid
+          in: header
+          schema:
+            type: integer
+          example: '0'
+        - name: subsid2
+          in: header
+          schema:
+            type: integer
+          example: '0'
+        - name: formtrkr
+          in: header
+          schema:
+            type: integer
+          example: '0'
+   
+      responses:
+        '200':
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Mon, 29 Jul 2024 10:10:33 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '3586'
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            x-amzn-RequestId:
+              schema:
+                type: string
+                example: 67e348ec-e494-4bea-9ec3-bf2f9340675a
+            access-control-allow-origin:
+              schema:
+                type: string
+                example: '*'
+            x-amz-apigw-id:
+              schema:
+                type: string
+                example: bq2X8GMwBcwFWlA=
+            X-Amzn-Trace-Id:
+              schema:
+                type: string
+                example: Root=1-66a76a98-10f087ae332d948b0234c463
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                rs: S
+                rc: '200'
+                rd: Success.
+                pd:
+                  - StudentStipendid: 6064
+                    NIPERStudentDetailsid: 100
+                    StipendAmount: 13600
+                    StipendDatetime: 8/3/2019 12:00:00 AM
+                    CreatedOn: 1/3/2021 2:43:50 PM
+                  - StudentStipendid: 6068
+                    NIPERStudentDetailsid: 100
+                    StipendAmount: 12400
+                    StipendDatetime: 9/4/2019 12:00:00 AM
+                    CreatedOn: 1/3/2021 2:44:41 PM
+                  - StudentStipendid: 6075
+                    NIPERStudentDetailsid: 100
+                    StipendAmount: 12400
+                    StipendDatetime: 10/4/2019 12:00:00 AM
+                    CreatedOn: 1/3/2021 2:47:15 PM
+                  - StudentStipendid: 6079
+                    NIPERStudentDetailsid: 100
+                    StipendAmount: 12400
+                    StipendDatetime: 11/4/2019 12:00:00 AM
+                    CreatedOn: 1/3/2021 2:49:11 PM
+                  - StudentStipendid: 6081
+                    NIPERStudentDetailsid: 100
+                    StipendAmount: 12400
+                    StipendDatetime: 12/5/2019 12:00:00 AM
+                    CreatedOn: 1/3/2021 2:50:16 PM
+                  - StudentStipendid: 6085
+                    NIPERStudentDetailsid: 100
+                    StipendAmount: 10800
+                    StipendDatetime: 1/3/2020 12:00:00 AM
+                    CreatedOn: 1/3/2021 2:51:38 PM
+                  - StudentStipendid: 6089
+                    NIPERStudentDetailsid: 100
+                    StipendAmount: 12400
+                    StipendDatetime: 2/3/2020 12:00:00 AM
+                    CreatedOn: 1/3/2021 2:53:15 PM
+                  - StudentStipendid: 6092
+                    NIPERStudentDetailsid: 100
+                    StipendAmount: 12000
+                    StipendDatetime: 3/5/2020 12:00:00 AM
+                    CreatedOn: 1/3/2021 2:53:54 PM
+                  - StudentStipendid: 6095
+                    NIPERStudentDetailsid: 100
+                    StipendAmount: 12400
+                    StipendDatetime: 4/3/2020 12:00:00 AM
+                    CreatedOn: 1/3/2021 2:54:56 PM
+                  - StudentStipendid: 6097
+                    NIPERStudentDetailsid: 100
+                    StipendAmount: 12400
+                    StipendDatetime: 5/4/2020 12:00:00 AM
+                    CreatedOn: 1/3/2021 2:55:50 PM
+                  - StudentStipendid: 6099
+                    NIPERStudentDetailsid: 100
+                    StipendAmount: 12400
+                    StipendDatetime: 6/5/2020 12:00:00 AM
+                    CreatedOn: 1/3/2021 2:56:47 PM
+                  - StudentStipendid: 6102
+                    NIPERStudentDetailsid: 100
+                    StipendAmount: 12400
+                    StipendDatetime: 8/5/2020 12:00:00 AM
+                    CreatedOn: 1/3/2021 2:58:35 PM
+                  - StudentStipendid: 6312
+                    NIPERStudentDetailsid: 100
+                    StipendAmount: 12400
+                    StipendDatetime: 9/4/2020 12:00:00 AM
+                    CreatedOn: 1/3/2021 5:28:39 PM
+                  - StudentStipendid: 6543
+                    NIPERStudentDetailsid: 100
+                    StipendAmount: 12400
+                    StipendDatetime: 7/3/2020 12:00:00 AM
+                    CreatedOn: 1/3/2021 9:47:28 PM
+                  - StudentStipendid: 6545
+                    NIPERStudentDetailsid: 100
+                    StipendAmount: 12000
+                    StipendDatetime: 10/5/2020 12:00:00 AM
+                    CreatedOn: 1/3/2021 9:48:04 PM
+                  - StudentStipendid: 6547
+                    NIPERStudentDetailsid: 100
+                    StipendAmount: 12400
+                    StipendDatetime: 11/4/2020 12:00:00 AM
+                    CreatedOn: 1/3/2021 9:49:04 PM
+                  - StudentStipendid: 56103
+                    NIPERStudentDetailsid: 100
+                    StipendAmount: 12400
+                    StipendDatetime: 12/8/2020 12:00:00 AM
+                    CreatedOn: 1/29/2021 2:41:31 PM
+                  - StudentStipendid: 61084
+                    NIPERStudentDetailsid: 100
+                    StipendAmount: 12400
+                    StipendDatetime: 1/6/2021 12:00:00 AM
+                    CreatedOn: 2/27/2021 4:54:21 PM
+                  - StudentStipendid: 62152
+                    NIPERStudentDetailsid: 100
+                    StipendAmount: 12400
+                    StipendDatetime: 2/26/2021 12:00:00 AM
+                    CreatedOn: 3/4/2021 1:04:27 PM
+                  - StudentStipendid: 64402
+                    NIPERStudentDetailsid: 100
+                    StipendAmount: 12400
+                    StipendDatetime: 3/31/2021 12:00:00 AM
+                    CreatedOn: 4/1/2021 3:46:26 PM
+                  - StudentStipendid: 65933
+                    NIPERStudentDetailsid: 100
+                    StipendAmount: 12400
+                    StipendDatetime: 4/30/2021 12:00:00 AM
+                    CreatedOn: 5/5/2021 12:17:29 PM
+                  - StudentStipendid: 66991
+                    NIPERStudentDetailsid: 100
+                    StipendAmount: 12400
+                    StipendDatetime: 5/31/2021 12:00:00 AM
+                    CreatedOn: 6/3/2021 12:15:40 PM
+                  - StudentStipendid: 68634
+                    NIPERStudentDetailsid: 100
+                    StipendAmount: 12400
+                    StipendDatetime: 6/30/2021 12:00:00 AM
+                    CreatedOn: 7/6/2021 11:25:59 AM
+
+components:
+  securitySchemes:
+    x-api-key:
+      type: apiKey
+      name: x-api-key
+      in: header
